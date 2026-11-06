@@ -1,0 +1,50 @@
+name: Policy Domino - Auto Watch and Pages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 * * * *'
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'site/data.json'
+      - 'data/state.json'
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: policy-domino-cloud
+  cancel-in-progress: false
+jobs:
+  watch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python on GitHub runner
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect official public policy feeds
+        run: python watch.py
+      - name: Save results for the next scheduled run
+        run: |
+          git config user.name 'policy-domino-bot'
+          git config user.email 'policy-domino-bot@users.noreply.github.com'
+          git add data/state.json site/data.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: refresh official feeds [skip ci]'
+            git push origin HEAD:main
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

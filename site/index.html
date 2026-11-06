@@ -1,55 +1,127 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>POLICY DOMINO | 정책 변경 자동 감시</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17263b;background:#f2f5fa}
-*{box-sizing:border-box}body{margin:0}header{background:#102541;color:white;padding:22px max(22px,calc((100vw - 1160px)/2))}header strong{font-size:23px;letter-spacing:-.4px}header small{display:block;margin-top:5px;color:#adbed4}main{max-width:1160px;margin:24px auto;padding:0 16px}
-h1{font-size:23px;margin:0 0 8px}h2{font-size:17px;margin:0 0 15px}.sub{font-size:13px;color:#5f7188;line-height:1.6}
-.note{border:1px solid #d5dfe8;border-radius:12px;background:#fff;padding:13px 16px;font-size:13px;line-height:1.7;margin:18px 0}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat{background:#fff;border:1px solid #e0e7ef;border-radius:12px;padding:18px}.stat label{font-size:12px;color:#697d90;display:block}.stat b{font-size:25px;display:block;margin-top:7px}
-.columns{display:grid;grid-template-columns:minmax(0,1fr) 325px;gap:17px}.panel{border:1px solid #dee5ef;border-radius:13px;padding:18px;background:#fff;align-self:start}
-.btn{border:1px solid #d1dce8;border-radius:8px;background:white;padding:8px 12px;cursor:pointer;color:#27415e}.btn.active{background:#164c7a;color:white}.btn.reload{background:#164c7a;color:white;border-color:#164c7a}.controls{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.entry{border-top:1px solid #e7edf4;padding:14px 0}.entry h3{margin:5px 0;font-size:15px;line-height:1.5}
-.meta{font-size:11px;color:#73869c}.pill{font-size:11px;border-radius:10px;background:#e8f1fa;color:#225584;padding:3px 8px;display:inline-block}.pill.new{color:#8a5819;background:#fdf2e2}.desc{font-size:12px;color:#536a80;line-height:1.7}
-a{color:#1766a5;text-decoration:none}a:hover{text-decoration:underline}.source{border-top:1px solid #e5ebf1;padding:11px 0;font-size:13px}.source small{display:block;color:#66788c;margin-top:5px;word-break:break-word}.fail{color:#b23b3b}.ok{color:#167451}.empty{text-align:center;color:#74849b;padding:25px 5px;font-size:13px}
-@media(max-width:780px){.columns{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:20px}.stat{padding:12px}.stat b{font-size:21px}}
-</style></head>
-<body><header><strong>POLICY DOMINO</strong><small>공식 정책·제도 게시정보 자동 감시 | Cloud Watch</small></header>
-<main><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
-<div><h1>변경사항을 먼저 찾아주는 정책 모니터링</h1><div class="sub" id="last">마지막 수집 시간을 확인 중입니다.</div></div>
-<button class="btn reload" onclick="load()">새로고침</button></div>
-<div class="note"><b>현재는 시범 수집판입니다.</b> 공식 RSS 새 게시·수정 여부를 자동 비교합니다. 제목과 요약에 변경 관련 표현이 있으면 후보로 표시하며, 그것만으로 실제 법령 개정이나 다른 기관 홈페이지의 수정 의무를 확정하지 않습니다. 전국 기관 및 첨부파일의 자동 전수 점검 기능은 아직 구현되지 않았습니다.</div>
-<div class="stats">
-<div class="stat"><label>최근 수집된 게시</label><b id="total">—</b></div>
-<div class="stat"><label>변경 관련 후보</label><b id="changes">—</b></div>
-<div class="stat"><label>신규 감지</label><b id="newCount">—</b></div>
-<div class="stat"><label>수정 감지</label><b id="modified">—</b></div></div>
-<div class="columns"><section class="panel"><h2>자동 수집 결과</h2><div class="controls">
-<button class="btn active" data-view="change">변경 후보</button>
-<button class="btn" data-view="new">신규·수정</button>
-<button class="btn" data-view="all">전체</button></div>
-<div id="posts" class="empty">수집 데이터를 불러오는 중입니다.</div></section>
-<aside class="panel"><h2>공식 감시 출처</h2><p class="sub" id="coverage">수집 범위를 확인 중입니다.</p><div id="sources"></div>
-<p class="sub">정기 실행: 매시간(예약 실행은 지연될 수 있음). 마지막 실행이 오래됐거나 수집 실패가 표시되면 GitHub Actions 상태를 확인해야 합니다.</p></aside></div></main>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#18293b;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}
+header{background:#112b49;color:white;padding:24px max(18px,calc((100vw - 1160px)/2));box-shadow:0 3px 15px #10264116}
+.brand{font-size:24px;font-weight:850;letter-spacing:-.8px}.brand span{color:#83d5ed}header .tag{color:#bfd3e4;font-size:13px;margin-top:4px}
+main{max-width:1160px;margin:22px auto 60px;padding:0 16px}
+h1{font-size:22px;letter-spacing:-.6px;margin:0 0 4px}h2{font-size:17px;margin:0}p{line-height:1.65}
+.meta{font-size:12px;color:#728499}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:17px}
+.button{cursor:pointer;border-radius:8px;border:1px solid #ccd9e4;background:white;padding:9px 13px;font-weight:600;font-size:13px;color:#34516c}
+.button.primary{background:#1e577f;color:white;border-color:#1e577f}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:17px}
+.stat{padding:17px;background:#fff;border:1px solid #e0e7ee;border-radius:13px}
+.stat small{color:#708196;display:block;font-size:12px}.stat strong{display:block;margin-top:8px;font-size:27px}
+.mainGrid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px}
+.panel{background:white;border:1px solid #e0e8ef;border-radius:14px;padding:18px;min-width:0}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0 16px}.tab{border:1px solid #e0e5ed;background:#f8fafc;color:#4a6279;border-radius:10px;padding:10px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.tab.active{color:white;background:#145784;border-color:#145784}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.filters input,.filters select{border:1px solid #dbe2ea;border-radius:8px;padding:9px 10px;background:white;color:#30465e;font-size:13px}
+.filters input{flex:1;min-width:170px}.filters select{max-width:200px}
+.item{padding:16px 0;border-bottom:1px solid #e8edf3}.item:last-child{border-bottom:0}
+.itemTitle{font-size:15px;font-weight:750;line-height:1.55;margin:6px 0;word-break:keep-all}
+.itemMeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#687e91;font-size:12px}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:4px 9px;border-radius:50px;background:#e8f2fb;color:#215d89}
+.pill.amber{background:#fff1d7;color:#946013}.pill.green{background:#e0f4ed;color:#18704d}.pill.red{background:#ffebeb;color:#a34137}
+.desc{font-size:13px;color:#556b81;margin:8px 0;line-height:1.6;word-break:keep-all}
+a{color:#1263a0;text-decoration:none}a:hover{text-decoration:underline}
+.source{padding:12px 0;border-bottom:1px solid #e5ebf1;font-size:13px}.source:last-child{border-bottom:0}.source small{display:block;margin-top:5px;color:#718399}
+.good{color:#168363}.bad{color:#be4646}
+.impact{border:1px solid #e0e7f0;border-radius:10px;padding:15px;margin:11px 0}
+.impact h3{margin:6px 0 8px;font-size:15px}.impact dl{margin:9px 0;display:grid;grid-template-columns:95px minmax(0,1fr);gap:8px;font-size:13px;line-height:1.55}
+.impact dt{color:#6b8092}.impact dd{margin:0;word-break:break-all}
+.changeLine{background:#f3f7fa;border-radius:8px;padding:10px;margin:10px 0;font-size:13px}
+.empty{padding:30px 12px;text-align:center;color:#6f8192;font-size:13px;line-height:1.6}
+.detailButton{background:none;border:0;color:#145a8b;padding:4px 0;cursor:pointer;font-weight:650;font-size:12px}
+.details{display:none;border-left:3px solid #d4e6f1;padding:8px 12px;margin-top:9px;background:#f7fafc;border-radius:5px;font-size:12px;color:#526579;line-height:1.65}
+.details.open{display:block}.cap{font-size:12px;color:#62798d;line-height:1.6;margin-top:12px}
+footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
+@media(max-width:820px){.mainGrid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:13px}.stat strong{font-size:23px}.panel{padding:14px}.tab{padding:9px}.impact dl{grid-template-columns:80px minmax(0,1fr)}}
+</style></head><body>
+<header><div class="brand">POLICY <span>DOMINO</span></div><div class="tag">변화는 자동 감지하고, 관련 게시정보는 근거로 확인합니다.</div></header>
+<main>
+<div class="topline"><div><h1>최신 정책·제도 소식</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
+<section class="stats">
+<div class="stat"><small>수집된 최근 게시물</small><strong id="total">—</strong></div>
+<div class="stat"><small>새로 감지된 게시·수정</small><strong id="recent">—</strong></div>
+<div class="stat"><small>변경 검토 대상 게시</small><strong id="candidate">—</strong></div>
+<div class="stat"><small>기관 간 게시정보 점검</small><strong id="targets">—</strong></div>
+</section>
+<div class="mainGrid">
+<section class="panel">
+<h2 id="sectionTitle">최신 공식 게시물</h2>
+<div class="tabs" role="tablist">
+<button class="tab active" data-tab="latest">최신 게시</button>
+<button class="tab" data-tab="new">신규·수정 감지</button>
+<button class="tab" data-tab="audit">게시정보 수정 점검</button>
+<button class="tab" data-tab="candidate">변경 검토 후보</button>
+</div>
+<div class="filters"><select id="agency" aria-label="기관 선택"><option value="">모든 기관</option></select><input id="search" aria-label="결과 내 검색" placeholder="기관명·사업명으로 결과 검색"></div>
+<div id="results" class="empty">수집 내용을 불러오는 중입니다.</div>
+</section>
+<aside class="panel">
+<h2>수집 현황</h2><div class="cap" id="scope">기관별 수집 결과 확인 중</div>
+<div style="display:flex;gap:8px;margin:14px 0 5px"><span class="pill green" id="sourceGood">정상 —</span><span class="pill amber" id="sourceBad">확인 필요 —</span></div>
+<div id="sourceList"></div>
+<div class="cap">점검 대상은 공식 홈페이지의 공개된 RSS·게시글·접근 가능한 첨부자료입니다. 접근할 수 없는 자료는 자동으로 검증 완료 처리하지 않습니다.</div>
+</aside>
+</div><footer>POLICY DOMINO · 정부·지자체·공공부문 공개정보 자동 감시</footer>
+</main>
 <script>
-var rows=[],view="change";
-function esc(v){return String(v===undefined||v===null?"":v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-function fmt(t){if(!t)return "아직 실행되지 않음";try{return new Date(t).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"})}catch(e){return t}}
+let data={items:[],impacts:[],sources:[]},tab="latest";
+const el=id=>document.getElementById(id);
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function link(s){try{let u=new URL(s);return (u.protocol==="https:"||u.protocol==="http:")?safe(u.href):"#"}catch(e){return "#"}}
+function date(t){if(!t)return "게시일 미확인";try{return new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}).format(new Date(t))}catch(e){return t}}
+function stage(p){return p.stage||(p.kind==="변경 후보"?"변경 관련 검토":"일반 게시")}
+function stamp(p){return p.published_at || (/^\d{14}$/.test(p.published||"")?p.published.slice(0,4)+"-"+p.published.slice(4,6)+"-"+p.published.slice(6,8)+"T"+p.published.slice(8,10)+":"+p.published.slice(10,12)+":00Z":p.detected_at||"")}
+function latestSort(a,b){return stamp(b).localeCompare(stamp(a))}
+function optionFilter(xs,field){const q=el("search").value.trim().toLowerCase(),agency=el("agency").value;return xs.filter(x=>(!agency || (x[field]||x.source||"")===agency) && (!q || Object.values(x).some(v=>typeof v==="string"&&v.toLowerCase().includes(q))))}
+function renderPost(x){
+let detected=x.detected||x.status||"기존";let pills='<span class="pill">'+safe(stage(x))+'</span>';
+if(detected==="신규 감지"||detected==="수정 감지")pills+=' <span class="pill green">'+safe(detected)+'</span>';
+let attachments=(x.attachments||[]).map(a=>'<div>첨부: <a target="_blank" rel="noopener" href="'+link(a.url)+'">'+safe(a.name)+'</a> · '+safe(a.analysis||"검토 대상")+'</div>').join("");
+let deltas=(x.change_details||[]).map(d=>'<div class="changeLine">'+safe(d.before)+' → '+safe(d.after)+'<div class="cap">'+safe(d.evidence)+'</div></div>').join("");
+return '<article class="item"><div class="itemMeta"><b>'+safe(x.source)+'</b><span>'+safe(x.category||"")+'</span><span>게시 '+date(stamp(x))+'</span></div><div class="itemTitle">'+safe(x.title)+'</div>'+pills+(x.body?'<p class="desc">'+safe(x.body)+'</p>':"")+'<div><a target="_blank" rel="noopener" href="'+link(x.url)+'">공식 게시글 열기</a></div>'+((attachments||deltas)?'<button class="detailButton" onclick="this.nextElementSibling.classList.toggle(\'open\')">근거·첨부 확인</button><div class="details">'+(deltas||"")+attachments+'</div>':"")+'</article>'
+}
+function renderImpact(x){
+let confirmed=x.before&&x.after;
+return '<div class="impact"><span class="pill '+(confirmed?"amber":"")+'">'+safe(x.status||"검토")+'</span><h3>'+safe(x.target_source)+' · '+safe(x.target_title)+'</h3><dl><dt>변경 출처</dt><dd><a target="_blank" rel="noopener" href="'+link(x.policy_url)+'">'+safe(x.policy_title)+'</a></dd><dt>확인 대상</dt><dd><a target="_blank" rel="noopener" href="'+link(x.target_url)+'">'+safe(x.target_url)+'</a></dd><dt>검토 위치</dt><dd>'+safe(x.location||"공개 게시물")+'</dd><dt>조사 근거</dt><dd>'+safe(x.evidence||"관련 주제의 다른 기관 게시물이 발견되어 원문 대조가 필요합니다.")+'</dd></dl>'+(confirmed?'<div class="changeLine"><b>기존에 표기된 값</b> '+safe(x.before)+'<br><b>정책 자료의 신규 값</b> '+safe(x.after)+'</div>':"")+'<div class="cap">실제 적용 대상·시행일·과거자료 여부 확인 전에는 수정 필요로 확정하지 않습니다.</div></div>'
+}
 function render(){
-var filtered=rows.filter(function(x){return view==="all" || (view==="new" && (x.status==="신규 감지"||x.status==="수정 감지")) || (view==="change"&&x.kind==="변경 후보")});
-document.getElementById("posts").innerHTML=filtered.length?filtered.map(function(x){
-return '<article class="entry"><div class="meta">'+esc(x.source)+' · '+esc(x.published)+'</div><h3>'+esc(x.title)+'</h3><span class="pill '+(x.status==="신규 감지"||x.status==="수정 감지"?"new":"")+'">'+esc(x.status)+'</span> <span class="pill">'+esc(x.kind)+'</span><p class="desc">'+esc(x.body||"요약 없음")+'</p><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 열기</a></article>'
-}).join(""):'<div class="empty">해당 조건의 수집 내역이 없습니다. 출처별 수집 결과를 확인하세요.</div>'}
+let items=(data.items||[]).slice().sort(latestSort),title="최신 공식 게시물",list=[];
+if(tab==="latest")list=optionFilter(items,"source");
+if(tab==="new"){title="신규·수정 감지";list=optionFilter(items.filter(x=>["신규 감지","수정 감지"].includes(x.detected||x.status)).sort((a,b)=>(b.detected_at||"").localeCompare(a.detected_at||"")),"source")}
+if(tab==="candidate"){title="변경 검토 후보 · 별도 조사";list=optionFilter(items.filter(x=>stage(x)!=="일반 게시"),"source")}
+if(tab==="audit"){title="기관별 게시정보 점검";list=optionFilter(data.impacts||[],"target_source")}
+el("sectionTitle").textContent=title;
+el("results").innerHTML=list.length?(tab==="audit"?list.map(renderImpact).join(""):list.slice(0,160).map(renderPost).join("")):'<div class="empty">'+(tab==="new"?"이전 실행 이후 새로 감지된 게시물이나 수정이 없습니다. ‘최신 게시’에서 최근 공개 자료를 볼 수 있습니다.":tab==="audit"?"현재 자동 조사에서 연결된 기관 게시물이 확인되지 않았습니다. 수집 출처를 계속 확대하고 있습니다.":"이 조건에 해당하는 게시물이 없습니다.")+'</div>'
+}
 async function load(){
 try{
-var r=await fetch("./data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error("데이터 요청 실패: "+r.status);
-var d=await r.json();rows=d.items||[];var c=d.counts||{};
-["total","changes","newCount","modified"].forEach(function(id,i){document.getElementById(id).textContent=[c.total||0,c.change_count||0,c.new_count||0,c.modified_count||0][i]});
-document.getElementById("last").textContent="마지막 자동 수집: "+fmt(d.generated_at);
-document.getElementById("coverage").textContent=d.coverage||d.scope||"시범 감시";
-document.getElementById("sources").innerHTML=(d.sources||[]).map(function(s){return '<div class="source"><b>'+esc(s.name)+'</b><small class="'+(s.status==="수집 실패"?"fail":"ok")+'">'+esc(s.status)+'</small><small>'+esc(s.error||("확인: "+fmt(s.last_check)))+'</small></div>'}).join("") || '<div class="empty">아직 수집 전입니다.</div>';
+const response=await fetch("./data.json?t="+Date.now(),{cache:"no-store"});
+if(!response.ok)throw Error("HTTP "+response.status);
+data=await response.json();
+const counts=data.counts||{};
+el("total").textContent=counts.total??(data.items||[]).length;
+el("recent").textContent=counts.recent??((counts.new_count||0)+(counts.modified_count||0));
+el("candidate").textContent=counts.candidate??counts.change_count??0;
+el("targets").textContent=counts.targets??(data.impacts||[]).length;
+el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · 게시일 최신순";
+el("scope").textContent=(data.scope||"등록된 공식 RSS")+" · "+(data.source_count??data.sources?.length??0)+"개 채널";
+const src=data.sources||[];
+el("sourceGood").textContent="정상 "+src.filter(x=>x.status==="정상").length;
+el("sourceBad").textContent="점검 "+src.filter(x=>x.status!=="정상").length;
+el("sourceList").innerHTML=src.map(s=>'<div class="source"><b>'+safe(s.name)+'</b> · '+safe(s.category||"")+' <span class="'+(s.status==="정상"?"good":"bad")+'">'+safe(s.status||"미확인")+'</span><small>'+safe(s.error||("게시 "+(s.count||0)+"건"))+'</small></div>').join("");
+const agencies=[...new Set([...data.items.map(x=>x.source),...(data.impacts||[]).map(x=>x.target_source)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));
+const prev=el("agency").value;
+el("agency").innerHTML='<option value="">모든 기관</option>'+agencies.map(x=>'<option value="'+safe(x)+'">'+safe(x)+'</option>').join("");
+if(agencies.includes(prev))el("agency").value=prev;
 render();
-}catch(e){document.getElementById("last").textContent="수집 데이터 로드 오류";document.getElementById("posts").innerHTML='<p class="fail">수집 결과를 가져오지 못했습니다. Actions 실행 및 Pages 설정 확인이 필요합니다.</p>';}
+}catch(e){el("syncTime").textContent="수집 데이터 연결을 확인할 수 없습니다";el("results").innerHTML='<div class="empty">데이터 요청 오류: '+safe(e.message)+'<br>GitHub Actions 실행 상태를 확인해 주세요.</div>';}
 }
-document.querySelectorAll("[data-view]").forEach(function(b){b.onclick=function(){document.querySelectorAll("[data-view]").forEach(function(x){x.classList.remove("active")});b.classList.add("active");view=b.getAttribute("data-view");render()}});load();setInterval(load,60000);
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");tab=b.dataset.tab;render()});
+el("agency").onchange=render;el("search").oninput=render;load();setInterval(load,90000);
 </script></body></html>

@@ -18,33 +18,38 @@ concurrency:
 jobs:
   watch-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Python on GitHub runner
+      - name: Setup cloud Python environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Collect official public policy feeds
-        run: python watch.py
-      - name: Save results for the next scheduled run
+      - name: Install cloud-only attachment readers
+        run: python -m pip install --disable-pip-version-check beautifulsoup4 pypdf python-docx
+      - name: Validate and collect official public data
+        run: |
+          python -m py_compile watch.py
+          python watch.py
+      - name: Persist monitoring results
         run: |
           git config user.name 'policy-domino-bot'
           git config user.email 'policy-domino-bot@users.noreply.github.com'
           git add data/state.json site/data.json
           if ! git diff --cached --quiet; then
-            git commit -m 'data: refresh official feeds [skip ci]'
+            git commit -m 'data: update policy monitoring records [skip ci]'
             git push origin HEAD:main
           fi
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
+      - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
-      - name: Deploy Pages
+      - name: Publish site
         id: deployment
         uses: actions/deploy-pages@v4

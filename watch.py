@@ -47,7 +47,7 @@ def read_json(path,default):
 def main():
  STATE.parent.mkdir(parents=True,exist_ok=True)
  OUT.parent.mkdir(parents=True,exist_ok=True)
- state=read_json(STATE,{"hashes":{},"initialized":false}) if False else read_json(STATE,{"hashes":{},"initialized":False})
+ state=read_json(STATE,{"hashes":{},"initialized":False})
  old=state.get("hashes",{})
  hashes=dict(old)
  initial=not state.get("initialized",False)

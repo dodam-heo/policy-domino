@@ -39,7 +39,6 @@ FEEDS=[
 ("경기도","경제","https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E001&policyCode=E001"),
 ("경기도","교육","https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E003&policyCode=E003"),
 ("KOSIS 국가통계포털","공지","https://kosis.kr/rss/notice_rss.jsp"),
-("KOSIS 국가통계포털","최근수록자료","https://kosis.kr/rss/themes_rss.jsp"),
 ("국가데이터처","보도자료","https://mods.go.kr/menu.es?mid=a10301010000&act=rss")
 ]
 CANDIDATE=re.compile(r"개정|제정|폐지|개편|변경|공포|시행|고시|신설|확대|축소|완화|강화|선정기준|지원기준|인상|인하|법률|지침|규정|기준")
@@ -64,7 +63,7 @@ def date_iso(s):
         if re.fullmatch(r"\d{4}[.-]\d{1,2}[.-]\d{1,2}.?",s):
             return datetime.strptime(re.sub(r"\D","-",s).strip("-"),"%Y-%m-%d").replace(tzinfo=ZoneInfo("Asia/Seoul")).astimezone(timezone.utc).isoformat()
         try:return parsedate_to_datetime(s).astimezone(timezone.utc).isoformat()
-        except (TypeError,ValueError,OverflowError):return datetime.fromisoformat(s.replace("Z","+00:00")).astimezone(timezone.utc).isoformat()
+        except (TypeError,ValueError,OverflowError):dt=datetime.fromisoformat(s.replace("Z","+00:00")); return (dt.replace(tzinfo=ZoneInfo("Asia/Seoul")) if dt.tzinfo is None else dt).astimezone(timezone.utc).isoformat()
     except (TypeError,ValueError):return ""
 def fetch(url,limit=2000000,timeout=14):
     req=urllib.request.Request(url,headers=HEADERS)

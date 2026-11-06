@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-06T07:41:49+00:00",
+  "generated_at": "2026-11-06T07:43:29+00:00",
   "first_scan": false,
   "counts": {
-    "total": 405,
-    "recent": 305,
+    "total": 440,
+    "recent": 35,
     "modified": 0,
-    "candidate": 116,
-    "targets": 9
+    "candidate": 123,
+    "targets": 6
   },
   "sources": [
     {
@@ -15,7 +15,7 @@
       "url": "https://mss.go.kr/rss/smba/board/126.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -23,7 +23,7 @@
       "url": "https://mss.go.kr/rss/smba/board/125.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -31,7 +31,7 @@
       "url": "https://mss.go.kr/rss/smba/board/310.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -39,7 +39,7 @@
       "url": "https://mss.go.kr/rss/smba/board/86.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -47,7 +47,7 @@
       "url": "https://mss.go.kr/rss/smba/board/81.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "보건복지부",
@@ -55,7 +55,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10409020000&update=&cg_code=&bid=0026",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "보건복지부",
@@ -63,7 +63,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10503000000&bid=0027&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "보건복지부",
@@ -71,7 +71,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10501010000&bid=0003&cg_code=C01&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "행정안전부",
@@ -79,7 +79,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1012",
       "status": "정상",
       "count": 18,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "행정안전부",
@@ -87,7 +87,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1001",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "행정안전부",
@@ -95,7 +95,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1013",
       "status": "정상",
       "count": 2,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -103,7 +103,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -111,7 +111,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=65",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "서울특별시",
@@ -119,7 +119,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "서울특별시",
@@ -127,7 +127,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/07",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "서울특별시",
@@ -135,7 +135,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/08",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "서울특별시",
@@ -143,43 +143,39 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/03",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "경기도",
       "category": "보도자료",
       "url": "https://gnews.gg.go.kr/rss/gnewsRssBodo.do",
-      "status": "수집 실패",
-      "count": 0,
-      "error": "<urlopen error timed out>",
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "status": "정상",
+      "count": 10,
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "경기도",
       "category": "복지",
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E002&policyCode=E002",
-      "status": "수집 실패",
-      "count": 0,
-      "error": "<urlopen error timed out>",
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "status": "정상",
+      "count": 15,
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "경기도",
       "category": "경제",
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E001&policyCode=E001",
-      "status": "수집 실패",
-      "count": 0,
-      "error": "<urlopen error timed out>",
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "status": "정상",
+      "count": 15,
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "경기도",
       "category": "교육",
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E003&policyCode=E003",
-      "status": "수집 실패",
-      "count": 0,
-      "error": "<urlopen error timed out>",
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "status": "정상",
+      "count": 15,
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "KOSIS 국가통계포털",
@@ -187,7 +183,7 @@
       "url": "https://kosis.kr/rss/notice_rss.jsp",
       "status": "정상",
       "count": 11,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "KOSIS 국가통계포털",
@@ -195,7 +191,7 @@
       "url": "https://kosis.kr/rss/themes_rss.jsp",
       "status": "정상",
       "count": 16,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     },
     {
       "name": "국가데이터처",
@@ -203,7 +199,7 @@
       "url": "https://mods.go.kr/menu.es?mid=a10301010000&act=rss",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-06T07:41:49+00:00"
+      "last_check": "2026-11-06T07:43:29+00:00"
     }
   ],
   "items": [
@@ -228,7 +224,7 @@
       "category": "보도자료",
       "published": "FRI, 06 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-06T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -241,13 +237,338 @@
       "category": "알림",
       "published": "FRI, 06 NOV 2026 11:06:56 KST",
       "published_at": "2026-11-06T11:06:56+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00",
       "attachments": [],
       "details_checked": false,
       "change_details": []
+    },
+    {
+      "title": "플레이엑스포 그 후, 판로 개척부터 취업까지… ‘경기게임커넥트 2026’",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202610292326177194C056&s_code=C056",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "청소년이 직접 기록한 ‘우리들의 성장 이야기’, 들어보실래요?",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611021257419836C049&s_code=C049",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "옛 마을의 설화를 읽는 영남길 이천옛길",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202401081051412513C059&s_code=C059",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "예년보다 빨라진 독감 유행, 예방접종 일정 확인하세요",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202609222226278195C094&s_code=C094",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "아버지와 백성을 향한 정조의 마음 깃든 `수원화성`",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051158252877C076&s_code=C076",
+      "body": "",
+      "source": "경기도",
+      "category": "교육",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "믿고 먹는 경기 친환경 급식, 어떻게 급식 식판에 오를까?",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611041200355369C076&s_code=C076",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "미래 식량난 대안인 식용곤충부터 신기한 반려곤충까지, 가족이 함께하는 생생한 생태교육 현장",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611041222117967C076&s_code=C076",
+      "body": "",
+      "source": "경기도",
+      "category": "교육",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "못생겨도 맛은 그대로!…‘경기 배려 소비 캠페인’ 함께해요~",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051426085181C052&s_code=C052",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "마음 독감, 경기도 마음건강케어로 돌보세요",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202401081011264508C059&s_code=C059",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "도민의 시각으로 공약을 점검합니다! 도민배심원단 본격 활동 시작",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611061100261258C048&s_code=C048",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "더 좋아지는 행정제도, 메모하세요",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202401081021023265C059&s_code=C059",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "단돈 천 원으로 채우는 하루! 경기도 ‘대학생 천원매점’ 아주대학교 현장을 가다",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202609291306599834C056&s_code=C056",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경제노동위원회, 소상공인 지원 최일선 현장 소통 나서",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051443364657C111&s_code=C111",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도의회, 도의원 대상 ‘4대 폭력 예방교육’ 실시",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051532382136C111&s_code=C111",
+      "body": "",
+      "source": "경기도",
+      "category": "교육",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도의회, ‘제6기 의정 도민참여단’ 위촉 ... 도민과의 소통 강화",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202610301033537526C111&s_code=C111",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도의회 소통위원회 본격 가동…기관 간 정책 소통·협력 강화",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051304467119C111&s_code=C111",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도의회 경제노동위, 6일부터 2026년 행정사무감사 돌입",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051309003946C111&s_code=C111",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도민을 위한 이달의 혜택",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202401080948354158C059&s_code=C059",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도, 도민의 시선에 답하다!",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611051544575180C048&s_code=C048",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도 소방 현장 안전 확보와 소방관 근무환경 및 처우개선 종합 대책 마련 TF 관련 기자회견",
+      "url": "https://gnews.gg.go.kr/news/news_detail_m.do?number=202611050951521529C117&s_code=C117",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "‘경기도 영세사업장 무료 노무 컨설팅’으로 노무관리 무료 점검 받으세요!",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611022035335204C056&s_code=C056",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "[브리핑 하이라이트] 경기도 소방안전·처우개선 종합대책 TF 기자회견",
+      "url": "https://gnews.gg.go.kr/news/news_detail_m.do?number=202611061016119017C071&s_code=C071",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "[경기오피셜] 경기도 공식 마이크인 대변인의 서면 브리핑!_ \"27년도 경기도 본예산, 필수 민생 예산을 지키겠습니다!\"",
+      "url": "https://gnews.gg.go.kr/news/news_detail_m.do?number=202611061526547402C071&s_code=C071",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "[2026 경기 재정브리프] ③ 경기도 세출은 왜 줄일 수도, 바꿀 수도 없나",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202611061408491891C052&s_code=C109",
+      "body": "",
+      "source": "경기도",
+      "category": "경제",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "1·2차 조기 마감! ‘경기 극저신용대출 2.0’ 3차 신청 일정 및 사전 준비 가이드",
+      "url": "https://gnews.gg.go.kr/news/news_detail.do?number=202610272338577217C094&s_code=C094",
+      "body": "",
+      "source": "경기도",
+      "category": "복지",
+      "published": "",
+      "published_at": "",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "국민을 위한 특별한 성과로 데이터·통계 혁신을 이끈다",
@@ -257,7 +578,7 @@
       "category": "보도자료",
       "published": "202611021124",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -270,7 +591,7 @@
       "category": "보도자료",
       "published": "202610301322",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -283,7 +604,7 @@
       "category": "보도자료",
       "published": "202610292357",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -296,7 +617,7 @@
       "category": "보도자료",
       "published": "202611020928",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -309,7 +630,7 @@
       "category": "보도자료",
       "published": "202610300752",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -322,7 +643,7 @@
       "category": "보도자료",
       "published": "202611031531",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -335,7 +656,7 @@
       "category": "보도자료",
       "published": "202611030728",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -348,7 +669,7 @@
       "category": "보도자료",
       "published": "202611041527",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -361,9 +682,35 @@
       "category": "보도자료",
       "published": "202610281621",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "(설명) [단독] 정부 공식 포털에서 주민번호 암 진단서까지 줄줄 샜다(시사저널)",
+      "url": "https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000009&nttId=130782",
+      "body": "1. 주요 보도내용 ㅇ 11월 4일 시사저널 <(단독) ‘정부 공식 포털’에서 주민번호·암 진단서까지 줄줄 샜다> 제하의 보도임 - 정보공개포털에 공개된 정부기관 결재문서 일부에서 공무원과 민간인의 각종 개인정보가 노출되었다는 보도 2. 동 보도내용에 대한 행안부의 입장 ㅇ 먼저, 정보공개포털 일부 문서에서 개인정보가 노출되어 국민 여러분께 심려를 끼쳐드린 점 송구스럽게 생각합니다. ㅇ 현재 행정안전부는 정보공개포털 내 원문정보 다운로드를 일시 중단하고 전 공공기관에 공개 문서에 대한 개인정보 노출 여부를 전수 점검토록 하였습니다. - 더불어, 정보공개포털 내 개인정보 필터링 시스템을 정비하여 개인정보 노출을 최대한 예방하고, 개인정보 필터링 소프트웨어를 신규 도입하는 등 개인정보가 노출되지 않도록 관련 시스템을 개선하도록 하겠습니다. - 또한 기관에서 문서 생산 시 개인정보가 노출되지 않도록 관계기관과 협조하여 개인정보 노출 방지 교육 및 모니터링을 더욱 강화하도록 하겠습니다. ㅇ 행정안전부는 개인정보 점검 관리 체계를 강화하고 관계기관과 지속적으로 협조하여 향후 이와 같은 사안이 재발하지 않도록 철저히 관리하겠습니다. * 담당자 : 정보공개제도과 이하나(044-205-2406)",
+      "source": "행정안전부",
+      "category": "설명자료",
+      "published": "목, 05 11월 2026 10:27:55 KST",
+      "published_at": "",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "(설명) [단독] 범죄 인지 시점 놓고 경찰·중수청 혼란…행안부 법 시행 한 달째 묵묵부답(한국일보)",
+      "url": "https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000009&nttId=130753",
+      "body": "11월 3일(화) 한국일보 <(단독) ‘범죄 인지’ 시점 놓고 경찰·중수청 ‘혼란’…행안부, 법 시행 한 달째 묵묵부답> 제하의 보도에 대한 설명자료 입니다. 1. 주요 보도내용 ㅇ 11월 3일 한국일보 <(단독) ‘범죄 인지’ 시점 놓고 경찰·중수청 ‘혼란’…행안부, 법 시행 한 달째 묵묵부답> 제하의 보도임 - 경찰청이 「중대범죄수사청법」 제43조 및 같은 법 시행령 제18조의 ‘범죄 인지’ 시점에 대해 행정안전부에 유권해석을 요청하였으나, 답변이 없어 현장 혼선이 커지고 있다는 내용 2. 동 보도내용에 대한 행안부의 입장 ㅇ「중대범죄수사청법」 및 같은 법 시행령에 대한 해석은 해당 법령 소관 중앙행정기관인 중대범죄수사청에서 담당하고 있습니다. ㅇ 현재 중대범죄수사청에서 해당 사항을 검토하고 있으며, 조속히 회신할 예정입니다. ㅇ 행정안전부는 수사 현장에 혼선이 없도록 중수청‧경찰청과 긴밀히 협력해 나가겠습니다. ※ 담당자: 경찰개혁협력지원단 정강훈(044-205-1993)",
+      "source": "행정안전부",
+      "category": "설명자료",
+      "published": "화, 03 11월 2026 15:21:23 KST",
+      "published_at": "",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -374,7 +721,7 @@
       "category": "보도자료",
       "published": "202610290854",
       "published_at": "",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -387,7 +734,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 16:27:14 +0900",
       "published_at": "2026-11-06T07:27:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -400,7 +747,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -413,7 +760,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -426,7 +773,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -439,7 +786,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -452,7 +799,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -465,7 +812,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -478,7 +825,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -491,7 +838,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -504,7 +851,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -517,7 +864,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -530,7 +877,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -543,7 +890,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -556,7 +903,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -569,7 +916,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -582,7 +929,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -595,7 +942,7 @@
       "category": "최근수록자료",
       "published": "FRI, 06 NOV 2026 16:16:14 +0900",
       "published_at": "2026-11-06T07:16:14+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -608,7 +955,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 16:15:06 +0900",
       "published_at": "2026-11-06T07:15:06+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -621,7 +968,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 16:05:30 +0900",
       "published_at": "2026-11-06T07:05:30+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -634,7 +981,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 15:49:18 +0900",
       "published_at": "2026-11-06T06:49:18+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -647,7 +994,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 15:24:49 +0900",
       "published_at": "2026-11-06T06:24:49+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -660,10 +1007,49 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 15:06:08 +0900",
       "published_at": "2026-11-06T06:06:08+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "“경기도 세출은 왜 줄일 수도, 바꿀 수도 없나” 도, ‘경기 재정브리프’ 제3호 공개",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71942",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 14:24:20 +0900",
+      "published_at": "2026-11-06T05:24:20+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도 말라리아 환자 전년 대비 43% 감소…퇴치 위해 민·관·군 총력",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71941",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 14:19:33 +0900",
+      "published_at": "2026-11-06T05:19:33+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "경기도아이돌봄광역지원센터, 아이돌봄사 역량교육 성과점검…10월까지 1,800명 이수",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71940",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 14:01:30 +0900",
+      "published_at": "2026-11-06T05:01:30+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "지하철역에서 파크골프를? 러닝도 편하게! 신목동역 펀스테이션",
@@ -673,7 +1059,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 13:51:48 +0900",
       "published_at": "2026-11-06T04:51:48+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -686,10 +1072,26 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 13:27:00 +0900",
       "published_at": "2026-11-06T04:27:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "(경기도 대변인 서면 브리핑)민선9기 조직개편, 도민 목소리를 경청하고 있습니다",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71938",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 13:05:35 +0900",
+      "published_at": "2026-11-06T04:05:35+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00",
+      "attachments": [],
+      "details_checked": false,
+      "change_details": []
     },
     {
       "title": "환자 자기결정권 및 존엄성 보장 위한 생애 말 의료·돌봄 공론화 착수",
@@ -699,10 +1101,26 @@
       "category": "보도자료",
       "published": "Fri, 06 Nov 2026 03:05:00 GMT",
       "published_at": "2026-11-06T03:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "경기도, 건국대 수의과대학·동물병원과 반려마루 보호동물 의료지원 강화",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71937",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 11:10:34 +0900",
+      "published_at": "2026-11-06T02:10:34+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00",
+      "attachments": [],
+      "details_checked": false,
+      "change_details": []
     },
     {
       "title": "“국민연금 궁금증 풀고 혜택 챙긴다” 보건복지부, 청년 소통 간담회 개최",
@@ -712,7 +1130,7 @@
       "category": "보도자료",
       "published": "Fri, 06 Nov 2026 01:58:00 GMT",
       "published_at": "2026-11-06T01:58:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -725,7 +1143,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 06 Nov 2026 01:43:00 GMT",
       "published_at": "2026-11-06T01:43:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00",
@@ -741,7 +1159,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 10:29:37 +0900",
       "published_at": "2026-11-06T01:29:37+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -754,7 +1172,7 @@
       "category": "공지사항",
       "published": "Fri, 06 Nov 2026 01:28:00 GMT",
       "published_at": "2026-11-06T01:28:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -767,7 +1185,7 @@
       "category": "보도자료",
       "published": "Fri, 06 Nov 2026 01:11:00 GMT",
       "published_at": "2026-11-06T01:11:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -780,7 +1198,7 @@
       "category": "보도자료",
       "published": "Fri, 06 Nov 2026 01:10:00 GMT",
       "published_at": "2026-11-06T01:10:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -793,7 +1211,7 @@
       "category": "공지사항",
       "published": "Fri, 06 Nov 2026 00:40:00 GMT",
       "published_at": "2026-11-06T00:40:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -806,7 +1224,7 @@
       "category": "전체 정책 소식",
       "published": "Fri, 06 Nov 2026 09:31:46 +0900",
       "published_at": "2026-11-06T00:31:46+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00",
@@ -822,10 +1240,42 @@
       "category": "공지사항",
       "published": "Fri, 06 Nov 2026 00:22:00 GMT",
       "published_at": "2026-11-06T00:22:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "고병원성 조류인플루엔자(AI) 방역대책 추진현황 261104 19시기준",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71931",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 09:13:15 +0900",
+      "published_at": "2026-11-06T00:13:15+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00",
+      "attachments": [],
+      "details_checked": false,
+      "change_details": []
+    },
+    {
+      "title": "아프리카돼지열병(ASF) 방역대책추진현황 261104 18시기준",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71930",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Fri, 6 Nov 2026 09:06:50 +0900",
+      "published_at": "2026-11-06T00:06:50+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:43:29+00:00",
+      "attachments": [],
+      "details_checked": false,
+      "change_details": []
     },
     {
       "title": "한센병, 질병의 역사 넘어 인간을 보다 한센병박물관 개관 10주년 기념 학술대회 개최",
@@ -835,7 +1285,7 @@
       "category": "보도자료",
       "published": "Fri, 06 Nov 2026 00:05:00 GMT",
       "published_at": "2026-11-06T00:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -848,7 +1298,7 @@
       "category": "보도자료",
       "published": "2026.11.06",
       "published_at": "2026-11-06T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -861,7 +1311,7 @@
       "category": "보도자료",
       "published": "2026.11.06",
       "published_at": "2026-11-06T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -913,7 +1363,7 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 18:00:22 KST",
       "published_at": "2026-11-05T18:00:22+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -926,7 +1376,7 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 17:54:02 KST",
       "published_at": "2026-11-05T17:54:02+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -952,7 +1402,7 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 16:15:32 KST",
       "published_at": "2026-11-05T16:15:32+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -965,7 +1415,7 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 15:36:36 KST",
       "published_at": "2026-11-05T15:36:36+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00",
@@ -981,7 +1431,7 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 13:37:13 KST",
       "published_at": "2026-11-05T13:37:13+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00",
@@ -997,7 +1447,7 @@
       "category": "보도자료",
       "published": "THU, 05 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-05T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1010,25 +1460,9 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 10:42:26 KST",
       "published_at": "2026-11-05T10:42:26+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": []
-    },
-    {
-      "title": "(설명) [단독] 정부 공식 포털에서 주민번호 암 진단서까지 줄줄 샜다(시사저널)",
-      "url": "https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000009&nttId=130782",
-      "body": "1. 주요 보도내용 ㅇ 11월 4일 시사저널 <(단독) ‘정부 공식 포털’에서 주민번호·암 진단서까지 줄줄 샜다> 제하의 보도임 - 정보공개포털에 공개된 정부기관 결재문서 일부에서 공무원과 민간인의 각종 개인정보가 노출되었다는 보도 2. 동 보도내용에 대한 행안부의 입장 ㅇ 먼저, 정보공개포털 일부 문서에서 개인정보가 노출되어 국민 여러분께 심려를 끼쳐드린 점 송구스럽게 생각합니다. ㅇ 현재 행정안전부는 정보공개포털 내 원문정보 다운로드를 일시 중단하고 전 공공기관에 공개 문서에 대한 개인정보 노출 여부를 전수 점검토록 하였습니다. - 더불어, 정보공개포털 내 개인정보 필터링 시스템을 정비하여 개인정보 노출을 최대한 예방하고, 개인정보 필터링 소프트웨어를 신규 도입하는 등 개인정보가 노출되지 않도록 관련 시스템을 개선하도록 하겠습니다. - 또한 기관에서 문서 생산 시 개인정보가 노출되지 않도록 관계기관과 협조하여 개인정보 노출 방지 교육 및 모니터링을 더욱 강화하도록 하겠습니다. ㅇ 행정안전부는 개인정보 점검 관리 체계를 강화하고 관계기관과 지속적으로 협조하여 향후 이와 같은 사안이 재발하지 않도록 철저히 관리하겠습니다. * 담당자 : 정보공개제도과 이하나(044-205-2406)",
-      "source": "행정안전부",
-      "category": "설명자료",
-      "published": "THU, 05 NOV 2026 10:27:55 KST",
-      "published_at": "2026-11-05T10:27:55+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -1052,13 +1486,10 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 18:14:03 +0900",
       "published_at": "2026-11-05T09:14:03+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "정부청사관리본부 건설공사(건축) 안전점검 수행기관 및 안전관리계획 검토기관(경남) 명부 공고",
@@ -1068,10 +1499,23 @@
       "category": "알림",
       "published": "THU, 05 NOV 2026 09:11:50 KST",
       "published_at": "2026-11-05T09:11:50+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "경기도, 고병원성조류인플루엔자 확산 차단 위해 긴급방역점검회의 개최",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71929",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Thu, 5 Nov 2026 17:57:00 +0900",
+      "published_at": "2026-11-05T08:57:00+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "[서울시 팩트브리핑] 서울시 홍보영상은 제작 역량을 고려해 계약했으며, 명예시장·홍보대사의 무보수 활동과 영상 제작비는 별개입니다",
@@ -1081,7 +1525,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 17:49:33 +0900",
       "published_at": "2026-11-05T08:49:33+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1094,7 +1538,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 16:39:00 +0900",
       "published_at": "2026-11-05T07:39:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1107,7 +1551,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 16:35:00 +0900",
       "published_at": "2026-11-05T07:35:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1120,13 +1564,10 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 16:32:17 +0900",
       "published_at": "2026-11-05T07:32:17+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "반세기 봉사부터 2조 원 기부까지… 나눔 실천한 132명 ‘대한민국 나눔국민대상’ 수상",
@@ -1136,7 +1577,7 @@
       "category": "보도자료",
       "published": "Thu, 05 Nov 2026 06:05:00 GMT",
       "published_at": "2026-11-05T06:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1149,13 +1590,10 @@
       "category": "보도자료",
       "published": "Thu, 05 Nov 2026 06:05:00 GMT",
       "published_at": "2026-11-05T06:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "단풍도 전망도 놓칠 수 없어! 서남권 단풍 즐기기 좋은 용왕산·우장산",
@@ -1165,7 +1603,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 14:23:48 +0900",
       "published_at": "2026-11-05T05:23:48+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1178,7 +1616,7 @@
       "category": "공지사항",
       "published": "Thu, 05 Nov 2026 05:12:00 GMT",
       "published_at": "2026-11-05T05:12:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1191,7 +1629,7 @@
       "category": "보도자료",
       "published": "Thu, 05 Nov 2026 05:05:00 GMT",
       "published_at": "2026-11-05T05:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1204,7 +1642,7 @@
       "category": "보도자료",
       "published": "Thu, 05 Nov 2026 05:05:00 GMT",
       "published_at": "2026-11-05T05:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1217,7 +1655,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 13:55:13 +0900",
       "published_at": "2026-11-05T04:55:13+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1230,7 +1668,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 13:28:00 +0900",
       "published_at": "2026-11-05T04:28:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1243,10 +1681,23 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 13:27:15 +0900",
       "published_at": "2026-11-05T04:27:15+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "한국도자재단-명원문화재단, 도자문화와 차문화 발전 위해 맞손",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71923",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Thu, 5 Nov 2026 13:09:11 +0900",
+      "published_at": "2026-11-05T04:09:11+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "봄에는 철쭉, 가을에는 국화! 꽃과 나비가 반기는 불암산 힐링타운",
@@ -1256,7 +1707,7 @@
       "category": "전체 정책 소식",
       "published": "Thu, 05 Nov 2026 11:39:00 +0900",
       "published_at": "2026-11-05T02:39:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1269,7 +1720,7 @@
       "category": "행정",
       "published": "Thu, 05 Nov 2026 11:19:00 +0900",
       "published_at": "2026-11-05T02:19:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1282,10 +1733,23 @@
       "category": "보도자료",
       "published": "Thu, 05 Nov 2026 01:10:00 GMT",
       "published_at": "2026-11-05T01:10:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "경기도서관, 10일 미래세대와 함께 나아가는 돌봄 사회 ‘나와 지구, 돌봄혁명’ 강연",
+      "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=S017&number=71922",
+      "body": "",
+      "source": "경기도",
+      "category": "보도자료",
+      "published": "Thu, 5 Nov 2026 09:58:19 +0900",
+      "published_at": "2026-11-05T00:58:19+00:00",
+      "detected": "신규 감지",
+      "detected_at": "2026-11-06T07:43:29+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
@@ -1295,7 +1759,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Thu, 05 Nov 2026 00:43:00 GMT",
       "published_at": "2026-11-05T00:43:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1308,7 +1772,7 @@
       "category": "보도자료",
       "published": "2026.11.05",
       "published_at": "2026-11-05T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1321,7 +1785,7 @@
       "category": "보도자료",
       "published": "2026.11.05",
       "published_at": "2026-11-05T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1334,7 +1798,7 @@
       "category": "보도자료",
       "published": "2026.11.05",
       "published_at": "2026-11-05T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1347,7 +1811,7 @@
       "category": "보도자료",
       "published": "2026.11.05",
       "published_at": "2026-11-05T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1360,7 +1824,7 @@
       "category": "보도자료",
       "published": "2026.11.05",
       "published_at": "2026-11-05T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1373,7 +1837,7 @@
       "category": "보도자료",
       "published": "2026.11.05",
       "published_at": "2026-11-05T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1412,7 +1876,7 @@
       "category": "공지사항",
       "published": "Wed, 04 Nov 2026 16:38:00 GMT",
       "published_at": "2026-11-04T16:38:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1438,7 +1902,7 @@
       "category": "알림",
       "published": "WED, 04 NOV 2026 16:07:22 KST",
       "published_at": "2026-11-04T16:07:22+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1464,7 +1928,7 @@
       "category": "보도자료",
       "published": "WED, 04 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-04T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1477,7 +1941,7 @@
       "category": "보도자료",
       "published": "WED, 04 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-04T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1490,7 +1954,7 @@
       "category": "보도자료",
       "published": "WED, 04 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-04T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1503,7 +1967,7 @@
       "category": "행정",
       "published": "Wed, 04 Nov 2026 16:15:00 +0900",
       "published_at": "2026-11-04T07:15:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1516,7 +1980,7 @@
       "category": "행정",
       "published": "Wed, 04 Nov 2026 16:10:00 +0900",
       "published_at": "2026-11-04T07:10:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1529,7 +1993,7 @@
       "category": "행정",
       "published": "Wed, 04 Nov 2026 16:09:24 +0900",
       "published_at": "2026-11-04T07:09:24+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1542,7 +2006,7 @@
       "category": "보도자료",
       "published": "Wed, 04 Nov 2026 05:04:00 GMT",
       "published_at": "2026-11-04T05:04:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1555,7 +2019,7 @@
       "category": "행정",
       "published": "Wed, 04 Nov 2026 13:07:00 +0900",
       "published_at": "2026-11-04T04:07:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1568,7 +2032,7 @@
       "category": "보도자료",
       "published": "Wed, 04 Nov 2026 01:05:00 GMT",
       "published_at": "2026-11-04T01:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1581,7 +2045,7 @@
       "category": "보도자료",
       "published": "Wed, 04 Nov 2026 00:33:00 GMT",
       "published_at": "2026-11-04T00:33:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1594,7 +2058,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Wed, 04 Nov 2026 00:28:00 GMT",
       "published_at": "2026-11-04T00:28:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1607,7 +2071,7 @@
       "category": "보도자료",
       "published": "2026.11.04",
       "published_at": "2026-11-04T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1620,7 +2084,7 @@
       "category": "보도자료",
       "published": "2026.11.04",
       "published_at": "2026-11-04T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1633,7 +2097,7 @@
       "category": "보도자료",
       "published": "2026.11.04",
       "published_at": "2026-11-04T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1646,7 +2110,7 @@
       "category": "보도자료",
       "published": "2026.11.04",
       "published_at": "2026-11-04T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1662,19 +2126,6 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "(설명) [단독] 범죄 인지 시점 놓고 경찰·중수청 혼란…행안부 법 시행 한 달째 묵묵부답(한국일보)",
-      "url": "https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000009&nttId=130753",
-      "body": "11월 3일(화) 한국일보 <(단독) ‘범죄 인지’ 시점 놓고 경찰·중수청 ‘혼란’…행안부, 법 시행 한 달째 묵묵부답> 제하의 보도에 대한 설명자료 입니다. 1. 주요 보도내용 ㅇ 11월 3일 한국일보 <(단독) ‘범죄 인지’ 시점 놓고 경찰·중수청 ‘혼란’…행안부, 법 시행 한 달째 묵묵부답> 제하의 보도임 - 경찰청이 「중대범죄수사청법」 제43조 및 같은 법 시행령 제18조의 ‘범죄 인지’ 시점에 대해 행정안전부에 유권해석을 요청하였으나, 답변이 없어 현장 혼선이 커지고 있다는 내용 2. 동 보도내용에 대한 행안부의 입장 ㅇ「중대범죄수사청법」 및 같은 법 시행령에 대한 해석은 해당 법령 소관 중앙행정기관인 중대범죄수사청에서 담당하고 있습니다. ㅇ 현재 중대범죄수사청에서 해당 사항을 검토하고 있으며, 조속히 회신할 예정입니다. ㅇ 행정안전부는 수사 현장에 혼선이 없도록 중수청‧경찰청과 긴밀히 협력해 나가겠습니다. ※ 담당자: 경찰개혁협력지원단 정강훈(044-205-1993)",
-      "source": "행정안전부",
-      "category": "설명자료",
-      "published": "TUE, 03 NOV 2026 15:21:23 KST",
-      "published_at": "2026-11-03T15:21:23+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -1698,7 +2149,7 @@
       "category": "보도자료",
       "published": "TUE, 03 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-03T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1711,7 +2162,7 @@
       "category": "보도자료",
       "published": "TUE, 03 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-03T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1724,7 +2175,7 @@
       "category": "보도자료",
       "published": "TUE, 03 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-03T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1737,7 +2188,7 @@
       "category": "보도자료",
       "published": "Tue, 03 Nov 2026 09:18:00 GMT",
       "published_at": "2026-11-03T09:18:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1750,7 +2201,7 @@
       "category": "보도자료",
       "published": "TUE, 03 NOV 2026 09:00:00 KST",
       "published_at": "2026-11-03T09:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1776,7 +2227,7 @@
       "category": "공지사항",
       "published": "Tue, 03 Nov 2026 08:48:00 GMT",
       "published_at": "2026-11-03T08:48:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1789,7 +2240,7 @@
       "category": "복지",
       "published": "Tue, 03 Nov 2026 15:33:57 +0900",
       "published_at": "2026-11-03T06:33:57+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1802,7 +2253,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Tue, 03 Nov 2026 06:33:00 GMT",
       "published_at": "2026-11-03T06:33:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1815,7 +2266,7 @@
       "category": "행정",
       "published": "Tue, 03 Nov 2026 15:31:00 +0900",
       "published_at": "2026-11-03T06:31:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1828,7 +2279,7 @@
       "category": "행정",
       "published": "Tue, 03 Nov 2026 15:30:00 +0900",
       "published_at": "2026-11-03T06:30:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1841,7 +2292,7 @@
       "category": "복지",
       "published": "Tue, 03 Nov 2026 15:05:25 +0900",
       "published_at": "2026-11-03T06:05:25+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1854,7 +2305,7 @@
       "category": "보도자료",
       "published": "Tue, 03 Nov 2026 05:22:00 GMT",
       "published_at": "2026-11-03T05:22:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1867,7 +2318,7 @@
       "category": "보도자료",
       "published": "Tue, 03 Nov 2026 05:05:00 GMT",
       "published_at": "2026-11-03T05:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1880,7 +2331,7 @@
       "category": "보도자료",
       "published": "Tue, 03 Nov 2026 04:13:00 GMT",
       "published_at": "2026-11-03T04:13:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "예고·심의 단계",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1893,7 +2344,7 @@
       "category": "보도자료",
       "published": "Tue, 03 Nov 2026 01:53:00 GMT",
       "published_at": "2026-11-03T01:53:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1906,7 +2357,7 @@
       "category": "보도자료",
       "published": "Tue, 03 Nov 2026 01:52:00 GMT",
       "published_at": "2026-11-03T01:52:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1919,7 +2370,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Tue, 03 Nov 2026 00:43:00 GMT",
       "published_at": "2026-11-03T00:43:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1932,7 +2383,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Tue, 03 Nov 2026 00:42:00 GMT",
       "published_at": "2026-11-03T00:42:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1945,7 +2396,7 @@
       "category": "공지사항",
       "published": "Tue, 03 Nov 2026 00:35:00 GMT",
       "published_at": "2026-11-03T00:35:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1958,7 +2409,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1971,7 +2422,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1984,7 +2435,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -1997,7 +2448,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2010,7 +2461,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2023,7 +2474,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2036,7 +2487,7 @@
       "category": "보도자료",
       "published": "2026.11.03",
       "published_at": "2026-11-03T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2049,7 +2500,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 22:32:36 KST",
       "published_at": "2026-11-02T22:32:36+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2075,7 +2526,7 @@
       "category": "공지",
       "published": "2026-11-02 18:00:00.0",
       "published_at": "2026-11-02T18:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2088,7 +2539,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 17:46:53 KST",
       "published_at": "2026-11-02T17:46:53+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2101,7 +2552,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 17:32:44 KST",
       "published_at": "2026-11-02T17:32:44+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2114,7 +2565,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 16:27:44 KST",
       "published_at": "2026-11-02T16:27:44+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2127,7 +2578,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-02T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2140,7 +2591,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-02T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2153,7 +2604,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 12:00:00 KST",
       "published_at": "2026-11-02T12:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2166,7 +2617,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 11:18:43 KST",
       "published_at": "2026-11-02T11:18:43+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2179,7 +2630,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 11:10:19 KST",
       "published_at": "2026-11-02T11:10:19+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2192,7 +2643,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 09:38:50 KST",
       "published_at": "2026-11-02T09:38:50+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2205,7 +2656,7 @@
       "category": "알림",
       "published": "MON, 02 NOV 2026 09:07:48 KST",
       "published_at": "2026-11-02T09:07:48+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2218,7 +2669,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 09:00:00 KST",
       "published_at": "2026-11-02T09:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2231,7 +2682,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 09:00:00 KST",
       "published_at": "2026-11-02T09:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2244,7 +2695,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 09:00:00 KST",
       "published_at": "2026-11-02T09:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2257,7 +2708,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 09:00:00 KST",
       "published_at": "2026-11-02T09:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2270,7 +2721,7 @@
       "category": "보도자료",
       "published": "MON, 02 NOV 2026 09:00:00 KST",
       "published_at": "2026-11-02T09:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2283,7 +2734,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 08:44:00 GMT",
       "published_at": "2026-11-02T08:44:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2296,7 +2747,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 07:21:00 GMT",
       "published_at": "2026-11-02T07:21:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2309,7 +2760,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 07:01:00 GMT",
       "published_at": "2026-11-02T07:01:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2322,7 +2773,7 @@
       "category": "보도자료",
       "published": "Mon, 02 Nov 2026 06:58:00 GMT",
       "published_at": "2026-11-02T06:58:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2361,7 +2812,7 @@
       "category": "복지",
       "published": "Mon, 02 Nov 2026 14:40:40 +0900",
       "published_at": "2026-11-02T05:40:40+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2374,7 +2825,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 02:20:00 GMT",
       "published_at": "2026-11-02T02:20:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2387,7 +2838,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 02:00:00 GMT",
       "published_at": "2026-11-02T02:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2400,7 +2851,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 01:31:00 GMT",
       "published_at": "2026-11-02T01:31:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2413,7 +2864,7 @@
       "category": "보도자료",
       "published": "Mon, 02 Nov 2026 01:07:00 GMT",
       "published_at": "2026-11-02T01:07:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2426,7 +2877,7 @@
       "category": "행정",
       "published": "Mon, 02 Nov 2026 09:36:29 +0900",
       "published_at": "2026-11-02T00:36:29+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2439,7 +2890,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 00:24:00 GMT",
       "published_at": "2026-11-02T00:24:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2452,7 +2903,7 @@
       "category": "공지사항",
       "published": "Mon, 02 Nov 2026 00:10:00 GMT",
       "published_at": "2026-11-02T00:10:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2465,7 +2916,7 @@
       "category": "보도자료",
       "published": "2026.11.02",
       "published_at": "2026-11-02T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2478,7 +2929,7 @@
       "category": "보도자료",
       "published": "2026.11.02",
       "published_at": "2026-11-02T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2491,7 +2942,7 @@
       "category": "보도자료",
       "published": "2026.11.02",
       "published_at": "2026-11-02T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2504,7 +2955,7 @@
       "category": "보도자료",
       "published": "FRI, 30 OCT 2026 18:00:00 KST",
       "published_at": "2026-10-30T18:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2543,7 +2994,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 07:55:00 GMT",
       "published_at": "2026-10-30T07:55:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2556,7 +3007,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 07:34:00 GMT",
       "published_at": "2026-10-30T07:34:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2569,7 +3020,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 30 Oct 2026 07:32:00 GMT",
       "published_at": "2026-10-30T07:32:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2582,7 +3033,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 30 Oct 2026 07:23:00 GMT",
       "published_at": "2026-10-30T07:23:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2608,7 +3059,7 @@
       "category": "공지사항",
       "published": "Fri, 30 Oct 2026 06:31:00 GMT",
       "published_at": "2026-10-30T06:31:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2621,7 +3072,7 @@
       "category": "복지",
       "published": "Fri, 30 Oct 2026 15:05:01 +0900",
       "published_at": "2026-10-30T06:05:01+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2634,7 +3085,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 06:05:00 GMT",
       "published_at": "2026-10-30T06:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2647,7 +3098,7 @@
       "category": "행정",
       "published": "Fri, 30 Oct 2026 15:01:00 +0900",
       "published_at": "2026-10-30T06:01:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2660,7 +3111,7 @@
       "category": "복지",
       "published": "Fri, 30 Oct 2026 15:00:00 +0900",
       "published_at": "2026-10-30T06:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2673,7 +3124,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 30 Oct 2026 05:32:00 GMT",
       "published_at": "2026-10-30T05:32:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2686,7 +3137,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 30 Oct 2026 05:28:00 GMT",
       "published_at": "2026-10-30T05:28:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2699,7 +3150,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 05:14:00 GMT",
       "published_at": "2026-10-30T05:14:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2712,7 +3163,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 05:12:00 GMT",
       "published_at": "2026-10-30T05:12:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2725,7 +3176,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 05:05:00 GMT",
       "published_at": "2026-10-30T05:05:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2738,7 +3189,7 @@
       "category": "행정",
       "published": "Fri, 30 Oct 2026 13:00:00 +0900",
       "published_at": "2026-10-30T04:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2751,7 +3202,7 @@
       "category": "공지사항",
       "published": "Fri, 30 Oct 2026 02:08:00 GMT",
       "published_at": "2026-10-30T02:08:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "예고·심의 단계",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2764,7 +3215,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 01:57:00 GMT",
       "published_at": "2026-10-30T01:57:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2777,7 +3228,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 01:55:00 GMT",
       "published_at": "2026-10-30T01:55:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2790,7 +3241,7 @@
       "category": "보도자료",
       "published": "Fri, 30 Oct 2026 01:54:00 GMT",
       "published_at": "2026-10-30T01:54:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2803,7 +3254,7 @@
       "category": "행정",
       "published": "Fri, 30 Oct 2026 10:33:37 +0900",
       "published_at": "2026-10-30T01:33:37+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2816,7 +3267,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 30 Oct 2026 00:53:00 GMT",
       "published_at": "2026-10-30T00:53:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2829,7 +3280,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Fri, 30 Oct 2026 00:07:00 GMT",
       "published_at": "2026-10-30T00:07:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "예고·심의 단계",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2842,7 +3293,7 @@
       "category": "보도자료",
       "published": "2026.10.30",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2855,7 +3306,7 @@
       "category": "보도자료",
       "published": "2026.10.30",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2868,7 +3319,7 @@
       "category": "보도자료",
       "published": "2026.10.30",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2881,7 +3332,7 @@
       "category": "보도자료",
       "published": "2026.10.30",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2894,7 +3345,7 @@
       "category": "보도자료",
       "published": "2026.10.30",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2907,7 +3358,7 @@
       "category": "보도자료",
       "published": "2026.10.30",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -2920,7 +3371,7 @@
       "category": "공지사항",
       "published": "Fri, 30 Oct 2026 00:00:00 GMT",
       "published_at": "2026-10-30T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3024,7 +3475,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Thu, 29 Oct 2026 09:37:00 GMT",
       "published_at": "2026-10-29T09:37:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3037,7 +3488,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Thu, 29 Oct 2026 08:09:00 GMT",
       "published_at": "2026-10-29T08:09:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3050,7 +3501,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Thu, 29 Oct 2026 08:00:00 GMT",
       "published_at": "2026-10-29T08:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3063,7 +3514,7 @@
       "category": "행정",
       "published": "Thu, 29 Oct 2026 16:43:00 +0900",
       "published_at": "2026-10-29T07:43:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3076,7 +3527,7 @@
       "category": "행정",
       "published": "Thu, 29 Oct 2026 16:20:00 +0900",
       "published_at": "2026-10-29T07:20:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3089,7 +3540,7 @@
       "category": "복지",
       "published": "Thu, 29 Oct 2026 16:19:00 +0900",
       "published_at": "2026-10-29T07:19:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3102,7 +3553,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Thu, 29 Oct 2026 02:34:00 GMT",
       "published_at": "2026-10-29T02:34:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3115,7 +3566,7 @@
       "category": "공지사항",
       "published": "Thu, 29 Oct 2026 01:33:00 GMT",
       "published_at": "2026-10-29T01:33:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3128,7 +3579,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3141,7 +3592,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3154,7 +3605,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3167,7 +3618,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3180,7 +3631,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3193,7 +3644,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3206,7 +3657,7 @@
       "category": "보도자료",
       "published": "2026.10.29",
       "published_at": "2026-10-29T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3284,7 +3735,7 @@
       "category": "공지사항",
       "published": "Wed, 28 Oct 2026 06:16:00 GMT",
       "published_at": "2026-10-28T06:16:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "예고·심의 단계",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3297,7 +3748,7 @@
       "category": "공지사항",
       "published": "Wed, 28 Oct 2026 05:40:00 GMT",
       "published_at": "2026-10-28T05:40:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3310,7 +3761,7 @@
       "category": "복지",
       "published": "Wed, 28 Oct 2026 14:06:29 +0900",
       "published_at": "2026-10-28T05:06:29+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3323,7 +3774,7 @@
       "category": "복지",
       "published": "Wed, 28 Oct 2026 13:30:00 +0900",
       "published_at": "2026-10-28T04:30:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3349,7 +3800,7 @@
       "category": "공지사항",
       "published": "Tue, 27 Oct 2026 08:31:00 GMT",
       "published_at": "2026-10-27T08:31:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3362,7 +3813,7 @@
       "category": "복지",
       "published": "Tue, 27 Oct 2026 16:25:00 +0900",
       "published_at": "2026-10-27T07:25:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3375,7 +3826,7 @@
       "category": "훈령·예규·고시·지침",
       "published": "Tue, 27 Oct 2026 06:06:00 GMT",
       "published_at": "2026-10-27T06:06:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·시행 표현 포함",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3388,7 +3839,7 @@
       "category": "공지사항",
       "published": "Tue, 27 Oct 2026 05:52:00 GMT",
       "published_at": "2026-10-27T05:52:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3401,7 +3852,7 @@
       "category": "공지",
       "published": "2026-10-27 00:00:00.0",
       "published_at": "2026-10-27T00:00:00+00:00",
-      "detected": "신규 감지",
+      "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
@@ -3417,461 +3868,6 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "견조한 K-뷰티 수출 상승세,중소기업 수출 역대 3분기 최고치 기록",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1071991",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "보도자료",
-      "published": "20261026132344",
-      "published_at": "2026-10-26T13:23:44+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "커피모임, 함께 걷기로 외로움 던다…할인·적립 혜택까지",
-      "url": "https://mediahub.seoul.go.kr/archives/2019849",
-      "body": "서울시는 건강한 생활 습관과 아침 문화를 경험하는 행사부터 독서와 걷기를 통해 서로에게 위로를 전하는 챌린지까지, 시민들이 각자의 일상에서 부담 없이 참여할 수 있는 프로그램을 마련해 ‘외로움 없는 서울’을 만들어 나갈 계획이다. 이번 사업은 시민들이 함께하는 활동을 통해 일상 속 활력을 찾고, 서로의 경험과 마음을 나누며 사회적 연결을 넓힐 수 있도록 기획됐다. 서울시는 올리브영(올리브베러)·SMCC 및 알라딘 등 민간 파트너와 협력해 온라인과 오프라인을 아우르는 다양한 참여 기회를 제공할 예정이다.건강한 일상과 만남을 잇는 온·오프라인 행사 서울시는 올리브영(올리브베러)·SMCC와 함께 시민들이 건강한 생활 습관을 공유하고 일상 속 외출과 만남을 통해 자연스럽게 소통할 수 있도록 ‘오늘의 외출지수 : BETTER’ 이벤트를 진행한다. 이번 행사는 온라인 건강팁 공유 이벤트와 서울숲 오프라인 행사로 구성되며, 시민들이 일상 속 작은 실천을 통해 활력을 찾고 새로운 사람들과 교류할 수 있도록 마련됐다. ☞ 이벤트 페이지 바로가기 온라인 이벤트는 올리브영(올리브베러) 앱에서 자신만의 건강팁을 공유하는 방식으로 진행된다. 참여자에게는 매장을 직접 방문하도록 유도하는 1만 원 픽업 할인쿠폰을 지급(3만원 이상 구매시 적용 가능)해 온라인 활동이 자연스러운 외출과 오프라인 경험으로 이어지도록 할 예정이다. 추가 이벤트로 선착순 900명(매장별 300명)에게 리유저블백, 기프트박스와 5,000원 할인쿠폰을 제공한다. 오프라인 행사는 11월 7일 오전 8시부터 11시까지 서울숲 열린무대에서 ‘모닝콘’으로 진행한다. 아침 시간을 풍요롭고 건강하게 보내는 문화 트렌드를 반영해, 시민들이 가벼운 마음으로 모여 커",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Mon, 26 Oct 2026 17:01:38 +0900",
-      "published_at": "2026-10-26T08:01:38+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "시공사 선정, 공사비 갈등 '공사비120센터'와 상담하세요!",
-      "url": "https://mediahub.seoul.go.kr/archives/2019807",
-      "body": "재개발‧재건축 조합 등에 전문가 상담‧중재 지원 서울시가 재개발·재건축 정비사업의 공사비 갈등을 예방하고 신속한 해결을 지원하기 위해 ‘공사비120센터’를 새롭게 설치하고 21일부터 운영한다. ‘공사비120센터’는 시공자 선정부터 공사도급계약, 공사비 증액·검증, 갈등 조정·중재 및 사후관리까지 공사비 관련 사항을 한곳에서 상담하고 필요한 지원제도를 연계하는 통합 지원창구다. 서울시·자치구·SH공사 등에 분산된 지원체계를 연결해 갈등 발생 초기부터 합의 이후까지 원스톱으로 지원한다. 그동안 서울시는 공사비 증액 요구 사전신고제와 상시 모니터링, SH공사의 공사계약 사전컨설팅 및 공사비 검증, 갈등조정 코디네이터 파견 등을 통해 공사비 갈등에 대응해 왔다. 여기에 더해 시는 이번 센터 신설을 통해 공사비 갈등에 선제적으로 대응하고, 조정·중재부터 합의 이후 사후관리까지 전방위적인 지원에 나선다. 공사비 갈등으로 인한 착공 지연을 최소화하고, 주택공급에 속도를 낼 계획이다. 이번 센터 신설은 ‘G3 서울플랜’ 주거안정 도시분과의 일환으로 추진됐다.21일 서소문2청사 7층에 문 열어…전화·방문상담 지원 ‘공사비120센터’는 서울시 서소문2청사 7층에 마련되며, 평일 오후 1시부터 5시까지 운영된다. 재개발·재건축 조합, 추진위원회, 조합원, 토지등소유자 등 정비사업 관계자가 무료로 상담받을 수 있다. ▴시공자 선정계획 및 계약 관련 상담 ▴공사도급계약 및 공사비 증액·검증 관련 전문상담 ▴상담사례 분석을 통한 갈등 동향 파악 ▴공사비 닥터 파견 등 갈등 조정·중재 ▴합의 이후 사후관리 등을 종합 지원한다. ‘공사비120센터’는 변호사 15명, 도시정비 전문가 7명, 도시행정 전문가 11명 등 총 33명",
-      "source": "서울특별시",
-      "category": "주택",
-      "published": "Mon, 26 Oct 2026 16:54:59 +0900",
-      "published_at": "2026-10-26T07:54:59+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "소상공인이 만드는, 더 큰 대한민국... 중기부, 「2026 대한민국 소상공인대회」 개최",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1071960",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "보도자료",
-      "published": "20261026061646",
-      "published_at": "2026-10-26T06:16:46+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「보건복지부 소송비용 회수 사무처리 지침」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492323&act=view",
-      "body": "보건복지부훈령 제303호 「보건복지부 소송비용 회수 사무처리 지침」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 26일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 26 Oct 2026 01:21:00 GMT",
-      "published_at": "2026-10-26T01:21:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「소송 등 업무 처리 지침」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492322&act=view",
-      "body": "보건복지부예규 제158호 「소송 등 업무 처리 지침」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 26일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 26 Oct 2026 01:19:00 GMT",
-      "published_at": "2026-10-26T01:19:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「고령친화도시 지정 및 지원 등에 관한 고시」제정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492321&act=view",
-      "body": "보건복지부 고시 제2026 - 218호 「노인복지법」제4조3 및 「노인복지법 시행령」제2조의2~제2조의4에 따른 고령친화도시 지정에 필요한 세부사항 (보건복지부 고시 제2026-218호, 2026.10.26.)을 다음과 같이 제정ㆍ발령합니다.",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 26 Oct 2026 00:59:00 GMT",
-      "published_at": "2026-10-26T00:59:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "창업도시 조성 프로젝트 창업도시 모집 공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1071948",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "사업공고",
-      "published": "20261023102139",
-      "published_at": "2026-10-23T10:21:39+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「중증근육성희귀질환 전문요양병원 건강보험 시범사업」참여기관 공모 공고",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492316&act=view",
-      "body": "보건복지부 공고 제2026-802호 「중증근육성희귀질환 전문요양병원 건강보험 시범사업」 참여기관 공모 중증근육성희귀질환자를 대상으로 고난도 의료·재활·요양서비스에 대한 적정보상체계를 마련하고, 요양병원-지역사회를 연계한 전주기 통합케어 모델을 구축할 수 있도록 지원하기 위한 「중증근육성희귀질환 전문요양병원 건강보험 시범사업」의 참여기관 공모 관련 다음과 같이 공고합니다. 2026년 10월 23일 보건복지부 장관",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Fri, 23 Oct 2026 05:13:00 GMT",
-      "published_at": "2026-10-23T05:13:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "손실보상금 환수 확정 통지 공시송달 공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=126&searchRltnYn=A&bcIdx=1071941",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "법령공고",
-      "published": "20261022212645",
-      "published_at": "2026-10-22T21:26:45+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·시행 표현 포함",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "규제자유특구 재정지원사업 운영요령 일부개정(안) 행정예고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=126&searchRltnYn=A&bcIdx=1071940",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "법령공고",
-      "published": "20261022204614",
-      "published_at": "2026-10-22T20:46:14+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "예고·심의 단계",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2027년도 전통시장 및 상점가 활성화 지원사업 수정공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1071932",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "사업공고",
-      "published": "20261022160009",
-      "published_at": "2026-10-22T16:00:09+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "창업벤처규제혁신위원회 운영지침",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1071908",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "훈령·예규",
-      "published": "20261021162049",
-      "published_at": "2026-10-21T16:20:49+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년 제4차 기술개발제품 시범구매 지원계획 공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1071892",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "사업공고",
-      "published": "20261021131434",
-      "published_at": "2026-10-21T13:14:34+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "어르신의 저녁이 즐거워진다! 복지관 야간 운영부터 가을밤 축제까지",
-      "url": "https://mediahub.seoul.go.kr/archives/2019798",
-      "body": "낮에 이용 어려운 어르신들을 위해 노인복지관, 야간 프로그램 확대 운영 앞으로 서울의 밤이 더 풍요로워집니다. 시민들은 퇴근 후 가족과 운동·문화 프로그램을 즐기고, 저녁의 활기는 관광명소와 골목상권으로 이어집니다. 더 여유롭고 안전한 서울의 밤을 만들어갈 ‘24시간 활력경제도시, 서울’을 많이 기대해 주세요. 지난 10월 20일 저녁 6시, 서울 종로구 서울공예박물관 공예마당에 활기찬 박수와 함성이 울려 퍼젔다. 서울시의 ‘노인복지관 야간 개방’사업인 ‘복지 夜 놀자’ 시작을 기념해 열린 ‘야(夜)호! 어르신 별빛 활력 한마당 축제’ 현장으로, 낮 동안 복지관을 찾기 힘들었던 어르신들과 시민들이 한데 어우러져 가을밤을 환하게 밝혔다. ☞ [관련 기사] 어르신 활력 축제 열고, 복지관 야간 운영까지…복지 夜 놀자!'야(夜)호! 어르신 별빛 활력 한마당 축제'…청춘만큼 뜨거웠던 무대 이날 흥겨운 축제의 포문을 연 것은 서울노인복지센터 어르신 동아리 회원들이었다. 품에 안은 통기타 줄을 튕기며 정성스레 연주를 시작하자, 객석에서 뜨거운 박수가 터져 나왔다. 오프닝 공연 무대를 장식한 통기타 동아리 회원들은 이 계절에 딱 어울리는 와 을 연주했다. 활동의 결실을 선보이는 자리여서인지 어르신들의 손놀림에는 어느 때보다 진지함이 묻어났다. 이어 관람석까지 무대가 되는 ‘별빛댄스’가 펼쳐졌고, 관객 모두 함께 자리에서 일어나 어깨를 들썩이며 축제의 열기를 높였다. , 같은 작품 낭송과 시 낭송이 어우러진 무대는 한 편의 감미로운 문학의 밤을 선사했다. 구성진 아코디언 연주가 눈길을 끈 서울노인복지센터 낭만밴드 무대에 이어 공연의 대미는 아름다운 한국무용이 장식했다. 고운 한복을 차려 입은 70대 어르신들로 ",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Wed, 21 Oct 2026 15:42:30 +0900",
-      "published_at": "2026-10-21T06:42:30+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년 소공인 클린제조환경조성사업 3차 모집 공고(연장)",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1071870",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "사업공고",
-      "published": "20261020182041",
-      "published_at": "2026-10-20T18:20:41+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2027년도 전통시장 및 상점가 활성화 지원사업 공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1071864",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "사업공고",
-      "published": "20261020153243",
-      "published_at": "2026-10-20T15:32:43+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "급성기 정신질환 집중치료병원 집중치료실 병상 확대 모집계획 공고",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492280&act=view",
-      "body": "보건복지부 공고 제2026 – 792호 『급성기 정신질환 집중치료병원 병상 확대 모집계획 공고』 급성기 정신질환 집중치료병원의 병상 확대 운영을 위하여 다음과 같이 병상 확대 모집 계획을 공고하오니 급성기 정신질환 집중치료병원 중 병상 확대를 희망하는 의료기관은 신청서를 비롯한 관련 서류를 신청 기간(2026.10.20.(화)~11.6.(금) 18시까지) 내에 제출하여 주시기 바랍니다. 2026년 10월 20일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Tue, 20 Oct 2026 07:03:00 GMT",
-      "published_at": "2026-10-20T07:03:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2027년 정신건강증진시설 인권교육 사업 수행기관 공모",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492272&act=view",
-      "body": "보건복지부 공고 제2026-794호 2027년도 국민건강증진기금 민간위탁사업 수행기관 공모 2027년도 정신건강증진시설 인권교육사업 위탁사업에 대하여 수행기관을 공모ㆍ선정하고자 하니, 관련 기관 및 단체의 많은 참여 바랍니다. 2026년 10월 20일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Tue, 20 Oct 2026 04:42:00 GMT",
-      "published_at": "2026-10-20T04:42:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "장애친화 산부인과 운영지원사업 4차 공모",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492271&act=view",
-      "body": "보건복지부 공고 제2016-793호 장애친화 산부인과 운영지원사업 4차 공모 장애친화 산부인과 운영지원사업 지정을 위해 아래와 같이 참여 기관을 홍보하니, 관련 기관의 적극적인 참여를 바랍니다. 2026년 10월 20일 보건복지부 장관",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Tue, 20 Oct 2026 04:19:00 GMT",
-      "published_at": "2026-10-20T04:19:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "점심시간 10분, 내 건강을 체크! '대사증후군 예방·관리 캠페인' 현장",
-      "url": "https://mediahub.seoul.go.kr/archives/2019786",
-      "body": "\"잠깐 시간 되세요? 내 혈관 나이 확인하고 가세요!\" 청계광장 곳곳에서 들려오는 친절하고 활기찬 안내 목소리가 점심시간을 맞아 거리로 나온 시민들의 발걸음을 끌어당겼다. '바쁜데 잠깐 들러볼까?' 하는 호기심 어린 표정으로 쭈뼛거리며 다가서던 시민들은 이내 진지한 눈빛으로 부스 하나하나를 체험하기 시작했다. 지난 10월 19일 서울 도심 한복판 청계광장에서 열린 ‘대사증후군 예방·관리 캠페인’ 현장은 바쁘게 살아가는 현대인들에게 건강의 소중함을 다시금 일깨워 주는 뜻깊은 자리였다. 서울시와 25개 자치구 보건소, 그리고 국민건강보험공단이 함께 운영하는 이 캠페인은 시민 누구나 쉽게 접근할 수 있는 무료 건강체험 기회이다. 다양한 체험 부스 중 가장 눈길을 끈 것은 '혈관나이 및 혈압 측정' 부스였다. 손가락을 기계에 대고 잠시 숨을 죽이는 순간, '내 실제 나이보다 많이 나오면 어쩌지?' 하는 걱정과 '그래도 평소에 잘 챙겼으니 괜찮겠지' 하는 기대감이 교차했다. 기계 화면에 숫자가 떠오르고, 현장의 간호사 선생님이 결과를 친절히 설명해 줄 때는 가슴이 쓸어내려졌다. 병원을 가지 않고도 이런 전문적 검진을 받을 수 있다는 사실이 새삼 소중하게 느껴졌다. 이어 참여한 ‘대사증후군 인식 퀴즈’와 ‘건강정보 퀴즈’ 부스는 웃음꽃이 피어나는 현장이었다. 대사증후군의 5가지 위험요인인 복부비만, 높은 혈압, 높은 혈당, 높은 중성지방, 낮은 HDL 콜레스테롤 중 3가지 이상에 해당하면 대사증후군이라는 사실을 퀴즈를 통해 자연스럽게 익힐 수 있었다. 단순히 지식을 전달하는 강의 방식이 아니라, O/X 퀴즈를 맞히고 작은 기념품을 손에 쥐며 기뻐하는 시민들의 모습에서 건강 교육이 얼마나 쉽고 즐거울 수 있는",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Tue, 20 Oct 2026 13:00:00 +0900",
-      "published_at": "2026-10-20T04:00:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「산업기술단지 사업시행자의 회계처리에 관한 규정」 고시 일부개정 행정예고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=126&searchRltnYn=A&bcIdx=1071831",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "법령공고",
-      "published": "20261019132336",
-      "published_at": "2026-10-19T13:23:36+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "예고·심의 단계",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년 보건진료 전담공무원 환자진료지침 개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492267&act=view",
-      "body": "2026년 보건진료 전담공무원 환자진료지침 개정본을 붙임과 같이 안내드리니, 업무에 참고하시기 바랍니다.",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 19 Oct 2026 11:50:00 GMT",
-      "published_at": "2026-10-19T11:50:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "국유재산(여성의류 및 잡화) 사용허가 입찰 재공고",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492265&act=view",
-      "body": "보건복지부 오송생명과학단지지원센터 공고 제2026–32호 국유재산(여성의류 및 잡화) 사용허가 입찰재공고 2026년 10월 19일 보건복지부 오송생명과학단지지원센터장",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Mon, 19 Oct 2026 06:13:00 GMT",
-      "published_at": "2026-10-19T06:13:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「2026년도 스마트 사회서비스 시범사업」4차 공고",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492264&act=view",
-      "body": "보건복지부 공고 제2026-291호 「2026년도 스마트 사회서비스 시범사업」4차 공고 新기술·제품을 활용한 지역맞춤형 사회서비스의 자율설계·시범운영을 지원함으로써 신규 사회서비스 모델을 발굴·확산하기 위한,「스마트 사회서비스 시범사업」지원과제 공모계획을 다음과 같이 공고합니다. 2026년 10월 19일 보건복지부 장관",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Mon, 19 Oct 2026 05:59:00 GMT",
-      "published_at": "2026-10-19T05:59:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "문 앞에 물만 내놓으면 끝! 아리수 무료 비대면 수질검사 받아보니",
-      "url": "https://mediahub.seoul.go.kr/archives/2019701",
-      "body": "지난 여름 오스트리아 비엔나를 여행하면서 인상 깊었던 장면이 있다. 바로 공원이나 길거리에 설치된 식수대에서 사람들이 개인컵에 물을 받아 마시는 모습이었다. 평소 수돗물을 마시는 사람들을 보며 수돗물에 대한 시민들의 신뢰가 일상 속에 얼마나 자연스럽게 자리 잡고 있는지 느낄 수 있었다. 그렇다면 우리가 매일 사용하는 서울의 수돗물은 어떨까? 평소 아리수가 깨끗하다는 이야기는 많이 들었지만, 막상 우리 집 수도꼭지에서 나오는 물의 수질은 또 어떨지 궁금했다. 수돗물 자체의 수질뿐 아니라 집 안의 수도관이나 배관 상태는 괜찮은지 궁금했다. 그러던 중 우연히 버스 안에서 서울시의 ‘우리집 아리수 무료 수질검사’ 광고를 접했다. 가정에서 사용하는 수돗물의 수질을 무료로 확인할 수 있다는 내용이었다. 평소 궁금했던 부분을 확인해 볼 좋은 기회라는 생각이 들어 신청해 보기로 했다. 서울시에서 운영하는 ‘우리집 아리수 무료 수질검사’는 가정 내 수도꼭지에서 나오는 수돗물의 상태를 확인할 수 있는 서비스다. 철, 구리, 수소이온농도(pH), 탁도, 잔류염소 등 총 5개 항목을 검사해 수질 상태를 살펴볼 수 있다. 단, 비대면 검사의 경우 잔류염소는 시간 경과에 따라 정확도가 떨어질 수 있어 비대면 검사에서는 잔류염소 검사는 제외하고 총 4개 항목을 검사한다. 특히 이번에 눈길을 끈 것은 시민들의 생활패턴에 맞춰 검사 방식을 다양하게 운영한다는 점이었다. 기존에는 검사원이 직접 가정을 방문하는 대면검사가 중심이었다면, 최근에는 야간·공휴일 검사와 비대면 검사까지 확대해 시민들이 더욱 편리하게 이용할 수 있도록 했다. 직장에 다니거나 아이를 돌보느라 낮 시간에 집을 비우는 경우에는 방문 일정을 맞추는 것 자체가 부",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Mon, 19 Oct 2026 14:26:58 +0900",
-      "published_at": "2026-10-19T05:26:58+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2027년도 제25회 사회복지사 1급 국가시험 시행계획 공고",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10501010000&bid=0003&list_no=1492262&act=view",
-      "body": "보건복지부공고 제2026 - 790호 2027년도 제25회 사회복지사 1급 국가시험 시행계획 공고 「사회복지사업법 시행령」제3조제3항의 규정에 따라 2027년도 제25회 사회복지사 1급 국가시험 시행계획을 붙임과 같이 공고합니다. 2026년 10월 16일 보 건 복 지 부 장 관 한국산업인력공단 이사장",
-      "source": "보건복지부",
-      "category": "공지사항",
-      "published": "Mon, 19 Oct 2026 05:05:00 GMT",
-      "published_at": "2026-10-19T05:05:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·시행 표현 포함",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「건강보험요양급여비용의 내역」 전부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492260&act=view",
-      "body": "보건복지부 고시 제2026 - 217호 「국민건강보험법」 제45조제4항의 규정에 의한 「건강보험요양급여비용의 내역」(보건복지부 고시 제2025-186호, 2025.11.18.)을 다음과 같이 개정·고시합니다. 2026년 10월 19일 보건복지부장관 ○ 주요내용 - 2027년에 적용될 요양기관 유형별 상대가치점수의 점수당 단가를 반영(※ 상세내용 [붙임] 참고) ○ 시행일 - 2027.1.1.",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 19 Oct 2026 04:28:00 GMT",
-      "published_at": "2026-10-19T04:28:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "창업기획자 등록 말소 공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=126&searchRltnYn=A&bcIdx=1071813",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "법령공고",
-      "published": "20261018053050",
-      "published_at": "2026-10-18T05:30:50+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "창업기획자 신규등록 공고",
-      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=126&searchRltnYn=A&bcIdx=1071812",
-      "body": "",
-      "source": "중소벤처기업부",
-      "category": "법령공고",
-      "published": "20261018052855",
-      "published_at": "2026-10-18T05:28:55+00:00",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "프리랜서 지원부터 상품권 이벤트까지! '서울 프리랜서 온'",
-      "url": "https://mediahub.seoul.go.kr/archives/2019724",
-      "body": "안심결제·경력 증빙 등 종합 지원… 10월 19일부터 회원 3천 명 돌파 이벤트 진행 서울시가 프리랜서의 대금 미지급 피해를 예방하기 위해 도입한 ‘서울 프리랜서 온’의 안심결제 누적 계약금액이 8억 원을 넘어섰다. 안심결제를 비롯해 경력 증빙, 무료 전문가 상담까지 다양한 서비스를 제공하며 회원은 3천 명을 돌파했다. 이를 기념해 10월 19일부터 상품권 증정 이벤트를 진행한다. 공공 최초 안심결제… 누적 계약금액 8억 원·회원 3천 명 돌파 ‘프리랜서 안심결제’는 의뢰인이 계약대금을 협약 금융기관에 미리 예치하고, 프리랜서가 업무를 완료하면 대금을 지급하는 서비스다. 서울시는 대금 미지급이나 지급 지연 피해를 예방하기 위해 지난해 4월 공공기관 최초로 시범 도입했다. 서울시는 10월 6일 기준 ‘서울 프리랜서 온’의 누적 안심결제 계약이 994건, 누적 계약금액은 8억 1,100만 원을 기록했다고 밝혔다. 이는 지난해 말 1억 1,400만 원이었던 계약금액이 7배 이상 증가한 수치다. 회원 수도 같은 기간 1,183명에서 3,085명으로 약 2.6배 증가했다. ☞ ‘서울 프리랜서 온’ 바로가기경력 증빙부터 무료 전문가 상담까지 한곳에서 올해 1월 개편된 ‘서울 프리랜서 온’은 안심결제 기능에 실적관리·분쟁상담·일거리 정보 등을 더한 종합지원 플랫폼으로 거듭났다. 프리랜서는 플랫폼을 통해 업무 수행 이력을 실적확인서로 발급받아 경력을 증빙할 수 있다. 계약서 검토, 미수금 대응, 노무·세무·저작권 등 전문가 상담도 무료로 받을 수 있다. 서울시는 올해 5월 기존 ‘프리랜서 분쟁상담’을 ‘프리랜서 지원 컨설팅’으로 확대·개편하고 세무 상담을 추가했다. 변호사·노무사·세무사 등 전문가가 상담을 제공",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Fri, 16 Oct 2026 16:47:13 +0900",
-      "published_at": "2026-10-16T07:47:13+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "찬 바람 불 때 '뇌졸중' 주의! 전조증상 'F.A.S.T.'를 기억하세요",
-      "url": "https://mediahub.seoul.go.kr/archives/2019731",
-      "body": "11화 가을에서 겨울로, 환절기 건강을 위협하는 ‘뇌졸중’ 아침저녁으로 제법 쌀쌀한 바람이 불며 가을이 깊어지고, 곧 다가올 겨울을 예고하고 있다. 계절이 바뀌는 환절기에는 우리 몸이 기온 변화에 적응하느라 상당한 피로를 느끼게 된다. 특히 급격한 기온 저하는 혈관을 수축시키고 혈압을 상승시킬 수 있어 중장년층과 만성질환자는 ‘뇌졸중(중풍)’에 더욱 주의해야 한다. 환절기를 맞아 뇌졸중의 심각성과 원인, 신속한 대처법 및 예방 수칙을 알아본다.뇌졸중, 왜 경계해야 하는가? 통계청의 ‘사망원인통계’에 따르면 뇌혈관질환은 우리나라의 주요 사망원인 중 하나로 매년 상위권(주로 4~5위)을 차지하고 있다. 인구 10만 명당 뇌혈관질환 사망률은 약 50명 안팎의 수준을 보이고 있으며, 전체 사망자의 대다수는 65세 이상 고령층에서 발생(2024년 기준)한다. 특히 주목할 점은 아시아인이 서양인에 비해 머릿속 미세혈관이 좁아지는 두개 내 대혈관 협착(Intracranial atherosclerosis)의 빈도가 높다는 점이다. 여기에 고령화와 서구화된 식습관이 겹치면서 매년 60만 명 이상의 환자가 뇌혈관질환으로 진료를 받고 있다. 우리 몸의 혈관 건강을 미리 점검하고 관리하는 것이 무엇보다 중요한 이유다. 뇌졸중이란 무엇인가? 뇌졸중은 뇌에 혈액을 공급하는 혈관이 막히거나 터지면서 뇌 조직이 손상되고, 이로 인해 신체 기능에 장애가 발생하는 질환을 통틀어 이르는 말이다. 크게 뇌혈관이 막히는뇌경색(허혈성 뇌졸중)과 혈관이 터지는 뇌출혈(출혈성 뇌졸중)로 나뉜다. 뇌졸중 ○ 뇌경색(허혈성 뇌졸중) : 동맥경화나 혈전 등으로 뇌혈관이 막혀 혈류가 차단되는 경우 ○ 뇌출혈(출혈성 뇌졸중) : 뇌혈관의 약해진 부",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Fri, 16 Oct 2026 15:35:52 +0900",
-      "published_at": "2026-10-16T06:35:52+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "서울 예비맘 주목! 임신하면 꼭 챙겨야 할 알짜 혜택들(ft. 교통비 지원)",
-      "url": "https://mediahub.seoul.go.kr/archives/2019734",
-      "body": "임신 사실을 확인하니 기쁜 마음이 먼저 들었고, 곧이어 챙겨야 할 것들이 하나둘 떠올랐다. 임산부 등록은 정부24에서 마쳤고, 보건소 안내를 살펴보니 산전검사와 지원물품도 받을 수 있다고 해 은평구보건소를 직접 찾았다. 방문해 보니 서울시의 임신·출산 지원은 생각보다 훨씬 촘촘했다.정부24로 간편하게 임산부 등록, 보건소 방문도 가능 임산부 등록은 정부24 '맘편한 임신' 서비스를 이용해 온라인으로 마쳤다. 집에서도 신청할 수 있어 따로 시간을 내기 어려운 임산부에게 특히 편리하다. 물론 주소지 관할 보건소를 직접 방문해 등록하는 방법도 있다. 방문 등록에 필요한 서류는 보건소마다 다를 수 있으니, 신분증과 임신확인서를 기본으로 챙기되 방문 전에 필요한 서류를 미리 확인하는 것이 좋다.일찍 가니 더 빠르다! 은평구보건소 산전검사와 지원물품 온라인으로 임산부 등록을 마쳤지만, 산전검사를 받고 지원물품도 직접 받을 겸 보건소를 찾았다. 이른 시간에 찾아간 덕분에 절차를 빠르게 마칠 수 있었다. 보건소를 방문할 계획이라면 가급적 일찍 가는 것을 추천한다. 보건소 산전검사는 혈액검사와 소변검사 등 임신 초기 건강 상태를 확인하기 위한 기본 검사로 구성된다. 서울 시내 보건소에서는 이를 무료로 받을 수 있다고 하는데, 병원에서 받을 때보다 비용 부담이 적다는 점이 반가웠다. 보건소에서 먼저 검사를 받고 부족한 검사만 병원에서 추가로 받으면 비용을 아낄 수 있다고 하니 참고하자. 검사 항목과 가능한 요일, 예약 여부는 보건소마다 다를 수 있으니 미리 문의해 보면 좋다. 이번에 받은 지원물품은 임산부 수첩과 엽산제, 임산부 배지였다. 임산부 수첩은 산전검진 일정을 관리하고 임신 중 건강 정보도 확인할 수 있어",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Fri, 16 Oct 2026 15:00:00 +0900",
-      "published_at": "2026-10-16T06:00:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "청년 마음건강 심리상담, 좋아서 포럼도 다녀왔어요! (ft. 정보퐁퐁)",
-      "url": "https://mediahub.seoul.go.kr/archives/2019703",
-      "body": "10년 전, 서울시는 청년들의 목소리를 들었다. 다양한 어려움을 겪는 청년들을 위한 심리상담을 제공해 달라는 요청이었다. 서울시가 이에 응답해 2017년에 처음으로 130명의 청년을 모집하여 5회기의 1:1 심리상담을 운영했다. 청년들의 반응은 뜨거웠다. 심리상담의 도움을 많이 받았다는 의견에 힘입어 사업이 지속적으로 성장했다. 2020년에는 2,000명의 청년들이 심리상담을 받았다. 사업 참여 규모가 확대되면서, 서울광역청년센터는 전문적인 상담 운영과 지원체계를 갖추어 사업을 안정적으로 운영해 왔다. 2023년부터는 매년 1만 명의 청년이 심리상담에 참여하고 있다. 이 청년 마음건강 지원사업을 통한 심리상담의 기회가 나에게도 왔다. 올해 초에 심리적인 갈등이 많았던 상황에서 참여자 모집공고를 보고 바로 신청했다. 체계적인 심리검사와 상담파트너 연결 과정을 거쳐서 6회기의 1:1 자기이해 상담을 무료로 받았다. 당시에 진로에 대한 고민이 많았는데, 상담을 통해 나를 깊이 이해하면서 큰 방향을 정하고 진정으로 원하는 커리어를 개발할 수 있었다. 2026 청년 마음건강 포럼의 열띤 현장 10월 10일 '정신건강의 날'을 맞아 내가 받은 심리상담과 연계된 행사가 열려 참여했다. '청년은 왜 청년 대상 공공심리상담을 제안했는가?'라는 주제로 10월 12일, 서울글로벌센터에서 '2026 청년 마음건강 포럼'가 열렸다. 청년 마음건강에 관심 있는 여러 분야의 전문가와 청년 100여 명이 모였다. 이 사업의 발자취를 돌아보고 앞으로 나아갈 방향을 논의하는 뜻깊은 자리였다. 청년의 어려움에 공감하고 현실적인 도움으로 연계해주는 역할 서울광역청년센터의 신소미 센터장은 개회사에서 “청년 마음건강 지원사업이 단순히 ",
-      "source": "서울특별시",
-      "category": "복지",
-      "published": "Fri, 16 Oct 2026 14:36:48 +0900",
-      "published_at": "2026-10-16T05:36:48+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「보건신기술(NET) 인증기술 고시」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492248&act=view",
-      "body": "보건복지부 고시 제2026-216호 「보건의료기술진흥법」 제8조의 규정에 의하여 「보건신기술(NET) 인증기술 고시」(보건복지부고시 제2026-152호, 2026.7.22.)를 다음과 같이 개정·발령합니다. 2026년 10월 16일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 16 Oct 2026 05:21:00 GMT",
-      "published_at": "2026-10-16T05:21:00+00:00",
-      "detected": "신규 감지",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     }
   ],
@@ -3890,7 +3886,7 @@
       "similarity": 50,
       "status": "연관 게시자료 검토",
       "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
+      "checked_at": "2026-11-06T07:44:07+00:00",
       "published_at": "2024-01-15T00:00:00+00:00",
       "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
     },
@@ -3908,7 +3904,7 @@
       "similarity": 50,
       "status": "연관 게시자료 검토",
       "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
+      "checked_at": "2026-11-06T07:44:07+00:00",
       "published_at": "2023-05-09T00:00:00+00:00",
       "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
     },
@@ -3926,7 +3922,7 @@
       "similarity": 50,
       "status": "연관 게시자료 검토",
       "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
+      "checked_at": "2026-11-06T07:44:07+00:00",
       "published_at": "2023-05-09T00:00:00+00:00",
       "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
     },
@@ -3944,7 +3940,7 @@
       "similarity": 50,
       "status": "연관 게시자료 검토",
       "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
+      "checked_at": "2026-11-06T07:44:07+00:00",
       "published_at": "2024-01-15T00:00:00+00:00",
       "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
     },
@@ -3962,7 +3958,7 @@
       "similarity": 50,
       "status": "연관 게시자료 검토",
       "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
+      "checked_at": "2026-11-06T07:44:07+00:00",
       "published_at": "2023-05-09T00:00:00+00:00",
       "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
     },
@@ -3980,67 +3976,13 @@
       "similarity": 50,
       "status": "연관 게시자료 검토",
       "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
-      "published_at": "2023-05-09T00:00:00+00:00",
-      "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
-    },
-    {
-      "policy_title": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획 공고",
-      "policy_url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130783",
-      "policy_source": "행정안전부",
-      "target_source": "과학기술정보통신부",
-      "target_title": "2024년도 과학문화확산사업 시행계획",
-      "target_url": "https://www.msit.go.kr/bbs/view.do?sCode=user&bbsSeqNo=65&nttSeqNo=3017414",
-      "location": "공개 게시글 본문",
-      "before": "",
-      "after": "",
-      "evidence": "",
-      "similarity": 50,
-      "status": "연관 게시자료 검토",
-      "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
-      "published_at": "2024-01-15T00:00:00+00:00",
-      "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
-    },
-    {
-      "policy_title": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획 공고",
-      "policy_url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130783",
-      "policy_source": "행정안전부",
-      "target_source": "과학기술정보통신부",
-      "target_title": "2023년도 위성정보활용 시행계획",
-      "target_url": "https://www.msit.go.kr/bbs/view.do?sCode=user&bbsSeqNo=65&nttSeqNo=3017403",
-      "location": "공개 게시글 본문",
-      "before": "",
-      "after": "",
-      "evidence": "",
-      "similarity": 50,
-      "status": "연관 게시자료 검토",
-      "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
-      "published_at": "2023-05-09T00:00:00+00:00",
-      "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
-    },
-    {
-      "policy_title": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획 공고",
-      "policy_url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130783",
-      "policy_source": "행정안전부",
-      "target_source": "과학기술정보통신부",
-      "target_title": "2023년도 우주위험대비 시행계획",
-      "target_url": "https://www.msit.go.kr/bbs/view.do?sCode=user&bbsSeqNo=65&nttSeqNo=3017404",
-      "location": "공개 게시글 본문",
-      "before": "",
-      "after": "",
-      "evidence": "",
-      "similarity": 50,
-      "status": "연관 게시자료 검토",
-      "policy_stage": "확정·시행 표현 포함",
-      "checked_at": "2026-11-06T07:42:38+00:00",
+      "checked_at": "2026-11-06T07:44:07+00:00",
       "published_at": "2023-05-09T00:00:00+00:00",
       "notice": "연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."
     }
   ],
   "source_count": 24,
-  "success_count": 20,
+  "success_count": 24,
   "scope": "중앙행정기관·지방자치단체·공공통계 공식 RSS",
   "method": "실시간 공개 게시물 · 첨부자료 일부 원문 검사 · 기관 간 연관 게시물 탐색"
 }

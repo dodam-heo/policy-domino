@@ -34,6 +34,7 @@ jobs:
       - name: Validate and collect official public data
         run: |
           python -m py_compile watch.py
+          python -m unittest discover -s tests -v
           python watch.py
       - name: Persist monitoring results
         run: |

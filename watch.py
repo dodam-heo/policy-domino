@@ -7,6 +7,7 @@ import concurrent.futures as futures
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 from urllib.parse import urljoin, urlparse
 from io import BytesIO
 import hashlib, html, json, re, urllib.request, xml.etree.ElementTree as ET, zipfile
@@ -44,7 +45,7 @@ FEEDS=[
 CANDIDATE=re.compile(r"개정|제정|폐지|개편|변경|공포|시행|고시|신설|확대|축소|완화|강화|선정기준|지원기준|인상|인하|법률|지침|규정|기준")
 CONFIRMED=re.compile(r"(공포|확정|시행|개정 완료|일부개정령\s*공포|개정\s*고시|시행규칙\s*개정)")
 PROPOSAL=re.compile(r"(입법예고|행정예고|개정안|제정안|의견수렴|공청회|예고안|국무회의\s*통과)")
-STOP=set("대한민국 정부 정책 보도자료 개정 시행 일부 법률 관련 발표 추진 지원 정부부처 사업 기관 공공 국민 적용 안내 내용 등을 위한 기준 결과 올해 이번 새로운 제공 서울 경기 중소기업".split())
+STOP=set("대한민국 정부 정책 보도자료 개정 시행 일부 법률 관련 발표 추진 지원 정부부처 사업 기관 공공 국민 적용 안내 내용 등을 위한 기준 결과 올해 이번 새로운 제공 서울 경기 중소기업 시행계획 임용시험 재공고 사업계획 연구개발 내용변경 입법예고 행정예고 지원사업 기준완화 사업공고 공고문 내용안내 정책변화".split())
 ALLOWED_SUFFIX={".pdf",".hwp",".hwpx",".docx",".txt"}
 FETCH_BUDGET=9
 def stamp():
@@ -58,10 +59,10 @@ def date_iso(s):
     s=(s or "").strip()
     if not s:return ""
     try:
-        if re.fullmatch(r"\d{14}",s):return datetime.strptime(s,"%Y%m%d%H%M%S").replace(tzinfo=timezone.utc).isoformat()
-        if re.fullmatch(r"\d{8}",s):return datetime.strptime(s,"%Y%m%d").replace(tzinfo=timezone.utc).isoformat()
+        if re.fullmatch(r"\d{14}",s):return datetime.strptime(s,"%Y%m%d%H%M%S").replace(tzinfo=ZoneInfo("Asia/Seoul")).astimezone(timezone.utc).isoformat()
+        if re.fullmatch(r"\d{8}",s):return datetime.strptime(s,"%Y%m%d").replace(tzinfo=ZoneInfo("Asia/Seoul")).astimezone(timezone.utc).isoformat()
         if re.fullmatch(r"\d{4}[.-]\d{1,2}[.-]\d{1,2}.?",s):
-            return datetime.strptime(re.sub(r"\D","-",s).strip("-"),"%Y-%m-%d").replace(tzinfo=timezone.utc).isoformat()
+            return datetime.strptime(re.sub(r"\D","-",s).strip("-"),"%Y-%m-%d").replace(tzinfo=ZoneInfo("Asia/Seoul")).astimezone(timezone.utc).isoformat()
         try:return parsedate_to_datetime(s).astimezone(timezone.utc).isoformat()
         except (TypeError,ValueError,OverflowError):return datetime.fromisoformat(s.replace("Z","+00:00")).astimezone(timezone.utc).isoformat()
     except (TypeError,ValueError):return ""
@@ -86,7 +87,16 @@ def parse(raw,source,category):
         if not url.startswith(("https://","http://")) or not title:continue
         body=clean(field(node,"description") or field(node,"summary") or field(node,"content"))[:850]
         date=field(node,"pubdate") or field(node,"published") or field(node,"updated") or field(node,"date")
-        result.append(dict(title=title,url=url,body=body,source=source,category=category,published=date,published_at=date_iso(date)))
+        date_basis="RSS 게시일"
+        if not date:
+            # Some official portals encode the article creation timestamp in the URL.
+            # Distinguish this from an explicitly published timestamp.
+            m=re.search(r"(?:number|article_no|idx)=(20\d{12})",url)
+            if m:
+                date=m.group(1)
+                date_basis="게시번호 생성시각"
+        result.append(dict(title=title,url=url,body=body,source=source,category=category,
+                           published=date,published_at=date_iso(date),date_basis=date_basis))
     return result
 def load_feed(args):
     source,category,url=args
@@ -99,7 +109,7 @@ def load_feed(args):
         return dict(name=source,category=category,url=url,status="수집 실패",count=0,error=str(e)[:170],posts=[])
 def stage(title,cat):
     if PROPOSAL.search(title):return "예고·심의 단계"
-    if CONFIRMED.search(title) and not re.search(r"예정|검토|추진",title):return "확정·시행 표현 포함"
+    if re.search(r"공포|확정|일부개정|전부개정|개정 고시|규정 개정",title) and not re.search(r"예정|검토|추진",title):return "확정·개정 관련 게시"
     if CANDIDATE.search(title):return "변경 관련 검토"
     return "일반 게시"
 def tokens(s):
@@ -109,6 +119,8 @@ def similarity(a,b):
     a=tokens(a);b=tokens(b)
     if not a or not b:return 0
     inter=a&b
+    if len(inter)<2 and not any(len(x)>=6 for x in inter):
+        return 0
     return round((len(inter)/max(2,min(len(a),len(b))))*100)
 def inspect_page(url):
     try:
@@ -178,7 +190,7 @@ def audit(items,history):
         for q in items:
             if q["source"]==p["source"] or q["url"]==p["url"]:continue
             score=similarity(p["title"],q["title"])
-            if score<48:continue
+            if score<55:continue
             matches.append((score,q))
         matches.sort(key=lambda a:a[0],reverse=True)
         for score,q in matches[:3]:

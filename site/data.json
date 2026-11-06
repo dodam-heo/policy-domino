@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T15:03:47+00:00",
+  "generated_at": "2026-11-06T16:04:20+00:00",
   "first_scan": false,
   "counts": {
     "total": 425,
@@ -15,7 +15,7 @@
       "url": "https://mss.go.kr/rss/smba/board/126.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -23,7 +23,7 @@
       "url": "https://mss.go.kr/rss/smba/board/125.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -31,7 +31,7 @@
       "url": "https://mss.go.kr/rss/smba/board/310.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -39,7 +39,7 @@
       "url": "https://mss.go.kr/rss/smba/board/86.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -47,7 +47,7 @@
       "url": "https://mss.go.kr/rss/smba/board/81.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "보건복지부",
@@ -55,7 +55,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10409020000&update=&cg_code=&bid=0026",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "보건복지부",
@@ -63,7 +63,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10503000000&bid=0027&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "보건복지부",
@@ -71,7 +71,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10501010000&bid=0003&cg_code=C01&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "행정안전부",
@@ -79,7 +79,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1012",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "행정안전부",
@@ -87,7 +87,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1001",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "행정안전부",
@@ -95,7 +95,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1013",
       "status": "정상",
       "count": 3,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -103,7 +103,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -111,7 +111,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=65",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "서울특별시",
@@ -119,7 +119,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "서울특별시",
@@ -127,7 +127,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/07",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "서울특별시",
@@ -135,7 +135,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/08",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "서울특별시",
@@ -143,7 +143,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/03",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "경기도",
@@ -151,7 +151,7 @@
       "url": "https://gnews.gg.go.kr/rss/gnewsRssBodo.do",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "경기도",
@@ -159,7 +159,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E002&policyCode=E002",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "경기도",
@@ -167,7 +167,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E001&policyCode=E001",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "경기도",
@@ -175,7 +175,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E003&policyCode=E003",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "KOSIS 국가통계포털",
@@ -183,7 +183,7 @@
       "url": "https://kosis.kr/rss/notice_rss.jsp",
       "status": "정상",
       "count": 11,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     },
     {
       "name": "국가데이터처",
@@ -191,7 +191,7 @@
       "url": "https://mods.go.kr/menu.es?mid=a10301010000&act=rss",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-06T15:03:47+00:00"
+      "last_check": "2026-11-06T16:04:20+00:00"
     }
   ],
   "items": [
@@ -735,7 +735,7 @@
       "stage": "확정·개정 관련 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00",
       "attachments": [],
-      "details_checked": true,
+      "details_checked": false,
       "change_details": []
     },
     {

@@ -130,11 +130,11 @@ def inspect_page(url):
             pages=PdfReader(BytesIO(raw)).pages
             parts=[(i+1,p.extract_text() or "") for i,p in enumerate(pages[:20])]
             return clean(" ".join(p[1] for p in parts))[:12000],[],parts
-        if urlparse(url).path.lower().endswith(".docx"):
+        if urlparse(url).path.lower().endswith(".docx") or (raw[:4]==b"PK\x03\x04" and b"word/document.xml" in raw[:150000]):
             from docx import Document
             lines=[p.text for p in Document(BytesIO(raw)).paragraphs]
             return clean(" ".join(lines))[:12000],[],[(i+1,t) for i,t in enumerate(lines)]
-        if urlparse(url).path.lower().endswith(".hwpx"):
+        if urlparse(url).path.lower().endswith(".hwpx") or (raw[:4]==b"PK\x03\x04" and b"Contents/section" in raw[:180000]):
             with zipfile.ZipFile(BytesIO(raw)) as z:
                 sections=[(n,z.read(n).decode("utf-8","replace")) for n in z.namelist() if n.startswith("Contents/section") and n.endswith(".xml")]
             return clean(" ".join(x[1] for x in sections))[:12000],[],[(i+1,clean(x[1])) for i,x in enumerate(sections)]
@@ -147,8 +147,15 @@ def inspect_page(url):
         for el in soup.select("a[href]"):
             href=urljoin(url,el.get("href",""))
             if urlparse(href).scheme not in ("http","https"):continue
-            if any(urlparse(href).path.lower().endswith(ext) for ext in ALLOWED_SUFFIX):
-                links.append(dict(url=href,name=clean(el.get_text(" ",strip=True)) or href.rsplit("/",1)[-1]))
+            name=clean(el.get_text(" ",strip=True)) or href.rsplit("/",1)[-1]
+            path=urlparse(href).path.lower()
+            file_named=any(path.endswith(ext) for ext in ALLOWED_SUFFIX)
+            download_named=bool(re.search(r"\.(?:pdf|hwp|hwpx|docx|txt)(?:\b|$)",name,re.I))
+            download_endpoint=bool(re.search(r"(?:download|filedown|file_down|fileDown|atchfile|fileSeq|attach)",href,re.I))
+            if file_named or (download_named and download_endpoint):
+                if urlparse(href).hostname and urlparse(href).hostname.endswith(("go.kr","or.kr","gg.go.kr","seoul.go.kr")):
+                    if href not in [x["url"] for x in links]:
+                        links.append(dict(url=href,name=name))
         paragraphs=[clean(el.get_text(" ",strip=True)) for el in soup.select("main p, main li, article p, article li, .view_cont p, .view_cont li, .bbs_view p, td") if clean(el.get_text(" ",strip=True))]
         full=clean(soup.get_text(" ",strip=True))
         return full[:18000],links[:12],[(i+1,p) for i,p in enumerate(paragraphs[:80])]
@@ -198,6 +205,8 @@ def audit(items,history):
             evidence=""
             status="연관 게시자료 검토"
             before=after=""
+            location="공개 게시글 본문"
+            target_url=q["url"]
             if old_new:
                 t,f,lines=page_cache.get(q["url"],("",[],[]))
                 if not t:
@@ -208,16 +217,33 @@ def audit(items,history):
                         evidence=excerpt(t,d["before"])
                         before,after=d["before"],d["after"]
                         status="종전 수치 확인·적용시점 검토"
+                        where=next((n for n,line in lines if before in line),None)
+                        location=("게시글 본문 블록 "+str(where)) if where else "공개 게시글 본문"
                         break
+                if not before and f:
+                    for attachment in f[:2]:
+                        doc,_,sections=inspect_page(attachment["url"])
+                        for d in old_new:
+                            if d["before"] in doc and d["after"] not in doc:
+                                before,after=d["before"],d["after"]
+                                evidence=excerpt(doc,before)
+                                target_url=attachment["url"]
+                                section=next((n for n,part in sections if before in part),None)
+                                ext=urlparse(target_url).path.lower()
+                                partname="PDF 페이지" if ext.endswith(".pdf") else "첨부 문서 단락·섹션"
+                                location=attachment["name"]+" · "+partname+((" "+str(section)) if section else "")
+                                status="첨부자료 종전 수치 확인·적용시점 검토"
+                                break
+                        if before:break
             candidates.append(dict(policy_title=p["title"],policy_url=p["url"],policy_source=p["source"],
-                        target_source=q["source"],target_title=q["title"],target_url=q["url"],
-                        location="공개 게시글 본문"+(" (종전 수치 확인)" if before else ""),
+                        target_source=q["source"],target_title=q["title"],target_url=target_url,
+                        location=location,
                         before=before,after=after,evidence=evidence,similarity=score,status=status,
                         policy_stage=p["stage"],checked_at=stamp(),published_at=q.get("published_at",""),
                         notice="연관성·문구를 검출한 조사 대상이며, 수정 의무 또는 오류 판정은 아닙니다."))
     # Inspect attachments on up to 4 newest policy pages, and report that text has been analyzed.
-    for p in policies[:4]:
-        for f in p.get("attachments",[])[:2]:
+    for p in policies[:5]:
+        for f in p.get("attachments",[])[:3]:
             url=f["url"]
             if urlparse(url).path.lower().endswith(".hwp"):
                 f["analysis"]="파일 탐지 (HWP 본문은 미분석)"

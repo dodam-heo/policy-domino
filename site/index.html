@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>POLICY DOMINO | 정책 변경 자동 감시</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17263b;background:#f2f5fa}
+*{box-sizing:border-box}body{margin:0}header{background:#102541;color:white;padding:22px max(22px,calc((100vw - 1160px)/2))}header strong{font-size:23px;letter-spacing:-.4px}header small{display:block;margin-top:5px;color:#adbed4}main{max-width:1160px;margin:24px auto;padding:0 16px}
+h1{font-size:23px;margin:0 0 8px}h2{font-size:17px;margin:0 0 15px}.sub{font-size:13px;color:#5f7188;line-height:1.6}
+.note{border:1px solid #d5dfe8;border-radius:12px;background:#fff;padding:13px 16px;font-size:13px;line-height:1.7;margin:18px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat{background:#fff;border:1px solid #e0e7ef;border-radius:12px;padding:18px}.stat label{font-size:12px;color:#697d90;display:block}.stat b{font-size:25px;display:block;margin-top:7px}
+.columns{display:grid;grid-template-columns:minmax(0,1fr) 325px;gap:17px}.panel{border:1px solid #dee5ef;border-radius:13px;padding:18px;background:#fff;align-self:start}
+.btn{border:1px solid #d1dce8;border-radius:8px;background:white;padding:8px 12px;cursor:pointer;color:#27415e}.btn.active{background:#164c7a;color:white}.btn.reload{background:#164c7a;color:white;border-color:#164c7a}.controls{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.entry{border-top:1px solid #e7edf4;padding:14px 0}.entry h3{margin:5px 0;font-size:15px;line-height:1.5}
+.meta{font-size:11px;color:#73869c}.pill{font-size:11px;border-radius:10px;background:#e8f1fa;color:#225584;padding:3px 8px;display:inline-block}.pill.new{color:#8a5819;background:#fdf2e2}.desc{font-size:12px;color:#536a80;line-height:1.7}
+a{color:#1766a5;text-decoration:none}a:hover{text-decoration:underline}.source{border-top:1px solid #e5ebf1;padding:11px 0;font-size:13px}.source small{display:block;color:#66788c;margin-top:5px;word-break:break-word}.fail{color:#b23b3b}.ok{color:#167451}.empty{text-align:center;color:#74849b;padding:25px 5px;font-size:13px}
+@media(max-width:780px){.columns{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:20px}.stat{padding:12px}.stat b{font-size:21px}}
+</style></head>
+<body><header><strong>POLICY DOMINO</strong><small>공식 정책·제도 게시정보 자동 감시 | Cloud Watch</small></header>
+<main><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+<div><h1>변경사항을 먼저 찾아주는 정책 모니터링</h1><div class="sub" id="last">마지막 수집 시간을 확인 중입니다.</div></div>
+<button class="btn reload" onclick="load()">새로고침</button></div>
+<div class="note"><b>현재는 시범 수집판입니다.</b> 공식 RSS 새 게시·수정 여부를 자동 비교합니다. 제목과 요약에 변경 관련 표현이 있으면 후보로 표시하며, 그것만으로 실제 법령 개정이나 다른 기관 홈페이지의 수정 의무를 확정하지 않습니다. 전국 기관 및 첨부파일의 자동 전수 점검 기능은 아직 구현되지 않았습니다.</div>
+<div class="stats">
+<div class="stat"><label>최근 수집된 게시</label><b id="total">—</b></div>
+<div class="stat"><label>변경 관련 후보</label><b id="changes">—</b></div>
+<div class="stat"><label>신규 감지</label><b id="newCount">—</b></div>
+<div class="stat"><label>수정 감지</label><b id="modified">—</b></div></div>
+<div class="columns"><section class="panel"><h2>자동 수집 결과</h2><div class="controls">
+<button class="btn active" data-view="change">변경 후보</button>
+<button class="btn" data-view="new">신규·수정</button>
+<button class="btn" data-view="all">전체</button></div>
+<div id="posts" class="empty">수집 데이터를 불러오는 중입니다.</div></section>
+<aside class="panel"><h2>공식 감시 출처</h2><p class="sub" id="coverage">수집 범위를 확인 중입니다.</p><div id="sources"></div>
+<p class="sub">정기 실행: 매시간(예약 실행은 지연될 수 있음). 마지막 실행이 오래됐거나 수집 실패가 표시되면 GitHub Actions 상태를 확인해야 합니다.</p></aside></div></main>
+<script>
+var rows=[],view="change";
+function esc(v){return String(v===undefined||v===null?"":v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function fmt(t){if(!t)return "아직 실행되지 않음";try{return new Date(t).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"})}catch(e){return t}}
+function render(){
+var filtered=rows.filter(function(x){return view==="all" || (view==="new" && (x.status==="신규 감지"||x.status==="수정 감지")) || (view==="change"&&x.kind==="변경 후보")});
+document.getElementById("posts").innerHTML=filtered.length?filtered.map(function(x){
+return '<article class="entry"><div class="meta">'+esc(x.source)+' · '+esc(x.published)+'</div><h3>'+esc(x.title)+'</h3><span class="pill '+(x.status==="신규 감지"||x.status==="수정 감지"?"new":"")+'">'+esc(x.status)+'</span> <span class="pill">'+esc(x.kind)+'</span><p class="desc">'+esc(x.body||"요약 없음")+'</p><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 열기</a></article>'
+}).join(""):'<div class="empty">해당 조건의 수집 내역이 없습니다. 출처별 수집 결과를 확인하세요.</div>'}
+async function load(){
+try{
+var r=await fetch("./data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error("데이터 요청 실패: "+r.status);
+var d=await r.json();rows=d.items||[];var c=d.counts||{};
+["total","changes","newCount","modified"].forEach(function(id,i){document.getElementById(id).textContent=[c.total||0,c.change_count||0,c.new_count||0,c.modified_count||0][i]});
+document.getElementById("last").textContent="마지막 자동 수집: "+fmt(d.generated_at);
+document.getElementById("coverage").textContent=d.coverage||d.scope||"시범 감시";
+document.getElementById("sources").innerHTML=(d.sources||[]).map(function(s){return '<div class="source"><b>'+esc(s.name)+'</b><small class="'+(s.status==="수집 실패"?"fail":"ok")+'">'+esc(s.status)+'</small><small>'+esc(s.error||("확인: "+fmt(s.last_check)))+'</small></div>'}).join("") || '<div class="empty">아직 수집 전입니다.</div>';
+render();
+}catch(e){document.getElementById("last").textContent="수집 데이터 로드 오류";document.getElementById("posts").innerHTML='<p class="fail">수집 결과를 가져오지 못했습니다. Actions 실행 및 Pages 설정 확인이 필요합니다.</p>';}
+}
+document.querySelectorAll("[data-view]").forEach(function(b){b.onclick=function(){document.querySelectorAll("[data-view]").forEach(function(x){x.classList.remove("active")});b.classList.add("active");view=b.getAttribute("data-view");render()}});load();setInterval(load,60000);
+</script></body></html>

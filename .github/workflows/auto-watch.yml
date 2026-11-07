@@ -9,6 +9,7 @@ on:
       - 'site/data.json'
       - 'data/state.json'
       - 'data/deploy_status.json'
+      - 'data/collection_status.json'
 permissions:
   contents: write
   pages: write
@@ -31,7 +32,7 @@ jobs:
       - name: Validate source modules and comparison rules
         run: |
           python -m compileall -q watch.py law_changes.py impact_scanner.py
-          python -m unittest discover -s tests -v
+          python -m unittest discover -s tests -v 2>&1 | tee /tmp/policy-tests.log
       - name: Monitor changes and inspect downstream material
         env:
           LAW_OC: ${{ secrets.LAW_OC }}
@@ -46,6 +47,29 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+
+      - name: Record collection failure for diagnosis
+        if: ${{ failure() }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          notes=Path("/tmp/policy-tests.log")
+          text=notes.read_text(errors="replace") if notes.exists() else "Test log not available; see workflow run"
+          # Unit-test diagnostics contain no source API keys or external request URLs.
+          safe=text[-3500:] if notes.exists() else text
+          payload={"checked_at":datetime.now(timezone.utc).isoformat(),
+                   "status":"수집 또는 테스트 실패",
+                   "test_output":safe}
+          Path("data/collection_status.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2))
+          PY
+          git config user.name 'policy-domino-bot'
+          git config user.email 'policy-domino-bot@users.noreply.github.com'
+          git add data/collection_status.json
+          git commit -m 'ops: save collection diagnostic [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
 
   deploy:
     name: Publish user interface even if collection fails

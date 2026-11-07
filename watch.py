@@ -282,7 +282,10 @@ def main():
     items.sort(key=lambda p:(p.get("published_at") or p.get("first_seen_at") or "",p.get("title","")),reverse=True)
     impacts=audit(items,state)
     law_changes,law_seen,law_source=get_law_changes(items,state.get("law_seen",{}))
-    counts={"total":len(items),"recent":sum(p["detected"] in ("신규 감지","수정 감지") for p in items),
+    cutoff=datetime.fromisoformat(now).timestamp()-7*86400
+    recent_laws=sum(bool(law.get("promulgated_at") or law.get("published_at")) and datetime.fromisoformat(law.get("promulgated_at") or law.get("published_at")).timestamp()>=cutoff for law in law_changes)
+    counts={"total":len(items),"law_total":len(law_changes),"law_recent_7d":recent_laws,
+            "recent":sum(p["detected"] in ("신규 감지","수정 감지") for p in items),
             "modified":sum(p["detected"]=="수정 감지" for p in items),
             "candidate":sum(p["stage"]!="일반 게시" for p in items),"targets":len(impacts)}
     data={"generated_at":now,"first_scan":initial,"counts":counts,"sources":sources,

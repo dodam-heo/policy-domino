@@ -71,21 +71,3 @@ try:
     if i>=0:print("PUBLIC FIRST LAW HTML:",re.sub(r"\s+"," ",raw[max(0,i-850):i+450])[:1100],flush=True)
     else:print("PUBLIC FIRST LAW HTML: missing",flush=True)
 except Exception as e:print("PUBLIC ANCHOR CHECK:",type(e).__name__,str(e)[:100],flush=True)
-
-# Inspect one exact, official published amending-law document for article-level public extraction.
-try:
-    uri="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=291687&viewCls=lsRvsDocInfoR"
-    req=urllib.request.Request(uri,headers={"User-Agent":"Mozilla/5.0","Accept":"text/html"})
-    with urllib.request.urlopen(req,timeout=10) as res:raw=res.read(300000).decode("utf-8","replace")
-    from html.parser import HTMLParser
-    class Txt(HTMLParser):
-        def __init__(self):super().__init__();self.data=[]
-        def handle_data(self,t):self.data.append(t)
-    p=Txt();p.feed(raw)
-    whole=" ".join(" ".join(p.data).split())
-    print("PUBLIC REVISION PAGE:",len(raw),"characters, visible text",len(whole),"chars",flush=True)
-    for word in ("개정문","제1조","개정이유","부칙"):
-        pos=whole.find(word);print("PUBLIC REVISION SAMPLE",word,whole[max(0,pos-65):pos+270] if pos>=0 else "not in SSR text",flush=True)
-    for word in ("lsRvsDocInfoR","lsRvsRsn","lawContent","lsiSeq"):
-        pos=raw.find(word);print("PUBLIC REVISION HTML",word,raw[max(0,pos-120):pos+210] if pos>=0 else "not present",flush=True)
-except Exception as e:print("PUBLIC REVISION ERROR:",type(e).__name__,str(e)[:150],flush=True)

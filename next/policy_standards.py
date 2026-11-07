@@ -117,6 +117,8 @@ def median_amounts(current):
    break
  result={"중위소득:4인":(old,new)}
  if welfare:result["생계급여:4인"]=welfare
+ if "의료급여 40%" in text:
+  result["의료급여:4인"]=((old*40+50)//100,(new*40+50)//100)
  return result
 def housing_numbers(page):
  for row in page.rows:
@@ -177,6 +179,9 @@ def evidence_actions(profile,event_id,measure,before,after):
  if domain=="생계급여":
   roles=[("보건복지부","기초생활보장 총괄","생계급여 선정·지급기준","급여 산정 및 대상자 선정에 쓰는 가구별 기준액"),
          ("시·군·구","기초생활보장 집행기관","생계급여 수급자 심사·급여 결정","가구원수별 소득인정액 비교와 생계급여 산정 규칙")]
+ elif domain=="의료급여":
+  roles=[("보건복지부","의료급여 기준 소관기관","의료급여 선정기준 관리","의료급여 선정기준표"),
+         ("시·군·구","의료급여 선정업무 집행기관","의료급여 자격 심사·선정","가구별 소득인정액과 의료급여 선정기준 비교")]
  elif domain=="주거급여":
   roles=[("국토교통부","주거급여 소관기관","주거급여 선정기준 관리","주거급여 소득인정액 기준표"),
          ("시·군·구","주거급여 집행기관","주거급여 선정·지급 업무","해당 가구원수의 주거급여 자격 판정 기준")]

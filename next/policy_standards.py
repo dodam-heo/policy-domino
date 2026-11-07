@@ -252,3 +252,41 @@ def scan_policy_standards(fetch,existing_events,existing_actions):
   except Exception as exc:
    status["errors"].append({"profile":key,"type":type(exc).__name__,"message":str(exc)[:180]})
  return result_events,result_actions,status
+
+
+def link_verified_welfare_dependencies(events,actions):
+ """Link government benefit rules to changed median-income reference based on
+ published official 48%/50% rates; never claim other unknown 80 programs.
+ Invoke AFTER generic legal citation linking has cleared/rebuilt relationship arrays.
+ """
+ profiles={e.get("policy_profile"):e for e in events if e.get("policy_profile")}
+ parent=profiles.get("welfare")
+ if not parent:return {"linked_rules":0,"linked_actions":0}
+ done=0
+ for kind,ratio in (("housing",48),("education",50)):
+  child=profiles.get(kind)
+  if not child or not child.get("value_verified"):continue
+  reason=f"2027년 확정 기준 중위소득의 {ratio}%를 {child['title']} 선정기준으로 적용"
+  related={"event_id":child["event_id"],"title":child["title"],
+           "institution":child["ministry"],"effective_date":child["effective_date"],
+           "amendment_url":child["url"],"status":"선정기준 의존관계 확인",
+           "evidence":reason+" · 보건복지부 공식 결정과 소관부처 고시"}
+  existing={x["event_id"] for x in parent.get("downstream_changes",[])}
+  if child["event_id"] not in existing:
+   parent.setdefault("downstream_changes",[]).append(related)
+  if parent["event_id"] not in {x["event_id"] for x in child.get("upstream_changes",[])}:
+   child.setdefault("upstream_changes",[]).append({
+      "event_id":parent["event_id"],"title":parent["title"],"reference":reason,
+      "basis_url":SOURCE_PROFILES["welfare"]["current"]})
+  done+=1
+ ids={kind:profiles[kind]["event_id"] for kind in ("housing","education") if kind in profiles}
+ linked=0
+ for action in actions:
+  if action.get("event_id") not in ids.values():continue
+  if parent["event_id"] not in action.setdefault("upstream_event_ids",[]):
+   action["upstream_event_ids"].append(parent["event_id"])
+  dependent_kind=next(k for k,v in ids.items() if v==action["event_id"])
+  ratio=48 if dependent_kind=="housing" else 50
+  action["impact_link_basis"]=f"중앙생활보장위원회 확정 기준 중위소득 × {ratio}%를 해당 급여 선정기준에 적용"
+  linked+=1
+ return {"linked_rules":done,"linked_actions":linked}

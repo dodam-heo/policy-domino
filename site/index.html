@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>POLICY DOMINO | 정책 변경 자동 감시</title>
+<title>POLICY DOMINO | 기관별 수정 필요사항</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#18293b;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}
 header{background:#112b49;color:white;padding:24px max(18px,calc((100vw - 1160px)/2));box-shadow:0 3px 15px #10264116}
@@ -40,23 +40,23 @@ a{color:#1263a0;text-decoration:none}a:hover{text-decoration:underline}
 footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 @media(max-width:820px){.mainGrid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:13px}.stat strong{font-size:23px}.panel{padding:14px}.tab{padding:9px}.impact dl{grid-template-columns:80px minmax(0,1fr)}}
 </style></head><body>
-<header><div class="brand">POLICY <span>DOMINO</span></div><div class="tag">변화는 자동 감지하고, 관련 게시정보는 근거로 확인합니다.</div></header>
+<header><div class="brand">POLICY <span>DOMINO</span></div><div class="tag">제도가 바뀌면 어디를 고쳐야 하는지 실제 공개자료를 대조합니다.</div></header>
 <main>
-<div class="topline"><div><h1>신규·수정 법령 및 행정규칙</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
+<div class="topline"><div><h1>신규·수정 필요사항</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
 <section class="stats">
-<div class="stat"><small>제정·개정 공식 기록</small><strong id="total">—</strong></div>
-<div class="stat"><small>최근 7일 제정·개정 게시</small><strong id="recent">—</strong></div>
-<div class="stat"><small>검토 대기 게시</small><strong id="candidate">—</strong></div>
-<div class="stat"><small>기관 간 게시정보 점검</small><strong id="targets">—</strong></div>
+<div class="stat"><small>종전 내용 발견 · 수정 검토</small><strong id="total">—</strong></div>
+<div class="stat"><small>변경 근거 추가 조사</small><strong id="recent">—</strong></div>
+<div class="stat"><small>실제 공개 페이지 점검</small><strong id="candidate">—</strong></div>
+<div class="stat"><small>과거 자료 · 유지 대상</small><strong id="targets">—</strong></div>
 </section>
 <div class="mainGrid">
 <section class="panel">
-<h2 id="sectionTitle">신규 제정·개정 내역</h2>
+<h2 id="sectionTitle">기관별 수정 검토사항</h2>
 <div class="tabs" role="tablist">
-<button class="tab active" data-tab="new">신규·수정</button>
-<button class="tab" data-tab="audit">게시정보 수정 점검</button>
-<button class="tab" data-tab="candidate">변경 검토 후보</button>
-<button class="tab" data-tab="latest">기타 공식 게시</button>
+<button class="tab active" data-tab="audit">신규·수정 대상</button>
+<button class="tab" data-tab="research">변경 영향 추적</button>
+<button class="tab" data-tab="new">법령·제도 변경 근거</button>
+<button class="tab" data-tab="latest">수집 원문</button>
 </div>
 <div class="filters"><select id="agency" aria-label="기관 선택"><option value="">모든 기관</option></select><input id="search" aria-label="결과 내 검색" placeholder="기관명·사업명으로 결과 검색"></div>
 <div id="results" class="empty">수집 내용을 불러오는 중입니다.</div>
@@ -70,7 +70,7 @@ footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 </div><footer>POLICY DOMINO · 정부·지자체·공공부문 공개정보 자동 감시</footer>
 </main>
 <script>
-let data={items:[],impacts:[],sources:[],law_changes:[]},tab="new";
+let data={items:[],impacts:[],sources:[],law_changes:[],investigations:[],scan_metrics:{}},tab="audit";
 const el=id=>document.getElementById(id);
 function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function link(s){try{let u=new URL(s);return (u.protocol==="https:"||u.protocol==="http:")?safe(u.href):"#"}catch(e){return "#"}}
@@ -87,18 +87,26 @@ let attachments=(x.attachments||[]).map(a=>'<div>첨부: <a target="_blank" rel=
 let deltas=(x.change_details||[]).map(d=>'<div class="changeLine">'+safe(d.before)+' → '+safe(d.after)+'<div class="cap">'+safe(d.evidence)+'</div></div>').join("");
 return '<article class="item"><div class="itemMeta"><b>'+safe(x.source)+'</b><span>'+safe(x.category||"")+'</span><span>'+(x.promulgated_at?"공포 ":"게시 ")+date(lawDate(x))+'</span></div><div class="itemTitle">'+safe(x.title)+'</div>'+pills+(x.body?'<p class="desc">'+safe(x.body)+'</p>':"")+'<div><a target="_blank" rel="noopener" href="'+link(x.url)+'">법령·공식 원문 열기</a></div>'+((attachments||deltas)?'<button class="detailButton" onclick="this.nextElementSibling.classList.toggle(\'open\')">근거·첨부 확인</button><div class="details">'+(deltas||"")+attachments+'</div>':"")+'</article>'
 }
+function renderInquiry(x){
+return '<article class="item"><div class="itemMeta"><b>'+safe(x.source||"공식 제도 변경")+'</b><span class="pill amber">'+safe(x.status||"검증 중")+'</span></div><div class="itemTitle">'+safe(x.title||"")+'</div><p class="desc">'+safe(x.reason||"대상 기관 공개자료 조사 중")+'</p><a href="'+link(x.url)+'" target="_blank" rel="noopener noreferrer">변경 근거 원문</a></article>'}
 function renderImpact(x){
-let confirmed=x.before&&x.after;
-return '<div class="impact"><span class="pill '+(confirmed?"amber":"")+'">'+safe(x.status||"검토")+'</span><h3>'+safe(x.target_source)+' · '+safe(x.target_title)+'</h3><dl><dt>변경 출처</dt><dd><a target="_blank" rel="noopener" href="'+link(x.policy_url)+'">'+safe(x.policy_title)+'</a></dd><dt>확인 대상</dt><dd><a target="_blank" rel="noopener" href="'+link(x.target_url)+'">'+safe(x.target_url)+'</a></dd><dt>검토 위치</dt><dd>'+safe(x.location||"공개 게시물")+'</dd><dt>조사 근거</dt><dd>'+safe(x.evidence||"관련 주제의 다른 기관 게시물이 발견되어 원문 대조가 필요합니다.")+'</dd></dl>'+(confirmed?'<div class="changeLine"><b>기존에 표기된 값</b> '+safe(x.before)+'<br><b>정책 자료의 신규 값</b> '+safe(x.after)+'</div>':"")+'<div class="cap">실제 적용 대상·시행일·과거자료 여부 확인 전에는 수정 필요로 확정하지 않습니다.</div></div>'
-}
+return '<article class="impact"><span class="pill green">원문 대조됨 · 적용 검토</span><h3>'+safe(x.target_source||"")+' · '+safe(x.target_title||"")+'</h3>'+
+'<dl><dt>기관·문서</dt><dd><a href="'+link(x.target_url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.target_url||"")+'</a></dd>'+
+'<dt>수정 위치</dt><dd>'+safe(x.location||"본문")+'</dd>'+
+'<dt>변경 근거</dt><dd><a href="'+link(x.policy_url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.policy_title||"")+'</a></dd>'+
+'<dt>적용시점</dt><dd>'+safe(x.effective_date||"확인 필요")+'</dd></dl>'+
+'<div class="changeLine"><b>현재 게시된 값</b> '+safe(x.before||"미확인")+'<br><b>공식 변경 기준</b> '+safe(x.after||"미확인")+'</div>'+
+'<p class="desc"><b>실제 게시물 근거:</b> '+safe(x.evidence||"")+'</p>'+
+'<div class="cap">공식 변경 자료 인용: '+safe(x.policy_evidence||"")+'<br>적용일과 과거 게시물 보존 여부 확인 후 수정</div></article>'}
 function render(){
 let items=(data.items||[]).slice().sort(latestSort),title="최신 공식 게시물",list=[];
 if(tab==="latest")list=optionFilter(items,"source");
-if(tab==="new"){title=data.law_source?.api_connected?"최근 제정·개정 법령 · 공포일 최신순":"공식 제정·개정 게시 · 게시일 최신순";list=optionFilter((data.law_changes||[]).slice().sort((a,b)=>lawDate(b).localeCompare(lawDate(a))),"source")}
+if(tab==="new"){title="법령·제도 변경 근거 (수정 대상과 별개)";list=optionFilter((data.law_changes||[]).slice().sort((a,b)=>lawDate(b).localeCompare(lawDate(a))),"source")}
 if(tab==="candidate"){title="변경 검토 후보 · 별도 조사";list=optionFilter(items.filter(x=>stage(x)!=="일반 게시"),"source")}
-if(tab==="audit"){title="기관별 게시정보 점검";list=optionFilter(data.impacts||[],"target_source")}
+if(tab==="audit"){title="공개자료에서 종전 표기가 확인된 수정 검토사항";list=optionFilter((data.impacts||[]).filter(x=>x.review_required===true),"target_source")}
+if(tab==="research"){title="변경된 제도의 영향 대상 추적";list=optionFilter(data.investigations||[],"source")}
 el("sectionTitle").textContent=title;
-el("results").innerHTML=list.length?(tab==="audit"?list.map(renderImpact).join(""):list.slice(0,160).map(renderPost).join("")):'<div class="empty">'+(tab==="new"?"제정·개정 공식 자료가 아직 확인되지 않았습니다. 일반 새 게시물은 이 화면에 포함하지 않습니다.":tab==="audit"?"현재 자동 조사에서 연결된 기관 게시물이 확인되지 않았습니다. 수집 출처를 계속 확대하고 있습니다.":"이 조건에 해당하는 게시물이 없습니다.")+'</div>'
+el("results").innerHTML=list.length?(tab==="audit"?list.map(renderImpact).join(""):tab==="research"?list.map(renderInquiry).join(""):list.slice(0,160).map(renderPost).join("")):'<div class="empty">'+(tab==="new"?"제정·개정 공식 자료가 아직 확인되지 않았습니다. 일반 새 게시물은 이 화면에 포함하지 않습니다.":tab==="audit"?"공식 변경 근거와 대상 사이트의 종전 표기를 함께 확인한 수정 검토사항이 아직 없습니다. 아래 '변경 영향 추적'에서 원문 분석·웹사이트 탐색 현황을 확인할 수 있습니다.":tab==="research"?"현재 분석 대기 내역이 없습니다.":"이 조건에 해당하는 게시물이 없습니다.")+'</div>'
 }
 async function load(){
 try{
@@ -106,19 +114,17 @@ const response=await fetch("./data.json?t="+Date.now(),{cache:"no-store"});
 if(!response.ok)throw Error("HTTP "+response.status);
 data=await response.json();
 const counts=data.counts||{};
-el("total").textContent=(data.law_changes||[]).length;
-const legal=(data.law_changes||[]);
-const cutoff=Date.parse((data.generated_at||new Date().toISOString()).slice(0,10)+"T00:00:00Z")-6*86400000;
-el("recent").textContent=legal.filter(x=>Date.parse(lawDate(x))>=cutoff).length;
-el("candidate").textContent=counts.candidate??counts.change_count??0;
-el("targets").textContent=counts.targets??(data.impacts||[]).length;
-el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · "+(data.law_source?.api_connected?"공포일":"공식 게시일")+" 최신순";
+el("total").textContent=(data.impacts||[]).filter(x=>x.review_required===true).length;
+el("recent").textContent=(data.investigations||[]).length;
+el("candidate").textContent=(data.scan_metrics?.target_pages_examined||0)+(data.scan_metrics?.attachments_examined||0);
+el("targets").textContent=(data.impacts||[]).filter(x=>x.review_required===false).length;
+el("syncTime").textContent="마지막 조사 "+date(data.generated_at)+" · 수정 대상 발견은 실제 자료 대조 결과만 집계";
 el("scope").textContent=(data.scope||"등록된 공식 RSS")+" · "+(data.source_count??data.sources?.length??0)+"개 채널";
 const src=data.sources||[];
 el("sourceGood").textContent="정상 "+src.filter(x=>x.status==="정상").length;
 el("sourceBad").textContent="점검 "+src.filter(x=>x.status!=="정상").length;
 el("sourceList").innerHTML=src.map(s=>'<div class="source"><b>'+safe(s.name)+'</b> · '+safe(s.category||"")+' <span class="'+(s.status==="정상"?"good":"bad")+'">'+safe(s.status||"미확인")+'</span><small>'+safe(s.error||("게시 "+(s.count||0)+"건"))+'</small></div>').join("");
-const agencies=[...new Set([...data.items.map(x=>x.source),...(data.law_changes||[]).map(x=>x.source),...(data.impacts||[]).map(x=>x.target_source)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));
+const agencies=[...new Set([...data.items.map(x=>x.source),...(data.law_changes||[]).map(x=>x.source),...(data.impacts||[]).map(x=>x.target_source),...(data.investigations||[]).map(x=>x.source)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));
 const prev=el("agency").value;
 el("agency").innerHTML='<option value="">모든 기관</option>'+agencies.map(x=>'<option value="'+safe(x)+'">'+safe(x)+'</option>').join("");
 if(agencies.includes(prev))el("agency").value=prev;

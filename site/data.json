@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T18:38:32+00:00",
+  "generated_at": "2026-11-07T18:41:30+00:00",
   "first_scan": false,
   "counts": {
     "total": 426,
@@ -20,7 +20,7 @@
       "url": "https://mss.go.kr/rss/smba/board/126.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -28,7 +28,7 @@
       "url": "https://mss.go.kr/rss/smba/board/125.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -36,7 +36,7 @@
       "url": "https://mss.go.kr/rss/smba/board/310.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -44,7 +44,7 @@
       "url": "https://mss.go.kr/rss/smba/board/86.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -52,7 +52,7 @@
       "url": "https://mss.go.kr/rss/smba/board/81.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "보건복지부",
@@ -60,7 +60,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10409020000&update=&cg_code=&bid=0026",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "보건복지부",
@@ -68,7 +68,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10503000000&bid=0027&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "보건복지부",
@@ -76,7 +76,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10501010000&bid=0003&cg_code=C01&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "행정안전부",
@@ -84,7 +84,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1012",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "행정안전부",
@@ -92,7 +92,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1001",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "행정안전부",
@@ -100,7 +100,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1013",
       "status": "정상",
       "count": 3,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -108,7 +108,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -116,7 +116,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=65",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "서울특별시",
@@ -124,7 +124,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "서울특별시",
@@ -132,7 +132,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/07",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "서울특별시",
@@ -140,7 +140,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/08",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "서울특별시",
@@ -148,7 +148,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/03",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "경기도",
@@ -156,7 +156,7 @@
       "url": "https://gnews.gg.go.kr/rss/gnewsRssBodo.do",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "경기도",
@@ -164,7 +164,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E002&policyCode=E002",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "경기도",
@@ -172,7 +172,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E001&policyCode=E001",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "경기도",
@@ -180,7 +180,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E003&policyCode=E003",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "KOSIS 국가통계포털",
@@ -188,7 +188,7 @@
       "url": "https://kosis.kr/rss/notice_rss.jsp",
       "status": "정상",
       "count": 11,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     },
     {
       "name": "국가데이터처",
@@ -196,7 +196,7 @@
       "url": "https://mods.go.kr/menu.es?mid=a10301010000&act=rss",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-07T18:38:32+00:00"
+      "last_check": "2026-11-07T18:41:30+00:00"
     }
   ],
   "law_changes": [
@@ -215,7 +215,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선",
+      "change_detected": "기존",
       "change_details": [],
       "details_checked": false
     },
@@ -234,7 +234,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선",
+      "change_detected": "기존",
       "change_details": [],
       "details_checked": true
     },
@@ -253,9 +253,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선",
-      "change_details": [],
-      "details_checked": true
+      "change_detected": "기존"
     },
     {
       "title": "「보건복지부 적극행정공무원의 징계절차에서의 소명 또는 소송 등에 관한 지원 규정」일부개정",
@@ -272,9 +270,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선",
-      "change_details": [],
-      "details_checked": true
+      "change_detected": "기존"
     },
     {
       "title": "「보건복지부 고문변호사 위촉·운영 및 소송 위임 등에 관한 규정」일부개정",
@@ -291,9 +287,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선",
-      "change_details": [],
-      "details_checked": true
+      "change_detected": "기존"
     },
     {
       "title": "「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정고시",
@@ -310,7 +304,9 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존",
+      "change_details": [],
+      "details_checked": true
     },
     {
       "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
@@ -327,7 +323,9 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존",
+      "change_details": [],
+      "details_checked": true
     },
     {
       "title": "「평가 유예 신의료기술 고시」 일부개정",
@@ -344,7 +342,9 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존",
+      "change_details": [],
+      "details_checked": true
     },
     {
       "title": "「신의료기술의 안전성·유효성 평가결과 고시」 일부개정",
@@ -361,7 +361,9 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존",
+      "change_details": [],
+      "details_checked": true
     },
     {
       "title": "「첨단재생의료 임상연구 및 첨단재생의료 치료 위험도 구분에 관한 고시」제정",
@@ -378,7 +380,9 @@
       "law_type": "행정규칙·고시",
       "change_type": "제정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존",
+      "change_details": [],
+      "details_checked": true
     },
     {
       "title": "건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시",
@@ -395,7 +399,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「요양급여비용 청구방법，심사청구서·명세서서식 및 작성요령」 일부개정 안내",
@@ -412,7 +416,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「요양급여의 적용기준 및 방법에 관한 세부사항(약제)」 일부개정 안내",
@@ -429,7 +433,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「치료재료 급여비급여 목록 및 급여상한금액표」 고시 일부개정",
@@ -446,7 +450,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「약제 급여 목록 및 급여 상한금액표」일부개정고시(제2026-219호) 안내",
@@ -463,7 +467,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「보건복지부 소송비용 회수 사무처리 지침」일부개정",
@@ -480,7 +484,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「소송 등 업무 처리 지침」일부개정",
@@ -497,7 +501,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「고령친화도시 지정 및 지원 등에 관한 고시」제정",
@@ -514,7 +518,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "제정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「건강보험요양급여비용의 내역」 전부개정",
@@ -531,7 +535,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "전부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「보건신기술(NET) 인증기술 고시」일부개정",
@@ -548,7 +552,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「암환자에 대한 의료비 지원기준 등에 관한 고시」일부개정",
@@ -565,7 +569,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「암검진 실시기준」고시 일부개정",
@@ -582,7 +586,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「상급종합병원의 지정 및 평가 규정」고시 일부개정",
@@ -599,7 +603,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「정신건강전문요원의 수련 및 보수교육 등에 관한 규정」 일부개정",
@@ -616,7 +620,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「보건복지부 소속 국립병원 및 국립재활원의 전자의무기록시스템 구축·운영 사무 위탁에 관한 고시」제정",
@@ -633,7 +637,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "제정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「평가 유예 신의료기술 고시」 일부개정",
@@ -650,7 +654,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "「신의료기술의 안전성·유효성 평가결과 고시」 일부개정",
@@ -667,7 +671,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "자율기구 \"중소기업인공지능확산추진단\" 설치 및 운영에 관한 규정 개정 공고(훈령 제212호)",
@@ -684,7 +688,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "자율기구 \"소공인성장촉진단\" 설치 및 운영에 관한 규정 개정 공고(훈령 제210호)",
@@ -701,7 +705,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "중소벤처기업부 보안업무시행세칙 일부 개정(훈령 제209호)",
@@ -718,7 +722,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "자율기구 \"미래기술대응지원단\" 설치 및 운영에 관한 규정 폐지",
@@ -735,7 +739,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "폐지",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "중소벤처기업부 민원처리에 관한 시행세칙 일부 개정 (훈령 제200호)",
@@ -752,7 +756,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "자율기구 \"소상공인판매활력촉진단\" 설치 및 운영에 관한 규정 폐지",
@@ -769,7 +773,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "폐지",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     },
     {
       "title": "수탁·위탁거래 사건처리지침 일부개정",
@@ -786,7 +790,7 @@
       "law_type": "행정규칙·고시",
       "change_type": "일부개정",
       "promulgated_at": null,
-      "change_detected": "기준선"
+      "change_detected": "기존"
     }
   ],
   "law_source": {
@@ -840,6 +844,20 @@
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
+      "title": "청주시개방형직위(흥덕보건소장) 임용시험 시행계획 재공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130806",
+      "body": "청주시 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 재공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 흥덕보건소장 - 임용직급 : 지방보건,의료기술,간호사무관 또는 일반임기제 5급(개방형 5호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 인사담당관 인사팀(☎043-201-1524)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "FRI, 06 NOV 2026 11:06:56 KST",
+      "published_at": "2026-11-06T11:06:56+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
       "title": "핵심 경기도정을 한눈에! `도정슬라이드` 11월 첫째 주",
       "url": "https://gnews.gg.go.kr/news/news_detail_m.do?number=202611061731127043C071&s_code=C071",
       "body": "",
@@ -882,104 +900,6 @@
       "first_seen_at": "2026-11-06T08:27:49+00:00"
     },
     {
-      "title": "청주시개방형직위(흥덕보건소장) 임용시험 시행계획 재공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130806",
-      "body": "청주시 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 재공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 흥덕보건소장 - 임용직급 : 지방보건,의료기술,간호사무관 또는 일반임기제 5급(개방형 5호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 인사담당관 인사팀(☎043-201-1524)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "금, 06 11월 2026 11:06:56 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "제16회 어린이 안전대상 최종 심사 결과 안내",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130730",
-      "body": "「제16회 어린이 안전대상」 최종 심사 결과 안내 ○ 제16회 어린이 안전대상 수상자 선정 결과 - 대통령상(1) : 경기도 부천시 - 국무총리상(1) : 경상북도 구미시 - 행안부장관상 본상(3) : 서울특별시 송파구, 전남광주통합특별시 해남군, 부산광역시 부산진구 - 행안부장관상 특별상(3) : 서울올림픽기념국민체육진흥공단, 백진우(심학초등학교), 박종훈(옥곡초등학교), 김기성(충청남도교통연수원)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 22:32:36 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "제14회 범정부 공공데이터·AI 활용 창업경진대회 수상 후보 공개검증",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130685",
-      "body": "제14회 범정부 공공데이터·AI 활용 창업경진대회 수상 후보에 대해 국민의 의견을 수렴, 그 의견을 공적 심사 자료로 활용하고자 수상 후보를 공개하오니, 의견이 있으신 분은 2026. 11. 16(월)까지 의견을 제출해 주시기를 바랍니다. 1. 추천예정 훈격 : 정부시상(대통령상 2점, 총리상 2점) 및 상장(장관상 4점, 기관장상 2점) 2. 공개검증 대상 : 대회 왕중왕전 진출 10개 팀 3. 검증기간 : 2026.11.2.∼11.16. 4. 의견제출 방법 : 전자우편(atthezoo@korea.kr, yuri@nia.or.kr) 5. 문의 : 행정안전부 공공데이터정책과(044-205-2470) 한국지능정보사회진흥원(053-230-1568) ※ 허위 비방 정보 접수를 방지하기 위해 작성자는 실명과 연락처를 기재하여 주시기 바랍니다. ※ 제출하신 의견에 대해 별도의 회신은 하지 않으며, 공적심사 자료로만 활용할 예정입니다.",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 09:07:48 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "정부청사관리본부 건설공사(건축) 안전점검 수행기관 및 안전관리계획 검토기관(경남) 명부 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130779",
-      "body": "「건설기술 진흥법」 제62조, 같은 법 시행령 제100조의2 및 「건설공사 안전관리 업무수행 지침」 제18조에 따라 건설공사 안전점검 수행기관 및 안전관리계획 검토기관 명부를 다음과 같이 공고합니다.",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 09:11:50 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "인천광역시 계양구 보건소장(개방형직위) 임용시험 시행계획 재공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130717",
-      "body": "인천광역시 계양구 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 재공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.10.(화) ~ 11.16.(월) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 채용절차 문의 : 계양구 자치행정과 인사관리팀(☎032-450-5153) 직무내용 문의 : 계양구 보건소(☎032-430-7801)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 11:18:43 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "울산광역시 울주군 보건소장(개방형직위) 임용시험 시행계획 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130795",
-      "body": "울산광역시 울주군 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 총무과 인사팀(☎052-204-0244)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 15:36:36 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130783",
-      "body": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획을 다음과 같이 공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 전략홍보팀장 - 임용직급 : 지방행정사무관 또는 지방일반임기제(개방형 5호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ (시험절차 문의) 세종특별자치시 운영지원과(☎044-300-3045) (직무내용 문의) 세종특별자치시 대변인(☎044-300-2612)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 10:42:26 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
       "title": "국민을 위한 특별한 성과로 데이터·통계 혁신을 이끈다",
       "url": "https://mods.go.kr/board.es?mid=a10301150000&act=view&bid=246&list_no=447785",
       "body": "국가데이터처(처장 안형준)는 지난 4월에 이어, 지역균형 발전 및 국민 안전을 위한 통계·데이터서비스 혁신 등의 특별한 성과를 창출한 직원을 선정하여 11월 2일(월) 포상금 수여식을 실시하였다. 「특별성과 포상금 제도」는 탁월한 성과를 거둔 직원에게 파격적인 보상을 제공해 공직사회 경쟁력을 높이고 대국민 서비스를 개선하고자 도입되었다. 국민‧직원평가단 심사와 민간 전문가 등으로 구성된 특별성과 심사위원회에서는 생성형 인공지능(AI) 기반 국가통계포털(KOSIS) 검색‧활용 서비스 구현 등 특별성과가 있는 7개팀(16명)을 선정하고 총 6,600만원의 포상금을 지급하기로 결정하였다. 이번에 선정된 특별성과 주요 내용은 다음과 같다. ➀ 어려운 국가통계, 대화하듯 쉽게 검색‧활용(김현기 외 2명) 기존에는 국민들이 필요한 통계를 국가통계포털(KOSIS) 등에서 찾아보고 여러 통계표를 직접 비교‧가공‧분석해야 했다. 이를 해결하기 위해 인공지능(AI) 기반 국가통계포털 검색‧활용 서비스를 개발하여 7월 8일부터 시범서비스를 제공하고 있다. 이 서비스는 생성형 인공지능(AI)와 데이터 연결기술(MCP*)을 활용한 것으로 국민이 일상언어로 질문(예: 2015년부터 2024년까지 경제활동인구와 육아휴직자 수를 비교하는 표를 만들어 줘)을 하면 국가통계포털(KOSIS)의 국가통계 자료를 기반으로 차트와 함께 분석 결과를 제공받을 수 있게 된다. 시범서비스 제공 후 운영 결과와 국민 의견을 반영하여 고도화한 후 내년부터 정식으로 서비스할 계획이다. * MCP(Model Context Protocol): AI가 통계표 등 외부데이터와 연결되어 필요한 정보를 찾아 활용할 수 있도록 돕는 방식 ➁ 농어촌 기본소득 ",
@@ -991,90 +911,6 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "구리시 보건소장(개방형직위) 채용시험 시행계획 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130776",
-      "body": "구리시 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 구리시 총무과 인사조직팀(☎031-550-2112)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "수, 04 11월 2026 16:07:22 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "고(故) 정상시 목사 정부포상 후보자 공개검증",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130716",
-      "body": "「정부포상업무지침」에 따라 고(故) 정상시 후보자 공적을 붙임과 같이 공개하여 국민들로부터 의견을 수렴하고자 합니다. 참고로 동 대상자는 향후 정부포상 확정 규모 및 공적심사위원회의 심사 결과 등에 따라 수상자로 선정되거나 선정되지 않을 수 있음을 알려드립니다. 1. 공개검증 대상 : 붙임 명단 참조 2. 공개검증 기간 : 2026. 11. 2.～ 11. 17.(15일간) 3. 의견제출 방법 : 전자우편(주소 : heuristic@korea.kr) ※ 허위‧비방 정보 접수를 방지하기 위해 작성자는 실명과 연락처를 기재하여 주시기 바랍니다. ※ 제출하신 의견에 대해 별도의 회신은 하지 않으며, 공적심사 자료로만 활용할 예정입니다. 기타 자세한 사항은 행정안전부 사회통합지원과(☎044-205-3259)로 문의하여 주시기 바랍니다.",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 11:10:19 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "거제시 보건소장(개방형직위) 임용시험 시행계획 재공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130707",
-      "body": "거제시 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 재공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.9.(월) ~ 11.13.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 거제시 행정과 인사팀(☎055-639-3324)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 09:38:50 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "「재난안전통신망 주요정보통신기반시설 보안취약점 분석평가 용역」제안서 평가 결과",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130725",
-      "body": "재난안전통신망 주요통신기반시설 보안취약점 분석평가 용역사업의 제안서 평가결과를 공개합니다.",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 17:46:53 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "`27년 정부인력·기능체계 효율화 사전진단 위탁사업 수행기관 모집 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130797",
-      "body": "행정기관의 조직과 정원에 관한 통칙 제32조에 따라 `27년 정부인력 기능체계 효율화 사전진단 위탁사업 수행기관을 다음과 같이 모집 공고합니다. 0 사업 개요 - 위 탁 명 : `27년 정부인력 기능체계 효율화 사전진단 - 위탁기간 : `27.1.1~`27.12.31. - 위탁비용 : 500백만원 - 위탁업무 : 중앙부처 조직진단 및 심층진단 2026년 11월 5일 행정안전부장관 ※ 자세한 사항은 붙임 공고문 참고",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 16:15:32 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년도 제66회 방재전문인력 인증시험 시행 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130721",
-      "body": "행정안전부 공고 제2026 - 1398호 제66회 방재전문인력 인증시험 시행공고 2026년도 제66회 방재 전문인력 인증시험 시행을 아래와 같이 공고합니다. 2026년 11월 5일 행정안전부장관",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 16:27:44 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -1092,68 +928,12 @@
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
-      "title": "2026년 하반기 비상대비업무담당자 선발시험(법령) 최종정답 확정 공고",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130784",
-      "body": "- 2026년 하반기 비상대비업무담당자 선발시험(법령) 최종정답 확정 - 2026년 10월 31일에 시행된 비상대비업무담당자 선발시험(법령) 정답 가안에 대한 이의제기 검토 결과 최종정답을 붙임문서와 같이 확정합니다",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 13:37:13 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년 하반기 비상대비업무담당자 선발시험 문제 및 정답 가안 공개",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130724",
-      "body": "1. 2026년 하반기 비상대비업무담당자 선발시험(법령+논술)문제 및 법령시험 정답가안을 첨부와 같이 공개합니다. 2. 법령시험 이의제기는 첨부된 이의제기 서식으로 작성하여 메일(naryu75@korea.kr)로 송부하시기 바랍니다. * 이의 제기 기간 : 2026년 11월 3일(화) 10:00 ~ 2026년 11월 4일(수) 12:00 3. 답안 최종 확정 안내 : 11월 6일(금) 예정",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "월, 02 11월 2026 17:32:44 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년 정부조직발전(정부조직관리) 유공 정부포상 후보자 공개 검증",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130800",
-      "body": "「정부포상업무지침」에 따라 2026년 정부조직발전(정부조직관리) 유공 정부포상 후보자의 공적을 붙임과 같이 공개하여 국민의견을 수렴하고자 합니다. 1. 공개검증 대상 : 붙임 후보자 명단 참조 2. 공개검증 기간 : 2026. 11. 5. ~ 11. 23. 3. 의견제출 방법 : 전자우편(present10@korea.kr) 4. 관련문의 : 행정안전부 조직기획과(044-205-2311) 5. 참고사항 - 붙임 명단은 포상 확정대상자 명단이 아니며, 공적심사와 의견수렴 결과에 따라 변경될 수 있습니다. ※ 후보자 명단은 이름 순으로 정렬한 것입니다. - 허위·비방 정보 접수를 방지하기 위해 작성자는 실명과 연락처를 기재하여 주시기 바랍니다. - 제출하신 의견에 대해 별도의 회신은 하지 않으며, 공적심사 자료로만 활용할 예정입니다.",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 18:00:22 KST",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
       "title": "2026년 재배면적조사 결과_가을배추, 가을무",
       "url": "https://mods.go.kr/board.es?mid=a10301080800&act=view&bid=229&list_no=447743",
       "body": "○ 2026년 재배면적조사 결과_가을배추, 가을무 ○ 주요내용 - 가을배추 재배면적은 13,909ha로 전년 13,182ha보다 5.5% 증가 - 가을무 재배면적은 5,749ha로 전년 5,826ha보다 1.3% 감소",
       "source": "국가데이터처",
       "category": "보도자료",
       "published": "202610292357",
-      "published_at": "",
-      "date_basis": "RSS 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "일반 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00"
-    },
-    {
-      "title": "2026년 규제합리화 만족도 조사 안내",
-      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130799",
-      "body": "국무조정실에서는 2026년도 각 중앙행정기관에서 추진한 규제합리화 과제의 성과에 대한 만족도 조사를 실시하고 있으며, 성과를 확인하고 향후 규제합리화의 질적 향상을 위한 자료를 수집하는 데 그 목적이 있습니다. 본 조사는 각 기관의 올해('26.1.1.~'26.12.31.) 성과를 측정하는 조사로서, 국무조정실의 의뢰를 받은 전문조사업체에서 설문조사를 수행합니다. 설문조사 기간은 11월부터 12월까지이며, 전화 및 이메일을 이용한 온라인 조사로 진행됩니다. 귀하의 만족도조사 응답 결과는 향후 규제합리화 정책 추진과 관련해 귀중한 참고자료로 활용될 예정입니다. 평가에 참여하신 분의 개인정보 및 응답하신 내용에 대한 모든 정보는 개인정보보호법 등 관련 법령에 의해 철저히 보호됩니다. 또한, 귀하의 정보는 조사목적 이외에 다른 용도로 활용하지 않을 것을 약속드립니다. [개인정보 제공 사항 알림] - 제공기간: '26.10.29.~'26.12.31. - 제공기관: 국무조정실 및 만족도조사 용역업체(알앤알컨설팅) - 법적근거: 「개인정보보호법」제18조 제2항 제2호, 「정부업무평가기본법」 제20조 제1항·제3항 및 시행령 제14조 제3호, 「행정규제기본법」제34조 제3항 - 이용목적: 각 기관의 규제합리화 성과에 대한 만족도조사 - 제공항목: 성명, 전화번호, 이메일 - 파기절차: 조사 완료 후 국조실 및 위탁업체 시스템 내 개인정보일체 영구 파기 ※ 문의처 : 국무조정실 규제총괄정책관실(044-200-2416)",
-      "source": "행정안전부",
-      "category": "알림",
-      "published": "목, 05 11월 2026 17:54:02 KST",
       "published_at": "",
       "date_basis": "RSS 게시일",
       "detected": "기존",
@@ -1708,6 +1488,62 @@
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
+      "title": "2026년 정부조직발전(정부조직관리) 유공 정부포상 후보자 공개 검증",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130800",
+      "body": "「정부포상업무지침」에 따라 2026년 정부조직발전(정부조직관리) 유공 정부포상 후보자의 공적을 붙임과 같이 공개하여 국민의견을 수렴하고자 합니다. 1. 공개검증 대상 : 붙임 후보자 명단 참조 2. 공개검증 기간 : 2026. 11. 5. ~ 11. 23. 3. 의견제출 방법 : 전자우편(present10@korea.kr) 4. 관련문의 : 행정안전부 조직기획과(044-205-2311) 5. 참고사항 - 붙임 명단은 포상 확정대상자 명단이 아니며, 공적심사와 의견수렴 결과에 따라 변경될 수 있습니다. ※ 후보자 명단은 이름 순으로 정렬한 것입니다. - 허위·비방 정보 접수를 방지하기 위해 작성자는 실명과 연락처를 기재하여 주시기 바랍니다. - 제출하신 의견에 대해 별도의 회신은 하지 않으며, 공적심사 자료로만 활용할 예정입니다.",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 18:00:22 KST",
+      "published_at": "2026-11-05T18:00:22+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "2026년 규제합리화 만족도 조사 안내",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130799",
+      "body": "국무조정실에서는 2026년도 각 중앙행정기관에서 추진한 규제합리화 과제의 성과에 대한 만족도 조사를 실시하고 있으며, 성과를 확인하고 향후 규제합리화의 질적 향상을 위한 자료를 수집하는 데 그 목적이 있습니다. 본 조사는 각 기관의 올해('26.1.1.~'26.12.31.) 성과를 측정하는 조사로서, 국무조정실의 의뢰를 받은 전문조사업체에서 설문조사를 수행합니다. 설문조사 기간은 11월부터 12월까지이며, 전화 및 이메일을 이용한 온라인 조사로 진행됩니다. 귀하의 만족도조사 응답 결과는 향후 규제합리화 정책 추진과 관련해 귀중한 참고자료로 활용될 예정입니다. 평가에 참여하신 분의 개인정보 및 응답하신 내용에 대한 모든 정보는 개인정보보호법 등 관련 법령에 의해 철저히 보호됩니다. 또한, 귀하의 정보는 조사목적 이외에 다른 용도로 활용하지 않을 것을 약속드립니다. [개인정보 제공 사항 알림] - 제공기간: '26.10.29.~'26.12.31. - 제공기관: 국무조정실 및 만족도조사 용역업체(알앤알컨설팅) - 법적근거: 「개인정보보호법」제18조 제2항 제2호, 「정부업무평가기본법」 제20조 제1항·제3항 및 시행령 제14조 제3호, 「행정규제기본법」제34조 제3항 - 이용목적: 각 기관의 규제합리화 성과에 대한 만족도조사 - 제공항목: 성명, 전화번호, 이메일 - 파기절차: 조사 완료 후 국조실 및 위탁업체 시스템 내 개인정보일체 영구 파기 ※ 문의처 : 국무조정실 규제총괄정책관실(044-200-2416)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 17:54:02 KST",
+      "published_at": "2026-11-05T17:54:02+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "`27년 정부인력·기능체계 효율화 사전진단 위탁사업 수행기관 모집 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130797",
+      "body": "행정기관의 조직과 정원에 관한 통칙 제32조에 따라 `27년 정부인력 기능체계 효율화 사전진단 위탁사업 수행기관을 다음과 같이 모집 공고합니다. 0 사업 개요 - 위 탁 명 : `27년 정부인력 기능체계 효율화 사전진단 - 위탁기간 : `27.1.1~`27.12.31. - 위탁비용 : 500백만원 - 위탁업무 : 중앙부처 조직진단 및 심층진단 2026년 11월 5일 행정안전부장관 ※ 자세한 사항은 붙임 공고문 참고",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 16:15:32 KST",
+      "published_at": "2026-11-05T16:15:32+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "울산광역시 울주군 보건소장(개방형직위) 임용시험 시행계획 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130795",
+      "body": "울산광역시 울주군 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 총무과 인사팀(☎052-204-0244)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 15:36:36 KST",
+      "published_at": "2026-11-05T15:36:36+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
       "title": "한-네덜란드, 첫 과학기술공동위 개최 첨단 과학기술 협력 본격화",
       "url": "https://www.msit.go.kr/bbs/view.do?sCode=user&bbsSeqNo=94&nttSeqNo=3187932",
       "body": "",
@@ -1736,6 +1572,20 @@
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
+      "title": "2026년 하반기 비상대비업무담당자 선발시험(법령) 최종정답 확정 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130784",
+      "body": "- 2026년 하반기 비상대비업무담당자 선발시험(법령) 최종정답 확정 - 2026년 10월 31일에 시행된 비상대비업무담당자 선발시험(법령) 정답 가안에 대한 이의제기 검토 결과 최종정답을 붙임문서와 같이 확정합니다",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 13:37:13 KST",
+      "published_at": "2026-11-05T13:37:13+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "확정·개정 관련 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
       "title": "국민의 알 권리 보장은 두텁게 정보공개 문화는 건전하게",
       "url": "https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000008&nttId=130781",
       "body": "- 「공공기관의 정보공개에 관한 법률」 개정안 입법예고(11.6.~12.16.) - 비공개 대상 정보 구체화, 사전정보 공개 및 이의신청 대상 범위 확대 - 정보공개 청구에 폭언 등 수반 시 종결 및 정보공개시스템 이용 제한 행정안전부 ( 장관 윤호중 ) 는 국민의 알 권리를 두텁게 보장하고 , 건전한 정보공개 문화를 조성하기 위해 「 공공기관의 정보공개에 관한 법률 ( 정보공개법 ) 」 개정안을 11 월 6 일 ( 금 ) 부터 입법예고 한다고 밝혔다 . 이를 위해 행정안전부는 지난 2025 년 12 월 시민단체 활동가와 전문가로 구성된 민관 전담 조직 (TF) 을 구성 · 운영하고 , 관계 부처와 공무원노조 등의 의견을 수렴했다 . >> 비공개 사유 구체화 및 사전공표 확대 , 국민 권리구제 절차 대폭 강화 개정안의 주요 내용은 다음과 같다 . 먼저 , 비공개 정보 유형을 구체적으로 정해 공공기관이 자의적으로 비공개 판단을 내릴 여지를 최소화한다 . 공공기관이 보유 · 관리하는 정보는 원칙적으로 공개 대상임에도 일부 기관에서 비공개 대상 정보를 과도하게 해석 · 결정하는 문제가 있었다 . 이에 , 행정안전부는 현행 정보공개법 제 9 조제 1 항에 비공개 비율이 상대적으로 높은 5 개 비공개 정보 유형 * 의 기준을 구체화했다 . * 정보공개법 제 9 조제 1 항 법령상 비밀 · 비공개 (1 호 ), 재판 ‧ 수사 (4 호 ), 공정한 업무수행 지장 (5 호 ), 개인정보보호 (6 호 ), 법인 등의 정당한 이익 침해 (7 호 ) 구체적인 유형을 살펴보면 , 먼저 ‘ 법령상 비밀 · 비공개 정보 ( 제 1 호 )’ 와 관련해서는 일반적인 직무상 비밀준수 의무만을 규정한 법률 등의 경우 비 공개 대",
@@ -1761,6 +1611,20 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130783",
+      "body": "세종특별자치시 전략홍보팀장(개방형직위) 임용시험 시행계획을 다음과 같이 공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 전략홍보팀장 - 임용직급 : 지방행정사무관 또는 지방일반임기제(개방형 5호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ (시험절차 문의) 세종특별자치시 운영지원과(☎044-300-3045) (직무내용 문의) 세종특별자치시 대변인(☎044-300-2612)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 10:42:26 KST",
+      "published_at": "2026-11-05T10:42:26+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -1817,6 +1681,20 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "정부청사관리본부 건설공사(건축) 안전점검 수행기관 및 안전관리계획 검토기관(경남) 명부 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130779",
+      "body": "「건설기술 진흥법」 제62조, 같은 법 시행령 제100조의2 및 「건설공사 안전관리 업무수행 지침」 제18조에 따라 건설공사 안전점검 수행기관 및 안전관리계획 검토기관 명부를 다음과 같이 공고합니다.",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "THU, 05 NOV 2026 09:11:50 KST",
+      "published_at": "2026-11-05T09:11:50+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -2209,6 +2087,20 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "구리시 보건소장(개방형직위) 채용시험 시행계획 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130776",
+      "body": "구리시 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.16.(월) ~ 11.20.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 구리시 총무과 인사조직팀(☎031-550-2112)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "WED, 04 NOV 2026 16:07:22 KST",
+      "published_at": "2026-11-04T16:07:22+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
@@ -2912,6 +2804,62 @@
       "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
+      "title": "제16회 어린이 안전대상 최종 심사 결과 안내",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130730",
+      "body": "「제16회 어린이 안전대상」 최종 심사 결과 안내 ○ 제16회 어린이 안전대상 수상자 선정 결과 - 대통령상(1) : 경기도 부천시 - 국무총리상(1) : 경상북도 구미시 - 행안부장관상 본상(3) : 서울특별시 송파구, 전남광주통합특별시 해남군, 부산광역시 부산진구 - 행안부장관상 특별상(3) : 서울올림픽기념국민체육진흥공단, 백진우(심학초등학교), 박종훈(옥곡초등학교), 김기성(충청남도교통연수원)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 22:32:36 KST",
+      "published_at": "2026-11-02T22:32:36+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "「재난안전통신망 주요정보통신기반시설 보안취약점 분석평가 용역」제안서 평가 결과",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130725",
+      "body": "재난안전통신망 주요통신기반시설 보안취약점 분석평가 용역사업의 제안서 평가결과를 공개합니다.",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 17:46:53 KST",
+      "published_at": "2026-11-02T17:46:53+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "2026년 하반기 비상대비업무담당자 선발시험 문제 및 정답 가안 공개",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130724",
+      "body": "1. 2026년 하반기 비상대비업무담당자 선발시험(법령+논술)문제 및 법령시험 정답가안을 첨부와 같이 공개합니다. 2. 법령시험 이의제기는 첨부된 이의제기 서식으로 작성하여 메일(naryu75@korea.kr)로 송부하시기 바랍니다. * 이의 제기 기간 : 2026년 11월 3일(화) 10:00 ~ 2026년 11월 4일(수) 12:00 3. 답안 최종 확정 안내 : 11월 6일(금) 예정",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 17:32:44 KST",
+      "published_at": "2026-11-02T17:32:44+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "2026년도 제66회 방재전문인력 인증시험 시행 공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130721",
+      "body": "행정안전부 공고 제2026 - 1398호 제66회 방재전문인력 인증시험 시행공고 2026년도 제66회 방재 전문인력 인증시험 시행을 아래와 같이 공고합니다. 2026년 11월 5일 행정안전부장관",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 16:27:44 KST",
+      "published_at": "2026-11-02T16:27:44+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
       "title": "청년들의 창의적 아이디어로 합성생물학의 미래를 열다",
       "url": "https://www.msit.go.kr/bbs/view.do?sCode=user&bbsSeqNo=94&nttSeqNo=3187919",
       "body": "",
@@ -3078,6 +3026,62 @@
       "detected_at": "2026-11-06T07:43:29+00:00",
       "stage": "일반 게시",
       "first_seen_at": "2026-11-06T07:43:29+00:00"
+    },
+    {
+      "title": "인천광역시 계양구 보건소장(개방형직위) 임용시험 시행계획 재공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130717",
+      "body": "인천광역시 계양구 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 재공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.10.(화) ~ 11.16.(월) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 채용절차 문의 : 계양구 자치행정과 인사관리팀(☎032-450-5153) 직무내용 문의 : 계양구 보건소(☎032-430-7801)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 11:18:43 KST",
+      "published_at": "2026-11-02T11:18:43+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "고(故) 정상시 목사 정부포상 후보자 공개검증",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130716",
+      "body": "「정부포상업무지침」에 따라 고(故) 정상시 후보자 공적을 붙임과 같이 공개하여 국민들로부터 의견을 수렴하고자 합니다. 참고로 동 대상자는 향후 정부포상 확정 규모 및 공적심사위원회의 심사 결과 등에 따라 수상자로 선정되거나 선정되지 않을 수 있음을 알려드립니다. 1. 공개검증 대상 : 붙임 명단 참조 2. 공개검증 기간 : 2026. 11. 2.～ 11. 17.(15일간) 3. 의견제출 방법 : 전자우편(주소 : heuristic@korea.kr) ※ 허위‧비방 정보 접수를 방지하기 위해 작성자는 실명과 연락처를 기재하여 주시기 바랍니다. ※ 제출하신 의견에 대해 별도의 회신은 하지 않으며, 공적심사 자료로만 활용할 예정입니다. 기타 자세한 사항은 행정안전부 사회통합지원과(☎044-205-3259)로 문의하여 주시기 바랍니다.",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 11:10:19 KST",
+      "published_at": "2026-11-02T11:10:19+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "거제시 보건소장(개방형직위) 임용시험 시행계획 재공고",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130707",
+      "body": "거제시 보건소장(개방형직위) 임용시험 시행계획을 다음과 같이 재공고하오니 많은 응모 바랍니다. ○ 임용개요 - 임용직위 : 보건소장 - 임용직급 : 지방과학기술서기관 또는 일반임기제(개방형 4호) - 임용기간 : 2년 - 선발인원 : 1명 - 원서접수 : 2026.11.9.(월) ~ 11.13.(금) - 접수방법 : 방문 또는 등기우편 접수 - 세부사항 : [붙임] 공고문 참조 ※ 기타 문의 : 거제시 행정과 인사팀(☎055-639-3324)",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 09:38:50 KST",
+      "published_at": "2026-11-02T09:38:50+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "변경 관련 검토",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
+    },
+    {
+      "title": "제14회 범정부 공공데이터·AI 활용 창업경진대회 수상 후보 공개검증",
+      "url": "https://www.mois.go.kr/frt/bbs/type013/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000006&nttId=130685",
+      "body": "제14회 범정부 공공데이터·AI 활용 창업경진대회 수상 후보에 대해 국민의 의견을 수렴, 그 의견을 공적 심사 자료로 활용하고자 수상 후보를 공개하오니, 의견이 있으신 분은 2026. 11. 16(월)까지 의견을 제출해 주시기를 바랍니다. 1. 추천예정 훈격 : 정부시상(대통령상 2점, 총리상 2점) 및 상장(장관상 4점, 기관장상 2점) 2. 공개검증 대상 : 대회 왕중왕전 진출 10개 팀 3. 검증기간 : 2026.11.2.∼11.16. 4. 의견제출 방법 : 전자우편(atthezoo@korea.kr, yuri@nia.or.kr) 5. 문의 : 행정안전부 공공데이터정책과(044-205-2470) 한국지능정보사회진흥원(053-230-1568) ※ 허위 비방 정보 접수를 방지하기 위해 작성자는 실명과 연락처를 기재하여 주시기 바랍니다. ※ 제출하신 의견에 대해 별도의 회신은 하지 않으며, 공적심사 자료로만 활용할 예정입니다.",
+      "source": "행정안전부",
+      "category": "알림",
+      "published": "MON, 02 NOV 2026 09:07:48 KST",
+      "published_at": "2026-11-02T09:07:48+00:00",
+      "date_basis": "RSS 게시일",
+      "detected": "기존",
+      "detected_at": "2026-11-06T07:41:49+00:00",
+      "stage": "일반 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "한국의 디지털 기록관리 경험, 페루의 기록관리 발전으로 잇는다",
@@ -4735,30 +4739,44 @@
       "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
-      "title": "「한약제제 급여목록 및 상한금액표」 일부개정(고시 제2026-229호) 안내",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492423&act=view",
+      "title": "「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정고시",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492392&act=view",
       "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
       "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
-      "title": "「보건복지부 적극행정공무원의 징계절차에서의 소명 또는 소송 등에 관한 지원 규정」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492415&act=view",
+      "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492391&act=view",
       "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
       "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
-      "title": "「보건복지부 고문변호사 위촉·운영 및 소송 위임 등에 관한 규정」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492413&act=view",
+      "title": "「평가 유예 신의료기술 고시」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492387&act=view",
+      "status": "변경 전·후 추출 대기",
+      "source": "보건복지부",
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
+    },
+    {
+      "title": "「신의료기술의 안전성·유효성 평가결과 고시」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492386&act=view",
+      "status": "변경 전·후 추출 대기",
+      "source": "보건복지부",
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
+    },
+    {
+      "title": "「첨단재생의료 임상연구 및 첨단재생의료 치료 위험도 구분에 관한 고시」제정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492373&act=view",
       "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
       "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     }
   ],
   "scan_metrics": {
-    "policies_examined": 5,
-    "source_pages_read": 4,
+    "policies_examined": 7,
+    "source_pages_read": 6,
     "search_requests": 0,
     "candidates_found": 0,
     "target_pages_examined": 0,

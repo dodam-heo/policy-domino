@@ -11,6 +11,7 @@ targets = {
 "law_api_sample_http":"http://www.law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",
 "law_api_sample_base":"https://law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",
 "law_public_index":"https://www.law.go.kr/LSW/nwRvsLsPop.do",
+"law_revision_direct":"https://www.law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=291687&chrClsCd=010202",
 "law_open_guides":"https://open.law.go.kr/LSO/information/guide.do",
 "moleg_public":"https://www.moleg.go.kr/",
 }
@@ -89,3 +90,24 @@ try:
     for word in ("lsRvsDocInfoR","lsRvsRsn","lawContent","lsiSeq"):
         pos=raw.find(word);print("PUBLIC REVISION HTML",word,raw[max(0,pos-120):pos+210] if pos>=0 else "not present",flush=True)
 except Exception as e:print("PUBLIC REVISION ERROR:",type(e).__name__,str(e)[:150],flush=True)
+
+try:
+    uri=targets["law_revision_direct"]
+    req=urllib.request.Request(uri,headers={"User-Agent":"Mozilla/5.0 (PolicyDomino public law research)","Accept":"text/html"})
+    with urllib.request.urlopen(req,timeout=12) as res: raw=res.read(220000).decode("utf-8","replace")
+    from html.parser import HTMLParser
+    class PlainText(HTMLParser):
+        def __init__(self):super().__init__();self.exclude=0;self.parts=[]
+        def handle_starttag(self,tag,attrs):
+            if tag in ("script","style"):self.exclude+=1
+        def handle_endtag(self,tag):
+            if tag in ("script","style"):self.exclude=max(0,self.exclude-1)
+        def handle_data(self,text):
+            if not self.exclude:self.parts.append(text)
+    parser=PlainText();parser.feed(raw)
+    text=" ".join(" ".join(parser.parts).split())
+    print("DIRECT LAW AMENDMENT LEN:",len(raw),"TEXT",len(text),flush=True)
+    for word in ("개정이유","개정문","제1조","제2조","부칙"):
+        at=text.find(word)
+        print("DIRECT LAW AMENDMENT SNIPPET",word, text[max(0,at-90):at+290] if at>=0 else "NONE",flush=True)
+except Exception as e: print("DIRECT LAW AMENDMENT ERROR:",type(e).__name__,str(e)[:180],flush=True)

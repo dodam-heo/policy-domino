@@ -50,4 +50,14 @@ class AnnualStandardsTests(unittest.TestCase):
         self.assertFalse(actions)
         self.assertEqual(health["confirmed"],0)
 
+    def test_multi_agency_domino_from_shared_median_income(self):
+        e1={"policy_profile":"welfare","event_id":"basis","title":"2027 중위소득","ministry":"보건복지부","effective_date":"2027-01-01","url":"https://www.mohw.go.kr/a","downstream_changes":[],"upstream_changes":[]}
+        e2={"policy_profile":"housing","event_id":"housing","title":"2027 주거급여","ministry":"국토교통부","effective_date":"2027-01-01","url":"https://www.law.go.kr/b","value_verified":True,"downstream_changes":[],"upstream_changes":[]}
+        e3={"policy_profile":"education","event_id":"education","title":"2027 교육급여","ministry":"교육부","effective_date":"2027-01-01","url":"https://www.law.go.kr/c","value_verified":True,"downstream_changes":[],"upstream_changes":[]}
+        actions=[{"event_id":"housing","upstream_event_ids":[]},{"event_id":"education","upstream_event_ids":[]}]
+        summary=p.link_verified_welfare_dependencies([e1,e2,e3],actions)
+        self.assertEqual(summary["linked_rules"],2)
+        self.assertEqual(len(e1["downstream_changes"]),2)
+        self.assertTrue(all("basis" in a["upstream_event_ids"] for a in actions))
+
 if __name__=="__main__":unittest.main()

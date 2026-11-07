@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1f33"><title>POLICY DOMINO — 변화의 다음 조치까지</title>
+<style>
+:root{font-family:"Pretendard","Apple SD Gothic Neo",system-ui,-apple-system,sans-serif;background:#f5f7fa;color:#12263d;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
+header{background:#0d263d;color:#fff;padding:19px max(22px,calc((100vw - 1240px)/2));display:flex;justify-content:space-between;align-items:center;gap:18px}
+.brand{font-size:21px;font-weight:830;letter-spacing:-.6px}.brand em{font-style:normal;color:#83e1df}.tag{font-size:11px;color:#a4b7c7;letter-spacing:.12em;margin-top:5px}
+.headlink{color:#d9e7f1;font-size:12px;text-decoration:none;border:1px solid #526477;padding:8px 12px;border-radius:8px}
+main{max-width:1240px;margin:auto;padding:30px 20px 80px}.overline{font-size:11px;font-weight:800;color:#3774a1;letter-spacing:.14em}
+h1{font-size:28px;margin:8px 0 8px;letter-spacing:-.8px}h2{font-size:19px;margin:0;letter-spacing:-.35px}h3{font-size:15px;margin:0}.desc{font-size:14px;color:#63758b;line-height:1.65;margin:5px 0 0}
+.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}.right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ghost{border:1px solid #d8e1ea;color:#335471;background:white;border-radius:9px;padding:9px 13px;font-weight:650;font-size:12px}.ghost:hover{background:#f1f5f9}
+.sourceline{font-size:12px;color:#697f95;margin-top:12px}
+.summary{margin-top:24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.metric{border:1px solid #e0e6ed;background:#fff;padding:16px 17px;border-radius:13px}.metric span{font-size:12px;color:#6d7e8f;display:block}.metric strong{display:block;font-size:25px;margin-top:7px;letter-spacing:-.4px}.metric small{display:block;color:#98a4b1;font-size:10px;margin-top:4px}
+.bar{margin:20px 0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sectionTabs{display:flex;gap:5px;background:#eaf0f5;border-radius:10px;padding:4px}
+.sectionTab{border:0;background:transparent;border-radius:8px;padding:10px 15px;font-weight:750;font-size:13px;color:#68788a}.sectionTab.active{background:white;color:#163752;box-shadow:0 1px 5px #23395018}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 315px;gap:18px}
+.panel{background:white;border:1px solid #e0e6ee;border-radius:15px;padding:19px;min-width:0;align-self:start}
+.panelhead{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}
+.small{font-size:12px;color:#72859b}.filterrow{display:flex;gap:8px;margin:16px 0 12px;flex-wrap:wrap}.filterrow select,.filterrow input{background:#fff;border:1px solid #dae2eb;border-radius:8px;padding:10px 11px;font-size:12px;color:#2a4158}
+.filterrow input{min-width:150px;flex:1}.filterrow select{max-width:220px}
+.toggle{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}.pillbtn{border:1px solid #e1e7ee;background:#fff;color:#51657b;padding:8px 11px;border-radius:100px;font-size:12px;font-weight:700}.pillbtn.active{background:#153d5d;border-color:#153d5d;color:#fff}
+.item{border-top:1px solid #e9edf2;padding:18px 2px}.itemTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.itemTop>div{min-width:0}.itemTitle{font-size:15px;line-height:1.5;font-weight:780;margin:6px 0}.detail{font-size:13px;color:#43586e;line-height:1.7;margin:8px 0 4px}
+.meta{font-size:11px;color:#748598}.label{font-size:11px;display:inline-block;border-radius:7px;background:#f0f4f8;color:#4b627c;padding:4px 7px;font-weight:700}
+.status{display:inline-flex;align-items:center;gap:5px;border-radius:7px;padding:5px 7px;font-size:11px;font-weight:750;white-space:nowrap;background:#eef2f6;color:#597086}
+.status.done{background:#e5f6ee;color:#158154}.status.pending{background:#fff0e6;color:#ad4c17}.status.upcoming{background:#e8f2ff;color:#2b65aa}
+.status:before{content:"";height:6px;width:6px;border-radius:100%;background:currentColor}
+.rowend{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.detailButton{font-size:12px;color:#1d6a9c;background:transparent;border:0;padding:4px 0;font-weight:800}
+.detailpanel{background:#f6f9fc;border:1px solid #e2eaf0;border-radius:10px;padding:14px;margin-top:12px;display:none}
+.detailpanel.open{display:block}.detailpanel dl{display:grid;grid-template-columns:93px 1fr;gap:9px;margin:0;font-size:12px;line-height:1.6}.detailpanel dt{color:#798b9c}.detailpanel dd{margin:0;word-break:break-all}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:12px 0}.diff>div{background:#fff;border:1px solid #e0e8f0;border-radius:8px;padding:12px;min-width:0;overflow-wrap:anywhere}.diff small{font-weight:800;font-size:11px;color:#72869c}.diff p{font-size:12px;line-height:1.6;max-height:160px;overflow:auto;white-space:pre-wrap;margin:8px 0 0}.mark-old{border-left:3px solid #d89184!important}.mark-new{border-left:3px solid #4cae95!important}
+.muted{font-size:12px;color:#6d8093;line-height:1.65}
+a{color:#1871ac;text-decoration:none}a:hover{text-decoration:underline}
+.event{border-top:1px solid #e9edf2;padding:14px 0}.event strong{font-size:13px;line-height:1.5;display:block;margin:6px 0}.event small{font-size:11px;color:#71839a}
+.dot{height:8px;width:8px;border-radius:100%;background:#bdc8d1;display:inline-block;margin-right:5px}.dot.ok{background:#22aa81}.dot.err{background:#c97558}
+.notice{margin-top:18px;padding:14px 16px;background:#fff;border:1px solid #e2e8ed;border-left:3px solid #8caabc;border-radius:10px;font-size:12px;color:#52677d;line-height:1.7}
+.empty{text-align:center;padding:30px 12px;color:#6c7c8b;line-height:1.8;font-size:13px}.empty .large{font-size:31px;margin-bottom:10px;color:#9dafbd}
+aside .stack{margin-top:15px}.line{border-top:1px solid #e9eef2;padding:13px 0;font-size:12px;line-height:1.65;color:#50667a}
+.line b{display:block;color:#263e55;margin-bottom:5px}.sidebarNum{font-size:19px;font-weight:800;color:#1f4767;margin-top:2px}
+footer{margin-top:25px;color:#96a3b0;font-size:11px;text-align:center}
+@media(max-width:850px){main{padding:20px 13px 50px}.workspace{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:24px}.panel{padding:14px}.sectionTabs{width:100%;justify-content:space-around}.sectionTab{padding:9px 6px;font-size:12px}.metric{padding:14px}.metric strong{font-size:23px}}
+</style></head>
+<body><header><div><div class="brand">POLICY <em>DOMINO</em></div><div class="tag">CHANGE → IMPACT → ACTION</div></div><a class="headlink" href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">운영 상태</a></header>
+<main>
+<div class="topline"><div><div class="overline">POLICY IMPACT INTELLIGENCE</div><h1>법령이 바뀌면, 바꿔야 할 일까지.</h1><p class="desc">확정된 정책 변경에서 기관별 업무·제도·서비스·시스템 조치사항을 연결합니다.</p><div class="sourceline" id="last">데이터를 확인하고 있습니다.</div></div><div class="right"><button class="ghost" id="reload">새로고침 ↻</button></div></div>
+<section class="summary">
+<div class="metric"><span>전체 변경 필요사항</span><strong id="nAll">—</strong><small>조치 상태와 관계없이 모두 포함</small></div>
+<div class="metric"><span>조치 확인</span><strong id="nDone">—</strong><small>실제 반영 근거 확보</small></div>
+<div class="metric"><span>미조치 확인</span><strong id="nPending">—</strong><small>적용일·종전 상태 대조</small></div>
+<div class="metric"><span>확인 필요·시행 예정</span><strong id="nUnknown">—</strong><small>미확인을 미조치로 단정하지 않음</small></div>
+</section>
+<div class="bar"><div class="sectionTabs"><button class="sectionTab active" data-section="actions">전체 변경 필요사항</button><button class="sectionTab" data-section="events">확정된 변경 사건</button></div><div class="small" id="ordering">최근 변경된 법령부터 표시</div></div>
+<div class="workspace">
+<section class="panel">
+<div class="panelhead"><h2 id="sectionTitle">기관별 변경 필요사항</h2><span class="small" id="showCount"></span></div>
+<div class="filterrow"><input id="query" placeholder="기관·업무·제도·법령 검색" aria-label="목록에서 검색"><select id="agency" aria-label="기관 선택"><option value="">전체 기관</option></select></div>
+<div class="toggle" id="actionFilters"><button class="pillbtn active" data-filter="all">전체</button><button class="pillbtn" data-filter="조치 확인">조치 확인</button><button class="pillbtn" data-filter="미조치 확인">미조치 확인</button><button class="pillbtn" data-filter="반영 확인 필요">확인 필요</button><button class="pillbtn" data-filter="시행 예정">시행 예정</button></div>
+<div id="items"><div class="empty">데이터 확인 중입니다.</div></div>
+</section>
+<aside class="panel">
+<h2>변경·영향 분석 현황</h2>
+<div class="stack">
+<div class="line"><b>공식 변경 원천</b><span id="sourceState"><span class="dot"></span>연결 상태 확인 중</span><div class="muted" id="sourceError"></div></div>
+<div class="line"><b>조문 비교</b><div id="compared" class="sidebarNum">—</div><div class="muted">새 법령 버전과 과거 버전을 대조</div></div>
+<div class="line"><b>최근 확보된 변경 사건</b><div id="eventsCount" class="sidebarNum">—</div><div class="muted">법령명·조문·공포일·시행일·근거 연결</div></div>
+<div class="line"><b>기관 연결 상태</b><div id="agencyScope" class="muted">기관 역할과 실제 수행 업무의 연결 관계를 조사합니다.</div></div>
+<div class="line"><b>판정 원칙</b>조치사항은 모두 목록에 남기고, 반영 완료 또는 미조치가 확인된 경우에만 상태를 확정합니다. 내부문서·내부시스템 열람은 하지 않습니다.</div>
+</div>
+</aside>
+</div>
+<div class="notice" id="note">데이터가 수집되지 않았을 때도 임의의 사례나 조치 완료 건수를 생성하지 않습니다.</div>
+<footer>POLICY DOMINO · 공식 법령 원천에서 변경을 확인하고 기관별 조치를 연결하는 서비스</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const url=s=>{try{let u=new URL(s);return /^https?:$/.test(u.protocol)?esc(u.href):"#"}catch(e){return "#"}};
+const nice=s=>{if(!s)return "미확인";let d=new Date(s);if(isNaN(d.getTime()))return esc(s);return d.toLocaleString("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"})};
+let data={schema:"",actions:[],events:[],health:{}},section="actions",filter="all";
+function currentActions(){let list=(data.actions||[]).slice();list.sort((a,b)=>(b.change_date||"").localeCompare(a.change_date||""));const q=$("query").value.trim().toLowerCase(),agency=$("agency").value;return list.filter(a=>(filter==="all"||a.status===filter)&&(!agency||a.agency===agency)&&(!q||[a.law_title,a.agency,a.work,a.service,a.category,a.required_change,a.article].some(v=>String(v||"").toLowerCase().includes(q))))}
+function statusHTML(s){let cl=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";return '<span class="status '+cl+'">'+esc(s||"반영 확인 필요")+'</span>'}
+function actionCard(x){
+const key=esc(x.id);
+return '<article class="item"><div class="itemTop"><div><span class="meta">'+esc(x.agency||"기관 식별 중")+' · '+esc(x.agency_level||"")+'</span><div class="itemTitle">'+esc(x.required_change||"변경사항 검토")+'</div></div>'+statusHTML(x.status)+'</div>'+
+'<div class="detail"><b>'+esc(x.work||"업무")+'</b> · '+esc(x.category||"")+'</div><div class="meta">근거 '+esc(x.law_title||"")+' · '+esc(x.article||"")+' · 시행 '+esc(x.effective_date||"별도 확인 필요")+'</div>'+
+'<div class="rowend"><span class="label">'+esc(x.confidence||"업무 영향 검토")+'</span><button class="detailButton" data-detail="'+key+'">변경 전·후 및 근거 보기 ＋</button></div>'+
+'<div class="detailpanel" id="detail-'+key+'"><dl><dt>담당 기관</dt><dd>'+esc(x.agency||"")+' · '+esc(x.agency_role||"")+'</dd><dt>관련 업무</dt><dd>'+esc(x.work||"")+'</dd><dt>관련 제도·서비스</dt><dd>'+esc(x.service||"별도 확인")+'</dd><dt>시행일</dt><dd>'+esc(x.effective_date||"확인 필요")+'</dd><dt>상태 판단</dt><dd>'+esc(x.status_evidence||"실제 반영 여부를 확인할 근거 미확보")+'</dd></dl>'+
+'<div class="diff"><div class="mark-old"><small>변경 전 조문</small><p>'+esc(x.before||"이전 버전 확인 필요")+'</p></div><div class="mark-new"><small>변경 후 조문</small><p>'+esc(x.after||"변경 내용 확인 필요")+'</p></div></div>'+
+'<div class="muted">'+esc(x.note||"")+'</div><p><a href="'+url(x.basis)+'" target="_blank" rel="noopener">국가법령정보센터 원문 확인 ↗</a></p></div></article>';
+}
+function eventCard(x){
+return '<article class="event"><small>공포 '+esc(x.promulgated_at||"미확인")+' · 시행 '+esc(x.effective_date||"미확인")+' · '+esc(x.revision||"")+'</small><strong>'+esc(x.title||"")+'</strong>'+
+'<div class="muted">'+esc(x.ministry||"소관부처 확인 필요")+' · '+esc(x.law_type||"")+' · '+esc(x.comparison_status||"조문 대조 중")+' · 변경 조문 '+(x.change_count||0)+'개</div>'+
+'<a href="'+url(x.url)+'" target="_blank" rel="noopener">공식 법령 원문 ↗</a></article>'
+}
+function draw(){
+const box=$("items");const q=$("query").value.trim().toLowerCase();const agency=$("agency").value;
+if(section==="actions"){
+ const list=currentActions();
+ $("sectionTitle").textContent="기관별 변경 필요사항";
+ $("showCount").textContent=list.length+"건 표시";
+ $("actionFilters").hidden=false;
+ box.innerHTML=list.length?list.map(actionCard).join(""):emptyMessage("기관별 변경 필요사항이 아직 확인되지 않았습니다.",(data.health||{}).source_status==="정상"?"현재 수집된 법령의 변경 전·후 조문과 수행기관 관계를 조사 중입니다. 조사 미완료는 조치 불필요가 아닙니다.":"공식 법령 데이터 연결에 문제가 있어 영향 분석을 확정할 수 없습니다.");
+}else{
+ $("sectionTitle").textContent="실제 확정된 법령 변경";
+ $("actionFilters").hidden=true;
+ let list=(data.events||[]).filter(x=>(!q||[x.title,x.ministry,x.law_type].some(v=>String(v||"").toLowerCase().includes(q)))&&(!agency||x.ministry===agency));
+ $("showCount").textContent=list.length+"건 표시";
+ box.innerHTML=list.length?list.map(eventCard).join(""):emptyMessage("공식 법령 변경 기록을 아직 확보하지 못했습니다.","게시물 등록을 법령 변경 사건으로 대체해 표시하지 않습니다.");
+}
+box.querySelectorAll("[data-detail]").forEach(b=>b.onclick=()=>{const panel=$("detail-"+b.dataset.detail);if(panel)panel.classList.toggle("open")});
+}
+function emptyMessage(title,body){return '<div class="empty"><div class="large">⌕</div><b>'+esc(title)+'</b><p>'+esc(body)+'</p></div>'}
+async function load(){
+try{
+const result=await fetch("./data.json?ts="+Date.now(),{cache:"no-store"});if(!result.ok)throw Error("데이터 HTTP "+result.status);
+const next=await result.json();if(next.schema!=="policy-domino-next-v1")throw Error("새 시스템 데이터가 아직 배포되지 않았습니다.");
+data=next;let actions=data.actions||[],h=data.health||{};
+$("nAll").textContent=actions.length;$("nDone").textContent=actions.filter(x=>x.status==="조치 확인").length;
+$("nPending").textContent=actions.filter(x=>x.status==="미조치 확인").length;
+$("nUnknown").textContent=actions.filter(x=>["반영 확인 필요","시행 예정"].includes(x.status)).length;
+$("last").textContent="마지막 자동 분석: "+nice(data.generated_at);
+const okay=h.source_status==="정상";
+$("sourceState").innerHTML='<span class="dot '+(okay?"ok":"err")+'"></span>'+esc(okay?"공식 변경 원천 연결":"공식 변경 원천 확인 필요");
+$("sourceError").textContent=h.error||"";
+$("compared").textContent=h.compared??0;$("eventsCount").textContent=(data.events||[]).length;
+$("agencyScope").textContent="기관별 조치 항목 "+actions.length+"건 · 실제 개별기관으로 연결된 범위는 근거별로 확인";
+$("note").textContent=data.disclaimer||"조치 상태는 공개 근거로 검증된 경우에만 확정합니다.";
+const list=[...new Set([...actions.map(x=>x.agency),(data.events||[]).map(x=>x.ministry)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));const old=$("agency").value;
+$("agency").innerHTML='<option value="">전체 기관</option>'+list.map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').join("");if(list.includes(old))$("agency").value=old;
+draw();
+}catch(e){$("last").textContent="데이터 확인 실패";$("items").innerHTML=emptyMessage("서비스가 아직 새 데이터와 연결되지 않았습니다.",e.message);$("sourceError").textContent=e.message;["nAll","nDone","nPending","nUnknown"].forEach(k=>$(k).textContent="—");}
+}
+document.querySelectorAll("[data-section]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-section]").forEach(x=>x.classList.remove("active"));b.classList.add("active");section=b.dataset.section;$("agency").value="";draw()});
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.filter;draw()});
+$("query").oninput=draw;$("agency").onchange=draw;$("reload").onclick=load;load();
+</script></body></html>

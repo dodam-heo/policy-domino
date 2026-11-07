@@ -120,12 +120,14 @@ try{
 const result=await fetch("./data.json?ts="+Date.now(),{cache:"no-store"});if(!result.ok)throw Error("데이터 HTTP "+result.status);
 const next=await result.json();if(next.schema!=="policy-domino-next-v1")throw Error("새 시스템 데이터가 아직 배포되지 않았습니다.");
 data=next;let actions=data.actions||[],h=data.health||{};
-$("nAll").textContent=actions.length;$("nDone").textContent=actions.filter(x=>x.status==="조치 확인").length;
-$("nPending").textContent=actions.filter(x=>x.status==="미조치 확인").length;
-$("nUnknown").textContent=actions.filter(x=>["반영 확인 필요","시행 예정"].includes(x.status)).length;
+const unavailable=h.source_status!=="정상"&&actions.length===0;
+$("nAll").textContent=unavailable?"—":actions.length;
+$("nDone").textContent=unavailable?"—":actions.filter(x=>x.status==="조치 확인").length;
+$("nPending").textContent=unavailable?"—":actions.filter(x=>x.status==="미조치 확인").length;
+$("nUnknown").textContent=unavailable?"—":actions.filter(x=>["반영 확인 필요","시행 예정"].includes(x.status)).length;
 $("last").textContent="마지막 자동 분석: "+nice(data.generated_at);
 const okay=h.source_status==="정상";
-$("sourceState").innerHTML='<span class="dot '+(okay?"ok":"err")+'"></span>'+esc(okay?"공식 변경 원천 연결":"공식 변경 원천 확인 필요");
+$("sourceState").innerHTML='<span class="dot '+(okay?"ok":"err")+'"></span>'+esc(okay?"공식 변경 원천 연결":h.source_status==="메타데이터만 연결"?"법령 공포목록만 연결":"공식 변경 원천 확인 필요");
 $("sourceError").textContent=h.error||"";
 $("compared").textContent=h.compared??0;$("eventsCount").textContent=(data.events||[]).length;
 $("agencyScope").textContent="기관별 조치 항목 "+actions.length+"건 · 실제 개별기관으로 연결된 범위는 근거별로 확인";

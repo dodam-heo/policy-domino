@@ -44,14 +44,14 @@ footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 <main>
 <div class="topline"><div><h1>신규·수정 법령 및 행정규칙</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
 <section class="stats">
-<div class="stat"><small>최근 제정·개정 법령</small><strong id="total">—</strong></div>
-<div class="stat"><small>최근 7일 제·개정</small><strong id="recent">—</strong></div>
+<div class="stat"><small>제정·개정 공식 기록</small><strong id="total">—</strong></div>
+<div class="stat"><small>최근 7일 제정·개정 게시</small><strong id="recent">—</strong></div>
 <div class="stat"><small>검토 대기 게시</small><strong id="candidate">—</strong></div>
 <div class="stat"><small>기관 간 게시정보 점검</small><strong id="targets">—</strong></div>
 </section>
 <div class="mainGrid">
 <section class="panel">
-<h2 id="sectionTitle">최신 법령 제정·개정 내역</h2>
+<h2 id="sectionTitle">신규 제정·개정 내역</h2>
 <div class="tabs" role="tablist">
 <button class="tab active" data-tab="new">신규·수정</button>
 <button class="tab" data-tab="audit">게시정보 수정 점검</button>
@@ -85,7 +85,7 @@ let detected=x.change_detected||x.detected||x.status||"기존";let pills='<span 
 if(detected==="신규 감지"||detected==="수정 감지")pills+=' <span class="pill green">'+safe(detected)+'</span>';
 let attachments=(x.attachments||[]).map(a=>'<div>첨부: <a target="_blank" rel="noopener" href="'+link(a.url)+'">'+safe(a.name)+'</a> · '+safe(a.analysis||"검토 대상")+'</div>').join("");
 let deltas=(x.change_details||[]).map(d=>'<div class="changeLine">'+safe(d.before)+' → '+safe(d.after)+'<div class="cap">'+safe(d.evidence)+'</div></div>').join("");
-return '<article class="item"><div class="itemMeta"><b>'+safe(x.source)+'</b><span>'+safe(x.category||"")+'</span><span>게시 '+date(stamp(x))+'</span></div><div class="itemTitle">'+safe(x.title)+'</div>'+pills+(x.body?'<p class="desc">'+safe(x.body)+'</p>':"")+'<div><a target="_blank" rel="noopener" href="'+link(x.url)+'">법령·공식 원문 열기</a></div>'+((attachments||deltas)?'<button class="detailButton" onclick="this.nextElementSibling.classList.toggle(\'open\')">근거·첨부 확인</button><div class="details">'+(deltas||"")+attachments+'</div>':"")+'</article>'
+return '<article class="item"><div class="itemMeta"><b>'+safe(x.source)+'</b><span>'+safe(x.category||"")+'</span><span>'+(x.promulgated_at?"공포 ":"게시 ")+date(lawDate(x))+'</span></div><div class="itemTitle">'+safe(x.title)+'</div>'+pills+(x.body?'<p class="desc">'+safe(x.body)+'</p>':"")+'<div><a target="_blank" rel="noopener" href="'+link(x.url)+'">법령·공식 원문 열기</a></div>'+((attachments||deltas)?'<button class="detailButton" onclick="this.nextElementSibling.classList.toggle(\'open\')">근거·첨부 확인</button><div class="details">'+(deltas||"")+attachments+'</div>':"")+'</article>'
 }
 function renderImpact(x){
 let confirmed=x.before&&x.after;
@@ -98,7 +98,7 @@ if(tab==="new"){title=data.law_source?.api_connected?"최근 제정·개정 법�
 if(tab==="candidate"){title="변경 검토 후보 · 별도 조사";list=optionFilter(items.filter(x=>stage(x)!=="일반 게시"),"source")}
 if(tab==="audit"){title="기관별 게시정보 점검";list=optionFilter(data.impacts||[],"target_source")}
 el("sectionTitle").textContent=title;
-el("results").innerHTML=list.length?(tab==="audit"?list.map(renderImpact).join(""):list.slice(0,160).map(renderPost).join("")):'<div class="empty">'+(tab==="new"?"이전 실행 이후 새로 감지된 게시물이나 수정이 없습니다. ‘최신 게시’에서 최근 공개 자료를 볼 수 있습니다.":tab==="audit"?"현재 자동 조사에서 연결된 기관 게시물이 확인되지 않았습니다. 수집 출처를 계속 확대하고 있습니다.":"이 조건에 해당하는 게시물이 없습니다.")+'</div>'
+el("results").innerHTML=list.length?(tab==="audit"?list.map(renderImpact).join(""):list.slice(0,160).map(renderPost).join("")):'<div class="empty">'+(tab==="new"?"제정·개정 공식 자료가 아직 확인되지 않았습니다. 일반 새 게시물은 이 화면에 포함하지 않습니다.":tab==="audit"?"현재 자동 조사에서 연결된 기관 게시물이 확인되지 않았습니다. 수집 출처를 계속 확대하고 있습니다.":"이 조건에 해당하는 게시물이 없습니다.")+'</div>'
 }
 async function load(){
 try{
@@ -108,9 +108,8 @@ data=await response.json();
 const counts=data.counts||{};
 el("total").textContent=(data.law_changes||[]).length;
 const legal=(data.law_changes||[]);
-const referenceDay=(data.generated_at||new Date().toISOString()).slice(0,10);
-const from=new Date(referenceDay+"T00:00:00Z").getTime()-6*86400000;
-el("recent").textContent=legal.filter(x=>new Date(lawDate(x)).getTime()>=from).length;
+const cutoff=Date.parse((data.generated_at||new Date().toISOString()).slice(0,10)+"T00:00:00Z")-6*86400000;
+el("recent").textContent=legal.filter(x=>Date.parse(lawDate(x))>=cutoff).length;
 el("candidate").textContent=counts.candidate??counts.change_count??0;
 el("targets").textContent=counts.targets??(data.impacts||[]).length;
 el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · "+(data.law_source?.api_connected?"공포일":"공식 게시일")+" 최신순";

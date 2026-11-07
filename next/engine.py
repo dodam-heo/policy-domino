@@ -121,18 +121,7 @@ def public_law_list(limit=30):
             if tag=="tr" and self.row is not None:
                 if len(self.row)>=8:self.rows.append(self.row)
                 self.row=None
-    raw=None
-    errors=[]
-    for base in ("https://www.law.go.kr/LSW/nwRvsLsPop.do",
-                 "https://law.go.kr/LSW/nwRvsLsPop.do",
-                 "http://www.law.go.kr/LSW/nwRvsLsPop.do"):
-        try:
-            raw=download(base,timeout=8)
-            if b"<table" in raw.lower():break
-        except Exception as exc:
-            errors.append(type(exc).__name__+": "+str(exc)[:100])
-    if not raw:
-        raise OSError("공식 최근공포법령 공개목록 접속 실패: "+"; ".join(errors))
+    raw=download("https://www.law.go.kr/LSW/nwRvsLsPop.do",timeout=18)
     parser=Rows();parser.feed(raw.decode("utf-8","replace"))
     laws=[]
     for row in parser.rows:
@@ -142,7 +131,7 @@ def public_law_list(limit=30):
             if not (re.fullmatch(r"\d+",index) and any(t in change for t in VALID_REVISIONS)):
                 continue
             prom=re.sub(r"\D","",published)
-            if len(prom)!=8 or not title or not ministry or not number or "..." in title or "…" in title:continue
+            if len(prom)!=8 or not title or not ministry or not number:continue
             unique=digest(title+"|"+number+"|"+prom)
             laws.append({"id":"pub:"+unique,"mst":"","title":title,
                 "promulgated_at":date_str(prom),"promulgation_number":number,
@@ -276,7 +265,7 @@ def main():
                 health["source_status"]="메타데이터만 연결"
                 health["error"]="법령 공포 목록은 확인했지만 종전·변경 조문 비교에는 LAW_OC API 인증이 필요합니다."
         except Exception as source_error:
-            health["fallback_error"]=type(source_error).__name__+": "+str(source_error)[:200]
+            health["fallback_error"]=type(source_error).__name__
     health["official_records"]=len(laws)
     snapshots=state.get("snapshots",{})
     events={e["event_id"]:e for e in state.get("events",[]) if e.get("event_id")}

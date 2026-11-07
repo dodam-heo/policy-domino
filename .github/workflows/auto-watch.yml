@@ -81,7 +81,7 @@ jobs:
           if [ -f data/next_state.json ]; then git add data/next_state.json; fi
           if ! git diff --cached --quiet; then
             git fetch origin main
-            git reset --soft origin/main
+            git reset --mixed origin/main
             git add site/data.json data/next_run_status.json
             if [ -f data/next_state.json ]; then git add data/next_state.json; fi
             if ! git diff --cached --quiet; then
@@ -157,7 +157,7 @@ jobs:
           git config user.email 'policy-domino-bot@users.noreply.github.com'
           git add data/next_deploy_status.json
           git fetch origin main
-          git reset --soft origin/main
+          git reset --mixed origin/main
           git add data/next_deploy_status.json
           if ! git diff --cached --quiet; then
             git commit -m 'ops: NEXT Pages deployment confirmed [skip ci]'

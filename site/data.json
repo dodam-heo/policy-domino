@@ -1,8 +1,8 @@
 {
   "schema": "policy-domino-next-v1",
-  "generated_at": "2026-11-07T21:39:38+00:00",
+  "generated_at": "2026-11-07T21:40:43+00:00",
   "health": {
-    "generated_at": "2026-11-07T21:39:38+00:00",
+    "generated_at": "2026-11-07T21:40:43+00:00",
     "collector": "국가법령정보센터 공식 공포일·연혁·조문 API",
     "source_status": "공식 공포·개정문 연결",
     "error": "제·개정문과 변경 지시사항을 확보했습니다. 이전 전체 조문과 기관별 실제 조치 여부까지는 검증되지 않았습니다.",
@@ -20,15 +20,16 @@
         {
           "profile": "housing",
           "type": "ValueError",
-          "message": "공식 current 자료를 읽을 수 없음: HTTPError HTTP Error 307: The HTTP server returned a redirect error that wo"
+          "message": "공식 고시 검증 실패 (연도=False, 번호=False, 시행일=False)"
         },
         {
           "profile": "education",
           "type": "ValueError",
-          "message": "공식 고시 검증 실패 (연도=False, 번호=False, 시행일=False)"
+          "message": "교육급여 선정 고시 확인 불가"
         }
       ],
-      "scope": "등록된 공식 고시 3종의 정기 대조; 전국 고시 전수조사는 아님"
+      "scope": "등록된 공식 고시 3종의 정기 대조; 전국 고시 전수조사는 아님",
+      "warnings": []
     },
     "verified_domino": {
       "relationships": 14,

@@ -36,6 +36,9 @@ TASK_RULES=(
   "category":"행정 업무·서비스","operation":"허가·신고·등록·심사","requirement":"변경된 허가·신고·심사 요건과 업무처리 절차를 적용"},
  {"id":"notices","phrases":("고지","안내","통지","공시","공고","공개하여야","게시"),
   "category":"대국민 서비스·안내","operation":"고지·통지·공개","requirement":"변경된 법적 고지·안내·공개 요건을 대국민 서비스에 반영"},
+ {"id":"organization","phrases":("직제","정원","하부조직","전문직공무원","전문관","직급","기구","사무분장","직무","소속기관"),
+  "category":"조직·인사 및 업무분장","operation":"조직·정원·직무 배정",
+  "requirement":"변경된 직제·정원·업무분장 규정과 시행·경과조치를 소관 조직 운영기준에 반영"},
  {"id":"inspection","phrases":("점검","감독","준수","의무","금지","제재","과태료"),
   "category":"점검·관리 업무","operation":"점검·준수·감독","requirement":"변경된 의무·금지·점검 기준을 관련 업무의 판정·관리 절차에 반영"}
 )
@@ -275,7 +278,7 @@ def actions_from_diff(law,diffs):
     actions=[]
     today=NOW().date()
     for difference in diffs:
-        joined=(difference["after"] or difference["before"])
+        joined=(difference["after"] or difference["before"])+(difference.get("context","") or "")
         roles=infer_affected_roles(joined,law)
         for rule in TASK_RULES:
             if not any(x in joined for x in rule["phrases"]):continue
@@ -288,14 +291,14 @@ def actions_from_diff(law,diffs):
                     "ministry":law["ministry"],"agency":role["name"],"agency_level":role["level"],
                     "agency_role":role["role"],"agency_basis":role["confidence"],
                     "work":rule["operation"],"category":rule["category"],
-                    "service":"관련 제도·서비스 구체 식별 필요",
-                    "required_change":rule["requirement"],
+                    "service":law["title"]+" 관련 법정 업무 (개별 서비스 추가 확인 필요)",
+                    "required_change":rule["requirement"]+(" · 개정 지시: "+difference.get("directive","")[:250] if difference.get("directive") else ""),
                     "article":difference["article"],"before":difference["before"][:4000],
                     "after":difference["after"][:4000],"change_type":difference["type"],
-                    "effective_date":law["effective_date"],"basis":law["url"],
+                    "effective_date":law["effective_date"],"basis":difference.get("source_url",law["url"]),
                     "status":"시행 예정" if future else "반영 확인 필요",
                     "status_evidence":None,"status_checked_at":None,
-                    "confidence":"조문 내용 기반 기능 검토 대상",
+                    "confidence":"공식 변경 문서 기반 기능 검토 대상",
                     "note":"조문에서 해당 업무 유형을 확인했습니다. 개별 사업·기관의 적용 관계는 추가 공식 근거가 있어야 확정됩니다."})
     # Duplicate tasks only by stable issue id, never by one common keyword.
     return list({a["id"]:a for a in actions}.values())

@@ -35,13 +35,17 @@ jobs:
         run: |
           python -m compileall -q next
           python -m unittest discover -s next -p 'test_*.py' -v
-      - name: Diagnose whether the API credential reached the runner
+      - name: Diagnose API credential routing without revealing its value
         env:
-          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+          FROM_SECRET: ${{ secrets.LAW_OC != '' }}
+          FROM_VARIABLE: ${{ vars.LAW_OC != '' }}
         run: |
           python - <<'PY'
           import os
-          print("LAW_OC passed to cloud runner:", "YES" if bool(os.getenv("LAW_OC", "").strip()) else "NO")
+          print("RUN_REPOSITORY:", os.getenv("GITHUB_REPOSITORY", ""))
+          print("TRIGGER:", os.getenv("GITHUB_EVENT_NAME", ""))
+          print("LAW_OC repository/environment secret available:",os.getenv("FROM_SECRET"))
+          print("LAW_OC variable available:",os.getenv("FROM_VARIABLE"))
           PY
       - name: Analyze official legal versions (cloud only)
         env:

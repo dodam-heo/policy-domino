@@ -36,6 +36,25 @@ main{max-width:1230px;margin:auto;padding:30px 20px 68px}
 aside .empty{padding:38px 22px}
 .foot{color:#8093a2;text-align:center;font-size:11px;padding:19px 5px}
 @media(max-width:850px){main{padding:21px 13px 45px}.layout{display:block}.listPanel{display:block}.detailPanel{display:none;margin-top:12px}.layout.detailOpen .listPanel{display:none}.layout.detailOpen .detailPanel{display:block}.back{display:block}.list{max-height:none}.detailHeader{padding:19px}.detailBody{padding:19px}.detailTitle{font-size:19px}.workflow{font-size:11px}h1{font-size:24px}.system{margin:15px 0}.changePair{grid-template-columns:1fr}.changeCol+.changeCol{border-left:0;border-top:1px solid #e5ebef}.fact{min-width:120px}.lawItem{padding:17px}.lawItem.active{padding-left:13px}}
+
+.impactRoute{font-size:12px;color:#225c77;background:#edf7fa;border:1px solid #d7e9f0;padding:11px 13px;border-radius:9px;line-height:1.7;margin-bottom:14px}
+.locationTitle{margin-top:14px;font-size:11px;color:#71889a;font-weight:780}
+.locationBox{background:#f3f8fb;border:1px solid #e3edf2;border-radius:9px;padding:12px 13px;margin-top:6px;line-height:1.55;font-size:13px;color:#173e57;font-weight:740}
+.actionSummaryText{font-size:12px;font-weight:750;margin:10px 0 0;line-height:1.7;color:#244d67}
+.valueRows{border:1px solid #e1e9ef;border-radius:9px;overflow:hidden;margin:12px 0}
+.valueRow{display:grid;grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr);align-items:stretch}
+.valueRow+.valueRow{border-top:1px solid #e4e9ee}
+.oldValue,.newValue{padding:10px 11px;font-size:12px;min-width:0;overflow-wrap:anywhere;line-height:1.6}
+.oldValue{background:#fffafa;color:#6d4d50}.newValue{background:#f4fbf7;color:#125c4a}
+.valueRow small{display:block;font-size:10px;color:#7c90a0;font-weight:800;margin-bottom:4px}
+.valueArrow{display:flex;align-items:center;justify-content:center;font-size:13px;color:#7892a5;background:#fafcfd}
+.instruction{background:#f7fafc;border-radius:9px;border-left:3px solid #267e9d;padding:12px 14px;font-size:12px;line-height:1.7;margin-top:12px}
+.instruction b{display:block;font-size:11px;color:#507286;margin-bottom:6px}
+.verification{font-size:11px;color:#738a99;line-height:1.65;margin:9px 0 0}
+.legalDetails{margin-top:22px;border-top:1px solid #ebeff3;padding-top:14px}
+.legalDetails summary{font-size:12px;color:#266580;font-weight:750;cursor:pointer;padding:8px 0}
+.legalDetails .change{margin:10px 0}
+@media(max-width:850px){.valueRow{grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr)}}
 </style></head>
 <body>
 <header><div><div class="brand">POLICY <em>DOMINO</em></div><div class="brandSub">CHANGE → IMPACT → ACTION</div></div><div class="headright"><a class="tinyLink" href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">수집 상태</a></div></header>
@@ -81,7 +100,21 @@ $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.
 }
 function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";return '<span class="status '+cls+'">'+esc(s||"반영 확인 필요")+'</span>'}
 function actionCard(a){
-return '<div class="action"><div class="actionTop"><div><div class="agency">'+esc(a.agency||"기관 확인 필요")+'</div><div class="role">'+esc(a.agency_role||a.agency_level||"")+'</div></div>'+badgeStatus(a.status)+'</div><div class="taskTitle">'+esc(a.work||a.category||"업무 조치")+'</div><div class="taskDesc">'+esc(a.required_change||"검토 사항을 확인할 수 없습니다.")+'</div><div class="evidence"><b>대상 범위:</b> '+esc(a.service||"개별 서비스 확인 필요")+'<br><b>근거:</b> '+esc(a.article||"조문 미확인")+' · '+esc(a.agency_basis||"기관 관계 검증 필요")+'<br><b>반영 증거:</b> '+esc(a.status_evidence||"미확인")+'</div></div>'
+const changes=(a.changes||[]);
+const comparison=changes.length?'<div class="valueRows">'+changes.map(p=>'<div class="valueRow"><div class="oldValue"><small>기존</small>'+esc(p.before||"미확인")+'</div><div class="valueArrow">→</div><div class="newValue"><small>변경</small>'+esc(p.after||"미확인")+'</div></div>').join('')+'</div>':'<div class="actionSummaryText">'+esc(a.what_to_change||a.source_change||"공식 개정문에서 변경된 항목")+'</div>';
+const added=(a.new_items||[]).length?'<p class="taskDesc"><b>새로 추가할 항목:</b> '+esc(a.new_items.slice(0,6).join(" · "))+'</p>':'';
+const name=esc(a.agency||"적용 기관 미확인");
+const task=esc(a.target_location||a.service||"구체적인 업무·서비스 위치 확인 필요");
+const func=esc(a.work||a.category||"업무 조치");
+return '<article class="action"><div class="actionTop"><div><div class="agency">'+name+'</div><div class="role">'+esc(a.agency_role||"이 변경을 적용하는 기관")+'</div></div>'+badgeStatus(a.status)+'</div>'+
+'<div class="locationTitle">어디를 바꾸나?</div><div class="locationBox">'+func+' <span style="color:#90a7b6">›</span> '+task+'</div>'+
+'<div class="locationTitle">무엇이 달라지나?</div>'+comparison+added+
+'<div class="instruction"><b>필요한 조치</b>'+esc(a.required_change||"실제 업무에 반영해야 할 변경사항 확인 필요")+'</div>'+
+'<div class="evidence"><b>적용 시점:</b> '+esc(a.effective_date||"시행일 추가 확인")+
+'<br><b>변경 근거:</b> '+esc(a.article||"")+
+' · <a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">공식 개정문 보기 ↗</a>'+
+'<br><b>조치 확인:</b> '+esc(a.status_evidence||"공개 근거 미확인 · 완료/미조치 확정 불가")+'</div>'+
+'<p class="verification">'+esc(a.verification_note||a.note||"구체적인 업무시스템·서비스 명칭과 실제 적용 상태는 별도 확인 필요")+'</p></article>';
 }
 function differences(e){
 const ds=e.article_differences||[];
@@ -92,11 +125,13 @@ function detailHTML(e){
 const all=matchingActions(e),current=all.filter(a=>actionFilter==="all"||a.status===actionFilter),countDone=all.filter(a=>a.status==="조치 확인").length,countNot=all.filter(a=>a.status==="미조치 확인").length;
 return '<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>'+
 '<div class="detailBody"><div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div><div class="fact"><small>기관별 조치사항</small><strong>'+all.length+'건</strong></div></div>'+
-'<div class="sectionGap"></div><h3 class="sectionHeading">무엇이 바뀌었나</h3>'+(e.amendment_reason?'<div class="evidence"><b>공식 개정 이유 · 주요내용</b><p style="margin-top:8px;line-height:1.7">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" target="_blank" rel="noopener" href="'+validUrl(e.amendment_url||e.url)+'">공식 개정문 원문 보기 ↗</a>'+
-'<div class="sectionGap"></div><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 필요사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div>'+
+'<div class="sectionGap"></div><h3 class="sectionHeading">법에서 무엇이 바뀌었나?</h3>'+(e.amendment_reason?'<div class="evidence"><b>공식 개정 이유 · 주요내용</b><p style="margin-top:8px;line-height:1.7">'+esc(e.amendment_reason)+'</p></div>':'<p class="smallNote">개정 이유와 구체적 변경 내용을 조사 중입니다.</p>')+
+'<div class="sectionGap"></div><h3 class="sectionHeading">그래서 어디의 무엇을 바꿔야 하나?</h3><div class="impactRoute">변경된 법령은 <b>원인</b>이고, 아래는 법령 자체를 다시 고치는 일이 아니라 <b>각 기관의 업무·서비스·처리기준에서 변경할 대상</b>입니다.</div>'+
+'<div class="sectionGap"></div><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 대상 · 필요 조치</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div>'+
 '<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","시행 예정"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>'+
 (current.length?current.map(actionCard).join(""):showEmpty(all.length?"해당 상태의 조치사항이 없습니다.":"기관별 조치사항이 아직 도출되지 않았습니다.",all.length?"다른 조치 상태를 선택하세요.":"변경된 조문과 해당 제도를 운영하는 기관·업무의 공식 관계가 확인되어야 조치사항이 생성됩니다."))+
-'<div class="copyMeta">조치 완료·미조치는 확인 근거가 있어야만 확정합니다. 내부문서나 내부 시스템을 열람하지 않습니다.</div></div>'
+'<details class="legalDetails"><summary>정확한 공식 개정 지시문 전체 확인</summary>'+differences(e)+'<a class="refLink" target="_blank" rel="noopener" href="'+validUrl(e.amendment_url||e.url)+'">공식 원문 직접 열기 ↗</a></details>'+
+'<div class="copyMeta">법적 변경 사실과 실제 기관 조치 완료 여부는 별개입니다. 확인 근거가 없는 항목은 완료·미조치로 단정하지 않습니다. 내부문서·내부시스템 열람은 하지 않습니다.</div></div>'
 }
 function renderDetail(){
 const e=getEvent();

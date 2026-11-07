@@ -61,3 +61,13 @@ for key in ("law_api_sample_https","law_public_index"):
             for row in rows[:4]:print("PUBLIC LAW TABLE:",row[:10],flush=True)
     except Exception as exc:
         print("PUBLIC SOURCE PARSE DIAGNOSTIC:",key,type(exc).__name__,str(exc)[:120],flush=True)
+
+# Public recent-law anchors: determine the exact revision link from the official page.
+try:
+    raw=urllib.request.urlopen(urllib.request.Request(targets["law_public_index"],headers={"User-Agent":"Mozilla/5.0"}),timeout=10).read(150000).decode("utf-8","replace")
+    import re
+    needle="행정안전부와 그 소속기관 직제 시행규칙"
+    i=raw.find(needle)
+    if i>=0:print("PUBLIC FIRST LAW HTML:",re.sub(r"\s+"," ",raw[max(0,i-850):i+450])[:1100],flush=True)
+    else:print("PUBLIC FIRST LAW HTML: missing",flush=True)
+except Exception as e:print("PUBLIC ANCHOR CHECK:",type(e).__name__,str(e)[:100],flush=True)

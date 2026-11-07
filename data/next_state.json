@@ -1433,7 +1433,14 @@
       "amendment_reason": "교육급여 소득인정액 선정기준에 관한 2027년 확정 기준",
       "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
       "downstream_changes": [],
-      "upstream_changes": [],
+      "upstream_changes": [
+        {
+          "event_id": "8efcae799dd5fe26de",
+          "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+          "reference": "2027년 확정 기준 중위소득의 50%를 2027년도 교육급여 선정기준 및 최저보장수준 개정 선정기준으로 적용",
+          "basis_url": "https://www.mohw.go.kr/gallery.es?act=view&bid=0003&list_no=380303&mid=a10505000000"
+        }
+      ],
       "policy_source_urls": [
         "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=107233&lev=0&m=040401",
         "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=104926&lev=0&m=0302"
@@ -1471,7 +1478,14 @@
       "amendment_reason": "주거급여 소득인정액 선정기준에 관한 2027년 확정 기준",
       "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000284670",
       "downstream_changes": [],
-      "upstream_changes": [],
+      "upstream_changes": [
+        {
+          "event_id": "8efcae799dd5fe26de",
+          "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+          "reference": "2027년 확정 기준 중위소득의 48%를 2027년도 주거급여 선정기준 및 최저보장수준 제정 선정기준으로 적용",
+          "basis_url": "https://www.mohw.go.kr/gallery.es?act=view&bid=0003&list_no=380303&mid=a10505000000"
+        }
+      ],
       "policy_source_urls": [
         "https://www.molit.go.kr/USR/I0204/m_45/dtl.jsp?idx=18946",
         "https://www.molit.go.kr/USR/I0204/m_45/dtl.jsp?idx=18653"
@@ -1528,7 +1542,26 @@
       "comparison_status": "공식 소관부처의 전년도·신년도 기준액 대조 완료",
       "amendment_reason": "기준 중위소득 및 생계급여 선정기준에 관한 2027년 확정 기준",
       "amendment_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-      "downstream_changes": [],
+      "downstream_changes": [
+        {
+          "event_id": "5499deb5fa4caff958",
+          "title": "2027년도 주거급여 선정기준 및 최저보장수준 제정",
+          "institution": "국토교통부",
+          "effective_date": "2027-01-01",
+          "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000284670",
+          "status": "선정기준 의존관계 확인",
+          "evidence": "2027년 확정 기준 중위소득의 48%를 2027년도 주거급여 선정기준 및 최저보장수준 제정 선정기준으로 적용 · 보건복지부 공식 결정과 소관부처 고시"
+        },
+        {
+          "event_id": "a7549a940de0ea7324",
+          "title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
+          "institution": "교육부",
+          "effective_date": "2027-01-01",
+          "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+          "status": "선정기준 의존관계 확인",
+          "evidence": "2027년 확정 기준 중위소득의 50%를 2027년도 교육급여 선정기준 및 최저보장수준 개정 선정기준으로 적용 · 보건복지부 공식 결정과 소관부처 고시"
+        }
+      ],
       "upstream_changes": [],
       "policy_source_urls": [
         "https://www.mohw.go.kr/gallery.es?act=view&bid=0003&list_no=380303&mid=a10505000000",
@@ -5047,8 +5080,10 @@
       "status_checked_at": null,
       "confidence": "공식 고시와 연도별 선정기준 대조",
       "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
-      "upstream_event_ids": [],
-      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
+      "upstream_event_ids": [
+        "8efcae799dd5fe26de"
+      ],
+      "impact_link_basis": "중앙생활보장위원회 확정 기준 중위소득 × 50%를 해당 급여 선정기준에 적용"
     },
     {
       "id": "75e60209a61af7f153",
@@ -5090,8 +5125,10 @@
       "status_checked_at": null,
       "confidence": "공식 고시와 연도별 선정기준 대조",
       "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
-      "upstream_event_ids": [],
-      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
+      "upstream_event_ids": [
+        "8efcae799dd5fe26de"
+      ],
+      "impact_link_basis": "중앙생활보장위원회 확정 기준 중위소득 × 50%를 해당 급여 선정기준에 적용"
     },
     {
       "id": "612dec4f402d04826b",
@@ -5133,8 +5170,10 @@
       "status_checked_at": null,
       "confidence": "공식 고시와 연도별 선정기준 대조",
       "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
-      "upstream_event_ids": [],
-      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
+      "upstream_event_ids": [
+        "8efcae799dd5fe26de"
+      ],
+      "impact_link_basis": "중앙생활보장위원회 확정 기준 중위소득 × 48%를 해당 급여 선정기준에 적용"
     },
     {
       "id": "167cdc212bd93eb1ff",
@@ -5176,8 +5215,10 @@
       "status_checked_at": null,
       "confidence": "공식 고시와 연도별 선정기준 대조",
       "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
-      "upstream_event_ids": [],
-      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
+      "upstream_event_ids": [
+        "8efcae799dd5fe26de"
+      ],
+      "impact_link_basis": "중앙생활보장위원회 확정 기준 중위소득 × 48%를 해당 급여 선정기준에 적용"
     },
     {
       "id": "c8c2f633a7d8befa0a",

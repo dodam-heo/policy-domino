@@ -80,6 +80,20 @@ class ChangeDetection(unittest.TestCase):
         self.assertFalse(actions[0]["target_verified"])
         self.assertEqual(actions[0]["status"],"시행 예정")
 
+    def test_cited_parent_law_produces_proven_downstream_agencies(self):
+        from next.relations import link_proven_dependencies
+        parent={**self.law,"event_id":"parent-event","law_type":"대통령령","promulgation_number":"제36801호",
+                "title":"전문직공무원 확대를 위한 여러 법령 일괄개정","amendment_reason":"상위 규정 변경"}
+        child={**self.law,"event_id":"child-event","law_type":"부령","promulgation_number":"제25호",
+               "title":"가상부 직제 시행규칙","amendment_reason":"대통령령 제36801호가 개정됨에 따라",
+               "ministry":"가상부","amendment_url":"https://www.law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=1"}
+        action={"id":"impact-one","event_id":"child-event","agency":"가상부"}
+        summary=link_proven_dependencies([parent,child],[action])
+        self.assertEqual(summary["relationships"],1)
+        self.assertEqual(len(parent["downstream_changes"]),1)
+        self.assertEqual(action["upstream_event_ids"],["parent-event"])
+        self.assertIn("제36801호",parent["downstream_changes"][0]["evidence"])
+
     def test_unique_per_action_role(self):
         changed={"id":"d1","article":"제5조","before":"신청자격 20세","after":"신청자격 18세","type":"변경"}
         ids=[r["id"] for r in engine.map_actions(self.law,[changed])]

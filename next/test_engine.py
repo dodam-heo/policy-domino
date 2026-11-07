@@ -31,6 +31,32 @@ class ChangeDetection(unittest.TestCase):
     def test_no_evidence_means_no_fabricated_task(self):
         changes=[{"id":"d1","article":"제2조","before":"가.","after":"나.","type":"변경"}]
         self.assertEqual(engine.actions_from_diff(self.law,changes),[])
+    def test_public_law_date_and_deep_link(self):
+        from unittest.mock import patch
+        page="""<table><tr><td>1</td><td><a href="lsInfoP.do?lsiSeq=291687&amp;viewCls=lsRvsDocInfoR" title="행정안전부와 그 소속기관 직제 시행규칙 팝업으로 이동">행정안전부와 그 ...</a></td><td>행정안전부</td><td>일부개정</td><td>행정안전부령</td><td>제655호</td><td>2026. 11. 6.</td><td>2026. 11. 6.</td></tr></table>"""
+        with patch.object(engine,"download",return_value=page.encode("utf-8")):
+            laws=engine.public_law_list()
+        self.assertEqual(len(laws),1)
+        self.assertEqual(laws[0]["promulgated_at"],"2026-11-06")
+        self.assertEqual(laws[0]["title"],"행정안전부와 그 소속기관 직제 시행규칙")
+        self.assertIn("lsiSeq=291687",laws[0]["url"])
+
+    def test_public_amendment_produces_source_backed_org_action(self):
+        from unittest.mock import patch
+        law={**self.law,"url":"https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=291687","title":"가상기관 직제 시행규칙"}
+        text="""<html><body>【제정·개정이유】정원 13명을 일반직에서 전문직으로 전환한다.【제정·개정문】
+        가상기관 직제 시행규칙을 다음과 같이 개정한다. 제54조 중 "정원 10명"을 "정원 13명"으로 한다.
+        부칙 제1조 이 규칙은 공포한 날부터 시행한다.</body></html>"""
+        with patch.object(engine,"download",return_value=text.encode("utf-8")):
+            material=engine.public_amendment(law)
+        diffs=engine.public_amendment_diffs(law,material)
+        self.assertTrue(diffs)
+        self.assertEqual(diffs[0]["before"],"정원 10명")
+        self.assertEqual(diffs[0]["after"],"정원 13명")
+        tasks=engine.actions_from_diff(law,diffs)
+        self.assertTrue(any(t["work"]=="조직·정원·직무 배정" for t in tasks))
+        self.assertTrue(all(t["basis"].endswith("chrClsCd=010202") for t in tasks))
+
     def test_unique_per_action_role(self):
         changed={"id":"d1","article":"제5조","before":"신청자격 20세","after":"신청자격 18세","type":"변경"}
         ids=[r["id"] for r in engine.actions_from_diff(self.law,[changed])]

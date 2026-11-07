@@ -73,9 +73,25 @@ def xml_field(node,name):
     x=next((e for e in node.iter() if e.tag.split("}")[-1]==name),None)
     return clean("".join(x.itertext())) if x is not None else ""
 def download(url,timeout=18,max_bytes=2500000):
-    req=urllib.request.Request(url,headers=HEADERS)
-    with urllib.request.urlopen(req,timeout=timeout) as response:
-        return response.read(max_bytes)
+    import time
+    import urllib.error
+    variants=[url]
+    if "://www.law.go.kr/" in url:
+        variants.append(url.replace("://www.law.go.kr/","://law.go.kr/",1))
+    errors=[]
+    for target in variants:
+        for attempt in range(2):
+            try:
+                req=urllib.request.Request(target,headers=HEADERS)
+                with urllib.request.urlopen(req,timeout=timeout) as response:
+                    return response.read(max_bytes)
+            except urllib.error.HTTPError as exc:
+                if exc.code not in (429,500,502,503,504):raise
+                errors.append(str(exc))
+            except (urllib.error.URLError,TimeoutError,ConnectionError) as exc:
+                errors.append(type(exc).__name__)
+            if attempt==0:time.sleep(0.8)
+    raise ConnectionError("공식 법제처 서버 재시도 후 연결 실패: "+", ".join(errors[-4:]))
 def api_request(endpoint,**params):
     oc=os.environ.get("LAW_OC","").strip()
     if not oc:raise RuntimeError("LAW_OC 인증값 미설정")

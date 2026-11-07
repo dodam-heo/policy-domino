@@ -154,6 +154,68 @@ def public_law_list(limit=30):
     dedup={(x["id"],x["effective_date"]):x for x in laws}
     return sorted(dedup.values(),key=lambda x:x["promulgated_at"],reverse=True)[:limit]
 
+
+def public_amendment(law):
+    """Read the official public promulgated amendment (reason + operative directives).
+    No API credential required. This does NOT imply that full historical clauses
+    have been compared; amendment instructions are recorded as amendment evidence.
+    """
+    from html.parser import HTMLParser
+    from urllib.parse import parse_qs, urlparse
+    seq=parse_qs(urlparse(law.get("url","")).query).get("lsiSeq",[""])[0]
+    if not seq.isdigit():raise ValueError("개별 공포법령 일련번호 미확인")
+    uri="https://www.law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq="+seq+"&chrClsCd=010202"
+    source=download(uri,timeout=16,max_bytes=400000).decode("utf-8","replace")
+    class Body(HTMLParser):
+        def __init__(self):super().__init__();self.parts=[];self.skip=0
+        def handle_starttag(self,tag,attrs):
+            if tag in ("style","script"):self.skip+=1
+            if not self.skip and tag in ("p","br","tr","li"):self.parts.append("\n")
+        def handle_endtag(self,tag):
+            if tag in ("style","script"):self.skip=max(0,self.skip-1)
+        def handle_data(self,txt):
+            if not self.skip:self.parts.append(txt)
+    parser=Body();parser.feed(source)
+    raw="".join(parser.parts)
+    normalized=clean(raw)
+    if "【제정·개정문】" not in normalized:raise ValueError("공식 제정·개정문 본문 부재")
+    reason=normalized.split("【제정·개정이유】",1)[-1].split("【제정·개정문】",1)[0].strip()
+    document=normalized.split("【제정·개정문】",1)[-1].strip()
+    if not document:raise ValueError("공포 개정문이 비어 있음")
+    return {"reason":reason[:3000],"document":document[:16000],"url":uri}
+
+def public_amendment_diffs(law,material):
+    """Extract explicit amendment instructions, never invent a previous clause."""
+    doc=material["document"].split("부칙",1)[0]
+    # Clause revisions, and annex/form replacement instructions.
+    starts=list(re.finditer(r"제\d+조(?:의\d+)?|별표\s*\d+|별지\s*제?\d+호",doc))
+    excerpts=[]
+    for i,m in enumerate(starts):
+        end=starts[i+1].start() if i+1<len(starts) else len(doc)
+        sentence=clean(doc[m.start():end])
+        # Ignore references/short fragments and preserve text directly from official document.
+        if len(sentence)<18 or not re.search(r"개정|신설|삭제|한다|추가|대체|변경|각각|전환",sentence):continue
+        if sentence in [x["after"] for x in excerpts]:continue
+        label=m.group(0)
+        change_kind="신설" if "신설" in sentence else "삭제" if "삭제" in sentence else "개정"
+        # Only quote a before/after pair if it is EXPLICIT in the amendment direction.
+        quoted=re.search(r'[“"]([^”“"]{2,170})[”"]\s*(?:을|를|에서)\s*[“"]([^”“"]{2,170})[”"]\s*(?:로|으로)',sentence)
+        old=quoted.group(1) if quoted else ""
+        replacement=quoted.group(2) if quoted else sentence[:1050]
+        excerpts.append({"id":digest(law["id"]+law["promulgated_at"]+label+sentence),
+                         "article":label,"title":"공식 개정문","type":change_kind,
+                         "before":old,"after":replacement,
+                         "context":material["reason"][:1600],
+                         "directive":sentence[:1700],
+                         "source_url":material["url"],"diff":[]})
+        if len(excerpts)>=22:break
+    if not excerpts and len(doc)>=35 and re.search(r"일부개정|전부개정|신설|삭제|개정한다",doc):
+        excerpts.append({"id":digest(law["id"]+law["promulgated_at"]+"개정문"),
+                         "article":"개정문","title":"공식 개정문","type":"개정",
+                         "before":"","after":doc[:1150],"context":material["reason"][:1600],
+                         "directive":doc[:1700],"source_url":material["url"],"diff":[]})
+    return excerpts
+
 def previous_mst(law):
     # Historical/previous versions are queried for the SAME stable law ID.
     root=api_request("lawSearch.do",target="eflaw",LID=law["id"],nw="1,2,3",

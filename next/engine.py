@@ -18,9 +18,11 @@ from pathlib import Path
 try:
     from .impact_mapper import map_actions
     from .relations import link_proven_dependencies
+    from .policy_standards import scan_policy_standards
 except ImportError:
     from impact_mapper import map_actions
     from relations import link_proven_dependencies
+    from policy_standards import scan_policy_standards
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/"data"/"next_state.json"
@@ -457,6 +459,28 @@ def main():
         health["source_status"]="공식 공포·개정문 연결"
         health["error"]="제·개정문과 변경 지시사항을 확보했습니다. 이전 전체 조문과 기관별 실제 조치 여부까지는 검증되지 않았습니다."
     health["amendments_verified_total"]=sum(bool(e.get("amendment_url")) for e in events.values())
+    # Independently monitor published administrative rules and annual policy
+    # standards; law promulgation listings alone omit real service changes.
+    policy_events,policy_actions,policy_health=scan_policy_standards(download,events,actions)
+    health["policy_standards"]=policy_health
+    for event in policy_events:
+        events[event["event_id"]]=event
+    policy_ids={e["event_id"] for e in policy_events}
+    if policy_ids:
+        current_policy_action_ids={a["id"] for a in policy_actions}
+        for aid,old in list(actions.items()):
+            if old.get("event_id") in policy_ids and aid not in current_policy_action_ids:
+                del actions[aid]
+        for action in policy_actions:
+            previous=actions.get(action["id"],{})
+            # Preserve an externally corroborated status, never downgrade it.
+            if previous.get("status") in ("조치 확인","미조치 확인") and previous.get("status_evidence"):
+                for field in ("status","status_evidence","status_checked_at"):
+                    action[field]=previous.get(field)
+            actions[action["id"]]=action
+    if health["source_status"]=="수집 실패" and policy_health["confirmed"]:
+        health["source_status"]="행정규칙·정책기준 일부 연결"
+        health["error"]="최근 공포법령 수집은 실패했으나 확인된 고시 기준변경은 수집했습니다."
     if laws:cursor=(cursor+6)%len(laws)
     sorted_events=sorted(events.values(),key=lambda e:(e.get("promulgated_at",""),e.get("event_id","")),reverse=True)[:300]
     sorted_actions=sorted(actions.values(),key=lambda a:(a.get("change_date",""),a.get("id","")),reverse=True)[:1200]

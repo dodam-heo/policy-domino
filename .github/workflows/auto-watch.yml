@@ -63,18 +63,17 @@ jobs:
           PY
           git config user.name 'policy-domino-bot'
           git config user.email 'policy-domino-bot@users.noreply.github.com'
-          git add site/data.json data/next_run_status.json
-          if [ -f data/next_state.json ]; then git add data/next_state.json; fi
-          if ! git diff --cached --quiet; then
+          for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --mixed origin/main
             git add site/data.json data/next_run_status.json
             if [ -f data/next_state.json ]; then git add data/next_state.json; fi
-            if ! git diff --cached --quiet; then
-              git commit -m 'data: NEXT official law comparison results [skip ci]'
-              git push origin HEAD:main
-            fi
-          fi
+            if git diff --cached --quiet; then break; fi
+            git commit -m 'data: NEXT official law comparison results [skip ci]'
+            if git push origin HEAD:main; then break; fi
+            if [ "$attempt" -eq 4 ]; then exit 1; fi
+            sleep 2
+          done
 
       - name: Verify actual API collection result
         run: |
@@ -141,11 +140,13 @@ jobs:
           PY
           git config user.name 'policy-domino-bot'
           git config user.email 'policy-domino-bot@users.noreply.github.com'
-          git add data/next_deploy_status.json
-          git fetch origin main
-          git reset --mixed origin/main
-          git add data/next_deploy_status.json
-          if ! git diff --cached --quiet; then
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --mixed origin/main
+            git add data/next_deploy_status.json
+            if git diff --cached --quiet; then break; fi
             git commit -m 'ops: NEXT Pages deployment confirmed [skip ci]'
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then break; fi
+            if [ "$attempt" -eq 4 ]; then exit 1; fi
+            sleep 2
+          done

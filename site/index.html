@@ -45,8 +45,8 @@ footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 <div class="topline"><div><h1>최신 법령 제정·개정</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
 <section class="stats">
 <div class="stat"><small>최근 제정·개정 법령</small><strong id="total">—</strong></div>
-<div class="stat"><small>신규 법령 반영</small><strong id="recent">—</strong></div>
-<div class="stat"><small>변경 검토 대상 게시</small><strong id="candidate">—</strong></div>
+<div class="stat"><small>최근 7일 제·개정</small><strong id="recent">—</strong></div>
+<div class="stat"><small>검토 대기 게시</small><strong id="candidate">—</strong></div>
 <div class="stat"><small>기관 간 게시정보 점검</small><strong id="targets">—</strong></div>
 </section>
 <div class="mainGrid">
@@ -81,11 +81,11 @@ function latestSort(a,b){return stamp(b).localeCompare(stamp(a))}
 function lawDate(x){return x.promulgated_at||x.promulgation_date||stamp(x)}
 function optionFilter(xs,field){const q=el("search").value.trim().toLowerCase(),agency=el("agency").value;return xs.filter(x=>(!agency || (x[field]||x.source||"")===agency) && (!q || Object.values(x).some(v=>typeof v==="string"&&v.toLowerCase().includes(q))))}
 function renderPost(x){
-let detected=x.change_detected||x.detected||x.status||"기존";let pills='<span class="pill">'+safe(x.law_type||x.change_type||stage(x))+'</span>';
+let detected=x.change_detected||x.detected||x.status||"기존";let pills='<span class="pill">'+safe(x.law_type||stage(x))+'</span>'+(x.change_type?' <span class="pill green">'+safe(x.change_type)+'</span>':'');
 if(detected==="신규 감지"||detected==="수정 감지")pills+=' <span class="pill green">'+safe(detected)+'</span>';
 let attachments=(x.attachments||[]).map(a=>'<div>첨부: <a target="_blank" rel="noopener" href="'+link(a.url)+'">'+safe(a.name)+'</a> · '+safe(a.analysis||"검토 대상")+'</div>').join("");
 let deltas=(x.change_details||[]).map(d=>'<div class="changeLine">'+safe(d.before)+' → '+safe(d.after)+'<div class="cap">'+safe(d.evidence)+'</div></div>').join("");
-return '<article class="item"><div class="itemMeta"><b>'+safe(x.source)+'</b><span>'+safe(x.category||"")+'</span><span>게시 '+date(stamp(x))+'</span></div><div class="itemTitle">'+safe(x.title)+'</div>'+pills+(x.body?'<p class="desc">'+safe(x.body)+'</p>':"")+'<div><a target="_blank" rel="noopener" href="'+link(x.url)+'">공식 게시글 열기</a></div>'+((attachments||deltas)?'<button class="detailButton" onclick="this.nextElementSibling.classList.toggle(\'open\')">근거·첨부 확인</button><div class="details">'+(deltas||"")+attachments+'</div>':"")+'</article>'
+return '<article class="item"><div class="itemMeta"><b>'+safe(x.source)+'</b><span>'+safe(x.category||"")+'</span><span>게시 '+date(stamp(x))+'</span></div><div class="itemTitle">'+safe(x.title)+'</div>'+pills+(x.body?'<p class="desc">'+safe(x.body)+'</p>':"")+'<div><a target="_blank" rel="noopener" href="'+link(x.url)+'">법령·공식 원문 열기</a></div>'+((attachments||deltas)?'<button class="detailButton" onclick="this.nextElementSibling.classList.toggle(\'open\')">근거·첨부 확인</button><div class="details">'+(deltas||"")+attachments+'</div>':"")+'</article>'
 }
 function renderImpact(x){
 let confirmed=x.before&&x.after;
@@ -107,7 +107,10 @@ if(!response.ok)throw Error("HTTP "+response.status);
 data=await response.json();
 const counts=data.counts||{};
 el("total").textContent=(data.law_changes||[]).length;
-el("recent").textContent=(data.law_changes||[]).filter(x=>x.change_detected==="신규 감지").length;
+const legal=(data.law_changes||[]);
+const referenceDay=(data.generated_at||new Date().toISOString()).slice(0,10);
+const from=new Date(referenceDay+"T00:00:00Z").getTime()-6*86400000;
+el("recent").textContent=legal.filter(x=>new Date(lawDate(x)).getTime()>=from).length;
 el("candidate").textContent=counts.candidate??counts.change_count??0;
 el("targets").textContent=counts.targets??(data.impacts||[]).length;
 el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · 법령 공포일 최신순";

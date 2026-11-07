@@ -1,16 +1,17 @@
 {
-  "generated_at": "2026-11-07T16:57:19+00:00",
+  "generated_at": "2026-11-07T18:38:32+00:00",
   "first_scan": false,
   "counts": {
     "total": 426,
+    "law_total": 34,
+    "law_recent_7d": 5,
     "recent": 5,
-    "modified": 16,
+    "new_count": 3,
+    "modified": 29,
+    "rss_recent_discoveries": 0,
     "candidate": 123,
     "targets": 0,
-    "law_total": 18,
-    "law_recent_7d": 5,
-    "rss_recent_discoveries": 0,
-    "new_count": 2
+    "archived": 0
   },
   "sources": [
     {
@@ -19,7 +20,7 @@
       "url": "https://mss.go.kr/rss/smba/board/126.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -27,7 +28,7 @@
       "url": "https://mss.go.kr/rss/smba/board/125.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -35,7 +36,7 @@
       "url": "https://mss.go.kr/rss/smba/board/310.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -43,7 +44,7 @@
       "url": "https://mss.go.kr/rss/smba/board/86.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "중소벤처기업부",
@@ -51,7 +52,7 @@
       "url": "https://mss.go.kr/rss/smba/board/81.do",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "보건복지부",
@@ -59,7 +60,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10409020000&update=&cg_code=&bid=0026",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "보건복지부",
@@ -67,7 +68,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10503000000&bid=0027&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "보건복지부",
@@ -75,7 +76,7 @@
       "url": "https://www.mohw.go.kr/rss/board.es?mid=a10501010000&bid=0003&cg_code=C01&info=",
       "status": "정상",
       "count": 30,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "행정안전부",
@@ -83,7 +84,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1012",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "행정안전부",
@@ -91,7 +92,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1001",
       "status": "정상",
       "count": 17,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "행정안전부",
@@ -99,7 +100,7 @@
       "url": "https://www.mois.go.kr/gpms/view/jsp/rss/rss.jsp?ctxCd=1013",
       "status": "정상",
       "count": 3,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -107,7 +108,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "과학기술정보통신부",
@@ -115,7 +116,7 @@
       "url": "https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=65",
       "status": "정상",
       "count": 35,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "서울특별시",
@@ -123,7 +124,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "서울특별시",
@@ -131,7 +132,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/07",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "서울특별시",
@@ -139,7 +140,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/08",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "서울특별시",
@@ -147,7 +148,7 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/03",
       "status": "정상",
       "count": 20,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "경기도",
@@ -155,7 +156,7 @@
       "url": "https://gnews.gg.go.kr/rss/gnewsRssBodo.do",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "경기도",
@@ -163,7 +164,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E002&policyCode=E002",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "경기도",
@@ -171,7 +172,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E001&policyCode=E001",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "경기도",
@@ -179,7 +180,7 @@
       "url": "https://gnews.gg.go.kr/rss/categoryRssSearch.do?kwd=E003&policyCode=E003",
       "status": "정상",
       "count": 15,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "KOSIS 국가통계포털",
@@ -187,7 +188,7 @@
       "url": "https://kosis.kr/rss/notice_rss.jsp",
       "status": "정상",
       "count": 11,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     },
     {
       "name": "국가데이터처",
@@ -195,9 +196,606 @@
       "url": "https://mods.go.kr/menu.es?mid=a10301010000&act=rss",
       "status": "정상",
       "count": 10,
-      "last_check": "2026-11-07T16:57:19+00:00"
+      "last_check": "2026-11-07T18:38:32+00:00"
     }
   ],
+  "law_changes": [
+    {
+      "title": "보건복지부 인사관리규정 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492466&act=view",
+      "body": "보건복지부 훈령 제306호 보건복지부 인사관리규정 일부개정 「국가공무원법」 및 「공무원임용령」등 인사관계법령에 따른 「보건복지부 인사관리규정」(보건복지부훈령 제263호, 2024. 12. 04.)을 다음과 같이 개정 발령합니다. 2026년 11월 6일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 06 Nov 2026 01:43:00 GMT",
+      "published_at": "2026-11-06T01:43:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선",
+      "change_details": [],
+      "details_checked": false
+    },
+    {
+      "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492447&act=view",
+      "body": "보건복지부 고시 제2026-230호 「국민건강보험법」제41조제3항 및 제4항, 「국민건강보험법 시행령」제19조제1항 관련 별표2 및 「국민건강보험 요양급여의 기준에 관한 규칙」제5조제2항에 의한 「요양급여의 적용기준 및 방법에 관한 세부사항」을 다음과 같이 개정·발령합니다. 2026년 11월 5일 보건복지부장관 「요양급여의 적용기준 및 방법에 관한 세부사항」일부개정 □ 주요 내용 ○ ‘심장초음파 검사의 급여기준’ 세부인정사항의 학회명 변경 (초음파 질의응답 수정 반영) - 유럽마취과학회(ESA) → 유럽마취집중치료학회(ESAIC) ○ ‘경피적 좌심방이 폐색술 실시기관 신고서’(별지 제33호 서식) 변경 - 신고서 서식 [실적현황]에 신설된 중격천자 행위* 분류번호 추가 * 자654-2주2 심방세동의 펄스장절제술-중격천자 □ 시행일 : 2026. 11.5.(목)",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 05 Nov 2026 00:43:00 GMT",
+      "published_at": "2026-11-05T00:43:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선",
+      "change_details": [],
+      "details_checked": true
+    },
+    {
+      "title": "「한약제제 급여목록 및 상한금액표」 일부개정(고시 제2026-229호) 안내",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492423&act=view",
+      "body": "보건복지부 고시 제2026 - 229호 「국민건강보험법 시행령」제22조제2항과「국민건강보험 요양급여의 기준에 관한 규칙」제8조제2항의 규정에 의한「한약제제 급여목록 및 상한금액표」(보건복지부 고시 제2026-124호, 2026.6.1.)를 다음과 같이 개정·발령합니다. 2026년 11월 3일 보건복지부장관 「한약제제 급여목록 및 상한금액표」일부개정(안) 한약제제 급여목록 및 상한금액표 일부를 다음과 같이 개정한다. 별표1에 규정된 2.단미엑스혼합제에서 별지1의 약제 2품목을 삭제한다. 부 칙 이 고시는 2027년 5월 1일부터 시행한다.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Tue, 03 Nov 2026 06:33:00 GMT",
+      "published_at": "2026-11-03T06:33:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선",
+      "change_details": [],
+      "details_checked": true
+    },
+    {
+      "title": "「보건복지부 적극행정공무원의 징계절차에서의 소명 또는 소송 등에 관한 지원 규정」일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492415&act=view",
+      "body": "보건복지부훈령 제305호 「보건복지부 적극행정공무원의 징계절차에서의 소명 또는 소송 등에 관한 지원 규정」을 다음과 같이 개정ㆍ발령합니다. 2026년 11월 3일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Tue, 03 Nov 2026 00:43:00 GMT",
+      "published_at": "2026-11-03T00:43:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선",
+      "change_details": [],
+      "details_checked": true
+    },
+    {
+      "title": "「보건복지부 고문변호사 위촉·운영 및 소송 위임 등에 관한 규정」일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492413&act=view",
+      "body": "보건복지부훈령 제304호 「보건복지부 고문변호사 위촉·운영 및 소송 위임 등에 관한 규정」을 다음과 같이 개정ㆍ발령합니다. 2026년 11월 3일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Tue, 03 Nov 2026 00:42:00 GMT",
+      "published_at": "2026-11-03T00:42:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선",
+      "change_details": [],
+      "details_checked": true
+    },
+    {
+      "title": "「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정고시",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492392&act=view",
+      "body": "보건복지부 고시 제2026 - 224호 「국민건강보험법 시행령」 제21조제2항·3항 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항부터 제5항까지, 제9조제1항, 제11조제1항, 제12조제2항 및 제13조 제1항·제3항에 의한 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」를 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관 건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시 □ 주요내용 ○ 만성 비염 냉동치료 비급여 신설(신의료기술의 안전성·유효성 평가결과 고시 제2025-28호, 2025.2.17.) ○ 환자 맞춤형 모형을 이용한 모의 수술 계획 비급여 신설(고시 제2018-258호, 2018.12.4.) ○ 대장암의 미세잔존암 확인을 위한 개인 맞춤형 유전자 패널 기반 액체생검 검사 비급여 신설(고시 제2025-121호, 2025.7.18.) □ 시행일: 2026. 11. 1. □ 문의: 보험급여과 044-202-2737, 2741",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 30 Oct 2026 07:32:00 GMT",
+      "published_at": "2026-10-30T07:32:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492391&act=view",
+      "body": "보건복지부 고시 제2026-227호 「국민건강보험법」제41조제3항 및 제4항, 「국민건강보험법 시행령」 제19조제1항 관련 별표2 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제5조제2항에 의한 「요양급여의 적용기준 및 방법에 관한 세부사항」을 다음과 같이 개정·발령합니다. 2026년 10월 30일 보건복지부 장관 □ 주요개정사항 ○ 희소·필수 치료재료(FROZEN ELEPHANT TRUNK용 GRAFT)의 급여기준 개정",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 30 Oct 2026 07:23:00 GMT",
+      "published_at": "2026-10-30T07:23:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「평가 유예 신의료기술 고시」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492387&act=view",
+      "body": "보건복지부고시 제2026 - 226호 「신의료기술평가에 관한 규칙」제3조제5항에 의한 「평가 유예 신의료기술 고시」(보건복지부 고시 제2026-210호, 2026. 10. 8.)를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 30일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 30 Oct 2026 05:32:00 GMT",
+      "published_at": "2026-10-30T05:32:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「신의료기술의 안전성·유효성 평가결과 고시」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492386&act=view",
+      "body": "보건복지부고시 제2026 - 225호 「의료법」제53조 및 「신의료기술평가에 관한 규칙」제4조에 의한 「신의료기술의 안전성·유효성 평가결과 고시」(보건복지부 고시 제2026-209호, 2026. 10. 8.)를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 30일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 30 Oct 2026 05:28:00 GMT",
+      "published_at": "2026-10-30T05:28:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「첨단재생의료 임상연구 및 첨단재생의료 치료 위험도 구분에 관한 고시」제정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492373&act=view",
+      "body": "보건복지부고시 제2026-220호 「첨단재생의료 및 첨단바이오의약품 안전 및 지원에 관한 법률 시행령」제4조에 따라 「첨단재생의료 임상연구 및 첨단재생의료 치료 위험도 구분에 관한 고시」를 다음과 같이 제정·발령합니다. 2026년 10월 30일 보건복지부 장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 30 Oct 2026 00:53:00 GMT",
+      "published_at": "2026-10-30T00:53:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "제정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492368&act=view",
+      "body": "보건복지부 고시 제2026 - 224호 「국민건강보험법 시행령」 제21조제2항·3항 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항부터 제5항까지, 제9조제1항, 제11조제1항, 제12조제2항 및 제13조 제1항·제3항에 의한 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」를 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관 건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시 □ 주요내용 ○ 소아전문응급의료센터 응급의료관리료 점수 인상 □ 시행일: 2026. 11. 1. □ 문의: 보험급여과 044-202-2737, 2741",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 29 Oct 2026 09:37:00 GMT",
+      "published_at": "2026-10-29T09:37:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「요양급여비용 청구방법，심사청구서·명세서서식 및 작성요령」 일부개정 안내",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492366&act=view",
+      "body": "보건복지부 고시 제2026-223호 「국민건강보험법 시행규칙」제19조제3항의 규정에 의한 「요양급여비용 청구방법, 심사청구서·명세서서식 및 작성요령」(보건복지부 고시 제2026-183호, 2026.8.31.)을 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관 「요양급여비용 청구방법, 심사청구서·명세서서식 및 작성요령」일부개정 요양급여비용 청구방법, 심사청구서？명세서서식 및 작성요령 일부를 다음과 같이 개정한다. 별표 8 제1호 중 구분코드 MT072를 다음과 같이한다. (표 생략..) 부 칙 제1조(시행일) 이 고시는 2026년 11월 1일부터 시행한다. 제2조(특정내역 구분코드에 관한 적용례) 별표 8의 개정 규정은 이 고시 시행일 이후에 실시하는 요양급여부터 적용한다.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 29 Oct 2026 08:09:00 GMT",
+      "published_at": "2026-10-29T08:09:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「요양급여의 적용기준 및 방법에 관한 세부사항(약제)」 일부개정 안내",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492365&act=view",
+      "body": "보건복지부 고시 제2026-222호 「국민건강보험법」 제41조제3항 및 제4항, 「국민건강보험 요양급여 기준에 관한 규칙」제5조제2항에 따라「요양급여의 적용기준 및 방법에 관한 세부사항」(보건복지부 고시 제2026-192호(2026. 9. 29.)을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 29일 보건복지부장관 「요양급여의 적용기준 및 방법에 관한 세부사항」일부개정 요양급여의 적용기준 및 방법에 대한 세부사항 일부를 다음과 같이 개정한다. Ⅱ. 약제 “[117] Esketamine hydrochloride 외용제(품명: 스프라바토나잘스프레이), [232] Vonoprazan fumarate 경구제(품명 : 보신티정10밀리그램 등), [232] Vonoprazan tosylate 경구제(품명 : 보노칸정10밀리그램 등), [399] Lumasiran sodium 주사제(품명: 옥스루모주)”를 별지 1과 같이 신설하고, “[일반원칙] 고가의약품 급여관리에 관한 기준, [333] Edoxaban Tosilate Hydrate 경구제(품명: 릭시아나정 15밀리그램 등), [399] Burosumab 주사제(품명: 크리스비타주사액), [439] Aflibercept 주사제(품명: 아일리아주사, 아일리아프리필드시린지 등), [439] Ranibizumab 주사제(품명:루센티스주 등, 루센티스프리필드시린지 등), [619] Clostridium botulinum A toxin 주사제(품명: 보톡스주 등), [629] Letermovir 경구제(품명: 프레비미스정 240, 480밀리그램), Letermovir 주사제(품명: 프레비미스주 240, 480밀리그램)”의 세부인정기준 및 방법의 일부를 별지 2와",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 29 Oct 2026 08:00:00 GMT",
+      "published_at": "2026-10-29T08:00:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「치료재료 급여비급여 목록 및 급여상한금액표」 고시 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492348&act=view",
+      "body": "보건복지부 고시 제2026-221호 「국민건강보험법」 제41조의3, 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항 및 제11조부터 제13조까지의 규정에 의한 「치료재료 급여·비급여 목록 및 급여상한금액표」를 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 29 Oct 2026 02:34:00 GMT",
+      "published_at": "2026-10-29T02:34:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「약제 급여 목록 및 급여 상한금액표」일부개정고시(제2026-219호) 안내",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492330&act=view",
+      "body": "보건복지부 고시 제2026-219호 「국민건강보험법 시행령」 제22조제1항 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항에 따른 「약제 급여 목록 및 급여 상한금액표」를 다음과 같이 개정 발령합니다. 2026년 10월 27일 보건복지부장관 - 약가유연계약 적용 약제는 표시가(공개용)와 별도 합의 상한금액(실제가)로 각각 관리되고 있으며, 본 고시개정안에는 표시가(공개용)만 확인할 수 있으므로 별도 합의 상한금액(실제가) 변동사항을 반드시 확인해주셔야합니다. - 별도 합의 상한금액(실제가)은 아래의 요양기관업무포털 경로에서 인가된 대상자에 한해서만 확인할 수 있으니, 인가된 대상이 아닐 경우 제약사에 별도 확인이 가능합니다. * 요양기관업무포털(biz.hira.or.kr) -> 공동인증서 로그인 -> 심사기준종합서비스 -> 약제청구관련기준(약가파일) - 약가유연계약 약제 현황은 심평원 홈페이지(hira.or.kr) -> 제도 정책 -> 약제기준정보 -> 목록표 상 '비고란' -> \"약가유연계약 적용 약제\"를 참고하여 주시기 바랍니다.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Tue, 27 Oct 2026 06:06:00 GMT",
+      "published_at": "2026-10-27T06:06:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「보건복지부 소송비용 회수 사무처리 지침」일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492323&act=view",
+      "body": "보건복지부훈령 제303호 「보건복지부 소송비용 회수 사무처리 지침」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 26일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Mon, 26 Oct 2026 01:21:00 GMT",
+      "published_at": "2026-10-26T01:21:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「소송 등 업무 처리 지침」일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492322&act=view",
+      "body": "보건복지부예규 제158호 「소송 등 업무 처리 지침」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 26일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Mon, 26 Oct 2026 01:19:00 GMT",
+      "published_at": "2026-10-26T01:19:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「고령친화도시 지정 및 지원 등에 관한 고시」제정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492321&act=view",
+      "body": "보건복지부 고시 제2026 - 218호 「노인복지법」제4조3 및 「노인복지법 시행령」제2조의2~제2조의4에 따른 고령친화도시 지정에 필요한 세부사항 (보건복지부 고시 제2026-218호, 2026.10.26.)을 다음과 같이 제정ㆍ발령합니다.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Mon, 26 Oct 2026 00:59:00 GMT",
+      "published_at": "2026-10-26T00:59:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "제정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「건강보험요양급여비용의 내역」 전부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492260&act=view",
+      "body": "보건복지부 고시 제2026 - 217호 「국민건강보험법」 제45조제4항의 규정에 의한 「건강보험요양급여비용의 내역」(보건복지부 고시 제2025-186호, 2025.11.18.)을 다음과 같이 개정·고시합니다. 2026년 10월 19일 보건복지부장관 ○ 주요내용 - 2027년에 적용될 요양기관 유형별 상대가치점수의 점수당 단가를 반영(※ 상세내용 [붙임] 참고) ○ 시행일 - 2027.1.1.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Mon, 19 Oct 2026 04:28:00 GMT",
+      "published_at": "2026-10-19T04:28:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "전부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「보건신기술(NET) 인증기술 고시」일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492248&act=view",
+      "body": "보건복지부 고시 제2026-216호 「보건의료기술진흥법」 제8조의 규정에 의하여 「보건신기술(NET) 인증기술 고시」(보건복지부고시 제2026-152호, 2026.7.22.)를 다음과 같이 개정·발령합니다. 2026년 10월 16일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Fri, 16 Oct 2026 05:21:00 GMT",
+      "published_at": "2026-10-16T05:21:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「암환자에 대한 의료비 지원기준 등에 관한 고시」일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492226&act=view",
+      "body": "보건복지부고시 제2026-215호 「암환자에 대한 의료비 지원기준 등에 관한 고시」를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 14일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Wed, 14 Oct 2026 04:21:00 GMT",
+      "published_at": "2026-10-14T04:21:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「암검진 실시기준」고시 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492225&act=view",
+      "body": "보건복지부고시 제2026-214호 「암검진 실시기준」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 14일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Wed, 14 Oct 2026 04:18:00 GMT",
+      "published_at": "2026-10-14T04:18:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「상급종합병원의 지정 및 평가 규정」고시 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492224&act=view",
+      "body": "「상급종합병원의 지정 및 평가 규정」고시를 다음과 같이 일부 개정·발령합니다.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Wed, 14 Oct 2026 04:08:00 GMT",
+      "published_at": "2026-10-14T04:08:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「정신건강전문요원의 수련 및 보수교육 등에 관한 규정」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492209&act=view",
+      "body": "보건복지부고시 제2026-212호 「정신건강전문요원의 수련 및 보수교육 등에 관한 규정」을 다음과 같이 개정ㆍ발령합니다 2026년 10월 13일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Tue, 13 Oct 2026 01:54:00 GMT",
+      "published_at": "2026-10-13T01:54:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「보건복지부 소속 국립병원 및 국립재활원의 전자의무기록시스템 구축·운영 사무 위탁에 관한 고시」제정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492208&act=view",
+      "body": "보건복지부고시 제2026-211호 「행정권한의 위임 및 위탁에 관한 규정」제52조제2항에 따라 「보건복지부 소속 국립병원 및 국립재활원의 전자의무기록시스템 구축·운영 사무 위탁에 관한 고시」를 다음과 같이 제정·고시합니다.",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Tue, 13 Oct 2026 01:16:00 GMT",
+      "published_at": "2026-10-13T01:16:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "제정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「평가 유예 신의료기술 고시」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492184&act=view",
+      "body": "보건복지부고시 제2026 - 210호 「신의료기술평가에 관한 규칙」제3조제5항에 의한 「평가 유예 신의료기술 고시」(보건복지부 고시 제2026-171호, 2026. 8. 10.)를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 8일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 08 Oct 2026 07:46:00 GMT",
+      "published_at": "2026-10-08T07:46:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "「신의료기술의 안전성·유효성 평가결과 고시」 일부개정",
+      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492183&act=view",
+      "body": "보건복지부고시 제2026 - 209호 「의료법」제53조 및 「신의료기술평가에 관한 규칙」제4조에 의한 「신의료기술의 안전성·유효성 평가결과 고시」(보건복지부 고시 제2026-170호, 2026. 8. 10.)를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 8일 보건복지부장관",
+      "source": "보건복지부",
+      "category": "훈령·예규·고시·지침",
+      "published": "Thu, 08 Oct 2026 07:39:00 GMT",
+      "published_at": "2026-10-08T07:39:00+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "자율기구 \"중소기업인공지능확산추진단\" 설치 및 운영에 관한 규정 개정 공고(훈령 제212호)",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1069472",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20260630143849",
+      "published_at": "2026-06-30T05:38:49+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "자율기구 \"소공인성장촉진단\" 설치 및 운영에 관한 규정 개정 공고(훈령 제210호)",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1068607",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20260527110940",
+      "published_at": "2026-05-27T02:09:40+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "중소벤처기업부 보안업무시행세칙 일부 개정(훈령 제209호)",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1068166",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20260513091215",
+      "published_at": "2026-05-13T00:12:15+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "자율기구 \"미래기술대응지원단\" 설치 및 운영에 관한 규정 폐지",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1064424",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20251230135538",
+      "published_at": "2025-12-30T04:55:38+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "폐지",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "중소벤처기업부 민원처리에 관한 시행세칙 일부 개정 (훈령 제200호)",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1063700",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20251202152555",
+      "published_at": "2025-12-02T06:25:55+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "자율기구 \"소상공인판매활력촉진단\" 설치 및 운영에 관한 규정 폐지",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=Y&bcIdx=1063591",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20251127141309",
+      "published_at": "2025-11-27T05:13:09+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "폐지",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    },
+    {
+      "title": "수탁·위탁거래 사건처리지침 일부개정",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=125&ext6=N&bcIdx=1061262",
+      "body": "",
+      "source": "중소벤처기업부",
+      "category": "훈령·예규",
+      "published": "20250828105133",
+      "published_at": "2025-08-28T01:51:33+00:00",
+      "date_basis": "소관기관 공식 게시일",
+      "detected": "기존",
+      "stage": "기관 공식 개정·제정 게시",
+      "first_seen_at": "2026-11-06T07:41:49+00:00",
+      "law_type": "행정규칙·고시",
+      "change_type": "일부개정",
+      "promulgated_at": null,
+      "change_detected": "기준선"
+    }
+  ],
+  "law_source": {
+    "authority": "공식 부처 행정규칙·고시 게시",
+    "api_connected": false,
+    "api_note": "법제처 Open API 인증 미설정 — 공포 법령 목록 대신 공식 기관 개정 고시를 표시합니다.",
+    "law_count": 0,
+    "agency_count": 34
+  },
   "items": [
     {
       "title": "‘학대의 신호도, 마음의 신호도 놓치지 마세요’, 2026 발달장애인 가족치유행사 홍보부스 운영",
@@ -869,10 +1467,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:43:29+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:43:29+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "환자 자기결정권 및 존엄성 보장 위한 생애 말 의료·돌봄 공론화 착수",
@@ -914,10 +1509,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:43:29+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:43:29+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "도민의 시각으로 공약을 점검합니다! 도민배심원단 본격 활동 시작",
@@ -959,10 +1551,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "가을 막차 타세요! 놓치기 아쉬운 서울 주말 나들이.zip",
@@ -1060,10 +1649,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "간호인력 지원센터 운영 사업 위탁기관 선정 공모",
@@ -1091,10 +1677,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:43:29+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:43:29+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "아프리카돼지열병(ASF) 방역대책추진현황 261104 18시기준",
@@ -1108,10 +1691,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:43:29+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:43:29+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:43:29+00:00"
     },
     {
       "title": "한센병, 질병의 역사 넘어 인간을 보다 한센병박물관 개관 10주년 기념 학술대회 개최",
@@ -1237,10 +1817,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "경기도, 고병원성조류인플루엔자 확산 차단 위해 긴급방역점검회의 개최",
@@ -1310,10 +1887,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "2026년 1인 창조기업 지원센터‧중장년 기술창업센터 신규 주관기관 모집 수정 공고",
@@ -1383,10 +1957,7 @@
       "detected": "기존",
       "detected_at": "2026-11-06T07:41:49+00:00",
       "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": true,
-      "change_details": []
+      "first_seen_at": "2026-11-06T07:41:49+00:00"
     },
     {
       "title": "경제노동위원회, 소상공인 지원 최일선 현장 소통 나서",
@@ -4148,343 +4719,54 @@
     }
   ],
   "impacts": [],
-  "source_count": 23,
-  "success_count": 23,
-  "scope": "중앙행정기관·지방자치단체·공공통계 공식 RSS",
-  "method": "실시간 공개 게시물 · 첨부자료 일부 원문 검사 · 기관 간 연관 게시물 탐색",
-  "law_changes": [
+  "investigations": [
     {
       "title": "보건복지부 인사관리규정 일부개정",
       "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492466&act=view",
-      "body": "보건복지부 훈령 제306호 보건복지부 인사관리규정 일부개정 「국가공무원법」 및 「공무원임용령」등 인사관계법령에 따른 「보건복지부 인사관리규정」(보건복지부훈령 제263호, 2024. 12. 04.)을 다음과 같이 개정 발령합니다. 2026년 11월 6일 보건복지부장관",
+      "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 06 Nov 2026 01:43:00 GMT",
-      "published_at": "2026-11-06T01:43:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "attachments": [],
-      "details_checked": false,
-      "change_details": [],
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
       "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
       "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492447&act=view",
-      "body": "보건복지부 고시 제2026-230호 「국민건강보험법」제41조제3항 및 제4항, 「국민건강보험법 시행령」제19조제1항 관련 별표2 및 「국민건강보험 요양급여의 기준에 관한 규칙」제5조제2항에 의한 「요양급여의 적용기준 및 방법에 관한 세부사항」을 다음과 같이 개정·발령합니다. 2026년 11월 5일 보건복지부장관 「요양급여의 적용기준 및 방법에 관한 세부사항」일부개정 □ 주요 내용 ○ ‘심장초음파 검사의 급여기준’ 세부인정사항의 학회명 변경 (초음파 질의응답 수정 반영) - 유럽마취과학회(ESA) → 유럽마취집중치료학회(ESAIC) ○ ‘경피적 좌심방이 폐색술 실시기관 신고서’(별지 제33호 서식) 변경 - 신고서 서식 [실적현황]에 신설된 중격천자 행위* 분류번호 추가 * 자654-2주2 심방세동의 펄스장절제술-중격천자 □ 시행일 : 2026. 11.5.(목)",
+      "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Thu, 05 Nov 2026 00:43:00 GMT",
-      "published_at": "2026-11-05T00:43:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
       "title": "「한약제제 급여목록 및 상한금액표」 일부개정(고시 제2026-229호) 안내",
       "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492423&act=view",
-      "body": "보건복지부 고시 제2026 - 229호 「국민건강보험법 시행령」제22조제2항과「국민건강보험 요양급여의 기준에 관한 규칙」제8조제2항의 규정에 의한「한약제제 급여목록 및 상한금액표」(보건복지부 고시 제2026-124호, 2026.6.1.)를 다음과 같이 개정·발령합니다. 2026년 11월 3일 보건복지부장관 「한약제제 급여목록 및 상한금액표」일부개정(안) 한약제제 급여목록 및 상한금액표 일부를 다음과 같이 개정한다. 별표1에 규정된 2.단미엑스혼합제에서 별지1의 약제 2품목을 삭제한다. 부 칙 이 고시는 2027년 5월 1일부터 시행한다.",
+      "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Tue, 03 Nov 2026 06:33:00 GMT",
-      "published_at": "2026-11-03T06:33:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
       "title": "「보건복지부 적극행정공무원의 징계절차에서의 소명 또는 소송 등에 관한 지원 규정」일부개정",
       "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492415&act=view",
-      "body": "보건복지부훈령 제305호 「보건복지부 적극행정공무원의 징계절차에서의 소명 또는 소송 등에 관한 지원 규정」을 다음과 같이 개정ㆍ발령합니다. 2026년 11월 3일 보건복지부장관",
+      "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Tue, 03 Nov 2026 00:43:00 GMT",
-      "published_at": "2026-11-03T00:43:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     },
     {
       "title": "「보건복지부 고문변호사 위촉·운영 및 소송 위임 등에 관한 규정」일부개정",
       "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492413&act=view",
-      "body": "보건복지부훈령 제304호 「보건복지부 고문변호사 위촉·운영 및 소송 위임 등에 관한 규정」을 다음과 같이 개정ㆍ발령합니다. 2026년 11월 3일 보건복지부장관",
+      "status": "변경 전·후 추출 대기",
       "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Tue, 03 Nov 2026 00:42:00 GMT",
-      "published_at": "2026-11-03T00:42:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정고시",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492392&act=view",
-      "body": "보건복지부 고시 제2026 - 224호 「국민건강보험법 시행령」 제21조제2항·3항 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항부터 제5항까지, 제9조제1항, 제11조제1항, 제12조제2항 및 제13조 제1항·제3항에 의한 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」를 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관 건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시 □ 주요내용 ○ 만성 비염 냉동치료 비급여 신설(신의료기술의 안전성·유효성 평가결과 고시 제2025-28호, 2025.2.17.) ○ 환자 맞춤형 모형을 이용한 모의 수술 계획 비급여 신설(고시 제2018-258호, 2018.12.4.) ○ 대장암의 미세잔존암 확인을 위한 개인 맞춤형 유전자 패널 기반 액체생검 검사 비급여 신설(고시 제2025-121호, 2025.7.18.) □ 시행일: 2026. 11. 1. □ 문의: 보험급여과 044-202-2737, 2741",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 30 Oct 2026 07:32:00 GMT",
-      "published_at": "2026-10-30T07:32:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492391&act=view",
-      "body": "보건복지부 고시 제2026-227호 「국민건강보험법」제41조제3항 및 제4항, 「국민건강보험법 시행령」 제19조제1항 관련 별표2 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제5조제2항에 의한 「요양급여의 적용기준 및 방법에 관한 세부사항」을 다음과 같이 개정·발령합니다. 2026년 10월 30일 보건복지부 장관 □ 주요개정사항 ○ 희소·필수 치료재료(FROZEN ELEPHANT TRUNK용 GRAFT)의 급여기준 개정",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 30 Oct 2026 07:23:00 GMT",
-      "published_at": "2026-10-30T07:23:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「평가 유예 신의료기술 고시」 일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492387&act=view",
-      "body": "보건복지부고시 제2026 - 226호 「신의료기술평가에 관한 규칙」제3조제5항에 의한 「평가 유예 신의료기술 고시」(보건복지부 고시 제2026-210호, 2026. 10. 8.)를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 30일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 30 Oct 2026 05:32:00 GMT",
-      "published_at": "2026-10-30T05:32:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「신의료기술의 안전성·유효성 평가결과 고시」 일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492386&act=view",
-      "body": "보건복지부고시 제2026 - 225호 「의료법」제53조 및 「신의료기술평가에 관한 규칙」제4조에 의한 「신의료기술의 안전성·유효성 평가결과 고시」(보건복지부 고시 제2026-209호, 2026. 10. 8.)를 다음과 같이 개정ㆍ발령합니다. 2026년 10월 30일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 30 Oct 2026 05:28:00 GMT",
-      "published_at": "2026-10-30T05:28:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「첨단재생의료 임상연구 및 첨단재생의료 치료 위험도 구분에 관한 고시」제정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492373&act=view",
-      "body": "보건복지부고시 제2026-220호 「첨단재생의료 및 첨단바이오의약품 안전 및 지원에 관한 법률 시행령」제4조에 따라 「첨단재생의료 임상연구 및 첨단재생의료 치료 위험도 구분에 관한 고시」를 다음과 같이 제정·발령합니다. 2026년 10월 30일 보건복지부 장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Fri, 30 Oct 2026 00:53:00 GMT",
-      "published_at": "2026-10-30T00:53:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "제정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492368&act=view",
-      "body": "보건복지부 고시 제2026 - 224호 「국민건강보험법 시행령」 제21조제2항·3항 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항부터 제5항까지, 제9조제1항, 제11조제1항, 제12조제2항 및 제13조 제1항·제3항에 의한 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」를 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관 건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 일부개정고시 □ 주요내용 ○ 소아전문응급의료센터 응급의료관리료 점수 인상 □ 시행일: 2026. 11. 1. □ 문의: 보험급여과 044-202-2737, 2741",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Thu, 29 Oct 2026 09:37:00 GMT",
-      "published_at": "2026-10-29T09:37:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「요양급여비용 청구방법，심사청구서·명세서서식 및 작성요령」 일부개정 안내",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492366&act=view",
-      "body": "보건복지부 고시 제2026-223호 「국민건강보험법 시행규칙」제19조제3항의 규정에 의한 「요양급여비용 청구방법, 심사청구서·명세서서식 및 작성요령」(보건복지부 고시 제2026-183호, 2026.8.31.)을 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관 「요양급여비용 청구방법, 심사청구서·명세서서식 및 작성요령」일부개정 요양급여비용 청구방법, 심사청구서？명세서서식 및 작성요령 일부를 다음과 같이 개정한다. 별표 8 제1호 중 구분코드 MT072를 다음과 같이한다. (표 생략..) 부 칙 제1조(시행일) 이 고시는 2026년 11월 1일부터 시행한다. 제2조(특정내역 구분코드에 관한 적용례) 별표 8의 개정 규정은 이 고시 시행일 이후에 실시하는 요양급여부터 적용한다.",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Thu, 29 Oct 2026 08:09:00 GMT",
-      "published_at": "2026-10-29T08:09:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「요양급여의 적용기준 및 방법에 관한 세부사항(약제)」 일부개정 안내",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492365&act=view",
-      "body": "보건복지부 고시 제2026-222호 「국민건강보험법」 제41조제3항 및 제4항, 「국민건강보험 요양급여 기준에 관한 규칙」제5조제2항에 따라「요양급여의 적용기준 및 방법에 관한 세부사항」(보건복지부 고시 제2026-192호(2026. 9. 29.)을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 29일 보건복지부장관 「요양급여의 적용기준 및 방법에 관한 세부사항」일부개정 요양급여의 적용기준 및 방법에 대한 세부사항 일부를 다음과 같이 개정한다. Ⅱ. 약제 “[117] Esketamine hydrochloride 외용제(품명: 스프라바토나잘스프레이), [232] Vonoprazan fumarate 경구제(품명 : 보신티정10밀리그램 등), [232] Vonoprazan tosylate 경구제(품명 : 보노칸정10밀리그램 등), [399] Lumasiran sodium 주사제(품명: 옥스루모주)”를 별지 1과 같이 신설하고, “[일반원칙] 고가의약품 급여관리에 관한 기준, [333] Edoxaban Tosilate Hydrate 경구제(품명: 릭시아나정 15밀리그램 등), [399] Burosumab 주사제(품명: 크리스비타주사액), [439] Aflibercept 주사제(품명: 아일리아주사, 아일리아프리필드시린지 등), [439] Ranibizumab 주사제(품명:루센티스주 등, 루센티스프리필드시린지 등), [619] Clostridium botulinum A toxin 주사제(품명: 보톡스주 등), [629] Letermovir 경구제(품명: 프레비미스정 240, 480밀리그램), Letermovir 주사제(품명: 프레비미스주 240, 480밀리그램)”의 세부인정기준 및 방법의 일부를 별지 2와",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Thu, 29 Oct 2026 08:00:00 GMT",
-      "published_at": "2026-10-29T08:00:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「치료재료 급여비급여 목록 및 급여상한금액표」 고시 일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492348&act=view",
-      "body": "보건복지부 고시 제2026-221호 「국민건강보험법」 제41조의3, 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항 및 제11조부터 제13조까지의 규정에 의한 「치료재료 급여·비급여 목록 및 급여상한금액표」를 다음과 같이 개정·발령합니다. 2026년 10월 29일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Thu, 29 Oct 2026 02:34:00 GMT",
-      "published_at": "2026-10-29T02:34:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「약제 급여 목록 및 급여 상한금액표」일부개정고시(제2026-219호) 안내",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492330&act=view",
-      "body": "보건복지부 고시 제2026-219호 「국민건강보험법 시행령」 제22조제1항 및 「국민건강보험 요양급여의 기준에 관한 규칙」 제8조제2항에 따른 「약제 급여 목록 및 급여 상한금액표」를 다음과 같이 개정 발령합니다. 2026년 10월 27일 보건복지부장관 - 약가유연계약 적용 약제는 표시가(공개용)와 별도 합의 상한금액(실제가)로 각각 관리되고 있으며, 본 고시개정안에는 표시가(공개용)만 확인할 수 있으므로 별도 합의 상한금액(실제가) 변동사항을 반드시 확인해주셔야합니다. - 별도 합의 상한금액(실제가)은 아래의 요양기관업무포털 경로에서 인가된 대상자에 한해서만 확인할 수 있으니, 인가된 대상이 아닐 경우 제약사에 별도 확인이 가능합니다. * 요양기관업무포털(biz.hira.or.kr) -> 공동인증서 로그인 -> 심사기준종합서비스 -> 약제청구관련기준(약가파일) - 약가유연계약 약제 현황은 심평원 홈페이지(hira.or.kr) -> 제도 정책 -> 약제기준정보 -> 목록표 상 '비고란' -> \"약가유연계약 적용 약제\"를 참고하여 주시기 바랍니다.",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Tue, 27 Oct 2026 06:06:00 GMT",
-      "published_at": "2026-10-27T06:06:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「보건복지부 소송비용 회수 사무처리 지침」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492323&act=view",
-      "body": "보건복지부훈령 제303호 「보건복지부 소송비용 회수 사무처리 지침」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 26일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 26 Oct 2026 01:21:00 GMT",
-      "published_at": "2026-10-26T01:21:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「소송 등 업무 처리 지침」일부개정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492322&act=view",
-      "body": "보건복지부예규 제158호 「소송 등 업무 처리 지침」을 다음과 같이 개정ㆍ발령합니다. 2026년 10월 26일 보건복지부장관",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 26 Oct 2026 01:19:00 GMT",
-      "published_at": "2026-10-26T01:19:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "확정·개정 관련 게시",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "행정규칙",
-      "change_type": "일부개정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
-    },
-    {
-      "title": "「고령친화도시 지정 및 지원 등에 관한 고시」제정",
-      "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1492321&act=view",
-      "body": "보건복지부 고시 제2026 - 218호 「노인복지법」제4조3 및 「노인복지법 시행령」제2조의2~제2조의4에 따른 고령친화도시 지정에 필요한 세부사항 (보건복지부 고시 제2026-218호, 2026.10.26.)을 다음과 같이 제정ㆍ발령합니다.",
-      "source": "보건복지부",
-      "category": "훈령·예규·고시·지침",
-      "published": "Mon, 26 Oct 2026 00:59:00 GMT",
-      "published_at": "2026-10-26T00:59:00+00:00",
-      "date_basis": "소관기관 공식 게시일",
-      "detected": "기존",
-      "detected_at": "2026-11-06T07:41:49+00:00",
-      "stage": "변경 관련 검토",
-      "first_seen_at": "2026-11-06T07:41:49+00:00",
-      "law_type": "고시",
-      "change_type": "제정",
-      "promulgated_at": null,
-      "change_detected": "기준선"
+      "reason": "원문에서 대조 가능한 개정 전·후 값 또는 문구를 확인하지 못했습니다."
     }
   ],
-  "law_source": {
-    "authority": "기관 공식 개정 고시(법제처 공포법령 동기화 준비)",
-    "api_connected": false,
-    "law_count": 0,
-    "agency_count": 18
-  }
+  "scan_metrics": {
+    "policies_examined": 5,
+    "source_pages_read": 4,
+    "search_requests": 0,
+    "candidates_found": 0,
+    "target_pages_examined": 0,
+    "attachments_examined": 0,
+    "errors": []
+  },
+  "source_count": 23,
+  "success_count": 23,
+  "scope": "중앙행정기관·지방자치단체·공공통계 공식 RSS",
+  "method": "실시간 공개 게시물 · 첨부자료 일부 원문 검사 · 기관 간 연관 게시물 탐색"
 }

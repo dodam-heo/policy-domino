@@ -1,5 +1,5 @@
 {
-  "cursor": 3,
+  "cursor": 9,
   "snapshots": {},
   "events": [
     {
@@ -1402,6 +1402,44 @@
           "basis_url": "https://www.law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=291681&chrClsCd=010202"
         }
       ]
+    },
+    {
+      "id": "policy:education",
+      "mst": "",
+      "event_id": "a7549a940de0ea7324",
+      "title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
+      "promulgated_at": "2026-09-18",
+      "promulgation_number": "2026-21호",
+      "effective_date": "2027-01-01",
+      "revision": "전부개정",
+      "ministry": "교육부",
+      "law_type": "고시·행정규칙",
+      "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "source": "국가법령정보센터 고시 원문·소관부처 공식자료",
+      "change_count": 1,
+      "article_differences": [
+        {
+          "id": "ae07a4e2535939855f",
+          "article": "교육급여:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "3,247,369원",
+          "after": "3,464,943원",
+          "source_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+          "directive": "교육급여:4인: 3,247,369원 → 3,464,943원"
+        }
+      ],
+      "comparison_status": "공식 소관부처의 전년도·신년도 기준액 대조 완료",
+      "amendment_reason": "교육급여 소득인정액 선정기준에 관한 2027년 확정 기준",
+      "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "downstream_changes": [],
+      "upstream_changes": [],
+      "policy_source_urls": [
+        "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=107233&lev=0&m=040401",
+        "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=104926&lev=0&m=0302"
+      ],
+      "policy_profile": "education",
+      "value_verified": true
     },
     {
       "id": "policy:welfare",
@@ -4920,6 +4958,92 @@
         "d6a8e7c238955bf420"
       ],
       "impact_link_basis": "하위 시행규칙의 제·개정이유가 상위 법령의 공포번호를 명시"
+    },
+    {
+      "id": "81f89def0fcd841e1f",
+      "event_id": "a7549a940de0ea7324",
+      "law_title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
+      "law_id": "083fd8550a4363e840",
+      "change_date": "2026-09-18",
+      "ministry": "교육부",
+      "agency": "교육부",
+      "agency_role": "교육급여 기준 소관",
+      "agency_level": "해당 업무의 운영 주체",
+      "agency_basis": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "work": "교육급여 선정기준 관리",
+      "service": "교육급여 선정기준표",
+      "target_location": "교육급여 선정기준 관리 > 교육급여 선정기준표",
+      "target_field": "교육급여:4인 선정기준",
+      "target_verified": false,
+      "verification_note": "업무 기준 변경 필요성은 공식 고시 및 소관 업무로 확인됨. 실제 개별 시스템의 반영 여부는 검증하지 않았습니다.",
+      "source_change": "교육급여:4인 3,247,369원 → 3,464,943원",
+      "what_to_change": "교육급여:4인 3,247,369원 → 3,464,943원",
+      "required_change": "4인 가구의 교육급여 기준액을 3,247,369원에서 3,464,943원으로 변경하고, 새 기준을 적용하는 업무 규칙을 확인",
+      "changes": [
+        {
+          "field": "교육급여:4인",
+          "before": "3,247,369원",
+          "after": "3,464,943원",
+          "old_literal": "3247369",
+          "new_literal": "3464943"
+        }
+      ],
+      "article": "선정기준·최저보장수준",
+      "before": "3,247,369원",
+      "after": "3,464,943원",
+      "change_type": "기준액 변경",
+      "effective_date": "2027-01-01",
+      "basis": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "status": "시행 예정",
+      "status_evidence": null,
+      "status_checked_at": null,
+      "confidence": "공식 고시와 연도별 선정기준 대조",
+      "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
+      "upstream_event_ids": [],
+      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
+    },
+    {
+      "id": "75e60209a61af7f153",
+      "event_id": "a7549a940de0ea7324",
+      "law_title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
+      "law_id": "083fd8550a4363e840",
+      "change_date": "2026-09-18",
+      "ministry": "교육부",
+      "agency": "시·도교육청",
+      "agency_role": "급여 결정·통지",
+      "agency_level": "해당 업무의 운영 주체",
+      "agency_basis": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "work": "교육급여 대상자 선정·결정",
+      "service": "가구원수별 교육급여 자격판정 기준",
+      "target_location": "교육급여 대상자 선정·결정 > 가구원수별 교육급여 자격판정 기준",
+      "target_field": "교육급여:4인 선정기준",
+      "target_verified": false,
+      "verification_note": "업무 기준 변경 필요성은 공식 고시 및 소관 업무로 확인됨. 실제 개별 시스템의 반영 여부는 검증하지 않았습니다.",
+      "source_change": "교육급여:4인 3,247,369원 → 3,464,943원",
+      "what_to_change": "교육급여:4인 3,247,369원 → 3,464,943원",
+      "required_change": "4인 가구의 교육급여 기준액을 3,247,369원에서 3,464,943원으로 변경하고, 새 기준을 적용하는 업무 규칙을 확인",
+      "changes": [
+        {
+          "field": "교육급여:4인",
+          "before": "3,247,369원",
+          "after": "3,464,943원",
+          "old_literal": "3247369",
+          "new_literal": "3464943"
+        }
+      ],
+      "article": "선정기준·최저보장수준",
+      "before": "3,247,369원",
+      "after": "3,464,943원",
+      "change_type": "기준액 변경",
+      "effective_date": "2027-01-01",
+      "basis": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "status": "시행 예정",
+      "status_evidence": null,
+      "status_checked_at": null,
+      "confidence": "공식 고시와 연도별 선정기준 대조",
+      "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
+      "upstream_event_ids": [],
+      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
     },
     {
       "id": "c6146a58ba550d1c24",

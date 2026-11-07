@@ -60,7 +60,7 @@ def change_pairs(directive):
 def additions(directive):
     text=directive or ""
     rows=[]
-    for m in re.finditer(QUOTE+r'\s*(?:을|를)?\s*신설',text):
+    for m in re.finditer(QUOTE.pattern+r'\s*(?:을|를)?\s*신설',text):
         rows.append(compact(m.group(1)))
     return rows[:12]
 

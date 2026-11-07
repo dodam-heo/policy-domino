@@ -6,7 +6,9 @@
     "recent": 0,
     "modified": 0,
     "candidate": 123,
-    "targets": 0
+    "targets": 0,
+    "law_total": 18,
+    "law_recent_7d": 5
   },
   "sources": [
     {

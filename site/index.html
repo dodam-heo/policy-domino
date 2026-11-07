@@ -83,7 +83,7 @@ function typeOf(e){let s=e.revision||e.change_type||e.type||"";return /폐지/.t
 function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?"폐지":"개정"}
 function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
 function sorted(events){return [...events].sort((a,b)=>(b.promulgated_at||b.change_date||"").localeCompare(a.promulgated_at||a.change_date||""))}
-function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
+function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id||(a.upstream_event_ids||[]).includes(event.event_id))}
 let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",actionFilter="all";
 function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||typeOf(e)===filter)&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
@@ -110,8 +110,9 @@ return '<article class="action"><div class="actionTop"><div><div class="agency">
 '<div class="locationTitle">어디를 바꾸나?</div><div class="locationBox">'+func+' <span style="color:#90a7b6">›</span> '+task+'</div>'+
 '<div class="locationTitle">무엇이 달라지나?</div>'+comparison+added+
 '<div class="instruction"><b>필요한 조치</b>'+esc(a.required_change||"실제 업무에 반영해야 할 변경사항 확인 필요")+'</div>'+
-'<div class="evidence"><b>적용 시점:</b> '+esc(a.effective_date||"시행일 추가 확인")+
-'<br><b>변경 근거:</b> '+esc(a.article||"")+
+'<div class="evidence"><b>해당 기관의 개정 근거:</b> '+esc(a.law_title||"")+' · '+esc(a.article||"")+
+'<br><b>적용 시점:</b> '+esc(a.effective_date||"시행일 추가 확인")+
+'<br><b>도미노 연결:</b> '+esc(a.impact_link_basis||"직접 변경")+
 ' · <a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">공식 개정문 보기 ↗</a>'+
 '<br><b>조치 확인:</b> '+esc(a.status_evidence||"공개 근거 미확인 · 완료/미조치 확정 불가")+'</div>'+
 '<p class="verification">'+esc(a.verification_note||a.note||"구체적인 업무시스템·서비스 명칭과 실제 적용 상태는 별도 확인 필요")+'</p></article>';
@@ -126,7 +127,7 @@ const all=matchingActions(e),current=all.filter(a=>actionFilter==="all"||a.statu
 return '<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>'+
 '<div class="detailBody"><div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div><div class="fact"><small>기관별 조치사항</small><strong>'+all.length+'건</strong></div></div>'+
 '<div class="sectionGap"></div><h3 class="sectionHeading">법에서 무엇이 바뀌었나?</h3>'+(e.amendment_reason?'<div class="evidence"><b>공식 개정 이유 · 주요내용</b><p style="margin-top:8px;line-height:1.7">'+esc(e.amendment_reason)+'</p></div>':'<p class="smallNote">개정 이유와 구체적 변경 내용을 조사 중입니다.</p>')+
-'<div class="sectionGap"></div><h3 class="sectionHeading">그래서 어디의 무엇을 바꿔야 하나?</h3><div class="impactRoute">변경된 법령은 <b>원인</b>이고, 아래는 법령 자체를 다시 고치는 일이 아니라 <b>각 기관의 업무·서비스·처리기준에서 변경할 대상</b>입니다.</div>'+
+'<div class="sectionGap"></div><h3 class="sectionHeading">그래서 어디의 무엇을 바꿔야 하나?</h3><div class="impactRoute">변경된 법령은 <b>원인</b>이고, 아래는 <b>직접 또는 하위규정 변경으로 연결된 기관의 실제 업무 운영에서 바꿀 항목</b>입니다.'+(e.downstream_changes?.length?'<br><b>근거로 연결된 하위규정 '+e.downstream_changes.length+'건 · 영향 소관기관 '+new Set(e.downstream_changes.map(x=>x.institution)).size+'곳</b>':'')+'</div>'+
 '<div class="sectionGap"></div><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 대상 · 필요 조치</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div>'+
 '<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","시행 예정"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>'+
 (current.length?current.map(actionCard).join(""):showEmpty(all.length?"해당 상태의 조치사항이 없습니다.":"기관별 조치사항이 아직 도출되지 않았습니다.",all.length?"다른 조치 상태를 선택하세요.":"변경된 조문과 해당 제도를 운영하는 기관·업무의 공식 관계가 확인되어야 조치사항이 생성됩니다."))+

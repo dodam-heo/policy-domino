@@ -96,10 +96,14 @@ jobs:
           import json
           from pathlib import Path
           status=json.loads(Path('data/next_run_status.json').read_text('utf-8'))
-          if status.get('source_status')!='정상':
-              print('::error::법령 수집 실패: '+str(status.get('message') or status.get('source_status')))
+          current=status.get('source_status')
+          if current=='메타데이터만 연결':
+              print('::warning::공식 공포 목록은 확보했지만 조문 비교와 기관별 조치는 추가 분석이 필요합니다.')
+          elif current!='정상':
+              print('::error::법령 수집 실패: '+str(status.get('message') or current))
               raise SystemExit(1)
-          print('공식 법령 수집 확인:',status.get('compared'),'건 조문 비교')
+          else:
+              print('공식 법령 수집 확인:',status.get('compared'),'건 조문 비교')
           PY
 
   deploy:

@@ -106,8 +106,17 @@ def concrete_action(law,diff):
                 "old_literal":before_literal,"new_literal":after_literal}]
     if pairs:
         summary="; ".join(f"{p['before']} → {p['after']}" for p in pairs[:3])
-        what=("변경된 수치·문구를 "+domain+"의 실제 운영 기준과 적용 기능에 동일하게 설정하고, "
-              "종전 기준이 남아 있지 않은지 확인")
+        p=pairs[0]
+        if "정원" in domain:
+            what=(f"{agency}의 직급·직렬별 인력 배정에서 '{p['field']}' 정원을 "
+                  f"{p['old_literal']}에서 {p['new_literal']}으로 조정하고, 인원 배정과 정원 현황의 기준값을 일치시킬 것.")
+        elif "업무분장" in domain:
+            what=(f"{agency}의 조직별 담당 기능·직위 배정에서 '{p['old_literal']}' 항목을 "
+                  f"'{p['new_literal']}'으로 바꾸어 담당업무 범위에 적용할 것.")
+        else:
+            what=(f"{agency}의 {location}에서 '{p['before']}' 조건을 '{p['after']}'으로 "
+                  "변경하고 시행일 이후 종전 조건이 적용되지 않는지 확인할 것.")
+        if len(pairs)>1:what+=f" 같은 개정 지시의 나머지 {len(pairs)-1}개 변경값도 아래 비교표대로 적용."
         if len(pairs)>3:summary+=f" 외 {len(pairs)-3}개 항목"
     elif additions_list:
         summary="신설: "+"; ".join(additions_list[:3])
@@ -138,7 +147,8 @@ def concrete_action(law,diff):
         "agency_level":"직접 영향 · 기타 기관 추가 분석 필요",
         "agency_basis":"변경 법령 제목과 소관기관 정보",
         "work":domain,"category":domain,
-        "service":location, "target_location":location,
+        "service":location,
+        "target_location":domain+" > "+location+(" ("+article+" 기준)" if article else ""),
         "target_field":field, "target_verified":False,
         "verification_note":"정확한 기관별 업무시스템·서비스명 및 실제 적용 상태는 추가 확인이 필요합니다.",
         "source_change":summary,"required_change":what,

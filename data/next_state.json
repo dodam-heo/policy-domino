@@ -1,5 +1,5 @@
 {
-  "cursor": 0,
+  "cursor": 6,
   "snapshots": {},
   "events": [
     {
@@ -1402,6 +1402,54 @@
           "basis_url": "https://www.law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=291681&chrClsCd=010202"
         }
       ]
+    },
+    {
+      "id": "policy:welfare",
+      "mst": "",
+      "event_id": "8efcae799dd5fe26de",
+      "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "promulgated_at": "2026-07-29",
+      "promulgation_number": "2026-157호",
+      "effective_date": "2027-01-01",
+      "revision": "기준 변경",
+      "ministry": "보건복지부",
+      "law_type": "고시·행정규칙",
+      "url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "source": "국가법령정보센터 고시 원문·소관부처 공식자료",
+      "change_count": 2,
+      "article_differences": [
+        {
+          "id": "b1790d6fce308721d8",
+          "article": "중위소득:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "6,494,738원",
+          "after": "6,929,885원",
+          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+          "directive": "중위소득:4인: 6,494,738원 → 6,929,885원"
+        },
+        {
+          "id": "410b08a0ca860bfe25",
+          "article": "생계급여:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "2,078,316원",
+          "after": "2,217,563원",
+          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+          "directive": "생계급여:4인: 2,078,316원 → 2,217,563원"
+        }
+      ],
+      "comparison_status": "공식 소관부처의 전년도·신년도 기준액 대조 완료",
+      "amendment_reason": "기준 중위소득 및 생계급여 선정기준에 관한 2027년 확정 기준",
+      "amendment_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "downstream_changes": [],
+      "upstream_changes": [],
+      "policy_source_urls": [
+        "https://www.mohw.go.kr/gallery.es?act=view&bid=0003&list_no=380303&mid=a10505000000",
+        "https://www.mohw.go.kr/menu.es?mid=a10708010300"
+      ],
+      "policy_profile": "welfare",
+      "value_verified": true
     }
   ],
   "actions": [
@@ -4872,6 +4920,92 @@
         "d6a8e7c238955bf420"
       ],
       "impact_link_basis": "하위 시행규칙의 제·개정이유가 상위 법령의 공포번호를 명시"
+    },
+    {
+      "id": "c6146a58ba550d1c24",
+      "event_id": "8efcae799dd5fe26de",
+      "law_title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "law_id": "9e70d561adad301595",
+      "change_date": "2026-07-29",
+      "ministry": "보건복지부",
+      "agency": "보건복지부",
+      "agency_role": "기초생활보장 총괄",
+      "agency_level": "해당 업무의 운영 주체",
+      "agency_basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "work": "생계급여 선정·지급기준",
+      "service": "급여 산정 및 대상자 선정에 쓰는 가구별 기준액",
+      "target_location": "생계급여 선정·지급기준 > 급여 산정 및 대상자 선정에 쓰는 가구별 기준액",
+      "target_field": "생계급여:4인 선정기준",
+      "target_verified": false,
+      "verification_note": "업무 기준 변경 필요성은 공식 고시 및 소관 업무로 확인됨. 실제 개별 시스템의 반영 여부는 검증하지 않았습니다.",
+      "source_change": "생계급여:4인 2,078,316원 → 2,217,563원",
+      "what_to_change": "생계급여:4인 2,078,316원 → 2,217,563원",
+      "required_change": "4인 가구의 생계급여 기준액을 2,078,316원에서 2,217,563원으로 변경하고, 새 기준을 적용하는 업무 규칙을 확인",
+      "changes": [
+        {
+          "field": "생계급여:4인",
+          "before": "2,078,316원",
+          "after": "2,217,563원",
+          "old_literal": "2078316",
+          "new_literal": "2217563"
+        }
+      ],
+      "article": "선정기준·최저보장수준",
+      "before": "2,078,316원",
+      "after": "2,217,563원",
+      "change_type": "기준액 변경",
+      "effective_date": "2027-01-01",
+      "basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "status": "시행 예정",
+      "status_evidence": null,
+      "status_checked_at": null,
+      "confidence": "공식 고시와 연도별 선정기준 대조",
+      "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
+      "upstream_event_ids": [],
+      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
+    },
+    {
+      "id": "b43f071f28bf2af07e",
+      "event_id": "8efcae799dd5fe26de",
+      "law_title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "law_id": "9e70d561adad301595",
+      "change_date": "2026-07-29",
+      "ministry": "보건복지부",
+      "agency": "시·군·구",
+      "agency_role": "기초생활보장 집행기관",
+      "agency_level": "해당 업무의 운영 주체",
+      "agency_basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "work": "생계급여 수급자 심사·급여 결정",
+      "service": "가구원수별 소득인정액 비교와 생계급여 산정 규칙",
+      "target_location": "생계급여 수급자 심사·급여 결정 > 가구원수별 소득인정액 비교와 생계급여 산정 규칙",
+      "target_field": "생계급여:4인 선정기준",
+      "target_verified": false,
+      "verification_note": "업무 기준 변경 필요성은 공식 고시 및 소관 업무로 확인됨. 실제 개별 시스템의 반영 여부는 검증하지 않았습니다.",
+      "source_change": "생계급여:4인 2,078,316원 → 2,217,563원",
+      "what_to_change": "생계급여:4인 2,078,316원 → 2,217,563원",
+      "required_change": "4인 가구의 생계급여 기준액을 2,078,316원에서 2,217,563원으로 변경하고, 새 기준을 적용하는 업무 규칙을 확인",
+      "changes": [
+        {
+          "field": "생계급여:4인",
+          "before": "2,078,316원",
+          "after": "2,217,563원",
+          "old_literal": "2078316",
+          "new_literal": "2217563"
+        }
+      ],
+      "article": "선정기준·최저보장수준",
+      "before": "2,078,316원",
+      "after": "2,217,563원",
+      "change_type": "기준액 변경",
+      "effective_date": "2027-01-01",
+      "basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "status": "시행 예정",
+      "status_evidence": null,
+      "status_checked_at": null,
+      "confidence": "공식 고시와 연도별 선정기준 대조",
+      "note": "타 부처의 별도 지원사업에 적용되는지는 해당 사업의 공식 준용 근거를 추가 확인해야 합니다.",
+      "upstream_event_ids": [],
+      "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경"
     }
   ]
 }

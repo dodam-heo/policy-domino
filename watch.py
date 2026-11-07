@@ -12,6 +12,7 @@ from urllib.parse import urljoin, urlparse
 from io import BytesIO
 import hashlib, html, json, re, urllib.request, xml.etree.ElementTree as ET, zipfile
 from law_changes import get_law_changes
+from impact_scanner import scan as scan_downstream
 
 ROOT=Path(__file__).resolve().parent
 STATE=ROOT/"data"/"state.json"
@@ -280,8 +281,12 @@ def main():
         if p["url"] not in unique or p.get("published_at","")>unique[p["url"]].get("published_at",""):unique[p["url"]]=p
     items=list(unique.values())
     items.sort(key=lambda p:(p.get("published_at") or p.get("first_seen_at") or "",p.get("title","")),reverse=True)
-    impacts=audit(items,state)
     law_changes,law_seen,law_source=get_law_changes(items,state.get("law_seen",{}))
+    # Evidence-first cross-institution discovery: inspect actual public web pages and
+    # only report a target if authoritative old→new values and stale public text match.
+    active_changes=sorted(law_changes,key=lambda x:(x.get("promulgated_at") or x.get("published_at") or ""),reverse=True)
+    impacts,investigations,scan_metrics=scan_downstream(active_changes,items,inspect_page,
+        read_raw=lambda u:fetch(u,limit=1500000,timeout=12)[0],max_policy=7)
     cutoff=datetime.fromisoformat(now).timestamp()-7*86400
     recent_laws=sum(bool(law.get("promulgated_at") or law.get("published_at")) and datetime.fromisoformat(law.get("promulgated_at") or law.get("published_at")).timestamp()>=cutoff for law in law_changes)
     counts={"total":len(items),"law_total":len(law_changes),"law_recent_7d":recent_laws,
@@ -289,14 +294,17 @@ def main():
             "new_count":sum(law.get("change_type","").find("제정")>=0 and "개정" not in law.get("change_type","") for law in law_changes),
             "modified":sum("개정" in law.get("change_type","") for law in law_changes),
             "rss_recent_discoveries":sum(p["detected"] in ("신규 감지","수정 감지") for p in items),
-            "candidate":sum(p["stage"]!="일반 게시" for p in items),"targets":len(impacts)}
+            "candidate":sum(p["stage"]!="일반 게시" for p in items),
+            "targets":sum(x.get("review_required") for x in impacts),
+            "archived":sum(not x.get("review_required") for x in impacts)}
     data={"generated_at":now,"first_scan":initial,"counts":counts,"sources":sources,
           "law_changes":law_changes,"law_source":law_source,
-          "items":items[:280],"impacts":impacts,"source_count":len(FEEDS),
+          "items":items[:280],"impacts":impacts,"investigations":investigations,
+          "scan_metrics":scan_metrics,"source_count":len(FEEDS),
           "success_count":sum(s["status"]=="정상" for s in sources),
           "scope":"중앙행정기관·지방자치단체·공공통계 공식 RSS",
           "method":"실시간 공개 게시물 · 첨부자료 일부 원문 검사 · 기관 간 연관 게시물 탐색"}
     OUT.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
     STATE.write_text(json.dumps({"initialized":True,"hashes":hashes,"first_seen":first_seen,"law_seen":law_seen},ensure_ascii=False),encoding="utf-8")
-    print(json.dumps({"posts":len(items),"sources_ok":data["success_count"],"sources_all":len(sources),"impact_candidates":len(impacts),"enacted_changes":len(law_changes),"law_api":law_source["api_connected"]},ensure_ascii=False))
+    print(json.dumps({"posts":len(items),"sources_ok":data["success_count"],"sources_all":len(sources),"impact_targets":counts["targets"],"public_pages_examined":scan_metrics["target_pages_examined"],"enacted_changes":len(law_changes),"law_api":law_source["api_connected"]},ensure_ascii=False))
 if __name__=="__main__":main()

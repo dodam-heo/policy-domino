@@ -47,6 +47,24 @@ def find_explicit_deltas(text):
                             "evidence":normalize(text[max(0,m.start()-85):m.end()+85])})
     return matches[:20]
 
+def find_text_deltas(text):
+    """Quoted before/after legal wording changes with visible source evidence."""
+    patterns=[
+        r"(?:현행|종전|기존)\s*[‘“\"']([^’”\"']{3,100})[’”\"']\s*(?:을|를|에서)?\s*(?:→|->|을|를|에서|으로|로)\s*[‘“\"']([^’”\"']{3,100})[’”\"']",
+        r"[‘“\"']([^’”\"']{3,100})[’”\"']\s*(?:을|를|에서)\s*[‘“\"']([^’”\"']{3,100})[’”\"']\s*(?:로|으로)\s*(?:개정|변경|대체|수정)",
+    ]
+    out=[]
+    for pattern in patterns:
+        for m in re.finditer(pattern,text or ""):
+            before,after=map(normalize,m.groups())
+            if before==after or len(before)<3 or len(after)<3:continue
+            old_key,new_key=norm_num(before),norm_num(after)
+            if (old_key,new_key) in [(v["old_key"],v["new_key"]) for v in out]:continue
+            out.append({"before":before,"after":after,"old_key":old_key,
+                        "new_key":new_key,"evidence":normalize(text[max(0,m.start()-100):m.end()+100])})
+    return out[:15]
+
+
 def year_table_deltas(source_html):
     """Match paired rows of explicit years, only within the same HTML table."""
     try:
@@ -95,6 +113,13 @@ def is_historical_record(title,url,text,policy):
 def extract_hit(text,old_key):
     # Numeric display styles vary: 2,078,316원 versus 2078316원.
     cleaned=normalize(text)
+    if re.search(r"[가-힣A-Za-z]",old_key) and not re.fullmatch(r"\d[\d.]+(?:원|만원|천원|%|세|명|개월|년|개)?",old_key):
+        compact=re.sub(r"\s+","",cleaned)
+        before=re.sub(r"\s+","",old_key)
+        if before not in compact:return ""
+        index=cleaned.find(old_key)
+        if index>=0:return cleaned[max(0,index-110):index+len(old_key)+110]
+        return old_key
     for m in re.finditer(r"\d[\d,]*(?:\.\d+)?(?:원|만원|천원|%|세|명|개월|년|개)?",cleaned):
         if norm_num(m.group(0))==old_key:
             a=max(0,m.start()-110);b=min(len(cleaned),m.end()+110)
@@ -168,7 +193,7 @@ def scan(policies,source_items,inspect,read_raw=None,max_policy=8):
         if not is_public_url(url):continue
         body,attachments,sections=get(url)
         if body:metrics["source_pages_read"]+=1
-        details=find_explicit_deltas((p.get("body","") or "")+" "+body)
+        details=find_explicit_deltas((p.get("body","") or "")+" "+body)+find_text_deltas((p.get("body","") or "")+" "+body)
         if read_raw is not None:
             try:
                 raw=read_raw(url)
@@ -178,7 +203,7 @@ def scan(policies,source_items,inspect,read_raw=None,max_policy=8):
             if not is_public_url(f.get("url","")):continue
             doc,_,_=get(f["url"])
             metrics["attachments_examined"]+=1
-            if doc:details.extend(find_explicit_deltas(doc))
+            if doc:details.extend(find_explicit_deltas(doc)+find_text_deltas(doc))
         unique={}
         for d in details:unique[(d["old_key"],d["new_key"])]=d
         details=list(unique.values())[:12]

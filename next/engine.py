@@ -278,10 +278,12 @@ def actions_from_diff(law,diffs):
     actions=[]
     today=NOW().date()
     for difference in diffs:
-        joined=(difference["after"] or difference["before"])+(difference.get("context","") or "")
+        joined=(difference.get("directive") or difference["after"] or difference["before"])
+        background=difference.get("context","") or ""
         roles=infer_affected_roles(joined,law)
         for rule in TASK_RULES:
-            if not any(x in joined for x in rule["phrases"]):continue
+            match_text=joined+(background if rule["id"]=="organization" else "")
+            if not any(x in match_text for x in rule["phrases"]):continue
             for role in roles:
                 eid=digest(difference["id"]+role["name"]+rule["id"])
                 future=bool(law["effective_date"] and law["effective_date"]>today.isoformat())

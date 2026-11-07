@@ -35,6 +35,8 @@ jobs:
         run: |
           python -m compileall -q next
           python -m unittest discover -s next -p 'test_*.py' -v
+      - name: Probe official public-law endpoints without private credentials
+        run: python next/probe_access.py
       - name: Diagnose API credential routing without revealing its value
         env:
           FROM_SECRET: ${{ secrets.LAW_OC != '' }}

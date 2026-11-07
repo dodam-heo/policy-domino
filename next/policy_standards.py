@@ -156,7 +156,10 @@ def extract_values(profile,docs,extra):
   # Education standard is 50% of the officially determined median; the rule
   # must explicitly confirm 교육급여 and the older Ministry data must exist.
   notice=docs["notice"].value()
-  if "교육급여" not in notice or "선정기준" not in notice:raise ValueError("교육급여 선정 고시 확인 불가")
+  ministry_notice=docs["current"].value() if docs["current"] else ""
+  if not (("교육급여" in notice and "선정기준" in notice) or
+          ("교육급여" in ministry_notice and "선정기준" in ministry_notice and "고시" in ministry_notice)):
+   raise ValueError("교육부 공표문에서도 교육급여 선정 고시를 확인하지 못함")
   if extra and "중위소득:4인" in extra and "교육급여 50%" in extra.get("_official_statement",""):
    old,new=extra["중위소득:4인"]
    docs["_warnings"].append("4인가구 교육급여 선정기준은 공식 중위소득 × 50%로 대조")

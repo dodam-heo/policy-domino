@@ -285,8 +285,10 @@ def main():
     cutoff=datetime.fromisoformat(now).timestamp()-7*86400
     recent_laws=sum(bool(law.get("promulgated_at") or law.get("published_at")) and datetime.fromisoformat(law.get("promulgated_at") or law.get("published_at")).timestamp()>=cutoff for law in law_changes)
     counts={"total":len(items),"law_total":len(law_changes),"law_recent_7d":recent_laws,
-            "recent":sum(p["detected"] in ("신규 감지","수정 감지") for p in items),
-            "modified":sum(p["detected"]=="수정 감지" for p in items),
+            "recent":recent_laws,
+            "new_count":sum(law.get("change_type","").find("제정")>=0 and "개정" not in law.get("change_type","") for law in law_changes),
+            "modified":sum("개정" in law.get("change_type","") for law in law_changes),
+            "rss_recent_discoveries":sum(p["detected"] in ("신규 감지","수정 감지") for p in items),
             "candidate":sum(p["stage"]!="일반 게시" for p in items),"targets":len(impacts)}
     data={"generated_at":now,"first_scan":initial,"counts":counts,"sources":sources,
           "law_changes":law_changes,"law_source":law_source,

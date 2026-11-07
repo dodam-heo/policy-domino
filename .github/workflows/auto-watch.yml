@@ -23,6 +23,8 @@ jobs:
   analyze:
     name: Official legal changes & agency action generation
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4

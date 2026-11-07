@@ -42,21 +42,21 @@ footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 </style></head><body>
 <header><div class="brand">POLICY <span>DOMINO</span></div><div class="tag">변화는 자동 감지하고, 관련 게시정보는 근거로 확인합니다.</div></header>
 <main>
-<div class="topline"><div><h1>최신 정책·제도 소식</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
+<div class="topline"><div><h1>최신 법령 제정·개정</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
 <section class="stats">
-<div class="stat"><small>수집된 최근 게시물</small><strong id="total">—</strong></div>
-<div class="stat"><small>새로 감지된 게시·수정</small><strong id="recent">—</strong></div>
+<div class="stat"><small>최근 제정·개정 법령</small><strong id="total">—</strong></div>
+<div class="stat"><small>신규 법령 반영</small><strong id="recent">—</strong></div>
 <div class="stat"><small>변경 검토 대상 게시</small><strong id="candidate">—</strong></div>
 <div class="stat"><small>기관 간 게시정보 점검</small><strong id="targets">—</strong></div>
 </section>
 <div class="mainGrid">
 <section class="panel">
-<h2 id="sectionTitle">최신 공식 게시물</h2>
+<h2 id="sectionTitle">최신 법령 제정·개정 내역</h2>
 <div class="tabs" role="tablist">
-<button class="tab active" data-tab="latest">최신 게시</button>
-<button class="tab" data-tab="new">신규·수정 감지</button>
+<button class="tab active" data-tab="new">신규·수정</button>
 <button class="tab" data-tab="audit">게시정보 수정 점검</button>
 <button class="tab" data-tab="candidate">변경 검토 후보</button>
+<button class="tab" data-tab="latest">기타 공식 게시</button>
 </div>
 <div class="filters"><select id="agency" aria-label="기관 선택"><option value="">모든 기관</option></select><input id="search" aria-label="결과 내 검색" placeholder="기관명·사업명으로 결과 검색"></div>
 <div id="results" class="empty">수집 내용을 불러오는 중입니다.</div>
@@ -70,7 +70,7 @@ footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 </div><footer>POLICY DOMINO · 정부·지자체·공공부문 공개정보 자동 감시</footer>
 </main>
 <script>
-let data={items:[],impacts:[],sources:[]},tab="latest";
+let data={items:[],impacts:[],sources:[],law_changes:[]},tab="new";
 const el=id=>document.getElementById(id);
 function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function link(s){try{let u=new URL(s);return (u.protocol==="https:"||u.protocol==="http:")?safe(u.href):"#"}catch(e){return "#"}}
@@ -78,9 +78,10 @@ function date(t){if(!t)return "게시일 미확인";try{return new Intl.DateTime
 function stage(p){return p.stage||(p.kind==="변경 후보"?"변경 관련 검토":"일반 게시")}
 function stamp(p){return p.published_at || (/^\d{14}$/.test(p.published||"")?p.published.slice(0,4)+"-"+p.published.slice(4,6)+"-"+p.published.slice(6,8)+"T"+p.published.slice(8,10)+":"+p.published.slice(10,12)+":00Z":p.detected_at||"")}
 function latestSort(a,b){return stamp(b).localeCompare(stamp(a))}
+function lawDate(x){return x.promulgated_at||x.promulgation_date||stamp(x)}
 function optionFilter(xs,field){const q=el("search").value.trim().toLowerCase(),agency=el("agency").value;return xs.filter(x=>(!agency || (x[field]||x.source||"")===agency) && (!q || Object.values(x).some(v=>typeof v==="string"&&v.toLowerCase().includes(q))))}
 function renderPost(x){
-let detected=x.detected||x.status||"기존";let pills='<span class="pill">'+safe(stage(x))+'</span>';
+let detected=x.change_detected||x.detected||x.status||"기존";let pills='<span class="pill">'+safe(x.law_type||x.change_type||stage(x))+'</span>';
 if(detected==="신규 감지"||detected==="수정 감지")pills+=' <span class="pill green">'+safe(detected)+'</span>';
 let attachments=(x.attachments||[]).map(a=>'<div>첨부: <a target="_blank" rel="noopener" href="'+link(a.url)+'">'+safe(a.name)+'</a> · '+safe(a.analysis||"검토 대상")+'</div>').join("");
 let deltas=(x.change_details||[]).map(d=>'<div class="changeLine">'+safe(d.before)+' → '+safe(d.after)+'<div class="cap">'+safe(d.evidence)+'</div></div>').join("");
@@ -93,7 +94,7 @@ return '<div class="impact"><span class="pill '+(confirmed?"amber":"")+'">'+safe
 function render(){
 let items=(data.items||[]).slice().sort(latestSort),title="최신 공식 게시물",list=[];
 if(tab==="latest")list=optionFilter(items,"source");
-if(tab==="new"){title="신규·수정 감지";list=optionFilter(items.filter(x=>["신규 감지","수정 감지"].includes(x.detected||x.status)).sort((a,b)=>(b.detected_at||"").localeCompare(a.detected_at||"")),"source")}
+if(tab==="new"){title="최근 제정·개정된 법령 · 공포일 최신순";list=optionFilter((data.law_changes||[]).slice().sort((a,b)=>lawDate(b).localeCompare(lawDate(a))),"source")}
 if(tab==="candidate"){title="변경 검토 후보 · 별도 조사";list=optionFilter(items.filter(x=>stage(x)!=="일반 게시"),"source")}
 if(tab==="audit"){title="기관별 게시정보 점검";list=optionFilter(data.impacts||[],"target_source")}
 el("sectionTitle").textContent=title;
@@ -105,17 +106,17 @@ const response=await fetch("./data.json?t="+Date.now(),{cache:"no-store"});
 if(!response.ok)throw Error("HTTP "+response.status);
 data=await response.json();
 const counts=data.counts||{};
-el("total").textContent=counts.total??(data.items||[]).length;
-el("recent").textContent=counts.recent??((counts.new_count||0)+(counts.modified_count||0));
+el("total").textContent=(data.law_changes||[]).length;
+el("recent").textContent=(data.law_changes||[]).filter(x=>x.change_detected==="신규 감지").length;
 el("candidate").textContent=counts.candidate??counts.change_count??0;
 el("targets").textContent=counts.targets??(data.impacts||[]).length;
-el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · 게시일 최신순";
+el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · 법령 공포일 최신순";
 el("scope").textContent=(data.scope||"등록된 공식 RSS")+" · "+(data.source_count??data.sources?.length??0)+"개 채널";
 const src=data.sources||[];
 el("sourceGood").textContent="정상 "+src.filter(x=>x.status==="정상").length;
 el("sourceBad").textContent="점검 "+src.filter(x=>x.status!=="정상").length;
 el("sourceList").innerHTML=src.map(s=>'<div class="source"><b>'+safe(s.name)+'</b> · '+safe(s.category||"")+' <span class="'+(s.status==="정상"?"good":"bad")+'">'+safe(s.status||"미확인")+'</span><small>'+safe(s.error||("게시 "+(s.count||0)+"건"))+'</small></div>').join("");
-const agencies=[...new Set([...data.items.map(x=>x.source),...(data.impacts||[]).map(x=>x.target_source)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));
+const agencies=[...new Set([...data.items.map(x=>x.source),...(data.law_changes||[]).map(x=>x.source),...(data.impacts||[]).map(x=>x.target_source)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));
 const prev=el("agency").value;
 el("agency").innerHTML='<option value="">모든 기관</option>'+agencies.map(x=>'<option value="'+safe(x)+'">'+safe(x)+'</option>').join("");
 if(agencies.includes(prev))el("agency").value=prev;

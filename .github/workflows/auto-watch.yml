@@ -35,7 +35,7 @@ jobs:
           python -m unittest discover -s next -p 'test_*.py' -v
       - name: Analyze official legal versions (cloud only)
         env:
-          LAW_OC: \${{ secrets.LAW_OC }}
+          LAW_OC: ${{ secrets.LAW_OC }}
         run: python next/engine.py
       - name: Publish evidence & execution record
         if: always()
@@ -72,11 +72,11 @@ jobs:
   deploy:
     name: Deploy freshly rebuilt interface
     needs: analyze
-    if: \${{ always() }}
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: \${{ steps.deploy_pages.outputs.page_url }}
+      url: ${{ steps.deploy_pages.outputs.page_url }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -104,7 +104,7 @@ jobs:
       - name: Record confirmed successful deployment
         if: success()
         env:
-          LIVE_URL: \${{ steps.deploy_pages.outputs.page_url }}
+          LIVE_URL: ${{ steps.deploy_pages.outputs.page_url }}
         run: |
           python - <<'PY'
           from pathlib import Path

@@ -17,8 +17,10 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 try:
     from .impact_mapper import map_actions
+    from .relations import link_proven_dependencies
 except ImportError:
     from impact_mapper import map_actions
+    from relations import link_proven_dependencies
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/"data"/"next_state.json"
@@ -458,6 +460,7 @@ def main():
     if laws:cursor=(cursor+6)%len(laws)
     sorted_events=sorted(events.values(),key=lambda e:(e.get("promulgated_at",""),e.get("event_id","")),reverse=True)[:300]
     sorted_actions=sorted(actions.values(),key=lambda a:(a.get("change_date",""),a.get("id","")),reverse=True)[:1200]
+    health["verified_domino"]=link_proven_dependencies(sorted_events,sorted_actions)
     counts={k:sum(x["status"]==k for x in sorted_actions) for k in ("조치 확인","미조치 확인","반영 확인 필요","시행 예정")}
     health["data_scope"]={"events":len(sorted_events),"actions":len(sorted_actions),
                            "agencies_named":len(set(a["agency"] for a in sorted_actions)),

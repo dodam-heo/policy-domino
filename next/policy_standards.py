@@ -28,7 +28,7 @@ SOURCE_PROFILES = {
   "date":"2026-08-31","effective":"2027-01-01",
   "title":"2027년도 주거급여 선정기준 및 최저보장수준 제정",
   "notice":"https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000284670",
-  "current":"https://police.molit.go.kr/USR/I0204/m_14993/dtl.jsp?gubun=4&idx=18946",
+  "current":"https://www.molit.go.kr/USR/I0204/m_45/dtl.jsp?idx=18946",
   "baseline":"https://www.molit.go.kr/USR/I0204/m_45/dtl.jsp?idx=18653",
   "scope":"주거급여 소득인정액 선정기준",
  },
@@ -75,12 +75,15 @@ def valid_notices(profile,txt):
  # and effective date; refuse drafts with no promulgated official authority.
  number=gosi.rsplit("제",1)[-1].replace("호","")
  if str(year) not in txt or number not in txt or "시행" not in txt:
-  raise ValueError("고시의 연도·발령번호·시행 근거가 공식 원문과 일치하지 않습니다")
+  raise ValueError("공식 고시 검증 실패 (연도="+str(str(year) in txt)+", 번호="+str(number in txt)+", 시행일="+str("시행" in txt)+")")
  return True
 def get_official(fetch,profile):
  docs={}
  for k in ("notice","current","baseline"):
-  docs[k]=parse_html(fetch(profile[k],timeout=16,max_bytes=900000))
+  try:
+   docs[k]=parse_html(fetch(profile[k],timeout=16,max_bytes=900000))
+  except Exception as exc:
+   raise ValueError("공식 "+k+" 자료를 읽을 수 없음: "+type(exc).__name__+" "+str(exc)[:65]) from exc
  valid_notices(profile,docs["notice"].value())
  return docs
 def median_amounts(current):

@@ -116,10 +116,10 @@ async function load(){
 try{
 let response=await fetch("./data.json?v="+Date.now(),{cache:"no-store"});if(!response.ok)throw Error("HTTP "+response.status);
 let d=await response.json();if(d.schema!=="policy-domino-next-v1")throw Error("기존 데이터 형식이므로 새 변경내역과 연결되지 않았습니다.");
-DATA=d;const h=d.health||{},bad=h.source_status!=="정상";
+DATA=d;const h=d.health||{},partial=h.source_status==="메타데이터만 연결",bad=h.source_status==="수집 실패";
 $("system").classList.toggle("error",bad);
-$("sourceTitle").textContent=bad?"공식 변경 데이터 연결을 확인할 수 없습니다.":"공식 변경 데이터 수집 결과";
-$("sourceDesc").innerHTML=bad?esc(h.error||"법령 변경사항을 확인할 수 없어 목록이 비어 있습니다.")+' · <a href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">실행 상태 확인</a>':"공식 제·개정 기록 "+(d.events||[]).length+"건 확인 · 신구조문 비교 "+(h.compared||0)+"건";
+$("sourceTitle").textContent=bad?"공식 변경 데이터 수집 실패":partial?"공식 신규·개정 내역 "+(d.events||[]).length+"건 확인":"공식 변경 데이터 수집 결과";
+$("sourceDesc").innerHTML=bad?esc(h.error||"법령 변경사항을 확인할 수 없어 목록이 비어 있습니다.")+' · <a href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">실행 상태 확인</a>':partial?"공포일·법령명·소관기관을 확보했습니다. 변경 전후 조문과 기관별 조치는 아직 분석되지 않았습니다.":"공식 제·개정 기록 "+(d.events||[]).length+"건 확인 · 신구조문 비교 "+(h.compared||0)+"건";
 $("lastChecked").textContent="최종 확인 "+(d.generated_at?new Date(d.generated_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"}):"미확인");
 const fragment=decodeURIComponent((location.hash||"").replace(/^#change=/,""));
 if(fragment&&(d.events||[]).some(e=>e.event_id===fragment))selectedId=fragment;

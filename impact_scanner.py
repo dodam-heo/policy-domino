@@ -191,7 +191,7 @@ def scan(policies,source_items,inspect,read_raw=None,max_policy=8):
             continue
         candidates={}
         for item in feeds:
-            if item["url"]==url:continue
+            if item["url"]==url or item.get("source")==p.get("source"):continue
             candidates[item["url"]]=item
         subject=distinctive(p.get("title",""))
         for d in details[:2]:
@@ -207,7 +207,7 @@ def scan(policies,source_items,inspect,read_raw=None,max_policy=8):
         matched=0
         # Prefer indexed results, then existing official-board items; avoid fetching every item.
         ranked=sorted(candidates.values(),key=lambda x:(x.get("origin")=="외부 공개검색",
-              any(x.get("source")==p.get("source") for x in candidates.values()),
+              x.get("source")!=p.get("source"),
               len(set(subject.split())&set(x.get("title","").split()))),reverse=True)[:16]
         for target in ranked:
             if target.get("url") in [x.get("target_url") for x in findings]:continue

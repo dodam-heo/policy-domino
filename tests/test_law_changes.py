@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import patch, MagicMock
 from law_changes import parse_law_api, from_agency_postings, from_public_law_table, get_law_changes
 
 class LawChangesTests(unittest.TestCase):
@@ -27,10 +27,10 @@ class LawChangesTests(unittest.TestCase):
         <tr><td>1</td><td>가상의 법률</td><td>보건복지부</td><td>일부개정</td><td>법률</td><td>제22222호</td><td>2026. 11. 6.</td><td>2026. 12. 1.</td></tr>
         <tr><td>2</td><td>다른 법률</td><td>교육부</td><td>제정</td><td>법률</td><td>제22221호</td><td>2026. 11. 3.</td><td>2027. 1. 1.</td></tr>
         </tbody></table></body></html>"""
-        response=Mock()
+        response=MagicMock()
         response.read.return_value=table
-        response.__enter__=Mock(return_value=response)
-        response.__exit__=Mock(return_value=False)
+        response.__enter__.return_value=response
+        response.__exit__.return_value=False
         with patch("urllib.request.urlopen",return_value=response):
             result=from_public_law_table()
         self.assertEqual(result[0]["promulgation_date"],"20261106")

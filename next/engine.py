@@ -46,7 +46,7 @@ ROLES=(
  ("시장·군수·구청장",("시장·군수·구청장","시장ㆍ군수ㆍ구청장","시장, 군수 또는 구청장","시장·군수 또는 구청장","시장 군수 구청장"),"기초지방자치단체"),
  ("시·도지사",("시·도지사","시ㆍ도지사","특별시장","광역시장","도지사"),"광역지방자치단체"),
  ("교육감",("교육감",),"시·도교육청"),
- ("공공기관",("공공기관의 장","공공기관","공단","공사"),"관련 공공기관")
+ ("공공기관",("공공기관의 장","공공기관","공공기관장"),"관련 공공기관")
 )
 VALID_REVISIONS=("제정","일부개정","전부개정","일괄개정","타법개정","폐지","폐지제정")
 DATE_RE=re.compile(r"20\d{2}(?:[.\-/]?\d{1,2}){2}")
@@ -298,6 +298,10 @@ def actions_from_diff(law,diffs):
         background=difference.get("context","") or ""
         roles=infer_affected_roles(joined,law)
         for rule in TASK_RULES:
+            # '직제 시행규칙' amendments concern organizational structure.
+            # Division names such as '심사과' or titles like '항공사무관'
+            # are not evidence that licensing or public-agency duties changed.
+            if "직제" in law["title"] and rule["id"]!="organization":continue
             match_text=joined+(background if rule["id"]=="organization" else "")
             if not any(x in match_text for x in rule["phrases"]):continue
             for role in roles:

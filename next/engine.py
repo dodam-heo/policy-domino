@@ -294,7 +294,7 @@ def infer_affected_roles(text,law):
                           "level":level,"confidence":"변경 조문에 업무주체 명시"})
     # No invented lists of 226 municipalities or presumed public-agency assignments.
     return roles
-def map_actions(law,diffs):
+def legacy_action_mapping_unused(law,diffs):
     actions=[]
     today=NOW().date()
     for difference in diffs:

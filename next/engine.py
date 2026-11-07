@@ -114,27 +114,31 @@ def public_law_list(limit=30):
     from html.parser import HTMLParser
     class Rows(HTMLParser):
         def __init__(self):
-            super().__init__();self.rows=[];self.row=None;self.cell=None;self.href=""
+            super().__init__();self.rows=[];self.row=None;self.cell=None;self.row_link="";self.row_title=""
         def handle_starttag(self,tag,attrs):
-            if tag=="tr":self.row=[]
+            if tag=="tr":self.row=[];self.row_link="";self.row_title=""
             if self.row is not None and tag in ("td","th"):self.cell=[]
             if self.cell is not None and tag=="a":
-                self.href=dict(attrs).get("href","")
+                a=dict(attrs);href=html.unescape(a.get("href",""))
+                if "lsInfoP.do?" in href:self.row_link=href
+                label=a.get("title","").removesuffix(" 팝업으로 이동").strip()
+                if label and len(label)>4:self.row_title=label
         def handle_data(self,data):
             if self.cell is not None:self.cell.append(data)
         def handle_endtag(self,tag):
             if tag in ("td","th") and self.row is not None and self.cell is not None:
                 self.row.append(clean("".join(self.cell)));self.cell=None
             if tag=="tr" and self.row is not None:
-                if len(self.row)>=8:self.rows.append(self.row)
+                if len(self.row)>=8:self.rows.append((self.row,self.row_link,self.row_title))
                 self.row=None
     raw=download("https://www.law.go.kr/LSW/nwRvsLsPop.do",timeout=18)
     parser=Rows();parser.feed(raw.decode("utf-8","replace"))
     laws=[]
-    for row in parser.rows:
+    for row,href,full_title in parser.rows:
         for start in range(len(row)-7):
             candidate=row[start:start+8]
             index,title,ministry,change,law_type,number,published,effective=candidate
+            if full_title and len(full_title)>len(title):title=full_title
             if not (re.fullmatch(r"\d+",index) and any(t in change for t in VALID_REVISIONS)):
                 continue
             promulgated=date_str(published)
@@ -144,7 +148,7 @@ def public_law_list(limit=30):
                 "promulgated_at":promulgated,"promulgation_number":number,
                 "effective_date":date_str(effective),"revision":change,
                 "ministry":ministry,"law_type":law_type,
-                "url":"https://www.law.go.kr/LSW/nwRvsLsPop.do",
+                "url":urllib.parse.urljoin("https://www.law.go.kr/LSW/nwRvsLsPop.do",href) if href.startswith("lsInfoP.do?") else "https://www.law.go.kr/LSW/nwRvsLsPop.do",
                 "public_metadata_only":True})
             break
     dedup={(x["id"],x["effective_date"]):x for x in laws}

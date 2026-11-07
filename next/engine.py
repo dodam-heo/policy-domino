@@ -346,15 +346,53 @@ def main():
     # Inspect the newest legal events, rotating to distribute requests across the coverage.
     cursor=int(state.get("cursor",0))
     selected=([laws[0]] if laws else [])+(laws[cursor:cursor+6] if laws else [])
-    selected=list({x["mst"]:x for x in selected}.values())
+    selected=list({(x.get("mst") or x["id"]):x for x in selected}.values())
     health["partial"]=bool(len(laws)>len(selected))
     health["errors"]=[]
+    health["amendments_read"]=0
     for law in laws:
         if law.get("public_metadata_only"):
             eid=digest(law["id"]+law["promulgated_at"]+law["promulgation_number"])
-            events[eid]=event_record(law,[],False)
+            # Replace obsolete truncated-title rows from an older version of the parser.
+            for previous_id,previous in list(events.items()):
+                if previous_id==eid or not previous.get("public_metadata_only"):continue
+                if (previous.get("promulgation_number")==law["promulgation_number"]
+                      and previous.get("promulgated_at")==law["promulgated_at"]
+                      and previous.get("ministry")==law["ministry"]
+                      and previous.get("effective_date")==law["effective_date"]):
+                    del events[previous_id]
+            old=events.get(eid)
+            if not old or not old.get("article_differences"):
+                events[eid]=event_record(law,[],False)
+    # Public amendment documents are retrieved independently of the authenticated API.
+    public_selected=[law for law in selected if law.get("public_metadata_only")]
+    documents={}
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        work={pool.submit(public_amendment,law):law for law in public_selected}
+        for job,law in work.items():
+            try:documents[law["id"]]=job.result()
+            except Exception as exc:
+                health["errors"].append({"law":law["title"],"reason":type(exc).__name__})
     for law in selected:
-        if law.get("public_metadata_only"):continue
+        if law.get("public_metadata_only"):
+            event_id=digest(law["id"]+law["promulgated_at"]+law["promulgation_number"])
+            material=documents.get(law["id"])
+            if material:
+                diffs=public_amendment_diffs(law,material)
+                evt=event_record(law,diffs,False)
+                evt["comparison_status"]="공식 개정문 분석 완료 · 신구 전체조문 별도 대조"
+                evt["amendment_reason"]=material["reason"]
+                evt["amendment_url"]=material["url"]
+                evt["amendment_document"]=material["document"][:9000]
+                events[event_id]=evt
+                health["amendments_read"]+=1
+                for task in actions_from_diff(law,diffs):
+                    if task["id"] in actions:
+                        previous=actions[task["id"]]
+                        for field in ("status","status_evidence","status_checked_at"):
+                            if previous.get(field):task[field]=previous[field]
+                    actions[task["id"]]=task
+            continue
         event_id=digest(law["id"]+law["promulgated_at"]+law["promulgation_number"])
         try:
             latest,diffs=changes_for(law,snapshots.get(law["id"]))
@@ -375,6 +413,9 @@ def main():
                 actions[task["id"]]=task
         except Exception as exc:
             health["errors"].append({"law":law["title"],"reason":type(exc).__name__})
+    if health["amendments_read"] and health["source_status"]=="메타데이터만 연결":
+        health["source_status"]="공식 공포·개정문 연결"
+        health["error"]="제·개정문과 변경 지시사항을 확보했습니다. 이전 전체 조문과 기관별 실제 조치 여부까지는 검증되지 않았습니다."
     if laws:cursor=(cursor+6)%len(laws)
     sorted_events=sorted(events.values(),key=lambda e:(e.get("promulgated_at",""),e.get("event_id","")),reverse=True)[:300]
     sorted_actions=sorted(actions.values(),key=lambda a:(a.get("change_date",""),a.get("id","")),reverse=True)[:1200]

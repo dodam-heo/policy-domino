@@ -23,10 +23,10 @@ class LawChangesTests(unittest.TestCase):
         self.assertEqual(found[0]["title"],"보건복지부 인사관리규정 일부개정")
 
     def test_official_public_table(self):
-        table=b"""<html><body><table><tbody>
+        table="""<html><body><table><tbody>
         <tr><td>1</td><td>가상의 법률</td><td>보건복지부</td><td>일부개정</td><td>법률</td><td>제22222호</td><td>2026. 11. 6.</td><td>2026. 12. 1.</td></tr>
         <tr><td>2</td><td>다른 법률</td><td>교육부</td><td>제정</td><td>법률</td><td>제22221호</td><td>2026. 11. 3.</td><td>2027. 1. 1.</td></tr>
-        </tbody></table></body></html>"""
+        </tbody></table></body></html>""".encode("utf-8")
         response=MagicMock()
         response.read.return_value=table
         response.__enter__.return_value=response

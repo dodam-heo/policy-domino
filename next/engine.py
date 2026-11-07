@@ -350,7 +350,10 @@ def main():
     actions={a["id"]:a for a in state.get("actions",[]) if a.get("id")}
     # Inspect the newest legal events, rotating to distribute requests across the coverage.
     cursor=int(state.get("cursor",0))
-    selected=([laws[0]] if laws else [])+(laws[cursor:cursor+6] if laws else [])
+    if laws and laws[0].get("public_metadata_only"):
+        selected=laws[:]  # The public newest-law index is limited to one page: examine all.
+    else:
+        selected=([laws[0]] if laws else [])+(laws[cursor:cursor+6] if laws else [])
     selected=list({(x.get("mst") or x["id"]):x for x in selected}.values())
     health["partial"]=bool(len(laws)>len(selected))
     health["errors"]=[]
@@ -391,7 +394,13 @@ def main():
                 evt["amendment_document"]=material["document"][:9000]
                 events[event_id]=evt
                 health["amendments_read"]+=1
-                for task in actions_from_diff(law,diffs):
+                derived=actions_from_diff(law,diffs)
+                valid_ids={t["id"] for t in derived}
+                # Remove obsolete inferences from this event when a fresh official document was read.
+                for existing_id,existing_task in list(actions.items()):
+                    if existing_task.get("event_id")==event_id and existing_id not in valid_ids:
+                        del actions[existing_id]
+                for task in derived:
                     if task["id"] in actions:
                         previous=actions[task["id"]]
                         for field in ("status","status_evidence","status_checked_at"):
@@ -421,6 +430,7 @@ def main():
     if health["amendments_read"] and health["source_status"]=="메타데이터만 연결":
         health["source_status"]="공식 공포·개정문 연결"
         health["error"]="제·개정문과 변경 지시사항을 확보했습니다. 이전 전체 조문과 기관별 실제 조치 여부까지는 검증되지 않았습니다."
+    health["amendments_verified_total"]=sum(bool(e.get("amendment_url")) for e in events.values())
     if laws:cursor=(cursor+6)%len(laws)
     sorted_events=sorted(events.values(),key=lambda e:(e.get("promulgated_at",""),e.get("event_id","")),reverse=True)[:300]
     sorted_actions=sorted(actions.values(),key=lambda a:(a.get("change_date",""),a.get("id","")),reverse=True)[:1200]

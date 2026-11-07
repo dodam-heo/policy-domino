@@ -86,13 +86,13 @@ return '<div class="action"><div class="actionTop"><div><div class="agency">'+es
 function differences(e){
 const ds=e.article_differences||[];
 if(!ds.length)return '<p class="smallNote">공식 공포 정보는 확인됐지만 종전·변경 조문의 실제 비교가 아직 완료되지 않았습니다. 변경 전후 내용을 추측해 채우지 않습니다.</p>';
-return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+' '+esc(d.title||"")+'</span><span>'+esc(d.type||"변경")+'</span></div><div class="changePair"><div class="changeCol before"><small>종전 내용</small><p>'+esc(d.before||(d.type==="신설"?"신설 이전 규정 없음":"종전 조문 전문 별도 대조 필요"))+'</p></div><div class="changeCol after"><small>'+(d.directive?"공식 개정 지시문":"변경 후 조문")+'</small><p>'+esc(d.directive||d.after||"변경 내용 확인 필요")+'</p></div></div></div>').join("")
+return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+' '+esc(d.title||"")+'</span><span>'+esc(d.type||"변경")+'</span></div><div class="changePair"><div class="changeCol before"><small>변경 전</small><p>'+esc(d.before||"해당 조문 없음")+'</p></div><div class="changeCol after"><small>변경 후</small><p>'+esc(d.after||"해당 조문 삭제")+'</p></div></div></div>').join("")
 }
 function detailHTML(e){
 const all=matchingActions(e),current=all.filter(a=>actionFilter==="all"||a.status===actionFilter),countDone=all.filter(a=>a.status==="조치 확인").length,countNot=all.filter(a=>a.status==="미조치 확인").length;
 return '<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>'+
 '<div class="detailBody"><div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div><div class="fact"><small>기관별 조치사항</small><strong>'+all.length+'건</strong></div></div>'+
-'<div class="sectionGap"></div><h3 class="sectionHeading">무엇이 바뀌었나</h3>'+(e.amendment_reason?'<div class="evidence"><b>공식 개정 이유 · 주요내용</b><p style="margin-top:8px;line-height:1.7">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" target="_blank" rel="noopener" href="'+validUrl(e.amendment_url||e.url)+'">공식 개정문 원문 보기 ↗</a>'+
+'<div class="sectionGap"></div><h3 class="sectionHeading">무엇이 바뀌었나</h3>'+differences(e)+'<a class="refLink" target="_blank" rel="noopener" href="'+validUrl(e.url)+'">공식 법령·정책 근거 보기 ↗</a>'+
 '<div class="sectionGap"></div><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 필요사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div>'+
 '<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","시행 예정"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>'+
 (current.length?current.map(actionCard).join(""):showEmpty(all.length?"해당 상태의 조치사항이 없습니다.":"기관별 조치사항이 아직 도출되지 않았습니다.",all.length?"다른 조치 상태를 선택하세요.":"변경된 조문과 해당 제도를 운영하는 기관·업무의 공식 관계가 확인되어야 조치사항이 생성됩니다."))+
@@ -116,10 +116,10 @@ async function load(){
 try{
 let response=await fetch("./data.json?v="+Date.now(),{cache:"no-store"});if(!response.ok)throw Error("HTTP "+response.status);
 let d=await response.json();if(d.schema!=="policy-domino-next-v1")throw Error("기존 데이터 형식이므로 새 변경내역과 연결되지 않았습니다.");
-DATA=d;const h=d.health||{},partial=h.source_status==="메타데이터만 연결",amendment=h.source_status==="공식 공포·개정문 연결",bad=h.source_status==="수집 실패";
+DATA=d;const h=d.health||{},partial=h.source_status==="메타데이터만 연결",bad=h.source_status==="수집 실패";
 $("system").classList.toggle("error",bad);
-$("sourceTitle").textContent=bad?"공식 변경 데이터 수집 실패":amendment?"공식 법령 개정문과 변경 조치 분석 중":partial?"공식 신규·개정 내역 "+(d.events||[]).length+"건 확인":"공식 변경 데이터 수집 결과";
-$("sourceDesc").innerHTML=bad?esc(h.error||"법령 변경사항을 확인할 수 없어 목록이 비어 있습니다.")+' · <a href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">실행 상태 확인</a>':amendment?"공포법령 "+(d.events||[]).length+"건 · 공식 제·개정문 "+(h.amendments_read||0)+"건 분석 · 기관별 변경 검토 "+(d.actions||[]).length+"건. 신구 전체 조문 및 실제 조치 여부는 별도 확인 필요.":partial?"공포일·법령명·소관기관을 확보했습니다. 변경 전후 조문과 기관별 조치는 아직 분석되지 않았습니다.":"공식 제·개정 기록 "+(d.events||[]).length+"건 확인 · 신구조문 비교 "+(h.compared||0)+"건";
+$("sourceTitle").textContent=bad?"공식 변경 데이터 수집 실패":partial?"공식 신규·개정 내역 "+(d.events||[]).length+"건 확인":"공식 변경 데이터 수집 결과";
+$("sourceDesc").innerHTML=bad?esc(h.error||"법령 변경사항을 확인할 수 없어 목록이 비어 있습니다.")+' · <a href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">실행 상태 확인</a>':partial?"공포일·법령명·소관기관을 확보했습니다. 변경 전후 조문과 기관별 조치는 아직 분석되지 않았습니다.":"공식 제·개정 기록 "+(d.events||[]).length+"건 확인 · 신구조문 비교 "+(h.compared||0)+"건";
 $("lastChecked").textContent="최종 확인 "+(d.generated_at?new Date(d.generated_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"}):"미확인");
 const fragment=decodeURIComponent((location.hash||"").replace(/^#change=/,""));
 if(fragment&&(d.events||[]).some(e=>e.event_id===fragment))selectedId=fragment;

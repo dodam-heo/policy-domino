@@ -20,8 +20,8 @@ def compact(text):
 def key(text):
     return hashlib.sha256(str(text).encode("utf-8")).hexdigest()[:18]
 
-def source_agency(law):
-    """Name the actual governed organization; a parent ministry is not always it."""
+def source_agency(law,directive=""):
+    """Name the governed organization or explicitly assigned legal actor."""
     title=law.get("title","")
     if "개 법령" in title or "일괄개정" in (law.get("revision") or ""):
         return None
@@ -30,6 +30,8 @@ def source_agency(law):
         if base.endswith(suffix):base=base[:-len(suffix)]
     if "직제" in title and base and len(base)<26:
         return base
+    for role in ("시장·군수·구청장","시·도지사","교육감","국민건강보험공단"):
+        if role in directive:return role
     return law.get("ministry") or None
 
 def change_pairs(directive):
@@ -84,8 +86,12 @@ def operational_area(law,directive):
 def concrete_action(law,diff):
     """Return an operational target only when at least one actual amendment directive exists."""
     directive=compact(diff.get("directive") or "")
-    if not directive: return None
-    agency=source_agency(law)
+    previous=compact(diff.get("before") or "")
+    revised=compact(diff.get("after") or "")
+    if not directive and previous and revised and previous!=revised:
+        directive=revised
+    if not directive:return None
+    agency=source_agency(law,directive)
     if not agency:return None
     area=operational_area(law,directive)
     if not area:return None
@@ -118,7 +124,7 @@ def concrete_action(law,diff):
     else:
         return None
     is_future=bool(law.get("effective_date") and law["effective_date"]>date.today().isoformat())
-    confidence=("개정문에 변경 전후가 명시됨" if pairs else
+    confidence=("공식 변경 원문에서 전후 내용 확인" if pairs else
                 "신설·삭제 지시가 개정문에 명시됨" if additions_list or "신설" in directive or "삭제" in directive else
                 "법적 변경은 확인·실무 적용 대상은 검증 필요")
     id_=key("|".join((law.get("id",""),law.get("promulgated_at",""),

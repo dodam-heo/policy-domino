@@ -9,6 +9,7 @@ from __future__ import annotations
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urlencode, urljoin, quote
 import os, re, urllib.request, xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
 
 EXCLUDE=re.compile(r"입법예고|행정예고|의견수렴|개정안|제정안|공청회|개정\(안\)|제정\(안\)|예고안|재공고|국무회의\s*통과|개정\s*추진|제정\s*추진|개정\s*예정|검토중")
 COMPLETED=re.compile(r"일부개정|전부개정|개정고시|개정\s*고시|개정\s*공고|일부\s*개정|전부\s*개정|일괄개정|제정\b|폐지\b|규정\s*개정")
@@ -41,6 +42,50 @@ def parse_law_api(raw):
                     law_id=val(law,"법령ID"),document_number=doc_id,
                     date_basis="법제처 공포일",body="",attachments=[]))
     return sorted(output,key=lambda item:(item["promulgation_date"],item["promulgation_number"]),reverse=True)[:MAX_ITEMS]
+
+def from_public_law_table():
+    """Official public Recent Promulgated Laws page; no API key needed.
+    Only accept rows containing a law kind, promulgation number and date.
+    """
+    source_url="https://www.law.go.kr/nwRvsLsPop.do?chrIdx=0&cptOfi=&lsKndCd=&lsNm=&p_epubdt=&p_spubdt=&searchType=&sortIdx=0&pg=1"
+    request=urllib.request.Request(source_url,headers={
+        "User-Agent":"Mozilla/5.0 (compatible; PolicyDomino/3.1)",
+        "Accept":"text/html,application/xhtml+xml",
+        "Referer":"https://www.law.go.kr/"})
+    with urllib.request.urlopen(request,timeout=25) as response:
+        raw=response.read(2700000)
+    soup=BeautifulSoup(raw,"html.parser")
+    output=[]
+    for tr in soup.select("tr"):
+        tds=tr.find_all("td",recursive=False)
+        if len(tds)<7:continue
+        vals=[re.sub(r"\s+"," ",td.get_text(" ",strip=True)).strip() for td in tds]
+        # Some pages add a checkbox/no. column. Detect date and revise metadata from right edge.
+        for idx in range(max(0,len(vals)-3),len(vals)-1):
+            if re.fullmatch(r"\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?",vals[idx]):
+                promulgated=vals[idx]
+                prefix=vals[:idx]
+                if len(prefix)<5:continue
+                # Common table columns: number, title, ministry, change kind, law type, promulgation number
+                law_name,agency,ctype,ltype,number=prefix[-5:]
+                if not re.search(r"제정|개정|폐지",ctype):continue
+                if not re.search(r"법률|령|규칙|헌법|부령",ltype):continue
+                day=re.sub(r"\D","",promulgated)
+                if len(day)!=8:continue
+                eff=vals[idx+1] if idx+1<len(vals) else ""
+                stamp=datetime.strptime(day,"%Y%m%d").replace(tzinfo=timezone.utc).isoformat()
+                output.append(dict(title=law_name,source=agency or "법제처 국가법령정보센터",
+                    url="https://www.law.go.kr/법령/"+quote(law_name),body="",category=ltype,
+                    law_type=ltype,change_type=ctype,stage="공포 법령",
+                    promulgation_date=day,promulgated_at=stamp,published_at=stamp,
+                    promulgation_number=number,effective_date=re.sub(r"\D","",eff),
+                    date_basis="법제처 최근공포법령 공포일",attachments=[]))
+                break
+    dedup={}
+    for law in output:
+        dedup[(law["title"],law["promulgation_date"],law["promulgation_number"])]=law
+    return sorted(dedup.values(),key=lambda v:(v["promulgation_date"],v["promulgation_number"]),reverse=True)[:MAX_ITEMS]
+
 
 def from_agency_postings(items):
     """Fallback only for explicit completed formal administrative-rule notices."""
@@ -84,6 +129,12 @@ def get_law_changes(items,seen=None):
             failure="국가법령정보 API 조회 실패: "+type(e).__name__
     else:
         failure="법제처 Open API 인증 미설정 — 공포 법령 목록 대신 공식 기관 개정 고시를 표시합니다."
+    if not verified:
+        try:
+            verified=from_public_law_table()
+            if verified:failure=None
+        except Exception as e:
+            failure=(failure or "")+" | 공개 최근공포법령 목록 수집 실패: "+type(e).__name__
     fallback=from_agency_postings(items)
     records=verified+fallback
     # Ensure the same agency posting is not listed twice.
@@ -99,4 +150,4 @@ def get_law_changes(items,seen=None):
         signature=(entry.get("promulgation_number") or "")+"|"+(entry.get("change_type") or "")+"|"+(entry.get("published_at") or "")
         entry["change_detected"]=("기준선" if baseline and k not in seen else "신규 감지" if k not in seen else "수정 감지" if seen[k]!=signature else "기존")
         latest[k]=signature
-    return records[:MAX_ITEMS],latest,{"authority":"법제처 공포일 API" if verified else "공식 부처 행정규칙·고시 게시","api_connected":bool(verified),"api_note":failure,"law_count":len(verified),"agency_count":len(fallback)}
+    return records[:MAX_ITEMS],latest,{"authority":("법제처 최근공포법령" if verified else "공식 부처 행정규칙·고시 게시"),"api_connected":bool(verified),"api_note":failure,"law_count":len(verified),"agency_count":len(fallback)}

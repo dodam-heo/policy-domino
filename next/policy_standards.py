@@ -78,13 +78,25 @@ def valid_notices(profile,txt):
   raise ValueError("공식 고시 검증 실패 (연도="+str(str(year) in txt)+", 번호="+str(number in txt)+", 시행일="+str("시행" in txt)+")")
  return True
 def get_official(fetch,profile):
- docs={}
+ docs={"_warnings":[]}
  for k in ("notice","current","baseline"):
   try:
-   docs[k]=parse_html(fetch(profile[k],timeout=16,max_bytes=900000))
+   docs[k]=parse_html(fetch(profile[k],timeout=13,max_bytes=900000))
   except Exception as exc:
-   raise ValueError("공식 "+k+" 자료를 읽을 수 없음: "+type(exc).__name__+" "+str(exc)[:65]) from exc
- valid_notices(profile,docs["notice"].value())
+   if k=="notice" or profile is SOURCE_PROFILES["welfare"]:
+    raise ValueError("공식 "+k+" 자료를 읽을 수 없음: "+type(exc).__name__+" "+str(exc)[:65]) from exc
+   docs[k]=None
+   docs["_warnings"].append(k+" 직접 조회 실패")
+ try:
+  valid_notices(profile,docs["notice"].value())
+ except ValueError:
+  # Education ministry's official promulgation notice is also authoritative;
+  # exact decree number must be in the published attachment or bulletin.
+  pub=docs["current"].value() if docs["current"] else ""
+  number=profile["gosi"].rsplit("제",1)[-1].replace("호","")
+  if profile is not SOURCE_PROFILES["education"] or not (str(profile["year"]) in pub and number in pub and "고시" in pub):
+   raise
+  docs["_warnings"].append("교육부 고시 공표문으로 교차 검증")
  return docs
 def median_amounts(current):
  text=current.value()
@@ -127,16 +139,27 @@ def extract_values(profile,docs,extra):
    raise ValueError("2026년 보건복지부 선정기준과 이전 중위소득이 일치하지 않음")
   return result
  if kind=="housing":
-  prev=housing_numbers(docs["baseline"])
-  latest=housing_numbers(docs["current"])
-  return {f"주거급여:{i+1}인":(prev[i],latest[i]) for i in range(min(len(prev),len(latest))) if prev[i]!=latest[i]}
+  if docs["baseline"] and docs["current"]:
+   try:
+    prev=housing_numbers(docs["baseline"])
+    latest=housing_numbers(docs["current"])
+    return {f"주거급여:{i+1}인":(prev[i],latest[i]) for i in range(min(len(prev),len(latest))) if prev[i]!=latest[i]}
+   except ValueError:pass
+  # The housing law explicitly uses 48% of the officially proclaimed
+  # median income. Derive only the 4-person standard with half-up rounding.
+  if extra and "중위소득:4인" in extra and "주거급여 48%" in extra.get("_official_statement",""):
+   old,new=extra["중위소득:4인"]
+   docs["_warnings"].append("4인가구 주거급여 기준은 공식 중위소득 × 48%로 대조")
+   return {"주거급여:4인":((old*48+50)//100,(new*48+50)//100)}
+  raise ValueError("주거급여 공식 금액표와 48% 산정 근거를 확인하지 못함")
  if kind=="education":
   # Education standard is 50% of the officially determined median; the rule
   # must explicitly confirm 교육급여 and the older Ministry data must exist.
   notice=docs["notice"].value()
   if "교육급여" not in notice or "선정기준" not in notice:raise ValueError("교육급여 선정 고시 확인 불가")
-  if extra and "중위소득:4인" in extra:
+  if extra and "중위소득:4인" in extra and "교육급여 50%" in extra.get("_official_statement",""):
    old,new=extra["중위소득:4인"]
+   docs["_warnings"].append("4인가구 교육급여 선정기준은 공식 중위소득 × 50%로 대조")
    return {"교육급여:4인":((old+1)//2,(new+1)//2)}
   raise ValueError("교육급여 기준 계산의 모수인 공식 중위소득 신구값 미확보")
  return {}
@@ -189,7 +212,8 @@ def scan_policy_standards(fetch,existing_events,existing_actions):
   try:
    docs=get_official(fetch,profile)
    extracted=extract_values(profile,docs,others.get("welfare"))
-   if key=="welfare":others["welfare"]=extracted
+   if key=="welfare":
+    others["welfare"]={**extracted,"_official_statement":docs["current"].value()}
    elif key=="education" and not extracted:raise ValueError("교육급여 신구값 없음")
    event_id=unique("policy:"+profile["gosi"]+"|"+profile["date"])
    before_diff=[]
@@ -213,6 +237,7 @@ def scan_policy_standards(fetch,existing_events,existing_actions):
     "policy_profile":key,"value_verified":bool(before_diff)
    }
    status["confirmed"]+=1;status["metrics"]+=len(before_diff)
+   status.setdefault("warnings",[]).extend([{"profile":key,"note":msg} for msg in docs["_warnings"]])
    result_events.append(event)
   except Exception as exc:
    status["errors"].append({"profile":key,"type":type(exc).__name__,"message":str(exc)[:180]})

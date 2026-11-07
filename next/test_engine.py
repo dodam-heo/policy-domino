@@ -57,6 +57,14 @@ class ChangeDetection(unittest.TestCase):
         self.assertTrue(any(t["work"]=="조직·정원·직무 배정" for t in tasks))
         self.assertTrue(all(t["basis"].endswith("chrClsCd=010202") for t in tasks))
 
+    def test_no_unrelated_licensing_or_public_agency_from_org_chart(self):
+        law={**self.law,"title":"가상기관 직제 시행규칙"}
+        diff={"id":"org-1","article":"별표 4","before":"정원 30","after":"별표 중 항공사무관 30을 20으로, 재산심사과장을 신설한다.","type":"개정","context":"전문직공무원 정원 조정"}
+        tasks=engine.actions_from_diff(law,[diff])
+        self.assertTrue(tasks)
+        self.assertTrue(all(task["work"]=="조직·정원·직무 배정" for task in tasks))
+        self.assertFalse(any(task["agency"]=="공공기관" for task in tasks))
+
     def test_unique_per_action_role(self):
         changed={"id":"d1","article":"제5조","before":"신청자격 20세","after":"신청자격 18세","type":"변경"}
         ids=[r["id"] for r in engine.actions_from_diff(self.law,[changed])]

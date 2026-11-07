@@ -1,8 +1,8 @@
 {
   "schema": "policy-domino-next-v1",
-  "generated_at": "2026-11-07T20:25:17+00:00",
+  "generated_at": "2026-11-07T20:26:10+00:00",
   "health": {
-    "generated_at": "2026-11-07T20:25:17+00:00",
+    "generated_at": "2026-11-07T20:26:10+00:00",
     "collector": "국가법령정보센터 공식 공포일·연혁·조문 API",
     "source_status": "메타데이터만 연결",
     "error": "법령 공포 목록은 확인했지만 종전·변경 조문 비교에는 LAW_OC API 인증이 필요합니다.",

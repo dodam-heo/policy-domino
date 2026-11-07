@@ -54,8 +54,15 @@ def digest(s):
 def stamp():
     return NOW().isoformat(timespec="seconds")
 def date_str(s):
-    s=re.sub(r"\D","",str(s or ""))
-    return f"{s[:4]}-{s[4:6]}-{s[6:8]}" if len(s)==8 else ""
+    value=str(s or "").strip()
+    if re.fullmatch(r"\d{8}",value):
+        try:return dt.datetime.strptime(value,"%Y%m%d").date().isoformat()
+        except ValueError:return ""
+    m=re.search(r"(20\d{2})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})",value)
+    if m:
+        try:return dt.date(int(m.group(1)),int(m.group(2)),int(m.group(3))).isoformat()
+        except ValueError:return ""
+    return ""
 def read_json(path,default):
     try:return json.loads(path.read_text("utf-8"))
     except (ValueError,OSError):return default
@@ -130,11 +137,11 @@ def public_law_list(limit=30):
             index,title,ministry,change,law_type,number,published,effective=candidate
             if not (re.fullmatch(r"\d+",index) and any(t in change for t in VALID_REVISIONS)):
                 continue
-            prom=re.sub(r"\D","",published)
-            if len(prom)!=8 or not title or not ministry or not number:continue
-            unique=digest(title+"|"+number+"|"+prom)
+            promulgated=date_str(published)
+            if not promulgated or not title or not ministry or not number:continue
+            unique=digest(title+"|"+number+"|"+promulgated)
             laws.append({"id":"pub:"+unique,"mst":"","title":title,
-                "promulgated_at":date_str(prom),"promulgation_number":number,
+                "promulgated_at":promulgated,"promulgation_number":number,
                 "effective_date":date_str(effective),"revision":change,
                 "ministry":ministry,"law_type":law_type,
                 "url":"https://www.law.go.kr/LSW/nwRvsLsPop.do",

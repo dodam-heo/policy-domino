@@ -285,8 +285,13 @@ def main():
     # Evidence-first cross-institution discovery: inspect actual public web pages and
     # only report a target if authoritative old→new values and stale public text match.
     active_changes=sorted(law_changes,key=lambda x:(x.get("promulgated_at") or x.get("published_at") or ""),reverse=True)
-    impacts,investigations,scan_metrics=scan_downstream(active_changes,items,inspect_page,
+    # Check the latest two on each run, while rotating additional legal changes.
+    offset=int(state.get("scan_offset",0))
+    rotated=(active_changes[offset:]+active_changes[:offset]) if active_changes else []
+    chosen=list({p.get("url"):p for p in (active_changes[:2]+rotated[:5]) if p.get("url")}.values())
+    impacts,investigations,scan_metrics=scan_downstream(chosen,items,inspect_page,
         read_raw=lambda u:fetch(u,limit=1500000,timeout=12)[0],max_policy=7)
+    next_offset=((offset+5)%len(active_changes)) if active_changes else 0
     cutoff=datetime.fromisoformat(now).timestamp()-7*86400
     recent_laws=sum(bool(law.get("promulgated_at") or law.get("published_at")) and datetime.fromisoformat(law.get("promulgated_at") or law.get("published_at")).timestamp()>=cutoff for law in law_changes)
     counts={"total":len(items),"law_total":len(law_changes),"law_recent_7d":recent_laws,
@@ -305,6 +310,6 @@ def main():
           "scope":"중앙행정기관·지방자치단체·공공통계 공식 RSS",
           "method":"실시간 공개 게시물 · 첨부자료 일부 원문 검사 · 기관 간 연관 게시물 탐색"}
     OUT.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
-    STATE.write_text(json.dumps({"initialized":True,"hashes":hashes,"first_seen":first_seen,"law_seen":law_seen},ensure_ascii=False),encoding="utf-8")
+    STATE.write_text(json.dumps({"initialized":True,"hashes":hashes,"first_seen":first_seen,"law_seen":law_seen,"scan_offset":next_offset},ensure_ascii=False),encoding="utf-8")
     print(json.dumps({"posts":len(items),"sources_ok":data["success_count"],"sources_all":len(sources),"impact_targets":counts["targets"],"public_pages_examined":scan_metrics["target_pages_examined"],"enacted_changes":len(law_changes),"law_api":law_source["api_connected"]},ensure_ascii=False))
 if __name__=="__main__":main()

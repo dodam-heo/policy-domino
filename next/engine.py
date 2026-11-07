@@ -100,6 +100,49 @@ def official_laws(limit=80):
     unique={}
     for record in results:unique.setdefault((record["id"],record["promulgated_at"],record["promulgation_number"]),record)
     return sorted(unique.values(),key=lambda r:(r["promulgated_at"],r["promulgation_number"]),reverse=True)[:limit]
+def public_law_list(limit=30):
+    """Public official promulgation TABLE fallback (metadata only, no authenticated clause access).
+    Prevents ordinary press releases and draft notices being mistaken for legal changes.
+    """
+    from html.parser import HTMLParser
+    class Rows(HTMLParser):
+        def __init__(self):
+            super().__init__();self.rows=[];self.row=None;self.cell=None;self.href=""
+        def handle_starttag(self,tag,attrs):
+            if tag=="tr":self.row=[]
+            if self.row is not None and tag in ("td","th"):self.cell=[]
+            if self.cell is not None and tag=="a":
+                self.href=dict(attrs).get("href","")
+        def handle_data(self,data):
+            if self.cell is not None:self.cell.append(data)
+        def handle_endtag(self,tag):
+            if tag in ("td","th") and self.row is not None and self.cell is not None:
+                self.row.append(clean("".join(self.cell)));self.cell=None
+            if tag=="tr" and self.row is not None:
+                if len(self.row)>=8:self.rows.append(self.row)
+                self.row=None
+    raw=download("https://www.law.go.kr/LSW/nwRvsLsPop.do",timeout=18)
+    parser=Rows();parser.feed(raw.decode("utf-8","replace"))
+    laws=[]
+    for row in parser.rows:
+        for start in range(len(row)-7):
+            candidate=row[start:start+8]
+            index,title,ministry,change,law_type,number,published,effective=candidate
+            if not (re.fullmatch(r"\d+",index) and any(t in change for t in VALID_REVISIONS)):
+                continue
+            prom=re.sub(r"\D","",published)
+            if len(prom)!=8 or not title or not ministry or not number:continue
+            unique=digest(title+"|"+number+"|"+prom)
+            laws.append({"id":"pub:"+unique,"mst":"","title":title,
+                "promulgated_at":date_str(prom),"promulgation_number":number,
+                "effective_date":date_str(effective),"revision":change,
+                "ministry":ministry,"law_type":law_type,
+                "url":"https://www.law.go.kr/LSW/nwRvsLsPop.do",
+                "public_metadata_only":True})
+            break
+    dedup={(x["id"],x["effective_date"]):x for x in laws}
+    return sorted(dedup.values(),key=lambda x:x["promulgated_at"],reverse=True)[:limit]
+
 def previous_mst(law):
     # Historical/previous versions are queried for the SAME stable law ID.
     root=api_request("lawSearch.do",target="eflaw",LID=law["id"],nw="1,2,3",
@@ -214,6 +257,15 @@ def main():
     except Exception as exc:
         health["source_status"]="수집 실패"
         health["error"]=str(exc)[:220]
+        # Official public promulgation index works without an API account,
+        # but its entries do not contain authenticated before/after articles.
+        try:
+            laws=public_law_list(limit=30)
+            if laws:
+                health["source_status"]="메타데이터만 연결"
+                health["error"]="법령 공포 목록은 확인했지만 종전·변경 조문 비교에는 LAW_OC API 인증이 필요합니다."
+        except Exception as source_error:
+            health["fallback_error"]=type(source_error).__name__
     health["official_records"]=len(laws)
     snapshots=state.get("snapshots",{})
     events={e["event_id"]:e for e in state.get("events",[]) if e.get("event_id")}
@@ -224,7 +276,12 @@ def main():
     selected=list({x["mst"]:x for x in selected}.values())
     health["partial"]=bool(len(laws)>len(selected))
     health["errors"]=[]
+    for law in laws:
+        if law.get("public_metadata_only"):
+            eid=digest(law["id"]+law["promulgated_at"]+law["promulgation_number"])
+            events[eid]=event_record(law,[],False)
     for law in selected:
+        if law.get("public_metadata_only"):continue
         event_id=digest(law["id"]+law["promulgated_at"]+law["promulgation_number"])
         try:
             latest,diffs=changes_for(law,snapshots.get(law["id"]))

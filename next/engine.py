@@ -15,6 +15,10 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+try:
+    from .impact_mapper import map_actions
+except ImportError:
+    from impact_mapper import map_actions
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/"data"/"next_state.json"
@@ -290,7 +294,7 @@ def infer_affected_roles(text,law):
                           "level":level,"confidence":"변경 조문에 업무주체 명시"})
     # No invented lists of 226 municipalities or presumed public-agency assignments.
     return roles
-def actions_from_diff(law,diffs):
+def map_actions(law,diffs):
     actions=[]
     today=NOW().date()
     for difference in diffs:
@@ -414,7 +418,7 @@ def main():
                 evt["amendment_document"]=material["document"][:9000]
                 events[event_id]=evt
                 health["amendments_read"]+=1
-                derived=actions_from_diff(law,diffs)
+                derived=map_actions(law,diffs)
                 valid_ids={t["id"] for t in derived}
                 # Remove obsolete inferences from this event when a fresh official document was read.
                 for existing_id,existing_task in list(actions.items()):
@@ -438,7 +442,7 @@ def main():
             if prev and prev.get("comparison_status")=="신구 조문 대조 완료" and not diffs:evt=prev
             events[event_id]=evt
             health["compared"]+=1
-            for task in actions_from_diff(law,diffs):
+            for task in map_actions(law,diffs):
                 if task["id"] in actions:
                     # Status history takes priority over new inference.
                     older=actions[task["id"]]

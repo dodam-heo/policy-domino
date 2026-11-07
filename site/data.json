@@ -1,8 +1,8 @@
 {
   "schema": "policy-domino-next-v1",
-  "generated_at": "2026-11-07T19:59:55+00:00",
+  "generated_at": "2026-11-07T20:01:38+00:00",
   "health": {
-    "generated_at": "2026-11-07T19:59:55+00:00",
+    "generated_at": "2026-11-07T20:01:38+00:00",
     "collector": "국가법령정보센터 공식 공포일·연혁·조문 API",
     "source_status": "수집 실패",
     "error": "LAW_OC 인증값 미설정",

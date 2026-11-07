@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from impact_scanner import find_explicit_deltas, evaluate_target, is_historical_record, scan, distinctive
+from impact_scanner import find_explicit_deltas, find_text_deltas, evaluate_target, is_historical_record, scan, distinctive
 
 class EvidenceAuditTests(unittest.TestCase):
     def setUp(self):
@@ -27,6 +27,11 @@ class EvidenceAuditTests(unittest.TestCase):
         self.assertEqual(found["after"],"2,217,563원")
         self.assertEqual(found["location"],"본문 1번째 블록")
         self.assertTrue(found["review_required"])
+
+    def test_explicit_wording_change(self):
+        changes=find_text_deltas("종전 ‘가구당 20일’에서 ‘가구당 30일’로 개정")
+        self.assertEqual(len(changes),1)
+        self.assertEqual((changes[0]["before"],changes[0]["after"]),("가구당 20일","가구당 30일"))
 
     def test_2026_archive_is_not_mislabeled(self):
         target={"title":"2026년 생계급여 안내",

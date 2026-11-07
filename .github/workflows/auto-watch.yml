@@ -35,6 +35,14 @@ jobs:
         run: |
           python -m compileall -q next
           python -m unittest discover -s next -p 'test_*.py' -v
+      - name: Diagnose whether the API credential reached the runner
+        env:
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+        run: |
+          python - <<'PY'
+          import os
+          print("LAW_OC passed to cloud runner:", "YES" if bool(os.getenv("LAW_OC", "").strip()) else "NO")
+          PY
       - name: Analyze official legal versions (cloud only)
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}

@@ -5,6 +5,8 @@ import urllib.error
 import xml.etree.ElementTree as ET
 import ssl
 targets = {
+"law_api_sample_open":"https://open.law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",
+"law_api_sample_open_http":"http://open.law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",
 "law_api_sample_https":"https://www.law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",
 "law_api_sample_http":"http://www.law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",
 "law_api_sample_base":"https://law.go.kr/DRF/lawSearch.do?OC=test&target=law&type=XML&sort=ddes&display=3",

@@ -77,7 +77,7 @@ def valid_notices(profile,txt):
  if str(year) not in txt or number not in txt or "시행" not in txt:
   raise ValueError("공식 고시 검증 실패 (연도="+str(str(year) in txt)+", 번호="+str(number in txt)+", 시행일="+str("시행" in txt)+")")
  return True
-def get_official(fetch,profile):
+def get_official(fetch,profile,prior=None):
  docs={"_warnings":[]}
  for k in ("notice","current","baseline"):
   try:
@@ -94,9 +94,11 @@ def get_official(fetch,profile):
   # exact decree number must be in the published attachment or bulletin.
   pub=docs["current"].value() if docs["current"] else ""
   number=profile["gosi"].rsplit("제",1)[-1].replace("호","")
-  if profile is not SOURCE_PROFILES["education"] or not (str(profile["year"]) in pub and number in pub and "고시" in pub):
-   raise
-  docs["_warnings"].append("교육부 고시 공표문으로 교차 검증")
+  if profile is SOURCE_PROFILES["education"] and (str(profile["year"]) in pub and number in pub and "고시" in pub):
+   docs["_warnings"].append("교육부 고시 공표문으로 교차 검증")
+  elif profile is SOURCE_PROFILES["housing"] and prior and "중위소득:4인" in prior and "주거급여 48%" in prior.get("_official_statement",""):
+   docs["_warnings"].append("주거급여 고시 원문 자동 열람 실패; 중앙생활보장위원회 확정 기준으로 교차 검증")
+  else:raise
  return docs
 def median_amounts(current):
  text=current.value()
@@ -213,7 +215,7 @@ def scan_policy_standards(fetch,existing_events,existing_actions):
  others={}
  for key,profile in SOURCE_PROFILES.items():
   try:
-   docs=get_official(fetch,profile)
+   docs=get_official(fetch,profile,others.get("welfare"))
    extracted=extract_values(profile,docs,others.get("welfare"))
    if key=="welfare":
     others["welfare"]={**extracted,"_official_statement":docs["current"].value()}
@@ -233,7 +235,7 @@ def scan_policy_standards(fetch,existing_events,existing_actions):
     "ministry":profile["agency"],"law_type":"고시·행정규칙",
     "url":profile["notice"],"source":"국가법령정보센터 고시 원문·소관부처 공식자료",
     "change_count":len(before_diff),"article_differences":before_diff,
-    "comparison_status":"공식 소관부처의 전년도·신년도 기준액 대조 완료" if before_diff else "고시 확인·숫자 대조 대기",
+    "comparison_status":("공식 정부 기준액 대조 완료 · 원 고시 자동 열람 일부 제한" if any("원문 자동 열람 실패" in msg for msg in docs["_warnings"]) else "공식 소관부처의 전년도·신년도 기준액 대조 완료") if before_diff else "고시 확인·숫자 대조 대기",
     "amendment_reason":profile["scope"]+"에 관한 2027년 확정 기준",
     "amendment_url":profile["notice"],"downstream_changes":[],"upstream_changes":[],
     "policy_source_urls":[profile["current"],profile["baseline"]],

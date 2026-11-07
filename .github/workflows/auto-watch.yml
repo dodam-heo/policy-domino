@@ -1,13 +1,15 @@
-name: Policy Domino - Monitor and Publish
+name: Policy Domino NEXT — Official Changes to Actions
 on:
   workflow_dispatch:
   schedule:
-    - cron: '23 * * * *'
+    - cron: '21 * * * *'
   push:
     branches: [main]
     paths-ignore:
       - 'site/data.json'
-      - 'data/state.json'
+      - 'data/next_state.json'
+      - 'data/next_run_status.json'
+      - 'data/next_deploy_status.json'
       - 'data/deploy_status.json'
       - 'data/collection_status.json'
 permissions:
@@ -15,111 +17,108 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: policy-domino-cloud
+  group: policy-domino-next
   cancel-in-progress: false
 jobs:
-  collect:
-    name: Evidence-based cross-agency scan
+  analyze:
+    name: Official legal changes & agency action generation
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install public-document readers on cloud runner
-        run: python -m pip install --disable-pip-version-check beautifulsoup4 pypdf python-docx
-      - name: Validate source modules and comparison rules
+      - name: Validate new engine
         run: |
-          python -m compileall -q watch.py law_changes.py impact_scanner.py
-          python -m unittest discover -s tests -v 2>&1 | tee /tmp/policy-tests.log
-      - name: Monitor changes and inspect downstream material
+          python -m compileall -q next
+          python -m unittest discover -s next -p 'test_*.py' -v
+      - name: Analyze official legal versions (cloud only)
         env:
-          LAW_OC: ${{ secrets.LAW_OC }}
-        run: python watch.py
-      - name: Save verified monitoring results
+          LAW_OC: \${{ secrets.LAW_OC }}
+        run: python next/engine.py
+      - name: Publish evidence & execution record
+        if: always()
         run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          from datetime import datetime, timezone
+          p=Path('site/data.json')
+          try:
+              data=json.loads(p.read_text('utf-8'))
+              status=(data.get('health') or {}).get('source_status','오류')
+              compared=(data.get('health') or {}).get('compared',0)
+              actions=len(data.get('actions',[]))
+              message=(data.get('health') or {}).get('error')
+          except Exception:
+              status='분석 실패';compared=0;actions=0;message='실행 결과를 기록할 수 없습니다. Actions 로그 확인 필요.'
+          out={'completed_at':datetime.now(timezone.utc).isoformat(),
+               'source_status':status,'compared':compared,'actions':actions,'message':message}
+          path=Path('data/next_run_status.json')
+          path.parent.mkdir(exist_ok=True)
+          path.write_text(json.dumps(out,ensure_ascii=False,indent=2),'utf-8')
+          PY
           git config user.name 'policy-domino-bot'
           git config user.email 'policy-domino-bot@users.noreply.github.com'
-          git add data/state.json site/data.json
+          git add site/data.json data/next_run_status.json
+          if [ -f data/next_state.json ]; then git add data/next_state.json; fi
           if ! git diff --cached --quiet; then
-            git commit -m 'data: evidence-backed scan results [skip ci]'
+            git commit -m 'data: NEXT official law comparison results [skip ci]'
             git pull --rebase origin main
             git push origin HEAD:main
           fi
 
-      - name: Record collection failure for diagnosis
-        if: ${{ failure() }}
-        run: |
-          python - <<'PY'
-          import json, os
-          from datetime import datetime, timezone
-          from pathlib import Path
-          notes=Path("/tmp/policy-tests.log")
-          text=notes.read_text(errors="replace") if notes.exists() else "Test log not available; see workflow run"
-          # Unit-test diagnostics contain no source API keys or external request URLs.
-          safe=text[-3500:] if notes.exists() else text
-          payload={"checked_at":datetime.now(timezone.utc).isoformat(),
-                   "status":"수집 또는 테스트 실패",
-                   "test_output":safe}
-          Path("data/collection_status.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2))
-          PY
-          git config user.name 'policy-domino-bot'
-          git config user.email 'policy-domino-bot@users.noreply.github.com'
-          git add data/collection_status.json
-          git commit -m 'ops: save collection diagnostic [skip ci]'
-          git pull --rebase origin main
-          git push origin HEAD:main
-
   deploy:
-    name: Publish user interface even if collection fails
-    needs: collect
-    if: ${{ always() }}
+    name: Deploy freshly rebuilt interface
+    needs: analyze
+    if: \${{ always() }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: \${{ steps.deploy_pages.outputs.page_url }}
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Validate dashboard JavaScript before publishing
+      - name: Verify next dashboard and schema
         run: |
           node - <<'NODE'
-          const fs = require('fs');
+          const fs=require('fs');
           const html=fs.readFileSync('site/index.html','utf8');
-          const script=html.match(/<script>([\s\S]*?)<\/script>/);
-          if(!script)throw new Error('Dashboard script not found');
-          new Function(script[1]);
-          console.log('Dashboard JavaScript syntax valid');
+          const js=html.match(/<script>([\s\S]*?)<\/script>/);
+          if(!js) throw new Error('NEXT JavaScript missing');
+          new Function(js[1]);
+          const payload=JSON.parse(fs.readFileSync('site/data.json','utf8'));
+          if(payload.schema!=='policy-domino-next-v1')throw new Error('Legacy schema must not be published');
+          console.log('NEXT dashboard JS and data schema valid');
           NODE
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: site
-      - name: Deploy
-        id: deployment
+      - name: Publish GitHub Pages
+        id: deploy_pages
         uses: actions/deploy-pages@v4
-      - name: Record successful website deployment
-        if: ${{ success() }}
+      - name: Record confirmed successful deployment
+        if: success()
         env:
-          LIVE_URL: ${{ steps.deployment.outputs.page_url }}
+          LIVE_URL: \${{ steps.deploy_pages.outputs.page_url }}
         run: |
           python - <<'PY'
-          import json, os
-          from datetime import datetime, timezone
           from pathlib import Path
-          payload={"deployed_at":datetime.now(timezone.utc).isoformat(),
-                   "page_url":os.environ.get("LIVE_URL",""),
-                   "commit":os.environ.get("GITHUB_SHA","")}
-          Path("data/deploy_status.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2))
+          import json,os
+          from datetime import datetime,timezone
+          Path('data/next_deploy_status.json').write_text(json.dumps({
+            'deployed_at':datetime.now(timezone.utc).isoformat(),
+            'page_url':os.environ.get('LIVE_URL',''),
+            'version':'policy-domino-next-v1',
+            'commit':os.environ.get('GITHUB_SHA','')},ensure_ascii=False,indent=2),'utf-8')
           PY
           git config user.name 'policy-domino-bot'
           git config user.email 'policy-domino-bot@users.noreply.github.com'
-          git add data/deploy_status.json
-          git commit -m 'ops: record Pages deployment success [skip ci]'
+          git add data/next_deploy_status.json
+          git commit -m 'ops: NEXT Pages deployment confirmed [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main

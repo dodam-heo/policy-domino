@@ -35,7 +35,7 @@ jobs:
           python -m unittest discover -s next -p 'test_*.py' -v
       - name: Analyze official legal versions (cloud only)
         env:
-          LAW_OC: ${{ secrets.LAW_OC }}
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
         run: python next/engine.py
       - name: Publish evidence & execution record
         if: always()
@@ -73,6 +73,18 @@ jobs:
               git push origin HEAD:main
             fi
           fi
+
+      - name: Verify actual API collection result
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          status=json.loads(Path('data/next_run_status.json').read_text('utf-8'))
+          if status.get('source_status')!='정상':
+              print('::error::법령 수집 실패: '+str(status.get('message') or status.get('source_status')))
+              raise SystemExit(1)
+          print('공식 법령 수집 확인:',status.get('compared'),'건 조문 비교')
+          PY
 
   deploy:
     name: Deploy freshly rebuilt interface

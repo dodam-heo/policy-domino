@@ -3,12 +3,14 @@
   "first_scan": false,
   "counts": {
     "total": 426,
-    "recent": 0,
-    "modified": 0,
+    "recent": 5,
+    "modified": 16,
     "candidate": 123,
     "targets": 0,
     "law_total": 18,
-    "law_recent_7d": 5
+    "law_recent_7d": 5,
+    "rss_recent_discoveries": 0,
+    "new_count": 2
   },
   "sources": [
     {

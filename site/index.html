@@ -42,7 +42,7 @@ footer{margin-top:20px;color:#61768a;font-size:12px;text-align:center}
 </style></head><body>
 <header><div class="brand">POLICY <span>DOMINO</span></div><div class="tag">변화는 자동 감지하고, 관련 게시정보는 근거로 확인합니다.</div></header>
 <main>
-<div class="topline"><div><h1>최신 법령 제정·개정</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
+<div class="topline"><div><h1>신규·수정 법령 및 행정규칙</h1><div class="meta" id="syncTime">공식 자료 동기화 상태 확인 중</div></div><button class="button primary" onclick="load()">최신 결과 새로고침</button></div>
 <section class="stats">
 <div class="stat"><small>최근 제정·개정 법령</small><strong id="total">—</strong></div>
 <div class="stat"><small>최근 7일 제·개정</small><strong id="recent">—</strong></div>
@@ -94,7 +94,7 @@ return '<div class="impact"><span class="pill '+(confirmed?"amber":"")+'">'+safe
 function render(){
 let items=(data.items||[]).slice().sort(latestSort),title="최신 공식 게시물",list=[];
 if(tab==="latest")list=optionFilter(items,"source");
-if(tab==="new"){title="최근 제정·개정된 법령 · 공포일 최신순";list=optionFilter((data.law_changes||[]).slice().sort((a,b)=>lawDate(b).localeCompare(lawDate(a))),"source")}
+if(tab==="new"){title=data.law_source?.api_connected?"최근 제정·개정 법령 · 공포일 최신순":"공식 제정·개정 게시 · 게시일 최신순";list=optionFilter((data.law_changes||[]).slice().sort((a,b)=>lawDate(b).localeCompare(lawDate(a))),"source")}
 if(tab==="candidate"){title="변경 검토 후보 · 별도 조사";list=optionFilter(items.filter(x=>stage(x)!=="일반 게시"),"source")}
 if(tab==="audit"){title="기관별 게시정보 점검";list=optionFilter(data.impacts||[],"target_source")}
 el("sectionTitle").textContent=title;
@@ -113,7 +113,7 @@ const from=new Date(referenceDay+"T00:00:00Z").getTime()-6*86400000;
 el("recent").textContent=legal.filter(x=>new Date(lawDate(x)).getTime()>=from).length;
 el("candidate").textContent=counts.candidate??counts.change_count??0;
 el("targets").textContent=counts.targets??(data.impacts||[]).length;
-el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · 법령 공포일 최신순";
+el("syncTime").textContent="마지막 수집 "+date(data.generated_at)+" · "+(data.law_source?.api_connected?"공포일":"공식 게시일")+" 최신순";
 el("scope").textContent=(data.scope||"등록된 공식 RSS")+" · "+(data.source_count??data.sources?.length??0)+"개 채널";
 const src=data.sources||[];
 el("sourceGood").textContent="정상 "+src.filter(x=>x.status==="정상").length;

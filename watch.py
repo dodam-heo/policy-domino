@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 from urllib.parse import urljoin, urlparse
 from io import BytesIO
 import hashlib, html, json, re, urllib.request, xml.etree.ElementTree as ET, zipfile
+from law_changes import get_law_changes
 
 ROOT=Path(__file__).resolve().parent
 STATE=ROOT/"data"/"state.json"
@@ -280,15 +281,17 @@ def main():
     items=list(unique.values())
     items.sort(key=lambda p:(p.get("published_at") or p.get("first_seen_at") or "",p.get("title","")),reverse=True)
     impacts=audit(items,state)
+    law_changes,law_seen,law_source=get_law_changes(items,state.get("law_seen",{}))
     counts={"total":len(items),"recent":sum(p["detected"] in ("신규 감지","수정 감지") for p in items),
             "modified":sum(p["detected"]=="수정 감지" for p in items),
             "candidate":sum(p["stage"]!="일반 게시" for p in items),"targets":len(impacts)}
     data={"generated_at":now,"first_scan":initial,"counts":counts,"sources":sources,
+          "law_changes":law_changes,"law_source":law_source,
           "items":items[:280],"impacts":impacts,"source_count":len(FEEDS),
           "success_count":sum(s["status"]=="정상" for s in sources),
           "scope":"중앙행정기관·지방자치단체·공공통계 공식 RSS",
           "method":"실시간 공개 게시물 · 첨부자료 일부 원문 검사 · 기관 간 연관 게시물 탐색"}
     OUT.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
-    STATE.write_text(json.dumps({"initialized":True,"hashes":hashes,"first_seen":first_seen},ensure_ascii=False),encoding="utf-8")
-    print(json.dumps({"posts":len(items),"sources_ok":data["success_count"],"sources_all":len(sources),"impact_candidates":len(impacts)},ensure_ascii=False))
+    STATE.write_text(json.dumps({"initialized":True,"hashes":hashes,"first_seen":first_seen,"law_seen":law_seen},ensure_ascii=False),encoding="utf-8")
+    print(json.dumps({"posts":len(items),"sources_ok":data["success_count"],"sources_all":len(sources),"impact_candidates":len(impacts),"enacted_changes":len(law_changes),"law_api":law_source["api_connected"]},ensure_ascii=False))
 if __name__=="__main__":main()

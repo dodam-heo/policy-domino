@@ -22,8 +22,10 @@ def flatten(clauses):
     return " ".join(str(v or "") for v in clauses.values())[:100000]
 
 def substantive(event):
-    return bool(event.get("effects")) and event.get("impact_category") in (
-      "제도·업무 변경","조직개편·업무이관")
+    # General standard-name text search cannot establish a causal link between
+    # two separate staffing tables or every rule mentioning privacy protection.
+    # Cross-agency omnibus reorganizations require explicit amendment evidence.
+    return bool(event.get("effects")) and event.get("impact_category") == "제도·업무 변경"
 
 def scope_year(event):
     a=event.get("effective_date","")

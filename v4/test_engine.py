@@ -74,6 +74,20 @@ class OfficialCollection(unittest.TestCase):
         self.assertEqual(len(state["coverage"]),2)
         self.assertEqual({x["edition"] for x in state["coverage"]},{"current","history"})
 
+    def test_ordinance_xml_uses_korean_row_tags_not_ordin(self):
+        sample=ET.fromstring("""<자치법규목록><totalCnt>1</totalCnt>
+            <자치법규><자치법규명>가상시 복지 조례</자치법규명>
+              <자치법규ID>101</자치법규ID>
+              <자치법규일련번호>1111</자치법규일련번호>
+              <공포일자>20261107</공포일자>
+              <제개정구분명>일부개정</제개정구분명>
+            </자치법규></자치법규목록>""")
+        items,health=index.scan_window("ordin","2026-11-07","2026-11-07",
+            fetch=lambda source,**kw:sample)
+        self.assertTrue(health.complete)
+        self.assertEqual(len(items),1)
+        self.assertEqual(items[0]["title"],"가상시 복지 조례")
+
     def test_official_history_is_not_current_index(self):
         def fetch(target,**kw):
             self.assertEqual(target,"lsHstInf")

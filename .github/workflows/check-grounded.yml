@@ -1,0 +1,56 @@
+name: Verify grounded agency tasks on real staffing law
+on:
+  push:
+    branches: [fix/grounded-agency-actions-20261108]
+    paths: ['.github/workflows/check-grounded.yml','v3/**','site/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Regression-test official law interpretation and web cards
+        run: |
+          python -m compileall -q v2 v3
+          python -m unittest discover -s v2 -p 'test_*.py' -v
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+          node site/test_adapter.cjs
+      - name: Reanalyze the real official staffing change without calling remote APIs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from v3 import impact,agency_resolver,policy_graph
+          from v2 import collector
+          raw=json.loads(Path('site/data.json').read_text('utf8'))
+          model=impact.analyze({'events':raw['events'],'generated_at':raw['generated_at'],
+                 'health':raw['source_health']})
+          state=json.loads(Path('data/v2_state.json').read_text('utf8'))
+          snaps=state.get('snapshots',{})
+          for e in model['events']:
+              x=snaps.get(collector.uid(e['source'],e['stable_id']),{})
+              if str(x.get('serial'))==str(e['serial']):
+                  e['institution_actions'].extend(agency_resolver.assign(e,x.get('clauses',{})))
+          g=policy_graph.link_documents(model['events'],snaps)
+          e=next(x for x in model['events'] if x['title']=='개인정보 보호위원회 직제')
+          print('ACTUAL_RECLASSIFICATION',json.dumps({
+              'title':e['title'],'changed_articles':[x['article'] for x in e['changes']],
+              'agency_count':len(e['institution_actions']),
+              'agencies':[x['agency'] for x in e['institution_actions']],
+              'meaning':[x['what_to_change'] for x in e['institution_actions']],
+              'linked':len(e.get('policy_links',[])),
+              'generic_graph_health':g
+          },ensure_ascii=False))
+          assert len(e['institution_actions'])==1
+          assert e['institution_actions'][0]['agency']=='개인정보 보호위원회'
+          assert '공무원 정원 총계' in e['institution_actions'][0]['what_to_change']
+          assert '192명 → 197명' in e['institution_actions'][0]['what_to_change']
+          assert not e.get('dependency_actions')
+          assert not e.get('policy_links')
+          PY

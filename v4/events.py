@@ -245,7 +245,7 @@ def cluster_promulgations(events):
         day=e.get("promulgated_at","")
         src=e.get("source","")
         if src=="law" and day and number:
-            group_key="law|"+day+"|"+number
+            group_key="law|"+str(e.get("kind",""))+"|"+day+"|"+number
         else:
             group_key=e["id"]
         group=clusters.setdefault(group_key,{"id":group_key,

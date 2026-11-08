@@ -8,7 +8,7 @@ from __future__ import annotations
 import datetime as dt,json,os,re
 from pathlib import Path
 from v2 import collector as api
-from v4 import collect_index,events,relationships
+from v4 import collect_index,events,relationships,official_links
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/"data"/"v4_state.json"
@@ -140,6 +140,7 @@ def output_groups(state):
          e.get("verification")=="verified_changed_clauses"],
         docs,snapshots)
     groups=events.cluster_promulgations(all_events)
+    delegated=state.get("delegation_links",{})
     downstream_by_source={}
     for link in graph["impacts"]:
         downstream_by_source.setdefault(link["source_event"],[]).append(link)
@@ -149,6 +150,7 @@ def output_groups(state):
         members=g["members"]
         links=[x for m in members for x in downstream_by_source.get(m["id"],[])]
         g["dependencies"]=links
+        g["official_review_candidates"]=[x for m in members for x in delegated.get(m["id"],{}).get("links",[])]
         g["source_docs"]=[{
             "id":m["id"],"title":m["title"],"kind":m["kind"],
             "verification":m["verification"],"lifecycle":m["lifecycle"],
@@ -205,6 +207,7 @@ def build(state,today):
         "links":{
             "confirmed_provision_or_formula_use":graph["statistics"]["actual_dependencies"],
             "title_or_wrong_article_only":graph["statistics"]["noncausal_citations"],
+            "official_delegation_review_candidates":sum(len(x.get("official_review_candidates",[])) for x in groups+other),
             "unverified_implementation":True
         },
         "featured_events":groups,
@@ -239,6 +242,20 @@ def run():
             state["attempts"][k]=state["attempts"].get(k,0)+1
             state.setdefault("errors",[]).append({"id":k,
                 "error":type(exc).__name__+": "+str(exc)[:140]})
+    # Official delegation endpoint is an independent source of clause-scoped
+    # review candidates; it is not an automatic impact or compliance order.
+    todo=[x for x in state["inspected"].values() if
+          x.get("source")=="law" and x.get("changed_articles") and
+          x["id"] not in state.setdefault("delegation_links",{})]
+    todo.sort(key=lambda x:x.get("promulgated_at",""),reverse=True)
+    for event in todo[:int(os.getenv("PD_V4_DELEGATIONS","4"))]:
+        try:
+            record=state["catalog"][event["id"]]
+            state["delegation_links"][event["id"]]=official_links.delegated_changed_articles(
+                record,event["changed_articles"])
+        except Exception as exc:
+            state.setdefault("errors",[]).append({"source":"lsDelegated",
+                "title":event["title"],"error":type(exc).__name__+": "+str(exc)[:140]})
     data=build(state,today)
     save_json(STATE,state)
     save_json(OUTPUT,data)

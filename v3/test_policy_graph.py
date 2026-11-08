@@ -39,7 +39,7 @@ class CrossPolicyGraphTests(unittest.TestCase):
         self.assertFalse(parent["policy_links"][0]["causation_verified"])
 
     def test_one_annual_basis_can_link_two_other_ministries_with_evidence_levels(self):
-        origin=event("common","공통 소득산정 기준과 지급기준",[])
+        origin=event("common","공통 소득산정 기준과 선정기준",[])
         x=event("housing","지역 주거지원 선정기준",[])
         y=event("education","학교 교육지원 선정기준",[])
         origin["ministry"]="가상보건부"

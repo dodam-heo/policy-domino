@@ -104,6 +104,77 @@ def explicit_roles(change):
             result.append(name)
     return result[:9]
 
+ORG_TITLE = re.compile(r"^(.+?)(?:와 그 소속기관|과 그 소속기관)?\s*직제(?:\s*시행규칙)?$")
+STAFF_FIELD = (
+    ("총계", "공무원 정원 총계"),
+    ("일반직 계", "일반직 공무원 정원"),
+    ("3급 또는 4급 이하", "3급 또는 4급 이하 정원"),
+    ("정원", "공무원 정원"),
+)
+
+def organization_owner(event):
+    """A staffing table belongs to the named organization, not every agency
+    mentioned anywhere in the rule's unrelated duty provisions.
+    """
+    if event.get("source") != "law":
+        return None
+    match=ORG_TITLE.fullmatch(event.get("title","").strip())
+    return match.group(1).strip() if match else None
+
+def staffing_field(change,old,new):
+    if not re.fullmatch(r"\d[\d,]*",old or "") or not re.fullmatch(r"\d[\d,]*",new or ""):
+        return None
+    before,after=change.get("before",""),change.get("after","")
+    if "정원표" not in before and "정원표" not in after:
+        return None
+    for needle,label in STAFF_FIELD:
+        needle_pattern=r"\s*".join(map(re.escape,needle.split()))
+        pattern_before=needle_pattern+r"\s*[\"“”']?"+re.escape(old)+r"(?!\d)"
+        pattern_after=needle_pattern+r"\s*[\"“”']?"+re.escape(new)+r"(?!\d)"
+        if re.search(pattern_before,before) and re.search(pattern_after,after):
+            return label
+    return None
+
+def organization_actions(event,parsed):
+    """Only a verified field in the changed appendices permits a staffing task."""
+    owner=organization_owner(event)
+    if not owner:
+        return None
+    changes={x.get("article"):x for x in event.get("changes",[])}
+    actions=[]
+    seen=set()
+    for item in parsed:
+        source=changes.get(item.get("article"),{})
+        field=staffing_field(source,item.get("old",""),item.get("new",""))
+        if not field:
+            continue
+        before=int(item["old"].replace(",",""))
+        after=int(item["new"].replace(",",""))
+        change=after-before
+        direction=f"{change:+d}명" if change else "변동 없음"
+        line=f"{field} {before:,}명 → {after:,}명 ({direction})"
+        key=(item["article"],field)
+        if key in seen:continue
+        seen.add(key)
+        actions.append({
+            "agency":owner,"evidence_type":"개정된 공무원 정원표의 명시된 기관·항목",
+            "work":"조직·정원 관리",
+            "target_location":f"{item['article']} · {field}",
+            "what_to_change":line,
+            "required_change":f"{owner}의 {item['article']} 정원표에서 {field}가 {after:,}명으로 변경된 사실을 확인하고, 해당 기관의 정원·인사관리 자료 반영 여부를 점검",
+            "article":item["article"],
+            "source_url":item.get("source_url") or event.get("url",""),
+            "basis_excerpt":re.search(
+                r".{0,65}"+re.escape(item["new"])+r".{0,65}",
+                source.get("after","")) .group(0) if re.search(
+                r".{0,65}"+re.escape(item["new"])+r".{0,65}",
+                source.get("after","")) else "",
+            "verified_location":True,
+            "actual_system_verified":False,
+            "status":"공식 정원 변경 확인 · 기관별 반영 검토"
+        })
+    return actions
+
 def document_only(event):
     title=event.get("title","")
     agency=event.get("ministry","")
@@ -143,7 +214,7 @@ def effects(event):
             cls=operations(change,[item])
             if cls:
                 output.append({"article":change.get("article",""),"old":item["before"],
-                               "new":item["after"],"context":item["context"],"kind":item["kind"],
+                               "new":item["after"],"context":item["context"],"old_context":item["old_context"],"kind":item["kind"],
                                "operations":[x[0] for x in cls],
                                "source_url":change.get("source_url") or event.get("url","")})
     return output[:50]
@@ -169,13 +240,30 @@ def identify(event):
                 "category":"조직·내부운영" if document_only(event) else "개별 행정처분" if individual_notice(event) else "비교 미완료"}
     changes=event.get("changes",[])
     parsed=effects(event)
+    owner=organization_owner(event)
+    if owner:
+        org_actions=organization_actions(event,parsed)
+        broad="," in event.get("ministry","")
+        is_substantive=bool(parsed)
+        priority=(120 if broad else 45) if is_substantive else 1
+        priority+=min(30,len(org_actions)*10)
+        return {"effects":parsed, "actions":org_actions, "candidate_agencies":[],
+                "quality":"공식 정원표 변경 항목·대상기관 확인" if org_actions else
+                          "조직 관련 변경·정확한 업무 항목 추가 대조 필요",
+                "priority":priority,
+                "category":"조직개편·업무이관" if broad else "조직·내부운영"}
     items=[]
     candidate=[]
     seen=set()
     for ch in changes:
         local=spans(ch.get("before",""), ch.get("after",""))
         local_ops=operations(ch,local)
-        affected=explicit_roles(ch)
+        # The person named elsewhere in a long article does not necessarily
+        # carry responsibility for this local textual change.
+        local_context=[p for p in parsed if p["article"]==ch.get("article","")]
+        context_text=" ".join(p.get("context","")+" "+p.get("old_context","")
+                              for p in local_context)
+        affected=explicit_roles({"before":context_text,"after":""})
         for agency in affected:
             for task,location in local_ops[:3]:
                 matches=[p for p in parsed if p["article"]==ch.get("article","") and task in p["operations"]]
@@ -256,6 +344,12 @@ def analyze(raw):
     candidate_count=0
     for source in raw.get("events",[]):
         event=dict(source)
+        # Derived impact links from an older published run are not official
+        # source material. Never carry them forward when recalculating actions.
+        for stale in ("effects","institution_actions","agency_candidates",
+                      "dependency_actions","policy_links","upstream_policy_links",
+                      "dependent_rules","analysis_quality","priority","impact_category"):
+            event.pop(stale,None)
         identified=identify(event)
         event.update({"effects":identified["effects"],"institution_actions":identified["actions"],
                       "agency_candidates":identified["candidate_agencies"],

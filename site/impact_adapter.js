@@ -11,25 +11,25 @@
     Array.isArray(e.effects) && e.effects.length > 0) ||
     (/연도별/.test(e.comparison_status || "") && (e.changes || []).length > 0);
 
-  function changedValues(event, action) {
+  function changedValues(event, action, evidenceType) {
+    // A referenced downstream rule is NOT an instruction to replicate the
+    // source institution's numerical value (e.g. its staffing headcount).
+    if (evidenceType === "downstream") return [];
     const effects = Array.isArray(event.effects) ? event.effects : [];
     const article = text(action.article);
     const work = text(action.work);
-    let matching = effects.filter(x =>
-      (!article || x.article === article) &&
-      (!work || (x.operations || []).includes(work)));
-    if (!matching.length && article) matching = effects.filter(x => x.article === article);
-    if (!matching.length && !article && effects.length === 1) matching = effects;
-    const pairs = matching.slice(0, 3).map(x => ({
-      before: first(x.old, "기존 해당 항목 없음"),
-      after: first(x.new, "삭제"),
-      article: text(x.article)
+    // Do not take the first unrelated change just because the event contains
+    // one effect. An agency card must point to that actual changed article.
+    if (!article || !work) return [];
+    const matching=effects.filter(x => x.article === article &&
+      (x.operations || []).includes(work) ||
+      (x.article === article && work === "조직·정원 관리" &&
+        (x.operations || []).includes("조직·인력")));
+    return matching.slice(0, 3).map(x => ({
+      before:first(x.old, "기존 해당 항목 없음"),
+      after:first(x.new, "삭제"),
+      article:text(x.article)
     }));
-    if (!pairs.length && Array.isArray(action.changes))
-      return action.changes.slice(0, 3).map(x => ({
-        before: first(x.before, "미확인"), after: first(x.after, "미확인")
-      }));
-    return pairs;
   }
 
   function convertAction(e, a, evidenceType) {
@@ -37,7 +37,7 @@
     const level = evidenceType === "direct" ? "변경 규정에 명시된 집행기관" :
       evidenceType === "downstream" ? "연관 규정 소관·집행기관 검토 (근거 수준 확인)" :
       "공식 문서 소관기관 · 실제 집행기관 추가 조사";
-    const changes = changedValues(e, a);
+    const changes = changedValues(e, a, evidenceType);
     const linkedEvidence = first(a.evidence_type, a.agency_role,
       a.basis_excerpt, evidenceType === "direct" ? "공식 법령에 명시된 집행주체" :
       "행정규정의 소관기관 또는 참조 문서");
@@ -50,6 +50,9 @@
       what_to_change: first(a.what_to_change, changes.map(x => x.before + " → " + x.after).join(" / ")),
       required_change: first(a.required_change, "관련 업무에 변경 기준이 적용되는지 검토"),
       changes,
+      change_label: evidenceType === "direct" && text(a.target_location).includes(" · ") ?
+        text(a.target_location) : "",
+      change_units: text(a.evidence_type).includes("공무원 정원표") ? "명" : "",
       status,
       article: first(a.article, a.basis_article),
       basis: first(a.source_url, a.basis, e.url),
@@ -88,7 +91,12 @@
           (e.effective_date > new Date().toISOString().slice(0,10) ? 40 : 0) +
           (/연도별/.test(comparison) ? 25 : 0) +
           (e.impact_category === "조직개편·업무이관" ? 25 : 0)),
-      amendment_reason: first(e.amendment_reason, summary),
+      change_summary: first(
+        (e.institution_actions || []).find(a => a.verified_location &&
+          a.evidence_type === "개정된 공무원 정원표의 명시된 기관·항목")?.what_to_change,
+        e.impact_category === "조직개편·업무이관" ?
+          "조직 직제·정원표 변경 확인 · 정확한 담당 기관과 변경 항목을 확인하세요" : summary),
+      amendment_reason: text(e.amendment_reason),
       amendment_url: first(e.url),
       comparison_status: comparison
     };
@@ -98,9 +106,15 @@
     const events = (d.events || []).map(convertedEvent);
     const actions = [];
     for (const e of d.events || []) {
-      const direct = e.institution_actions || [];
-      const downstream = e.dependency_actions || [];
-      const candidates = e.agency_candidates || [];
+      const organizationRule = e.source === "law" && /직제(?:\s*시행규칙)?$/.test(e.title || "");
+      // Do not display stale lexical matches as verified downstream
+      // organizations of a central staffing table, even if cached data remains.
+      const direct = organizationRule ?
+        (e.institution_actions || []).filter(a =>
+          a.evidence_type === "개정된 공무원 정원표의 명시된 기관·항목") :
+        (e.institution_actions || []);
+      const downstream = organizationRule ? [] : (e.dependency_actions || []);
+      const candidates = organizationRule ? [] : (e.agency_candidates || []);
       direct.forEach(a => actions.push(convertAction(e, a, "direct")));
       downstream.forEach(a => actions.push(convertAction(e, a, "downstream")));
       const confirmed = new Set(direct.concat(downstream).map(a => a.agency));

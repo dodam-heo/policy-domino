@@ -1,0 +1,48 @@
+name: Publish corrected evidence-scoped agency cards
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/repair-grounded.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy_pages.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Verify source interpretation, organization owner, and browser cards
+        run: |
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+          node site/test_adapter.cjs
+      - name: Rebuild official change feed with verified organization scope
+        run: |
+          python -m v3.repair_cached
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf-8'))
+          x=next(e for e in d['events'] if e['title']=='개인정보 보호위원회 직제')
+          a=x['institution_actions']
+          assert len(a)==1 and a[0]['agency']=='개인정보 보호위원회'
+          assert not x.get('dependency_actions') and not x.get('policy_links')
+          assert '공무원 정원 총계 192명 → 197명' in a[0]['what_to_change']
+          print('PUBLISH_STAFFING',x['title'],a[0]['what_to_change'])
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy_pages
+        uses: actions/deploy-pages@v4

@@ -123,22 +123,24 @@ def row_of(node, target):
     }
 
 def list_source(target, limit=MAX_PER_SOURCE):
+    """List from official feeds regardless of policy theme.
+    For administrative rules collect current (nw=1) and revision history (nw=2).
+    """
     collected = []
+    # Each mode covers recent records on a descending issue-date axis.
+    modes = [{}] if target == "law" else [{"nw": "1"}, {"nw": "2"}]
     pages = max(1, (limit + 99) // 100)
-    for page in range(1, pages + 1):
-        # Administrative rules document nw=1 current and nw=2 history separately.
-        options = {"sort": "ddes", "display": 100, "page": page}
-        if target == "admrul":
-            options["nw"] = "2"
-        root = request(target, **options)
-        nodes = [node for node in root.iter() if node.tag.split("}")[-1].lower() == target]
-        if not nodes:
-            if page == 1:
-                raise RuntimeError(f"{target} 목록 응답에 레코드가 없습니다. 빈 결과를 '변경 없음'으로 처리하지 않습니다.")
-            break
-        collected.extend(x for node in nodes if (x := row_of(node, target)))
-        if len(nodes) < 100:
-            break
+    for mode in modes:
+        for page in range(1, pages + 1):
+            root = request(target, sort="ddes", display=100, page=page, **mode)
+            nodes = [node for node in root.iter() if node.tag.split("}")[-1].lower() == target]
+            if not nodes:
+                if page == 1:
+                    raise RuntimeError(f"{target} 목록 응답에 레코드가 없습니다. 빈 결과를 '변경 없음'으로 처리하지 않습니다.")
+                break
+            collected.extend(x for node in nodes if (x := row_of(node, target)))
+            if len(nodes) < 100:
+                break
     distinct = {}
     for entry in collected:
         distinct.setdefault((entry["stable_id"], entry["serial"]), entry)

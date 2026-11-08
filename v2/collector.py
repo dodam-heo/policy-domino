@@ -120,7 +120,7 @@ def row_of(node, target):
                 else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
     }
 
-def list_source(target, limit=MAX_PER_SOURCE, date_window=None):
+def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None):
     """Collect across sectors by official issue-date windows, not topic names.
     The newest window is checked on every run. Older windows are backfilled
     incrementally and unprocessed entries remain in the persistent queue.
@@ -129,6 +129,8 @@ def list_source(target, limit=MAX_PER_SOURCE, date_window=None):
     modes = [{}] if target == "law" else [{"nw": "1"}, {"nw": "2"}]
     pages = max(1, (limit + 99) // 100)
     date_filter = {}
+    if title_query:
+        date_filter["query"] = str(title_query)
     if date_window:
         start, end = date_window
         key = "ancYd" if target == "law" else "prmlYd"
@@ -346,6 +348,7 @@ def add_reference_hits(event, search_quota=MAX_REFERENCES):
                     if identifier in {x["id"] for x in hits}:
                         continue
                     hits.append({"id": identifier, "title": item["title"], "source": kind,
+                                 "stable_id": item["stable_id"], "serial": item["serial"],
                                  "ministry": item["ministry"], "url": item["url"],
                                  "matched_term": term,
                                  "status": "공식 본문 검색 후보 · 인용/산식 미확인"})
@@ -408,6 +411,20 @@ def run():
                 health["errors"].append(error)
                 health["sources"][target + ":" + label] = {"status": "실패", "listed": 0,
                                                              "error": str(exc)[:200]}
+        # Future-effective policies can be adopted months before their start.
+        # Discover next-year titles across ALL sectors, without enrolling policy names.
+        try:
+            upcoming=list_source(target, limit=MAX_PER_SOURCE,
+                                 title_query=str(today.year+1))
+            for record in upcoming:
+                gathered[uid(target, record["stable_id"], record["serial"])] = record
+            health["sources"][target+":연도별 선제 탐색"]={"status":"정상",
+                "listed":len(upcoming),"year":today.year+1}
+            if len(upcoming)>=MAX_PER_SOURCE:health["partial"]=True
+        except Exception as exc:
+            health["sources"][target+":연도별 선제 탐색"]={"status":"실패","listed":0,
+                "error":str(exc)[:150]}
+            health["errors"].append({"source":target,"range":"연도별 선제 탐색","error":str(exc)[:170]})
         all_list[target] = list(gathered.values())
         health["sources"][target] = {"status": "정상" if successful_windows == len(windows) else
                                     "부분" if successful_windows else "실패",
@@ -424,7 +441,15 @@ def run():
     quota_each = max(1, MAX_DETAILS // 2)
     for target in ("law", "admrul"):
         matching = [(eid, record) for eid, record in pending.items() if record["source"] == target]
-        for eid, record in matching[:quota_each]:
+        priority = [(eid, record) for eid, record in matching
+                    if (str(today.year+1) in record["title"]
+                        or record.get("effective_date","") > today.isoformat())]
+        # Reserve half the detail capacity for future-starting policy revisions,
+        # while still inspecting contemporary official changes.
+        chosen = priority[:max(1,quota_each//2)]
+        chosen_ids={x[0] for x in chosen}
+        chosen += [(eid,record) for eid,record in matching if eid not in chosen_ids][:quota_each-len(chosen)]
+        for eid, record in chosen:
             examined.append({"id": eid, "record": record})
     new_count = 0
     for item in examined:

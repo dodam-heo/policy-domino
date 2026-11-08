@@ -10,7 +10,7 @@ import json
 import os
 from pathlib import Path
 from v2 import collector
-from v3 import impact, dependencies, agency_resolver
+from v3 import impact, dependencies, agency_resolver, policy_graph
 
 ROOT=Path(__file__).resolve().parents[1]
 V3_STATE=ROOT/"data"/"v3_state.json"
@@ -37,6 +37,8 @@ def run():
         full_source_actors+=len(extra)
     model["impact_health"]["full_source_actor_actions"]=full_source_actors
     model["impact_health"]["direct_actor_actions"]+=full_source_actors
+    graph_stats=policy_graph.link_documents(model["events"],snapshots)
+    model["impact_health"]["cross_policy_links"]=graph_stats
     previous=load_json(V3_STATE,{"rule_cache":{}})
     cache=previous.get("rule_cache",{})
     if os.getenv("PD_SKIP_REMOTE_DEPENDENCIES")=="1":

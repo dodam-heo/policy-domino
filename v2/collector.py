@@ -368,6 +368,69 @@ def make_event(record, changes, comparison, checked_at, citations=None):
         "reference_candidates": [], "citations": citations or [], "upstream_changes": [], "downstream_changes": [],
     }
 
+# Rank consequential, forward-looking public changes ahead of single-office
+# housekeeping notices. These signals are generic document/operation properties,
+# not a list of enrolled benefits, ministries, laws or user-supplied examples.
+YEAR_IN_TITLE = re.compile(r"(?:19|20)\d{2}\s*년(?:도)?")
+RULE_CRITERIA = ("선정기준","최저보장","기준액","급여","지원대상","지원기준",
+                 "요율","임금","수수료","보조금","지급기준","배정기준",
+                 "의무생산","재원","부담률","적용기준","산정기준","인허가")
+INDIVIDUAL_ACT = ("통계작성의 변경승인", "통계작성의 승인", "실시계획 변경승인",
+                  "공고 제", "공무원 승진", "심사위원회규정")
+INTERNAL_TITLE = ("교육운영기준", "공무원 인사", "위임전결", "기관 내부",
+                  "정원배정표", "업무분장")
+
+def priority_score(record, today=None):
+    """Urgency = future rule becoming operative + substantive public standard.
+    Different sectors compete by the same observable signals, not policy names.
+    """
+    today = today or dt.date.today()
+    title = record.get("title","")
+    pub = record.get("published_at","")
+    effect = record.get("effective_date","")
+    future = effect > today.isoformat()
+    year = YEAR_IN_TITLE.search(title)
+    named_future = bool(year and int(year.group(0)[:4]) >= today.year + 1)
+    rule = any(k in title for k in RULE_CRITERIA)
+    ministry_multi = "," in record.get("ministry","")
+    central_structure = (record.get("source")=="law" and
+                         ("직제" in title or "소속기관" in title)
+                         and ministry_multi)
+    oneoff=any(k in title for k in INDIVIDUAL_ACT)
+    internal=any(k in title for k in INTERNAL_TITLE)
+    # Forward-effective annual standards and cross-agency statutes matter even
+    # when their promulgation occurred before the 14-day polling window.
+    weight = (130 if named_future and rule else
+              83 if future and rule else
+              65 if central_structure else
+              38 if named_future else
+              24 if rule else 12 if future else 0)
+    if oneoff:weight-=115
+    if internal:weight-=24
+    if pub >= (today-dt.timedelta(days=30)).isoformat():weight+=15
+    elif pub >= (today-dt.timedelta(days=120)).isoformat():weight+=9
+    if not record.get("ministry"):weight-=3
+    return weight
+
+def select_pending(pending, target, capacity, today=None):
+    """Balance priority and recent changes; never starve high-impact records
+    behind thousands of FIFO historical rows or one-off notices.
+    """
+    today=today or dt.date.today()
+    queue=[(eid, rec) for eid,rec in pending.items() if rec["source"]==target]
+    ranked=sorted(queue,key=lambda x:(
+        priority_score(x[1],today),
+        x[1].get("published_at",""),
+        x[1].get("effective_date",""),
+        x[0]),reverse=True)
+    half=max(1,(capacity*3)//4)
+    selected=ranked[:half]
+    included={eid for eid,_ in selected}
+    recent=sorted([x for x in queue if x[0] not in included],
+                  key=lambda x:(x[1].get("published_at",""),x[0]),reverse=True)
+    selected+=recent[:max(0,capacity-len(selected))]
+    return selected[:capacity]
+
 def run():
     stamp_now = stamp()
     state = read_state()
@@ -440,16 +503,7 @@ def run():
     examined = []
     quota_each = max(1, MAX_DETAILS // 2)
     for target in ("law", "admrul"):
-        matching = [(eid, record) for eid, record in pending.items() if record["source"] == target]
-        priority = [(eid, record) for eid, record in matching
-                    if (str(today.year+1) in record["title"]
-                        or record.get("effective_date","") > today.isoformat())]
-        # Reserve half the detail capacity for future-starting policy revisions,
-        # while still inspecting contemporary official changes.
-        chosen = priority[:max(1,quota_each//2)]
-        chosen_ids={x[0] for x in chosen}
-        chosen += [(eid,record) for eid,record in matching if eid not in chosen_ids][:quota_each-len(chosen)]
-        for eid, record in chosen:
+        for eid, record in select_pending(pending, target, quota_each, today):
             examined.append({"id": eid, "record": record})
     new_count = 0
     for item in examined:

@@ -1,0 +1,19 @@
+name: Audit semantic comparison and duplicate agency tasks
+on:
+  push:
+    branches: [fix/semantic-provision-diff-20261108]
+    paths:
+      - 'v3/audit_semantic.py'
+      - '.github/workflows/audit-semantic.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Audit real published current official source without modification
+        run: python -m v3.audit_semantic

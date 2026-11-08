@@ -1,4 +1,4 @@
-name: Publish corrected evidence-scoped agency cards
+name: Publish universally evidence-gated agency analysis
 on:
   push:
     branches: [main]
@@ -22,23 +22,32 @@ jobs:
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - name: Verify source interpretation, organization owner, and browser cards
+      - name: Universal policy, source-evidence and browser regressions
         run: |
+          python -m compileall -q v2 v3
+          python -m unittest discover -s v2 -p 'test_*.py' -v
           python -m unittest discover -s v3 -p 'test_*.py' -v
           node site/test_adapter.cjs
-      - name: Rebuild official change feed with verified organization scope
+      - name: Re-evaluate every stored official change with source evidence
         run: |
           python -m v3.repair_cached
           python - <<'PY'
           import json
           from pathlib import Path
-          d=json.loads(Path('site/data.json').read_text('utf-8'))
-          x=next(e for e in d['events'] if e['title']=='개인정보 보호위원회 직제')
-          a=x['institution_actions']
-          assert len(a)==1 and a[0]['agency']=='개인정보 보호위원회'
-          assert not x.get('dependency_actions') and not x.get('policy_links')
-          assert '공무원 정원 총계 192명 → 197명' in a[0]['what_to_change']
-          print('PUBLISH_STAFFING',x['title'],a[0]['what_to_change'])
+          d=json.loads(Path('site/data.json').read_text('utf8'))
+          h=d['impact_health']
+          assert h.get('evidence_gated') is True
+          assert h['direct_actor_actions']==sum(
+              len(x.get('institution_actions',[])) for x in d['events'])
+          assert all(not x.get('institution_actions') for x in d['events']
+                     if '폐지' in x.get('revision',''))
+          assert all(not x.get('dependency_actions') for x in d['events'])
+          print('PUBLISH_EVIDENCE',json.dumps({
+              'documents':len(d['events']),
+              'repeals':h.get('repeal_events'),
+              'sourced_actor_tasks':h['direct_actor_actions'],
+              'verified_references':h['cross_policy_links']['links']
+          },ensure_ascii=False))
           PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

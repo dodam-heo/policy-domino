@@ -13,6 +13,14 @@
     (e.impact_category === "폐지·효력종료" && /폐지/.test(e.revision || "") && !/제정/.test(e.revision || ""));
 
   function changedValues(event, action, evidenceType) {
+    // Prefer the actual whole source statements vetted and assigned to this
+    // specific agency duty. Never re-pair arbitrary word fragments from other
+    // changes to the same article.
+    if (Array.isArray(action.change_pairs) && action.change_pairs.length)
+      return action.change_pairs.slice(0, 3).map(x => ({
+        before: text(x.before), after: text(x.after),
+        article: text(x.article), confidence: text(x.confidence)
+      }));
     // A referenced downstream rule is NOT an instruction to replicate the
     // source institution's numerical value (e.g. its staffing headcount).
     if (evidenceType === "downstream") return [];
@@ -51,6 +59,7 @@
       what_to_change: first(a.what_to_change, changes.map(x => x.before + " → " + x.after).join(" / ")),
       required_change: first(a.required_change, "관련 업무에 변경 기준이 적용되는지 검토"),
       changes,
+      sentence_verified: Array.isArray(a.change_pairs) && a.change_pairs.length > 0,
       change_label: evidenceType === "direct" && text(a.target_location).includes(" · ") ?
         text(a.target_location) : "",
       change_units: text(a.evidence_type).includes("공무원 정원표") ? "명" : "",

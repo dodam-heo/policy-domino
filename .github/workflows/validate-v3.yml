@@ -48,6 +48,28 @@ jobs:
           print("NEXT-YEAR-DISCOVERY",len(rows),[r["title"] for r in rows[:8]])
           assert rows,"다음 연도 행정규칙 이름검색 결과 없음"
           PY
+      - name: Live end-to-end official source and operational impact smoke test
+        env:
+          PD_DETAIL_LIMIT: "16"
+        run: |
+          python -m v3.runner
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("site/data.json").read_text("utf-8"))
+          h=d["impact_health"]
+          source=d["source_health"]["sources"]
+          print("LIVE-IMPACT",json.dumps({
+            "sources":{k:v.get("status") for k,v in source.items() if k in ("law","admrul")},
+            "impact":h,
+            "sample_policy":[{"title":e["title"],"agencies":[x["agency"] for x in e.get("institution_actions",[])[:4]],
+                              "candidate_agencies":[x["agency"] for x in e.get("agency_candidates",[])[:3]]}
+                             for e in d["events"] if e.get("impact_category")=="제도·업무 변경"][:12]
+          },ensure_ascii=False)[:6000])
+          assert d["schema"]=="policy-domino-impact-v3"
+          assert h["verified_documents"]>0
+          assert any(v.get("status") in ("정상","부분") for k,v in source.items() if k in ("law","admrul"))
+          PY
       - name: Verify impact-first interface JavaScript
         run: |
           node - <<'JS'

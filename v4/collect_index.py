@@ -42,15 +42,15 @@ def as_record(node,source):
         "ministry":api.field(node,"지자체기관명"),
         "url":"https://www.law.go.kr/자치법규/"+__import__("urllib.parse",fromlist=["quote"]).quote(title)}
 
-def page_query(source,first,last,page):
+def page_query(source,first,last,page,edition="1"):
     key={"law":"ancYd","admrul":"prmlYd","ordin":"ancYd"}[source]
     args={"display":100,"page":page,"sort":"ddes",
           key:first.replace("-","")+"~"+last.replace("-","")}
     # Explicitly request current official administrative rules / ordinances.
-    if source in ("admrul","ordin"):args["nw"]="1"
+    if source in ("admrul","ordin"):args["nw"]=edition
     return args
 
-def scan_window(source,first,last,fetch=None,max_pages=50):
+def scan_window(source,first,last,fetch=None,max_pages=50,edition="1"):
     """Return rows plus an audit record; incomplete never counts as success.
 
     A date window is exhausted only when page count matches official totalCnt
@@ -62,7 +62,7 @@ def scan_window(source,first,last,fetch=None,max_pages=50):
     all_records={};reported=None;pages=0;failure=""
     for page in range(1,max_pages+1):
         try:
-            root=fetch(source,**page_query(source,first,last,page))
+            root=fetch(source,**page_query(source,first,last,page,edition))
             raw_count=api.field(root,"totalCnt")
             if not raw_count or not raw_count.isdigit():
                 raise ValueError("Official totalCnt absent: cannot confirm coverage")
@@ -94,20 +94,20 @@ def scan_window(source,first,last,fetch=None,max_pages=50):
         len(all_records),pages,False,
         failure or "Page limit reached before exhausting official totalCnt")
 
-def bisect_window(source,first,last,fetch=None,max_pages=50,max_splits=10):
+def bisect_window(source,first,last,fetch=None,max_pages=50,max_splits=10,edition="1"):
     """Recursively split an incomplete date range, retaining audit failures.
 
     If a single day remains oversubscribed, never silently drop its results.
     """
-    rows,stat=scan_window(source,first,last,fetch,max_pages)
+    rows,stat=scan_window(source,first,last,fetch,max_pages,edition)
     if stat.complete or first==last or max_splits<=0 or stat.reported==-1:
         return rows,[stat]
     a=dt.date.fromisoformat(first);b=dt.date.fromisoformat(last)
     mid=a+(b-a)//2
     if mid>=b:return rows,[stat]
-    left,lstats=bisect_window(source,str(a),str(mid),fetch,max_pages,max_splits-1)
+    left,lstats=bisect_window(source,str(a),str(mid),fetch,max_pages,max_splits-1,edition)
     right,rstats=bisect_window(source,str(mid+dt.timedelta(days=1)),
-                               str(b),fetch,max_pages,max_splits-1)
+                               str(b),fetch,max_pages,max_splits-1,edition)
     out={(r["source"],r["stable_id"],r["serial"]):r for r in left+right}
     return list(out.values()),lstats+rstats
 
@@ -117,12 +117,13 @@ def ingest_index(state,source,date_windows,fetch=None,max_pages=30):
     audits=state.setdefault("coverage",[])
     found=0
     for first,last in date_windows:
-        rows,windows=bisect_window(source,first,last,fetch,max_pages)
+      for edition in (("1","2") if source in ("admrul","ordin") else ("1",)):
+        rows,windows=bisect_window(source,first,last,fetch,max_pages,edition=edition)
         for r in rows:
             key=api.uid(r["source"],r["stable_id"],r["serial"])
             if key not in ledger:found+=1
             ledger[key]=r
-        audits.extend(x.as_dict() for x in windows)
+        audits.extend({**x.as_dict(),"edition":"history" if edition=="2" else "current"} for x in windows)
     return {"new_versions":found,"total_versions":len(ledger),
             "complete_windows":sum(x["complete"] for x in audits),
             "incomplete_windows":[x for x in audits if not x["complete"]]}

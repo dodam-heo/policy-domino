@@ -12,7 +12,7 @@ from v4 import collect_index,relationships
 
 SOURCES=("admrul","law","ordin")
 MAX_TERMS=3
-MAX_CANDIDATES=1000
+MAX_CANDIDATES=120
 
 def title_queries(parent):
     terms=[parent.get("title","")]
@@ -37,7 +37,7 @@ def search_lexical_candidates(parent,fetch=None,max_pages=1):
                     if source in ("admrul","ordin"):kw["nw"]="1"
                     root=fetch(source,**kw)
                     nodes=collect_index.tags(root,source)
-                    for node in nodes:
+                    for node in nodes[:35]:
                         rec=collect_index.as_record(node,source)
                         if not rec:continue
                         if rec["source"]==parent["source"] and rec["stable_id"]==parent["stable_id"]:
@@ -125,6 +125,7 @@ def seed_delegated(state,events):
         found=[]
         for entry in doc.get("links",[])[:80]:
             if not entry.get("serial") or entry["source"]=="public_rule":continue
+            if entry["source"]==event["source"] and entry["serial"]==event["serial"]:continue
             # The delegated endpoint supplies the exact document serial but
             # may omit its stable ID. The detailed official source resolves
             # the correct regulation version by that serial.

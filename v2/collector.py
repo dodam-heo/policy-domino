@@ -122,7 +122,7 @@ def row_of(node, target):
                 else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
     }
 
-def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None):
+def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None, fulltext=False):
     """Collect across sectors by official issue-date windows, not topic names.
     The newest window is checked on every run. Older windows are backfilled
     incrementally and unprocessed entries remain in the persistent queue.
@@ -133,6 +133,8 @@ def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None
     date_filter = {}
     if title_query:
         date_filter["query"] = str(title_query)
+        if fulltext:
+            date_filter["search"] = 2
     if date_window:
         start, end = date_window
         key = "ancYd" if target == "law" else "prmlYd"
@@ -490,6 +492,26 @@ def run():
             health["sources"][target+":연도별 선제 탐색"]={"status":"실패","listed":0,
                 "error":str(exc)[:150]}
             health["errors"].append({"source":target,"range":"연도별 선제 탐색","error":str(exc)[:170]})
+        # Search the operative text as well as the name. Future-year standards
+        # can have yearless titles, with the year only in the preamble/appendix.
+        # Only issued/current official acts are queued; no sector is registered.
+        try:
+            projected=list_source(target,limit=MAX_PER_SOURCE,
+                 title_query=str(today.year+1),fulltext=True,
+                 date_window=(today-dt.timedelta(days=210),today))
+            forward=[r for r in projected if (r.get("effective_date","")>today.isoformat()
+                   or str(today.year+1) in r["title"])]
+            for record in forward:
+                gathered[uid(target,record["stable_id"],record["serial"])]=record
+            health["sources"][target+":시행연도 본문검색"]={
+                "status":"정상","listed":len(projected),"future_related":len(forward),
+                "year":today.year+1}
+            if len(projected)>=MAX_PER_SOURCE:health["partial"]=True
+        except Exception as exc:
+            health["sources"][target+":시행연도 본문검색"]={
+                "status":"실패","listed":0,"error":str(exc)[:150]}
+            health["errors"].append({"source":target,"range":"시행연도 본문검색",
+                                      "error":str(exc)[:170]})
         all_list[target] = list(gathered.values())
         health["sources"][target] = {"status": "정상" if successful_windows == len(windows) else
                                     "부분" if successful_windows else "실패",

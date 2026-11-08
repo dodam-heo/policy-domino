@@ -696,6 +696,78 @@
         }
       ],
       "target_department": "도시계획팀"
-    }
+    },
+    "d244533dd6c44e7da139|ordin|2061039": null,
+    "d244533dd6c44e7da139|ordin|2128259": {
+      "target_title": "상주시 기업 투자유치 촉진 조례 시행규칙",
+      "target_ministry": "경상북도 상주시",
+      "target_url": "https://www.law.go.kr/자치법규/%EC%83%81%EC%A3%BC%EC%8B%9C%20%EA%B8%B0%EC%97%85%20%ED%88%AC%EC%9E%90%EC%9C%A0%EC%B9%98%20%EC%B4%89%EC%A7%84%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "전자정부법",
+      "excerpt": "수 있는 서류(이전이나 사업장 증설기업의 경우에만 해당한다) ③ 제1항 및 제2항에 따라 신청을 받은 시장은 제1항제2호 및 제2항제2호 의 경우에는 「전자정부법」 제36조제1항에 따른 행정정보의 공동이용을 통하여 그 내용을 확인하여야 한다. 다만, 신청인이 확인에 동의하지 아니하는 경우에는 그 서류를 첨부하도록 하여야 한다. ④ 고용보조금을 지원하는 경우에는 지원당시의 근",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0002",
+          "before": "3",
+          "after": "6"
+        },
+        {
+          "article": "별표 0004",
+          "before": "3",
+          "after": "6"
+        },
+        {
+          "article": "별표 0005",
+          "before": "근로개선지도과",
+          "after": "노동기준조사과"
+        }
+      ],
+      "target_department": "투자경제과"
+    },
+    "d244533dd6c44e7da139|ordin|2056923": null,
+    "d244533dd6c44e7da139|ordin|1573145": null,
+    "d244533dd6c44e7da139|ordin|1591667": null,
+    "d244533dd6c44e7da139|ordin|2111939": null,
+    "d244533dd6c44e7da139|ordin|2145863": {
+      "target_title": "인천광역시 영종구청 직장운동경기부 설치 및 운영규칙",
+      "target_ministry": "인천광역시 영종구",
+      "target_url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EC%A2%85%EA%B5%AC%EC%B2%AD%20%EC%A7%81%EC%9E%A5%EC%9A%B4%EB%8F%99%EA%B2%BD%EA%B8%B0%EB%B6%80%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "근로자퇴직급여 보장법",
+      "excerpt": "밖에 선수단의 원활한 운영을 위하여 필요한 비용을 예산의 범위에서 지급할 수 있다. 제15조(퇴직금) ① 직장운동경기부에 재직하다가 퇴직하는 사람에게 「근로자퇴직급여 보장법」 제9조에 따른 퇴직금을 지급하되, 퇴직금액은 1년당 1개월분의 보수액으로 한다. ② 퇴직금은 별지 제6호서식에 따른 퇴직금 청구서에 따라 청구해야 하며 청구자는 본인 또는 직계가족이어야 한다. ③ 제2항에 따른 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0002",
+          "before": "3",
+          "after": "6"
+        },
+        {
+          "article": "별표 0004",
+          "before": "3",
+          "after": "6"
+        },
+        {
+          "article": "별표 0005",
+          "before": "근로개선지도과",
+          "after": "노동기준조사과"
+        }
+      ],
+      "target_department": "문화관광체육과"
+    },
+    "d244533dd6c44e7da139|admrul|2100000282754": null,
+    "d244533dd6c44e7da139|admrul|2200000108651": null,
+    "d244533dd6c44e7da139|admrul|2100000281720": null,
+    "d244533dd6c44e7da139|admrul|2100000285400": null,
+    "d244533dd6c44e7da139|admrul|2100000287258": null,
+    "d244533dd6c44e7da139|admrul|2100000240326": null,
+    "d244533dd6c44e7da139|admrul|2100000215687": null
   }
 }

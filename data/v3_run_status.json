@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T09:28:08.293219+00:00",
+  "completed_at": "2026-11-08T10:10:49.827679+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 71,
-        "range": "2026-07-19~2026-08-02"
+        "listed": 42,
+        "range": "2026-07-05~2026-07-19"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 169
+        "listed": 140
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 364,
-        "range": "2026-07-19~2026-08-02"
+        "listed": 358,
+        "range": "2026-07-05~2026-07-19"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -46,23 +46,18 @@
       },
       "admrul:시행연도 본문검색": {
         "status": "부분",
-        "listed": 546,
-        "future_related": 35,
+        "listed": 655,
+        "future_related": 37,
         "saturated_months": 1,
         "year": 2027
       },
       "admrul": {
         "status": "정상",
-        "listed": 744
+        "listed": 738
       }
     },
     "partial": true,
     "errors": [
-      {
-        "source": "admrul",
-        "range": "2026-07-01~2026-07-31 시행연도 본문",
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
-      },
       {
         "source": "admrul",
         "title": "2027년 적용 최저임금 고시",
@@ -85,6 +80,11 @@
       },
       {
         "source": "admrul",
+        "title": "2027년도 병역지정업체 선정 및 인원배정 기준",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      },
+      {
+        "source": "admrul",
         "title": "비행절차설계요령",
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       },
@@ -94,34 +94,34 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 17,
-    "not_compared": 1,
-    "candidate_relations": 59,
-    "confirmed_relations": 30,
-    "collect_at": "2026-11-08T09:05:47+00:00",
+    "verified_compared": 15,
+    "not_compared": 2,
+    "candidate_relations": 45,
+    "confirmed_relations": 32,
+    "collect_at": "2026-11-08T10:01:47+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 2445,
-    "newly_examined": 18,
-    "events": 144,
-    "actions": 439,
+    "pending_details": 2826,
+    "newly_examined": 17,
+    "events": 161,
+    "actions": 521,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 144,
-    "verified_documents": 137,
-    "substantive_policy_events": 55,
-    "direct_actor_actions": 201,
-    "agency_owners_to_verify": 89,
+    "events": 161,
+    "verified_documents": 152,
+    "substantive_policy_events": 62,
+    "direct_actor_actions": 225,
+    "agency_owners_to_verify": 97,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
-    "full_source_actor_actions": 178,
+    "full_source_actor_actions": 189,
     "cross_policy_links": {
-      "links": 68,
-      "explicit_standard_uses": 67,
+      "links": 81,
+      "explicit_standard_uses": 80,
       "shared_statutory_basis_candidates": 1
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 23,
+    "dependent_rules_found": 2,
     "dependency_errors": [],
-    "dependency_actors_to_review": 211
+    "dependency_actors_to_review": 224
   }
 }

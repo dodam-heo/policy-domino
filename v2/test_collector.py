@@ -82,6 +82,17 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(len(clauses),2)
         self.assertIn("100원",clauses["제2조"])
 
+    def test_annual_standard_search_is_generic_not_policy_specific(self):
+        new=self.entry(name="2027년도 가상 서비스 기준",serial="500")
+        older=ET.fromstring("""<root><admrul><행정규칙명>2026년도 가상 서비스 기준</행정규칙명>
+        <행정규칙ID>888</행정규칙ID><행정규칙일련번호>400</행정규칙일련번호>
+        <발령일자>20251001</발령일자></admrul></root>""")
+        empty=ET.fromstring("<root><totalCnt>0</totalCnt></root>")
+        with patch.object(m,"request",side_effect=[empty,older]),patch.object(m,"read_clauses",return_value={"제1조":"100원"}):
+            previous=m.historical_predecessor(new)
+        self.assertTrue(previous["annual_comparison"])
+        self.assertEqual(previous["record"]["title"],"2026년도 가상 서비스 기준")
+
     def test_scope_two_official_categories(self):
         src = Path(m.__file__).read_text("utf-8")
         self.assertIn('("law", "admrul")',src)

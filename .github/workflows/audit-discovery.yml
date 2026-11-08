@@ -1,0 +1,17 @@
+name: Audit pipeline coverage and policy visibility
+on:
+  push:
+    branches: [fix/policy-discovery-priority-20261108]
+    paths: ['v3/audit_pipeline.py','.github/workflows/audit-discovery.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Audit collected annual changes and dashboard omissions
+        run: python v3/audit_pipeline.py

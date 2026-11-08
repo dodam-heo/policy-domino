@@ -159,6 +159,7 @@ def apply_all(model):
     h=model.get("impact_health",{})
     h["direct_actor_actions"]=sum(len(e.get("institution_actions",[])) for e in model.get("events",[]))
     h["agency_owners_to_verify"]=0
+    h["substantive_policy_events"]=sum(bool(e.get("effects")) and e.get("impact_category") in ("제도·업무 변경","조직개편·업무이관") for e in model.get("events",[]))
     h["evidence_gated"]=True
     h["repeal_events"]=sum(is_repeal(e) for e in model.get("events",[]))
     return model

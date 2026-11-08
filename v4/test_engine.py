@@ -128,6 +128,23 @@ class CausalRelationship(unittest.TestCase):
         self.assertEqual(x["source_article"],"제35조")
         self.assertFalse(x["implementation_verified"])
 
+    def test_unamended_subsection_is_not_an_affected_policy(self):
+        old=("제35조(업무) ① 운영기관은 서류를 30일 이내 처리한다. "
+             "② 시행기관은 수수료를 현행대로 지급한다.")
+        new=("제35조(업무) ① 운영기관은 서류를 20일 이내 처리한다. "
+             "② 시행기관은 수수료를 현행대로 지급한다.")
+        parent=ev(rec(1,title="가상운영법"),article="제35조",before=old,after=new)
+        child=ev(rec(2,title="가상운영 업무규정"))
+        wrong=relations.evaluate(parent,child,{
+           "제8조":"「가상운영법」 제35조제2항에 따라 수수료를 지급한다."})
+        self.assertEqual(wrong["type"],"citation_only")
+        self.assertFalse(wrong["affected_verified"])
+        right=relations.evaluate(parent,child,{
+           "제8조":"「가상운영법」 제35조제1항에 따라 신청서를 접수한다."})
+        self.assertEqual(right["type"],"cited_changed_provision")
+        self.assertEqual(right["source_paragraph"],"제1항")
+        self.assertTrue(right["affected_verified"])
+
     def test_formula_derived_from_changed_named_standard(self):
         parent=ev(rec(1,title="2027년도 기준 중위소득 고시",source="admrul"),
                   article="별표 1",before="기준 중위소득 6,000,000원",after="기준 중위소득 6,900,000원")

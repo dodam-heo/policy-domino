@@ -6,7 +6,7 @@ on:
       - '.github/workflows/verify-v4-live.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   live:
     runs-on: ubuntu-latest
@@ -23,7 +23,8 @@ jobs:
       - name: Query genuine official change-history and other sources
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
-          PD_V4_DETAILS: '10'
+          PD_V4_DETAILS: '36'
+          PD_V4_DELEGATIONS: '7'
         run: python -m v4.pipeline
       - name: Check published model against source and factual invariants
         run: |
@@ -62,11 +63,32 @@ jobs:
                   for name in sorted(set(x['verification'] for x in s['inspected'].values()))
               },
               'featured':len(d['featured_events']),
-              'actual_dependencies':d['links']['confirmed_provision_or_formula_use']
+              'actual_dependencies':d['links']['confirmed_provision_or_formula_use'],
+              'official_delegations':d['links'].get('official_delegation_review_candidates',0),
+              'featured_titles':[{"name":x['summary'],
+                  "docs":x['source_count'],"links":len(x['dependencies']),
+                  "delegations":len(x.get('official_review_candidates',[]))}
+                  for x in d['featured_events'][:15]]
           },ensure_ascii=False)[:9500])
           assert official_hist>0 or any(x['source']=='law_history' and x['reported']==0 and x['complete']
               for x in scans),'Official law-change history endpoint not verified'
           PY
+      - name: Save source audit and V4 verification into staging branch only
+        if: success()
+        run: |
+          git config user.name policy-domino-v4-verifier
+          git config user.email policy-domino-v4-verifier@users.noreply.github.com
+          git add data/v4_state.json site/v4/data.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'v4 data: persist independently verified official sources [skip ci]'
+            for attempt in 1 2 3; do
+              git fetch origin fix/source-and-causal-integrity-20261108
+              git rebase FETCH_HEAD
+              if git push origin HEAD:fix/source-and-causal-integrity-20261108; then break; fi
+              if [ "$attempt" = "3" ]; then exit 1; fi
+              sleep 2
+            done
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:

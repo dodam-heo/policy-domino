@@ -350,7 +350,17 @@ def analyze(raw):
                       "dependency_actions","policy_links","upstream_policy_links",
                       "dependent_rules","analysis_quality","priority","impact_category"):
             event.pop(stale,None)
-        identified=identify(event)
+        # Analyze generic rules with complete legal sentences, not the
+        # legacy quadratic token diff. The isolated staffing-table parser
+        # still needs exact numeric spans and is run only on those titles.
+        if organization_owner(event):
+            identified=identify(event)
+        else:
+            identified={"effects":[],"actions":[],"candidate_agencies":[],
+                "quality":"공식 문장 단위 대조 예정","priority":10,
+                "category":("조직·내부운영" if document_only(event) else
+                            "개별 행정처분" if individual_notice(event) else
+                            "제도·업무 변경")}
         event.update({"effects":identified["effects"],"institution_actions":identified["actions"],
                       "agency_candidates":identified["candidate_agencies"],
                       "analysis_quality":identified["quality"],"priority":identified["priority"],

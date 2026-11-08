@@ -221,10 +221,23 @@ def read_clauses(record):
             label = f"제{num}조" + (f"의{branch}" if branch not in ("", "0") else "")
             if not num:
                 continue
-            pieces = [field(node, name) for name in ("조문내용", "항내용", "호내용", "목내용")]
-            pieces += [normalize("".join(x.itertext())) for x in node.iter()
-                       if x.tag.split("}")[-1] in ("항내용", "호내용", "목내용")]
-            txt = normalize(" ".join(x for x in pieces if x))
+            # Collect each XML provision component exactly once. The old
+            # implementation added the first 항/호/목 with field() and then
+            # added every 항/호/목 again through node.iter(), producing fake
+            # reordered or repeated clauses in text diffs.
+            parts = []
+            tags = {"조문내용","항내용","호내용","목내용"}
+            for x in node.iter():
+                if x.tag.split("}")[-1] not in tags:
+                    continue
+                # When a component wraps child provision nodes, its itertext
+                # includes their text. Use its own text in that case.
+                children = [y for y in x.iter() if y is not x and
+                            y.tag.split("}")[-1] in tags]
+                value = normalize(x.text if children else "".join(x.itertext()))
+                if value and (not parts or parts[-1] != value):
+                    parts.append(value)
+            txt = normalize(" ".join(parts))
             if txt:
                 items[label] = txt[:12000]
         if tag in ("별표", "별표단위"):
@@ -240,7 +253,12 @@ def read_clauses(record):
     if not full:
         raise RuntimeError("공식 본문에서 조문을 추출하지 못했습니다.")
     # Split only structural headings. A sentence citing "제6조" is not a new article.
-    matches = list(re.finditer(r"(?:(?<=\n)|(?<=\.)\s*|\A)제\s*\d+\s*조(?:의\s*\d+)?\s*\([^)]*\)", full))
+    # Some flat administrative-rule XML concatenates all article titles
+    # after numbered list items (not a period). Detect real named headings
+    # rather than attributing 제3조 obligations to 제2조.
+    matches = list(re.finditer(
+        r"(?<![가-힣0-9])제\s*\d+\s*조(?:의\s*\d+)?\s*\([^)\n]{1,75}\)",
+        full))
     if matches:
         for i, match in enumerate(matches[:150]):
             end = matches[i + 1].start() if i + 1 < len(matches) else len(full)

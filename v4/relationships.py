@@ -14,7 +14,16 @@ OPERATES=re.compile(r"따라|따른|준용|적용|기준으로|규정에\s*의�
 FORMULA=re.compile(r"(?:(?:의|에\s*따라|을|를)\s*\d[\d,.]*\s*(?:%|퍼센트|배|원|만원|명)|(?:에\s*따라|을\s*적용하여|를\s*기준으로)\s*(?:산정|선정|지급|계산))")
 YEAR=re.compile(r"(?:19|20)\d{2}\s*년(?:도)?")
 STANDARD=re.compile(r"([가-힣][가-힣\s]{2,30}?(?:소득|산정기준|선정기준|기준액|요율|단가|지원기준|지급기준|최저보장수준))")
-GENERIC={"해운법","법률","규칙","고시","기준","지침"}
+GENERIC={"법률","규칙","고시","기준","지침"}
+NUMERIC_STANDARD=re.compile(r"(?<!\d)(\d[\d,]*(?:\.\d+)?)\s*(원|만원|%|퍼센트|배|명|세)(?![가-힣])")
+
+def substantive_standard_change(change):
+    # A reference to a standard is not an affected formula if the published
+    # edit only changed unrelated prose or the document's annual title.
+    before=set(NUMERIC_STANDARD.findall(change.get("before","")))
+    after=set(NUMERIC_STANDARD.findall(change.get("after","")))
+    return bool(before and after and before!=after) or (
+        change.get("type")=="신설" and bool(after))
 
 def norm(s):
     return re.sub(r"\s+","",str(s or ""))
@@ -54,6 +63,8 @@ def changed_standards(parent):
     # A standard is a named variable explicitly seen in the actual amended
     # text. A law title by itself (e.g. '해운법') is never a numeric standard.
     for change in parent["changes"]:
+        if not substantive_standard_change(change):
+            continue
         parts=[change.get("after",""),change.get("before",""),parent.get("title","")]
         for content in parts:
             clean=YEAR.sub("",content)

@@ -19,23 +19,27 @@ def plain(value):
     return NONWORD.sub(" ", str(value or "")).strip()
 
 def anchors(parent):
-    """Find phrases from the data; never register an eligible policy or threshold."""
-    title = plain(parent.get("title",""))
-    words = []
-    if len(title)>=7:words.append(title)
-    normalized = plain(YEAR.sub("",title)).strip(" -·")
-    if len(normalized)>=8:words.append(normalized)
-    # Other documents frequently use the named standard rather than the year's notice title.
-    for value in [title,normalized]+[x.get("context","") for x in parent.get("effects",[])[:5]]:
-        for match in re.finditer(r"[가-힣][가-힣 ]{3,27}(?:기준|중위소득|금액|요율|부담률|대상|지원액|최저임금)",value):
-            candidate=plain(match.group()).strip()
-            candidate=YEAR.sub("",candidate).strip()
-            if 7<=len(candidate)<=31:words.append(candidate)
-    # Strip the leading administrative label, not arbitrary keywords.
-    uniq=[]
-    for item in words:
-        if item not in uniq:uniq.append(item)
-    return uniq[:8]
+    """Find searchable standard names without registering named policies.
+    Short reusable standards precede the entire promulgation-document title.
+    """
+    title=plain(parent.get("title",""))
+    no_year=plain(YEAR.sub("",title)).strip(" -·")
+    standards=[]
+    tail=re.compile(r"(?:기준|소득|금액|요율|부담금|단가|임금|지원액|상한액|선정기준|보장수준)$")
+    for value in [no_year]+[plain(x.get("context","")) for x in parent.get("effects",[])[:6]]:
+        words=re.findall(r"[가-힣]{2,}",YEAR.sub("",value))
+        for size in (2,3):
+            for i in range(len(words)-size+1):
+                piece=" ".join(words[i:i+size])
+                if tail.search(words[i+size-1]) and 7<=len(piece)<=32:
+                    standards.append(piece)
+    # Preserve full title as a precise fallback but avoid only searching the
+    # annual document name (e.g. dependents cite "기준 중위소득", not the notice).
+    result=[]
+    for value in standards+[no_year,title]:
+        if 7<=len(value)<=100 and value not in result:
+            result.append(value)
+    return result[:10]
 
 def parse_local_item(node):
     title=field(node,"자치법규명")

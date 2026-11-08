@@ -23,8 +23,18 @@ class WindowResult:
     def as_dict(self):return asdict(self)
 
 def tags(root,target):
-    candidate={"law":"law","admrul":"admrul","ordin":"ordin"}[target]
-    return [x for x in root.iter() if x.tag.split("}")[-1].lower()==candidate]
+    # The ordinance XML uses Korean row tags (자치법규), not "ordin".
+    # Detect record structures using direct official serial/title fields;
+    # this remains stable if the wrapper node name changes.
+    needed={"law":("법령일련번호","법령명한글"),
+            "admrul":("행정규칙일련번호","행정규칙명"),
+            "ordin":("자치법규일련번호","자치법규명")}[target]
+    result=[]
+    for node in root.iter():
+        if node is root:continue
+        fields={x.tag.split("}")[-1] for x in list(node)}
+        if all(t in fields for t in needed):result.append(node)
+    return result
 
 def as_record(node,source):
     if source in ("law","admrul"):

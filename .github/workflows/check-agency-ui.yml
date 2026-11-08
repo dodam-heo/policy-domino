@@ -1,0 +1,24 @@
+name: Check agency-first interface before production
+on:
+  push:
+    branches:
+      - fix/agency-first-experience-20261108
+    paths:
+      - 'site/index.html'
+      - 'site/impact_adapter.js'
+      - 'site/test_adapter.cjs'
+      - '.github/workflows/check-agency-ui.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify agency card behavior and compatibility with actual schemas
+        run: |
+          node site/test_adapter.cjs

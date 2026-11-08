@@ -38,6 +38,46 @@ assert.equal(candidate.status,'집행기관 추가 조사');
 assert.match(candidate.agency_role,/실제 집행기관 추가 조사/);
 assert.equal(data.actions.find(a=>a.agency==='가상시청').evidence_type,'downstream');
 
+// Regression from a real 2026 staffing-table update: lexical references to
+// privacy protection do not make every ministry update the same headcount.
+const org = {
+  ...policy,id:'org1',title:'개인정보 보호위원회 직제',source:'law',
+  impact_category:'조직개편·업무이관',ministry:'개인정보보호위원회,행정안전부',
+  changes:[{article:'별표 0001',before:'정원표 총계 192',after:'정원표 총계 197'}],
+  effects:[{article:'별표 0001',old:'192',new:'197',
+    operations:['조직·인력'],context:'정원표 총계 197'}],
+  institution_actions:[{
+    agency:'개인정보 보호위원회',work:'조직·정원 관리',
+    evidence_type:'개정된 공무원 정원표의 명시된 기관·항목',
+    article:'별표 0001',verified_location:true,
+    target_location:'별표 0001 · 공무원 정원 총계',
+    what_to_change:'공무원 정원 총계 192명 → 197명 (+5명)',
+    required_change:'개인정보 보호위원회 정원표 갱신 여부 검토'
+  },{
+    agency:'사무처장',work:'조직·인력',article:'별표 0001',
+    evidence_type:'공식 규정의 집행주체·업무조항 확인',
+    what_to_change:'192 → 197'
+  }],
+  dependency_actions:[{agency:'구청장',work:'조직·인력',
+    target_location:'다른 법령',what_to_change:'192 → 197'}],
+  agency_candidates:[{agency:'고용노동부장관',work:'조직·인력',article:'별표 0001'}]
+};
+const normalizedOrg=normalizePolicyData({schema:'policy-domino-impact-v3',
+  events:[org],source_health:{},impact_health:{}});
+assert.equal(normalizedOrg.actions.length,1,
+  'One staffing change must not create cards for unrelated authorities');
+assert.equal(normalizedOrg.actions[0].agency,'개인정보 보호위원회');
+assert.equal(normalizedOrg.actions[0].change_units,'명');
+assert.match(normalizedOrg.actions[0].change_label,/공무원 정원 총계/);
+assert.equal(normalizedOrg.actions[0].changes[0].after,'197');
+assert.match(normalizedOrg.events[0].change_summary,/192명 → 197명/);
+assert.equal(data.actions.find(a=>a.evidence_type==='downstream').changes.length,0,
+  'Other institutions must never inherit the source policy numeric delta');
+
+const stale={...org,institution_actions:[org.institution_actions[1]]};
+assert.equal(normalizePolicyData({schema:'policy-domino-impact-v3',
+  events:[stale]}).actions.length,0,'Stale cached false actor cards must be suppressed');
+
 const mixed={schema:'policy-domino-impact-v3',events:[policy,{
   ...policy,id:'policy-2',title:'가상 행정조직 직제',
   impact_category:'조직·내부운영',effects:[],

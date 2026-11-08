@@ -108,13 +108,10 @@
     const events = (d.events || []).map(convertedEvent);
     const actions = [];
     for (const e of d.events || []) {
-      const organizationRule = e.source === "law" && /직제(?:\s*시행규칙)?$/.test(e.title || "");
-      // Do not display stale lexical matches as verified downstream
-      // organizations of a central staffing table, even if cached data remains.
-      const direct = organizationRule ?
-        (e.institution_actions || []).filter(a =>
-          a.evidence_type === "개정된 공무원 정원표의 명시된 기관·항목") :
-        (e.institution_actions || []);
+      // Evidence rules are uniform across policy types. A staffing table
+      // and a changed statutory duty have different evidence formats, but
+      // neither qualifies because of its specific agency or document title.
+      const direct = e.institution_actions || [];
       // A candidate source, issuer, or mere official reference is not an
       // affected agency required to change its own business rules. Only
       // scoped, source-backed obligations can enter action cards.

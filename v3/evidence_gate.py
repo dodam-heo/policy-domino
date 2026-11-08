@@ -32,7 +32,10 @@ ORGANIZATION_MARKERS=("정원표","직제","부서","사무","업무","기구","
 def is_repeal(event):
     # Only authoritative document-level metadata; the word "폐지" in a
     # quoted provision does not make the entire document repealed.
-    return bool(TERMINATION.search(str(event.get("revision",""))))
+    revision=str(event.get("revision",""))
+    # Repeal-and-enact (폐지제정) publishes a successor rule, so it must
+    # not be discarded as a pure cessation of legal effect.
+    return bool(TERMINATION.search(revision)) and "제정" not in revision
 
 def local_excerpt(body, changed, width=150):
     if not body or not changed:return None

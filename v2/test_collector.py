@@ -93,6 +93,65 @@ class CollectorTests(unittest.TestCase):
         self.assertTrue(previous["annual_comparison"])
         self.assertEqual(previous["record"]["title"],"2026년도 가상 서비스 기준")
 
+    def test_queue_selects_major_annual_standards_before_oneoff_future_records(self):
+        import datetime as dt
+        entries=[
+          self.entry(name="통계작성의 변경승인(가상통계)",serial="1"),
+          self.entry(name="2027년 가상 주거지원 선정기준",serial="2"),
+          self.entry(name="2027년 가상 교육지원 선정기준",serial="3"),
+          self.entry(name="기준 소득 및 수급자 선정기준",serial="4"),
+          self.entry(name="가상업무 공무원 인사규정",serial="5")
+        ]
+        entries[3]["effective_date"]="2027-01-01"
+        result=m.select_pending({str(i):x for i,x in enumerate(entries)},
+                   "admrul",capacity=3,today=dt.date(2026,11,8))
+        titles=[x["title"] for _,x in result]
+        self.assertIn("2027년 가상 주거지원 선정기준",titles)
+        self.assertIn("2027년 가상 교육지원 선정기준",titles)
+        self.assertIn("기준 소득 및 수급자 선정기준",titles)
+        self.assertNotIn("통계작성의 변경승인(가상통계)",titles)
+
+    def test_fulltext_future_year_search_reaches_yearless_titles(self):
+        import datetime as dt
+        root=ET.fromstring("""<root><admrul>
+          <행정규칙명>기준 소득 및 선정기준</행정규칙명>
+          <행정규칙ID>123</행정규칙ID><행정규칙일련번호>456</행정규칙일련번호>
+          <발령일자>20260729</발령일자><시행일자>20270101</시행일자>
+          </admrul></root>""")
+        with patch.object(m,"request",return_value=root) as call:
+            found=m.list_source("admrul",title_query="2027",fulltext=True,
+                  date_window=(dt.date(2026,5,1),dt.date(2026,11,8)),limit=70)
+        self.assertEqual(len(found),1)
+        self.assertEqual(found[0]["title"],"기준 소득 및 선정기준")
+        kwargs=call.call_args.kwargs
+        self.assertEqual(kwargs["search"],2)
+        self.assertEqual(kwargs["prmlYd"],"20260501~20261108")
+
+    def test_annual_official_notice_replacement_is_not_fake_amount(self):
+        current=self.entry(name="2027년 가상기준 고시",serial="200")
+        before=self.entry(name="2026년 가상기준 고시",serial="100")
+        change=m.annual_switch_change(current,before)[0]
+        self.assertFalse(change["numeric_values_verified"])
+        self.assertIn("2026년",change["before"])
+        self.assertIn("2027년",change["after"])
+        self.assertEqual(change["numbers_after"],[])
+
+    def test_predecessor_marks_annual_even_with_same_stable_id(self):
+        new=self.entry(name="2027년 가상기준 고시",serial="500")
+        old=ET.fromstring("""<root><admrul><행정규칙명>2026년 가상기준 고시</행정규칙명>
+          <행정규칙ID>22</행정규칙ID><행정규칙일련번호>450</행정규칙일련번호>
+          <발령일자>20251031</발령일자></admrul></root>""")
+        with patch.object(m,"request",return_value=old),patch.object(m,"read_clauses",return_value={"본문":"동일"}):
+            prior=m.historical_predecessor(new)
+        self.assertTrue(prior["annual_comparison"])
+
+    def test_cited_article_not_treated_as_heading_in_flat_rule(self):
+        root=ET.fromstring("""<행정규칙><조문내용>「가상지원법」 제6조 및 제12조를 준용한다. 지원금은 50만원이다.</조문내용></행정규칙>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(self.entry())
+        self.assertEqual(list(clauses),["본문"])
+        self.assertIn("제12조",clauses["본문"])
+
     def test_scope_two_official_categories(self):
         src = Path(m.__file__).read_text("utf-8")
         self.assertIn('("law", "admrul")',src)

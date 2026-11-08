@@ -5,6 +5,7 @@ All findings are evidence records; unknown previous text is never invented.
 from __future__ import annotations
 
 import datetime as dt
+import calendar
 import difflib
 import hashlib
 import html
@@ -23,7 +24,7 @@ OUTPUT = ROOT / "site" / "data.json"
 API = "https://www.law.go.kr/DRF/"
 HEADERS = {"User-Agent": "PolicyDomino/2.0 (public legal data research)"}
 VALID = ("개정", "제정", "폐지", "정정")
-MAX_PER_SOURCE = int(os.getenv("PD_LIST_LIMIT", "160"))
+MAX_PER_SOURCE = int(os.getenv("PD_LIST_LIMIT", "500"))
 MAX_DETAILS = int(os.getenv("PD_DETAIL_LIMIT", "24"))
 MAX_REFERENCES = int(os.getenv("PD_REFERENCE_LIMIT", "5"))
 DOMAINS = (
@@ -82,7 +83,9 @@ def request(target, endpoint="lawSearch.do", **kwargs):
     for trial in range(3):
         try:
             with urllib.request.urlopen(req, timeout=22) as response:
-                raw = response.read(4_000_000)
+                raw = response.read(24_000_001)
+            if len(raw) > 24_000_000:
+                raise ValueError("공식 API 응답이 24MB를 초과하여 안전하게 처리를 중단했습니다.")
             root = ET.fromstring(raw)
             if root.tag.lower() in ("html", "error") or "오류" in root.tag:
                 raise ValueError("공식 API 응답 오류")
@@ -120,17 +123,19 @@ def row_of(node, target):
                 else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
     }
 
-def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None):
+def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None, fulltext=False, include_history=True):
     """Collect across sectors by official issue-date windows, not topic names.
     The newest window is checked on every run. Older windows are backfilled
     incrementally and unprocessed entries remain in the persistent queue.
     """
     collected = []
-    modes = [{}] if target == "law" else [{"nw": "1"}, {"nw": "2"}]
+    modes = [{}] if target == "law" else ([{"nw":"1"},{"nw":"2"}] if include_history else [{"nw":"1"}])
     pages = max(1, (limit + 99) // 100)
     date_filter = {}
     if title_query:
         date_filter["query"] = str(title_query)
+        if fulltext:
+            date_filter["search"] = 2
     if date_window:
         start, end = date_window
         key = "ancYd" if target == "law" else "prmlYd"
@@ -169,7 +174,13 @@ def historical_predecessor(record, cached=None):
                and x["published_at"] <= record["published_at"]]
     matches.sort(key=lambda x: (x["published_at"], x["serial"]), reverse=True)
     if matches:
-        return {"record": matches[0], "clauses": read_clauses(matches[0])}
+        prior=matches[0]
+        cy=YEAR_IN_TITLE.search(record["title"])
+        py=YEAR_IN_TITLE.search(prior["title"])
+        annual=(target=="admrul" and cy is not None and py is not None and
+                int(cy.group(0)[:4])==int(py.group(0)[:4])+1)
+        return {"record": prior, "clauses": read_clauses(prior),
+                "annual_comparison": annual}
     # Annual rules can be a *new* administrative-rule ID each year.
     # Find previous year's matching official title without hardcoded policy names.
     year_pattern = re.compile(r"(20\d{2})(\s*년(?:도)?)")
@@ -228,7 +239,8 @@ def read_clauses(record):
                     if x.tag.split("}")[-1] == "조문내용")
     if not full:
         raise RuntimeError("공식 본문에서 조문을 추출하지 못했습니다.")
-    matches = list(re.finditer(r"제\s*\d+\s*조(?:의\s*\d+)?(?:\([^)]*\))?", full))
+    # Split only structural headings. A sentence citing "제6조" is not a new article.
+    matches = list(re.finditer(r"(?:(?<=\n)|(?<=\.)\s*|\A)제\s*\d+\s*조(?:의\s*\d+)?\s*\([^)]*\)", full))
     if matches:
         for i, match in enumerate(matches[:150]):
             end = matches[i + 1].start() if i + 1 < len(matches) else len(full)
@@ -368,6 +380,101 @@ def make_event(record, changes, comparison, checked_at, citations=None):
         "reference_candidates": [], "citations": citations or [], "upstream_changes": [], "downstream_changes": [],
     }
 
+# Rank consequential, forward-looking public changes ahead of single-office
+# housekeeping notices. These signals are generic document/operation properties,
+# not a list of enrolled benefits, ministries, laws or user-supplied examples.
+YEAR_IN_TITLE = re.compile(r"(?:19|20)\d{2}\s*년(?:도)?")
+RULE_CRITERIA = ("선정기준","최저보장","기준액","급여","지원대상","지원기준",
+                 "요율","임금","수수료","보조금","지급기준","배정기준",
+                 "의무생산","재원","부담률","적용기준","산정기준","인허가")
+INDIVIDUAL_ACT = ("통계작성의 변경승인", "통계작성의 승인", "실시계획 변경승인",
+                  "공고 제", "공무원 승진", "심사위원회규정")
+INTERNAL_TITLE = ("교육운영기준", "공무원 인사", "위임전결", "기관 내부",
+                  "정원배정표", "업무분장")
+
+def priority_score(record, today=None):
+    """Urgency = future rule becoming operative + substantive public standard.
+    Different sectors compete by the same observable signals, not policy names.
+    """
+    today = today or dt.date.today()
+    title = record.get("title","")
+    pub = record.get("published_at","")
+    effect = record.get("effective_date","")
+    future = effect > today.isoformat()
+    year = YEAR_IN_TITLE.search(title)
+    named_future = bool(year and int(year.group(0)[:4]) >= today.year + 1)
+    rule = any(k in title for k in RULE_CRITERIA)
+    ministry_multi = "," in record.get("ministry","")
+    central_structure = (record.get("source")=="law" and
+                         ("직제" in title or "소속기관" in title)
+                         and ministry_multi)
+    oneoff=any(k in title for k in INDIVIDUAL_ACT)
+    internal=any(k in title for k in INTERNAL_TITLE)
+    # Forward-effective annual standards and cross-agency statutes matter even
+    # when their promulgation occurred before the 14-day polling window.
+    weight = (130 if named_future and rule else
+              83 if future and rule else
+              65 if central_structure else
+              38 if named_future else
+              24 if rule else 12 if future else 0)
+    if oneoff:weight-=115
+    if internal:weight-=24
+    if pub >= (today-dt.timedelta(days=30)).isoformat():weight+=15
+    elif pub >= (today-dt.timedelta(days=120)).isoformat():weight+=9
+    if pub and pub < (today-dt.timedelta(days=365)).isoformat():weight-=90
+    if pub and pub < (today-dt.timedelta(days=730)).isoformat():weight-=30
+    if not record.get("ministry"):weight-=3
+    return weight
+
+def month_windows(today,lookback_days=210):
+    """Full-month searches prevent a broad text query's newest 500 results
+    from permanently hiding important standards issued months earlier.
+    """
+    cutoff=today-dt.timedelta(days=lookback_days)
+    year,month=today.year,today.month
+    windows=[]
+    while True:
+        first=dt.date(year,month,1)
+        last=dt.date(year,month,calendar.monthrange(year,month)[1])
+        start=max(first,cutoff)
+        end=min(last,today)
+        if start<=end:windows.append((start,end))
+        if first<=cutoff:break
+        month-=1
+        if month<1:year-=1;month=12
+    return windows
+
+def select_pending(pending, target, capacity, today=None):
+    """Balance priority and recent changes; never starve high-impact records
+    behind thousands of FIFO historical rows or one-off notices.
+    """
+    today=today or dt.date.today()
+    queue=[(eid, rec) for eid,rec in pending.items() if rec["source"]==target]
+    ranked=sorted(queue,key=lambda x:(
+        priority_score(x[1],today),
+        x[1].get("published_at",""),
+        x[1].get("effective_date",""),
+        x[0]),reverse=True)
+    priority_slots=max(1,(capacity*4+4)//5)
+    selected=ranked[:priority_slots]
+    included={eid for eid,_ in selected}
+    recent=sorted([x for x in queue if x[0] not in included],
+                  key=lambda x:(x[1].get("published_at",""),x[0]),reverse=True)
+    selected+=recent[:max(0,capacity-len(selected))]
+    return selected[:capacity]
+
+def annual_switch_change(record, prior):
+    """Document-year substitution only; never claim unverified numeric changes."""
+    return [{
+        "id":uid(record["source"],record["stable_id"],record["serial"],"annual"),
+        "article":"연도별 공표 기준","type":"연도별 고시 교체 · 수치표 별도 확인",
+        "before":prior["title"]+" (시행 "+(prior.get("effective_date") or "이전 연도")+")",
+        "after":record["title"]+" (시행 "+(record.get("effective_date") or "차년도")+")",
+        "source_url":record["url"],"verified":True,
+        "numeric_values_verified":False,
+        "numbers_before":[],"numbers_after":[]
+    }]
+
 def run():
     stamp_now = stamp()
     state = read_state()
@@ -425,6 +532,35 @@ def run():
             health["sources"][target+":연도별 선제 탐색"]={"status":"실패","listed":0,
                 "error":str(exc)[:150]}
             health["errors"].append({"source":target,"range":"연도별 선제 탐색","error":str(exc)[:170]})
+        # Search operative text in MONTHLY windows: one giant 210-day search is
+        # saturated by recent documents and never reaches older current-year
+        # standards (even when they take effect next year). Current rules only.
+        text_total=0
+        forward_total=0
+        month_partial=0
+        for start_date,end_date in month_windows(today,210):
+            try:
+                projected=list_source(target,limit=min(250,MAX_PER_SOURCE),
+                       title_query=str(today.year+1),fulltext=True,
+                       include_history=False,date_window=(start_date,end_date))
+                text_total+=len(projected)
+                if len(projected)>=min(250,MAX_PER_SOURCE):
+                    month_partial+=1
+                    health["partial"]=True
+                forward=[r for r in projected if (r.get("effective_date","")>today.isoformat()
+                         or str(today.year+1) in r["title"])]
+                forward_total+=len(forward)
+                for record in forward:
+                    gathered[uid(target,record["stable_id"],record["serial"])]=record
+            except Exception as exc:
+                health["errors"].append({"source":target,
+                   "range":start_date.isoformat()+"~"+end_date.isoformat()+" 시행연도 본문",
+                   "error":str(exc)[:170]})
+                health["partial"]=True
+        health["sources"][target+":시행연도 본문검색"]={
+            "status":"부분" if month_partial else "정상",
+            "listed":text_total,"future_related":forward_total,
+            "saturated_months":month_partial,"year":today.year+1}
         all_list[target] = list(gathered.values())
         health["sources"][target] = {"status": "정상" if successful_windows == len(windows) else
                                     "부분" if successful_windows else "실패",
@@ -440,16 +576,7 @@ def run():
     examined = []
     quota_each = max(1, MAX_DETAILS // 2)
     for target in ("law", "admrul"):
-        matching = [(eid, record) for eid, record in pending.items() if record["source"] == target]
-        priority = [(eid, record) for eid, record in matching
-                    if (str(today.year+1) in record["title"]
-                        or record.get("effective_date","") > today.isoformat())]
-        # Reserve half the detail capacity for future-starting policy revisions,
-        # while still inspecting contemporary official changes.
-        chosen = priority[:max(1,quota_each//2)]
-        chosen_ids={x[0] for x in chosen}
-        chosen += [(eid,record) for eid,record in matching if eid not in chosen_ids][:quota_each-len(chosen)]
-        for eid, record in chosen:
+        for eid, record in select_pending(pending, target, quota_each, today):
             examined.append({"id": eid, "record": record})
     new_count = 0
     for item in examined:
@@ -464,7 +591,16 @@ def run():
             history = historical_predecessor(record, cached)
             if history:
                 changes = compare(history["clauses"], latest, record)
-                status = "연도별 기준 비교 완료" if history.get("annual_comparison") else "신구 본문 비교 완료"
+                annual=bool(history.get("annual_comparison"))
+                # Many annual standards publish their actual numeric tables as
+                # image-backed attachments. When the XML text is unchanged,
+                # record the confirmed replacement of the official annual rule
+                # without inventing a numerical increase or new eligibility.
+                if annual and not changes:
+                    changes=annual_switch_change(record,history["record"])
+                    status="연도별 고시 교체 확인·수치표 미검증"
+                else:
+                    status = "연도별 기준 비교 완료" if annual else "신구 본문 비교 완료"
                 health["verified_compared"] += 1
             else:
                 changes, status = [], "이전 연혁 본문 미확보"

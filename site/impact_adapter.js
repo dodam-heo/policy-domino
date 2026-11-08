@@ -7,8 +7,9 @@
   const first = (...values) => values.find(v => text(v)) ?? "";
   const unique = items => [...new Set(items.filter(Boolean))];
   const operational = e =>
-    e.impact_category === "제도·업무 변경" &&
-    Array.isArray(e.effects) && e.effects.length > 0;
+    (["제도·업무 변경","조직개편·업무이관"].includes(e.impact_category) &&
+    Array.isArray(e.effects) && e.effects.length > 0) ||
+    (/연도별/.test(e.comparison_status || "") && (e.changes || []).length > 0);
 
   function changedValues(event, action) {
     const effects = Array.isArray(event.effects) ? event.effects : [];
@@ -34,14 +35,15 @@
   function convertAction(e, a, evidenceType) {
     const agency = first(a.agency, "기관 미확인");
     const level = evidenceType === "direct" ? "변경 규정에 명시된 집행기관" :
-      evidenceType === "downstream" ? "공식 연관 규정에서 발견된 집행기관 검토" :
+      evidenceType === "downstream" ? "연관 규정 소관·집행기관 검토 (근거 수준 확인)" :
       "공식 문서 소관기관 · 실제 집행기관 추가 조사";
     const changes = changedValues(e, a);
     const linkedEvidence = first(a.evidence_type, a.agency_role,
       a.basis_excerpt, evidenceType === "direct" ? "공식 법령에 명시된 집행주체" :
       "행정규정의 소관기관 또는 참조 문서");
     const status = evidenceType === "candidate" ?
-      "집행기관 추가 조사" : "업무 반영 검토 필요";
+      "집행기관 추가 조사" : evidenceType === "downstream" ?
+      first(a.status, "연관 제도 적용 검토") : "업무 반영 검토 필요";
     return {
       event_id: e.id, agency, agency_role: level, work: first(a.work, "업무 기준 변경"),
       target_location: first(a.target_location, a.article, "업무 기준 적용 위치 확인"),
@@ -81,6 +83,11 @@
       })),
       policy_profile: operational(e),
       impact_category: category,
+      impact_priority: ((e.priority || 0) +
+          ((e.policy_links || []).length * 30) +
+          (e.effective_date > new Date().toISOString().slice(0,10) ? 40 : 0) +
+          (/연도별/.test(comparison) ? 25 : 0) +
+          (e.impact_category === "조직개편·업무이관" ? 25 : 0)),
       amendment_reason: first(e.amendment_reason, summary),
       amendment_url: first(e.url),
       comparison_status: comparison
@@ -106,10 +113,13 @@
       schema: "policy-domino-next-v1",
       events, actions, generated_at: d.generated_at,
       health: {
-        source_status: d.source_health?.status === "수집 실패" ? "수집 실패" : "공식 공포·개정문 연결",
+        source_status: d.source_health?.status === "수집 실패" ? "수집 실패" :
+          d.source_health?.partial ? "부분 수집" : "공식 공포·개정문 연결",
         compared: d.impact_health?.verified_documents || 0,
         amendments_verified_total: d.impact_health?.verified_documents || 0,
-        official_links: d.impact_health?.dependent_rules_found || 0,
+        official_links: (d.impact_health?.dependent_rules_found || 0) +
+          (d.impact_health?.cross_policy_links?.links || 0),
+        pending_details: d.source_health?.pending_details || 0,
         errors: d.source_health?.errors || []
       }
     };

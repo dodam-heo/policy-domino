@@ -161,17 +161,42 @@ def historical_predecessor(record, cached=None):
         root = request("eflaw", LID=record["stable_id"], nw="1,2,3", sort="ddes", display=100)
     else:
         root = request("admrul", query=record["title"], nw="2", sort="ddes", display=100)
-    kinds = {"law": "law", "admrul": "admrul"}
-    records = [row_of(x, record["source"]) for x in root.iter()
-               if x.tag.split("}")[-1].lower() == kinds[record["source"]]]
-    records = [x for x in records if x and x["stable_id"] == record["stable_id"]
+    target = record["source"]
+    candidates = [row_of(x, target) for x in root.iter()
+                  if x.tag.split("}")[-1].lower() == target]
+    matches = [x for x in candidates if x and x["stable_id"] == record["stable_id"]
                and x["serial"] != record["serial"]
                and x["published_at"] <= record["published_at"]]
-    records.sort(key=lambda x: (x["published_at"], x["serial"]), reverse=True)
-    if not records:
+    matches.sort(key=lambda x: (x["published_at"], x["serial"]), reverse=True)
+    if matches:
+        return {"record": matches[0], "clauses": read_clauses(matches[0])}
+    # Annual rules can be a *new* administrative-rule ID each year.
+    # Find previous year's matching official title without hardcoded policy names.
+    year_pattern = re.compile(r"(20\d{2})(\s*년(?:도)?)")
+    match = year_pattern.search(record["title"])
+    if not match or target != "admrul":
         return None
-    prior = records[0]
-    return {"record": prior, "clauses": read_clauses(prior)}
+    previous_year = str(int(match.group(1)) - 1)
+    expected = record["title"][:match.start(1)] + previous_year + record["title"][match.end(1):]
+    prior_root = request("admrul", query=expected, nw="1", sort="ddes", display=100)
+    prior_nodes = [row_of(x, "admrul") for x in prior_root.iter()
+                   if x.tag.split("}")[-1].lower() == "admrul"]
+    exact = [x for x in prior_nodes if x and normalize(x["title"]) == normalize(expected)
+             and x["published_at"] < record["published_at"]]
+    if not exact:
+        # The older annual document can also be in the historical index.
+        prior_root = request("admrul", query=expected, nw="2", sort="ddes", display=100)
+        prior_nodes = [row_of(x, "admrul") for x in prior_root.iter()
+                       if x.tag.split("}")[-1].lower() == "admrul"]
+        exact = [x for x in prior_nodes if x and normalize(x["title"]) == normalize(expected)
+                 and x["published_at"] < record["published_at"]]
+    exact.sort(key=lambda x: x["published_at"], reverse=True)
+    if not exact:
+        return None
+    # Preserve the separate legal identity; this is an annual STANDARD comparison,
+    # not a claim that the new rule amended the prior rule's legal text.
+    prior = exact[0]
+    return {"record": prior, "clauses": read_clauses(prior), "annual_comparison": True}
 
 def read_clauses(record):
     opts = {"MST": record["serial"]} if record["source"] == "law" else {"ID": record["serial"]}
@@ -408,7 +433,7 @@ def run():
         record = item["record"]
         eid = item["id"]
         stable = uid(record["source"], record["stable_id"])
-        if eid in records and records[eid].get("comparison_status") == "신구 본문 비교 완료":
+        if eid in records and records[eid].get("comparison_status") in ("신구 본문 비교 완료", "연도별 기준 비교 완료"):
             continue
         try:
             latest = read_clauses(record)
@@ -416,7 +441,7 @@ def run():
             history = historical_predecessor(record, cached)
             if history:
                 changes = compare(history["clauses"], latest, record)
-                status = "신구 본문 비교 완료"
+                status = "연도별 기준 비교 완료" if history.get("annual_comparison") else "신구 본문 비교 완료"
                 health["verified_compared"] += 1
             else:
                 changes, status = [], "이전 연혁 본문 미확보"
@@ -447,7 +472,7 @@ def run():
     if pending:
         health["partial"] = True
     # The event is a verified document revision only if a real before/after comparison succeeded.
-    actions = [a for e in events if e.get("comparison_status") == "신구 본문 비교 완료"
+    actions = [a for e in events if e.get("comparison_status") in ("신구 본문 비교 완료", "연도별 기준 비교 완료")
                for a in action_records(e)]
     data = {
         "schema": "policy-domino-v2", "generated_at": stamp_now,

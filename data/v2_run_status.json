@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T04:17:40.423066+00:00",
+  "completed_at": "2026-11-08T06:08:05.586130+00:00",
   "schema": "policy-domino-v2",
   "health": {
     "sources": {
@@ -10,12 +10,12 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 160,
-        "range": "2026-09-27~2026-10-11"
+        "listed": 83,
+        "range": "2026-09-13~2026-09-27"
       },
       "law": {
         "status": "정상",
-        "listed": 258
+        "listed": 181
       },
       "admrul:최근": {
         "status": "정상",
@@ -25,7 +25,7 @@
       "admrul:과거 이력": {
         "status": "정상",
         "listed": 160,
-        "range": "2026-09-27~2026-10-11"
+        "range": "2026-09-13~2026-09-27"
       },
       "admrul": {
         "status": "정상",
@@ -45,16 +45,16 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 19,
-    "not_compared": 3,
-    "candidate_relations": 56,
-    "confirmed_relations": 5,
-    "collect_at": "2026-11-08T04:10:32+00:00",
+    "verified_compared": 21,
+    "not_compared": 1,
+    "candidate_relations": 80,
+    "confirmed_relations": 13,
+    "collect_at": "2026-11-08T06:04:04+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 783,
+    "pending_details": 1004,
     "newly_examined": 22,
-    "events": 45,
-    "actions": 151,
+    "events": 67,
+    "actions": 269,
     "status": "부분 수집"
   }
 }

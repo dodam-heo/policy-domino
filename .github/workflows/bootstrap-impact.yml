@@ -1,13 +1,6 @@
 name: Publish tested agency-first policy interface
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'site/index.html'
-      - 'site/impact_adapter.js'
-      - 'site/test_adapter.cjs'
-      - '.github/workflows/bootstrap-impact.yml'
 permissions:
   contents: read
   pages: write

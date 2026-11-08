@@ -442,6 +442,18 @@ def select_pending(pending, target, capacity, today=None):
     selected+=recent[:max(0,capacity-len(selected))]
     return selected[:capacity]
 
+def annual_switch_change(record, prior):
+    """Document-year substitution only; never claim unverified numeric changes."""
+    return [{
+        "id":uid(record["source"],record["stable_id"],record["serial"],"annual"),
+        "article":"연도별 공표 기준","type":"연도별 고시 교체 · 수치표 별도 확인",
+        "before":prior["title"]+" (시행 "+(prior.get("effective_date") or "이전 연도")+")",
+        "after":record["title"]+" (시행 "+(record.get("effective_date") or "차년도")+")",
+        "source_url":record["url"],"verified":True,
+        "numeric_values_verified":False,
+        "numbers_before":[],"numbers_after":[]
+    }]
+
 def run():
     stamp_now = stamp()
     state = read_state()
@@ -555,17 +567,7 @@ def run():
                 # record the confirmed replacement of the official annual rule
                 # without inventing a numerical increase or new eligibility.
                 if annual and not changes:
-                    prior=history["record"]
-                    changes=[{
-                        "id":uid(record["source"],record["stable_id"],record["serial"],"annual"),
-                        "article":"연도별 공표 기준",
-                        "type":"연도별 고시 교체 · 수치표 별도 확인",
-                        "before":prior["title"]+" (시행 "+(prior.get("effective_date") or "이전 연도")+")",
-                        "after":record["title"]+" (시행 "+(record.get("effective_date") or "차년도")+")",
-                        "source_url":record["url"],"verified":True,
-                        "numeric_values_verified":False,
-                        "numbers_before":[],"numbers_after":[]
-                    }]
+                    changes=annual_switch_change(record,history["record"])
                     status="연도별 고시 교체 확인·수치표 미검증"
                 else:
                     status = "연도별 기준 비교 완료" if annual else "신구 본문 비교 완료"

@@ -31,6 +31,15 @@ class UniversalEvidenceGate(unittest.TestCase):
         r=self.analyze(e)[0]
         self.assertNotEqual(r["impact_category"],"폐지·효력종료")
 
+    def test_repeal_and_reenact_is_not_mistaken_for_plain_repeal(self):
+        e=doc("전국 가상기준 운영규칙",
+              "가상운영공단은 신청기한을 30일로 정한다.",
+              "가상운영공단은 신청기한을 20일로 정한다.",
+              revision="폐지제정")
+        r=self.analyze(e)[0]
+        self.assertNotEqual(r["impact_category"],"폐지·효력종료")
+        self.assertGreater(len(r["institution_actions"]),0)
+
     def test_same_changed_sentence_explicit_actor_and_duty(self):
         e=doc("항공운항 신청 운영규칙",
               "가상항공공단은 신청서 처리기간을 30일로 정한다.",

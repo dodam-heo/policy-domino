@@ -10,7 +10,7 @@
     (["제도·업무 변경","조직개편·업무이관"].includes(e.impact_category) &&
     Array.isArray(e.effects) && e.effects.length > 0) ||
     (/연도별/.test(e.comparison_status || "") && (e.changes || []).length > 0) ||
-    (e.impact_category === "폐지·효력종료" && /폐지/.test(e.revision || ""));
+    (e.impact_category === "폐지·효력종료" && /폐지/.test(e.revision || "") && !/제정/.test(e.revision || ""));
 
   function changedValues(event, action, evidenceType) {
     // A referenced downstream rule is NOT an instruction to replicate the
@@ -115,7 +115,7 @@
       // A candidate source, issuer, or mere official reference is not an
       // affected agency required to change its own business rules. Only
       // scoped, source-backed obligations can enter action cards.
-      if (!/폐지/.test(e.revision || "")) {
+      if (!(/폐지/.test(e.revision || "") && !/제정/.test(e.revision || ""))) {
         direct.filter(a => a.verified_location === true ||
           a.evidence_type === "변경된 동일 조문 내 업무주체·의무문 확인")
           .forEach(a => actions.push(convertAction(e, a, "direct")));

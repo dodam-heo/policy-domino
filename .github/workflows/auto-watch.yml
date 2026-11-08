@@ -11,6 +11,10 @@ on:
       - 'data/v3_state.json'
       - 'data/v3_run_status.json'
       - 'data/v2_run_status.json'
+      - 'v4/**'
+      - 'site/v4/**'
+      - 'data/v4_state.json'
+      - '.github/workflows/v4-progress.yml'
 permissions:
   contents: write
   pages: write

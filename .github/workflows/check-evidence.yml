@@ -1,0 +1,51 @@
+name: Audit generic policy evidence gates (no deployment)
+on:
+  push:
+    branches: [fix/evidence-gated-policy-pipeline-20261108]
+    paths:
+      - 'v3/**'
+      - 'site/**'
+      - '.github/workflows/check-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Test generic policies, legal citations, agency card evidence
+        run: |
+          python -m compileall -q v2 v3
+          python -m unittest discover -s v2 -p 'test_*.py' -v
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+          node site/test_adapter.cjs
+      - name: Reanalyze all actual collected source changes without remote API
+        run: |
+          python -m v3.repair_cached
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf8'))
+          for e in d['events']:
+            if e.get('revision') and '폐지' in e['revision']:
+              assert not e.get('institution_actions'),e['title']
+              assert not e.get('dependency_actions'),e['title']
+          print('EVIDENCE_AUDIT',json.dumps({
+            "documents":len(d['events']),
+            "repeals":d['impact_health']['repeal_events'],
+            "gated_actions":d['impact_health']['direct_actor_actions'],
+            "explicit_reference_links":d['impact_health']['cross_policy_links']['links'],
+            "examples":[
+              {"title":e['title'],"revision":e.get("revision"),
+               "agency_actions":len(e.get("institution_actions",[])),
+               "links":len(e.get("policy_links",[]))}
+              for e in d['events'] if e.get('revision') and '폐지' in e['revision']
+            ][:4]
+          },ensure_ascii=False))
+          PY

@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T14:11:44.353900+00:00",
+  "completed_at": "2026-11-08T14:36:16.984567+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 54,
-        "range": "2026-04-12~2026-04-26"
+        "listed": 70,
+        "range": "2026-03-29~2026-04-12"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 152
+        "listed": 168
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 217,
-        "range": "2026-04-12~2026-04-26"
+        "listed": 416,
+        "range": "2026-03-29~2026-04-12"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 598
+        "listed": 798
       }
     },
     "partial": true,
@@ -106,33 +106,33 @@
     ],
     "verified_compared": 15,
     "not_compared": 0,
-    "candidate_relations": 59,
-    "confirmed_relations": 115,
-    "collect_at": "2026-11-08T14:01:27+00:00",
+    "candidate_relations": 58,
+    "confirmed_relations": 182,
+    "collect_at": "2026-11-08T14:30:27+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 5169,
+    "pending_details": 5640,
     "newly_examined": 15,
-    "events": 258,
-    "actions": 1672,
+    "events": 273,
+    "actions": 1819,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 258,
-    "verified_documents": 245,
-    "substantive_policy_events": 117,
-    "direct_actor_actions": 125,
+    "events": 273,
+    "verified_documents": 260,
+    "substantive_policy_events": 160,
+    "direct_actor_actions": 119,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 4,
     "cross_policy_links": {
-      "links": 41,
-      "explicit_standard_uses": 41,
+      "links": 98,
+      "explicit_standard_uses": 98,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 72,
+    "dependent_rules_found": 8,
     "dependency_errors": [],
     "dependency_actors_to_review": 0
   }

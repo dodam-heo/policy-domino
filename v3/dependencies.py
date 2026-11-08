@@ -203,19 +203,20 @@ def discover(events,maximum=22,cache=None):
                   "errors":errors}
 
 def add_dependency_agencies(events):
+    """Compatibility shim. Regulatory citations are research evidence only.
+
+    A dependent rule referencing a standard is not proof of an internal
+    system task or an unimplemented agency action. Do not write obligation
+    cards on any event without an independently verified source provision.
+    """
     for event in events:
-        seen={(x.get("agency"),x.get("target_location")) for x in event.get("institution_actions",[])}
+        event.setdefault("dependency_review_candidates",[])
         for rule in event.get("dependent_rules",[]):
-            owner=rule.get("target_ministry")
-            if not owner:continue
-            key=(owner,rule["target_title"])
-            if key in seen:continue
-            seen.add(key)
-            event.setdefault("dependency_actions",[]).append({
-                "agency":owner,"work":"변경 기준을 인용·적용하는 하위규정 검토",
-                "target_location":rule["target_title"],"what_to_change":"관련 규정에 상위 변경 기준이 반영되어야 하는지 검토",
-                "required_change":"근거 조문을 대조해 변경 전후의 적용값·자격요건·신청절차에 차이가 있는지 확인",
-                "basis":rule["target_url"],"basis_excerpt":rule["excerpt"],
-                "evidence_type":rule["relation_level"],
-                "status":"해당 기관 검토 필요","actual_system_verified":False,
-                "verified_location":False})
+            if rule.get("excerpt") and rule.get("target_url"):
+                event["dependency_review_candidates"].append({
+                    "title":rule.get("target_title",""),
+                    "ministry":rule.get("target_ministry",""),
+                    "excerpt":rule["excerpt"],"url":rule["target_url"],
+                    "status":"공식 인용관계 검토 · 기관 조치 미확정"
+                })
+    return sum(len(e.get("dependency_review_candidates",[])) for e in events)

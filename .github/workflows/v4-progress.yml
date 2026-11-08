@@ -12,7 +12,7 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: policy-domino-production
+  group: policy-domino-v4
   cancel-in-progress: false
 jobs:
   update:

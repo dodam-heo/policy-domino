@@ -346,6 +346,7 @@ def add_reference_hits(event, search_quota=MAX_REFERENCES):
                     if identifier in {x["id"] for x in hits}:
                         continue
                     hits.append({"id": identifier, "title": item["title"], "source": kind,
+                                 "stable_id": item["stable_id"], "serial": item["serial"],
                                  "ministry": item["ministry"], "url": item["url"],
                                  "matched_term": term,
                                  "status": "공식 본문 검색 후보 · 인용/산식 미확인"})

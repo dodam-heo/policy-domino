@@ -56,9 +56,9 @@ def history_rows(record,fetch=None):
             continue
         from v4.collect_index import as_record
         cand=as_record(node,src)
-        if cand and cand["stable_id"]==record["stable_id"] and
-           cand["serial"]!=record["serial"] and
-           cand["published_at"]<record["published_at"]:
+        if (cand and cand["stable_id"]==record["stable_id"] and
+            cand["serial"]!=record["serial"] and
+            cand["published_at"]<record["published_at"]):
             out.append(cand)
     return sorted(out,key=lambda x:(x["published_at"],x["serial"]),reverse=True)
 

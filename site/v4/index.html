@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>정책도미노 v4 | 정책 변경에서 실제 파급까지</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#183147;background:#f3f6f7;font-size:14px}
+*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}
+header{background:#12334b;color:white;padding:18px max(20px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}
+header b{font-size:21px;letter-spacing:-.6px}header small{display:block;color:#b2ced6;margin-top:3px;font-size:11px}
+header a{color:#c1e0e9;text-decoration:none;font-size:12px}
+main{max-width:1120px;margin:auto;padding:27px 18px 65px}
+h1{font-size:27px;letter-spacing:-1px;margin:5px 0 9px}h2{font-size:21px;letter-spacing:-.5px}h3{font-size:16px}
+p{line-height:1.7}.muted{color:#6d8190}.intro{margin-bottom:22px}.intro p{margin:0;max-width:730px}
+.notice{background:#fff;border:1px solid #dce5e8;padding:14px 17px;border-radius:13px;margin:18px 0;line-height:1.7;color:#3c6172}
+.notice strong{color:#18506c}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 22px}
+.metric{background:#fff;border:1px solid #e1e9ed;padding:16px;border-radius:12px}
+.metric small{display:block;color:#687e8c;font-size:11px;margin-bottom:7px}
+.metric strong{font-size:23px;letter-spacing:-.5px}
+.controls{background:#fff;border:1px solid #dce5e8;border-radius:15px 15px 0 0;padding:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tabs{display:flex;gap:7px;flex-wrap:wrap}
+.tab{padding:9px 13px;border:1px solid #dae4e8;border-radius:25px;background:white;color:#536c7d;font-weight:700;font-size:12px}
+.tab.active{background:#165a78;color:white;border-color:#165a78}
+input{border:1px solid #d8e3e8;border-radius:9px;padding:11px 12px;flex:1;min-width:220px;color:#223d50}
+.board{background:white;border:1px solid #dce5e8;border-top:0;border-radius:0 0 15px 15px;overflow:hidden}
+.overline{font-size:11px;font-weight:750;color:#19718a;letter-spacing:.02em}
+.listheader{padding:12px 20px;border-bottom:1px solid #e6ecef;color:#718592;font-size:12px}
+.item{display:block;width:100%;background:white;border:0;text-align:left;padding:21px 23px;border-bottom:1px solid #e6edef;color:#203e51}
+.item:hover,.item:focus{background:#f5f9fb}
+.item .top{display:flex;justify-content:space-between;gap:10px}
+.item h3{margin:10px 0 8px;font-size:17px;line-height:1.45;letter-spacing:-.45px}
+.item .sub{color:#6f8290;font-size:12px;line-height:1.6}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}
+.pill{display:inline-block;color:#456a7a;background:#eef4f6;border-radius:7px;padding:5px 8px;font-size:11px;font-weight:650}
+.pill.good{color:#136d57;background:#e6f6ef}.pill.warn{color:#94652e;background:#fff3e8}
+.detail{display:none;margin-top:22px;background:white;border:1px solid #dce5e8;border-radius:16px;overflow:hidden}
+.detail.visible{display:block}
+.detailhead{padding:24px;border-bottom:1px solid #e4ecef}
+.back{border:0;background:none;color:#126381;font-weight:700;padding:0;margin-bottom:14px}
+.detailhead h2{margin:11px 0}
+.inner{padding:23px}
+section{margin-bottom:27px}section h3{border-bottom:1px solid #e3eaee;padding-bottom:11px;margin:0 0 14px}
+.impact{border:1px solid #dce7e9;border-radius:12px;padding:16px;margin:12px 0}
+.impact.verified{border-left:4px solid #2f9b77}
+.impact.citation{border-left:4px solid #d5af7d}
+.quote{background:#f4f7f9;border-radius:9px;padding:14px;margin-top:10px;font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}
+.versions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.versions div{background:#f6f8f9;padding:12px;border-radius:9px;min-width:0;overflow-wrap:anywhere;font-size:12px;line-height:1.7}
+.versions div:last-child{background:#edf8f3}
+.versions small{display:block;color:#64808b;font-weight:750;margin-bottom:7px}
+.source a{color:#176c86;text-decoration:none;font-size:12px;font-weight:700}
+.source{margin-top:12px}
+details{border:1px solid #e0e9eb;border-radius:10px;margin:10px 0;padding:13px}
+summary{font-weight:750;color:#365e74;cursor:pointer}
+.empty{padding:28px;color:#6c8390;line-height:1.8}
+#more{display:block;margin:15px auto;background:white;border:1px solid #cbdde4;border-radius:9px;padding:10px 20px;color:#235773;font-weight:700}
+footer{text-align:center;color:#83919d;font-size:12px;padding:25px}
+@media(min-width:920px){.layout.open{display:grid;grid-template-columns:minmax(270px,.85fr) minmax(0,1.3fr);gap:18px;align-items:start}.layout.open .detail{margin-top:0;display:block}.layout.open .board{max-height:80vh;overflow:auto}.layout.open .controls{grid-column:1}.layout.open .board{grid-column:1}.layout.open .detail{grid-column:2;grid-row:1/span 2;position:sticky;top:12px;max-height:92vh;overflow:auto}}
+@media(max-width:630px){main{padding:22px 13px 50px}.stats{gap:7px}.metric{padding:11px}.metric strong{font-size:20px}.metric small{font-size:10px}.item{padding:17px}.inner,.detailhead{padding:17px}.versions{grid-template-columns:1fr}.intro h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div><b>POLICY DOMINO</b><small>공식 변경 → 기준 변화 → 적용 규정 → 기관 업무</small></div><a href="../">기존 화면</a></header>
+<main>
+<div class="intro"><span class="overline">정책 변경의 원인을 따라가는 법령 영향 추적</span>
+<h1>정책 변화에서 기관별 영향까지</h1>
+<p class="muted">공식적으로 바뀐 조문부터 확인합니다. 같은 법 이름이 등장한다는 이유만으로 다른 제도나 기관에 변경 의무를 부여하지 않습니다.</p></div>
+<div class="notice" id="status">공식 변경이력과 근거를 확인하고 있습니다.</div>
+<div class="stats"><div class="metric"><small>공식 변경 사건 목록</small><strong id="count">—</strong></div><div class="metric"><small>신구 본문 확인</small><strong id="verified">—</strong></div><div class="metric"><small>실제 규정 적용 관계</small><strong id="linked">—</strong></div></div>
+<div class="layout" id="layout">
+ <div class="controls"><div class="tabs">
+ <button class="tab active" data-filter="impact">근거 확인된 변경</button>
+ <button class="tab" data-filter="all">전체 공식 목록</button>
+ </div><input id="query" placeholder="법령·고시·기관명으로 검색" aria-label="검색"></div>
+ <div class="board"><div class="listheader" id="listing">실제 확인된 정책 변경을 먼저 표시합니다.</div><div id="list"></div><button id="more" hidden>더 보기</button></div>
+ <div class="detail" id="detail" aria-live="polite"></div>
+</div>
+<footer>Policy Domino · 법제처 공식자료 · 내부 조치 완료 여부는 확인 자료가 있을 때만 표시</footer>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const ESC=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const date=s=>String(s||"").replace(/-/g,". ")||"미확인";
+const safeUrl=s=>/^https:\/\/(?:www\.)?law\.go\.kr\//i.test(s||"")?s:"https://www.law.go.kr";
+const status=v=>({
+ official_record_only:"공식 목록만 확인",verified_changed_clauses:"신구 조문 확인",
+ verified_annual_replacement:"연도별 기준 교체 확인",
+ verified_enactment:"제정 확인",verified_repeal_notice:"폐지 확인",
+ detail_failed:"본문 조회 실패",partial_official_text:"원문 불완전"
+}[v]||"근거 추가 확인");
+let DATA={featured_events:[],other_events:[],collection:{},links:{}};
+let filter="impact",offset=0,selected="";
+function filtered(){
+ const all=filter==="all"?DATA.featured_events.concat(DATA.other_events):DATA.featured_events;
+ const q=$("#query").value.trim().toLowerCase();
+ return all.filter(g=>!q||[g.summary,g.date,...(g.source_docs||[]).map(d=>d.title+" "+d.ministry)].join(" ").toLowerCase().includes(q));
+}
+function renderList(){
+ const arr=filtered(),limit=offset+45;
+ $("#listing").textContent=(filter==="impact"?"근거를 확인한 변경 사건 ":"공식 변경목록 ") +arr.length+"건 · 필요한 근거를 먼저 확인하세요";
+ $("#list").innerHTML=arr.length?arr.slice(0,limit).map(g=>{
+ const sources=g.source_docs||[],count=g.dependencies?.length||0;
+ const tags=[g.source_count>1?g.source_count+"개 법령 동시 공포":null,
+  g.verified_count?g.verified_count+"개 본문 검증":"본문 검증 대기",
+  count?count+"개 근거 있는 연결":null].filter(Boolean);
+ return '<button class="item" data-id="'+ESC(g.id)+'"><div class="top"><span class="overline">'+
+  ESC(g.source_count>1?"동일 공포번호 변경 사건":sources[0]?.kind||"공식 법령·고시")+
+  '</span><span class="muted" style="font-size:11px">'+ESC(date(g.date))+'</span></div>'+
+  '<h3>'+ESC(g.summary)+'</h3><div class="sub">'+ESC(sources.slice(0,2).map(s=>s.title).join(" · "))+
+  (sources.length>2?" 외 "+(sources.length-2)+"건":"")+'</div><div class="pills">'+
+  tags.map(x=>'<span class="pill">'+ESC(x)+'</span>').join("")+'</div></button>';
+ }).join(""):'<div class="empty">이 조건에서 검증된 공식 변경 사건이 없습니다. 전체 목록에서 아직 분석 중인 자료도 확인할 수 있습니다.</div>';
+ $("#list").querySelectorAll("[data-id]").forEach(b=>b.onclick=()=>select(b.dataset.id));
+ $("#more").hidden=arr.length<=limit;
+}
+function nameOf(doc){return doc.title+" · "+doc.revision}
+function docCard(doc){
+ const extracts=(doc.excerpts||[]).slice(0,5);
+ const duties=doc.actor_duties||[];
+ return '<article class="impact"><div class="overline">'+ESC(status(doc.verification))+
+ '</div><h3 style="margin:8px 0;border:0;padding:0">'+ESC(doc.title)+'</h3>'+
+ '<div class="muted" style="font-size:12px">'+ESC(doc.revision||"공식 변경")+" · "+ESC(doc.kind||"법령·행정규칙")+
+ ' · 시행 '+ESC(date(doc.effective))+'</div>'+
+ '<p style="font-size:12px">변경 조항 '+ESC((doc.changed_articles||[]).slice(0,8).join(" · ")||"세부 조항 대조 중")+'</p>'+
+ (doc.comparison?'<div class="pill">이전 '+ESC(doc.comparison.before_published||"")+' → 현행 '+ESC(doc.comparison.after_published||"")+'</div>':"")+
+ (doc.needs_attachment_check?'<p class="muted">첨부 수치표·별표는 별도 확인 필요</p>':"")+
+ (doc.notes||[]).map(n=>'<p class="muted" style="font-size:12px">'+ESC(n)+'</p>').join("")+
+ (extracts.length?'<details><summary>조문 변경 전후 · '+extracts.length+'건</summary>'+
+ extracts.map(p=>'<div class="versions"><div><small>변경 전 · '+ESC(p.article)+'</small>'+
+ ESC(p.before||"기존 조항 없음")+'</div><div><small>변경 후</small>'+ESC(p.after||"삭제")+'</div></div>').join("")+
+ '</details>':'')+
+ (duties.length?'<details><summary>조문에 명시된 집행기관 '+duties.length+'건 (내부 조치 미확인)</summary>'+
+ duties.map(d=>'<div class="quote"><b>'+ESC(d.agency)+'</b> · '+ESC(d.article)+
+ '\n변경된 법정 업무 문장:\n'+ESC(d.after)+
+ '\n기관 내부 규정이나 시스템 변경 여부는 미확인</div>').join("")+'</details>':'')+
+ '<div class="source"><a href="'+ESC(safeUrl(doc.url))+'" target="_blank" rel="noopener">법제처 공식 원문 확인 ↗</a></div></article>';
+}
+function detail(group){
+ const docs=group.source_docs||[],edges=group.dependencies||[];
+ const connected=edges.length?edges.map(e=>
+ '<article class="impact verified"><div class="overline">바뀐 조항을 적용하는 규정 확인</div>'+
+ '<h3 style="margin:9px 0;border:0">'+ESC(e.target_title)+'</h3>'+
+ '<div class="muted">'+ESC(e.target_ministry||"")+' · 적용 조문 '+ESC(e.target_article||"")+'</div>'+
+ '<p style="font-size:12px">인용된 변경 조항: '+ESC(e.source_article||"산식 기준")+
+ ' · '+ESC(e.proof)+'</p><div class="quote">'+ESC(e.excerpt)+'</div>'+
+ '<p class="muted" style="font-size:12px">정책 기준 적용관계를 확인한 것으로, 해당 기관의 내부 조치 완료 또는 수정 의무가 자동 확정된 것은 아닙니다.</p>'+
+ '<div class="source"><a href="'+ESC(safeUrl(e.target_url))+'" target="_blank" rel="noopener">연결 규정 확인 ↗</a></div></article>').join(""):
+ '<div class="empty" style="padding:12px 0">변경된 조항을 직접 적용하는 다른 규정은 아직 확인되지 않았습니다. 단순 법령명 인용은 정책 영향에 포함하지 않습니다.</div>';
+ return '<div class="detailhead"><button class="back" id="back">← 변경 목록으로</button>'+
+ '<div class="overline">공식 변경 사건 · '+ESC(date(group.date))+'</div>'+
+ '<h2>'+ESC(group.summary)+'</h2><div class="pills"><span class="pill">'+
+ ESC(docs.length)+'개 원천 문서</span><span class="pill good">'+
+ ESC(edges.length)+'개 확인된 규정 연결</span></div></div><div class="inner">'+
+ '<section><h3>① 실제로 무엇이 변경됐나</h3>'+docs.map(docCard).join("")+'</section>'+
+ '<section><h3>② 변경 기준을 적용하는 다른 규정</h3>'+connected+'</section>'+
+ '<section><h3>③ 기관별 업무 영향</h3><p class="muted">변경된 동일 조문에 집행기관의 법정 의무가 명시된 경우만 위에 표시합니다. 구체적인 내부 업무 변경·시스템 수정 지시는 별도의 근거가 있어야 작성합니다.</p></section>'+
+ '</div>';
+}
+function select(id){
+ selected=id;
+ const g=DATA.featured_events.concat(DATA.other_events).find(x=>x.id===id);
+ if(!g)return;
+ $("#detail").innerHTML=detail(g);
+ $("#detail").classList.add("visible");
+ $("#layout").classList.add("open");
+ $("#back").onclick=()=>{$("#detail").classList.remove("visible");$("#layout").classList.remove("open")};
+ if(window.innerWidth<920)$("#detail").scrollIntoView({block:"start",behavior:"smooth"});
+}
+function render(){
+ offset=0;renderList();
+ if(selected)select(selected);
+}
+async function load(){
+ try{
+  const response=await fetch("./data.json?v="+Date.now(),{cache:"no-store"});
+  if(!response.ok)throw Error("공식 분석 데이터 HTTP "+response.status);
+  DATA=await response.json();
+  if(DATA.schema!=="policy-domino-v4")throw Error("호환되지 않는 수집 분석 스키마");
+  const health=DATA.collection||{},flags=DATA.links||{};
+  $("#count").textContent=(health.official_catalogue||0).toLocaleString("ko-KR");
+  $("#verified").textContent=(health.detailed_checked||0).toLocaleString("ko-KR");
+  $("#linked").textContent=(flags.confirmed_provision_or_formula_use||0).toLocaleString("ko-KR");
+  $("#status").innerHTML="<strong>공식 변경 사건 수집 진행 중</strong> · "+
+    ESC((health.official_catalogue||0).toLocaleString("ko-KR"))+"건의 공식 변경 목록 중 "+
+    ESC((health.detailed_checked||0).toLocaleString("ko-KR"))+
+    "건의 본문 분석을 진행했습니다. 상세 분석 대기 "+
+    ESC((health.pending_details||0).toLocaleString("ko-KR"))+
+    "건, 수집 미완료 기간 "+ESC(health.incomplete_windows||0)+
+    "건. 전체 수집 완료로 표시하지 않습니다. 마지막 확인 "+
+    ESC(date(DATA.generated_at?.slice(0,10)))+".";
+  render();
+ }catch(e){$("#status").textContent="데이터 확인 실패: "+e.message;$("#list").innerHTML='<div class="empty">공식 수집이 완료되기 전입니다.</div>'}
+}
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{
+ filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));render();
+});
+$("#query").addEventListener("input",render);
+$("#more").onclick=()=>{offset+=45;renderList()};
+load();
+</script>
+</body></html>

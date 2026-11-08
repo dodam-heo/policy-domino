@@ -11,7 +11,7 @@ import difflib
 import re
 from collections import defaultdict
 
-TOKEN = re.compile(r"\d+(?:,\d{3})*(?:\.\d+)?|[가-힣]+|[A-Za-z]+|[^\s]")
+TOKEN = re.compile(r"\s+|\d+(?:,\d{3})*(?:\.\d+)?|[가-힣]+|[A-Za-z]+|[^\s]")
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?(?:\s*(?:원|만원|%|퍼센트|명|세|일|개월|년))?")
 ROLES = (
     ("시장·군수·구청장", ("시장·군수·구청장", "시장ㆍ군수ㆍ구청장", "시장, 군수 또는 구청장")),
@@ -36,6 +36,11 @@ OPERATIONS = (
     ("조직·인력", ("직제", "정원", "직급", "직렬", "사무분장", "소속기관", "하부조직"), "조직·정원 배정표"),
 )
 STRUCTURAL = ("직제", "정원", "사무분장", "인사규정", "기구", "하부조직", "전문직공무원")
+INTERNAL = ("승진", "상훈", "공적심사", "인사관리", "포상", "공무원임용", "보통승진심사")
+INDIVIDUAL = ("변경승인", "실시계획 변경", "통계작성의 변경승인", "사업계획 변경 승인")
+SUBJECT = re.compile(r"(?:^|[\\s,.;(])([가-힣]{2,22}(?:부장관|청장|처장|위원장|이사장|교육감|구청장|시장|군수|교육청|공단|공사|재단|기관장|원장))(?=은|는|이|가|에게|의|\\s)")
+TABLE_ART = re.compile(r"[┃│┏┓┗┛━┼┤├─┬┴]")
+
 CAUSATION = re.compile(r"(?:개정|변경|신설|조정|인상|인하)(?:되었|됨|함|된|에)?\s*(?:에\s*)?따라")
 SOURCE_REF = re.compile(r"「([^」]{2,110})」")
 
@@ -93,16 +98,47 @@ def explicit_roles(change):
     # Do not duplicate '시장' as well as the combined governing authority.
     if "시장·군수·구청장" in result:
         result=[x for x in result if x not in ("시장","군수","구청장")]
-    return result[:7]
+    for hit in SUBJECT.finditer(text):
+        name=hit.group(1)
+        if len(name)>=2 and name not in result:
+            result.append(name)
+    return result[:9]
 
 def document_only(event):
     title=event.get("title","")
-    return any(term in title for term in STRUCTURAL)
+    agency=event.get("ministry","")
+    local_issuer=bool(agency and title.startswith(agency) and any(t in agency for t in ("병원","연구원","지방청","지방환경청","교육청")))
+    return any(term in title for term in STRUCTURAL+INTERNAL) or local_issuer
+
+def individual_notice(event):
+    title=event.get("title","")
+    # Site-specific approvals and one-off statistical registrations are official
+    # acts, but not broad changed operational standards for other institutions.
+    return any(term in title for term in INDIVIDUAL)
+
+def meaningful_span(change, item):
+    a,b=item["before"],item["after"]
+    if not a and not b:return False
+    if TABLE_ART.search(a+b) and len(TABLE_ART.findall(a+b))>=2:return False
+    # Reject formatting-only replacements and small dangling characters.
+    norm=lambda s:re.sub(r"[^가-힣A-Za-z0-9]","",s)
+    old,new=norm(a),norm(b)
+    if old==new:return False
+    if old and new:
+        if len(old)==1 and len(new)==1 and not (old.isdigit() and new.isdigit()):return False
+        return bool(len(old)>=2 and len(new)>=2 or old.isdigit() and new.isdigit())
+    content=new or old
+    # Explicit insertion/removal of a rule is meaningful; isolated table
+    # fragments and moved article labels are not sufficient on their own.
+    if change.get("type") in ("신설","삭제"):
+        return len(content)>=8
+    return len(content)>=5 and bool(re.search(r"가구|자격|지원|신청|급여|수수료|요율|기준|대상|의무|기한",item["context"]))
 
 def effects(event):
     output=[]
     for change in event.get("changes",[]):
         for item in spans(change.get("before",""), change.get("after","")):
+            if not meaningful_span(change,item):continue
             cls=operations(change,[item])
             if cls:
                 output.append({"article":change.get("article",""),"old":item["before"],
@@ -129,7 +165,7 @@ def identify(event):
     """
     if event.get("comparison_status") not in ("신구 본문 비교 완료","연도별 기준 비교 완료"):
         return {"effects":[], "actions":[], "candidate_agencies":[], "quality":"전후 미검증", "priority":-1,
-                "category":"조직·인사" if document_only(event) else "비교 미완료"}
+                "category":"조직·내부운영" if document_only(event) else "개별 행정처분" if individual_notice(event) else "비교 미완료"}
     changes=event.get("changes",[])
     parsed=effects(event)
     items=[]
@@ -158,14 +194,16 @@ def identify(event):
             candidate.append({"agency":event["ministry"],"work":local_ops[0][0],
                               "evidence_type":"소관 부처 정보","status":"집행기관 추가 조사 필요"})
     structural = document_only(event)
+    single=individual_notice(event)
     number_pairs=sum(bool(x["old"] or x["new"]) and any(c.isdigit() for c in x["old"]+x["new"]) for x in parsed)
     substantive=len(parsed)>0
     priority=(100 if items else 65 if parsed else 10) + min(20,number_pairs*4) + min(10,len(items)*2)
-    if structural:priority-=70
+    if structural or single:priority-=70
     quality="업무주체 명시" if items else "실질 변경 확인·집행기관 추적 필요" if parsed else "영향 미도출"
-    return {"effects":parsed,"actions":items[:100], "candidate_agencies":candidate[:10],
-            "quality":quality,"priority":priority, "category":"조직·인사" if structural else
-            "제도·업무 변경" if substantive else "기타 변경"}
+    uniq={ (x["agency"],x["work"]):x for x in candidate }
+    return {"effects":parsed,"actions":items[:100], "candidate_agencies":list(uniq.values())[:10],
+            "quality":quality,"priority":priority, "category":"조직·내부운영" if structural else
+            "개별 행정처분" if single else "제도·업무 변경" if substantive else "기타 변경"}
 
 def strong_cause(parent,child):
     """Do not group documents based on dates/keywords or a naked citation."""
@@ -213,7 +251,7 @@ def analyze(raw):
         action_count+=len(identified["actions"])
         events.append(event)
     verified=[e for e in events if e.get("comparison_status") in ("신구 본문 비교 완료","연도별 기준 비교 완료")]
-    operational=[e for e in verified if e["effects"] and e["impact_category"]!="조직·인사"]
+    operational=[e for e in verified if e["effects"] and e["impact_category"]=="제도·업무 변경"]
     groups=group_events(events)
     return {"schema":"policy-domino-impact-v3","generated_at":raw.get("generated_at",""),
             "source_health":raw.get("health",{}),"events":events,"groups":groups,

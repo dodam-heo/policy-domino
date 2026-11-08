@@ -30,6 +30,9 @@ jobs:
           d=json.loads(Path("site/data.json").read_text("utf-8"))
           h=d["impact_health"]
           print(json.dumps(h,ensure_ascii=False,indent=2))
+          for e in d["events"]:
+            if e.get("effects") and e.get("impact_category")!="조직·인사":
+              print("POLICY-SAMPLE",json.dumps({"title":e["title"],"ministry":e.get("ministry"),"effects":e["effects"][:2],"agency_candidates":e.get("agency_candidates",[])[:2]},ensure_ascii=False)[:1100])
           assert d["schema"]=="policy-domino-impact-v3"
           assert h["verified_documents"]>0
           assert h["substantive_policy_events"]>0

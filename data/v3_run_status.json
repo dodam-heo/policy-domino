@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T17:06:38.859314+00:00",
+  "completed_at": "2026-11-08T17:56:19.477708+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 81,
-        "range": "2026-02-15~2026-03-01"
+        "listed": 32,
+        "range": "2026-02-01~2026-02-15"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 179
+        "listed": 130
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 310,
-        "range": "2026-02-15~2026-03-01"
+        "listed": 319,
+        "range": "2026-02-01~2026-02-15"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 691
+        "listed": 701
       }
     },
     "partial": true,
@@ -106,40 +106,34 @@
     ],
     "verified_compared": 15,
     "not_compared": 0,
-    "candidate_relations": 42,
-    "confirmed_relations": 293,
-    "collect_at": "2026-11-08T16:54:46+00:00",
+    "candidate_relations": 59,
+    "confirmed_relations": 305,
+    "collect_at": "2026-11-08T17:50:19+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 6813,
+    "pending_details": 7149,
     "newly_examined": 15,
-    "events": 318,
-    "actions": 2087,
+    "events": 333,
+    "actions": 2181,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 318,
-    "verified_documents": 305,
-    "substantive_policy_events": 192,
+    "events": 333,
+    "verified_documents": 320,
+    "substantive_policy_events": 207,
     "direct_actor_actions": 133,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 5,
     "cross_policy_links": {
-      "links": 137,
-      "explicit_standard_uses": 137,
+      "links": 144,
+      "explicit_standard_uses": 144,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
     "dependent_rules_found": 12,
-    "dependency_errors": [
-      {
-        "policy": "스마트도시 조성 위탁업무 및 수탁기관 지정 고시",
-        "target": "서울특별시 주차장 설치 및 관리 조례",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      }
-    ],
+    "dependency_errors": [],
     "dependency_actors_to_review": 0
   }
 }

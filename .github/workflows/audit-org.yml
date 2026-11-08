@@ -1,0 +1,31 @@
+name: Audit source context of organization staffing changes
+on:
+  push:
+    branches: [fix/grounded-agency-actions-20261108]
+    paths: ['.github/workflows/audit-org.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print bounded actual law and agency evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf8'))
+          events=d['events']
+          for e in events:
+              if e['title']=='개인정보 보호위원회 직제':
+                  print('LAW:',e['title'],e['id'],e.get('impact_category'))
+                  for x in e.get('changes',[])[:5]:
+                      print('CLAUSE:',x['article'],x.get('before','')[:1150],'\nAFTER:',x.get('after','')[:1150])
+                  for x in e.get('effects',[])[:7]:
+                      print('EFFECT:',json.dumps(x,ensure_ascii=False))
+                  for typ in ('institution_actions','agency_candidates','dependency_actions'):
+                      print(typ, len(e.get(typ,[])),
+                        json.dumps(e.get(typ,[])[:5],ensure_ascii=False)[:3700])
+          PY

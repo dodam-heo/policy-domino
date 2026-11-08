@@ -9,7 +9,8 @@
   const operational = e =>
     (["제도·업무 변경","조직개편·업무이관"].includes(e.impact_category) &&
     Array.isArray(e.effects) && e.effects.length > 0) ||
-    (/연도별/.test(e.comparison_status || "") && (e.changes || []).length > 0);
+    (/연도별/.test(e.comparison_status || "") && (e.changes || []).length > 0) ||
+    (e.impact_category === "폐지·효력종료" && /폐지/.test(e.revision || "") && !/제정/.test(e.revision || ""));
 
   function changedValues(event, action, evidenceType) {
     // A referenced downstream rule is NOT an instruction to replicate the
@@ -92,6 +93,7 @@
           (/연도별/.test(comparison) ? 25 : 0) +
           (e.impact_category === "조직개편·업무이관" ? 25 : 0)),
       change_summary: first(
+        e.impact_summary,
         (e.institution_actions || []).find(a => a.verified_location &&
           a.evidence_type === "개정된 공무원 정원표의 명시된 기관·항목")?.what_to_change,
         e.impact_category === "조직개편·업무이관" ?
@@ -106,22 +108,18 @@
     const events = (d.events || []).map(convertedEvent);
     const actions = [];
     for (const e of d.events || []) {
-      const organizationRule = e.source === "law" && /직제(?:\s*시행규칙)?$/.test(e.title || "");
-      // Do not display stale lexical matches as verified downstream
-      // organizations of a central staffing table, even if cached data remains.
-      const direct = organizationRule ?
-        (e.institution_actions || []).filter(a =>
-          a.evidence_type === "개정된 공무원 정원표의 명시된 기관·항목") :
-        (e.institution_actions || []);
-      const downstream = organizationRule ? [] : (e.dependency_actions || []);
-      const candidates = organizationRule ? [] : (e.agency_candidates || []);
-      direct.forEach(a => actions.push(convertAction(e, a, "direct")));
-      downstream.forEach(a => actions.push(convertAction(e, a, "downstream")));
-      const confirmed = new Set(direct.concat(downstream).map(a => a.agency));
-      // Present an official document owner as an investigation candidate, not
-      // as another verified execution agency with the same name.
-      candidates.filter(a => !confirmed.has(a.agency))
-        .forEach(a => actions.push(convertAction(e, a, "candidate")));
+      // Evidence rules are uniform across policy types. A staffing table
+      // and a changed statutory duty have different evidence formats, but
+      // neither qualifies because of its specific agency or document title.
+      const direct = e.institution_actions || [];
+      // A candidate source, issuer, or mere official reference is not an
+      // affected agency required to change its own business rules. Only
+      // scoped, source-backed obligations can enter action cards.
+      if (!(/폐지/.test(e.revision || "") && !/제정/.test(e.revision || ""))) {
+        direct.filter(a => a.verified_location === true ||
+          a.evidence_type === "변경된 동일 조문 내 업무주체·의무문 확인")
+          .forEach(a => actions.push(convertAction(e, a, "direct")));
+      }
     }
     return {
       schema: "policy-domino-next-v1",

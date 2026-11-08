@@ -13,6 +13,7 @@ const policy={
             operations:['금액·산식 적용']}],
   institution_actions:[{agency:'가상공단',work:'금액·산식 적용',article:'제5조',
     target_location:'산정·지급 기준표',what_to_change:'100만원 → 200만원',
+    evidence_type:'변경된 동일 조문 내 업무주체·의무문 확인',
     required_change:'대상 금액 기준표 검토',status:'집행기관 업무 영향 검토 필요'}],
   dependency_actions:[{agency:'가상시청',work:'관련 규정에 따른 기준 적용',
     target_location:'가상시 시행조례',basis:'https://www.law.go.kr/조례',
@@ -28,15 +29,15 @@ assert.equal(data.schema,'policy-domino-next-v1');
 assert.equal(data.events.length,1);
 assert.equal(data.events[0].event_id,'policy-1');
 assert.equal(data.events[0].policy_profile,true);
-assert.equal(data.actions.length,3,'verified and candidate agency cards must appear');
+assert.equal(data.actions.length,1,'only evidenced statutory duty enters agency action cards');
 const first=data.actions.find(a=>a.agency==='가상공단');
 assert.equal(first.target_location,'산정·지급 기준표');
 assert.deepEqual(first.changes[0],{before:'100만원',after:'200만원',article:'제5조'});
 assert.equal(first.status,'업무 반영 검토 필요');
 const candidate=data.actions.find(a=>a.agency==='가상부처');
-assert.equal(candidate.status,'집행기관 추가 조사');
-assert.match(candidate.agency_role,/실제 집행기관 추가 조사/);
-assert.equal(data.actions.find(a=>a.agency==='가상시청').evidence_type,'downstream');
+assert.equal(candidate,undefined,'issuer-only candidate must not be displayed as a required action');
+assert.equal(data.actions.find(a=>a.agency==='가상시청'),undefined,
+  'Official reference alone must not cause an agency compliance card');
 
 // Regression from a real 2026 staffing-table update: lexical references to
 // privacy protection do not make every ministry update the same headcount.
@@ -71,12 +72,30 @@ assert.equal(normalizedOrg.actions[0].change_units,'명');
 assert.match(normalizedOrg.actions[0].change_label,/공무원 정원 총계/);
 assert.equal(normalizedOrg.actions[0].changes[0].after,'197');
 assert.match(normalizedOrg.events[0].change_summary,/192명 → 197명/);
-assert.equal(data.actions.find(a=>a.evidence_type==='downstream').changes.length,0,
-  'Other institutions must never inherit the source policy numeric delta');
+assert.equal(data.actions.filter(a=>a.evidence_type==='downstream').length,0,
+  'Referenced agencies must not inherit numerical or procedural change instructions');
 
 const stale={...org,institution_actions:[org.institution_actions[1]]};
 assert.equal(normalizePolicyData({schema:'policy-domino-impact-v3',
   events:[stale]}).actions.length,0,'Stale cached false actor cards must be suppressed');
+
+const repealed={
+ ...policy,id:'defunct-rule',title:'지역기관 정보관리 위기대응 규정',
+ revision:'폐지',impact_category:'폐지·효력종료',
+ impact_summary:'기존 규정 폐지 사실 확인. 대체 운영규정 확인 필요.',
+ institution_actions:Array.from({length:35},(_,i)=>({
+   agency:'가상위원회'+i,work:'조직·인력',
+   evidence_type:'공식 규정의 집행주체·업무조항 확인',
+   article:'제5조',what_to_change:'31 → 32'
+ })),
+ dependency_actions:[{agency:'가상부처',what_to_change:'31 → 32'}],
+ agency_candidates:[{agency:'가상위원회',what_to_change:'31 → 32'}]
+};
+const repealData=normalizePolicyData({schema:'policy-domino-impact-v3',events:[repealed]});
+assert.equal(repealData.actions.length,0);
+assert.equal(repealData.events[0].policy_profile,true,
+ 'A repeal is a policy lifecycle event, not an operational mandate');
+assert.match(repealData.events[0].change_summary,/폐지/);
 
 const mixed={schema:'policy-domino-impact-v3',events:[policy,{
   ...policy,id:'policy-2',title:'가상 행정조직 직제',

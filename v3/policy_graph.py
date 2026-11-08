@@ -110,8 +110,9 @@ def link_documents(events,snapshots,limit_per_source=12):
                 "target_ministry":child.get("ministry",""),"target_url":child.get("url",""),
                 "reference":term,"excerpt":snippet,"evidence":evidence,
                 "relation":kind,"verified_reference":verified,
+                "basis_breadth":len(tokens)-len(keywords(child,freq,len(events))),
                 "causation_verified":False,"effective_year":origin_year or child_year})
-    edges.sort(key=lambda e:(e["verified_reference"],len(e["reference"])),reverse=True)
+    edges.sort(key=lambda e:(e["verified_reference"],e["basis_breadth"],len(e["reference"])),reverse=True)
     # Per-target citation evidence can be bidirectional. Retain the most
     # specific edge as the public link, without inventing direction proof.
     seen=set();final=[];counts=Counter()

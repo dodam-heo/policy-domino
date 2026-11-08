@@ -43,6 +43,22 @@ jobs:
           assert all(not x.get('institution_actions') for x in d['events']
                      if is_repeal(x))
           assert all(not x.get('dependency_actions') for x in d['events'])
+          examined=set()
+          verified_pairs=0
+          for event in d['events']:
+              for action in event.get('institution_actions',[]):
+                  key=(event['id'],action['agency'],action['article'],action['work'])
+                  assert key not in examined, f'Duplicate agency task: {key}'
+                  examined.add(key)
+                  if action.get('evidence_type')=='변경된 동일 조문 내 업무주체·의무문 확인':
+                      assert action.get('change_pairs'), f'Unmatched sentence: {key}'
+                      for pair in action['change_pairs']:
+                          assert len(pair.get('before',''))>=13 or not pair.get('before')
+                          assert len(pair.get('after',''))>=13 or not pair.get('after')
+                          verified_pairs+=1
+          print('PUBLISH_SEMANTIC',json.dumps({
+              'unique_agency_tasks':len(examined),'complete_statement_pairs':verified_pairs,
+              'documents':len(d['events'])},ensure_ascii=False))
           print('PUBLISH_EVIDENCE',json.dumps({
               'documents':len(d['events']),
               'repeals':h.get('repeal_events'),

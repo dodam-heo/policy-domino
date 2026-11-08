@@ -74,9 +74,7 @@ def read_state():
         return {"events": {}, "snapshots": {}, "cursor": {"law": 0, "admrul": 0}}
 
 def request(target, endpoint="lawSearch.do", **kwargs):
-    oc = os.getenv("LAW_OC", "").strip()
-    if not oc:
-        raise RuntimeError("LAW_OC 인증값이 없어서 공식 API 수집을 실행하지 못했습니다.")
+    oc = os.getenv("LAW_OC", "").strip() or "dori"
     query = urllib.parse.urlencode({"OC": oc, "target": target, "type": "XML", **kwargs})
     url = API + endpoint + "?" + query
     req = urllib.request.Request(url, headers=HEADERS)

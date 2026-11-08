@@ -3369,6 +3369,39 @@
     "a1c571ddffa7bf00d505|admrul|2100000270964": null,
     "a1c571ddffa7bf00d505|admrul|2100000275262": null,
     "a1c571ddffa7bf00d505|admrul|2100000213734": null,
-    "a1c571ddffa7bf00d505|admrul|2100000284080": null
+    "a1c571ddffa7bf00d505|admrul|2100000284080": null,
+    "a1c571ddffa7bf00d505|admrul|2100000274924": null,
+    "a1c571ddffa7bf00d505|admrul|2100000256128": null,
+    "a1c571ddffa7bf00d505|admrul|2100000283676": null,
+    "a1c571ddffa7bf00d505|admrul|2100000238096": null,
+    "a1c571ddffa7bf00d505|admrul|2100000286314": null,
+    "a1c571ddffa7bf00d505|admrul|2100000238098": null,
+    "a1c571ddffa7bf00d505|admrul|2100000250984": null,
+    "5e7e6287b756430d6966|law|289233": null,
+    "43b3e1cc2582305907c0|admrul|2100000260772": null,
+    "43b3e1cc2582305907c0|admrul|2100000229914": null,
+    "43b3e1cc2582305907c0|admrul|2100000281078": null,
+    "43b3e1cc2582305907c0|admrul|2100000250778": null,
+    "43b3e1cc2582305907c0|law|287721": null,
+    "f4c383a7a1c25f0a29ed|ordin|2176505": {
+      "target_title": "가평군 체육시설 관리 및 운영 조례",
+      "target_ministry": "경기도 가평군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%80%ED%8F%89%EA%B5%B0%20%EC%B2%B4%EC%9C%A1%EC%8B%9C%EC%84%A4%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "학교 밖 청소년 지원에 관한 법률",
+      "excerpt": "맹 경기단체 또는 회원단체를 포함)가 주관하는 행사 나. 「초ㆍ중등교육법」 제2조에 따른 학교의 체육활동과 관련된 정규 수업 또는 방과 후 활동 다. 「학교 밖 청소년 지원에 관한 법률」 제12조에 따른 학교 밖 청소년 지원센터의 체육활동과 관련된 자립지원 활동 라. 청소년 육성을 위한 학교주관 행사 마. 「가평군 병역명문가 예우 및 지원에 관한 조례」에 따른 예우대상자와 그 가족 바. 「가평군 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0001",
+          "before": "",
+          "after": "이 경우 그 경력 은 해당 학위나 자격증을 취득하기 전 또는 학력을 인정받기 전의 경력을 포함한다."
+        }
+      ],
+      "target_department": "경제산업국 문화체육과"
+    }
   }
 }

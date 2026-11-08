@@ -1,0 +1,435 @@
+"""Policy Domino v2: source-wide official legal change collection.
+No manually enrolled policy names, values, sectors, examples, or multipliers.
+All findings are evidence records; unknown previous text is never invented.
+"""
+from __future__ import annotations
+
+import datetime as dt
+import difflib
+import hashlib
+import html
+import json
+import os
+import re
+import time
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+STATE = ROOT / "data" / "v2_state.json"
+OUTPUT = ROOT / "site" / "data.json"
+API = "https://www.law.go.kr/DRF/"
+HEADERS = {"User-Agent": "PolicyDomino/2.0 (public legal data research)"}
+VALID = ("개정", "제정", "폐지", "정정")
+MAX_PER_SOURCE = int(os.getenv("PD_LIST_LIMIT", "160"))
+MAX_DETAILS = int(os.getenv("PD_DETAIL_LIMIT", "24"))
+MAX_REFERENCES = int(os.getenv("PD_REFERENCE_LIMIT", "5"))
+DOMAINS = (
+    ("금액·산식", ("금액", "산정", "기준액", "요율", "수수료", "급여", "보조금", "단가", "비율", "부담금")),
+    ("자격·대상", ("대상자", "자격", "선정기준", "소득", "연령", "요건", "해당하는 사람")),
+    ("접수·서류", ("신청", "제출", "첨부", "증빙", "구비", "서식", "별지")),
+    ("기한·시행", ("기간", "기한", "이내", "시행일", "유예", "경과조치")),
+    ("인허가·심사", ("허가", "신고", "심사", "등록", "승인", "검사")),
+    ("의무·제재", ("준수", "의무", "금지", "과태료", "제재", "점검", "감독")),
+    ("조직·인력", ("정원", "직제", "직급", "사무분장", "하부조직", "직렬")),
+)
+ACTORS = (
+    "시장·군수·구청장", "시장ㆍ군수ㆍ구청장", "특별자치시장",
+    "시·도지사", "시ㆍ도지사", "교육감", "국민건강보험공단",
+    "한국장학재단", "근로복지공단", "시장", "군수", "구청장",
+)
+REFERENCE_RE = re.compile(r"「([^」]{2,100})」")
+FIGURE_RE = re.compile(r"(?<!\d)\d{1,3}(?:,\d{3})*(?:\.\d+)?\s*(?:원|만원|퍼센트|%|세|일|개월|년)(?![가-힣])")
+PHRASE_RE = re.compile(r"([가-힣][가-힣 ]{2,24}(?:기준|요율|금액|수수료|선정기준|단가))")
+RELEVANT_TEXT = re.compile(r"개정|제정|폐지|신설|변경|조정|지급|신청|기준|자격|의무|정원|기한|허가|산정")
+
+def stamp():
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+def uid(*values):
+    return hashlib.sha256("|".join(map(str, values)).encode("utf-8")).hexdigest()[:20]
+
+def normalize(value):
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", str(value or "")))).strip()
+
+def ymd(value):
+    digits = re.sub(r"\D", "", str(value or ""))
+    if len(digits) != 8:
+        return ""
+    try:
+        return dt.datetime.strptime(digits, "%Y%m%d").strftime("%Y-%m-%d")
+    except ValueError:
+        return ""
+
+def field(node, name):
+    item = next((x for x in node.iter() if x.tag.split("}")[-1] == name), None)
+    return normalize("".join(item.itertext())) if item is not None else ""
+
+def read_state():
+    try:
+        return json.loads(STATE.read_text("utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"events": {}, "snapshots": {}, "cursor": {"law": 0, "admrul": 0}}
+
+def request(target, endpoint="lawSearch.do", **kwargs):
+    oc = os.getenv("LAW_OC", "").strip()
+    if not oc:
+        raise RuntimeError("LAW_OC 인증값이 없어서 공식 API 수집을 실행하지 못했습니다.")
+    query = urllib.parse.urlencode({"OC": oc, "target": target, "type": "XML", **kwargs})
+    url = API + endpoint + "?" + query
+    req = urllib.request.Request(url, headers=HEADERS)
+    last = None
+    for trial in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=22) as response:
+                raw = response.read(4_000_000)
+            root = ET.fromstring(raw)
+            if root.tag.lower() in ("html", "error") or "오류" in root.tag:
+                raise ValueError("공식 API 응답 오류")
+            return root
+        except (OSError, ET.ParseError, ValueError) as exc:
+            last = exc
+            if trial < 2:
+                time.sleep(trial + 1)
+    raise RuntimeError(f"{target} 공식 API 조회 실패: {type(last).__name__}: {str(last)[:110]}")
+
+def row_of(node, target):
+    if target == "law":
+        title = field(node, "법령명한글")
+        stable = field(node, "법령ID")
+        serial = field(node, "법령일련번호")
+        published = field(node, "공포일자")
+        number = field(node, "공포번호")
+        kind = field(node, "법령구분명") or "법령"
+    else:
+        title = field(node, "행정규칙명")
+        stable = field(node, "행정규칙ID")
+        serial = field(node, "행정규칙일련번호")
+        published = field(node, "발령일자")
+        number = field(node, "발령번호")
+        kind = field(node, "행정규칙종류") or "행정규칙"
+    if not (title and stable and serial and ymd(published)):
+        return None
+    revision = field(node, "제개정구분명")
+    return {
+        "source": target, "stable_id": stable, "serial": serial, "title": title,
+        "published_at": ymd(published), "effective_date": ymd(field(node, "시행일자")),
+        "number": number, "revision": revision, "kind": kind,
+        "ministry": field(node, "소관부처명"),
+        "url": ("https://www.law.go.kr/법령/" if target == "law"
+                else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
+    }
+
+def list_source(target, limit=MAX_PER_SOURCE):
+    collected = []
+    pages = max(1, (limit + 99) // 100)
+    for page in range(1, pages + 1):
+        # nw=1,2 includes current and historical administrative-rule versions.
+        options = {"sort": "ddes", "display": 100, "page": page}
+        if target == "admrul":
+            options["nw"] = "1,2"
+        root = request(target, **options)
+        nodes = [node for node in root.iter() if node.tag.split("}")[-1].lower() == target]
+        if not nodes:
+            if page == 1:
+                raise RuntimeError(f"{target} 목록 응답에 레코드가 없습니다. 빈 결과를 '변경 없음'으로 처리하지 않습니다.")
+            break
+        collected.extend(x for node in nodes if (x := row_of(node, target)))
+        if len(nodes) < 100:
+            break
+    distinct = {}
+    for entry in collected:
+        distinct.setdefault((entry["stable_id"], entry["serial"]), entry)
+    result = sorted(distinct.values(), key=lambda x: (x["published_at"], x["serial"]), reverse=True)
+    return result[:limit]
+
+def historical_predecessor(record, cached=None):
+    if cached and cached.get("serial") != record["serial"]:
+        if cached.get("published_at", "") <= record["published_at"] and cached.get("clauses"):
+            return {"record": cached, "clauses": cached["clauses"]}
+    if record["source"] == "law":
+        root = request("eflaw", LID=record["stable_id"], nw="1,2,3", sort="ddes", display=100)
+    else:
+        root = request("admrul", query=record["title"], nw="2", sort="ddes", display=100)
+    kinds = {"law": "law", "admrul": "admrul"}
+    records = [row_of(x, record["source"]) for x in root.iter()
+               if x.tag.split("}")[-1].lower() == kinds[record["source"]]]
+    records = [x for x in records if x and x["stable_id"] == record["stable_id"]
+               and x["serial"] != record["serial"]
+               and x["published_at"] <= record["published_at"]]
+    records.sort(key=lambda x: (x["published_at"], x["serial"]), reverse=True)
+    if not records:
+        return None
+    prior = records[0]
+    return {"record": prior, "clauses": read_clauses(prior)}
+
+def read_clauses(record):
+    opts = {"MST": record["serial"]} if record["source"] == "law" else {"ID": record["serial"]}
+    root = request(record["source"], endpoint="lawService.do", **opts)
+    items = {}
+    for node in root.iter():
+        tag = node.tag.split("}")[-1]
+        if tag == "조문단위":
+            num = field(node, "조문번호")
+            branch = field(node, "조문가지번호")
+            label = f"제{num}조" + (f"의{branch}" if branch not in ("", "0") else "")
+            if not num:
+                continue
+            pieces = [field(node, name) for name in ("조문내용", "항내용", "호내용", "목내용")]
+            pieces += [normalize("".join(x.itertext())) for x in node.iter()
+                       if x.tag.split("}")[-1] in ("항내용", "호내용", "목내용")]
+            txt = normalize(" ".join(x for x in pieces if x))
+            if txt:
+                items[label] = txt[:12000]
+        if tag in ("별표", "별표단위"):
+            number = field(node, "별표번호") or str(len(items) + 1)
+            text = field(node, "별표내용")
+            if text:
+                items["별표 " + number] = text[:12000]
+    if items:
+        return items
+    # Several administrative-rule responses expose a flat 조문내용 instead.
+    full = " ".join(normalize("".join(x.itertext())) for x in root.iter()
+                    if x.tag.split("}")[-1] == "조문내용")
+    if not full:
+        raise RuntimeError("공식 본문에서 조문을 추출하지 못했습니다.")
+    matches = list(re.finditer(r"제\s*\d+\s*조(?:의\s*\d+)?(?:\([^)]*\))?", full))
+    if matches:
+        for i, match in enumerate(matches[:150]):
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(full)
+            label = re.sub(r"\s+", "", match.group(0).split("(")[0])
+            items[label] = full[match.start():end][:12000]
+    else:
+        items["본문"] = full[:16000]
+    return items
+
+def compare(old, new, record):
+    changes = []
+    for label in sorted(set(old) | set(new)):
+        a, b = old.get(label, ""), new.get(label, "")
+        if a == b:
+            continue
+        kind = "신설" if not a else "삭제" if not b else "개정"
+        changes.append({
+            "id": uid(record["source"], record["stable_id"], record["serial"], label),
+            "article": label, "type": kind, "before": a, "after": b,
+            "source_url": record["url"], "verified": True,
+            "numbers_before": FIGURE_RE.findall(a)[:20], "numbers_after": FIGURE_RE.findall(b)[:20],
+        })
+    return changes[:70]
+
+def changed_domains(change):
+    delta = change["after"] + " " + change["before"]
+    return [label for label, keys in DOMAINS if any(word in delta for word in keys)]
+
+def actors(text):
+    names = []
+    for actor in ACTORS:
+        if actor in text and not any(actor in other for other in names):
+            names.append(actor)
+    return names[:6]
+
+def action_records(event):
+    output = []
+    for diff in event["changes"]:
+        domains = changed_domains(diff)
+        if not domains:
+            continue
+        before, after = diff["before"], diff["after"]
+        # Named actor from actual changed legal text is stronger than the promulgating ministry.
+        named = actors(after + " " + before)
+        agency_names = named if named else [event["ministry"]] if event["ministry"] else []
+        for agency in agency_names:
+            for domain in domains[:3]:
+                output.append({
+                    "id": uid(event["id"], diff["article"], agency, domain),
+                    "event_id": event["id"], "agency": agency,
+                    "agency_role": "변경 조문에 명시된 업무주체" if named else "소관부처(집행기관 추가 확인)",
+                    "work": domain, "article": diff["article"], "status": "영향 검토 필요",
+                    "required_change": f"{diff['article']}의 {domain} 변경사항이 해당 기관의 실제 업무기준에 적용되는지 대조·확인",
+                    "before": before[:1600], "after": after[:1600],
+                    "basis": diff["source_url"], "target_verified": False,
+                    "verification_note": "기관 내부 시스템이나 조치 완료 여부를 확인한 결과가 아닙니다.",
+                })
+    return output[:160]
+
+def reference_names(text):
+    return sorted(set(normalize(x) for x in REFERENCE_RE.findall(text) if len(x) <= 80))
+
+def potential_terms(event):
+    terms = [event["title"]]
+    title = re.sub(r"(?:19|20)\d{2}\s*(?:년도|년)?", "", event["title"]).strip(" ·-")
+    if len(title) > 5 and title != event["title"]:
+        terms.append(title)
+    for change in event["changes"][:5]:
+        txt = change["after"]
+        terms.extend(x.strip() for x in PHRASE_RE.findall(txt) if 5 <= len(x.strip()) <= 28)
+    unique = []
+    for t in terms:
+        if t not in unique and 4 <= len(t) <= 80:
+            unique.append(t)
+    return unique[:3]
+
+def link_relations(events):
+    by_title = {e["title"]: e for e in events if e.get("title")}
+    for e in events:
+        e["upstream_changes"] = []
+        e["downstream_changes"] = []
+    edges = set()
+    # An actual official citation is required. Similarity, shared dates, and numbers alone do not prove causation.
+    for child in events:
+        corpus = " ".join(c["after"] for c in child.get("changes", []))
+        for name in reference_names(corpus):
+            parent = by_title.get(name)
+            if parent is None or parent["id"] == child["id"]:
+                continue
+            relation = (parent["id"], child["id"])
+            if relation in edges:
+                continue
+            edges.add(relation)
+            basis = f"변경 조문에서 「{name}」을 명시적으로 인용"
+            parent["downstream_changes"].append({"event_id": child["id"], "title": child["title"], "evidence": basis})
+            child["upstream_changes"].append({"event_id": parent["id"], "title": parent["title"], "evidence": basis})
+    return len(edges)
+
+def add_reference_hits(event, search_quota=MAX_REFERENCES):
+    """Search across the *entire* official administrative-rule corpus for possible users
+    of a changed standard, not just documents pre-enrolled in configuration.
+    Every hit is a candidate until its actual text is verified.
+    """
+    hits = []
+    errors = []
+    queries = potential_terms(event)
+    for term in queries[:search_quota]:
+        for kind in ("admrul", "law"):
+            try:
+                root = request(kind, search=2, query=term, display=30, page=1)
+                nodes = [n for n in root.iter() if n.tag.split("}")[-1].lower() == kind]
+                for node in nodes:
+                    item = row_of(node, kind)
+                    if not item or (item["source"] == event["source"] and item["stable_id"] == event["stable_id"]):
+                        continue
+                    identifier = uid(item["source"], item["stable_id"])
+                    if identifier in {x["id"] for x in hits}:
+                        continue
+                    hits.append({"id": identifier, "title": item["title"], "source": kind,
+                                 "ministry": item["ministry"], "url": item["url"],
+                                 "matched_term": term,
+                                 "status": "공식 본문 검색 후보 · 인용/산식 미확인"})
+            except Exception as exc:
+                errors.append({"source": kind, "term": term, "error": str(exc)[:100]})
+    return hits[:65], errors
+
+def make_event(record, changes, comparison, checked_at):
+    return {
+        "id": uid(record["source"], record["stable_id"], record["serial"]),
+        "source": record["source"], "stable_id": record["stable_id"], "serial": record["serial"],
+        "title": record["title"], "ministry": record["ministry"], "kind": record["kind"],
+        "revision": record["revision"], "number": record["number"],
+        "promulgated_at": record["published_at"], "effective_date": record["effective_date"],
+        "url": record["url"], "comparison_status": comparison,
+        "changes": changes, "change_count": len(changes), "verified_at": checked_at,
+        "reference_candidates": [], "upstream_changes": [], "downstream_changes": [],
+    }
+
+def run():
+    stamp_now = stamp()
+    state = read_state()
+    cache = state.get("snapshots", {})
+    records = state.get("events", {})
+    cursor = state.get("cursor", {"law": 0, "admrul": 0})
+    health = {"sources": {}, "partial": False, "errors": [], "verified_compared": 0,
+              "not_compared": 0, "candidate_relations": 0, "confirmed_relations": 0,
+              "collect_at": stamp_now, "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음"}
+    all_list = {}
+    for target in ("law", "admrul"):
+        try:
+            listed = list_source(target)
+            all_list[target] = listed
+            health["sources"][target] = {"status": "정상", "listed": len(listed)}
+            if len(listed) >= MAX_PER_SOURCE:
+                health["partial"] = True
+        except Exception as exc:
+            all_list[target] = []
+            health["sources"][target] = {"status": "실패", "listed": 0, "error": str(exc)[:250]}
+            health["errors"].append({"source": target, "error": str(exc)[:200]})
+    if not any(all_list.values()):
+        if not records:
+            raise RuntimeError("법령·행정규칙 공식 수집 모두 실패: " + "; ".join(x["error"] for x in health["errors"]))
+    # Round-robin across both source types. History and cached items are separate.
+    quota_each = max(1, MAX_DETAILS // 2)
+    new_count = 0
+    examined = []
+    for target, listed in all_list.items():
+        if not listed:
+            continue
+        start = cursor.get(target, 0) % len(listed)
+        rotate = listed[start:] + listed[:start]
+        fresh = [r for r in listed if uid(target, r["stable_id"], r["serial"]) not in records]
+        selection = (fresh[:quota_each] + rotate)[:quota_each]
+        for record in selection:
+            eid = uid(target, record["stable_id"], record["serial"])
+            if eid in {x["id"] for x in examined}:
+                continue
+            examined.append({"id": eid, "record": record})
+        cursor[target] = (start + quota_each) % len(listed)
+    for item in examined:
+        record = item["record"]
+        eid = item["id"]
+        stable = uid(record["source"], record["stable_id"])
+        if eid in records and records[eid].get("comparison_status") == "신구 본문 비교 완료":
+            continue
+        try:
+            latest = read_clauses(record)
+            cached = cache.get(stable)
+            history = historical_predecessor(record, cached)
+            if history:
+                changes = compare(history["clauses"], latest, record)
+                status = "신구 본문 비교 완료"
+                health["verified_compared"] += 1
+            else:
+                changes, status = [], "이전 연혁 본문 미확보"
+                health["not_compared"] += 1
+            e = make_event(record, changes, status, stamp_now)
+            records[eid] = e
+            cache[stable] = {"serial": record["serial"], "published_at": record["published_at"],
+                             "clauses": latest, "verified_at": stamp_now}
+            new_count += 1
+        except Exception as exc:
+            health["errors"].append({"source": record["source"], "title": record["title"], "error": str(exc)[:160]})
+    events = sorted(records.values(), key=lambda e: (e.get("promulgated_at", ""), e["id"]), reverse=True)[:500]
+    health["confirmed_relations"] = link_relations(events)
+    # A bounded reverse look-up adds candidate matches without incorrectly declaring a domino.
+    for event in (e for e in events if e.get("verified_at") == stamp_now and e.get("changes")):
+        if health["candidate_relations"] >= 40:
+            break
+        matches, errors = add_reference_hits(event, search_quota=1)
+        event["reference_candidates"] = matches
+        health["candidate_relations"] += len(matches)
+        health["errors"].extend(errors)
+        if health["candidate_relations"] >= 40:
+            health["partial"] = True
+    # The event is a verified document revision only if a real before/after comparison succeeded.
+    actions = [a for e in events if e.get("comparison_status") == "신구 본문 비교 완료"
+               for a in action_records(e)]
+    data = {
+        "schema": "policy-domino-v2", "generated_at": stamp_now,
+        "health": {**health, "newly_examined": new_count, "events": len(events),
+                   "actions": len(actions),
+                   "status": "부분 수집" if health["errors"] or health["partial"] else "정상"},
+        "events": events, "actions": actions,
+        "method": "모든 변경과 공식 인용을 탐색하되 검증되지 않은 연관·기관 시스템을 사실로 표시하지 않음",
+    }
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(json.dumps({"events": {e["id"]: e for e in events}, "snapshots": cache,
+                                 "cursor": cursor}, ensure_ascii=False, indent=2), "utf-8")
+    OUTPUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), "utf-8")
+    print(json.dumps({"newly_examined": new_count, "sources": health["sources"],
+                      "compared": health["verified_compared"], "errors": len(health["errors"])}, ensure_ascii=False))
+    return data
+
+if __name__ == "__main__":
+    run()

@@ -282,8 +282,8 @@ def link_relations(events):
     edges = set()
     # An actual official citation is required. Similarity, shared dates, and numbers alone do not prove causation.
     for child in events:
-        corpus = " ".join(c["after"] for c in child.get("changes", []))
-        for name in reference_names(corpus):
+        names = child.get("citations") or reference_names(" ".join(c["after"] for c in child.get("changes", [])))
+        for name in names:
             parent = by_title.get(name)
             if parent is None or parent["id"] == child["id"]:
                 continue
@@ -291,7 +291,7 @@ def link_relations(events):
             if relation in edges:
                 continue
             edges.add(relation)
-            basis = f"변경 조문에서 「{name}」을 명시적으로 인용"
+            basis = f"공식 본문에서 「{name}」을 명시적으로 인용 (변경의 원인 여부는 별도 검토)"
             parent["downstream_changes"].append({"event_id": child["id"], "title": child["title"], "evidence": basis})
             child["upstream_changes"].append({"event_id": parent["id"], "title": parent["title"], "evidence": basis})
     return len(edges)
@@ -324,7 +324,7 @@ def add_reference_hits(event, search_quota=MAX_REFERENCES):
                 errors.append({"source": kind, "term": term, "error": str(exc)[:100]})
     return hits[:65], errors
 
-def make_event(record, changes, comparison, checked_at):
+def make_event(record, changes, comparison, checked_at, citations=None):
     return {
         "id": uid(record["source"], record["stable_id"], record["serial"]),
         "source": record["source"], "stable_id": record["stable_id"], "serial": record["serial"],
@@ -333,7 +333,7 @@ def make_event(record, changes, comparison, checked_at):
         "promulgated_at": record["published_at"], "effective_date": record["effective_date"],
         "url": record["url"], "comparison_status": comparison,
         "changes": changes, "change_count": len(changes), "verified_at": checked_at,
-        "reference_candidates": [], "upstream_changes": [], "downstream_changes": [],
+        "reference_candidates": [], "citations": citations or [], "upstream_changes": [], "downstream_changes": [],
     }
 
 def run():
@@ -394,7 +394,8 @@ def run():
             else:
                 changes, status = [], "이전 연혁 본문 미확보"
                 health["not_compared"] += 1
-            e = make_event(record, changes, status, stamp_now)
+            e = make_event(record, changes, status, stamp_now,
+                           citations=reference_names(" ".join(latest.values())))
             records[eid] = e
             cache[stable] = {"serial": record["serial"], "published_at": record["published_at"],
                              "clauses": latest, "verified_at": stamp_now}

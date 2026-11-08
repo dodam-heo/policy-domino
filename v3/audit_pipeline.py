@@ -37,3 +37,11 @@ for source in ("law","admrul"):
  print("AUDIT_PRIORITY_"+source.upper(),json.dumps([
   {"title":x["title"],"date":x["published_at"],"effective":x.get("effective_date")} for x in chosen],ensure_ascii=False))
 print("AUDIT_FUTURE_QUEUE",sum(x.get("effective_date","")>today.isoformat() for x in pending))
+
+from v2.collector import select_pending, priority_score, uid
+pmap={uid(x["source"],x["stable_id"],x["serial"]):x for x in pending}
+for kind in ("law","admrul"):
+ rows=select_pending(pmap,kind,12,dt.date(2026,11,8))
+ print("AUDIT_NEW_SELECTION_"+kind.upper(),json.dumps([
+ {"name":r["title"],"score":priority_score(r,dt.date(2026,11,8)),"date":r["published_at"]}
+ for _,r in rows],ensure_ascii=False))

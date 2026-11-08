@@ -7,7 +7,7 @@ an issuer's identity.
 """
 from __future__ import annotations
 import re
-from v3 import impact
+from v3 import impact,semantic_diff
 
 ACTOR = re.compile(
     r"(?<![가-힣])("
@@ -127,33 +127,71 @@ def rebuild_event(event):
         # Other changes to a law titled "직제" (duties, department creation,
         # delegation) must still use ordinary same-clause evidentiary rules.
         # Never classify them as non-events just because no headcount changed.
-    # In a general rule, an issuer/owner is not automatically the executing
-    # organization. The subject and the duty must be in the actual changed
-    # obligation, not just another article or a search snippet.
-    by_article={}
-    for effect in event.get("effects",[]):
-        by_article.setdefault(effect.get("article"),[]).append(effect)
-    actions=[]
-    seen=set()
-    for ch in event.get("changes",[]):
-        for effect in by_article.get(ch.get("article"),[])[:12]:
-            for a in action_for_change(event,ch,effect):
-                key=(a["agency"],a["article"],a["work"],a["what_to_change"])
-                if key not in seen:
-                    seen.add(key);actions.append(a)
-                if len(actions)>=32:break
-            if len(actions)>=32:break
-        if len(actions)>=32:break
+    # Only full corresponding source statements may generate operational
+    # effects. The legacy word-level SequenceMatcher remains available for
+    # the separate, explicitly verified organization staffing table parser.
+    event["effects"]=semantic_diff.evidence_effects(event,impact.OPERATIONS)
+    grouped={}
+    for effect in event["effects"]:
+        new_sentence=effect.get("new","")
+        if not new_sentence:
+            # A deletion of an old obligation does not create a NEW duty for
+            # that former actor; report it as an official source change only.
+            continue
+        # An agency is an executor only if the same actual changed statement
+        # assigns it a duty. Do not mine entire chapters or neighbouring text.
+        for match in ACTOR.finditer(new_sentence):
+            name=match.group(1)
+            tail=new_sentence[match.end():]
+            duty=DUTY.search(tail)
+            if not duty or duty.start()>230:
+                continue
+            work=(effect.get("operations") or ["업무 운영 기준"])[0]
+            article=effect["article"]
+            key=(name,article,work)
+            pair={"before":effect.get("old",""),
+                  "after":effect["new"],"article":article,
+                  "confidence":effect.get("match_confidence","")}
+            if key not in grouped:
+                grouped[key]={
+                    "agency":name,"article":article,"work":work,
+                    "target_location":article+" · 변경된 업무 의무",
+                    "what_to_change":article+"의 "+work+" 관련 문장이 변경됨",
+                    "required_change":(
+                        article+"에 명시된 "+name+"의 변경된 업무 의무를 "
+                        "기존 운영 기준과 대조하여 실제 반영 필요 여부를 확인"
+                    ),
+                    "change_pairs":[],
+                    "evidence_type":"변경된 동일 조문 내 업무주체·의무문 확인",
+                    "source_url":effect["source_url"],
+                    "verified_location":False,
+                    "actual_system_verified":False,
+                    "status":"법정 업무주체 확인 · 내부 반영 여부 미확인"
+                }
+            existing=grouped[key]["change_pairs"]
+            if not any(x["before"]==pair["before"] and x["after"]==pair["after"]
+                       for x in existing) and len(existing)<3:
+                existing.append(pair)
+    actions=list(grouped.values())[:32]
     event["institution_actions"]=actions
-    event["analysis_quality"]=(
-        "동일 변경 조문에서 업무주체와 의무 확인" if actions else
-        "공식 변경 확인 · 집행기관 직접 연결 미검증"
-    )
-    event["impact_summary"]=(
-        "변경된 조문은 확인했지만, 특정 기관의 업무를 바꾸어야 한다는 "
-        "직접 근거는 아직 확인되지 않았습니다."
-        if not actions else actions[0]["what_to_change"]
-    )
+    if actions:
+        event["analysis_quality"]="변경 전후 전체 문장과 조문 내 집행기관 의무 확인"
+        event["impact_summary"]=(
+            f"{len({a['agency'] for a in actions})}개 기관의 "
+            f"{len(actions)}개 조문·업무 항목에서 문장 단위 변경 확인"
+        )
+    else:
+        event["analysis_quality"]=(
+            "문장 단위 변경은 확인했으나 기관별 의무 직접 연결 미검증"
+            if event["effects"] else "원문 조문 변경은 확인했으나 문장 대응관계 미검증"
+        )
+        event["impact_summary"]=(
+            "공식 신구 조문이 변경되었지만 서로 대응하는 완전한 업무 문장과 "
+            "기관별 반영 의무는 확인되지 않았습니다. 원문 대조가 필요합니다."
+            if not event["effects"] else
+            "공식 변경 문장은 확인했으나 특정 기관이 해당 변경을 실제 운영에 "
+            "반영해야 한다는 직접 근거는 아직 확인되지 않았습니다."
+        )
     return event
 
 def apply_all(model):

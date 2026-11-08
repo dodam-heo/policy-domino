@@ -2,7 +2,7 @@ name: Audit pipeline coverage and policy visibility
 on:
   push:
     branches: [fix/policy-discovery-priority-20261108]
-    paths: ['v2/collector.py','v3/audit_pipeline.py','v3/probe_annual.py','.github/workflows/audit-discovery.yml']
+    paths: ['v2/**','v3/**','site/**','.github/workflows/audit-discovery.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,6 +13,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
+      - name: Unit tests on generalized source, impact, dependencies and agency UI
+        run: |
+          python -m compileall -q v2 v3
+          python -m unittest discover -s v2 -p 'test_*.py' -v
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+          node site/test_adapter.cjs
       - name: Audit collected annual changes and dashboard omissions
         run: python -m v3.audit_pipeline
       - name: Probe actual official annual rules and baseline comparisons

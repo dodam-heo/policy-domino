@@ -4,6 +4,7 @@ on:
     branches: [fix/source-and-causal-integrity-20261108]
     paths:
       - 'v4/**'
+      - 'site/v4/**'
       - '.github/workflows/check-v4.yml'
   workflow_dispatch:
 permissions:
@@ -21,3 +22,7 @@ jobs:
         run: |
           python -m compileall -q v4
           python -m unittest discover -s v4 -p 'test_*.py' -v
+      - name: Build real source-backed preview from staged official data
+        run: |
+          python -m v4.stage_refresh
+          node site/v4/test_ui.cjs

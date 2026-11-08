@@ -1,0 +1,92 @@
+{
+  "completed_at": "2026-11-08T07:26:33.777149+00:00",
+  "schema": "policy-domino-impact-v3",
+  "source_health": {
+    "sources": {
+      "law:최근": {
+        "status": "정상",
+        "listed": 98,
+        "range": "2026-10-25~2026-11-08"
+      },
+      "law:과거 이력": {
+        "status": "정상",
+        "listed": 79,
+        "range": "2026-08-30~2026-09-13"
+      },
+      "law:연도별 선제 탐색": {
+        "status": "정상",
+        "listed": 0,
+        "year": 2027
+      },
+      "law": {
+        "status": "정상",
+        "listed": 177
+      },
+      "admrul:최근": {
+        "status": "정상",
+        "listed": 160,
+        "range": "2026-10-25~2026-11-08"
+      },
+      "admrul:과거 이력": {
+        "status": "정상",
+        "listed": 160,
+        "range": "2026-08-30~2026-09-13"
+      },
+      "admrul:연도별 선제 탐색": {
+        "status": "정상",
+        "listed": 142,
+        "year": 2027
+      },
+      "admrul": {
+        "status": "정상",
+        "listed": 460
+      }
+    },
+    "partial": true,
+    "errors": [
+      {
+        "source": "law",
+        "title": "교육부와 그 소속기관 직제",
+        "error": "eflaw 공식 API 조회 실패: URLError: <urlopen error timed out>"
+      },
+      {
+        "source": "law",
+        "title": "대기환경보전법 시행규칙",
+        "error": "law 공식 API 조회 실패: URLError: <urlopen error timed out>"
+      },
+      {
+        "source": "admrul",
+        "title": "비행절차설계요령",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      },
+      {
+        "source": "admrul",
+        "title": "지방자치단체 입찰 및 계약집행기준",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      }
+    ],
+    "verified_compared": 20,
+    "not_compared": 0,
+    "candidate_relations": 60,
+    "confirmed_relations": 20,
+    "collect_at": "2026-11-08T07:10:44+00:00",
+    "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
+    "pending_details": 1362,
+    "newly_examined": 20,
+    "events": 87,
+    "actions": 311,
+    "status": "부분 수집"
+  },
+  "impact_health": {
+    "events": 87,
+    "verified_documents": 81,
+    "substantive_policy_events": 8,
+    "direct_actor_actions": 12,
+    "agency_owners_to_verify": 55,
+    "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
+    "dependent_rules_checked": 14,
+    "dependent_rules_found": 0,
+    "dependency_errors": [],
+    "dependency_actors_to_review": 0
+  }
+}

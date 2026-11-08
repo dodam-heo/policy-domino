@@ -67,7 +67,7 @@ footer{text-align:center;color:#83919d;font-size:12px;padding:25px}
 <h1>정책 변화에서 기관별 영향까지</h1>
 <p class="muted">공식적으로 바뀐 조문부터 확인합니다. 같은 법 이름이 등장한다는 이유만으로 다른 제도나 기관에 변경 의무를 부여하지 않습니다.</p></div>
 <div class="notice" id="status">공식 변경이력과 근거를 확인하고 있습니다.</div>
-<div class="stats"><div class="metric"><small>공식 변경 사건 목록</small><strong id="count">—</strong></div><div class="metric"><small>신구 본문 확인</small><strong id="verified">—</strong></div><div class="metric"><small>실제 규정 적용 관계</small><strong id="linked">—</strong></div></div>
+<div class="stats"><div class="metric"><small>변경 자료 검토 대상</small><strong id="count">—</strong></div><div class="metric"><small>상세 분석 진행</small><strong id="verified">—</strong></div><div class="metric"><small>실제 규정 적용 관계</small><strong id="linked">—</strong></div></div>
 <div class="layout" id="layout">
  <div class="controls"><div class="tabs">
  <button class="tab active" data-filter="impact">근거 확인된 변경</button>
@@ -189,11 +189,11 @@ async function load(){
   $("#verified").textContent=(health.detailed_checked||0).toLocaleString("ko-KR");
   $("#linked").textContent=(flags.confirmed_provision_or_formula_use||0).toLocaleString("ko-KR");
   $("#status").innerHTML="<strong>공식 변경 사건 수집 진행 중</strong> · "+
-    ESC((health.official_catalogue||0).toLocaleString("ko-KR"))+"건의 공식 변경 목록 중 "+
+    ESC((health.official_catalogue||0).toLocaleString("ko-KR"))+"건의 수집·기존 후보 자료 중 "+
     ESC((health.detailed_checked||0).toLocaleString("ko-KR"))+
     "건의 본문 분석을 진행했습니다. 상세 분석 대기 "+
     ESC((health.pending_details||0).toLocaleString("ko-KR"))+
-    "건, 수집 미완료 기간 "+ESC(health.incomplete_windows||0)+
+    "건, 신규 공식 색인 확인 "+ESC((health.fresh_official_index||0).toLocaleString("ko-KR"))+"건, 수집 미완료 기간 "+ESC(health.incomplete_windows||0)+
     "건. 전체 수집 완료로 표시하지 않습니다. 마지막 확인 "+
     ESC(date(DATA.generated_at?.slice(0,10)))+".";
   render();

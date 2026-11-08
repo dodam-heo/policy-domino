@@ -18,3 +18,20 @@ jobs:
         run: |
           python -m compileall -q v2 v3
           python -m unittest discover -s v3 -p "test_*.py" -v
+      - name: Check rebuilt engine against real collected official records
+        env:
+          PD_USE_EXISTING_RAW: "1"
+          PD_SKIP_REMOTE_DEPENDENCIES: "1"
+        run: |
+          python -m v3.runner
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("site/data.json").read_text("utf-8"))
+          h=d["impact_health"]
+          print(json.dumps(h,ensure_ascii=False,indent=2))
+          assert d["schema"]=="policy-domino-impact-v3"
+          assert h["verified_documents"]>0
+          assert h["substantive_policy_events"]>0
+          assert h["direct_actor_actions"]>0
+          PY

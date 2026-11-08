@@ -126,10 +126,10 @@ def list_source(target, limit=MAX_PER_SOURCE):
     collected = []
     pages = max(1, (limit + 99) // 100)
     for page in range(1, pages + 1):
-        # nw=1,2 includes current and historical administrative-rule versions.
+        # Administrative rules document nw=1 current and nw=2 history separately.
         options = {"sort": "ddes", "display": 100, "page": page}
         if target == "admrul":
-            options["nw"] = "1,2"
+            options["nw"] = "2"
         root = request(target, **options)
         nodes = [node for node in root.iter() if node.tag.split("}")[-1].lower() == target]
         if not nodes:

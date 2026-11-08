@@ -55,9 +55,10 @@ class DependencyTests(unittest.TestCase):
             cache,stats=d.discover([p],maximum=2)
         self.assertEqual(stats["checked"],1)
         self.assertEqual(stats["verified_dependents"],1)
-        d.add_dependency_agencies([p])
-        self.assertEqual(p["dependency_actions"][0]["agency"],"가상시청")
-        self.assertFalse(p["dependency_actions"][0]["actual_system_verified"])
+        n=d.add_dependency_agencies([p])
+        self.assertEqual(n,1)
+        self.assertFalse(p.get("dependency_actions",[]))
+        self.assertEqual(p["dependency_review_candidates"][0]["ministry"],"가상시청")
 
     def test_official_link_is_relation_not_system_status(self):
         p=policy("law")

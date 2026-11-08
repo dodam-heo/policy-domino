@@ -8,7 +8,7 @@ from __future__ import annotations
 import datetime as dt,json,os,re
 from pathlib import Path
 from v2 import collector as api
-from v4 import collect_index,events,relationships,official_links
+from v4 import collect_index,events,relationships,official_links,dependents
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/"data"/"v4_state.json"
@@ -139,6 +139,19 @@ def output_groups(state):
         [e for e in verified if e.get("changed_articles") and
          e.get("verification")=="verified_changed_clauses"],
         docs,snapshots)
+    # Independently queried official downstream documents may not themselves
+    # be recently revised. Include only those whose actual text was reread
+    # and passed the same provision/formula proof.
+    confirmed=list(state.get("confirmed_dependencies",{}).values())
+    edges=graph["impacts"]+confirmed
+    seen=set();valid=[]
+    for edge in edges:
+        key=(edge["source_event"],edge.get("target_serial",edge["target_document"]),
+             edge.get("source_article"),edge.get("target_article"),edge["type"])
+        if key not in seen and edge.get("affected_verified"):
+            seen.add(key);valid.append(edge)
+    graph["impacts"]=valid
+    graph["statistics"]["actual_dependencies"]=len(valid)
     groups=events.cluster_promulgations(all_events)
     delegated=state.get("delegation_links",{})
     downstream_by_source={}
@@ -202,6 +215,8 @@ def build(state,today):
                 for x in state["catalog"].values()),
             "detailed_checked":len(state["inspected"]),
             "pending_details":max(0,len(state["catalog"])-len(state["inspected"])),
+            "pending_downstream_verification":len(state.get("dependent_queue",{})),
+            "downstream_documents_checked":len(state.get("dependent_checked",{})),
             "windows_checked":len(coverage),
             "incomplete_windows":len(incomplete),
             "recent_incomplete":incomplete[-8:],
@@ -260,6 +275,15 @@ def run():
         except Exception as exc:
             state.setdefault("errors",[]).append({"source":"lsDelegated",
                 "title":event["title"],"error":type(exc).__name__+": "+str(exc)[:140]})
+    if os.getenv("PD_V4_SKIP_DEPENDENTS")!="1":
+        try:
+            dstatus=dependents.search_and_process(state,read_document,
+                max_parents=int(os.getenv("PD_V4_SEARCH_PARENTS","2")),
+                max_docs=int(os.getenv("PD_V4_VERIFY_DEPENDENTS","12")))
+            state["dependent_last_status"]=dstatus
+        except Exception as exc:
+            state.setdefault("errors",[]).append({"source":"downstream",
+                "error":type(exc).__name__+": "+str(exc)[:150]})
     data=build(state,today)
     save_json(STATE,state)
     save_json(OUTPUT,data)

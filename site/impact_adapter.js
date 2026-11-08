@@ -7,8 +7,9 @@
   const first = (...values) => values.find(v => text(v)) ?? "";
   const unique = items => [...new Set(items.filter(Boolean))];
   const operational = e =>
-    ["제도·업무 변경","조직개편·업무이관"].includes(e.impact_category) &&
-    Array.isArray(e.effects) && e.effects.length > 0;
+    (["제도·업무 변경","조직개편·업무이관"].includes(e.impact_category) &&
+    Array.isArray(e.effects) && e.effects.length > 0) ||
+    (/연도별/.test(e.comparison_status || "") && (e.changes || []).length > 0);
 
   function changedValues(event, action) {
     const effects = Array.isArray(event.effects) ? event.effects : [];

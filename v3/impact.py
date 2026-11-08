@@ -361,10 +361,12 @@ def analyze(raw):
     verified=[e for e in events if e.get("comparison_status") in ("신구 본문 비교 완료","연도별 기준 비교 완료","연도별 고시 교체 확인·수치표 미검증")]
     operational=[e for e in verified if e["effects"] and e["impact_category"] in ("제도·업무 변경","조직개편·업무이관")]
     groups=group_events(events)
-    return {"schema":"policy-domino-impact-v3","generated_at":raw.get("generated_at",""),
+    model={"schema":"policy-domino-impact-v3","generated_at":raw.get("generated_at",""),
             "source_health":raw.get("health",{}),"events":events,"groups":groups,
             "impact_health":{"events":len(events),"verified_documents":len(verified),
                              "substantive_policy_events":len(operational),
                              "direct_actor_actions":action_count,
                              "agency_owners_to_verify":candidate_count,
                              "limitations":"특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음"}}
+    from v3 import evidence_gate
+    return evidence_gate.apply_all(model)

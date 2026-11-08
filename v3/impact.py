@@ -344,6 +344,12 @@ def analyze(raw):
     candidate_count=0
     for source in raw.get("events",[]):
         event=dict(source)
+        # Derived impact links from an older published run are not official
+        # source material. Never carry them forward when recalculating actions.
+        for stale in ("effects","institution_actions","agency_candidates",
+                      "dependency_actions","policy_links","upstream_policy_links",
+                      "dependent_rules","analysis_quality","priority","impact_category"):
+            event.pop(stale,None)
         identified=identify(event)
         event.update({"effects":identified["effects"],"institution_actions":identified["actions"],
                       "agency_candidates":identified["candidate_agencies"],

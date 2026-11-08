@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T07:26:33.777149+00:00",
+  "completed_at": "2026-11-08T07:50:18.863591+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 79,
-        "range": "2026-08-30~2026-09-13"
+        "listed": 150,
+        "range": "2026-08-16~2026-08-30"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -20,7 +20,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 177
+        "listed": 248
       },
       "admrul:최근": {
         "status": "정상",
@@ -30,7 +30,7 @@
       "admrul:과거 이력": {
         "status": "정상",
         "listed": 160,
-        "range": "2026-08-30~2026-09-13"
+        "range": "2026-08-16~2026-08-30"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -39,20 +39,15 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 460
+        "listed": 461
       }
     },
     "partial": true,
     "errors": [
       {
         "source": "law",
-        "title": "교육부와 그 소속기관 직제",
-        "error": "eflaw 공식 API 조회 실패: URLError: <urlopen error timed out>"
-      },
-      {
-        "source": "law",
         "title": "대기환경보전법 시행규칙",
-        "error": "law 공식 API 조회 실패: URLError: <urlopen error timed out>"
+        "error": "law 공식 API 조회 실패: ParseError: unclosed CDATA section: line 49093, column 43"
       },
       {
         "source": "admrul",
@@ -65,28 +60,35 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 20,
+    "verified_compared": 21,
     "not_compared": 0,
     "candidate_relations": 60,
-    "confirmed_relations": 20,
-    "collect_at": "2026-11-08T07:10:44+00:00",
+    "confirmed_relations": 25,
+    "collect_at": "2026-11-08T07:45:14+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 1362,
-    "newly_examined": 20,
-    "events": 87,
-    "actions": 311,
+    "pending_details": 1651,
+    "newly_examined": 21,
+    "events": 108,
+    "actions": 380,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 87,
-    "verified_documents": 81,
-    "substantive_policy_events": 8,
-    "direct_actor_actions": 12,
-    "agency_owners_to_verify": 55,
+    "events": 108,
+    "verified_documents": 102,
+    "substantive_policy_events": 18,
+    "direct_actor_actions": 171,
+    "agency_owners_to_verify": 73,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
+    "full_source_actor_actions": 158,
     "dependent_rules_checked": 14,
     "dependent_rules_found": 0,
-    "dependency_errors": [],
+    "dependency_errors": [
+      {
+        "policy": "감항성개선지시서 발행 및 관리 지침",
+        "target": "(서울지방항공청) 직무분류 운영지침",
+        "error": "RuntimeError admrul 공식 API 조회 실패: ParseError: partial character: line 60120, column 48"
+      }
+    ],
     "dependency_actors_to_review": 0
   }
 }

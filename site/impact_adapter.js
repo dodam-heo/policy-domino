@@ -1,0 +1,161 @@
+/* Policy Domino: presentation compatibility adapter.
+   Preserve original agency-first presentation while consuming verified, source-wide data.
+   No policy names, eligible sectors, amounts or derived thresholds are registered here. */
+(function (root) {
+  "use strict";
+  const text = value => String(value ?? "").trim();
+  const first = (...values) => values.find(v => text(v)) ?? "";
+  const unique = items => [...new Set(items.filter(Boolean))];
+  const operational = e =>
+    e.impact_category === "제도·업무 변경" &&
+    Array.isArray(e.effects) && e.effects.length > 0;
+
+  function changedValues(event, action) {
+    const effects = Array.isArray(event.effects) ? event.effects : [];
+    const article = text(action.article);
+    const work = text(action.work);
+    let matching = effects.filter(x =>
+      (!article || x.article === article) &&
+      (!work || (x.operations || []).includes(work)));
+    if (!matching.length && article) matching = effects.filter(x => x.article === article);
+    if (!matching.length && !article && effects.length === 1) matching = effects;
+    const pairs = matching.slice(0, 3).map(x => ({
+      before: first(x.old, "기존 해당 항목 없음"),
+      after: first(x.new, "삭제"),
+      article: text(x.article)
+    }));
+    if (!pairs.length && Array.isArray(action.changes))
+      return action.changes.slice(0, 3).map(x => ({
+        before: first(x.before, "미확인"), after: first(x.after, "미확인")
+      }));
+    return pairs;
+  }
+
+  function convertAction(e, a, evidenceType) {
+    const agency = first(a.agency, "기관 미확인");
+    const level = evidenceType === "direct" ? "변경 규정에 명시된 집행기관" :
+      evidenceType === "downstream" ? "공식 연관 규정에서 발견된 집행기관 검토" :
+      "공식 문서 소관기관 · 실제 집행기관 추가 조사";
+    const changes = changedValues(e, a);
+    const linkedEvidence = first(a.evidence_type, a.agency_role,
+      a.basis_excerpt, evidenceType === "direct" ? "공식 법령에 명시된 집행주체" :
+      "행정규정의 소관기관 또는 참조 문서");
+    const status = evidenceType === "candidate" ?
+      "집행기관 추가 조사" : "업무 반영 검토 필요";
+    return {
+      event_id: e.id, agency, agency_role: level, work: first(a.work, "업무 기준 변경"),
+      target_location: first(a.target_location, a.article, "업무 기준 적용 위치 확인"),
+      what_to_change: first(a.what_to_change, changes.map(x => x.before + " → " + x.after).join(" / ")),
+      required_change: first(a.required_change, "관련 업무에 변경 기준이 적용되는지 검토"),
+      changes,
+      status,
+      article: first(a.article, a.basis_article),
+      basis: first(a.source_url, a.basis, e.url),
+      law_title: e.title,
+      effective_date: e.effective_date,
+      impact_link_basis: linkedEvidence,
+      verification_note: first(a.verification_note,
+        evidenceType === "candidate" ?
+        "소관기관은 확인했지만 실제 집행기관·부서와 변경 조치 여부는 미확인입니다." :
+        "공식 변경·참조 근거는 확인했으나 기관별 내부 규정·시스템 반영 여부는 미확인입니다."),
+      status_evidence: "공식 자료에서 실제 조치 완료 여부 확인되지 않음",
+      evidence_type: evidenceType
+    };
+  }
+
+  function convertedEvent(e) {
+    const changes = Array.isArray(e.changes) ? e.changes : [];
+    const comparison = text(e.comparison_status);
+    const category = first(e.impact_category,
+      /직제|정원|승진|인사|조직/.test(e.title || "") ? "조직·내부운영" : "기타 변경");
+    const effect = Array.isArray(e.effects) ? e.effects.find(x => x.old || x.new) : null;
+    const summary = effect ?
+      [first(effect.old, "신설"), " → ", first(effect.new, "삭제")].join("") : "";
+    return {
+      ...e,
+      event_id: e.id,
+      change_type: first(e.revision, e.kind, "개정"),
+      law_type: first(e.kind, e.source === "admrul" ? "고시·행정규칙" : "법령"),
+      article_differences: changes.map(x => ({
+        article: x.article, type: x.type, before: x.before, after: x.after
+      })),
+      policy_profile: operational(e),
+      impact_category: category,
+      amendment_reason: first(e.amendment_reason, summary),
+      amendment_url: first(e.url),
+      comparison_status: comparison
+    };
+  }
+
+  function normalizeV3(d) {
+    const events = (d.events || []).map(convertedEvent);
+    const actions = [];
+    for (const e of d.events || []) {
+      const direct = e.institution_actions || [];
+      const downstream = e.dependency_actions || [];
+      const candidates = e.agency_candidates || [];
+      direct.forEach(a => actions.push(convertAction(e, a, "direct")));
+      downstream.forEach(a => actions.push(convertAction(e, a, "downstream")));
+      const confirmed = new Set(direct.concat(downstream).map(a => a.agency));
+      // Present an official document owner as an investigation candidate, not
+      // as another verified execution agency with the same name.
+      candidates.filter(a => !confirmed.has(a.agency))
+        .forEach(a => actions.push(convertAction(e, a, "candidate")));
+    }
+    return {
+      schema: "policy-domino-next-v1",
+      events, actions, generated_at: d.generated_at,
+      health: {
+        source_status: d.source_health?.status === "수집 실패" ? "수집 실패" : "공식 공포·개정문 연결",
+        compared: d.impact_health?.verified_documents || 0,
+        amendments_verified_total: d.impact_health?.verified_documents || 0,
+        official_links: d.impact_health?.dependent_rules_found || 0,
+        errors: d.source_health?.errors || []
+      }
+    };
+  }
+
+  function normalizeV2(d) {
+    const events = (d.events || []).map(e => ({
+      ...e, event_id: e.id, change_type: first(e.revision, e.kind, "개정"),
+      law_type: first(e.kind, e.source === "law" ? "법령" : "고시·행정규칙"),
+      article_differences: e.changes || [],
+      policy_profile: (e.changes || []).length > 0 &&
+        !/직제|정원|승진|인사|조직/.test(e.title || ""),
+      amendment_url: e.url
+    }));
+    const actions = (d.actions || []).map(a => {
+      const e = (d.events || []).find(item => item.id === a.event_id);
+      return {
+        ...a, event_id: a.event_id, agency_role: first(a.agency_role,
+          "공식 규정 소관 또는 변경 업무주체"),
+        status: "업무 반영 검토 필요",
+        law_title: e?.title || "",
+        basis: first(a.basis, e?.url),
+        changes: a.changes || (a.before || a.after ?
+          [{before: a.before || "미확인", after: a.after || "미확인"}] : []),
+        status_evidence: "실제 조치 완료 또는 미조치 확인 근거 없음"
+      };
+    });
+    return {
+      schema: "policy-domino-next-v1",
+      events, actions, generated_at: d.generated_at,
+      health: {
+        source_status: d.health?.status === "수집 실패" ? "수집 실패" : "공식 공포·개정문 연결",
+        compared: d.health?.verified_compared || 0,
+        amendments_verified_total: d.health?.verified_compared || 0
+      }
+    };
+  }
+
+  function normalizePolicyData(input) {
+    if (!input || typeof input !== "object") throw Error("공식 데이터 형식을 확인할 수 없습니다.");
+    if (input.schema === "policy-domino-next-v1") return input;
+    if (input.schema === "policy-domino-impact-v3") return normalizeV3(input);
+    if (input.schema === "policy-domino-v2") return normalizeV2(input);
+    throw Error("지원되지 않는 정책 영향 데이터 형식: " + String(input.schema));
+  }
+  root.normalizePolicyData = normalizePolicyData;
+  if (typeof module !== "undefined" && module.exports)
+    module.exports = {normalizePolicyData};
+})(typeof window === "undefined" ? globalThis : window);

@@ -60,10 +60,11 @@ def sentences(body):
 
 def similarity(a,b):
     if not a or not b:return 0
+    if max(len(a),len(b))>MAX_SENTENCE:return 0
     n,m=fingerprint(a),fingerprint(b)
     if n==m:return 1.0
     if not n or not m:return 0
-    matcher=difflib.SequenceMatcher(None,n,m,autojunk=False)
+    matcher=difflib.SequenceMatcher(None,n,m,autojunk=True)
     blocks=matcher.get_matching_blocks()
     longest=max((x.size for x in blocks),default=0)
     if longest<min(10,max(5,len(n)//5,len(m)//5)):

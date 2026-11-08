@@ -1,17 +1,17 @@
 {
-  "completed_at": "2026-11-08T12:09:45.924400+00:00",
+  "completed_at": "2026-11-08T13:22:19.208626+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
       "law:최근": {
-        "status": "실패",
-        "listed": 0,
-        "error": "law 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
+        "status": "정상",
+        "listed": 98,
+        "range": "2026-10-25~2026-11-08"
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 66,
-        "range": "2026-05-10~2026-05-24"
+        "listed": 61,
+        "range": "2026-04-26~2026-05-10"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -26,8 +26,8 @@
         "year": 2027
       },
       "law": {
-        "status": "부분",
-        "listed": 66
+        "status": "정상",
+        "listed": 159
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 359,
-        "range": "2026-05-10~2026-05-24"
+        "listed": 388,
+        "range": "2026-04-26~2026-05-10"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,16 +53,11 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 741
+        "listed": 767
       }
     },
     "partial": true,
     "errors": [
-      {
-        "source": "law",
-        "range": "최근",
-        "error": "law 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      },
       {
         "source": "admrul",
         "title": "2027년 적용 최저임금 고시",
@@ -95,6 +90,11 @@
       },
       {
         "source": "admrul",
+        "title": "(산림청) 자연재난 복구비용 산정기준",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      },
+      {
+        "source": "admrul",
         "title": "비행절차설계요령",
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       },
@@ -104,35 +104,35 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 16,
+    "verified_compared": 15,
     "not_compared": 0,
-    "candidate_relations": 59,
-    "confirmed_relations": 82,
-    "collect_at": "2026-11-08T11:54:44+00:00",
+    "candidate_relations": 56,
+    "confirmed_relations": 95,
+    "collect_at": "2026-11-08T13:13:00+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 4487,
-    "newly_examined": 16,
-    "events": 228,
-    "actions": 1323,
+    "pending_details": 4916,
+    "newly_examined": 15,
+    "events": 243,
+    "actions": 1447,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 228,
-    "verified_documents": 215,
-    "substantive_policy_events": 97,
-    "direct_actor_actions": 87,
+    "events": 243,
+    "verified_documents": 230,
+    "substantive_policy_events": 105,
+    "direct_actor_actions": 99,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 4,
     "cross_policy_links": {
-      "links": 22,
-      "explicit_standard_uses": 22,
+      "links": 29,
+      "explicit_standard_uses": 29,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 53,
+    "dependent_rules_found": 67,
     "dependency_errors": [],
     "dependency_actors_to_review": 0
   }

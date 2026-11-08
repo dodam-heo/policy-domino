@@ -2352,6 +2352,425 @@
         }
       ],
       "target_department": "노동안전과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|2107789": {
+      "target_title": "경기도 외국인 이주노동자 산업안전 및 산업재해예방 지원 조례",
+      "target_ministry": "경기도",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%99%B8%EA%B5%AD%EC%9D%B8%20%EC%9D%B4%EC%A3%BC%EB%85%B8%EB%8F%99%EC%9E%90%20%EC%82%B0%EC%97%85%EC%95%88%EC%A0%84%20%EB%B0%8F%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EC%98%88%EB%B0%A9%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "경기도에 소재하고 있는 사업 또는 사업장에서 노동을 제공하는 모든 이주민으로서, 경기도에 거주하는 모든 외국인 및 귀화자를 말한다. 2. “사업주”란 「산업안전보건법」 제2조제4호에 따른 사람을 말한다. 3. “외국인 이주노동자 산업안전 지원 센터”란 외국인 이주노동자의 산업재해 예방 및 안전보건 지원 업무를 전담하기 위하여 도가 설치·운영하는 기관을 말한다. 4. “다국어 안",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "이민사회정책과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1878643": {
+      "target_title": "경산시 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경상북도 경산시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%82%B0%EC%8B%9C%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의2 및 제4조의3에 따라 경산시에서 발생하는 산업재해의 예방 및 노동안전보건 지원에 필요한 사항을 규정함으로써 근로자의 안전 및 보건을 유지·증진함을 목적으로 한다. 제2조(정의) 이 조례에서 사용하는 용어의 뜻은",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전총괄과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|2127119": {
+      "target_title": "경상남도 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경상남도",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의3에 따라 산업재해 예방 활동 및 노동안전보건에 필요한 사항을 규정함으로써 쾌적한 작업환경을 조성하고 경상남도민의 안전 및 보건을 유지·증진함을 목적으로 한다. <개정 2023.5.10.> 제2조(도지사의 책무) ",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ]
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1673125": {
+      "target_title": "경상북도 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경상북도",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의3에 따라 경상북도에서 발생하는 각종 산업재해의 예방 및 노동안전보건 지원에 필요한 사항을 규정함으로써, 경상북도민의 생명과 건강을 보호하고 안전 및 노동복지를 향상시키는 것을 목적으로 한다. 제2조(정의) 이 조",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전행정실안전정책과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|2119845": {
+      "target_title": "경주시 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경상북도 경주시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의2 및 제4조의3에 따라 경주시에서 발생하는 산업재해를 예방하고 노동안전보건 지원에 필요한 사항을 규정함으로써 근로자의 안전과 보건 증진을 목적으로 한다. 제2조(정의) 이 조례에서 사용하는 용어의 뜻은 다음과 같",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전정책과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1755605": {
+      "target_title": "계룡시 산재예방 및 근로자 안전보건 지원에 관한 조례",
+      "target_ministry": "충청남도 계룡시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%84%EB%A3%A1%EC%8B%9C%20%EC%82%B0%EC%9E%AC%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EA%B7%BC%EB%A1%9C%EC%9E%90%20%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의3에서 위임된 사항과 그 시행에 필요한 사항을 규정함을 목적으로 한다. 제2조(다른 조례와의 관계) 산업재해 예방 및 쾌적한 작업환경 조성과 관련하여 다른 조례에 특별한 규정이 있는 경우를 제외하고는 이 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "경제산업과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1785513": {
+      "target_title": "고령군 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경상북도 고령군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%A0%EB%A0%B9%EA%B5%B0%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는「산업안전보건법」 제4조의2 및 제4조의3에 따라 고령군에서 발생하는 각종 산업재해를 예방하고 쾌적한 작업환경을 조성하기 위해 필요한 사항을 정함으로써 근로자 등 노무를 제공하는 사람의 안전 및 보건을 유지하고 증진함을 목적으로 한다. 제",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "중대재해예방팀"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1768995": {
+      "target_title": "고성군 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "강원특별자치도 고성군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%A0%EC%84%B1%EA%B5%B0%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의3에서 위임된 사항과 그 시행에 필요한 사항을 규정함을 목적으로 한다. 제2조(다른 조례와의 관계) 고성군 지역 내 산업재해 예방 및 쾌적한 작업환경 조성과 관련하여 다른 조례에 특별한 규정이 있는 경우를",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전교통과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1973559": {
+      "target_title": "고성군 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경상남도 고성군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%A0%EC%84%B1%EA%B5%B0%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」제4조의3에서 위임된 사항과 그 시행에 필요한 사항을 규정함을 목적으로 한다. 제2조(다른 조례와의 관계) 고성군 지역 내 산업재해 예방 및 쾌적한 작업환경 조성과 관련하여 다른 조례에 특별한 규정이 있는 경우를 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전관리과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1901491": {
+      "target_title": "고양시 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경기도 고양시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%A0%EC%96%91%EC%8B%9C%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의2 및 제4조의3에 따라 고양시에서 발생하는 각종 산업재해를 예방하고 노동안전보건을 지원하기 위해 필요한 사항을 규정함으로써 고양시민의 안전 및 보건을 유지하고 증진함을 목적으로 한다. 제2조(정의) 이 조례에서 ",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "일자리정책과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1769485": {
+      "target_title": "고창군 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "전북특별자치도 고창군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%A0%EC%B0%BD%EA%B5%B0%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」제4조의2 및 제4조의3에 따라 고창군에서 발생하는 각종 산업재해를 예방하고 쾌적한 작업환경을 조성하기 위해 필요한 사항을 정함으로써 노동자 등 노무를 제공하는 사람의 안전 및 보건을 유지하고 증진함을 목적으로 한다. 제2",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전총괄과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1859763": {
+      "target_title": "곡성군 산업재해예방 조례",
+      "target_ministry": "전남광주통합특별시 곡성군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%A1%EC%84%B1%EA%B5%B0%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%EC%98%88%EB%B0%A9%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "에 따른 근로자(「산업안전보건법」 제77조에 따른 특수형태근로종사자와 제78조에 따른 물건의 수거ㆍ배달 등을 하는 사람을 포함한다)를 말한다. 3. “사업주”란 근로자를 사용하여 사업을 하는 자(「산업안전보건법」 제77조에 따른 특수형태근로종사자로부터 노무를 제공받는 자와 제78조에 따른 물건의 수거ㆍ배달 등을 중개하는 자를 포함한다)를 말한다. 4. “안전보건지킴이”란 곡성군 관내 사업장에서 산업재해 위험 요소의 발굴ㆍ조사ㆍ개선",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "안전건설과장"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1729993": {
+      "target_title": "공주시 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "충청남도 공주시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%B5%EC%A3%BC%EC%8B%9C%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의2 및 제4조의3에 따라 공주시에서 발생하는 각종 산업재해를 예방하고 쾌적한 작업환경을 조성하기 위해 필요한 사항을 정함으로써 근로자 등 노무를 제공하는 사람의 안전과 보건을 유지하고 증진함을 목적으로 한다. 제2",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "경제과"
+    },
+    "a8e0dd3f9b8ec1a5dca2|ordin|1762915": {
+      "target_title": "과천시 산업재해 예방 및 노동안전보건 지원 조례",
+      "target_ministry": "경기도 과천시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B3%BC%EC%B2%9C%EC%8B%9C%20%EC%82%B0%EC%97%85%EC%9E%AC%ED%95%B4%20%EC%98%88%EB%B0%A9%20%EB%B0%8F%20%EB%85%B8%EB%8F%99%EC%95%88%EC%A0%84%EB%B3%B4%EA%B1%B4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "산업안전보건법",
+      "excerpt": "제1조(목적) 이 조례는 「산업안전보건법」 제4조의2 및 제4조의3에 따라 과천시에서 발생하는 각종 산업재해를 예방하고 노동안전보건을 지원하기 위해 필요한 사항을 규정함으로써 과천시민의 안전 및 보건을 유지하고 증진함을 목적으로 한다. 제2조(정의) 이 조례에서 ",
+      "relation_level": "명시적 인용·적용 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "제158조의2",
+          "before": "",
+          "after": "제158조의2(산업안전보건법령 위반 신고자에 대한 포상금 지급) ① 고용노동부장관은 이 법 또는 이 법에 따른 명령 위반에 대하여 신고를 한 사람에게 예산의 범위에서 포상금을 지급할 수 있다. ① 고용노동부장관은 이"
+        },
+        {
+          "article": "제159조",
+          "before": "영업정지의",
+          "after": "영업정지 또는 등록말소 등의"
+        },
+        {
+          "article": "제159조",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "target_department": "기업정책과"
     }
   }
 }

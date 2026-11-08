@@ -97,6 +97,33 @@ assert.equal(repealData.events[0].policy_profile,true,
  'A repeal is a policy lifecycle event, not an operational mandate');
 assert.match(repealData.events[0].change_summary,/폐지/);
 
+// A real legal sentence must never be broken into unrelated before/after words.
+const grounded={...policy,id:'sourced-changes',
+  changes:[{article:'제35조',before:'제35조(검사) 해양시험청장은 검사업무를 수행한다.',
+    after:'제35조(검사) 해양시험청장은 검사업무(정밀안전진단을 포함한다)를 수행한다.'}],
+  effects:[{article:'제35조',old:'검사업무를',new:'검사업무(정밀안전진단을 포함한다)를',
+            operations:['심사·인허가']},
+           {article:'제35조',old:'제5조에',new:'운송사업자에게',
+            operations:['심사·인허가']}],
+  institution_actions:[{
+    agency:'해양시험청장',article:'제35조',work:'심사·인허가',
+    evidence_type:'변경된 동일 조문 내 업무주체·의무문 확인',
+    change_pairs:[{
+      before:'제35조(검사) 해양시험청장은 검사업무를 수행한다.',
+      after:'제35조(검사) 해양시험청장은 검사업무(정밀안전진단을 포함한다)를 수행한다.',
+      article:'제35조'
+    }],
+    what_to_change:'제35조의 심사·인허가 관련 문장이 변경됨'
+  }]
+};
+const groundedUI=normalizePolicyData({
+  schema:'policy-domino-impact-v3',events:[grounded]});
+assert.equal(groundedUI.actions.length,1,'One source duty = one agency card');
+assert.equal(groundedUI.actions[0].changes.length,1,
+  'Only matched whole sentences, not all broken effects in an article');
+assert.match(groundedUI.actions[0].changes[0].after,/수행한다\.$/);
+assert.doesNotMatch(groundedUI.actions[0].changes[0].before,/^검사업무를$/);
+
 const mixed={schema:'policy-domino-impact-v3',events:[policy,{
   ...policy,id:'policy-2',title:'가상 행정조직 직제',
   impact_category:'조직·내부운영',effects:[],

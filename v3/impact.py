@@ -128,7 +128,8 @@ def identify(event):
     and a ministry for which only an initial review is justified.
     """
     if event.get("comparison_status") not in ("신구 본문 비교 완료","연도별 기준 비교 완료"):
-        return {"effects":[], "actions":[], "candidate_agencies":[], "quality":"전후 미검증", "priority":-1}
+        return {"effects":[], "actions":[], "candidate_agencies":[], "quality":"전후 미검증", "priority":-1,
+                "category":"조직·인사" if document_only(event) else "비교 미완료"}
     changes=event.get("changes",[])
     parsed=effects(event)
     items=[]

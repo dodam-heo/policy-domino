@@ -196,6 +196,10 @@ def build(state,today):
         "status":"PARTIAL" if incomplete or len(state["catalog"])>len(state["inspected"]) else "COMPLETE",
         "collection":{
             "official_catalogue":len(state["catalog"]),
+            "fresh_official_index":sum(x.get("discovery_kind") != "legacy_index_only_not_verified"
+                for x in state["catalog"].values()),
+            "legacy_index_pending_recheck":sum(x.get("discovery_kind") == "legacy_index_only_not_verified"
+                for x in state["catalog"].values()),
             "detailed_checked":len(state["inspected"]),
             "pending_details":max(0,len(state["catalog"])-len(state["inspected"])),
             "windows_checked":len(coverage),

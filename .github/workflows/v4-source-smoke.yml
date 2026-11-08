@@ -1,0 +1,38 @@
+name: V4 official-source completeness smoke
+on:
+  push:
+    branches: [fix/source-and-causal-integrity-20261108]
+    paths:
+      - '.github/workflows/v4-source-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Check the real official ordinance, history and law change indexes
+        env:
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+        run: |
+          python - <<'PY'
+          import json
+          from v4.collect_index import scan_window,scan_official_change_day
+          result={}
+          for edition in ('1','2'):
+              rows,audit=scan_window('ordin','2026-11-03','2026-11-03',
+                                     max_pages=8,edition=edition)
+              result['ordin_'+edition]={'count':len(rows),'audit':audit.as_dict(),
+                                        'sample':[x['title'] for x in rows[:2]]}
+          rows,audit=scan_official_change_day('2026-11-05',max_pages=6)
+          result['law_official_history']={'count':len(rows),'audit':audit.as_dict(),
+                                          'sample':[x['title'] for x in rows[:3]]}
+          print('V4_OFFICIAL_SOURCE_SMOKE',json.dumps(result,ensure_ascii=False))
+          assert result['ordin_1']['count']>0,'Current ordinance rows not parsed'
+          assert result['ordin_1']['audit']['complete'] is True
+          assert result['law_official_history']['audit']['complete'] is True
+          PY

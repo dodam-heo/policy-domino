@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T07:50:18.863591+00:00",
+  "completed_at": "2026-11-08T08:49:59.570211+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,44 +10,73 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 150,
-        "range": "2026-08-16~2026-08-30"
+        "listed": 79,
+        "range": "2026-08-02~2026-08-16"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
         "listed": 0,
         "year": 2027
       },
+      "law:시행연도 본문검색": {
+        "status": "정상",
+        "listed": 234,
+        "future_related": 0,
+        "saturated_months": 0,
+        "year": 2027
+      },
       "law": {
         "status": "정상",
-        "listed": 248
+        "listed": 177
       },
       "admrul:최근": {
         "status": "정상",
-        "listed": 160,
+        "listed": 211,
         "range": "2026-10-25~2026-11-08"
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 160,
-        "range": "2026-08-16~2026-08-30"
+        "listed": 253,
+        "range": "2026-08-02~2026-08-16"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
         "listed": 142,
         "year": 2027
       },
+      "admrul:시행연도 본문검색": {
+        "status": "부분",
+        "listed": 655,
+        "future_related": 37,
+        "saturated_months": 1,
+        "year": 2027
+      },
       "admrul": {
         "status": "정상",
-        "listed": 461
+        "listed": 633
       }
     },
     "partial": true,
     "errors": [
       {
-        "source": "law",
-        "title": "대기환경보전법 시행규칙",
-        "error": "law 공식 API 조회 실패: ParseError: unclosed CDATA section: line 49093, column 43"
+        "source": "admrul",
+        "title": "2027년 적용 최저임금 고시",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      },
+      {
+        "source": "admrul",
+        "title": "2027년 적용 최저임금안 고시",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      },
+      {
+        "source": "admrul",
+        "title": "2027년도 상수원보호구역 주민지원사업의 재원 조성을 위한 수도사업자의 출연비율",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      },
+      {
+        "source": "admrul",
+        "title": "2027년도 사회복무요원 배정기준 등",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
       },
       {
         "source": "admrul",
@@ -60,35 +89,34 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 21,
+    "verified_compared": 18,
     "not_compared": 0,
-    "candidate_relations": 60,
-    "confirmed_relations": 25,
-    "collect_at": "2026-11-08T07:45:14+00:00",
+    "candidate_relations": 98,
+    "confirmed_relations": 26,
+    "collect_at": "2026-11-08T08:41:08+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 1651,
-    "newly_examined": 21,
-    "events": 108,
-    "actions": 380,
+    "pending_details": 2029,
+    "newly_examined": 18,
+    "events": 126,
+    "actions": 423,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 108,
-    "verified_documents": 102,
-    "substantive_policy_events": 18,
-    "direct_actor_actions": 171,
-    "agency_owners_to_verify": 73,
+    "events": 126,
+    "verified_documents": 120,
+    "substantive_policy_events": 46,
+    "direct_actor_actions": 176,
+    "agency_owners_to_verify": 82,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
-    "full_source_actor_actions": 158,
+    "full_source_actor_actions": 161,
+    "cross_policy_links": {
+      "links": 49,
+      "explicit_standard_uses": 48,
+      "shared_statutory_basis_candidates": 1
+    },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 0,
-    "dependency_errors": [
-      {
-        "policy": "감항성개선지시서 발행 및 관리 지침",
-        "target": "(서울지방항공청) 직무분류 운영지침",
-        "error": "RuntimeError admrul 공식 API 조회 실패: ParseError: partial character: line 60120, column 48"
-      }
-    ],
-    "dependency_actors_to_review": 0
+    "dependent_rules_found": 12,
+    "dependency_errors": [],
+    "dependency_actors_to_review": 144
   }
 }

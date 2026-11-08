@@ -20,6 +20,17 @@ def show(title,record):
   except Exception as ex:print("PROBE_HISTORY_ERROR",title,type(ex).__name__,str(ex)[:250],flush=True)
  except Exception as ex:print("PROBE_DETAIL_ERROR",title,type(ex).__name__,str(ex)[:250],flush=True)
 def main():
+ import datetime as dt
+ try:
+  today=dt.date.today()
+  found=list_source("admrul",limit=350,title_query=str(today.year+1),
+          date_window=(today-dt.timedelta(days=210),today),fulltext=True)
+  wanted=[r for r in found if "중위소득" in r["title"] or "교육급여" in r["title"] or "주거급여" in r["title"]]
+  print("PROBE_FULLTEXT_YEAR",len(found),json.dumps(
+   [{"name":x["title"],"effective":x.get("effective_date"),
+     "date":x.get("published_at")} for x in wanted],ensure_ascii=False),flush=True)
+ except Exception as ex:print("PROBE_FULLTEXT_YEAR_ERROR",type(ex).__name__,str(ex)[:300],flush=True)
+
  try:
   root=request("admrul",nw="1",sort="efdes",display=100,page=1)
   rows=[row_of(n,"admrul") for n in root.iter() if n.tag.split("}")[-1].lower()=="admrul"]

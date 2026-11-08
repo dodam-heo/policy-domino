@@ -32,8 +32,9 @@ jobs:
           import json
           from pathlib import Path
           d=json.loads(Path('site/data.json').read_text('utf8'))
+          from v3.evidence_gate import is_repeal
           for e in d['events']:
-            if e.get('revision') and '폐지' in e['revision']:
+            if is_repeal(e):
               assert not e.get('institution_actions'),e['title']
               assert not e.get('dependency_actions'),e['title']
           print('EVIDENCE_AUDIT',json.dumps({

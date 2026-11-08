@@ -56,7 +56,7 @@ def use_excerpt(body,word):
         pos=body.find(word,start)
         if pos<0:return None
         context=body[max(0,pos-100):min(len(body),pos+len(word)+125)]
-        if USE.search(context):
+        if USES.search(context):
             return " ".join(context.split())[:250]
         start=pos+len(word)
     return None

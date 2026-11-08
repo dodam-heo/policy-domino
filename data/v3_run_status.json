@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T10:10:49.827679+00:00",
+  "completed_at": "2026-11-08T10:47:42.232150+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 42,
-        "range": "2026-07-05~2026-07-19"
+        "listed": 179,
+        "range": "2026-06-21~2026-07-05"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 140
+        "listed": 277
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 358,
-        "range": "2026-07-05~2026-07-19"
+        "listed": 474,
+        "range": "2026-06-21~2026-07-05"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 738
+        "listed": 855
       }
     },
     "partial": true,
@@ -94,34 +94,34 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 15,
-    "not_compared": 2,
-    "candidate_relations": 45,
-    "confirmed_relations": 32,
-    "collect_at": "2026-11-08T10:01:47+00:00",
+    "verified_compared": 14,
+    "not_compared": 3,
+    "candidate_relations": 59,
+    "confirmed_relations": 34,
+    "collect_at": "2026-11-08T10:36:56+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 2826,
+    "pending_details": 3454,
     "newly_examined": 17,
-    "events": 161,
-    "actions": 521,
+    "events": 178,
+    "actions": 672,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 161,
-    "verified_documents": 152,
-    "substantive_policy_events": 62,
-    "direct_actor_actions": 225,
-    "agency_owners_to_verify": 97,
+    "events": 178,
+    "verified_documents": 166,
+    "substantive_policy_events": 70,
+    "direct_actor_actions": 169,
+    "agency_owners_to_verify": 68,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
-    "full_source_actor_actions": 189,
+    "full_source_actor_actions": 134,
     "cross_policy_links": {
-      "links": 81,
-      "explicit_standard_uses": 80,
+      "links": 36,
+      "explicit_standard_uses": 35,
       "shared_statutory_basis_candidates": 1
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 2,
+    "dependent_rules_found": 13,
     "dependency_errors": [],
-    "dependency_actors_to_review": 224
+    "dependency_actors_to_review": 102
   }
 }

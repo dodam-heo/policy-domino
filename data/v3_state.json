@@ -768,6 +768,395 @@
     "d244533dd6c44e7da139|admrul|2100000285400": null,
     "d244533dd6c44e7da139|admrul|2100000287258": null,
     "d244533dd6c44e7da139|admrul|2100000240326": null,
-    "d244533dd6c44e7da139|admrul|2100000215687": null
+    "d244533dd6c44e7da139|admrul|2100000215687": null,
+    "591f7f4882e067d05aaf|ordin|2142769": {
+      "target_title": "가평군 도서관 운영 조례",
+      "target_ministry": "경기도 가평군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%80%ED%8F%89%EA%B5%B0%20%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "항은 규칙으로 정한다. 제13조(자료의 복사 및 전자정보의 인쇄) ① 군수는 이용자가 도서관에 소장된 자료의 복사 및 전자 정보의 인쇄를 원할 때에는 「저작권법」으로 정하는 바에 따라 복사 및 인쇄할 수 있도록 편의를 제공할 수 있다. 다만, 사용료는 이용자의 부담으로 한다. ② 복사 및 인쇄 시설ㆍ장비의 합리적인 운영을 위하여 해당 시설ㆍ장비를 민간에 위탁할 수 있다. ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "평생교육사업소"
+    },
+    "591f7f4882e067d05aaf|ordin|2102511": {
+      "target_title": "가평군 도서관 운영 조례 시행규칙",
+      "target_ministry": "경기도 가평군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%80%ED%8F%89%EA%B5%B0%20%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "장은 다음 각 호의 어느 하나에 해당하는 경우에는 복사 또는 인쇄를 제한할 수 있다. 1. 열람이 금지된 자료 2. 보존상 파손이 우려되는 자료 3. 「저작권법」 등에 따라 무단복제가 금지된 자료 4. 그 밖에 복사 또는 인쇄가 부적당하다고 인정되는 자료 [본조신설 2025.12.31.] 제11조(운영세칙) 이 규칙의 시행에 필요한 사항은 군수가 따로 정할 수 있다.<개정",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "평생교육사업소"
+    },
+    "591f7f4882e067d05aaf|ordin|731289": {
+      "target_title": "가평군 제안제도 운영 조례 시행규칙",
+      "target_ministry": "경기도 가평군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%80%ED%8F%89%EA%B5%B0%20%EC%A0%9C%EC%95%88%EC%A0%9C%EB%8F%84%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "한 것으로 본다. 1. 신기술의 개발에 관한 창안으로서 시험시공이 획기적인 효과를 거둔 경우 2. 창안이 「특허법」·「실용신안법」·「디자인보호법」 및 「저작권법」에 따른 특허 고안 또는 의장에 해당되어 실시기관의 장이 출원한 경우 3. 건축 및 토목분야 등의 창안으로써 정부표준품셈 또는 관계 지침서에 반영된 경우 4. 실시기관의 장 또는 군수가 해당 창안을 실시한 것으로 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "기획예산담당관"
+    },
+    "591f7f4882e067d05aaf|ordin|2118177": {
+      "target_title": "강릉시립도서관 운영 조례",
+      "target_ministry": "강원특별자치도 강릉시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EB%A6%89%EC%8B%9C%EB%A6%BD%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "국가유공자 등 예우 및 지원에 관한 법률",
+      "excerpt": " 하나에 해당되는 경우에는 수수료를 면제할 수 있다. 1.「국민기초생활 보장법」제2조에 따른 수급자 2.「장애인복지법 시행령」제2조에 따른 장애인 3.「국가유공자 등 예우 및 지원에 관한 법률」제4조에 따른 국가유공자 4.「노인복지법」제26조에 따른 65세 이상의 노인 제6조(이용시간 등) ① 도서관은 오전 9시부터 오후 6시까지 개관한다. 다만, 도서관 운영상 필요할 경우에는 시장이 운영시간을 조정할 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "시립도서관"
+    },
+    "591f7f4882e067d05aaf|ordin|2172481": {
+      "target_title": "강릉시립도서관 운영 조례 시행규칙",
+      "target_ministry": "강원특별자치도 강릉시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EB%A6%89%EC%8B%9C%EB%A6%BD%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "란 다음 각 호의 행위를 하는 사람을 말한다. 1. 대출받지 아니한 자료의 관외 유출 행위 2. 자료, 비품 등 시설물 훼손 행위 3. 자료 이용 시 「저작권법」상의 권리를 침해하는 행위 4. 도서관 정보기기로 음란물 등 유해 정보를 검색ㆍ열람하는 행위 5. 열람실 및 자료실에서 수면 및 각종 음식물 섭취 행위 6. 그 밖에 도서관 질서를 심히 어지럽게 하는 행위 제3조(",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "시립도서관"
+    },
+    "591f7f4882e067d05aaf|ordin|1913499": {
+      "target_title": "강원특별자치도교육감 소속 공무원 제안규칙",
+      "target_ministry": "강원특별자치도교육청",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%EA%B5%90%EC%9C%A1%EA%B0%90%20%EC%86%8C%EC%86%8D%20%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EC%A0%9C%EC%95%88%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "가에게 필요한 실험·조사 등을 의뢰하고 의견이나 자료의 제출을 요청할 수 있다. ② 소관부서의 장은 제안이 「특허법」·「실용신안법」·「디자인보호법」또는「저작권법」에 따라 이미 등록되거나 출원된 내용인지 여부를 확인하기 위하여 필요한 경우에는 관계 기관에 의견을 조회할 수 있다. <개정 2012.7.16.> ③ 소관부서의 장은 제1항에 따른 실험·조사 등에 소요된 비용을 예",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "교육지원과"
+    },
+    "591f7f4882e067d05aaf|ordin|1976461": {
+      "target_title": "강원특별자치도 교육문화관 이용 및 사용료 징수 조례 시행규칙",
+      "target_ministry": "강원특별자치도교육청",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EA%B5%90%EC%9C%A1%EB%AC%B8%ED%99%94%EA%B4%80%20%EC%9D%B4%EC%9A%A9%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%EB%A3%8C%20%EC%A7%95%EC%88%98%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": ")이 정한다. 제3조(질서유지) 관장은 문화관의 질서유지를 위하여 다음 각 호의 어느 하나에 해당하는 사람은 출입을 제한할 수 있다. 1. 자료이용 시「저작권법」을 위반하는 사람 2. 자료, 비품 및 시설을 오손·훼손 또는 파손하는 사람 3. 정보기기 및 컴퓨터로 음란물 등 유해정보를 검색·열람하는 사람 4. 그 밖에 다른 이용자의 안전을 위협하거나 질서를 문란하게 하는 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "교육지원과"
+    },
+    "591f7f4882e067d05aaf|ordin|1819097": {
+      "target_title": "강원특별자치도 제안제도 운영 조례",
+      "target_ministry": "강원특별자치도",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%A0%9C%EC%95%88%EC%A0%9C%EB%8F%84%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": " 또는 전문가에게 실험·조사 등을 의뢰하고 의견 또는 자료의 제출을 요청할 수 있다. ② 도지사는 제안이 「특허법」·「실용신안법」·「디자인보호법」또는 「저작권법」에 따라 이미 특허 또는 등록되거나 출원된 내용인지 여부를 확인하기 위하여 필요한 경우에는 관련 기관에 의견을 조회할 수 있다. ③ 제1항 및 제2항에 따라 의견을 조회한 경우에는 그 의견서를 첨부하여 위원회에 상",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ]
+    },
+    "591f7f4882e067d05aaf|ordin|1818859": {
+      "target_title": "강원특별자치도 제안제도 운영 조례 시행규칙",
+      "target_ministry": "강원특별자치도",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%A0%9C%EC%95%88%EC%A0%9C%EB%8F%84%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "한 것으로 본다. 1. 신기술의 개발에 관한 제안으로서 시험시공이 획기적인 효과를 거둔 경우 2. 제안이 「특별법」·「실용신안법」·「디자인보호법」 및 「저작권법」에 따른 특허·고안 또는 의장에 해당되어 실시기관의 장이 출원한 경우 3. 건축 및 토목분야 등의 제안으로서 정부표준품셈 또는 관계지침서에 반영된 경우 4. 실시기관의 장 또는 도지사가 해당 제안을 실시한 것으로 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ]
+    },
+    "591f7f4882e067d05aaf|ordin|2165245": null,
+    "591f7f4882e067d05aaf|ordin|1674479": {
+      "target_title": "강진군의회 지방공무원 제안 규칙",
+      "target_ministry": "전남광주통합특별시 강진군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%A7%84%EA%B5%B0%EC%9D%98%ED%9A%8C%20%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EC%A0%9C%EC%95%88%20%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "전문가에게 실험·조사 등을 의뢰하거나 의견 또는 자료의 제출을 요청할 수 있다. ② 의장은 제출된 제안이「특허법」·「실용신안법」·「디자인보호법」 또는 「저작권법」에 따라 이미 특허 또는 등록되거나 출원된 내용인지 여부를 확인하기 위하여 필요한 경우에는 관련 기관에 의견을 조회할 수 있다. ③ 제1항에 따른 실험·조사 등에 소요되는 비용은 예산의 범위에서 따로 지급할 수 있",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "의회사무과"
+    },
+    "591f7f4882e067d05aaf|ordin|2025867": {
+      "target_title": "강화군 공공도서관 설치ㆍ운영 및 독서문화진흥 조례",
+      "target_ministry": "인천광역시 강화군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%ED%99%94%EA%B5%B0%20%EA%B3%B5%EA%B3%B5%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%84%A4%EC%B9%98%E3%86%8D%EC%9A%B4%EC%98%81%20%EB%B0%8F%20%EB%8F%85%EC%84%9C%EB%AC%B8%ED%99%94%EC%A7%84%ED%9D%A5%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "한에 필요한 사항은 규칙으로 정한다. 제16조(자료의 복사 등) ① 자료의 복사는 도서관에 소장된 자료에 한정하며, 복사 또는 전자정보의 인쇄 범위는 「저작권법」 제31조에 따른다. ② 제1항에 따른 자료 복사 및 인쇄 수수료는 별표 4와 같다. 제17조(금전 등의 기부) 법 제47조에 따라 도서관의 설립 및 지원을 위해 자발적으로 기탁하는 금전 또는 그 밖의 재산을 기부",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "행정국 자치교육과"
+    },
+    "591f7f4882e067d05aaf|ordin|1463453": {
+      "target_title": "강화군 공공도서관 설치ㆍ운영 및 독서문화진흥 조례 시행규칙",
+      "target_ministry": "인천광역시 강화군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%ED%99%94%EA%B5%B0%20%EA%B3%B5%EA%B3%B5%EB%8F%84%EC%84%9C%EA%B4%80%20%EC%84%A4%EC%B9%98%E3%86%8D%EC%9A%B4%EC%98%81%20%EB%B0%8F%20%EB%8F%85%EC%84%9C%EB%AC%B8%ED%99%94%EC%A7%84%ED%9D%A5%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "자료복사의 제한) 다음 각 호의 어느 하나에 해당하는 자료는 복사를 제한할 수 있다. 1. 열람이 금지된 자료 2. 보존상 파손이 우려되는 자료 3. 「저작권법」및 그 밖의 관련 법령에 따라 무단복제가 금지된 자료 4. 그 밖에 관장이 복사가 적당하지 아니하다고 인정하는 자료 제13조(기증자료) 관장은 개인, 법인 또는 단체로부터 기증받은 자료를 면밀하게 검토하여 적절한 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "행정국 자치교육과"
+    },
+    "591f7f4882e067d05aaf|ordin|1459907": {
+      "target_title": "강화군 공무원제안 규칙",
+      "target_ministry": "인천광역시 강화군",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%ED%99%94%EA%B5%B0%20%EA%B3%B5%EB%AC%B4%EC%9B%90%EC%A0%9C%EC%95%88%20%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "저작권법",
+      "excerpt": "계기관 또는 전문가에게 실험·조사 등을 의뢰하고 의견 또는 자료의 제출을 요청할 수 있다. ② 군수는 제안이「특허법」·「실용신안법」·「디자인보호법」또는「저작권법」등에 의하여 이미 특허 또는 등록되거나 출원된 내용인지 여부를 확인하기 위하여 필요한 경우에는 관련 기관에 의견을 조회할 수 있다. ③ 제1항 및 제2항에 따른 의견을 조회한 경우에는 그 의견서를 첨부하여 제안심사",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0050",
+          "before": "호서식",
+          "after": "호의4서식"
+        },
+        {
+          "article": "별표 0050",
+          "before": "저작권대리중개업",
+          "after": "저작권신탁관리업자의"
+        },
+        {
+          "article": "별표 0050",
+          "before": "변경신고서",
+          "after": "임원이"
+        }
+      ],
+      "target_department": "행정국 기획예산과"
+    }
   }
 }

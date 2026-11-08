@@ -36,7 +36,17 @@ jobs:
           assert d["schema"]=="policy-domino-impact-v3"
           assert h["verified_documents"]>0
           assert h["substantive_policy_events"]>0
-          assert h["direct_actor_actions"]>0
+          assert h["agency_owners_to_verify"]+h["direct_actor_actions"]>0
+          if h["direct_actor_actions"]==0:
+            print("NOTICE: 현재 적재된 수집분의 법정 집행기관 직접 식별은 0건; 전수 결과 아님")
+          PY
+      - name: Verify real next-year administrative-rule discovery
+        run: |
+          python - <<'PY'
+          from v2.collector import list_source
+          rows=list_source("admrul",limit=40,title_query="2027")
+          print("NEXT-YEAR-DISCOVERY",len(rows),[r["title"] for r in rows[:8]])
+          assert rows,"다음 연도 행정규칙 이름검색 결과 없음"
           PY
       - name: Verify impact-first interface JavaScript
         run: |

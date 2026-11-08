@@ -1,4 +1,4 @@
-name: Policy Domino V2 — Official Source-wide Monitor
+name: Policy Domino — Evidence-led impact
 on:
   workflow_dispatch:
   schedule:
@@ -8,70 +8,80 @@ on:
     paths-ignore:
       - 'site/data.json'
       - 'data/v2_state.json'
+      - 'data/v3_state.json'
+      - 'data/v3_run_status.json'
       - 'data/v2_run_status.json'
-      - 'data/v2_deploy_status.json'
-      - 'data/next_state.json'
-      - 'data/next_run_status.json'
-      - 'data/next_deploy_status.json'
-      - 'data/deploy_status.json'
-      - 'data/collection_status.json'
 permissions:
   contents: write
   pages: write
   id-token: write
 concurrency:
-  group: policy-domino-v2
+  group: policy-domino-production
   cancel-in-progress: false
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    environment: github-pages
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify universal engine with cross-domain tests
+      - name: Test official collector and evidence-led impact engine
         run: |
-          python -m compileall -q v2
+          python -m compileall -q v2 v3
           python -m unittest discover -s v2 -p 'test_*.py' -v
-      - name: Collect law and administrative-rule revisions
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+      - name: Collect change evidence and trace downstream institutions
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
-        run: python v2/collector.py
-      - name: Check data schema and collection coverage
+          PD_DETAIL_LIMIT: '24'
+        run: python -m v3.runner
+      - name: Gate published claims on actual verification
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           d=json.loads(Path('site/data.json').read_text('utf-8'))
-          assert d['schema']=='policy-domino-v2'
-          h=d['health']
-          assert any(x['status']=='정상' for x in h['sources'].values()),'No official source available'
-          print(json.dumps(h,ensure_ascii=False,indent=2)[:4000])
+          h=d['impact_health']
+          assert d['schema']=='policy-domino-impact-v3'
+          assert h['verified_documents']>0
+          assert h['direct_actor_actions']+h['agency_owners_to_verify']>0
+          assert any(d['source_health']['sources'][t].get('status') in ('정상','부분')
+                     for t in ('law','admrul'))
+          print(json.dumps(h,ensure_ascii=False,indent=2))
           PY
-      - name: Commit verified data and status
+      - name: Validate user-facing policy impact viewer
+        run: |
+          node - <<'JS'
+          const fs=require('fs');
+          const html=fs.readFileSync('site/index.html','utf8');
+          const script=html.match(/<script>([\s\S]*?)<\/script>/);
+          if(!script)throw Error('No viewer JavaScript');
+          new Function(script[1]);
+          for(const phrase of ['영향을 받는 기관','실질 정책 변경','전체 변경 조문 비교'])
+            if(!html.includes(phrase))throw Error('Missing '+phrase);
+          JS
+      - name: Commit impact dataset and discovery queue
         run: |
           python - <<'PY'
           import json
+          from pathlib import Path
           from datetime import datetime,timezone
-          from pathlib import Path
           d=json.loads(Path('site/data.json').read_text('utf-8'))
-          Path('data/v2_run_status.json').write_text(json.dumps({
+          Path('data/v3_run_status.json').write_text(json.dumps({
             'completed_at':datetime.now(timezone.utc).isoformat(),
-            'schema':d['schema'],
-            'health':d.get('health',{})
-          },ensure_ascii=False,indent=2),'utf-8')
+            'schema':d['schema'],'source_health':d['source_health'],
+            'impact_health':d['impact_health']},ensure_ascii=False,indent=2),'utf-8')
           PY
-          git config user.name 'policy-domino-bot'
-          git config user.email 'policy-domino-bot@users.noreply.github.com'
-          git add site/data.json data/v2_state.json data/v2_run_status.json
+          git config user.name policy-domino-bot
+          git config user.email policy-domino-bot@users.noreply.github.com
+          git add site/data.json data/v2_state.json data/v3_state.json data/v3_run_status.json
           if ! git diff --cached --quiet; then
-            git commit -m 'data: refresh official v2 change evidence [skip ci]'
+            git commit -m 'data: update verified impacts and affected agencies [skip ci]'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
-
   deploy:
     needs: analyze
     if: success()
@@ -79,22 +89,19 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy_pages.outputs.page_url }}
-    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Validate dashboard and published evidence
+      - name: Validate deployed model and display
         run: |
           node - <<'JS'
           const fs=require('fs');
-          const html=fs.readFileSync('site/index.html','utf-8');
-          const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
-          if(!scripts.length)throw Error('Dashboard script missing');
-          for(const s of scripts)new Function(s[1]);
-          const data=JSON.parse(fs.readFileSync('site/data.json','utf-8'));
-          if(data.schema!=='policy-domino-v2')throw Error('Not v2 data');
-          console.log('Dashboard and collector schema verified');
+          const d=JSON.parse(fs.readFileSync('site/data.json','utf8'));
+          if(d.schema!=='policy-domino-impact-v3')throw Error('Old dataset');
+          const js=fs.readFileSync('site/index.html','utf8').match(/<script>([\s\S]*?)<\/script>/);
+          if(!js)throw Error('No viewer');
+          new Function(js[1]);
           JS
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -203,14 +203,18 @@ def identify(event):
                                   "status":"소관기관 확인 · 집행기관 조사 필요","verified_location":False})
     structural = document_only(event)
     single=individual_notice(event)
+    broad_structure=(structural and event.get("source")=="law" and
+      ("직제" in event.get("title","") or "소속기관" in event.get("title","")) and
+      ("," in event.get("ministry","") or len(set(x["agency"] for x in items))>=3))
     number_pairs=sum(bool(x["old"] or x["new"]) and any(c.isdigit() for c in x["old"]+x["new"]) for x in parsed)
     substantive=len(parsed)>0
     priority=(100 if items else 65 if parsed else 10) + min(20,number_pairs*4) + min(10,len(items)*2)
-    if structural or single:priority-=70
+    if (structural and not broad_structure) or single:priority-=70
+    if broad_structure:priority+=35
     quality="업무주체 명시" if items else "실질 변경 확인·집행기관 추적 필요" if parsed else "영향 미도출"
     uniq={ (x["agency"],x["work"]):x for x in candidate }
     return {"effects":parsed,"actions":items[:100], "candidate_agencies":list(uniq.values())[:10],
-            "quality":quality,"priority":priority, "category":"조직·내부운영" if structural else
+            "quality":quality,"priority":priority, "category":"조직개편·업무이관" if broad_structure else "조직·내부운영" if structural else
             "개별 행정처분" if single else "제도·업무 변경" if substantive else "기타 변경"}
 
 def strong_cause(parent,child):
@@ -261,7 +265,7 @@ def analyze(raw):
         candidate_count+=len(identified["candidate_agencies"])
         events.append(event)
     verified=[e for e in events if e.get("comparison_status") in ("신구 본문 비교 완료","연도별 기준 비교 완료","연도별 고시 교체 확인·수치표 미검증")]
-    operational=[e for e in verified if e["effects"] and e["impact_category"]=="제도·업무 변경"]
+    operational=[e for e in verified if e["effects"] and e["impact_category"] in ("제도·업무 변경","조직개편·업무이관")]
     groups=group_events(events)
     return {"schema":"policy-domino-impact-v3","generated_at":raw.get("generated_at",""),
             "source_health":raw.get("health",{}),"events":events,"groups":groups,

@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T11:14:34.148782+00:00",
+  "completed_at": "2026-11-08T11:26:05.449468+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 65,
-        "range": "2026-06-07~2026-06-21"
+        "listed": 78,
+        "range": "2026-05-24~2026-06-07"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 163
+        "listed": 176
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 211,
-        "range": "2026-06-07~2026-06-21"
+        "listed": 314,
+        "range": "2026-05-24~2026-06-07"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 589
+        "listed": 694
       }
     },
     "partial": true,
@@ -92,46 +92,38 @@
         "source": "admrul",
         "title": "지방자치단체 입찰 및 계약집행기준",
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
-      },
-      {
-        "source": "law",
-        "term": "동물보호법",
-        "error": "law 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      },
-      {
-        "source": "admrul",
-        "term": "유급휴가급 및 재해보상비 등의 지급 시기 및 금액",
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
       }
     ],
-    "verified_compared": 17,
-    "not_compared": 0,
-    "candidate_relations": 90,
-    "confirmed_relations": 49,
-    "collect_at": "2026-11-08T10:58:48+00:00",
+    "verified_compared": 16,
+    "not_compared": 1,
+    "candidate_relations": 41,
+    "confirmed_relations": 73,
+    "collect_at": "2026-11-08T11:16:16+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 3707,
+    "pending_details": 4078,
     "newly_examined": 17,
-    "events": 195,
-    "actions": 971,
+    "events": 212,
+    "actions": 1108,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 195,
-    "verified_documents": 183,
-    "substantive_policy_events": 79,
-    "direct_actor_actions": 293,
-    "agency_owners_to_verify": 88,
+    "events": 212,
+    "verified_documents": 199,
+    "substantive_policy_events": 87,
+    "direct_actor_actions": 80,
+    "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
-    "full_source_actor_actions": 219,
+    "evidence_gated": true,
+    "repeal_events": 4,
     "cross_policy_links": {
-      "links": 51,
-      "explicit_standard_uses": 50,
-      "shared_statutory_basis_candidates": 1
+      "links": 19,
+      "explicit_standard_uses": 19,
+      "shared_statutory_basis_candidates": 0,
+      "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 25,
+    "dependent_rules_found": 39,
     "dependency_errors": [],
-    "dependency_actors_to_review": 144
+    "dependency_actors_to_review": 0
   }
 }

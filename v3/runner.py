@@ -10,7 +10,7 @@ import json
 import os
 from pathlib import Path
 from v2 import collector
-from v3 import impact, dependencies, agency_resolver, policy_graph
+from v3 import impact, dependencies, policy_graph, evidence_gate
 
 ROOT=Path(__file__).resolve().parents[1]
 V3_STATE=ROOT/"data"/"v3_state.json"
@@ -26,17 +26,8 @@ def run():
             raise RuntimeError("실제 공식 수집 v2 자료가 없어서 통합 분석을 수행할 수 없습니다.")
     else:
         raw=collector.run()
-    model=impact.analyze(raw)
+    model=evidence_gate.apply_all(impact.analyze(raw))
     snapshots=load_json(ROOT/"data"/"v2_state.json",{}).get("snapshots",{})
-    full_source_actors=0
-    for event in model["events"]:
-        snapshot=snapshots.get(collector.uid(event["source"],event["stable_id"]),{})
-        if str(snapshot.get("serial",""))!=str(event.get("serial","")):continue
-        extra=agency_resolver.assign(event,snapshot.get("clauses",{}))
-        event["institution_actions"].extend(extra)
-        full_source_actors+=len(extra)
-    model["impact_health"]["full_source_actor_actions"]=full_source_actors
-    model["impact_health"]["direct_actor_actions"]+=full_source_actors
     graph_stats=policy_graph.link_documents(model["events"],snapshots)
     model["impact_health"]["cross_policy_links"]=graph_stats
     previous=load_json(V3_STATE,{"rule_cache":{}})
@@ -45,16 +36,16 @@ def run():
         checked={"checked":0,"verified_dependents":0,"errors":[],"skipped":"오프라인 검증"}
     else:
         cache,checked=dependencies.discover(model["events"],maximum=14,cache=cache)
-    dependencies.add_dependency_agencies(model["events"])
+    # A reference alone never becomes an agency action or compliance order.
     model["impact_health"]["dependent_rules_checked"]=checked["checked"]
     model["impact_health"]["dependent_rules_found"]=checked["verified_dependents"]
     model["impact_health"]["dependency_errors"]=checked["errors"]
-    model["impact_health"]["dependency_actors_to_review"]=sum(len(e.get("dependency_actions",[])) for e in model["events"])
+    model["impact_health"]["dependency_actors_to_review"]=0
     model["method"]={
         "collection":"법령·행정규칙 공식 변경목록 전체범위 순회",
         "policy_effects":"이전·현재 조문에서 실제 바뀐 문구만 추출",
-        "agency_evidence":"법적 업무주체 명시와 소관기관 추적 후보를 별도 구분",
-        "downstream":"공식 규정 본문의 인용·기준 적용문을 별도로 읽어 연결",
+        "agency_evidence":"공식 변경 조문 내 명시적 집행주체와 업무 의무가 함께 있을 때만 기관 조치 생성",
+        "downstream":"공식 인용·적용 근거는 규정 간 연결에만 사용하고 기관의 의무로 자동 전파하지 않음",
         "unverified":"실제 기관 내부 시스템 및 조치 완료 여부는 공개 데이터만으로 확정하지 않음",
     }
     output=ROOT/"site"/"data.json"

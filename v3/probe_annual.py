@@ -1,5 +1,5 @@
 """Live official-API regression probe. No synthetic event injection."""
-from v2.collector import list_source,read_clauses,historical_predecessor,compare
+from v2.collector import list_source,read_clauses,historical_predecessor,compare,request,row_of
 from collections import defaultdict
 import json,time
 def show(title,record):
@@ -20,6 +20,13 @@ def show(title,record):
   except Exception as ex:print("PROBE_HISTORY_ERROR",title,type(ex).__name__,str(ex)[:250],flush=True)
  except Exception as ex:print("PROBE_DETAIL_ERROR",title,type(ex).__name__,str(ex)[:250],flush=True)
 def main():
+ try:
+  root=request("admrul",nw="1",sort="efdes",display=100,page=1)
+  rows=[row_of(n,"admrul") for n in root.iter() if n.tag.split("}")[-1].lower()=="admrul"]
+  rows=[x for x in rows if x]
+  print("PROBE_EFFECTIVE_SORT",json.dumps([{"title":x["title"],"effective":x["effective_date"]} for x in rows[:15]],ensure_ascii=False),flush=True)
+  print("PROBE_MEDIAN_FUTURE",json.dumps([x["title"] for x in rows if "중위소득" in x["title"]],ensure_ascii=False),flush=True)
+ except Exception as ex: print("PROBE_EFFECTIVE_SORT_ERROR",type(ex).__name__,str(ex)[:200],flush=True)
  tests=[("교육급여","2027년 교육급여"),("주거급여","2027년 주거급여"),("기준 중위소득","기준 중위소득")]
  for name,query in tests:
   try:

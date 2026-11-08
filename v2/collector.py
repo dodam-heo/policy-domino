@@ -5,6 +5,7 @@ All findings are evidence records; unknown previous text is never invented.
 from __future__ import annotations
 
 import datetime as dt
+import calendar
 import difflib
 import hashlib
 import html
@@ -122,13 +123,13 @@ def row_of(node, target):
                 else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
     }
 
-def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None, fulltext=False):
+def list_source(target, limit=MAX_PER_SOURCE, date_window=None, title_query=None, fulltext=False, include_history=True):
     """Collect across sectors by official issue-date windows, not topic names.
     The newest window is checked on every run. Older windows are backfilled
     incrementally and unprocessed entries remain in the persistent queue.
     """
     collected = []
-    modes = [{}] if target == "law" else [{"nw": "1"}, {"nw": "2"}]
+    modes = [{}] if target == "law" else ([{"nw":"1"},{"nw":"2"}] if include_history else [{"nw":"1"}])
     pages = max(1, (limit + 99) // 100)
     date_filter = {}
     if title_query:
@@ -423,6 +424,24 @@ def priority_score(record, today=None):
     if not record.get("ministry"):weight-=3
     return weight
 
+def month_windows(today,lookback_days=210):
+    """Full-month searches prevent a broad text query's newest 500 results
+    from permanently hiding important standards issued months earlier.
+    """
+    cutoff=today-dt.timedelta(days=lookback_days)
+    year,month=today.year,today.month
+    windows=[]
+    while True:
+        first=dt.date(year,month,1)
+        last=dt.date(year,month,calendar.monthrange(year,month)[1])
+        start=max(first,cutoff)
+        end=min(last,today)
+        if start<=end:windows.append((start,end))
+        if first<=cutoff:break
+        month-=1
+        if month<1:year-=1;month=12
+    return windows
+
 def select_pending(pending, target, capacity, today=None):
     """Balance priority and recent changes; never starve high-impact records
     behind thousands of FIFO historical rows or one-off notices.
@@ -511,26 +530,35 @@ def run():
             health["sources"][target+":연도별 선제 탐색"]={"status":"실패","listed":0,
                 "error":str(exc)[:150]}
             health["errors"].append({"source":target,"range":"연도별 선제 탐색","error":str(exc)[:170]})
-        # Search the operative text as well as the name. Future-year standards
-        # can have yearless titles, with the year only in the preamble/appendix.
-        # Only issued/current official acts are queued; no sector is registered.
-        try:
-            projected=list_source(target,limit=MAX_PER_SOURCE,
-                 title_query=str(today.year+1),fulltext=True,
-                 date_window=(today-dt.timedelta(days=210),today))
-            forward=[r for r in projected if (r.get("effective_date","")>today.isoformat()
-                   or str(today.year+1) in r["title"])]
-            for record in forward:
-                gathered[uid(target,record["stable_id"],record["serial"])]=record
-            health["sources"][target+":시행연도 본문검색"]={
-                "status":"정상","listed":len(projected),"future_related":len(forward),
-                "year":today.year+1}
-            if len(projected)>=MAX_PER_SOURCE:health["partial"]=True
-        except Exception as exc:
-            health["sources"][target+":시행연도 본문검색"]={
-                "status":"실패","listed":0,"error":str(exc)[:150]}
-            health["errors"].append({"source":target,"range":"시행연도 본문검색",
-                                      "error":str(exc)[:170]})
+        # Search operative text in MONTHLY windows: one giant 210-day search is
+        # saturated by recent documents and never reaches older current-year
+        # standards (even when they take effect next year). Current rules only.
+        text_total=0
+        forward_total=0
+        month_partial=0
+        for start_date,end_date in month_windows(today,210):
+            try:
+                projected=list_source(target,limit=min(250,MAX_PER_SOURCE),
+                       title_query=str(today.year+1),fulltext=True,
+                       include_history=False,date_window=(start_date,end_date))
+                text_total+=len(projected)
+                if len(projected)>=min(250,MAX_PER_SOURCE):
+                    month_partial+=1
+                    health["partial"]=True
+                forward=[r for r in projected if (r.get("effective_date","")>today.isoformat()
+                         or str(today.year+1) in r["title"])]
+                forward_total+=len(forward)
+                for record in forward:
+                    gathered[uid(target,record["stable_id"],record["serial"])]=record
+            except Exception as exc:
+                health["errors"].append({"source":target,
+                   "range":start_date.isoformat()+"~"+end_date.isoformat()+" 시행연도 본문",
+                   "error":str(exc)[:170]})
+                health["partial"]=True
+        health["sources"][target+":시행연도 본문검색"]={
+            "status":"부분" if month_partial else "정상",
+            "listed":text_total,"future_related":forward_total,
+            "saturated_months":month_partial,"year":today.year+1}
         all_list[target] = list(gathered.values())
         health["sources"][target] = {"status": "정상" if successful_windows == len(windows) else
                                     "부분" if successful_windows else "실패",

@@ -421,6 +421,8 @@ def priority_score(record, today=None):
     if internal:weight-=24
     if pub >= (today-dt.timedelta(days=30)).isoformat():weight+=15
     elif pub >= (today-dt.timedelta(days=120)).isoformat():weight+=9
+    if pub and pub < (today-dt.timedelta(days=365)).isoformat():weight-=90
+    if pub and pub < (today-dt.timedelta(days=730)).isoformat():weight-=30
     if not record.get("ministry"):weight-=3
     return weight
 

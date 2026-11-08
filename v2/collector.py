@@ -351,38 +351,59 @@ def run():
     health = {"sources": {}, "partial": False, "errors": [], "verified_compared": 0,
               "not_compared": 0, "candidate_relations": 0, "confirmed_relations": 0,
               "collect_at": stamp_now, "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음"}
+    # Scan the newest 14 days on every run and steadily backfill earlier windows.
+    # Queue prevents high-volume windows from being lost to per-run detail limits.
     all_list = {}
+    pending = {uid(x["source"], x["stable_id"], x["serial"]): x
+               for x in state.get("pending", []) if x.get("serial")}
+    today = dt.date.today()
+    backfill_days = max(14, int(state.get("backfill_days", 14)))
+    windows = [
+        ("최근", today - dt.timedelta(days=14), today),
+        ("과거 이력", today - dt.timedelta(days=backfill_days + 14),
+         today - dt.timedelta(days=backfill_days))
+    ]
+    succeeded = 0
     for target in ("law", "admrul"):
-        try:
-            listed = list_source(target)
-            all_list[target] = listed
-            health["sources"][target] = {"status": "정상", "listed": len(listed)}
-            if len(listed) >= MAX_PER_SOURCE:
-                health["partial"] = True
-        except Exception as exc:
-            all_list[target] = []
-            health["sources"][target] = {"status": "실패", "listed": 0, "error": str(exc)[:250]}
-            health["errors"].append({"source": target, "error": str(exc)[:200]})
-    if not any(all_list.values()):
-        if not records:
-            raise RuntimeError("법령·행정규칙 공식 수집 모두 실패: " + "; ".join(x["error"] for x in health["errors"]))
-    # Round-robin across both source types. History and cached items are separate.
-    quota_each = max(1, MAX_DETAILS // 2)
-    new_count = 0
-    examined = []
+        gathered = {}
+        successful_windows = 0
+        for label, window_start, window_end in windows:
+            try:
+                found = list_source(target, date_window=(window_start, window_end))
+                successful_windows += 1
+                succeeded += 1
+                for record in found:
+                    gathered[uid(target, record["stable_id"], record["serial"])] = record
+                if len(found) >= MAX_PER_SOURCE:
+                    health["partial"] = True
+                health["sources"][target + ":" + label] = {
+                    "status": "정상", "listed": len(found),
+                    "range": window_start.isoformat() + "~" + window_end.isoformat()
+                }
+            except Exception as exc:
+                error = {"source": target, "range": label, "error": str(exc)[:200]}
+                health["errors"].append(error)
+                health["sources"][target + ":" + label] = {"status": "실패", "listed": 0,
+                                                             "error": str(exc)[:200]}
+        all_list[target] = list(gathered.values())
+        health["sources"][target] = {"status": "정상" if successful_windows == len(windows) else
+                                    "부분" if successful_windows else "실패",
+                                    "listed": len(gathered)}
+    if not succeeded and not records:
+        raise RuntimeError("공식 법령·행정규칙 원천 조회에 모두 실패했습니다.")
+    backfill_days = 14 if backfill_days >= 364 else backfill_days + 14
     for target, listed in all_list.items():
-        if not listed:
-            continue
-        start = cursor.get(target, 0) % len(listed)
-        rotate = listed[start:] + listed[:start]
-        fresh = [r for r in listed if uid(target, r["stable_id"], r["serial"]) not in records]
-        selection = (fresh[:quota_each] + rotate)[:quota_each]
-        for record in selection:
-            eid = uid(target, record["stable_id"], record["serial"])
-            if eid in {x["id"] for x in examined}:
-                continue
+        for record in sorted(listed, key=lambda x: x["published_at"], reverse=True):
+            identifier = uid(target, record["stable_id"], record["serial"])
+            if identifier not in records and identifier not in pending:
+                pending[identifier] = record
+    examined = []
+    quota_each = max(1, MAX_DETAILS // 2)
+    for target in ("law", "admrul"):
+        matching = [(eid, record) for eid, record in pending.items() if record["source"] == target]
+        for eid, record in matching[:quota_each]:
             examined.append({"id": eid, "record": record})
-        cursor[target] = (start + quota_each) % len(listed)
+    new_count = 0
     for item in examined:
         record = item["record"]
         eid = item["id"]
@@ -406,8 +427,10 @@ def run():
             cache[stable] = {"serial": record["serial"], "published_at": record["published_at"],
                              "clauses": latest, "verified_at": stamp_now}
             new_count += 1
+            pending.pop(eid, None)
         except Exception as exc:
             health["errors"].append({"source": record["source"], "title": record["title"], "error": str(exc)[:160]})
+            pending[eid]["failures"] = pending[eid].get("failures", 0) + 1
     events = sorted(records.values(), key=lambda e: (e.get("promulgated_at", ""), e["id"]), reverse=True)[:500]
     health["confirmed_relations"] = link_relations(events)
     # A bounded reverse look-up adds candidate matches without incorrectly declaring a domino.
@@ -420,6 +443,9 @@ def run():
         health["errors"].extend(errors)
         if health["candidate_relations"] >= 40:
             health["partial"] = True
+    health["pending_details"] = len(pending)
+    if pending:
+        health["partial"] = True
     # The event is a verified document revision only if a real before/after comparison succeeded.
     actions = [a for e in events if e.get("comparison_status") == "신구 본문 비교 완료"
                for a in action_records(e)]
@@ -434,7 +460,8 @@ def run():
     STATE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(json.dumps({"events": {e["id"]: e for e in events}, "snapshots": cache,
-                                 "cursor": cursor}, ensure_ascii=False, indent=2), "utf-8")
+                                 "pending": list(pending.values()),
+                                 "backfill_days": backfill_days}, ensure_ascii=False, indent=2), "utf-8")
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), "utf-8")
     print(json.dumps({"newly_examined": new_count, "sources": health["sources"],
                       "compared": health["verified_compared"], "errors": len(health["errors"])}, ensure_ascii=False))

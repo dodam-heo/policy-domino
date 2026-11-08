@@ -191,8 +191,15 @@ def identify(event):
                               "source_url":matching["source_url"],"verified_location":False,
                               "status":"기관별 실제 반영 확인 필요"})
         if not affected and local_ops and event.get("ministry"):
-            candidate.append({"agency":event["ministry"],"work":local_ops[0][0],
-                              "evidence_type":"소관 부처 정보","status":"집행기관 추가 조사 필요"})
+            task,location=local_ops[0]
+            matching=next((p for p in parsed if p["article"]==ch.get("article","") and task in p["operations"]),None)
+            if matching:
+                detail=instruction(matching,task,location)
+                candidate.append({"agency":event["ministry"],"work":task,
+                                  "target_location":location,"what_to_change":detail["what"],
+                                  "required_change":"해당 정책의 소관기관이 "+location+"을 운영하는 부서·집행기관을 확인하고 변경값의 적용 여부를 검토",
+                                  "article":ch.get("article",""),"evidence_type":"공식 문서 소관기관 정보",
+                                  "status":"소관기관 확인 · 집행기관 조사 필요","verified_location":False})
     structural = document_only(event)
     single=individual_notice(event)
     number_pairs=sum(bool(x["old"] or x["new"]) and any(c.isdigit() for c in x["old"]+x["new"]) for x in parsed)

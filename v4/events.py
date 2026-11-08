@@ -166,7 +166,7 @@ def inspect(record,records=None,load=None,history=None,annual=None):
        "discovery":source.get("discovery_kind","official_date_index"),
        "lifecycle":label_revision(source.get("revision")),
        "verification":"official_record_only",
-       "comparison":None,"changed_articles":[],"excerpts":[],"actors":[],
+       "comparison":None,"changes":[],"changed_articles":[],"excerpts":[],"actors":[],
        "notes":[],"needs_attachment_check":False}
     load=load or api.read_clauses
     history=history or predecessor
@@ -215,6 +215,17 @@ def inspect(record,records=None,load=None,history=None,annual=None):
     if len(changes)>=MAX_ARTICLES:
         event["needs_attachment_check"]=True
         event["notes"].append("변경 조문 수가 처리 한도에 도달함. 일부 결과만 표시")
+    # The provision graph needs the actual source change, not only an
+    # aggregate count. Keep bounded official before/after text with article
+    # identity so dependencies can be proven without guessing from titles.
+    event["changes"]=[{
+        "article":c["article"],"type":c["type"],
+        "before":c.get("before","")[:6500],
+        "after":c.get("after","")[:6500],
+        "source_url":c.get("source_url",""),
+        "complete":len(c.get("before",""))<=6500 and
+                   len(c.get("after",""))<=6500
+    } for c in changes[:MAX_ARTICLES]]
     event["changed_articles"]=[c["article"] for c in changes]
     event["excerpts"]=excerpts(changes)
     event["actors"]=duties(event["excerpts"])

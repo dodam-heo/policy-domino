@@ -239,7 +239,7 @@ def read_clauses(record):
     if not full:
         raise RuntimeError("공식 본문에서 조문을 추출하지 못했습니다.")
     # Split only structural headings. A sentence citing "제6조" is not a new article.
-    matches = list(re.finditer(r"(?:(?<=\\n)|(?<=\\.)\\s*|\\A)제\\s*\\d+\\s*조(?:의\\s*\\d+)?\\s*\\([^)]*\\)", full))
+    matches = list(re.finditer(r"(?:(?<=\n)|(?<=\.)\s*|\A)제\s*\d+\s*조(?:의\s*\d+)?\s*\([^)]*\)", full))
     if matches:
         for i, match in enumerate(matches[:150]):
             end = matches[i + 1].start() if i + 1 < len(matches) else len(full)

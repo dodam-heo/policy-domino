@@ -65,6 +65,28 @@ class CompleteSentenceRegression(unittest.TestCase):
         self.assertNotIn("가상해양청장",agencies)
         self.assertIn("가상지원재단",agencies)
 
+    def test_flat_xml_separates_adjacent_articles_after_numbered_items(self):
+        xml=ET.fromstring("""<행정규칙><조문내용>
+           제2조(적용범위) 1. 지원시설 2. 관련 지원사업
+           제3조(재검토기한) 해양시험청장은 2027년 1월 1일부터 재검토한다.
+           </조문내용></행정규칙>""")
+        with patch.object(collector,"request",return_value=xml):
+            result=collector.read_clauses({"source":"admrul","serial":"1000"})
+        self.assertIn("제2조",result)
+        self.assertIn("제3조",result)
+        self.assertNotIn("해양시험청장",result["제2조"])
+        self.assertIn("해양시험청장",result["제3조"])
+
+    def test_cached_wrong_article_heading_never_becomes_agency_action(self):
+        before=("제2조(적용범위) 1. 공공시설 "
+                "제3조(재검토기한) 해양시험청장은 2026년을 기준으로 정한다.")
+        after=("제2조(적용범위) 1. 공공시설 "
+               "제3조(재검토기한) 해양시험청장은 2027년을 기준으로 정한다.")
+        e=impact.analyze({"events":[evt("WronglyFlattened",before,after,article="제2조")],
+                          "health":{}})["events"][0]
+        self.assertFalse(e["institution_actions"])
+        self.assertEqual(e["effects"],[])
+
     def test_xml_article_subclauses_are_not_appended_twice(self):
         xml=ET.fromstring("""<법령><조문단위><조문번호>35</조문번호>
           <조문내용>제35조(검사) 해양시험청장은 검사를 한다.</조문내용>

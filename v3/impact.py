@@ -249,6 +249,7 @@ def group_events(events):
 def analyze(raw):
     events=[]
     action_count=0
+    candidate_count=0
     for source in raw.get("events",[]):
         event=dict(source)
         identified=identify(event)
@@ -257,6 +258,7 @@ def analyze(raw):
                       "analysis_quality":identified["quality"],"priority":identified["priority"],
                       "impact_category":identified["category"]})
         action_count+=len(identified["actions"])
+        candidate_count+=len(identified["candidate_agencies"])
         events.append(event)
     verified=[e for e in events if e.get("comparison_status") in ("신구 본문 비교 완료","연도별 기준 비교 완료")]
     operational=[e for e in verified if e["effects"] and e["impact_category"]=="제도·업무 변경"]
@@ -266,4 +268,5 @@ def analyze(raw):
             "impact_health":{"events":len(events),"verified_documents":len(verified),
                              "substantive_policy_events":len(operational),
                              "direct_actor_actions":action_count,
+                             "agency_owners_to_verify":candidate_count,
                              "limitations":"특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음"}}

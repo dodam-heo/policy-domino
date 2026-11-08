@@ -42,8 +42,9 @@ def run():
         "dependencies":"공식적 명시 인용·적용 문맥만 연결, 기관 의무 자동 생성 금지",
         "repeal":"규정 폐지는 독립 사건, 이전 문서의 의무를 새 기관 의무로 전환하지 않음"
     }
+    from v3.evidence_gate import is_repeal
     assert all(not e.get("institution_actions")
-               for e in model["events"] if "폐지" in str(e.get("revision","")))
+               for e in model["events"] if is_repeal(e))
     assert all(not e.get("dependency_actions") for e in model["events"])
     print("GATED_REEVALUATION",json.dumps({
         "documents":len(model["events"]),

@@ -119,7 +119,8 @@ def individual_notice(event):
 def meaningful_span(change, item):
     a,b=item["before"],item["after"]
     if not a and not b:return False
-    if TABLE_ART.search(a+b) and len(TABLE_ART.findall(a+b))>=2:return False
+    if (len(TABLE_ART.findall(a+b+item.get("context","")))>=2 and
+            not any(c.isdigit() for c in a+b)):return False
     # Reject formatting-only replacements and small dangling characters.
     norm=lambda s:re.sub(r"[^가-힣A-Za-z0-9]","",s)
     old,new=norm(a),norm(b)

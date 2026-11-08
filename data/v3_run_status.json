@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T21:09:08.840806+00:00",
+  "completed_at": "2026-11-08T21:57:19.942356+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 17,
-        "range": "2025-12-07~2025-12-21"
+        "listed": 61,
+        "range": "2025-11-23~2025-12-07"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 115
+        "listed": 159
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 406,
-        "range": "2025-12-07~2025-12-21"
+        "listed": 462,
+        "range": "2025-11-23~2025-12-07"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 787
+        "listed": 844
       }
     },
     "partial": true,
@@ -104,57 +104,36 @@
         "error": "공식 본문에서 조문을 추출하지 못했습니다."
       }
     ],
-    "verified_compared": 14,
-    "not_compared": 1,
-    "candidate_relations": 59,
-    "confirmed_relations": 364,
-    "collect_at": "2026-11-08T20:54:02+00:00",
+    "verified_compared": 15,
+    "not_compared": 0,
+    "candidate_relations": 40,
+    "confirmed_relations": 369,
+    "collect_at": "2026-11-08T21:53:05+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 9180,
+    "pending_details": 9687,
     "newly_examined": 15,
-    "events": 393,
-    "actions": 3146,
+    "events": 408,
+    "actions": 3698,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 393,
-    "verified_documents": 377,
-    "substantive_policy_events": 253,
-    "direct_actor_actions": 147,
+    "events": 408,
+    "verified_documents": 392,
+    "substantive_policy_events": 263,
+    "direct_actor_actions": 158,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 5,
     "cross_policy_links": {
-      "links": 183,
-      "explicit_standard_uses": 183,
+      "links": 186,
+      "explicit_standard_uses": 186,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
-    "dependent_rules_checked": 14,
-    "dependent_rules_found": 16,
-    "dependency_errors": [
-      {
-        "policy": "학교 밖 청소년 지원에 관한 법률 시행령",
-        "target": "강원특별자치도 친환경 학교급식 등 지원에 관한 조례",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      },
-      {
-        "policy": "학교 밖 청소년 지원에 관한 법률 시행령",
-        "target": "강원특별자치도 탄광문화촌 관리·운영 조례",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      },
-      {
-        "policy": "학교 밖 청소년 지원에 관한 법률 시행령",
-        "target": "강원특별자치도 학교폭력예방 및 지원에 관한 조례",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      },
-      {
-        "policy": "학교 밖 청소년 지원에 관한 법률 시행령",
-        "target": "강원특별자치도 학원의 설립ㆍ운영 및 과외교습에 관한 규칙",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      }
-    ],
+    "dependent_rules_checked": 13,
+    "dependent_rules_found": 19,
+    "dependency_errors": [],
     "dependency_actors_to_review": 0
   }
 }

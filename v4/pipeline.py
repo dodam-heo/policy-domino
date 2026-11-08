@@ -16,8 +16,11 @@ OUTPUT=ROOT/"site"/"v4"/"data.json"
 SUPPORTED=("law","admrul","ordin")
 
 def load_json(path,default):
-    try:return json.loads(path.read_text("utf8"))
-    except (OSError,ValueError):return default
+    # A corrupt/partially written persisted crawl must never reset years of
+    # official evidence to an empty catalogue.
+    if not path.exists():
+        return default
+    return json.loads(path.read_text("utf8"))
 
 def save_json(path,item):
     path.parent.mkdir(parents=True,exist_ok=True)

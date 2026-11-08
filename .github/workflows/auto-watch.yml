@@ -1,4 +1,4 @@
-name: Policy Domino NEXT — Official Changes to Actions
+name: Policy Domino V2 — Official Source-wide Monitor
 on:
   workflow_dispatch:
   schedule:
@@ -7,6 +7,9 @@ on:
     branches: [main]
     paths-ignore:
       - 'site/data.json'
+      - 'data/v2_state.json'
+      - 'data/v2_run_status.json'
+      - 'data/v2_deploy_status.json'
       - 'data/next_state.json'
       - 'data/next_run_status.json'
       - 'data/next_deploy_status.json'
@@ -17,84 +20,61 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: policy-domino-next
+  group: policy-domino-v2
   cancel-in-progress: false
 jobs:
   analyze:
-    name: Official legal changes & agency action generation
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    timeout-minutes: 20
+    environment: github-pages
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate new engine
+      - name: Verify universal engine with cross-domain tests
         run: |
-          python -m compileall -q next
-          python -m unittest discover -s next -p 'test_*.py' -v
-      - name: Analyze official legal versions (cloud only)
+          python -m compileall -q v2
+          python -m unittest discover -s v2 -p 'test_*.py' -v
+      - name: Collect law and administrative-rule revisions
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
-        run: python next/engine.py
-      - name: Publish evidence & execution record
-        if: always()
+        run: python v2/collector.py
+      - name: Check data schema and collection coverage
         run: |
           python - <<'PY'
-          from pathlib import Path
           import json
-          from datetime import datetime, timezone
-          p=Path('site/data.json')
-          try:
-              data=json.loads(p.read_text('utf-8'))
-              status=(data.get('health') or {}).get('source_status','오류')
-              compared=(data.get('health') or {}).get('compared',0)
-              actions=len(data.get('actions',[]))
-              message=(data.get('health') or {}).get('error')
-          except Exception:
-              status='분석 실패';compared=0;actions=0;message='실행 결과를 기록할 수 없습니다. Actions 로그 확인 필요.'
-          out={'completed_at':datetime.now(timezone.utc).isoformat(),
-               'source_status':status,'compared':compared,'actions':actions,'message':message}
-          path=Path('data/next_run_status.json')
-          path.parent.mkdir(exist_ok=True)
-          path.write_text(json.dumps(out,ensure_ascii=False,indent=2),'utf-8')
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf-8'))
+          assert d['schema']=='policy-domino-v2'
+          h=d['health']
+          assert any(x['status']=='정상' for x in h['sources'].values()),'No official source available'
+          print(json.dumps(h,ensure_ascii=False,indent=2)[:4000])
+          PY
+      - name: Commit verified data and status
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime,timezone
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf-8'))
+          Path('data/v2_run_status.json').write_text(json.dumps({
+            'completed_at':datetime.now(timezone.utc).isoformat(),
+            'schema':d['schema'],
+            'health':d.get('health',{})
+          },ensure_ascii=False,indent=2),'utf-8')
           PY
           git config user.name 'policy-domino-bot'
           git config user.email 'policy-domino-bot@users.noreply.github.com'
-          for attempt in 1 2 3 4; do
-            git fetch origin main
-            git reset --mixed origin/main
-            git add site/data.json data/next_run_status.json
-            if [ -f data/next_state.json ]; then git add data/next_state.json; fi
-            if git diff --cached --quiet; then break; fi
-            git commit -m 'data: NEXT official law comparison results [skip ci]'
-            if git push origin HEAD:main; then break; fi
-            if [ "$attempt" -eq 4 ]; then exit 1; fi
-            sleep 2
-          done
-
-      - name: Verify actual API collection result
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          status=json.loads(Path('data/next_run_status.json').read_text('utf-8'))
-          current=status.get('source_status')
-          if current in ('메타데이터만 연결','공식 공포·개정문 연결'):
-              print('::warning::공식 공포·개정문 수집은 작동 중입니다. 전후 조문 전체 비교와 모든 기관의 조치 반영 여부는 별도 검증이 필요합니다.')
-          elif current!='정상':
-              print('::error::법령 수집 실패: '+str(status.get('message') or current))
-              raise SystemExit(1)
-          else:
-              print('공식 법령 수집 확인:',status.get('compared'),'건 조문 비교')
-          PY
+          git add site/data.json data/v2_state.json data/v2_run_status.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: refresh official v2 change evidence [skip ci]'
+            git push origin HEAD:main
+          fi
 
   deploy:
-    name: Deploy freshly rebuilt interface
     needs: analyze
-    if: ${{ always() }}
+    if: success()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -104,49 +84,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Verify next dashboard and schema
+      - name: Validate dashboard and published evidence
         run: |
-          node - <<'NODE'
+          node - <<'JS'
           const fs=require('fs');
-          const html=fs.readFileSync('site/index.html','utf8');
-          const js=html.match(/<script>([\s\S]*?)<\/script>/);
-          if(!js) throw new Error('NEXT JavaScript missing');
-          new Function(js[1]);
-          const payload=JSON.parse(fs.readFileSync('site/data.json','utf8'));
-          if(payload.schema!=='policy-domino-next-v1')throw new Error('Legacy schema must not be published');
-          console.log('NEXT dashboard JS and data schema valid');
-          NODE
+          const html=fs.readFileSync('site/index.html','utf-8');
+          const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+          if(!scripts.length)throw Error('Dashboard script missing');
+          for(const s of scripts)new Function(s[1]);
+          const data=JSON.parse(fs.readFileSync('site/data.json','utf-8'));
+          if(data.schema!=='policy-domino-v2')throw Error('Not v2 data');
+          console.log('Dashboard and collector schema verified');
+          JS
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
-      - name: Publish GitHub Pages
-        id: deploy_pages
+      - id: deploy_pages
         uses: actions/deploy-pages@v4
-      - name: Record confirmed successful deployment
-        if: success()
-        env:
-          LIVE_URL: ${{ steps.deploy_pages.outputs.page_url }}
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import json,os
-          from datetime import datetime,timezone
-          Path('data/next_deploy_status.json').write_text(json.dumps({
-            'deployed_at':datetime.now(timezone.utc).isoformat(),
-            'page_url':os.environ.get('LIVE_URL',''),
-            'version':'policy-domino-next-v1',
-            'commit':os.environ.get('GITHUB_SHA','')},ensure_ascii=False,indent=2),'utf-8')
-          PY
-          git config user.name 'policy-domino-bot'
-          git config user.email 'policy-domino-bot@users.noreply.github.com'
-          for attempt in 1 2 3 4; do
-            git fetch origin main
-            git reset --mixed origin/main
-            git add data/next_deploy_status.json
-            if git diff --cached --quiet; then break; fi
-            git commit -m 'ops: NEXT Pages deployment confirmed [skip ci]'
-            if git push origin HEAD:main; then break; fi
-            if [ "$attempt" -eq 4 ]; then exit 1; fi
-            sleep 2
-          done

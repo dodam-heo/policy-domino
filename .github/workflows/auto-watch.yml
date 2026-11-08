@@ -46,7 +46,10 @@ jobs:
           h=d['impact_health']
           assert d['schema']=='policy-domino-impact-v3'
           assert h['verified_documents']>0
-          assert h['direct_actor_actions']+h['agency_owners_to_verify']>0
+          assert h.get('evidence_gated') is True, 'An evidence gate must process every event'
+          assert all(not x.get('institution_actions',[]) for x in d['events']
+                     if '폐지' in x.get('revision','')), 'Repealed text cannot generate live obligations'
+          assert all(not x.get('dependency_actions',[]) for x in d['events']), 'Unverified links must not become agency duties'
           assert any(d['source_health']['sources'][t].get('status') in ('정상','부분')
                      for t in ('law','admrul'))
           print(json.dumps(h,ensure_ascii=False,indent=2))

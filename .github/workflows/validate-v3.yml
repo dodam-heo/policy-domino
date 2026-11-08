@@ -35,3 +35,15 @@ jobs:
           assert h["substantive_policy_events"]>0
           assert h["direct_actor_actions"]>0
           PY
+      - name: Verify impact-first interface JavaScript
+        run: |
+          node - <<'JS'
+          const fs=require("fs");
+          const html=fs.readFileSync("v3/index.html","utf8");
+          const match=html.match(/<script>([\s\S]*?)<\/script>/);
+          if(!match)throw Error("Missing impact view script");
+          new Function(match[1]);
+          for(const text of ["영향을 받는 기관","실질 정책 변경","기관 추가 조사","변경 조문 비교"]){
+            if(!html.includes(text))throw Error("Required impact-first section absent: "+text);
+          }
+          JS

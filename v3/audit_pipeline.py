@@ -26,3 +26,14 @@ for where,items in [("pending",pending),("records",list(records.values())),("pub
 print("AUDIT_TOP_PUBLISHED",json.dumps([sample(x) for x in events[:24]],ensure_ascii=False))
 print("AUDIT_DEFAULT_VISIBLE",json.dumps([sample(x) for x in events if x.get("impact_category")=="제도·업무 변경" and x.get("effects")][:24],ensure_ascii=False))
 if published.get("schema")!="policy-domino-impact-v3":raise SystemExit("unexpected schema")
+
+import datetime as dt
+today=dt.date(2026,11,8)
+for source in ("law","admrul"):
+ rows=[x for x in pending if x.get("source")==source]
+ priorities=[x for x in rows if "2027" in x.get("title","") or x.get("effective_date","")>today.isoformat()]
+ n=12
+ chosen=priorities[:6]+[x for x in rows if x not in priorities[:6]][:6]
+ print("AUDIT_PRIORITY_"+source.upper(),json.dumps([
+  {"title":x["title"],"date":x["published_at"],"effective":x.get("effective_date")} for x in chosen],ensure_ascii=False))
+print("AUDIT_FUTURE_QUEUE",sum(x.get("effective_date","")>today.isoformat() for x in pending))

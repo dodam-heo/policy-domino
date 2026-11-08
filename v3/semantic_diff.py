@@ -17,6 +17,9 @@ FORMAT_ONLY=re.compile(r"[\s·ㆍ,，;；:：\-.]")
 VALUE=re.compile(r"\d[\d,]*(?:\.\d+)?\s*(?:만원|원|명|일|년|개월|%|퍼센트|세|호)?")
 MAX_SENTENCE=850
 MAX_PAIRS=30
+ARTICLE_HEADING=re.compile(
+    r"(?<![가-힣0-9])(제\s*\d+\s*조(?:의\s*\d+)?)\s*\([^)\n]{1,75}\)"
+)
 
 def compact(value):
     return " ".join(str(value or "").split()).strip()
@@ -145,11 +148,24 @@ def operation_for(pair,definitions):
             return name,location
     return None
 
+def cross_article_contamination(pair,article):
+    """A source extractor that mixed two named articles cannot prove a duty
+    in the article it claims to show. Suppress the agency inference.
+    """
+    def label(x):
+        return re.sub(r"\s+","",x or "")
+    observed=[label(m.group(1)) for text in (pair["before"],pair["after"])
+              for m in ARTICLE_HEADING.finditer(text or "")]
+    expected=label(article)
+    return bool(observed and any(x != expected for x in observed))
+
 def evidence_effects(event,operations):
     result=[]
     seen=set()
     for change in event.get("changes",[]):
         for pair in pairs(change):
+            if cross_article_contamination(pair,change.get("article","")):
+                continue
             label=operation_for(pair,operations)
             if not label:continue
             work,location=label

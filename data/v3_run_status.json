@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-08T15:10:46.617172+00:00",
+  "completed_at": "2026-11-08T16:06:11.705345+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 224,
-        "range": "2026-03-15~2026-03-29"
+        "listed": 108,
+        "range": "2026-03-01~2026-03-15"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 322
+        "listed": 206
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 283,
-        "range": "2026-03-15~2026-03-29"
+        "listed": 240,
+        "range": "2026-03-01~2026-03-15"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 665
+        "listed": 622
       }
     },
     "partial": true,
@@ -107,44 +107,33 @@
     "verified_compared": 15,
     "not_compared": 0,
     "candidate_relations": 60,
-    "confirmed_relations": 206,
-    "collect_at": "2026-11-08T14:55:07+00:00",
+    "confirmed_relations": 257,
+    "collect_at": "2026-11-08T15:54:07+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 6125,
+    "pending_details": 6458,
     "newly_examined": 15,
-    "events": 288,
-    "actions": 1901,
+    "events": 303,
+    "actions": 1999,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 288,
-    "verified_documents": 275,
-    "substantive_policy_events": 171,
-    "direct_actor_actions": 122,
+    "events": 303,
+    "verified_documents": 290,
+    "substantive_policy_events": 182,
+    "direct_actor_actions": 129,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 5,
     "cross_policy_links": {
-      "links": 113,
-      "explicit_standard_uses": 113,
+      "links": 124,
+      "explicit_standard_uses": 124,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 11,
-    "dependency_errors": [
-      {
-        "policy": "주택건설사업 기반시설 기부채납 운영기준",
-        "target": "거제시 수도급수 조례",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      },
-      {
-        "policy": "주택건설사업 기반시설 기부채납 운영기준",
-        "target": "거제시 자원순환시설 관리 및 운영 조례 시행규칙",
-        "error": "RuntimeError ordin 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      }
-    ],
+    "dependent_rules_found": 12,
+    "dependency_errors": [],
     "dependency_actors_to_review": 0
   }
 }

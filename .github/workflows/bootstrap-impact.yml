@@ -1,0 +1,52 @@
+name: Impact-first initial Pages deployment
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bootstrap-impact.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy_pages.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert already verified source comparisons into real agency effects
+        env:
+          PD_USE_EXISTING_RAW: '1'
+          PD_SKIP_REMOTE_DEPENDENCIES: '1'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf-8'))
+          assert d['schema'] in ('policy-domino-v2','policy-domino-impact-v3')
+          if d['schema']=='policy-domino-v2':
+            from v3.runner import run
+            run()
+          d=json.loads(Path('site/data.json').read_text('utf-8'))
+          h=d['impact_health']
+          assert d['schema']=='policy-domino-impact-v3'
+          assert h['verified_documents']>0
+          assert h['direct_actor_actions']+h['agency_owners_to_verify']>0
+          print('Impact-first public data:',json.dumps(h,ensure_ascii=False))
+          PY
+          node - <<'JS'
+          const fs=require('fs');
+          new Function(fs.readFileSync('site/index.html','utf8').match(/<script>([\s\S]*?)<\/script>/)[1]);
+          JS
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy_pages
+        uses: actions/deploy-pages@v4

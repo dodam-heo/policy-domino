@@ -106,7 +106,7 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const safe=s=>{try{let x=new URL(s);return ["http:","https:"].includes(x.protocol)?esc(x.href):"#"}catch(e){return "#"}};
 let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",view="group";
-const compared=e=>e.comparison_status==="신구 본문 비교 완료";
+const compared=e=>["신구 본문 비교 완료","연도별 기준 비교 완료"].includes(e.comparison_status);
 const sorted=a=>[...a].sort((x,y)=>(y.promulgated_at||"").localeCompare(x.promulgated_at||""));
 function groups(){
  const arr=sorted(DATA.events||[]),ids=new Set(arr.map(x=>x.id));

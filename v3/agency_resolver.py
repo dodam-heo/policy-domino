@@ -60,6 +60,9 @@ def shared_operational_language(text,effect):
 
 def assign(event,clauses):
     changes=event.get("effects",[])
+    # A central agency's staffing table does not impose its numeric headcount
+    # on every authority incidentally mentioned in its organizational duties.
+    if impact.organization_owner(event):return []
     if not changes or not isinstance(clauses,dict):return []
     candidates=find_actors_in_provisions(clauses)
     result=[]

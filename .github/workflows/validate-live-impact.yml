@@ -1,0 +1,55 @@
+name: Verify real missing-policy end to end (no deployment)
+on:
+  push:
+    branches: [fix/policy-discovery-priority-20261108]
+    paths:
+      - '.github/workflows/validate-live-impact.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: All collection, graph, organization, and agency card regression tests
+        run: |
+          python -m compileall -q v2 v3
+          python -m unittest discover -s v2 -p 'test_*.py' -v
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+          node site/test_adapter.cjs
+      - name: Rescan official current-year standards and run complete generic pipeline
+        env:
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+          PD_DETAIL_LIMIT: '28'
+        run: python -m v3.runner
+      - name: Verify officially published annual baselines reappear in change feed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf-8'))
+          titles=('중위소득','교육급여','주거급여')
+          found={}
+          for term in titles:
+            matches=[e for e in d['events'] if term in e['title'] and
+                     (e.get('effective_date','').startswith('2027') or '2027' in e['title'])]
+            found[term]=[{"title":e['title'],"date":e.get('promulgated_at'),
+                "effective":e.get('effective_date'),"status":e.get('comparison_status'),
+                "category":e.get('impact_category'),"effects":len(e.get('effects',[])),
+                "agencies":len(e.get('institution_actions',[])),
+                "agency_candidates":len(e.get('agency_candidates',[])),
+                "policy_links":[{"target":l['target_title'],
+                                 "verified":l['verified_reference']} for l in e.get('policy_links',[])[:10]]}
+                         for e in matches[:6]]
+          print("YEAR_2027_STANDARD_CHECK",json.dumps(found,ensure_ascii=False,indent=2))
+          print("POLICY_GRAPH_HEALTH",json.dumps(d['impact_health'],ensure_ascii=False,indent=2))
+          assert d['schema']=='policy-domino-impact-v3'
+          assert all(found[x] for x in titles),'Missing official 2027 annual standard'
+          assert all(any(e['effects']>0 for e in found[x]) for x in titles),'Official annual notices not analyzed'
+          PY

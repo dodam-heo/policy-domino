@@ -1,0 +1,79 @@
+name: V4 live official-source verification (no production changes)
+on:
+  push:
+    branches: [fix/source-and-causal-integrity-20261108]
+    paths:
+      - '.github/workflows/verify-v4-live.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all V4 source/causality unit tests
+        run: |
+          python -m compileall -q v4
+          python -m unittest discover -s v4 -p 'test_*.py' -v
+      - name: Query genuine official change-history and other sources
+        env:
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+          PD_V4_DETAILS: '10'
+        run: python -m v4.pipeline
+      - name: Check published model against source and factual invariants
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/v4/data.json').read_text('utf8'))
+          s=json.loads(Path('data/v4_state.json').read_text('utf8'))
+          assert d['schema']=='policy-domino-v4'
+          assert d['collection']['official_catalogue']>=len(s['inspected'])
+          assert d['collection']['whole_corpus_complete'] is False
+          for group in d['featured_events']+d['other_events']:
+              for dep in group['dependencies']:
+                  assert dep['affected_verified'] is True
+                  assert dep['type'] in ('cited_changed_provision','formula_dependency')
+                  assert dep['implementation_verified'] is False
+              for item in group['source_docs']:
+                  assert item['verification'] in (
+                      'official_record_only','detail_failed','partial_official_text',
+                      'verified_repeal_notice','verified_enactment',
+                      'verified_annual_replacement','verified_changed_clauses')
+                  if item['comparison']:
+                      if item['comparison']['kind']=='same_regulation_version':
+                          assert item['comparison']['same_stable_id'] is True
+          scans=s.get('coverage',[])
+          sources={x['source']:sum(1 for y in scans if y['source']==x['source'])
+                 for x in scans}
+          official_hist=sum(1 for x in s['catalog'].values()
+                  if x.get('discovery_kind')=='official_law_change_history')
+          print('V4_LIVE_SOURCE_REPORT',json.dumps({
+              'catalogue':d['collection'],'windows_by_source':sources,
+              'official_history_versions':official_hist,
+              'reviewed':len(s['inspected']),
+              'verifications':{
+                  name:sum(x['verification']==name for x in s['inspected'].values())
+                  for name in sorted(set(x['verification'] for x in s['inspected'].values()))
+              },
+              'featured':len(d['featured_events']),
+              'actual_dependencies':d['links']['confirmed_provision_or_formula_use']
+          },ensure_ascii=False)[:9500])
+          assert official_hist>0 or any(x['source']=='law_history' and x['reported']==0 and x['complete']
+              for x in scans),'Official law-change history endpoint not verified'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: policy-domino-v4-validation-artifacts
+          path: |
+            site/v4/index.html
+            site/v4/data.json
+            data/v4_state.json
+          if-no-files-found: ignore
+          retention-days: 7

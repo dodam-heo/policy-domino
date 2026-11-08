@@ -101,7 +101,8 @@ def link_documents(events,snapshots,limit_per_source=12):
             else:continue
             # Prefer a general source whose named standard is used by a
             # more specific target. Do not report a two-way causal dependency.
-            if verified and any(word in atext for word in keywords(child,freq,len(events))):
+            reverse_title=re.sub(r"(?:19|20)\d{2}\s*년(?:도)?","",child["title"]).strip()
+            if verified and len(reverse_title)>=8 and reverse_title in atext:
                 # If both texts use each other's name, mark investigation only.
                 verified=False
                 kind="상호 기준 사용 · 방향 추가 검증"

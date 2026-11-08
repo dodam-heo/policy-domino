@@ -164,7 +164,7 @@ def identify(event):
     """Distinguish an official change, a genuinely identified affected actor,
     and a ministry for which only an initial review is justified.
     """
-    if event.get("comparison_status") not in ("신구 본문 비교 완료","연도별 기준 비교 완료"):
+    if event.get("comparison_status") not in ("신구 본문 비교 완료","연도별 기준 비교 완료","연도별 고시 교체 확인·수치표 미검증"):
         return {"effects":[], "actions":[], "candidate_agencies":[], "quality":"전후 미검증", "priority":-1,
                 "category":"조직·내부운영" if document_only(event) else "개별 행정처분" if individual_notice(event) else "비교 미완료"}
     changes=event.get("changes",[])
@@ -260,7 +260,7 @@ def analyze(raw):
         action_count+=len(identified["actions"])
         candidate_count+=len(identified["candidate_agencies"])
         events.append(event)
-    verified=[e for e in events if e.get("comparison_status") in ("신구 본문 비교 완료","연도별 기준 비교 완료")]
+    verified=[e for e in events if e.get("comparison_status") in ("신구 본문 비교 완료","연도별 기준 비교 완료","연도별 고시 교체 확인·수치표 미검증")]
     operational=[e for e in verified if e["effects"] and e["impact_category"]=="제도·업무 변경"]
     groups=group_events(events)
     return {"schema":"policy-domino-impact-v3","generated_at":raw.get("generated_at",""),

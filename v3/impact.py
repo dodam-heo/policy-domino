@@ -194,7 +194,8 @@ def group_events(events):
     for event in events:
         if event["id"] in children:continue
         related=[by_id[x] for x in outgoing[event["id"]]]
-        groups.append({"group_id":event["id"],"event":event,"linked":related,
+        groups.append({"group_id":event["id"],"event_id":event["id"],
+                       "linked_ids":[x["id"] for x in related],
                        "date":max([event.get("promulgated_at","")]+[x.get("promulgated_at","") for x in related])})
     return groups
 

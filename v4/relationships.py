@@ -11,6 +11,10 @@ import re
 LAW_CITE=re.compile(r"「([^」]{2,120})」")
 ART=re.compile(r"제\s*(\d+)\s*조(?:의\s*(\d+))?")
 OPERATES=re.compile(r"따라|따른|준용|적용|기준으로|규정에\s*의하여|산정|계산")
+PARAGRAPHS="①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳"
+PARA_NUMBER={ch:"제"+str(i+1)+"항" for i,ch in enumerate(PARAGRAPHS)}
+PARA_MARKER=re.compile("["+PARAGRAPHS+"]")
+SUBSECTION=re.compile(r"제\s*(\d+)\s*항")
 FORMULA=re.compile(r"(?:(?:의|에\s*따라|을|를)\s*\d[\d,.]*\s*(?:%|퍼센트|배|원|만원|명)|(?:에\s*따라|을\s*적용하여|를\s*기준으로)\s*(?:산정|선정|지급|계산))")
 YEAR=re.compile(r"(?:19|20)\d{2}\s*년(?:도)?")
 STANDARD=re.compile(r"([가-힣][가-힣\s]{2,30}?(?:소득|산정기준|선정기준|기준액|요율|단가|지원기준|지급기준|최저보장수준))")
@@ -27,6 +31,27 @@ def substantive_standard_change(change):
 
 def norm(s):
     return re.sub(r"\s+","",str(s or ""))
+
+def paragraph_sections(text):
+    text=str(text or "")
+    matches=list(PARA_MARKER.finditer(text))
+    if not matches:return None
+    return {PARA_NUMBER[m.group()]:norm(text[m.start():
+              matches[i+1].start() if i+1<len(matches) else len(text)])
+            for i,m in enumerate(matches)}
+
+def changed_paragraphs(parent,article):
+    """A cited 제2항 cannot inherit a change to 제1항 in the same article."""
+    matching=[x for x in parent.get("changes",[])
+              if norm(x.get("article"))==norm(article)]
+    if not matching:return None
+    changed=set()
+    for x in matching:
+        old=paragraph_sections(x.get("before",""))
+        new=paragraph_sections(x.get("after",""))
+        if old is None or new is None:return None
+        changed.update(k for k in set(old)|set(new) if old.get(k)!=new.get(k))
+    return changed
 
 def articles_of(event):
     return {norm(c.get("article")) for c in event.get("changes",[])
@@ -51,11 +76,18 @@ def reference_tokens(text,parent_title):
         art=ART.search(short)
         if art and art.start()<=12:
             number="제"+art.group(1)+"조"+("의"+art.group(2) if art.group(2) else "")
-            yield {"article":number,"excerpt":text[max(0,match.start()-45):
-                min(len(text),match.end()+125)],"text":short,"title":match.group(1)}
+            remainder=short[art.end():]
+            sub=SUBSECTION.search(remainder[:20])
+            paragraph=("제"+str(int(sub.group(1)))+"항") if sub and sub.start()<=4 else None
+            yield {"article":number,"paragraph":paragraph,
+                "excerpt":text[max(0,match.start()-45):
+                    min(len(text),match.end()+125)],
+                "text":short,"title":match.group(1)}
         else:
-            yield {"article":None,"excerpt":text[max(0,match.start()-45):
-                min(len(text),match.end()+125)],"text":short,"title":match.group(1)}
+            yield {"article":None,"paragraph":None,
+                "excerpt":text[max(0,match.start()-45):
+                    min(len(text),match.end()+125)],
+                "text":short,"title":match.group(1)}
 
 def changed_standards(parent):
     if not parent.get("changes"):return []
@@ -100,11 +132,16 @@ def evaluate(parent,child,child_clauses):
         body=str(body or "")
         for cite in reference_tokens(body,source_title):
             target=norm(cite["article"])
-            actual=(target in changed and OPERATES.search(cite["text"]))
+            subsections=changed_paragraphs(parent,cite["article"]) if cite["paragraph"] else None
+            paragraph_applies=(not cite["paragraph"] or
+                (subsections is not None and cite["paragraph"] in subsections))
+            actual=bool(target in changed and paragraph_applies and OPERATES.search(cite["text"]))
             candidates.append({
                 "type":"cited_changed_provision" if actual else "citation_only",
                 "source_event":parent["id"],"target_document":child.get("id",""),
-                "source_article":cite["article"],"target_article":article,
+                "source_article":cite["article"],
+                "source_paragraph":cite["paragraph"],
+                "target_article":article,
                 "reference":cite["title"],"excerpt":cite["excerpt"][:250],
                 "proof":"공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용"
                         if actual else "문서 또는 다른 조항 인용만 확인",

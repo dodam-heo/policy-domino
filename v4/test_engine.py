@@ -61,6 +61,19 @@ class OfficialCollection(unittest.TestCase):
         self.assertEqual(len(state["catalog"]),1)
         self.assertEqual(done["incomplete_windows"],[])
 
+    def test_repealed_administrative_rules_appear_from_history_index(self):
+        modes=[]
+        def fetch(target,**kw):
+            modes.append(kw.get("nw"))
+            return ET.fromstring("<root><totalCnt>1</totalCnt>"+
+                row(9,day="20261001",source="admrul")+"</root>")
+        state={}
+        index.ingest_index(state,"admrul",[("2026-10-01","2026-10-01")],fetch)
+        self.assertEqual(modes,["1","2"])
+        self.assertEqual(len(state["catalog"]),1)
+        self.assertEqual(len(state["coverage"]),2)
+        self.assertEqual({x["edition"] for x in state["coverage"]},{"current","history"})
+
     def test_official_history_is_not_current_index(self):
         def fetch(target,**kw):
             self.assertEqual(target,"lsHstInf")

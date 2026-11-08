@@ -23,7 +23,7 @@ OUTPUT = ROOT / "site" / "data.json"
 API = "https://www.law.go.kr/DRF/"
 HEADERS = {"User-Agent": "PolicyDomino/2.0 (public legal data research)"}
 VALID = ("개정", "제정", "폐지", "정정")
-MAX_PER_SOURCE = int(os.getenv("PD_LIST_LIMIT", "160"))
+MAX_PER_SOURCE = int(os.getenv("PD_LIST_LIMIT", "500"))
 MAX_DETAILS = int(os.getenv("PD_DETAIL_LIMIT", "24"))
 MAX_REFERENCES = int(os.getenv("PD_REFERENCE_LIMIT", "5"))
 DOMAINS = (
@@ -82,7 +82,9 @@ def request(target, endpoint="lawSearch.do", **kwargs):
     for trial in range(3):
         try:
             with urllib.request.urlopen(req, timeout=22) as response:
-                raw = response.read(4_000_000)
+                raw = response.read(24_000_001)
+            if len(raw) > 24_000_000:
+                raise ValueError("공식 API 응답이 24MB를 초과하여 안전하게 처리를 중단했습니다.")
             root = ET.fromstring(raw)
             if root.tag.lower() in ("html", "error") or "오류" in root.tag:
                 raise ValueError("공식 API 응답 오류")

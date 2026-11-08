@@ -1,0 +1,55 @@
+name: Validate sentence-grounded policy diffs
+on:
+  push:
+    branches: [fix/semantic-provision-diff-20261108]
+    paths: ['v2/**','v3/**','site/**','.github/workflows/test-semantic.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Unit and browser regressions from several unrelated policies
+        run: |
+          python -m compileall -q v2 v3
+          python -m unittest discover -s v2 -p 'test_*.py' -v
+          python -m unittest discover -s v3 -p 'test_*.py' -v
+          node site/test_adapter.cjs
+      - name: Reanalyze entire real published set without false fragment commands
+        run: |
+          python -m v3.repair_cached
+          python - <<'PY'
+          import json,collections
+          from pathlib import Path
+          d=json.loads(Path('site/data.json').read_text('utf8'))
+          fail=[]
+          count=0
+          for e in d['events']:
+              keys=set()
+              for a in e.get('institution_actions',[]):
+                  k=(a['agency'],a['article'],a['work'])
+                  if k in keys:fail.append((e['title'],"repeated same task",k))
+                  keys.add(k)
+                  if a.get('evidence_type')=='변경된 동일 조문 내 업무주체·의무문 확인':
+                      if not a.get('change_pairs'):fail.append((e['title'],"missing complete sentence",k))
+                      for p in a.get('change_pairs',[]):
+                          if p['before'] and len(p['before'])<13:fail.append((e['title'],"fragment before",k))
+                          if p['after'] and len(p['after'])<13:fail.append((e['title'],"fragment after",k))
+                  count+=1
+          sample=[{"title":e['title'],"actions":len(e['institution_actions']),
+                   "examples":[{"agency":a['agency'],"where":a['article'],
+                                "pairs":a.get('change_pairs',[])[:2]}
+                               for a in e['institution_actions'][:2]]}
+                   for e in d['events'] if '해양' in e['title'] and e['institution_actions']]
+          print('SEMANTIC_REAL_AUDIT',json.dumps({"events":len(d['events']),
+                "actor_tasks":count,"problems":fail[:7],"marine_samples":sample[:4]},
+                ensure_ascii=False)[:9000])
+          assert not fail,fail[:7]
+          PY

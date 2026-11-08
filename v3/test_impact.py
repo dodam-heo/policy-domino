@@ -47,7 +47,7 @@ class ImpactTests(unittest.TestCase):
         x=event("가상청 직제 시행규칙","가상청 정원 15명","가상청 정원 20명")
         y=event("가상사업 운영규칙","지원금 상한액 100만원","지원금 상한액 150만원")
         self.assertLess(impact.identify(x)["priority"],impact.identify(y)["priority"])
-        self.assertEqual(impact.identify(x)["category"],"조직·인사")
+        self.assertEqual(impact.identify(x)["category"],"조직·내부운영")
     def test_uncompared_record_has_no_invented_action(self):
         x=event("가상 정책","10원","20원")
         x["comparison_status"]="이전 연혁 본문 미확보"
@@ -57,12 +57,27 @@ class ImpactTests(unittest.TestCase):
         identified=impact.identify(x)
         self.assertEqual(identified["actions"],[])
         self.assertTrue(identified["candidate_agencies"])
-        self.assertEqual(identified["candidate_agencies"][0]["status"],"집행기관 추가 조사 필요")
+        self.assertEqual(identified["candidate_agencies"][0]["status"],"소관기관 확인 · 집행기관 조사 필요")
     def test_normalized_cause_only_not_general_keywords(self):
         parent=event("가상 소득기준 고시","100원","120원")
         child=event("가상 주거지원 시행규칙","100원","120원",parent=parent["id"])
         child["amendment_reason"]="「가상 소득기준 고시」를 참고하여 제도를 소개한다"
         self.assertFalse(impact.strong_cause(parent,child))
+    def test_do_not_surface_one_off_authorization_as_public_policy(self):
+        e=event("통계작성의 변경승인(가상 기본통계)","승인 내용 100","승인 내용 120")
+        result=impact.identify(e)
+        self.assertEqual(result["category"],"개별 행정처분")
+
+    def test_institution_internal_personnel_is_not_public_support_policy(self):
+        e=event("가상기관 보통승진심사위원회규정",
+                "승진 심사위원회는 5명으로 한다.","승진 심사위원회는 7명으로 한다.")
+        self.assertEqual(impact.identify(e)["category"],"조직·내부운영")
+
+    def test_discard_truncated_table_artifacts(self):
+        e=event("사업 기준",
+                "시민 지원금액 공공요┃┃ 입니다.","시민 지원금액 활동비┃┃ 입니다.")
+        self.assertEqual(impact.identify(e)["effects"],[])
+
     def test_output_is_policy_evidence_not_prebaked_sector(self):
         x=event("항공시설 관리규칙","교육감은 검사 기한 20일을 적용한다.","교육감은 검사 기한 10일을 적용한다.")
         data=impact.analyze({"generated_at":"2026-11-08","events":[x],"health":{}})

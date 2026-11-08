@@ -1,0 +1,23 @@
+name: V4 independent source and causality checks
+on:
+  push:
+    branches: [fix/source-and-causal-integrity-20261108]
+    paths:
+      - 'v4/**'
+      - '.github/workflows/check-v4.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile and test V4 independently of legacy heuristics
+        run: |
+          python -m compileall -q v4
+          python -m unittest discover -s v4 -p 'test_*.py' -v

@@ -107,7 +107,7 @@ const $=id=>document.getElementById(id);
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function validUrl(raw){try{const u=new URL(raw);return ["https:","http:"].includes(u.protocol)?esc(u.href):"#"}catch(e){return "#"}}
 function fmtDate(s){if(!s)return "미확인";if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s.replaceAll("-",". ");let d=new Date(s);return Number.isNaN(d.getTime())?esc(s):new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(d)}
-function typeOf(e){let s=e.revision||e.change_type||e.type||"";return /폐지/.test(s)?"abolished":/제정|신설/.test(s)&&!/개정/.test(s)?"new":"amended"}
+function typeOf(e){let s=e.revision||e.change_type||e.type||"";return /폐지/.test(s)&&!/제정/.test(s)?"abolished":/제정|신설/.test(s)&&!/개정/.test(s)?"new":"amended"}
 function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?"폐지":"개정"}
 function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
 let sortMode="impact";
@@ -122,7 +122,7 @@ function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||n
 function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
 function eventRow(e){
 const num=matchingActions(e).length,hasDiff=e.article_differences?.length||0,chosen=selectedId===e.event_id;
-return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'조치사항 보기 ›</span></div></button>'
+return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(num?'<span class="mini">근거 확인 기관 조치 '+num+'건</span>':typeOf(e)==="abolished"?'<span class="mini">규정 폐지 확인 · 후속 의무 미확정</span>':'<span class="mini">기관별 조치 근거 확인 중</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'변경내용 확인 ›</span></div></button>'
 }
 function displayList(){
 const events=filteredEvents();
@@ -188,7 +188,7 @@ function detailHTML(e){
  const facts='<div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>공식 제·개정</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div></div>';
  const states=[...new Set(all.map(a=>a.status).filter(Boolean))];
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+states.map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
- const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 필요사항</h3><div class="actionTotal">검토 항목 '+all.length+'건 · 확인된 집행기관과 추가 조사 기관 구분</div></div><p class="smallNote" style="margin:0 0 12px">변경된 기준이 영향을 미치는 업무를 확인합니다. 소관기관과 집행기관은 구분하고, 실제 조치 여부는 확정하지 않습니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
+ const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">검토 항목 '+all.length+'건 · 확인된 집행기관과 추가 조사 기관 구분</div></div><p class="smallNote" style="margin:0 0 12px">변경된 기준이 영향을 미치는 업무를 확인합니다. 소관기관과 집행기관은 구분하고, 실제 조치 여부는 확정하지 않습니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":typeOf(e)==="abolished"?"공식 폐지 사실을 확인했습니다.":"기관별 조치의 직접 근거가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":typeOf(e)==="abolished"?"이전 규정에 등장하는 기관을 새로운 조치 대상으로 표시하지 않습니다. 대체 규정은 공식 근거를 추가 확인해야 합니다.":"소관기관이나 키워드 일치만으로 변경 의무를 만들어내지 않습니다."))+'</section>';
  const links=e.policy_links||[];
  const connected=links.length?'<section class="impactAgencyGroup"><h3 class="sectionHeading">변경된 기준과 연관된 다른 제도</h3>'+
    '<p class="smallNote">공식 규정 본문에서 확인한 기준 사용과 공통 법적 근거의 추가 조사 대상을 구분합니다. 실제 조치 완료나 직접적인 개정 원인을 단정하지 않습니다.</p>'+

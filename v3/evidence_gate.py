@@ -116,7 +116,10 @@ def rebuild_event(event):
         if event["institution_actions"]:
             event["impact_summary"]=event["institution_actions"][0]["what_to_change"]
             event["analysis_quality"]="조직별 변경 항목 공식 표 확인"
-        return event
+            return event
+        # Other changes to a law titled "직제" (duties, department creation,
+        # delegation) must still use ordinary same-clause evidentiary rules.
+        # Never classify them as non-events just because no headcount changed.
     # In a general rule, an issuer/owner is not automatically the executing
     # organization. The subject and the duty must be in the actual changed
     # obligation, not just another article or a search snippet.

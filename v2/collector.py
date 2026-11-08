@@ -122,21 +122,28 @@ def row_of(node, target):
                 else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
     }
 
-def list_source(target, limit=MAX_PER_SOURCE):
-    """List from official feeds regardless of policy theme.
-    For administrative rules collect current (nw=1) and revision history (nw=2).
+def list_source(target, limit=MAX_PER_SOURCE, date_window=None):
+    """Collect across sectors by official issue-date windows, not topic names.
+    The newest window is checked on every run. Older windows are backfilled
+    incrementally and unprocessed entries remain in the persistent queue.
     """
     collected = []
-    # Each mode covers recent records on a descending issue-date axis.
     modes = [{}] if target == "law" else [{"nw": "1"}, {"nw": "2"}]
     pages = max(1, (limit + 99) // 100)
+    date_filter = {}
+    if date_window:
+        start, end = date_window
+        key = "ancYd" if target == "law" else "prmlYd"
+        date_filter[key] = start.strftime("%Y%m%d") + "~" + end.strftime("%Y%m%d")
     for mode in modes:
         for page in range(1, pages + 1):
-            root = request(target, sort="ddes", display=100, page=page, **mode)
+            root = request(target, sort="ddes", display=100, page=page, **mode, **date_filter)
             nodes = [node for node in root.iter() if node.tag.split("}")[-1].lower() == target]
             if not nodes:
-                if page == 1:
-                    raise RuntimeError(f"{target} 목록 응답에 레코드가 없습니다. 빈 결과를 '변경 없음'으로 처리하지 않습니다.")
+                if page == 1 and field(root, "totalCnt") not in ("0", ""):
+                    raise RuntimeError(f"{target} 조회 레코드가 응답 건수와 다릅니다.")
+                if page == 1 and field(root, "totalCnt") == "":
+                    raise RuntimeError(f"{target} 원천에서 유효한 목록 응답을 받지 못했습니다.")
                 break
             collected.extend(x for node in nodes if (x := row_of(node, target)))
             if len(nodes) < 100:
@@ -144,8 +151,7 @@ def list_source(target, limit=MAX_PER_SOURCE):
     distinct = {}
     for entry in collected:
         distinct.setdefault((entry["stable_id"], entry["serial"]), entry)
-    result = sorted(distinct.values(), key=lambda x: (x["published_at"], x["serial"]), reverse=True)
-    return result[:limit]
+    return sorted(distinct.values(), key=lambda x: (x["published_at"], x["serial"]), reverse=True)[:limit]
 
 def historical_predecessor(record, cached=None):
     if cached and cached.get("serial") != record["serial"]:

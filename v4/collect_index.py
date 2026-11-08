@@ -126,3 +126,53 @@ def ingest_index(state,source,date_windows,fetch=None,max_pages=30):
     return {"new_versions":found,"total_versions":len(ledger),
             "complete_windows":sum(x["complete"] for x in audits),
             "incomplete_windows":[x for x in audits if not x["complete"]]}
+
+
+def scan_official_change_day(day,fetch=None,max_pages=50):
+    """Official law-change HISTORY, not the current-law-name search.
+
+    The lsHstInf index lists amended statutes by change date, including
+    consolidated or omnibus consequences. It is a separate source from
+    promulgation-date current-law snapshots.
+    """
+    fetch=fetch or api.request
+    rows={};reported=None;pages=0
+    for page in range(1,max_pages+1):
+        try:
+            root=fetch("lsHstInf",regDt=day.replace("-",""),
+                       display=100,page=page)
+            total=api.field(root,"totalCnt")
+            if not total.isdigit():raise ValueError("Change-history totalCnt missing")
+            current=int(total)
+            if reported is not None and current!=reported:
+                raise ValueError("Change-history results changed during pagination")
+            reported=current
+            nodes=[x for x in root.iter() if x is not root and
+                   any(child.tag.split("}")[-1]=="법령일련번호" for child in list(x))]
+            if reported and not nodes:
+                raise ValueError("Change-history records missing despite nonzero count")
+            for node in nodes:
+                record=api.row_of(node,"law")
+                if record:
+                    record["discovery_kind"]="official_law_change_history"
+                    record["change_recorded_on"]=day
+                    rows[(record["stable_id"],record["serial"])]=record
+            pages=page
+            if page*100>=reported or len(nodes)<100:break
+        except Exception as exc:
+            return list(rows.values()),WindowResult(
+                "law_history",day,day,reported or -1,len(rows),pages,False,
+                type(exc).__name__+": "+str(exc)[:180])
+    complete=(reported is not None and len(rows)==reported)
+    return list(rows.values()),WindowResult(
+        "law_history",day,day,reported or -1,len(rows),pages,complete,
+        "" if complete else "Official history not completely collected")
+
+def ingest_changes(state,days,fetch=None,max_pages=50):
+    for day in days:
+        rows,audit=scan_official_change_day(day,fetch,max_pages)
+        for record in rows:
+            key=api.uid(record["source"],record["stable_id"],record["serial"])
+            state.setdefault("catalog",{})[key]=record
+        state.setdefault("coverage",[]).append(audit.as_dict())
+    return state

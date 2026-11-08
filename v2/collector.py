@@ -221,10 +221,23 @@ def read_clauses(record):
             label = f"제{num}조" + (f"의{branch}" if branch not in ("", "0") else "")
             if not num:
                 continue
-            pieces = [field(node, name) for name in ("조문내용", "항내용", "호내용", "목내용")]
-            pieces += [normalize("".join(x.itertext())) for x in node.iter()
-                       if x.tag.split("}")[-1] in ("항내용", "호내용", "목내용")]
-            txt = normalize(" ".join(x for x in pieces if x))
+            # Collect each XML provision component exactly once. The old
+            # implementation added the first 항/호/목 with field() and then
+            # added every 항/호/목 again through node.iter(), producing fake
+            # reordered or repeated clauses in text diffs.
+            parts = []
+            tags = {"조문내용","항내용","호내용","목내용"}
+            for x in node.iter():
+                if x.tag.split("}")[-1] not in tags:
+                    continue
+                # When a component wraps child provision nodes, its itertext
+                # includes their text. Use its own text in that case.
+                children = [y for y in x.iter() if y is not x and
+                            y.tag.split("}")[-1] in tags]
+                value = normalize(x.text if children else "".join(x.itertext()))
+                if value and (not parts or parts[-1] != value):
+                    parts.append(value)
+            txt = normalize(" ".join(parts))
             if txt:
                 items[label] = txt[:12000]
         if tag in ("별표", "별표단위"):

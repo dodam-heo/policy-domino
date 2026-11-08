@@ -39,8 +39,9 @@ jobs:
           assert h.get('evidence_gated') is True
           assert h['direct_actor_actions']==sum(
               len(x.get('institution_actions',[])) for x in d['events'])
+          from v3.evidence_gate import is_repeal
           assert all(not x.get('institution_actions') for x in d['events']
-                     if '폐지' in x.get('revision',''))
+                     if is_repeal(x))
           assert all(not x.get('dependency_actions') for x in d['events'])
           print('PUBLISH_EVIDENCE',json.dumps({
               'documents':len(d['events']),

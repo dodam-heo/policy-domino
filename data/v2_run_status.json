@@ -1,0 +1,55 @@
+{
+  "completed_at": "2026-11-08T03:34:58.457545+00:00",
+  "schema": "policy-domino-v2",
+  "health": {
+    "sources": {
+      "law:최근": {
+        "status": "정상",
+        "listed": 98,
+        "range": "2026-10-25~2026-11-08"
+      },
+      "law:과거 이력": {
+        "status": "정상",
+        "listed": 90,
+        "range": "2026-10-11~2026-10-25"
+      },
+      "law": {
+        "status": "정상",
+        "listed": 188
+      },
+      "admrul:최근": {
+        "status": "정상",
+        "listed": 160,
+        "range": "2026-10-25~2026-11-08"
+      },
+      "admrul:과거 이력": {
+        "status": "정상",
+        "listed": 160,
+        "range": "2026-10-11~2026-10-25"
+      },
+      "admrul": {
+        "status": "정상",
+        "listed": 320
+      }
+    },
+    "partial": true,
+    "errors": [
+      {
+        "source": "admrul",
+        "title": "비행절차설계요령",
+        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+      }
+    ],
+    "verified_compared": 21,
+    "not_compared": 2,
+    "candidate_relations": 47,
+    "confirmed_relations": 0,
+    "collect_at": "2026-11-08T03:30:37+00:00",
+    "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
+    "pending_details": 485,
+    "newly_examined": 23,
+    "events": 23,
+    "actions": 110,
+    "status": "부분 수집"
+  }
+}

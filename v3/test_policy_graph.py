@@ -38,6 +38,25 @@ class CrossPolicyGraphTests(unittest.TestCase):
         self.assertFalse(parent["policy_links"][0]["verified_reference"])
         self.assertFalse(parent["policy_links"][0]["causation_verified"])
 
+    def test_one_annual_basis_can_link_two_other_ministries_with_evidence_levels(self):
+        origin=event("common","공통 소득산정 기준과 지급기준",[])
+        x=event("housing","지역 주거지원 선정기준",[])
+        y=event("education","학교 교육지원 선정기준",[])
+        origin["ministry"]="가상보건부"
+        x["ministry"]="가상국토부";y["ministry"]="가상교육부"
+        snaps=snapshots([origin,x,y],{
+            "common":"「국민복지 기본법」에 따라 공통 소득산정 기준을 공표한다.",
+            "housing":"임대지원 금액은 공통 소득산정 기준의 48% 이하를 적용한다.",
+            "education":"「국민복지 기본법」에 따른 교육지원 선정기준을 정한다."
+        })
+        stats=g.link_documents([origin,x,y],snaps)
+        names={a["target_title"]:a["verified_reference"] for a in origin["policy_links"]}
+        self.assertEqual(stats["links"],2)
+        self.assertTrue(names[x["title"]])
+        self.assertFalse(names[y["title"]])
+        self.assertTrue(any(t["agency"]=="가상국토부" for t in origin["dependency_actions"]))
+        self.assertTrue(any(t["agency"]=="가상교육부" for t in origin["dependency_actions"]))
+
     def test_different_year_not_linked(self):
         parent=event("base","지원 공통 선정기준",[])
         child=event("other","지역 보조금 선정기준",[],year=2029)

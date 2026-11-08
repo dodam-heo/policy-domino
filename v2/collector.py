@@ -434,8 +434,8 @@ def select_pending(pending, target, capacity, today=None):
         x[1].get("published_at",""),
         x[1].get("effective_date",""),
         x[0]),reverse=True)
-    half=max(1,(capacity*3)//4)
-    selected=ranked[:half]
+    priority_slots=max(1,(capacity*4+4)//5)
+    selected=ranked[:priority_slots]
     included={eid for eid,_ in selected}
     recent=sorted([x for x in queue if x[0] not in included],
                   key=lambda x:(x[1].get("published_at",""),x[0]),reverse=True)

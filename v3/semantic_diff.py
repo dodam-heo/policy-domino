@@ -40,7 +40,7 @@ def sentences(body):
         if ch in OPEN:stack.append(OPEN[ch])
         elif ch in CLOSE and stack and stack[-1]==ch:stack.pop()
         if stack:continue
-        if i>start+12 and ch in PARA_MARKS and raw[i-1].isspace():
+        if ch in PARA_MARKS and i>start and raw[i-1].isspace() and compact(raw[start:i]):
             add(i);start=i
         elif ch=="\n":
             add(i);start=i+1

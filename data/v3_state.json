@@ -3402,6 +3402,72 @@
         }
       ],
       "target_department": "경제산업국 문화체육과"
-    }
+    },
+    "f4c383a7a1c25f0a29ed|ordin|2071113": {
+      "target_title": "강릉시 건축 조례",
+      "target_ministry": "강원특별자치도 강릉시",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EB%A6%89%EC%8B%9C%20%EA%B1%B4%EC%B6%95%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "고등교육법",
+      "excerpt": "경험이 풍부한 사람으로서 다음 각 호의 어느 하나에 해당하는 사람 중에서 시장이 임명 또는 위촉한다. 1. 5급 이상 공무원으로 재직 중인 사람 2. 「고등교육법」에 따른 대학에서 건축이나 법률을 가르치는 조교수 이상의 직에 있는 사람 3. 판사, 검사 또는 변호사의 직에 재직 중인 사람 4. 「건축사법」에 따라 건축사사무소 개설신고를 하고 건축사로 종사 중인 사람 5. 「",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0001",
+          "before": "",
+          "after": "이 경우 그 경력 은 해당 학위나 자격증을 취득하기 전 또는 학력을 인정받기 전의 경력을 포함한다."
+        }
+      ],
+      "target_department": "건축과"
+    },
+    "f4c383a7a1c25f0a29ed|ordin|2180167": null,
+    "f4c383a7a1c25f0a29ed|ordin|1820189": null,
+    "f4c383a7a1c25f0a29ed|ordin|1989659": null,
+    "f4c383a7a1c25f0a29ed|ordin|1802651": null,
+    "f4c383a7a1c25f0a29ed|ordin|2113987": {
+      "target_title": "강원특별자치도교육감 소속 지방공무원 인사 규칙",
+      "target_ministry": "강원특별자치도교육청",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%EA%B5%90%EC%9C%A1%EA%B0%90%20%EC%86%8C%EC%86%8D%20%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EC%9D%B8%EC%82%AC%20%EA%B7%9C%EC%B9%99",
+      "target_source": "ordin",
+      "reference": "고등교육법",
+      "excerpt": "해양공학, 항공우주공학, 기계공학, 전기공학, 전자공학, 컴퓨터공학, 정보통신공학 또는 산업공학을 전공한 사람 비 고：위 표에서 ?전공한 사람?라 함은 고등교육법에 따른 대학(전문대학을 제외한다)에서 해당 학과 및 관련 계통의 학을 전공하고 졸업한 사람(이와 동등이상의 학력을 가진 사람을 포함한다)를 말한다. [별표 7] <개정 2018.7.6.> 경력경쟁임용 예정계급별 소",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0001",
+          "before": "",
+          "after": "이 경우 그 경력 은 해당 학위나 자격증을 취득하기 전 또는 학력을 인정받기 전의 경력을 포함한다."
+        }
+      ],
+      "target_department": "총무과"
+    },
+    "f4c383a7a1c25f0a29ed|ordin|1897119": null,
+    "f4c383a7a1c25f0a29ed|ordin|2175375": null,
+    "f4c383a7a1c25f0a29ed|ordin|2078861": {
+      "target_title": "강원특별자치도 옥외광고물 등의 관리와 옥외광고산업 진흥에 관한 조례",
+      "target_ministry": "강원특별자치도",
+      "target_url": "https://www.law.go.kr/자치법규/%EA%B0%95%EC%9B%90%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EB%8F%84%20%EC%98%A5%EC%99%B8%EA%B4%91%EA%B3%A0%EB%AC%BC%20%EB%93%B1%EC%9D%98%20%EA%B4%80%EB%A6%AC%EC%99%80%20%EC%98%A5%EC%99%B8%EA%B4%91%EA%B3%A0%EC%82%B0%EC%97%85%20%EC%A7%84%ED%9D%A5%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "target_source": "ordin",
+      "reference": "고등교육법",
+      "excerpt": " 도지사는 친환경 소재 현수막 사용 활성화를 위하여 공공단체, 강원특별자치도교육청 및 강원특별자치도 내 학교(「초ㆍ중등교육법」 제2조에 따른 학교 및 「고등교육법」 제2조에 따른 학교를 말한다), 시민단체(「비영리민간단체 지원법」 제2조에 따른 비영리민간단체를 말한다) 등과 협력체계를 구축할 수 있다. ④ 도지사는 친환경 소재 현수막 사용 활성화에 기여한 개인ㆍ법인ㆍ단체에 ",
+      "relation_level": "공식 법령-자치법규 연계 및 본문 확인",
+      "verified_reference": true,
+      "cause_verified": false,
+      "real_system_status": "미확인",
+      "source_changes": [
+        {
+          "article": "별표 0001",
+          "before": "",
+          "after": "이 경우 그 경력 은 해당 학위나 자격증을 취득하기 전 또는 학력을 인정받기 전의 경력을 포함한다."
+        }
+      ]
+    },
+    "f4c383a7a1c25f0a29ed|ordin|2089715": null
   }
 }

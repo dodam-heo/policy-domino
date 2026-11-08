@@ -26,6 +26,7 @@ def main():
   found=list_source("admrul",limit=350,title_query=str(today.year+1),
           date_window=(today-dt.timedelta(days=210),today),fulltext=True)
   wanted=[r for r in found if "중위소득" in r["title"] or "교육급여" in r["title"] or "주거급여" in r["title"]]
+  print("PROBE_FULLTEXT_WINDOW",json.dumps([{"title":x["title"],"date":x["published_at"]} for x in found[:3]+found[-3:]],ensure_ascii=False),flush=True)
   print("PROBE_FULLTEXT_YEAR",len(found),json.dumps(
    [{"name":x["title"],"effective":x.get("effective_date"),
      "date":x.get("published_at")} for x in wanted],ensure_ascii=False),flush=True)
@@ -38,6 +39,11 @@ def main():
   print("PROBE_EFFECTIVE_SORT",json.dumps([{"title":x["title"],"effective":x["effective_date"]} for x in rows[:15]],ensure_ascii=False),flush=True)
   print("PROBE_MEDIAN_FUTURE",json.dumps([x["title"] for x in rows if "중위소득" in x["title"]],ensure_ascii=False),flush=True)
  except Exception as ex: print("PROBE_EFFECTIVE_SORT_ERROR",type(ex).__name__,str(ex)[:200],flush=True)
+ try:
+  mid=list_source("admrul",limit=250,title_query=str(today.year+1),
+       date_window=(dt.date(today.year,7,1),dt.date(today.year,7,31)),fulltext=True)
+  print("PROBE_MONTH_YEAR",len(mid),json.dumps([x["title"] for x in mid if "중위소득" in x["title"]][:5],ensure_ascii=False),flush=True)
+ except Exception as ex:print("PROBE_MONTH_YEAR_ERROR",type(ex).__name__,str(ex)[:200],flush=True)
  tests=[("교육급여","2027년 교육급여"),("주거급여","2027년 주거급여"),("기준 중위소득","기준 중위소득")]
  for name,query in tests:
   try:

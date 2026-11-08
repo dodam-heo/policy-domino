@@ -42,7 +42,7 @@ class ImpactTests(unittest.TestCase):
         self.assertTrue(impact.strong_cause(a,b))
         group=impact.group_events([a,b])
         self.assertEqual(len(group),1)
-        self.assertEqual(len(group[0]["linked"]),1)
+        self.assertEqual(len(group[0]["linked_ids"]),1)
     def test_org_is_not_mistaken_for_primary_public_benefit(self):
         x=event("가상청 직제 시행규칙","가상청 정원 15명","가상청 정원 20명")
         y=event("가상사업 운영규칙","지원금 상한액 100만원","지원금 상한액 150만원")

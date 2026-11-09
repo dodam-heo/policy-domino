@@ -27,7 +27,8 @@ for(const e of d.events){
   const agencies=new Set(d.actions.filter(a=>a.event_id===e.event_id).map(a=>a.agency));
   const links=e.downstream_changes?.filter(x=>x.status==="변경 조항 적용 관계 확인" &&
     x.title && x.article && x.evidence)||[];
-  assert.equal(e.impact_level==="high",agencies.size>=2||links.length>=2,
+  const distinctLinks=new Set(links.map(x=>JSON.stringify([x.title.trim(),x.article.trim()])));
+  assert.equal(e.impact_level==="high",agencies.size>=2||distinctLinks.size>=2,
     "Scope and filter mismatch: "+e.title);
 }
 const events=new Map(d.events.map(e=>[e.event_id,e]));

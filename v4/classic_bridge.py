@@ -169,11 +169,11 @@ def new_action(doc,p,event_id):
     }
 
 def official_document_index(docs):
-    """Index actual official source documents without claiming operational impact.
+    """Names observed in OFFICIAL source documents, not enrolled program links.
 
-    A title of an agency's organizational regulation identifies that agency
-    in the *source law*, whereas the issuing ministry identifies only its
-    publication authority. Neither is a proof of a downstream program impact.
+    Keep source-law owners and official issuing bodies separate from actors
+    explicitly named in an actually changed clause. No inferred job or
+    confirmed institutional implementation is created.
     """
     found=[]
     seen=set()
@@ -184,22 +184,31 @@ def official_document_index(docs):
         if not title or not law_url.startswith(
                 ("https://www.law.go.kr/","https://law.go.kr/")):
             continue
+        kind=doc.get("verification","official_record_only")
+        changed=set(doc.get("changed_articles",[]))
+        def add(agency,role):
+            agency=clean(agency)
+            if not agency:return
+            key=(agency,title,law_url)
+            if key in seen:return
+            seen.add(key)
+            found.append({
+                "agency":agency,"agency_role":role,"law_title":title,
+                "source_url":law_url,"verification":kind,
+                "changed_article_count":len(changed),
+                "actual_implementation_verified":False,
+                "kind":doc.get("kind","")
+            })
         direct=owner(title)
-        agency=direct or ministry
-        key=(agency,title,law_url)
-        if key in seen:continue
-        seen.add(key)
-        found.append({
-            "agency":agency,
-            "agency_role":("직제 규정에 명시된 기관" if direct else
-                           "공포·개정 소관기관 (집행기관 미확인)"),
-            "law_title":title,
-            "source_url":law_url,
-            "verification":doc.get("verification","official_record_only"),
-            "changed_article_count":len(doc.get("changed_articles",[])),
-            "actual_implementation_verified":False,
-            "kind":doc.get("kind","")
-        })
+        add(direct or ministry,("직제 규정에 명시된 기관" if direct else
+                               "공포·개정 소관기관 (집행기관 미확인)"))
+        if kind in ("verified_changed_clauses","verified_annual_replacement"):
+            for actor in doc.get("actor_duties",[]):
+                if (actor.get("status")!="official_duty_changed" or
+                        actor.get("article") not in changed):
+                    continue
+                add(actor.get("agency"),
+                    "실제 변경 조문에 명시된 수행주체 (타 사업 영향 미확인)")
     return found
 
 

@@ -15,17 +15,18 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 1,
-    "institutional_evidence_sources": 20,
+    "institutional_evidence_sources": 21,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 20,
+      "pages_checked": 21,
       "matched": 1,
       "errors": 12,
       "search_leads": [
         {
           "query": "\"교육급여\" \"3,247,369\"",
-          "found": 2,
+          "found": 3,
           "urls": [
+            "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
             "https://dl.nanet.go.kr/detail/REFD0001120584",
             "https://dl.nanet.go.kr/storage/pictab/REFD/0001/1205/REFD0001120584/REFD0001120584.jpg"
           ]
@@ -36,8 +37,8 @@
           "urls": [
             "https://www.moe.go.kr/main.do",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0",
-            "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
+            "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
             "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316"
           ]
@@ -108,6 +109,14 @@
       ],
       "rejected_pages": [
         {
+          "url": "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
+          "title": "교육급여(맞춤형 급여) < 교육지원 < 저소득주민 < 생애주기별복지 < 분야별정보 < 포털사이트Insert title here만족도",
+          "publisher": "",
+          "identified_publisher": true,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
           "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
           "publisher": "",
@@ -132,16 +141,16 @@
           "baseline_proof": false
         },
         {
-          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
-          "title": "공지사항",
+          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
+          "title": "요청하신 페이지를 찾을수 없습니다",
           "publisher": "",
           "identified_publisher": false,
           "identified_program": false,
           "baseline_proof": false
         },
         {
-          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
-          "title": "요청하신 페이지를 찾을수 없습니다",
+          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
+          "title": "공지사항",
           "publisher": "",
           "identified_publisher": false,
           "identified_program": false,
@@ -191,14 +200,6 @@
           "url": "https://www.lh.or.kr/index.es?sid=a1",
           "title": "한국토지주택공사",
           "publisher": "한국토지주택공사",
-          "identified_publisher": true,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=2762",
-          "title": "지표서비스 | e-나라지표",
-          "publisher": "",
           "identified_publisher": true,
           "identified_program": false,
           "baseline_proof": false
@@ -6910,23 +6911,23 @@
       }
     },
     {
-      "event_id": "pending:b3e637fc2b07c8ffc07f",
-      "title": "서해지방해양경찰청과 그 소속기관 사무분장 규칙",
+      "event_id": "pending:923957d1eb490a79fe6d",
+      "title": "자율기구 과학기술인공지능혁신과 설치 및 운영에 관한 규정",
       "promulgated_at": "2026-11-04",
       "effective_date": "2026-11-04",
       "revision": "일부개정",
       "law_type": "훈령",
-      "ministry": "서해지방해양경찰청",
-      "url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%82%AC%EB%AC%B4%EB%B6%84%EC%9E%A5%20%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%82%AC%EB%AC%B4%EB%B6%84%EC%9E%A5%20%EA%B7%9C%EC%B9%99",
+      "ministry": "과학기술정보통신부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
-          "agency": "서해지방해양경찰청",
+          "agency": "과학기술정보통신부",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "서해지방해양경찰청과 그 소속기관 사무분장 규칙",
-          "source_url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%82%AC%EB%AC%B4%EB%B6%84%EC%9E%A5%20%EA%B7%9C%EC%B9%99",
+          "law_title": "자율기구 과학기술인공지능혁신과 설치 및 운영에 관한 규정",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -6973,48 +6974,6 @@
           "changed_article_count": 0,
           "actual_implementation_verified": false,
           "kind": "자치법규"
-        }
-      ],
-      "comparison_state": "official_index_only",
-      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
-      "source_notes": [
-        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
-      ],
-      "presentation_source": "official_index_pending",
-      "impact_priority": 0,
-      "work_review_candidates": [],
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-      }
-    },
-    {
-      "event_id": "pending:923957d1eb490a79fe6d",
-      "title": "자율기구 과학기술인공지능혁신과 설치 및 운영에 관한 규정",
-      "promulgated_at": "2026-11-04",
-      "effective_date": "2026-11-04",
-      "revision": "일부개정",
-      "law_type": "훈령",
-      "ministry": "과학기술정보통신부",
-      "url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
-      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
-      "article_differences": [],
-      "downstream_changes": [],
-      "official_change_documents": [
-        {
-          "agency": "과학기술정보통신부",
-          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "자율기구 과학기술인공지능혁신과 설치 및 운영에 관한 규정",
-          "source_url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
-          "verification": "official_index_only",
-          "changed_article_count": 0,
-          "actual_implementation_verified": false,
-          "kind": "훈령"
         }
       ],
       "comparison_state": "official_index_only",
@@ -10105,48 +10064,6 @@
       }
     },
     {
-      "event_id": "pending:f4c383a7a1c25f0a29ed",
-      "title": "학교 밖 청소년 지원에 관한 법률 시행령",
-      "promulgated_at": "2026-11-03",
-      "effective_date": "2026-11-03",
-      "revision": "타법개정",
-      "law_type": "대통령령",
-      "ministry": "성평등가족부",
-      "url": "https://www.law.go.kr/법령/%ED%95%99%EA%B5%90%20%EB%B0%96%20%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-      "amendment_url": "https://www.law.go.kr/법령/%ED%95%99%EA%B5%90%20%EB%B0%96%20%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-      "article_differences": [],
-      "downstream_changes": [],
-      "official_change_documents": [
-        {
-          "agency": "성평등가족부",
-          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "학교 밖 청소년 지원에 관한 법률 시행령",
-          "source_url": "https://www.law.go.kr/법령/%ED%95%99%EA%B5%90%20%EB%B0%96%20%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-          "verification": "official_index_only",
-          "changed_article_count": 0,
-          "actual_implementation_verified": false,
-          "kind": "대통령령"
-        }
-      ],
-      "comparison_state": "official_index_only",
-      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
-      "source_notes": [
-        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
-      ],
-      "presentation_source": "official_index_pending",
-      "impact_priority": 0,
-      "work_review_candidates": [],
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-      }
-    },
-    {
       "event_id": "pending:b81962e2a979355c5d5c",
       "title": "자치단체 정보시스템 장애 에방 및 대응 지침",
       "promulgated_at": "2026-11-03",
@@ -10189,23 +10106,23 @@
       }
     },
     {
-      "event_id": "pending:9c10615cd74773aa42f8",
-      "title": "소음ㆍ진동관리법 시행령",
+      "event_id": "pending:f4c383a7a1c25f0a29ed",
+      "title": "학교 밖 청소년 지원에 관한 법률 시행령",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
       "revision": "타법개정",
       "law_type": "대통령령",
-      "ministry": "기후에너지환경부",
-      "url": "https://www.law.go.kr/법령/%EC%86%8C%EC%9D%8C%E3%86%8D%EC%A7%84%EB%8F%99%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-      "amendment_url": "https://www.law.go.kr/법령/%EC%86%8C%EC%9D%8C%E3%86%8D%EC%A7%84%EB%8F%99%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "ministry": "성평등가족부",
+      "url": "https://www.law.go.kr/법령/%ED%95%99%EA%B5%90%20%EB%B0%96%20%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%95%99%EA%B5%90%20%EB%B0%96%20%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
-          "agency": "기후에너지환경부",
+          "agency": "성평등가족부",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "소음ㆍ진동관리법 시행령",
-          "source_url": "https://www.law.go.kr/법령/%EC%86%8C%EC%9D%8C%E3%86%8D%EC%A7%84%EB%8F%99%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "law_title": "학교 밖 청소년 지원에 관한 법률 시행령",
+          "source_url": "https://www.law.go.kr/법령/%ED%95%99%EA%B5%90%20%EB%B0%96%20%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -10273,23 +10190,23 @@
       }
     },
     {
-      "event_id": "pending:fddb7aa1597cde7435d1",
-      "title": "농림수산식품투자조합 결성 및 운용에 관한 법률 시행령",
+      "event_id": "pending:9c10615cd74773aa42f8",
+      "title": "소음ㆍ진동관리법 시행령",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
       "revision": "타법개정",
       "law_type": "대통령령",
-      "ministry": "농림축산식품부,해양수산부",
-      "url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%88%98%EC%82%B0%EC%8B%9D%ED%92%88%ED%88%AC%EC%9E%90%EC%A1%B0%ED%95%A9%20%EA%B2%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-      "amendment_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%88%98%EC%82%B0%EC%8B%9D%ED%92%88%ED%88%AC%EC%9E%90%EC%A1%B0%ED%95%A9%20%EA%B2%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "ministry": "기후에너지환경부",
+      "url": "https://www.law.go.kr/법령/%EC%86%8C%EC%9D%8C%E3%86%8D%EC%A7%84%EB%8F%99%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%86%8C%EC%9D%8C%E3%86%8D%EC%A7%84%EB%8F%99%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
-          "agency": "농림축산식품부,해양수산부",
+          "agency": "기후에너지환경부",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "농림수산식품투자조합 결성 및 운용에 관한 법률 시행령",
-          "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%88%98%EC%82%B0%EC%8B%9D%ED%92%88%ED%88%AC%EC%9E%90%EC%A1%B0%ED%95%A9%20%EA%B2%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "law_title": "소음ㆍ진동관리법 시행령",
+          "source_url": "https://www.law.go.kr/법령/%EC%86%8C%EC%9D%8C%E3%86%8D%EC%A7%84%EB%8F%99%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -10357,23 +10274,23 @@
       }
     },
     {
-      "event_id": "pending:6780490e698a952c562c",
-      "title": "군인의 지위 및 복무에 관한 기본법 시행령",
+      "event_id": "pending:fddb7aa1597cde7435d1",
+      "title": "농림수산식품투자조합 결성 및 운용에 관한 법률 시행령",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
       "revision": "타법개정",
       "law_type": "대통령령",
-      "ministry": "국방부",
-      "url": "https://www.law.go.kr/법령/%EA%B5%B0%EC%9D%B8%EC%9D%98%20%EC%A7%80%EC%9C%84%20%EB%B0%8F%20%EB%B3%B5%EB%AC%B4%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B8%B0%EB%B3%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-      "amendment_url": "https://www.law.go.kr/법령/%EA%B5%B0%EC%9D%B8%EC%9D%98%20%EC%A7%80%EC%9C%84%20%EB%B0%8F%20%EB%B3%B5%EB%AC%B4%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B8%B0%EB%B3%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "ministry": "농림축산식품부,해양수산부",
+      "url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%88%98%EC%82%B0%EC%8B%9D%ED%92%88%ED%88%AC%EC%9E%90%EC%A1%B0%ED%95%A9%20%EA%B2%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%88%98%EC%82%B0%EC%8B%9D%ED%92%88%ED%88%AC%EC%9E%90%EC%A1%B0%ED%95%A9%20%EA%B2%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
-          "agency": "국방부",
+          "agency": "농림축산식품부,해양수산부",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "군인의 지위 및 복무에 관한 기본법 시행령",
-          "source_url": "https://www.law.go.kr/법령/%EA%B5%B0%EC%9D%B8%EC%9D%98%20%EC%A7%80%EC%9C%84%20%EB%B0%8F%20%EB%B3%B5%EB%AC%B4%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B8%B0%EB%B3%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "law_title": "농림수산식품투자조합 결성 및 운용에 관한 법률 시행령",
+          "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%88%98%EC%82%B0%EC%8B%9D%ED%92%88%ED%88%AC%EC%9E%90%EC%A1%B0%ED%95%A9%20%EA%B2%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -10441,23 +10358,23 @@
       }
     },
     {
-      "event_id": "pending:a5dd973895cc10d3f94d",
-      "title": "공항시설법 시행령",
+      "event_id": "pending:6780490e698a952c562c",
+      "title": "군인의 지위 및 복무에 관한 기본법 시행령",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
-      "revision": "일부개정",
+      "revision": "타법개정",
       "law_type": "대통령령",
-      "ministry": "국토교통부",
-      "url": "https://www.law.go.kr/법령/%EA%B3%B5%ED%95%AD%EC%8B%9C%EC%84%A4%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%B5%ED%95%AD%EC%8B%9C%EC%84%A4%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "ministry": "국방부",
+      "url": "https://www.law.go.kr/법령/%EA%B5%B0%EC%9D%B8%EC%9D%98%20%EC%A7%80%EC%9C%84%20%EB%B0%8F%20%EB%B3%B5%EB%AC%B4%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B8%B0%EB%B3%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B5%B0%EC%9D%B8%EC%9D%98%20%EC%A7%80%EC%9C%84%20%EB%B0%8F%20%EB%B3%B5%EB%AC%B4%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B8%B0%EB%B3%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
-          "agency": "국토교통부",
+          "agency": "국방부",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "공항시설법 시행령",
-          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%ED%95%AD%EC%8B%9C%EC%84%A4%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "law_title": "군인의 지위 및 복무에 관한 기본법 시행령",
+          "source_url": "https://www.law.go.kr/법령/%EA%B5%B0%EC%9D%B8%EC%9D%98%20%EC%A7%80%EC%9C%84%20%EB%B0%8F%20%EB%B3%B5%EB%AC%B4%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B8%B0%EB%B3%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -10525,27 +10442,27 @@
       }
     },
     {
-      "event_id": "pending:6dfa0dd7cf935b857c63",
-      "title": "민사소송 등에서의 전자문서 이용 등에 관한 규칙",
+      "event_id": "pending:a5dd973895cc10d3f94d",
+      "title": "공항시설법 시행령",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
       "revision": "일부개정",
-      "law_type": "대법원규칙",
-      "ministry": "대법원",
-      "url": "https://www.law.go.kr/법령/%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%20%EB%93%B1%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A0%84%EC%9E%90%EB%AC%B8%EC%84%9C%20%EC%9D%B4%EC%9A%A9%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/법령/%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%20%EB%93%B1%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A0%84%EC%9E%90%EB%AC%B8%EC%84%9C%20%EC%9D%B4%EC%9A%A9%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+      "law_type": "대통령령",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/법령/%EA%B3%B5%ED%95%AD%EC%8B%9C%EC%84%A4%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%B5%ED%95%AD%EC%8B%9C%EC%84%A4%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
-          "agency": "대법원",
+          "agency": "국토교통부",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "민사소송 등에서의 전자문서 이용 등에 관한 규칙",
-          "source_url": "https://www.law.go.kr/법령/%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%20%EB%93%B1%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A0%84%EC%9E%90%EB%AC%B8%EC%84%9C%20%EC%9D%B4%EC%9A%A9%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+          "law_title": "공항시설법 시행령",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%ED%95%AD%EC%8B%9C%EC%84%A4%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
-          "kind": "대법원규칙"
+          "kind": "대통령령"
         }
       ],
       "comparison_state": "official_index_only",
@@ -10609,23 +10526,23 @@
       }
     },
     {
-      "event_id": "pending:9acd4281363bc38e5950",
-      "title": "공직자윤리법의 시행에 관한 대법원규칙",
+      "event_id": "pending:6dfa0dd7cf935b857c63",
+      "title": "민사소송 등에서의 전자문서 이용 등에 관한 규칙",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
       "revision": "일부개정",
       "law_type": "대법원규칙",
       "ministry": "대법원",
-      "url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9C%A4%EB%A6%AC%EB%B2%95%EC%9D%98%20%EC%8B%9C%ED%96%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%EB%B2%95%EC%9B%90%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9C%A4%EB%A6%AC%EB%B2%95%EC%9D%98%20%EC%8B%9C%ED%96%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%EB%B2%95%EC%9B%90%EA%B7%9C%EC%B9%99",
+      "url": "https://www.law.go.kr/법령/%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%20%EB%93%B1%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A0%84%EC%9E%90%EB%AC%B8%EC%84%9C%20%EC%9D%B4%EC%9A%A9%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%20%EB%93%B1%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A0%84%EC%9E%90%EB%AC%B8%EC%84%9C%20%EC%9D%B4%EC%9A%A9%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
           "agency": "대법원",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "공직자윤리법의 시행에 관한 대법원규칙",
-          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9C%A4%EB%A6%AC%EB%B2%95%EC%9D%98%20%EC%8B%9C%ED%96%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%EB%B2%95%EC%9B%90%EA%B7%9C%EC%B9%99",
+          "law_title": "민사소송 등에서의 전자문서 이용 등에 관한 규칙",
+          "source_url": "https://www.law.go.kr/법령/%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%20%EB%93%B1%EC%97%90%EC%84%9C%EC%9D%98%20%EC%A0%84%EC%9E%90%EB%AC%B8%EC%84%9C%20%EC%9D%B4%EC%9A%A9%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -10693,23 +10610,23 @@
       }
     },
     {
-      "event_id": "pending:01e6ebcef12ab64a1715",
-      "title": "집행관규칙",
+      "event_id": "pending:9acd4281363bc38e5950",
+      "title": "공직자윤리법의 시행에 관한 대법원규칙",
       "promulgated_at": "2026-11-03",
       "effective_date": "2026-11-03",
       "revision": "일부개정",
       "law_type": "대법원규칙",
       "ministry": "대법원",
-      "url": "https://www.law.go.kr/법령/%EC%A7%91%ED%96%89%EA%B4%80%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/법령/%EC%A7%91%ED%96%89%EA%B4%80%EA%B7%9C%EC%B9%99",
+      "url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9C%A4%EB%A6%AC%EB%B2%95%EC%9D%98%20%EC%8B%9C%ED%96%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%EB%B2%95%EC%9B%90%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9C%A4%EB%A6%AC%EB%B2%95%EC%9D%98%20%EC%8B%9C%ED%96%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%EB%B2%95%EC%9B%90%EA%B7%9C%EC%B9%99",
       "article_differences": [],
       "downstream_changes": [],
       "official_change_documents": [
         {
           "agency": "대법원",
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "집행관규칙",
-          "source_url": "https://www.law.go.kr/법령/%EC%A7%91%ED%96%89%EA%B4%80%EA%B7%9C%EC%B9%99",
+          "law_title": "공직자윤리법의 시행에 관한 대법원규칙",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9C%A4%EB%A6%AC%EB%B2%95%EC%9D%98%20%EC%8B%9C%ED%96%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%EB%B2%95%EC%9B%90%EA%B7%9C%EC%B9%99",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -10756,6 +10673,48 @@
           "changed_article_count": 0,
           "actual_implementation_verified": false,
           "kind": "고시"
+        }
+      ],
+      "comparison_state": "official_index_only",
+      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
+      "source_notes": [
+        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
+      ],
+      "presentation_source": "official_index_pending",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "event_id": "pending:01e6ebcef12ab64a1715",
+      "title": "집행관규칙",
+      "promulgated_at": "2026-11-03",
+      "effective_date": "2026-11-03",
+      "revision": "일부개정",
+      "law_type": "대법원규칙",
+      "ministry": "대법원",
+      "url": "https://www.law.go.kr/법령/%EC%A7%91%ED%96%89%EA%B4%80%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%A7%91%ED%96%89%EA%B4%80%EA%B7%9C%EC%B9%99",
+      "article_differences": [],
+      "downstream_changes": [],
+      "official_change_documents": [
+        {
+          "agency": "대법원",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "집행관규칙",
+          "source_url": "https://www.law.go.kr/법령/%EC%A7%91%ED%96%89%EA%B4%80%EA%B7%9C%EC%B9%99",
+          "verification": "official_index_only",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "대법원규칙"
         }
       ],
       "comparison_state": "official_index_only",
@@ -11424,48 +11383,6 @@
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
           "law_title": "보성군 지방시대위원회 구성 및 운영에 관한 조례",
           "source_url": "https://www.law.go.kr/자치법규/%EB%B3%B4%EC%84%B1%EA%B5%B0%20%EC%A7%80%EB%B0%A9%EC%8B%9C%EB%8C%80%EC%9C%84%EC%9B%90%ED%9A%8C%20%EA%B5%AC%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
-          "verification": "official_index_only",
-          "changed_article_count": 0,
-          "actual_implementation_verified": false,
-          "kind": "자치법규"
-        }
-      ],
-      "comparison_state": "official_index_only",
-      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
-      "source_notes": [
-        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
-      ],
-      "presentation_source": "official_index_pending",
-      "impact_priority": 0,
-      "work_review_candidates": [],
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-      }
-    },
-    {
-      "event_id": "pending:8b30189364945dfe4eb9",
-      "title": "광주시 행정기구 및 정원 조례 시행규칙",
-      "promulgated_at": "2026-11-03",
-      "effective_date": "2026-11-03",
-      "revision": "전부개정",
-      "law_type": "자치법규",
-      "ministry": "경기도 광주시",
-      "url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%ED%96%89%EC%A0%95%EA%B8%B0%EA%B5%AC%20%EB%B0%8F%20%EC%A0%95%EC%9B%90%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%ED%96%89%EC%A0%95%EA%B8%B0%EA%B5%AC%20%EB%B0%8F%20%EC%A0%95%EC%9B%90%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-      "article_differences": [],
-      "downstream_changes": [],
-      "official_change_documents": [
-        {
-          "agency": "경기도 광주시",
-          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
-          "law_title": "광주시 행정기구 및 정원 조례 시행규칙",
-          "source_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%ED%96%89%EC%A0%95%EA%B8%B0%EA%B5%AC%20%EB%B0%8F%20%EC%A0%95%EC%9B%90%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -12222,6 +12139,48 @@
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
           "law_title": "광주시 노인복지기금 설치 및 운용에 관한 조례",
           "source_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "verification": "official_index_only",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "comparison_state": "official_index_only",
+      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
+      "source_notes": [
+        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
+      ],
+      "presentation_source": "official_index_pending",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "event_id": "pending:0c84347eca0577c8efd6",
+      "title": "광주시 공동주택 리모델링 지원에 관한 조례",
+      "promulgated_at": "2026-11-03",
+      "effective_date": "2026-11-03",
+      "revision": "일부개정",
+      "law_type": "자치법규",
+      "ministry": "경기도 광주시",
+      "url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%20%EB%A6%AC%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%20%EB%A6%AC%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "article_differences": [],
+      "downstream_changes": [],
+      "official_change_documents": [
+        {
+          "agency": "경기도 광주시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "광주시 공동주택 리모델링 지원에 관한 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%A3%BC%EC%8B%9C%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%20%EB%A6%AC%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -15543,6 +15502,48 @@
       }
     },
     {
+      "event_id": "pending:392f68cfc0b75620d1b8",
+      "title": "통계작성의 변경승인(협의) 고시(천안시아동복지통계)",
+      "promulgated_at": "2026-10-29",
+      "effective_date": "2027-12-31",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%B2%9C%EC%95%88%EC%8B%9C%EC%95%84%EB%8F%99%EB%B3%B5%EC%A7%80%ED%86%B5%EA%B3%84%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%B2%9C%EC%95%88%EC%8B%9C%EC%95%84%EB%8F%99%EB%B3%B5%EC%A7%80%ED%86%B5%EA%B3%84%29",
+      "article_differences": [],
+      "downstream_changes": [],
+      "official_change_documents": [
+        {
+          "agency": "국가데이터처",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "통계작성의 변경승인(협의) 고시(천안시아동복지통계)",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%B2%9C%EC%95%88%EC%8B%9C%EC%95%84%EB%8F%99%EB%B3%B5%EC%A7%80%ED%86%B5%EA%B3%84%29",
+          "verification": "official_index_only",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "comparison_state": "official_index_only",
+      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
+      "source_notes": [
+        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
+      ],
+      "presentation_source": "official_index_pending",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
       "event_id": "v4:law|보건복지부령|2026-10-27|01205",
       "title": "보건복지부와 그 소속기관 직제 시행규칙",
       "comparison_state": "official_changes_compared",
@@ -15965,48 +15966,6 @@
           "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
           "law_title": "지방자치분권 및 균형성장에 관한 특별법 시행령",
           "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EB%B0%A9%EC%9E%90%EC%B9%98%EB%B6%84%EA%B6%8C%20%EB%B0%8F%20%EA%B7%A0%ED%98%95%EC%84%B1%EC%9E%A5%EC%97%90%20%EA%B4%80%ED%95%9C%20%ED%8A%B9%EB%B3%84%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
-          "verification": "official_index_only",
-          "changed_article_count": 0,
-          "actual_implementation_verified": false,
-          "kind": "대통령령"
-        }
-      ],
-      "comparison_state": "official_index_only",
-      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
-      "source_notes": [
-        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
-      ],
-      "presentation_source": "official_index_pending",
-      "impact_priority": 0,
-      "work_review_candidates": [],
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-      }
-    },
-    {
-      "event_id": "pending:d5c61b14bb3ec561d645",
-      "title": "보건복지부와 그 소속기관 직제",
-      "promulgated_at": "2026-10-27",
-      "effective_date": "2026-10-27",
-      "revision": "일부개정",
-      "law_type": "대통령령",
-      "ministry": "보건복지부,행정안전부",
-      "url": "https://www.law.go.kr/법령/%EB%B3%B4%EA%B1%B4%EB%B3%B5%EC%A7%80%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
-      "amendment_url": "https://www.law.go.kr/법령/%EB%B3%B4%EA%B1%B4%EB%B3%B5%EC%A7%80%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
-      "article_differences": [],
-      "downstream_changes": [],
-      "official_change_documents": [
-        {
-          "agency": "보건복지부",
-          "agency_role": "직제 규정에 명시된 기관",
-          "law_title": "보건복지부와 그 소속기관 직제",
-          "source_url": "https://www.law.go.kr/법령/%EB%B3%B4%EA%B1%B4%EB%B3%B5%EC%A7%80%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
           "verification": "official_index_only",
           "changed_article_count": 0,
           "actual_implementation_verified": false,
@@ -17531,48 +17490,6 @@
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
-      }
-    },
-    {
-      "event_id": "pending:a742bd4c36e1ab9bd475",
-      "title": "기상청과 그 소속기관 직제 시행규칙",
-      "promulgated_at": "2026-10-20",
-      "effective_date": "2026-10-20",
-      "revision": "일부개정",
-      "law_type": "기후에너지환경부령",
-      "ministry": "기상청",
-      "url": "https://www.law.go.kr/법령/%EA%B8%B0%EC%83%81%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/법령/%EA%B8%B0%EC%83%81%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-      "article_differences": [],
-      "downstream_changes": [],
-      "official_change_documents": [
-        {
-          "agency": "기상청",
-          "agency_role": "직제 규정에 명시된 기관",
-          "law_title": "기상청과 그 소속기관 직제 시행규칙",
-          "source_url": "https://www.law.go.kr/법령/%EA%B8%B0%EC%83%81%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-          "verification": "official_index_only",
-          "changed_article_count": 0,
-          "actual_implementation_verified": false,
-          "kind": "기후에너지환경부령"
-        }
-      ],
-      "comparison_state": "official_index_only",
-      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
-      "source_notes": [
-        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
-      ],
-      "presentation_source": "official_index_pending",
-      "impact_priority": 0,
-      "work_review_candidates": [],
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
       }
     },
     {
@@ -19151,6 +19068,90 @@
           "changed_article_count": 0,
           "actual_implementation_verified": false,
           "kind": "국가보훈부령"
+        }
+      ],
+      "comparison_state": "official_index_only",
+      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
+      "source_notes": [
+        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
+      ],
+      "presentation_source": "official_index_pending",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "event_id": "pending:cdb0a17cc31223044004",
+      "title": "소방용품의 품질관리 등에 관한 규칙",
+      "promulgated_at": "2026-10-19",
+      "effective_date": "2026-10-19",
+      "revision": "타법개정",
+      "law_type": "행정안전부령",
+      "ministry": "소방청",
+      "url": "https://www.law.go.kr/법령/%EC%86%8C%EB%B0%A9%EC%9A%A9%ED%92%88%EC%9D%98%20%ED%92%88%EC%A7%88%EA%B4%80%EB%A6%AC%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%86%8C%EB%B0%A9%EC%9A%A9%ED%92%88%EC%9D%98%20%ED%92%88%EC%A7%88%EA%B4%80%EB%A6%AC%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+      "article_differences": [],
+      "downstream_changes": [],
+      "official_change_documents": [
+        {
+          "agency": "소방청",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "소방용품의 품질관리 등에 관한 규칙",
+          "source_url": "https://www.law.go.kr/법령/%EC%86%8C%EB%B0%A9%EC%9A%A9%ED%92%88%EC%9D%98%20%ED%92%88%EC%A7%88%EA%B4%80%EB%A6%AC%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+          "verification": "official_index_only",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "행정안전부령"
+        }
+      ],
+      "comparison_state": "official_index_only",
+      "comparison_status": "공식 변경이력·목록 확인 / 본문 신구 비교 대기",
+      "source_notes": [
+        "공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."
+      ],
+      "presentation_source": "official_index_pending",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "event_id": "pending:61583b2bef9b25407409",
+      "title": "소방시설 설치 및 관리에 관한 법률 시행규칙",
+      "promulgated_at": "2026-10-19",
+      "effective_date": "2026-10-19",
+      "revision": "타법개정",
+      "law_type": "행정안전부령",
+      "ministry": "소방청",
+      "url": "https://www.law.go.kr/법령/%EC%86%8C%EB%B0%A9%EC%8B%9C%EC%84%A4%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%86%8C%EB%B0%A9%EC%8B%9C%EC%84%A4%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "article_differences": [],
+      "downstream_changes": [],
+      "official_change_documents": [
+        {
+          "agency": "소방청",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "소방시설 설치 및 관리에 관한 법률 시행규칙",
+          "source_url": "https://www.law.go.kr/법령/%EC%86%8C%EB%B0%A9%EC%8B%9C%EC%84%A4%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "official_index_only",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "행정안전부령"
         }
       ],
       "comparison_state": "official_index_only",

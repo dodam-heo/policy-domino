@@ -12,6 +12,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from v4 import institutional_impact
 
 ROOT=Path(__file__).resolve().parents[1]
 V4=ROOT/"site"/"v4"/"data.json"
@@ -338,7 +339,8 @@ def assess_impact_scope(event, actions):
             a.get("event_id")==event["event_id"] and a.get("agency") and
             a.get("evidence_scope") in (
                 "v4_verified_source",
-                "legacy_official_directive_awaiting_recheck")}
+                "legacy_official_directive_awaiting_recheck",
+                "official_institutional_program_dependency")}
     legal_links={
         (clean(x.get("title")),clean(x.get("article")))
         for x in event.get("downstream_changes",[])
@@ -381,6 +383,8 @@ def build(v4,legacy):
     old_events,old_actions=legacy_fallback(legacy,source_titles)
     events+=old_events;actions+=old_actions
     actions=unique_actions(actions)
+    actions,institutional_actions=institutional_impact.connect(
+        events,actions,institutional_impact.load_sources())
     event_ids={e["event_id"] for e in events}
     actions=[a for a in actions if a.get("event_id") in event_ids]
     # Rank policy events first by VERIFIED operational work and cross-institution
@@ -405,6 +409,8 @@ def build(v4,legacy):
             "v4_official_index":checked.get("fresh_official_index",0),
             "pending_details":checked.get("pending_details",0),
             "legacy_recheck":len(old_events),
+            "institutional_dependency_actions":len(institutional_actions),
+            "institutional_evidence_sources":len(institutional_impact.load_sources()),
             "error":"기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
         },
         "events":events,

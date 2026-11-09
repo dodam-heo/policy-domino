@@ -1,0 +1,59 @@
+name: Classic V2 UX + V4 evidence acceptance
+on:
+  push:
+    branches: [fix/classic-impact-v2-ux-20261109]
+    paths:
+      - 'v4/classic_bridge.py'
+      - 'site/classic/**'
+      - '.github/workflows/check-classic.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Rebuild actionable agency cards from both source states
+        run: python -m v4.classic_bridge
+      - name: Test original V2 mobile interface, schema, official record links and agency outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/classic/data.json').read_text('utf8'))
+          assert d['schema']=='policy-domino-next-v1'
+          assert d['events'] and d['actions']
+          assert d['health']['partial'] is True
+          ids={x['event_id'] for x in d['events']}
+          assert all(a['event_id'] in ids and a['changes'] for a in d['actions'])
+          assert all(a.get('evidence_scope') in
+              ('v4_verified_source','legacy_official_directive_awaiting_recheck')
+              for a in d['actions'])
+          assert all(a['status'] not in ('조치 확인','미조치 확인') for a in d['actions'])
+          print('CLASSIC_ACCEPTANCE',json.dumps({
+              "events":len(d['events']),"actions":len(d['actions']),
+              "sources":{s:sum(a.get('evidence_scope')==s for a in d['actions'])
+                         for s in ('v4_verified_source','legacy_official_directive_awaiting_recheck')},
+              "preview":[{"title":e['title'],"source":e['presentation_source'],
+                  "agency_count":len({a['agency'] for a in d['actions']
+                   if a['event_id']==e['event_id']}),
+                  "action_count":sum(a['event_id']==e['event_id'] for a in d['actions'])}
+                  for e in d['events'][:7]]
+          },ensure_ascii=False)[:7500])
+          PY
+          node - <<'JS'
+          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const html=fs.readFileSync('site/classic/index.html','utf8');
+          const js=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
+          assert.equal(js.length,1);new vm.Script(js[0][1]);
+          for(const label of ['기관별 변경 검토사항','공식 변경 전후 내용',
+               '검토할 조치','이전 V2 개정 지시문 · 최신 재검증 대기'])
+             assert.ok(html.includes(label),label);
+          console.log('CLASSIC_HTML_AND_MOBILE_READY');
+          JS

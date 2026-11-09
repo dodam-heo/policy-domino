@@ -168,6 +168,41 @@ def new_action(doc,p,event_id):
         "evidence_scope":"v4_verified_source"
     }
 
+def official_document_index(docs):
+    """Index actual official source documents without claiming operational impact.
+
+    A title of an agency's organizational regulation identifies that agency
+    in the *source law*, whereas the issuing ministry identifies only its
+    publication authority. Neither is a proof of a downstream program impact.
+    """
+    found=[]
+    seen=set()
+    for doc in docs:
+        title=clean(doc.get("title"))
+        ministry=clean(doc.get("ministry"))
+        law_url=str(doc.get("url",""))
+        if not title or not law_url.startswith(
+                ("https://www.law.go.kr/","https://law.go.kr/")):
+            continue
+        direct=owner(title)
+        agency=direct or ministry
+        key=(agency,title,law_url)
+        if key in seen:continue
+        seen.add(key)
+        found.append({
+            "agency":agency,
+            "agency_role":("직제 규정에 명시된 기관" if direct else
+                           "공포·개정 소관기관 (집행기관 미확인)"),
+            "law_title":title,
+            "source_url":law_url,
+            "verification":doc.get("verification","official_record_only"),
+            "changed_article_count":len(doc.get("changed_articles",[])),
+            "actual_implementation_verified":False,
+            "kind":doc.get("kind","")
+        })
+    return found
+
+
 def group_event(g):
     docs=g.get("source_docs",[])
     if not docs:return None,[]
@@ -198,6 +233,7 @@ def group_event(g):
         "event_id":v4id,"title":title,
         "comparison_state":state_label,
         "source_notes":source_notes,
+        "official_change_documents":official_document_index(docs),
         "promulgated_at":g.get("date",""),
         "effective_date":g.get("effective_at",""),
         "revision":docs[0].get("revision","개정"),
@@ -443,6 +479,13 @@ def indexed_pending_event(item):
         "ministry":item.get("ministry",""),
         "url":source_url(item.get("url")),"amendment_url":source_url(item.get("url")),
         "article_differences":[],"downstream_changes":[],
+        "official_change_documents":official_document_index([{
+            "title":item.get("title",""),
+            "ministry":item.get("ministry",""),
+            "url":item.get("url",""),
+            "kind":item.get("kind",""),
+            "verification":"official_index_only"
+        }]),
         "comparison_state":"official_index_only",
         "comparison_status":"공식 변경이력·목록 확인 / 본문 신구 비교 대기",
         "source_notes":["공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."],

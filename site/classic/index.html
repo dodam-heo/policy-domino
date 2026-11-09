@@ -91,8 +91,8 @@ aside .empty{padding:38px 22px}
 <div class="workflow"><span class="primary">① 신규·개정 변경 확인</span><i></i><span>② 변경 내용 비교</span><i></i><span>③ 기관별 조치 전체 확인</span></div>
 <div class="layout" id="layout">
 <section class="panel listPanel" aria-label="최신 정책 변경 목록">
-<div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">공식 변경을 모두 유지하고, 조문 비교·제정·폐지 확인 항목을 앞에 표시합니다. 미분석 항목도 아래에서 확인할 수 있습니다.</div>
-<div class="filterbar"><button class="chip active" data-law="focus">분석된 변경 우선</button><button class="chip" data-law="all">전체 최신순</button><button class="chip" data-law="lifecycle">제정·폐지 확인</button><button class="chip" data-law="organization">조직·정원</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="verified">신구 비교 확인</button><button class="chip" data-law="pending">분석 대기</button><button class="chip" data-law="high-impact" title="변경 조문을 직접 검토하는 기관이 2곳 이상이거나 실제 변경 조항을 적용하는 다른 규정이 2개 이상 확인된 사건">영향도 큼</button></div>
+<div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">공식 변경 목록을 유지하며, 내용이 확인된 변경을 먼저 표시합니다. 분석 대기 항목도 함께 확인할 수 있습니다.</div>
+<div class="filterbar"><button class="chip active" data-law="focus">분석된 변경 우선</button><button class="chip" data-law="all">전체 최신순</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="pending">분석 대기</button><button class="chip" data-law="high-impact" title="변경 조문을 직접 검토하는 기관이 2곳 이상이거나 실제 변경 조항을 적용하는 다른 규정이 2개 이상 확인된 사건">영향도 큼</button></div>
 <div id="impactFilterHint" style="font-size:11px;color:#667c8a;margin:3px 0 8px" hidden>영향 범위 기준: 직접 검토 기관 2곳 이상 또는 변경 조항을 적용하는 다른 규정 2건 이상. 사회적 중요도 등급은 아니며, 이전 V2 근거는 최신 재검증 대기로 구분합니다.</div>
 <input class="search" id="q" aria-label="법령·정책 검색" placeholder="법령명·정책명·소관기관 검색"><div class="listCount" id="listCount"></div></div>
 <div class="list" id="lawList"><div class="empty">공식 변경내역을 불러오는 중입니다.</div></div>
@@ -156,10 +156,9 @@ function filteredEvents(){
  const search=e=>!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q));
  const subset=(DATA.events||[]).filter(e=>search(e)&&(
    filter==="all"||(filter==="focus"?true:
-    filter==="lifecycle"?verifiedLifecycle(e):
-   filter==="organization"?organizationOnly(e):
+
    filter==="high-impact"?e.impact_level==="high":
-   filter==="verified"?detailVerified(e):
+
    filter==="pending"?!detailVerified(e):typeOf(e)===filter)));
  return sorted(subset);
 }

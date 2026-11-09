@@ -64,7 +64,10 @@ assert.ok(!pendingHtml.includes("② 기관별 변경 검토사항"),
 // every structural amendment in the explicit full list.
 assert.ok(html.includes('data-law="focus"'));
 assert.ok(html.includes('data-law="all"'));
-assert.ok(html.includes('data-law="organization"'));
+// The supplementary structural/lifecycle/comparison tabs were not requested.
+for(const key of ["lifecycle","organization","verified"]){
+ assert.ok(!html.includes('data-law="'+key+'"'),"Unrequested filter returned: "+key);
+}
 assert.ok(html.includes('filter="focus"'));
 assert.ok(html.includes("+facts+sourcePanel+impact+reviewPanel+relatedPanel+legal+"),
  "Verified agency review must follow the actual changed policy text directly");

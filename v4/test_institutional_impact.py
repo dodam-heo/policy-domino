@@ -17,6 +17,16 @@ class Discovery(unittest.TestCase):
         h='<a href="/url?q=https%3A%2F%2Fagency.example.go.kr%2Fpage&amp;sa=U">page</a>'
         self.assertEqual(d._search_leads(h),["https://agency.example.go.kr/page"])
 
+    def test_broad_discovery_checks_page_not_search_words(self):
+        q=[]
+        def search(query):
+            q.append(query)
+            return [] if "1,234,567" in query else ["https://open.example.go.kr/program"]
+        hits,health=d.discover([change()],search=search,fetch=lambda u:PAGE)
+        self.assertEqual(len(q),2)
+        self.assertEqual(len(hits),1)
+        self.assertEqual(health["matched"],1)
+
     def test_new_agency_from_discovered_page_not_registry(self):
         e=change()
         hits,health=d.discover([e],search=lambda q:["https://open.example.go.kr/a"],

@@ -280,13 +280,26 @@ def discover(events, search=None, fetch=None):
         if not fields:continue
         health["attempted"]+=1
         for changed in fields[:2]:
-            try:urls=search(search_query(changed["field"],changed["old_amount"]))[:SEARCH_LIMIT]
-            except Exception:
-                health["errors"]+=1;continue
-            if len(health.setdefault("search_leads",[]))<6:
-                health["search_leads"].append({"field":changed["field"],"found":len(urls),
-                                                "urls":urls[:15]})
-            for url in urls:
+            try:prior_year=int(str(event.get("effective_date",""))[:4])-1
+            except (ValueError,TypeError):continue
+            # A number-specific search may be sparse. Broaden by field and
+            # effective year, then verify the actual old amount from each page.
+            queries=[
+                search_query(changed["field"],changed["old_amount"]),
+                '"'+changed["field"]+'" '+str(prior_year)+' (신청 OR 지원 OR 자격 OR 선정)',
+            ]
+            urls=[]
+            for query in queries:
+                try:leads=search(query) or []
+                except Exception:
+                    health["errors"]+=1;continue
+                if len(health.setdefault("search_leads",[]))<10:
+                    health["search_leads"].append({"query":query,"found":len(leads),
+                                                    "urls":leads[:12]})
+                for u in leads:
+                    if u not in urls:urls.append(u)
+                if len(urls)>=16:break
+            for url in urls[:16]:
                 if not trusted(url) or url in seen:continue
                 if urlparse(url).path in ("","/"):continue
                 seen.add(url)

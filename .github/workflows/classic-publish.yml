@@ -21,7 +21,7 @@ permissions:
   id-token: write
 concurrency:
   group: policy-domino-classic-publish
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -61,8 +61,9 @@ jobs:
           # HEAD and regenerate from its newest source state on each retry.
           for attempt in 1 2 3; do
             git fetch origin main
-            git reset --hard FETCH_HEAD
-            python - <<'PY'
+            if [ "$(git rev-parse HEAD)" != "$(git rev-parse FETCH_HEAD)" ]; then
+              git reset --hard FETCH_HEAD
+              python - <<'PY'
           import json
           from pathlib import Path
           from v4.pipeline import recent_uninspected
@@ -72,8 +73,9 @@ jobs:
           d['pending_index']=recent_uninspected(state)
           p.write_text(json.dumps(d,ensure_ascii=False,indent=2),'utf8')
           PY
-            python -m v4.classic_bridge
-            node site/classic/test_ui.cjs
+              python -m v4.classic_bridge
+              node site/classic/test_ui.cjs
+            fi
             git add site/v4/data.json site/classic/data.json site/impact/index.html
             if git diff --cached --quiet; then
               echo "Already up to date"

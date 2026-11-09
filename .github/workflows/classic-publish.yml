@@ -6,6 +6,7 @@ on:
       - '.github/workflows/classic-publish.yml'
       - 'v4/classic_bridge.py'
       - 'site/classic/index.html'
+      - 'site/index.html'
   workflow_dispatch:
 permissions:
   contents: write

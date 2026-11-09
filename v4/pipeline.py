@@ -74,9 +74,9 @@ def structural_change_title(title):
     """
     value=str(title or "")
     return bool(re.search(
-        r"직제(?:\\s*시행규칙)?$|정원의\\s*배정|공무원\\s*정원|"
-        r"조직\\s*및\\s*정원|행정기구\\s*설치|기구\\s*및\\s*정원|"
-        r"사무분장|하부조직|소속기관\\s*설치",value))
+        r"직제(?:\s*시행규칙)?$|정원의\s*배정|공무원\s*정원|"
+        r"조직\s*및\s*정원|행정기구\s*설치|기구\s*및\s*정원|"
+        r"사무분장|하부조직|소속기관\s*설치",value))
 
 def candidate_rank(record,today):
     """Document-wide generic signals only: source proof, dates, lifecycle.

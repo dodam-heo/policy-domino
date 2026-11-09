@@ -54,8 +54,8 @@ class PublicationSafeguards(unittest.TestCase):
         for n in range(1,10):
             item=r(n,kind="law",date="2026-11-09",
                    discovery="official_law_change_history")
-            item["title"]=("가상기관 직제 시행규칙" if n<=7 else
-                            "가상 법률의 자격 요건 변경")+str(n)
+            item["title"]=("가상기관"+str(n)+" 직제 시행규칙" if n<=7 else
+                            "가상 법률의 자격 요건 변경"+str(n))
             rows.append(item)
         # Add non-structural historical candidates for other sources.
         rows.append(r(20,kind="admrul",date="2026-11-09",discovery="official_date_index"))

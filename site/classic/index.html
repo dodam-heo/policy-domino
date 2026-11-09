@@ -117,7 +117,7 @@ function organizationOnly(e){
  // An organizational title is only a presentation category; strong
  // substantive source changes override it, never infer agency impact.
  const full=(e.article_differences||[]).map(x=>String(x.before||"")+" "+String(x.after||"")).join(" ");
- const publicChange=/(?:수급자|지원대상|지원금|급여s*(?:액|기준)|소득s*(?:기준|인정액)|납부|과태료|수수료|피해자|검사비|의료비|보호대상|영업허가|인증기준)/.test(full);
+ const publicChange=/(?:수급자|지원대상|지원금|급여\s*(?:액|기준)|소득\s*(?:기준|인정액)|납부|과태료|수수료|피해자|검사비|의료비|보호대상|영업허가|인증기준)/.test(full);
  return !publicChange;
 }
 function sorted(events){

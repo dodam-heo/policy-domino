@@ -10,7 +10,7 @@ for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용
     "어떤 업무를 검토하나?"]){
   assert.ok(html.includes(label),"Missing actionable content: "+label);
 }
-for(const label of ["① 정책에서 실제 바뀐 내용","② 원문 변경에 따른 업무 검토 후보","③ 변경이 파급되는 관련 규정","공식 변경 목록 확인 · 본문 비교 대기"]){
+for(const label of ["① 정책에서 실제 바뀐 내용","② 기관별 변경 검토사항","③ 원문 변경에 따른 추가 검토 후보","④ 변경이 파급되는 관련 규정","공식 변경 목록 확인 · 본문 비교 대기"]){
  assert.ok(html.includes(label),"Missing policy-first change presentation: "+label);
 }
 // Functional regression: even a change with zero verified actions must retain
@@ -42,6 +42,14 @@ assert.ok(chips.includes('data-doc-jump')&&chips.includes('가상공사'));
 const body=sandbox.__agencyHelpers.officialSourceDocumentGroups(grouped);
 assert.ok(body.includes('data-doc-agency')&&body.includes('가상위원회'));
 assert.ok(!body.includes('조치 완료'));
+// Default list keeps meaningful policy changes findable while retaining
+// every structural amendment in the explicit full list.
+assert.ok(html.includes('data-law="focus"'));
+assert.ok(html.includes('data-law="all"'));
+assert.ok(html.includes('data-law="organization"'));
+assert.ok(html.includes('filter="focus"'));
+assert.ok(html.includes("+facts+sourcePanel+impact+reviewPanel+relatedPanel+legal+"),
+ "Verified agency review must follow the actual changed policy text directly");
 const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));
 assert.ok(html.includes('data-law="high-impact"'));
 assert.ok(html.includes('>영향도 큼</button>'));

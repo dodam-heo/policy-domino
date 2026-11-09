@@ -54,7 +54,7 @@ def bootstrap_old_index(state):
 def scan_new(state,today):
     # The change-history index is the primary legal event entry point.
     # Yesterday and recent days are rescanned to tolerate delayed indexing.
-    days=[str(today-dt.timedelta(days=i)) for i in range(1,5)]
+    days=[str(today-dt.timedelta(days=i)) for i in range(0,5)]
     collect_index.ingest_changes(state,days,max_pages=10)
     backfill=state.get("backfill_cursor_days",0)
     # A moving 7-day sweep discovers administrative acts that became public
@@ -65,6 +65,18 @@ def scan_new(state,today):
         collect_index.ingest_index(state,source,[(first,last)],max_pages=12)
     state["backfill_cursor_days"]=0 if backfill>=210 else backfill+7
     state["latest_official_scan"]=today.isoformat()
+
+def structural_change_title(title):
+    """Presentation/work-queue bucket only, never evidence of a program impact.
+
+    Broad legal-document structure signals, not lists of named institutions
+    or preselected policy examples.
+    """
+    value=str(title or "")
+    return bool(re.search(
+        r"직제(?:\\s*시행규칙)?$|정원의\\s*배정|공무원\\s*정원|"
+        r"조직\\s*및\\s*정원|행정기구\\s*설치|기구\\s*및\\s*정원|"
+        r"사무분장|하부조직|소속기관\\s*설치",value))
 
 def candidate_rank(record,today):
     """Document-wide generic signals only: source proof, dates, lifecycle.
@@ -84,6 +96,10 @@ def candidate_rank(record,today):
     # Older official historical documents are still discoverable in the
     # complete catalogue but should not displace this year's changes.
     if age<str(today-dt.timedelta(days=365)):priority-=30
+    # Large bundles of agency establishment/staffing amendments must not
+    # exhaust the detail queue before unrelated rights, benefits or rules.
+    # They remain available and are processed after higher-priority records.
+    if structural_change_title(record.get("title","")):priority-=45
     return (priority,age,record.get("serial",""))
 
 def pick_work(state,today,limit):
@@ -216,8 +232,12 @@ def recent_uninspected(state,limit=300):
         and r.get("source") in ("law","admrul","ordin")
     ]
     waiting.sort(key=lambda r:(r["published_at"],r.get("serial","")),reverse=True)
-    queues={k:[r for r in waiting if r["source"]==k]
-            for k in ("law","admrul","ordin")}
+    # Use substantive-first queues without dropping structural source records.
+    # Do not whitelist an agency or a benefit name.
+    queues={k:sorted((r for r in waiting if r["source"]==k),
+        key=lambda r:(not structural_change_title(r.get("title","")),
+                      r.get("published_at",""),r.get("serial","")),reverse=True)
+        for k in ("law","admrul","ordin")}
     rows=[]
     while len(rows)<limit and any(queues.values()):
         for kind in ("law","admrul","ordin"):

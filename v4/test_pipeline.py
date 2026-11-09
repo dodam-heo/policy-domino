@@ -38,6 +38,32 @@ class PublicationSafeguards(unittest.TestCase):
                             for x in data["pending_index"]))
         self.assertEqual(data["collection"]["pending_details"],4)
 
+    def test_structural_changes_do_not_starve_other_sectors(self):
+        structural=r(11,discovery="official_law_change_history")
+        structural["title"]="가상기관 직제 시행규칙"
+        substantive=r(12,discovery="official_law_change_history")
+        substantive["title"]="가상 주민지원 요건 개정"
+        today=dt.date(2026,11,9)
+        self.assertGreater(pipeline.candidate_rank(substantive,today)[0],
+                           pipeline.candidate_rank(structural,today)[0])
+        self.assertTrue(pipeline.structural_change_title(structural["title"]))
+        self.assertFalse(pipeline.structural_change_title(substantive["title"]))
+
+    def test_pending_list_balances_generic_document_types(self):
+        rows=[]
+        for n in range(1,10):
+            item=r(n,kind="law",date="2026-11-09",
+                   discovery="official_law_change_history")
+            item["title"]=("가상기관 직제 시행규칙" if n<=7 else
+                            "가상 법률의 자격 요건 변경")+str(n)
+            rows.append(item)
+        # Add non-structural historical candidates for other sources.
+        rows.append(r(20,kind="admrul",date="2026-11-09",discovery="official_date_index"))
+        state={"catalog":{events.key(x):x for x in rows},"inspected":{}}
+        pending=pipeline.recent_uninspected(state,limit=4)
+        self.assertTrue(any(x["source"]=="admrul" for x in pending))
+        self.assertTrue(any("자격 요건" in x["title"] for x in pending))
+
     def test_wrong_article_citations_not_counted_as_dependents(self):
         a=r(1);b=r(2)
         ea,eb=events.inspect(a,[],load=lambda x:{"제1조":"조항"},

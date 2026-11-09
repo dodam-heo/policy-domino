@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d263c"><title>정책 도미노 | 신규·개정 정책과 기관별 조치</title>
+<style>
+:root{font-family:"Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;--ink:#182e43;--muted:#718293;--border:#e2e9ee;--blue:#14597b;--pale:#f5f8fa;--panel:#fff;background:var(--pale);color:var(--ink);font-size:14px}*{box-sizing:border-box}
+body{margin:0}button,input,select{font:inherit}button{cursor:pointer}a{color:#17658c;text-decoration:none}a:hover{text-decoration:underline}
+header{background:#102b43;color:#f7fbff;padding:16px max(20px,calc((100vw - 1230px)/2));display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:850;letter-spacing:-.5px;font-size:20px}.brand em{font-style:normal;color:#8ee1d2}.brandSub{font-size:10px;letter-spacing:.17em;color:#a4c7d2;margin-top:3px}.headright{display:flex;align-items:center;gap:10px}.tinyLink{font-size:12px;color:#c6deea;text-decoration:none;border:1px solid #547080;padding:7px 10px;border-radius:8px}
+main{max-width:1230px;margin:auto;padding:30px 20px 68px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.13em;color:#277899}h1{font-size:29px;letter-spacing:-.9px;margin:9px 0 7px;line-height:1.25}p{margin:0}.lead{color:var(--muted);line-height:1.6;font-size:13px}
+.intro{display:flex;justify-content:space-between;align-items:start;gap:16px;flex-wrap:wrap;margin-bottom:22px}.refresh{background:white;color:#2b5972;border:1px solid #d5e2e9;border-radius:9px;padding:10px 13px;font-size:12px;font-weight:750}
+.system{display:flex;align-items:flex-start;gap:10px;padding:12px 15px;border:1px solid #dde7ed;background:#fff;border-radius:10px;margin:18px 0 20px;color:#526c7c;font-size:12px;line-height:1.65}.system strong{color:#234861}
+.system.error{border-color:#f0d6c7;background:#fff9f4}.system.error strong{color:#9c4e2d}.system .dot{background:#439b7b;border-radius:50%;width:7px;height:7px;flex:none;margin-top:5px}.system.error .dot{background:#d58b59}
+.system a{font-weight:700;white-space:nowrap}.systemInfo{flex:1}.statusSmall{color:#7b8d9c;font-size:11px;margin-top:6px}
+.workflow{display:flex;align-items:center;gap:12px;padding:0 2px 19px;color:#6e8291;font-size:12px}.workflow .primary{font-weight:850;color:#125d7c}.workflow i{width:20px;height:1px;background:#b5c9d4;display:inline-block}
+.layout{display:grid;grid-template-columns:minmax(310px,410px) minmax(0,1fr);gap:16px;align-items:start}
+.panel{border:1px solid var(--border);border-radius:16px;background:var(--panel);min-width:0;box-shadow:0 1px 3px #16324d08}
+.listPanel{overflow:hidden}.listHeader{padding:19px 18px 12px;border-bottom:1px solid #edf1f4}.panelTitle{font-size:18px;font-weight:820;letter-spacing:-.3px}.panelIntro{font-size:12px;color:#7990a0;margin-top:5px;line-height:1.55}
+.filterbar{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}.chip{padding:7px 11px;border:1px solid #dce6ec;border-radius:99px;background:white;color:#576f81;font-size:12px;font-weight:700}.chip.active{background:#155b7e;color:white;border-color:#155b7e}.search{display:block;width:100%;margin:11px 0 4px;border:1px solid #dce6eb;background:#fff;border-radius:9px;padding:10px 12px;font-size:12px}
+.listCount{font-size:11px;color:#788e9e;margin-top:8px}.list{max-height:75vh;overflow-y:auto}
+.lawItem{border:0;border-bottom:1px solid #ebeff3;padding:18px;background:white;text-align:left;width:100%;display:block;cursor:pointer;position:relative}.lawItem:hover{background:#f6fafc}.lawItem.active{background:#edf6fa;border-left:4px solid #14769a;padding-left:14px}
+.lawTop{display:flex;justify-content:space-between;align-items:center;gap:8px}.lawType{font-size:10px;letter-spacing:-.05px;font-weight:800;color:#256984;background:#e9f3f8;padding:4px 7px;border-radius:6px}.lawType.add{color:#187361;background:#e2f5ef}.lawType.remove{color:#8a5162;background:#f8eef0}.lawDate{font-size:11px;color:#8193a2}
+.lawName{font-weight:760;font-size:14px;line-height:1.55;margin:9px 0 6px;color:#20354b;word-break:keep-all}.lawMeta{font-size:11px;color:#758a99;line-height:1.5}.lawFoot{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:11px;font-size:11px;color:#326682}.mini{background:#eef3f6;border-radius:6px;padding:4px 7px;font-weight:700;color:#576d7f}
+.empty{padding:35px 18px;text-align:center;color:#667d8d;line-height:1.8;font-size:13px}.empty svg{display:block;margin:0 auto 12px;opacity:.45}
+.detailPanel{min-height:520px}.detailHeader{padding:24px 25px 18px;border-bottom:1px solid #ebeff3}.detailKicker{font-size:11px;color:#256984;font-weight:800;letter-spacing:.09em}.detailTitle{font-size:21px;letter-spacing:-.5px;line-height:1.5;margin:9px 0}.detailMeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:#6d8293}.separator{color:#b1c1ca}
+.detailBody{padding:23px 25px 26px}.sectionHeading{font-size:15px;font-weight:830;margin:0 0 12px;color:#233c52}.sectionGap{height:24px}
+.dateGroup{display:flex;gap:8px;flex-wrap:wrap}.fact{background:#f4f8fa;border:1px solid #e5edf2;border-radius:9px;padding:11px 12px;min-width:150px;flex:1}.fact small{font-size:11px;color:#768c9b;display:block}.fact strong{font-size:13px;margin-top:5px;display:block}
+.change{border:1px solid #e4eaf0;border-radius:10px;margin-top:10px;overflow:hidden}.changeHead{background:#f7fafc;padding:9px 12px;border-bottom:1px solid #e3e9ef;font-size:12px;font-weight:760;display:flex;justify-content:space-between;gap:8px}.changePair{display:grid;grid-template-columns:1fr 1fr}.changeCol{padding:12px 13px;min-width:0}.changeCol+ .changeCol{border-left:1px solid #e5ebef}.changeCol small{color:#7a8a99;font-size:10px;font-weight:800}.changeCol p{font-size:12px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;max-height:230px;overflow:auto;margin-top:7px}
+.before{background:#fffafa}.after{background:#f8fffc}.smallNote{color:#708496;font-size:12px;line-height:1.6;margin-top:10px}
+.actionSummary{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.actionTotal{font-size:12px;color:#5b7586}
+.statusFilters{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}.statusFilter{font-size:11px;font-weight:720;padding:7px 9px;background:white;border:1px solid #dde7eb;color:#557080;border-radius:8px}.statusFilter.active{background:#163e5b;color:white;border-color:#163e5b}
+.action{border:1px solid #e1e9ef;border-radius:11px;margin:9px 0;padding:14px 15px}.actionTop{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}.agency{font-size:14px;font-weight:850;color:#263e52}.role{font-size:11px;color:#708697;margin-top:4px}.status{display:inline-block;border-radius:7px;padding:5px 7px;font-weight:790;font-size:10px;white-space:nowrap;background:#edf1f5;color:#5f7586}.status.done{background:#e4f6ed;color:#11834f}.status.pending{background:#fff0e7;color:#b65729}.status.upcoming{background:#e8f2fb;color:#2a709d}
+.taskTitle{font-size:12px;line-height:1.7;margin-top:12px;font-weight:800}.taskDesc{font-size:12px;color:#516d80;line-height:1.65;margin-top:5px}.evidence{background:#f6f9fb;padding:10px 11px;border-radius:7px;margin-top:10px;font-size:11px;color:#687f8e;line-height:1.6}.evidence b{color:#425b70}
+.copyMeta{margin-top:15px;font-size:11px;color:#72899a;line-height:1.7}.refLink{font-size:12px;font-weight:800;display:inline-flex;gap:6px;align-items:center;margin-top:8px}
+.back{display:none;border:0;padding:6px 0;color:#185c7d;background:transparent;font-size:12px;font-weight:800;margin-bottom:12px}
+aside .empty{padding:38px 22px}
+.foot{color:#8093a2;text-align:center;font-size:11px;padding:19px 5px}
+@media(max-width:850px){main{padding:21px 13px 45px}.layout{display:block}.listPanel{display:block}.detailPanel{display:none;margin-top:12px}.layout.detailOpen .listPanel{display:none}.layout.detailOpen .detailPanel{display:block}.back{display:block}.list{max-height:none}.detailHeader{padding:19px}.detailBody{padding:19px}.detailTitle{font-size:19px}.workflow{font-size:11px}h1{font-size:24px}.system{margin:15px 0}.changePair{grid-template-columns:1fr}.changeCol+.changeCol{border-left:0;border-top:1px solid #e5ebef}.fact{min-width:120px}.lawItem{padding:17px}.lawItem.active{padding-left:13px}}
+
+.impactRoute{font-size:12px;color:#225c77;background:#edf7fa;border:1px solid #d7e9f0;padding:11px 13px;border-radius:9px;line-height:1.7;margin-bottom:14px}
+.locationTitle{margin-top:14px;font-size:11px;color:#71889a;font-weight:780}
+.locationBox{background:#f3f8fb;border:1px solid #e3edf2;border-radius:9px;padding:12px 13px;margin-top:6px;line-height:1.55;font-size:13px;color:#173e57;font-weight:740}
+.actionSummaryText{font-size:12px;font-weight:750;margin:10px 0 0;line-height:1.7;color:#244d67}
+.valueRows{border:1px solid #e1e9ef;border-radius:9px;overflow:hidden;margin:12px 0}
+.valueRow{display:grid;grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr);align-items:stretch}
+.valueRow+.valueRow{border-top:1px solid #e4e9ee}
+.oldValue,.newValue{padding:10px 11px;font-size:12px;min-width:0;overflow-wrap:anywhere;line-height:1.6}
+.oldValue{background:#fffafa;color:#6d4d50}.newValue{background:#f4fbf7;color:#125c4a}
+.valueRow small{display:block;font-size:10px;color:#7c90a0;font-weight:800;margin-bottom:4px}
+.valueArrow{display:flex;align-items:center;justify-content:center;font-size:13px;color:#7892a5;background:#fafcfd}
+.instruction{background:#f7fafc;border-radius:9px;border-left:3px solid #267e9d;padding:12px 14px;font-size:12px;line-height:1.7;margin-top:12px}
+.instruction b{display:block;font-size:11px;color:#507286;margin-bottom:6px}
+.verification{font-size:11px;color:#738a99;line-height:1.65;margin:9px 0 0}
+.legalDetails{margin-top:22px;border-top:1px solid #ebeff3;padding-top:14px}
+.legalDetails summary{font-size:12px;color:#266580;font-weight:750;cursor:pointer;padding:8px 0}
+.legalDetails .change{margin:10px 0}
+@media(max-width:850px){.valueRow{grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr)}}
+
+.impactAgencyGroup{border-top:1px solid #e0e7ed;margin-top:19px;padding-top:14px}
+.groupHeading{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:3px 2px 9px}
+.groupHeading strong{font-size:15px;color:#193d56}
+.groupHeading span{color:#728998;font-size:11px}
+.groupHeading:first-child{margin-top:0}
+.actionStatusNote{display:block;font-size:11px;color:#63839a;line-height:1.5;margin-top:6px}
+
+/* Detail: a brief change overview, visible institution actions, optional law source */
+.changeOverview{margin:17px 0 14px;background:#f0f7fb;border:1px solid #d7e8f1;border-radius:12px;padding:15px}
+.overviewLabel{color:#17688a;font-weight:850;font-size:11px;margin-bottom:7px}
+.overviewText{color:#2d5063;font-size:13px;font-weight:600;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.overviewFoot{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.overviewFoot span{background:#fff;border:1px solid #deeaef;border-radius:7px;color:#526e81;padding:5px 8px;font-size:11px}
+.agencyNav{display:flex;overflow-x:auto;gap:7px;padding:1px 1px 11px;margin-bottom:10px;scrollbar-width:thin}
+.agencyJump{border:1px solid #dae8ee;background:#f6fafc;color:#265976;font-size:11px;font-weight:770;border-radius:8px;padding:8px 10px;flex-shrink:0}
+.agencyJump:hover{background:#e4f1f6}
+.impactAgencyGroup{scroll-margin-top:15px}
+.legalDetails{background:#fbfcfd;border:1px solid #dfe8ee;border-radius:11px;padding:11px 13px;margin-top:20px}
+.legalDetails summary{font-size:13px;font-weight:800}
+.legalReasonFull{font-size:12px;line-height:1.8;background:#fff;color:#4f687d;border-radius:8px;padding:13px;margin:11px 0;white-space:pre-wrap}
+@media(max-width:850px){.changeOverview{padding:13px}.detailBody{padding-top:13px}.agencyNav{margin:0 -2px 12px;padding-bottom:10px}}
+
+.evidenceDrawer{margin-top:12px;border:1px solid #e4ebf0;border-radius:9px;padding:9px 12px;background:#fafcfd}
+.evidenceDrawer summary{cursor:pointer;color:#426d84;font-weight:750;font-size:11px}
+.evidenceDrawer .evidence{margin-top:10px}
+.evidenceDrawer .verification{margin:9px 0 0}
+</style></head>
+<body>
+<header><div><div class="brand">POLICY <em>DOMINO</em></div><div class="brandSub">CHANGE → IMPACT → ACTION</div></div><div class="headright"><a class="tinyLink" href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">수집 상태</a></div></header>
+<main>
+<div class="intro"><div><div class="eyebrow">법령·정책 변경 자동 분석</div><h1>신규·개정 내역</h1><p class="lead">공식 변경을 선택하면 기관별로 실제 확인된 업무 기준과 검토할 변경사항이 펼쳐집니다.</p></div><button class="refresh" id="reload">↻ 최신 결과 새로고침</button></div>
+<div class="system" id="system"><span class="dot"></span><div class="systemInfo"><strong id="sourceTitle">공식 데이터 상태를 확인하는 중입니다.</strong><div id="sourceDesc"></div><div class="statusSmall" id="lastChecked"></div></div></div>
+<div class="workflow"><span class="primary">① 신규·개정 변경 확인</span><i></i><span>② 변경 내용 비교</span><i></i><span>③ 기관별 조치 전체 확인</span></div>
+<div class="layout" id="layout">
+<section class="panel listPanel" aria-label="최신 정책 변경 목록">
+<div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">게시글 등록일이 아니라 공식 공포·확정일 기준 최신순</div>
+<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="standards">급여·지원기준</button></div>
+<input class="search" id="q" aria-label="법령·정책 검색" placeholder="법령명·정책명·소관기관 검색"><div class="listCount" id="listCount"></div></div>
+<div class="list" id="lawList"><div class="empty">공식 변경내역을 불러오는 중입니다.</div></div>
+</section>
+<section class="panel detailPanel" id="detailPanel" aria-label="선택한 법령 변경과 기관별 조치">
+<div id="detail"><div class="empty">왼쪽에서 변경된 법령·정책을 선택하면 해당 변경과 연결된 기관별 조치사항을 확인할 수 있어요.</div></div>
+</section></div>
+<div class="foot">정책 도미노 · 공식 변경 근거가 없는 항목이나 확인되지 않은 조치 여부는 임의로 표시하지 않습니다.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function validUrl(raw){try{const u=new URL(raw);return ["https:","http:"].includes(u.protocol)?esc(u.href):"#"}catch(e){return "#"}}
+function fmtDate(s){if(!s)return "미확인";if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s.replaceAll("-",". ");let d=new Date(s);return Number.isNaN(d.getTime())?esc(s):new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(d)}
+function typeOf(e){let s=e.revision||e.change_type||e.type||"";return /폐지/.test(s)&&!/제정/.test(s)?"abolished":/제정|신설/.test(s)&&!/개정/.test(s)?"new":"amended"}
+function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?"폐지":"개정"}
+function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
+function sorted(events){return [...events].sort((a,b)=>(b.impact_priority||0)-(a.impact_priority||0)||(b.promulgated_at||b.change_date||"").localeCompare(a.promulgated_at||a.change_date||""))}
+function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
+let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",actionFilter="all";
+function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="standards"?Boolean(e.policy_profile):typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
+function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
+function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
+function eventRow(e){
+const num=matchingActions(e).length,hasDiff=e.article_differences?.length||0,chosen=selectedId===e.event_id;
+return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot"><span class="mini">'+(e.presentation_source==="v4_official_source"?"공식 신구 본문":"이전 V2 근거 · 재검증 대기")+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
+}
+function displayList(){
+const events=filteredEvents();
+$("listCount").textContent=(DATA.events||[]).length+"개 공식 변경 사건 중 "+events.length+"개 표시";
+$("lawList").innerHTML=events.length?events.map(eventRow).join(""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
+$("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.dataset.event));
+}
+function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";return '<span class="status '+cls+'">'+esc(s||"반영 확인 필요")+'</span>'}
+function agencyNavigator(items){
+ const counts=new Map();
+ for(const item of items){const name=item.agency||"기관 확인 필요";counts.set(name,(counts.get(name)||0)+1)}
+ if(!counts.size)return "";
+ return '<nav class="agencyNav" aria-label="기관별 바로가기">'+[...counts].sort((a,b)=>a[0].localeCompare(b[0],"ko")).map(([name,n])=>'<button class="agencyJump" type="button" data-jump="'+esc(name)+'">'+esc(name)+' · '+n+'</button>').join("")+'</nav>';
+}
+function overviewText(e,all){
+ const reason=String(e.amendment_reason||"").replace(/\s+/g," ").trim();
+ if(reason)return reason.slice(0,165)+(reason.length>165?"…":"");
+ const example=all.map(a=>a.source_change||a.what_to_change).find(Boolean);
+ return example?String(example).slice(0,165):"공식 변경의 상세 내용은 확인 중입니다. 근거가 없는 내용을 생성하지 않습니다.";
+}
+function groupedActions(items){
+if(!items.length)return "";
+const ordered=items.slice().sort((a,b)=>(a.agency||"").localeCompare(b.agency||"","ko")||(a.work||"").localeCompare(b.work||"","ko")||(a.article||"").localeCompare(b.article||"","ko"));
+const byAgency=new Map();
+for(const item of ordered){let agency=item.agency||"기관 확인 필요";if(!byAgency.has(agency))byAgency.set(agency,[]);byAgency.get(agency).push(item)}
+return [...byAgency].map(([agency,list])=>'<section class="impactAgencyGroup" data-agency="'+esc(agency)+'"><div class="groupHeading"><strong>'+esc(agency)+'</strong><span>변경 대상 '+list.length+'건</span></div>'+list.map(actionCard).join("")+'</section>').join("");
+}
+function actionCard(a){
+const changes=(a.changes||[]);
+const comparison=changes.length?'<div class="valueRows">'+changes.map(p=>'<div class="valueRow"><div class="oldValue"><small>기존</small>'+esc(p.before||"미확인")+'</div><div class="valueArrow">→</div><div class="newValue"><small>변경</small>'+esc(p.after||"미확인")+'</div></div>').join('')+'</div>':'<div class="actionSummaryText">'+esc(a.what_to_change||a.source_change||"공식 개정문에서 변경된 항목")+'</div>';
+const added=(a.new_items||[]).length?'<p class="taskDesc"><b>새로 추가할 항목:</b> '+esc(a.new_items.slice(0,6).join(" · "))+'</p>':'';
+const sourceTag=a.evidence_scope==="v4_verified_source"?"공식 신구 조문 확인":a.evidence_scope==="legacy_official_directive_awaiting_recheck"?"이전 V2 개정 지시문 · 최신 재검증 대기":"근거 재확인 중";
+const name=esc(a.agency||"적용 기관 미확인");
+const task=esc(a.target_location||a.service||"구체적인 업무·서비스 위치 확인 필요");
+const func=esc(a.work||a.category||"업무 조치");
+return '<article class="action"><div class="actionTop"><div><div class="agency">'+name+'</div><div class="role">'+esc(a.agency_role||"이 변경을 적용하는 기관")+'</div></div>'+badgeStatus(a.status)+'</div>'+
+'<div class="locationTitle" style="color:#377387">검증 상태 · '+esc(sourceTag)+'</div><div class="locationTitle">어떤 업무를 검토하나?</div><div class="locationBox">'+func+' <span style="color:#90a7b6">›</span> '+task+'</div>'+
+'<div class="locationTitle">공식 변경 전후 내용</div>'+comparison+added+
+'<div class="instruction"><b>검토할 조치</b>'+esc(a.required_change||"실제 업무에 반영해야 할 변경사항 확인 필요")+'</div>'+
+'<details class="evidenceDrawer"><summary>적용일 · 개정 근거 · 검증 정보 보기</summary>'+
+'<div class="evidence"><b>해당 기관의 개정 근거:</b> '+esc(a.law_title||"")+' · '+esc(a.article||"")+
+'<br><b>적용 시점:</b> '+esc(a.effective_date||"시행일 추가 확인")+
+'<br><b>도미노 연결:</b> '+esc(a.impact_link_basis||"직접 변경")+
+' · <a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">공식 개정문 보기 ↗</a>'+
+'<br><b>조치 확인:</b> '+esc(a.status_evidence||"공개 근거 미확인 · 완료/미조치 확정 불가")+'</div>'+
+'<p class="verification">'+esc(a.verification_note||a.note||"구체적인 업무시스템·서비스 명칭과 실제 적용 상태는 별도 확인 필요")+'</p></details></article>';
+}
+function differences(e){
+const ds=e.article_differences||[];
+if(!ds.length)return '<p class="smallNote">공식 공포 정보는 확인됐지만 종전·변경 조문의 실제 비교가 아직 완료되지 않았습니다. 변경 전후 내용을 추측해 채우지 않습니다.</p>';
+return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+' '+esc(d.title||"")+'</span><span>'+esc(d.type||"변경")+'</span></div><div class="changePair"><div class="changeCol before"><small>종전 내용</small><p>'+esc(d.before||(d.type==="신설"?"신설 이전 규정 없음":"종전 조문 전문 별도 대조 필요"))+'</p></div><div class="changeCol after"><small>'+(d.directive?"공식 개정 지시문":"변경 후 조문")+'</small><p>'+esc(d.directive||d.after||"변경 내용 확인 필요")+'</p></div></div></div>').join("")
+}
+function detailHTML(e){
+ const all=matchingActions(e),current=all.filter(a=>actionFilter==="all"||a.status===actionFilter);
+ const countDone=all.filter(a=>a.status==="조치 확인").length;
+ const countNot=all.filter(a=>a.status==="미조치 확인").length;
+ const institutions=new Set(all.map(a=>a.agency).filter(Boolean)).size;
+ const dependent=(e.downstream_changes||[]).length;
+ const provenance=e.presentation_source==="v4_official_source"?"현재 공식 신구 본문 검증":"이전 V2 공식 개정 지시문 · 최신 재검증 대기";
+ const header='<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(provenance)+'</span><span class="separator">·</span><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>';
+ const overview='<section class="changeOverview"><div class="overviewLabel">이번 변경에서 무엇을 확인했나</div><div class="overviewText">'+esc(overviewText(e,all))+'</div><div class="overviewFoot"><span>검토 대상 기관 '+institutions+'곳</span><span>근거 있는 검토 항목 '+all.length+'건</span>'+(dependent?'<span>연결된 하위규정 '+dependent+'건</span>':'')+'</div></section>';
+ const facts='<div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div></div>';
+ const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","최신 근거 재확인 필요"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
+ const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
+ const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
+ return header+'<div class="detailBody">'+overview+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
+}
+function renderDetail(){
+const e=getEvent();
+$("detail").innerHTML=e?detailHTML(e):showEmpty("변경 사건을 선택해 주세요.","법령·정책 변경을 선택하면 기관별로 무엇을 바꿔야 하는지 한 번에 보여줍니다.");
+const back=$("back");if(back)back.onclick=()=>{$("layout").classList.remove("detailOpen");history.replaceState(null,"",location.pathname+location.search)};
+$("detail").querySelectorAll("[data-status]").forEach(b=>b.onclick=()=>{actionFilter=b.dataset.status;renderDetail()});
+$("detail").querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const target=[...$("detail").querySelectorAll("[data-agency]")].find(x=>x.dataset.agency===b.dataset.jump);if(target)target.scrollIntoView({behavior:"smooth",block:"start"})});
+}
+function choose(id){
+selectedId=id;actionFilter="all";$("layout").classList.add("detailOpen");displayList();renderDetail();
+try{history.replaceState(null,"","#change="+encodeURIComponent(id))}catch(e){}
+if(window.innerWidth<=850)window.scrollTo({top:0,behavior:"smooth"});
+}
+function render(){
+displayList();renderDetail();
+}
+async function load(){
+try{
+let response=await fetch("./data.json?v="+Date.now(),{cache:"no-store"});if(!response.ok)throw Error("HTTP "+response.status);
+let d=await response.json();if(d.schema!=="policy-domino-next-v1")throw Error("기존 데이터 형식이므로 새 변경내역과 연결되지 않았습니다.");
+DATA=d;const h=d.health||{},partial=h.source_status==="메타데이터만 연결",amendment=h.source_status==="공식 공포·개정문 연결",bad=h.source_status==="수집 실패";
+$("system").classList.toggle("error",bad);
+$("sourceTitle").textContent=bad?"공식 변경 데이터 수집 실패":"실제 정책 변경과 기관별 검토 업무";
+$("sourceDesc").textContent=bad?(h.error||"공식 변경 자료를 불러오지 못했습니다."):"신구 조문·공식 개정 지시문 기반 "+(d.events||[]).length+"개 변경 사건 · 기관별 검토 "+(d.actions||[]).length+"건. 현재 공식 본문과 이전 V2 자료는 검증 상태를 분리합니다. 내부 조치 완료 여부는 확인되지 않았습니다.";
+$("lastChecked").textContent="최종 확인 "+(d.generated_at?new Date(d.generated_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"}):"미확인");
+const fragment=decodeURIComponent((location.hash||"").replace(/^#change=/,""));
+if(fragment&&(d.events||[]).some(e=>e.event_id===fragment))selectedId=fragment;
+if(selectedId&&!(d.events||[]).some(e=>e.event_id===selectedId))selectedId=null;
+if(window.innerWidth>850&&!selectedId&&(d.events||[]).length)selectedId=sorted(d.events)[0].event_id;
+render();
+}catch(e){DATA={events:[],actions:[],health:{source_status:"수집 실패"}};$("system").classList.add("error");$("sourceTitle").textContent="새 시스템 데이터를 불러오지 못했습니다.";$("sourceDesc").textContent=e.message;render();}
+}
+document.querySelectorAll("[data-law]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-law]").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.law;displayList()});
+$("q").oninput=displayList;$("reload").onclick=load;
+window.addEventListener("popstate",()=>{if(!location.hash){$("layout").classList.remove("detailOpen")}});
+load();
+</script></body></html>

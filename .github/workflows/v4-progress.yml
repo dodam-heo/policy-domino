@@ -41,6 +41,10 @@ jobs:
           PD_V4_SEARCH_PARENTS: '2'
           PD_V4_VERIFY_DEPENDENTS: '12'
         run: python -m v4.pipeline
+      - name: Rebuild original V2-style agency impact view from newest official source
+        run: |
+          python -m v4.classic_bridge
+          node site/classic/test_ui.cjs
       - name: Validate all published link claims and partial coverage labels
         run: |
           python - <<'PY'
@@ -74,7 +78,7 @@ jobs:
         run: |
           git config user.name policy-domino-v4-bot
           git config user.email policy-domino-v4-bot@users.noreply.github.com
-          git add data/v4_state.json site/v4/data.json
+          git add data/v4_state.json site/v4/data.json site/classic/data.json
           if ! git diff --cached --quiet; then
             git commit -m 'data(v4): advance official indexed sources and evidence [skip ci]'
             for attempt in 1 2 3; do
@@ -99,6 +103,8 @@ jobs:
         run: |
           test -s site/index.html
           test -s site/v4/index.html
+          test -s site/classic/data.json
+          test -s site/classic/index.html
           node site/v4/test_ui.cjs
           python - <<'PY'
           import json

@@ -6,6 +6,7 @@ on:
       - '.github/workflows/classic-publish.yml'
       - 'v4/classic_bridge.py'
       - 'v4/institutional_impact.py'
+      - 'v4/test_institutional_impact.py'
       - 'site/classic/index.html'
       - 'site/index.html'
       - 'site/impact/index.html'

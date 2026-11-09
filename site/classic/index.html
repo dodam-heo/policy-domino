@@ -219,11 +219,18 @@ function detailHTML(e){
    '<p class="smallNote">공식 개정 목록은 확인됐지만 종전·현행 본문을 아직 비교하지 못했습니다. 금액이나 기관별 조치를 추측해서 채우지 않습니다.</p>';
  const rest=ds.length>2?'<details class="legalDetails"><summary>나머지 변경 조문 '+(ds.length-2)+'건 보기</summary>'+differences({...e,article_differences:ds.slice(2)})+'</details>':'';
  const sourcePanel='<section style="margin:24px 0"><h3 class="sectionHeading">① 정책에서 실제 바뀐 내용</h3><p class="smallNote" style="margin:8px 0">'+esc(sourceLabel(e))+(notes.length?' · '+esc(notes.join(" / ")):'')+'</p>'+first+rest+'</section>';
+ const reviews=(e.work_review_candidates||[]).slice(0,12);
+ const reviewPanel='<section style="margin:20px 0"><h3 class="sectionHeading">② 원문 변경에 따른 업무 검토 후보</h3>'+
+  '<p class="smallNote">개정 조문에서 추출한 업무 유형이며, 특정 기관·사업에 실제 적용된다는 뜻은 아닙니다.</p>'+
+  (reviews.length?reviews.map(x=>'<div class="action"><div class="smallNote">'+esc(x.article||"변경 조문")+' · '+esc(x.status||"기관 적용 미확인")+'</div><b>'+esc(x.topic||"개정 항목")+' · '+esc(x.work_type||"업무 기준")+'</b>'+
+   (x.actual_changes||[]).slice(0,3).map(p=>'<div class="valueRow" style="margin-top:8px"><div class="oldValue"><small>기존 문구</small>'+esc(p.before)+'</div><div class="valueArrow">→</div><div class="newValue"><small>개정 문구</small>'+esc(p.after)+'</div></div>').join('')+
+   '<p class="taskDesc"><b>확인할 업무:</b> '+esc(x.review_question||"개정 조문 적용 여부를 확인")+'</p><a class="refLink" target="_blank" rel="noopener" href="'+validUrl(x.source_url)+'">공식 조문 확인</a></div>').join(''):
+   '<p class="smallNote">원문에서 구체적인 업무기준 변경을 추출하지 못했습니다. 확인되지 않은 후보는 생성하지 않습니다.</p>')+'</section>';
  const links=(e.downstream_changes||[]).filter(x=>x.status==="변경 조항 적용 관계 확인"&&x.title&&x.evidence);
- const relatedPanel='<section style="margin:20px 0"><h3 class="sectionHeading">② 변경이 파급되는 관련 규정</h3>'+
+ const relatedPanel='<section style="margin:20px 0"><h3 class="sectionHeading">③ 변경이 파급되는 관련 규정</h3>'+
    (links.length?links.slice(0,15).map(x=>'<article class="action"><b>'+esc(x.title)+'</b><p class="smallNote">'+esc(x.article||"")+" · "+esc(x.evidence)+'</p><a class="refLink" target="_blank" rel="noopener" href="'+validUrl(x.basis_url)+'">공식 근거 보기</a></article>').join(''):
     '<p class="smallNote">변경 조항과 실제 적용 관계가 검증된 다른 규정은 아직 없습니다. 관련 제도가 없다는 뜻은 아닙니다.</p>')+'</section>';
- return header+'<div class="detailBody">'+overview+impactSummary+facts+sourcePanel+relatedPanel+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
+ return header+'<div class="detailBody">'+overview+impactSummary+facts+sourcePanel+reviewPanel+relatedPanel+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }
 function renderDetail(){
 const e=getEvent();

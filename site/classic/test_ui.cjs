@@ -10,7 +10,7 @@ for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용
     "어떤 업무를 검토하나?"]){
   assert.ok(html.includes(label),"Missing actionable content: "+label);
 }
-for(const label of ["① 정책에서 실제 바뀐 내용","② 변경이 파급되는 관련 규정","공식 변경 목록 확인 · 본문 비교 대기"]){
+for(const label of ["① 정책에서 실제 바뀐 내용","② 원문 변경에 따른 업무 검토 후보","③ 변경이 파급되는 관련 규정","공식 변경 목록 확인 · 본문 비교 대기"]){
  assert.ok(html.includes(label),"Missing policy-first change presentation: "+label);
 }
 const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));

@@ -1,0 +1,87 @@
+{
+  "schema": "policy-domino-institution-source-v1",
+  "purpose": "Official institutional program source evidence; a confirmed criterion use is an impact review candidate, not verified internal implementation",
+  "reviewed_on": "2026-11-09",
+  "sources": [
+    {
+      "id": "official-kosaf-support-band",
+      "institution": "한국장학재단",
+      "program": "국가장학금·학자금 지원구간 경곗값",
+      "institution_role": "학자금 지원구간 경곗값 산정·공표 및 국가장학금 운영",
+      "criterion": {
+        "name": "기준 중위소득",
+        "aliases": [
+          "기준 중위소득",
+          "중위소득"
+        ],
+        "match": "changed_field"
+      },
+      "relation": "numeric_formula",
+      "source_year": 2026,
+      "followup_year": 2027,
+      "work": "학자금 지원구간 경곗값 산정·안내",
+      "target_location": "학자금 지원구간 경곗값·국가장학금 선정 관련 업무 기준",
+      "review_action": "기준 중위소득 개정에 따른 2027학년도 학자금 지원구간 산정·공표 기준과 신청·심사 안내 반영 여부를 검토. 2027년 1학기부터 10구간→5구간(가~마) 개편도 별도 반영해야 하므로 이전 구간별 경곗값을 그대로 대체하지 않음.",
+      "scope_note": "공식 웹페이지에는 2026년 기준 중위소득 연계 산식과 2027년 구간 통합 개편이 공지됨. 2027년 구간별 최종 경곗값과 실제 내부시스템 변경 완료 여부는 확인하지 못함.",
+      "source": {
+        "url": "https://www.kosaf.go.kr/ko/tuition.do?pg=tuition04_09_07&type=scholar",
+        "publisher": "한국장학재단",
+        "source_heading": "학자금 지원구간 경곗값 확인",
+        "evidence": "학자금 지원구간 경곗값 = 기준중위소득 × 구간별 기준중위소득 대비 비율. 2027년 1학기부터 5구간 체계 개편 예정."
+      }
+    },
+    {
+      "id": "official-lh-integrated-public-rental",
+      "institution": "한국토지주택공사(LH)",
+      "program": "통합공공임대주택 소득기준·입주자격",
+      "institution_role": "공공임대주택 입주자 모집·청약·자격 관련 운영기관",
+      "criterion": {
+        "name": "기준 중위소득",
+        "aliases": [
+          "기준 중위소득",
+          "중위소득"
+        ],
+        "match": "changed_field"
+      },
+      "relation": "numeric_formula",
+      "source_year": 2026,
+      "followup_year": 2027,
+      "work": "통합공공임대 소득자격 기준표·청약 안내",
+      "target_location": "통합공공임대 입주자격의 가구원수별 기준 중위소득 비율 적용·모집공고·자격심사",
+      "review_action": "2027년도 기준 중위소득 적용 시 가구원수·공급유형별 소득기준표, 청약 안내 및 입주자격 심사에 사용하는 기준금액을 재확인. 공급유형·세대원수별 가산비율과 모집공고 적용연도를 확인한 뒤 반영 필요 여부를 판단.",
+      "scope_note": "LH 공식 입주자격 안내는 2026년 가구원수별 기준 중위소득과 소득 비율표를 명시함. 2027 모집공고별 적용액, 반올림 방식 및 실제 시스템 수정은 확인되지 않음.",
+      "source": {
+        "url": "https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?cntntsId=1201333&mi=1201585",
+        "publisher": "한국토지주택공사(LH)",
+        "source_heading": "통합공공임대 입주자격",
+        "evidence": "2026년 가구원수별 기준 중위소득 및 구간별 30%, 50%, 70%, 100%, 150% 등의 소득기준을 공개하고 있음."
+      }
+    },
+    {
+      "id": "official-lh-housing-benefit-surveys",
+      "institution": "한국토지주택공사(LH)",
+      "program": "주거급여 주택조사·보장결정 정보 연계",
+      "institution_role": "주거급여 주택조사 전담기관 (선정·지급 기관이 아님)",
+      "criterion": {
+        "name": "주거급여 선정기준",
+        "aliases": [
+          "주거급여"
+        ],
+        "match": "changed_field"
+      },
+      "relation": "process_dependency",
+      "source_year": 2026,
+      "followup_year": 2027,
+      "work": "주거급여 주택조사 접수·자료연계",
+      "target_location": "주거급여 신규·갱신 조사대상 접수, 임대차 현황·주택상태 조사 및 지자체 결과 회신",
+      "review_action": "2027년도 주거급여 선정기준 변경으로 주택조사 의뢰대상이나 자료 연계 방식이 달라지는지 지자체와 확인. LH의 역할은 주택조사이며 소득인정액 판정·급여액 결정·지급을 LH가 직접 수정해야 한다고 단정하지 않음.",
+      "scope_note": "LH 공식 안내는 시·군·구가 소득·재산 조사 및 보장결정·지급을 하고, LH가 주택조사를 수행한다고 설명함. 기준금액 변경과 LH 조사절차 수정의 직접 인과관계는 미확정이며 업무 연계 검토 대상으로만 표시.",
+      "source": {
+        "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
+        "publisher": "한국토지주택공사(LH)",
+        "source_heading": "주거급여 지원절차 및 주택조사",
+        "evidence": "신청접수(읍면동) → 소득·재산 조사(시군구) → 주택조사(LH) → 보장결정 및 지급(시군구)."
+      }
+    }
+  ]
+}

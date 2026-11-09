@@ -149,9 +149,9 @@ return [...byAgency].map(([agency,list])=>'<section class="impactAgencyGroup" da
 }
 function actionCard(a){
 const changes=(a.changes||[]);
-const comparison=changes.length?'<div class="valueRows">'+changes.map(p=>'<div class="valueRow"><div class="oldValue"><small>기존</small>'+esc(p.before||"미확인")+'</div><div class="valueArrow">→</div><div class="newValue"><small>변경</small>'+esc(p.after||"미확인")+'</div></div>').join('')+'</div>':'<div class="actionSummaryText">'+esc(a.what_to_change||a.source_change||"공식 개정문에서 변경된 항목")+'</div>';
+const comparison=changes.length?'<div class="valueRows">'+changes.map(p=>(p.meaning?'<div class="smallNote" style="margin:4px 0">'+esc(p.meaning)+'</div>':'')+'<div class="valueRow"><div class="oldValue"><small>기존</small>'+esc(p.before||"미확인")+'</div><div class="valueArrow">→</div><div class="newValue"><small>변경</small>'+esc(p.after||"미확인")+'</div></div>').join('')+'</div>':'<div class="actionSummaryText">'+esc(a.what_to_change||a.source_change||"공식 개정문에서 변경된 항목")+'</div>';
 const added=(a.new_items||[]).length?'<p class="taskDesc"><b>새로 추가할 항목:</b> '+esc(a.new_items.slice(0,6).join(" · "))+'</p>':'';
-const sourceTag=a.evidence_scope==="v4_verified_source"?"공식 신구 조문 확인":a.evidence_scope==="legacy_official_directive_awaiting_recheck"?"이전 V2 개정 지시문 · 최신 재검증 대기":"근거 재확인 중";
+const sourceTag=a.evidence_scope==="v4_verified_source"?"공식 신구 조문 확인":a.evidence_scope==="legacy_official_directive_awaiting_recheck"?"이전 V2 개정 지시문 · 최신 재검증 대기":a.evidence_scope==="official_institutional_program_dependency"?"공식 운영기관 자료로 기준 사용·업무 역할 확인":"근거 재확인 중";
 const name=esc(a.agency||"적용 기관 미확인");
 const task=esc(a.target_location||a.service||"구체적인 업무·서비스 위치 확인 필요");
 const func=esc(a.work||a.category||"업무 조치");
@@ -160,11 +160,14 @@ return '<article class="action"><div class="actionTop"><div><div class="agency">
 '<div class="locationTitle">공식 변경 전후 내용</div>'+comparison+added+
 '<div class="instruction"><b>검토할 조치</b>'+esc(a.required_change||"실제 업무에 반영해야 할 변경사항 확인 필요")+'</div>'+
 '<details class="evidenceDrawer"><summary>적용일 · 개정 근거 · 검증 정보 보기</summary>'+
-'<div class="evidence"><b>해당 기관의 개정 근거:</b> '+esc(a.law_title||"")+' · '+esc(a.article||"")+
+'<div class="evidence"><b>원천 정책 개정 근거:</b> '+esc(a.law_title||"")+' · '+esc(a.article||"")+
 '<br><b>적용 시점:</b> '+esc(a.effective_date||"시행일 추가 확인")+
 '<br><b>도미노 연결:</b> '+esc(a.impact_link_basis||"직접 변경")+
 ' · <a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">공식 개정문 보기 ↗</a>'+
-'<br><b>조치 확인:</b> '+esc(a.status_evidence||"공개 근거 미확인 · 완료/미조치 확정 불가")+'</div>'+
+'<br><b>조치 확인:</b> '+esc(a.status_evidence||"공개 근거 미확인 · 완료/미조치 확정 불가")+
+(a.institution_evidence?'<br><b>기관 업무 근거:</b> '+esc(a.institution_evidence.publisher)+' · '+esc(a.institution_evidence.heading)+
+'<br><b>공식 안내상 연계:</b> '+esc(a.institution_evidence.excerpt)+
+'<br><a target="_blank" rel="noopener" href="'+validUrl(a.agency_basis)+'">운영기관 공식 자료 보기 ↗</a>':'')+'</div>'+
 '<p class="verification">'+esc(a.verification_note||a.note||"구체적인 업무시스템·서비스 명칭과 실제 적용 상태는 별도 확인 필요")+'</p></details></article>';
 }
 function differences(e){
@@ -183,7 +186,8 @@ function detailHTML(e){
  const header='<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(provenance)+'</span><span class="separator">·</span><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>';
  const overview='<section class="changeOverview"><div class="overviewLabel">이번 변경에서 무엇을 확인했나</div><div class="overviewText">'+esc(overviewText(e,all))+'</div><div class="overviewFoot"><span>검토 대상 기관 '+institutions+'곳</span><span>근거 있는 검토 항목 '+all.length+'건</span>'+(dependent?'<span>연결된 하위규정 '+dependent+'건</span>':'')+'</div></section>';
  const facts='<div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div></div>';
- const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","최신 근거 재확인 필요"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
+ const statuses=[...new Set(all.map(a=>a.status).filter(Boolean))];
+ const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+statuses.map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
  const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
  return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';

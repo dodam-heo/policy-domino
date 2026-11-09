@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-09T01:07:26.790913+00:00",
+  "completed_at": "2026-11-09T14:12:06.133985+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 92,
-        "range": "2026-10-12~2026-10-26"
+        "listed": 337,
+        "range": "2026-09-28~2026-10-12"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,17 +27,17 @@
       },
       "law": {
         "status": "정상",
-        "listed": 191
+        "listed": 438
       },
       "admrul:최근": {
         "status": "정상",
-        "listed": 208,
+        "listed": 223,
         "range": "2026-10-26~2026-11-09"
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 262,
-        "range": "2026-10-12~2026-10-26"
+        "listed": 500,
+        "range": "2026-09-28~2026-10-12"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -46,14 +46,14 @@
       },
       "admrul:시행연도 본문검색": {
         "status": "부분",
-        "listed": 655,
+        "listed": 658,
         "future_related": 36,
         "saturated_months": 1,
         "year": 2027
       },
       "admrul": {
         "status": "정상",
-        "listed": 611
+        "listed": 893
       }
     },
     "partial": true,
@@ -61,78 +61,68 @@
       {
         "source": "admrul",
         "title": "2027년 적용 최저임금 고시",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       },
       {
         "source": "admrul",
         "title": "2027년 적용 최저임금안 고시",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       },
       {
         "source": "admrul",
         "title": "2027년도 상수원보호구역 주민지원사업의 재원 조성을 위한 수도사업자의 출연비율",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       },
       {
         "source": "admrul",
         "title": "2027년도 사회복무요원 배정기준 등",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       },
       {
         "source": "admrul",
         "title": "2027년도 병역지정업체 선정 및 인원배정 기준",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       },
       {
         "source": "admrul",
         "title": "장기요양기관에 대한 업무정지명령에 갈음한 과징금 적용기준",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       },
       {
         "source": "admrul",
         "title": "(산림청) 자연재난 복구비용 산정기준",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
-      },
-      {
-        "source": "admrul",
-        "title": "비행절차설계요령",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
-      },
-      {
-        "source": "admrul",
-        "title": "지방자치단체 입찰 및 계약집행기준",
-        "error": "공식 본문에서 조문을 추출하지 못했습니다."
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       }
     ],
     "verified_compared": 15,
-    "not_compared": 0,
-    "candidate_relations": 59,
-    "confirmed_relations": 432,
-    "collect_at": "2026-11-09T00:59:37+00:00",
+    "not_compared": 2,
+    "candidate_relations": 60,
+    "confirmed_relations": 445,
+    "collect_at": "2026-11-09T14:03:52+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 10468,
-    "newly_examined": 15,
-    "events": 453,
-    "actions": 4877,
+    "pending_details": 10948,
+    "newly_examined": 17,
+    "events": 470,
+    "actions": 4819,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 453,
-    "verified_documents": 437,
-    "substantive_policy_events": 296,
-    "direct_actor_actions": 190,
+    "events": 470,
+    "verified_documents": 452,
+    "substantive_policy_events": 310,
+    "direct_actor_actions": 194,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 5,
     "cross_policy_links": {
-      "links": 215,
-      "explicit_standard_uses": 215,
+      "links": 219,
+      "explicit_standard_uses": 219,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 5,
+    "dependent_rules_found": 11,
     "dependency_errors": [],
     "dependency_actors_to_review": 0
   }

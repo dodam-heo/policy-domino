@@ -33,12 +33,21 @@ for(const a of d.actions){
   assert.ok(events.has(a.event_id),"Every action must have a clickable event");
   assert.ok(a.agency && a.work && a.article && a.required_change);
   assert.ok(a.changes?.length>0 && a.basis.startsWith("https://www.law.go.kr"));
-  assert.ok(["v4_verified_source","legacy_official_directive_awaiting_recheck"].includes(a.evidence_scope));
+  assert.ok(["v4_verified_source","legacy_official_directive_awaiting_recheck","official_institutional_program_dependency"].includes(a.evidence_scope));
   assert.notEqual(a.status,"조치 확인");
   assert.notEqual(a.status,"미조치 확인");
 }
 const official=d.actions.filter(a=>a.evidence_scope==="v4_verified_source");
 const legacy=d.actions.filter(a=>a.evidence_scope==="legacy_official_directive_awaiting_recheck");
 assert.ok(official.length>0&&legacy.length>0);
+const institutional=d.actions.filter(a=>a.evidence_scope==="official_institutional_program_dependency");
+assert.ok(institutional.length>=3,"Independent institutional applications must be visible");
+for(const action of institutional){
+  assert.ok(action.agency_basis?.startsWith("https://"));
+  assert.ok(action.institution_evidence?.excerpt);
+  assert.equal(action.institutional_implementation_verified,false);
+  assert.equal(action.is_direct_legal_amendment,false);
+  assert.match(action.changes[0].meaning,/원천 정책/);
+}
 console.log("CLASSIC_PASS",{events:d.events.length,agencyTasks:d.actions.length,
-  official:official.length,oldOfficialPendingReview:legacy.length});
+  official:official.length,oldOfficialPendingReview:legacy.length,institutionalReview:institutional.length});

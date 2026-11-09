@@ -39,6 +39,16 @@ class Discovery(unittest.TestCase):
         actions,added=d.connect([e],[],hits)
         self.assertEqual(len(added),1)
 
+    def test_municipal_official_footer_attribution(self):
+        html=PAGE.replace('content="가상문화재단"','content="가상서비스포털"').replace(
+          '<title>가상지원사업 신청 및 자격 안내 | 가상문화재단</title>',
+          '<title>가상지원사업 신청 및 자격 안내 | 가상서비스포털</title>')
+        html=html.replace('</body>', '<footer>가상특별시 가상구 새길 12 대표전화: 120 © Metropolitan Government</footer></body>')
+        found,_=d.discover([change()],search=lambda q:["https://portal.example.go.kr/service"],
+                           fetch=lambda u:html)
+        self.assertEqual(len(found),1)
+        self.assertEqual(found[0]["agency"],"가상특별시")
+
     def test_registry_style_manual_item_never_enters(self):
         e=change();manual={"event_id":"event-x","agency":"가상재단","work":"가상 업무",
                                "article":"가상소득기준","agency_basis":"https://sample.go.kr"}

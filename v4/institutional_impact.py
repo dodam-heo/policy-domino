@@ -213,6 +213,16 @@ def _name(p):
         c=" ".join(c.split()).strip(" -·")
         if AGENCY.fullmatch(c):
             return c
+    # Some official municipal portals identify the publishing government only
+    # in their copyright/address footer. Extract it from the retrieved page;
+    # never infer an institution from the portal brand or domain spelling.
+    footer=p.text[-1400:]
+    if "©" in footer or "대표전화" in footer or "Copyright" in footer:
+        m=re.search(
+            r"(?<![가-힣])([가-힣]{2,28}(?:특별시|광역시|특별자치시|특별자치도|시청|구청|군청|공사|공단|재단))"
+            r"\s+[가-힣]{1,10}(?:구|시|군)\s+[^.]{0,100}?(?:로|길|동)\s*\\d",
+            footer)
+        if m:return m.group(1)
     return ""
 
 def _program(p,field):

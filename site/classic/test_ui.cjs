@@ -11,11 +11,23 @@ for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용
   assert.ok(html.includes(label),"Missing actionable content: "+label);
 }
 const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));
-assert.ok(html.includes('data-law="actionable">기관별 검토 있음</button>'));
+assert.ok(html.includes('data-law="high-impact"'));
+assert.ok(html.includes('>영향도 큼</button>'));
 assert.ok(!html.includes('data-law="standards"'));
-assert.ok(html.includes('filter==="actionable"?matchingActions(e).length>0'));
+assert.ok(!html.includes('data-law="actionable"'));
+assert.ok(html.includes('e.impact_level==="high"'));
 assert.equal(d.schema,"policy-domino-next-v1");
 assert.ok(d.events.length>0&&d.actions.length>0,"Must display actual sourced work");
+const high=d.events.filter(e=>e.impact_level==="high");
+assert.ok(high.length>0,"Expected at least one multiple-institution official case");
+for(const e of d.events){
+  assert.ok(e.impact_scope && e.impact_scope.criteria);
+  const agencies=new Set(d.actions.filter(a=>a.event_id===e.event_id).map(a=>a.agency));
+  const links=e.downstream_changes?.filter(x=>x.status==="변경 조항 적용 관계 확인" &&
+    x.title && x.article && x.evidence)||[];
+  assert.equal(e.impact_level==="high",agencies.size>=2||links.length>=2,
+    "Scope and filter mismatch: "+e.title);
+}
 const events=new Map(d.events.map(e=>[e.event_id,e]));
 for(const a of d.actions){
   assert.ok(events.has(a.event_id),"Every action must have a clickable event");

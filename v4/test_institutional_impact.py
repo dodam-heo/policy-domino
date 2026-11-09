@@ -1,5 +1,6 @@
 import unittest
 from v4 import institutional_impact as d
+from v4 import classic_bridge as bridge
 
 def change(field="가상소득기준",before="1,234,567원",after="1,345,678원"):
     return {"event_id":"event-x","title":"새 기준 개정","effective_date":"2027-01-01",
@@ -59,8 +60,8 @@ class Discovery(unittest.TestCase):
         self.assertEqual(found[0]["agency"],"가상특별시")
 
     def test_law_change_yields_source_only_work_review_not_fabricated_agency(self):
-        e=event("가상규정","제7조","제7조(지원 범위) 검사 비용을 지원한다.",
-                "제7조(지원 범위) 검사 및 치료 비용을 지원한다.")
+        e=change(field="제7조",before="제7조(지원 범위) 검사 비용을 지원한다.",
+                after="제7조(지원 범위) 검사 및 치료 비용을 지원한다.")
         reviews=bridge.source_review_candidates(e)
         self.assertEqual(len(reviews),1)
         self.assertEqual(reviews[0]["work_type"],"지원·지급 범위")

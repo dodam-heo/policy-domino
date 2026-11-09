@@ -288,6 +288,17 @@ def discover(events, search=None, fetch=None):
                     result=candidate_action(event,changed,url,page)
                     if result:
                         candidates.append(result);health["matched"]+=1
+                    elif len(health.setdefault("rejected_pages",[]))<12:
+                        try:refyear=int(str(event["effective_date"])[:4])-1
+                        except (ValueError,TypeError,KeyError):refyear=0
+                        health["rejected_pages"].append({
+                            "url":url,"title":page.page_title[:90],
+                            "publisher":page.publisher[:50],
+                            "identified_publisher":bool(_name(page)),
+                            "identified_program":bool(_program(page,changed["field"])),
+                            "baseline_proof":bool(_nearby_proof(
+                                page.text,changed["field"],changed["old_amount"],refyear)),
+                        })
                 except Exception:health["errors"]+=1
     return candidates,health
 

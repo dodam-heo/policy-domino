@@ -30,8 +30,10 @@ def source_agency(law,directive=""):
         if base.endswith(suffix):base=base[:-len(suffix)]
     if "직제" in title and base and len(base)<26:
         return base
-    for role in ("시장·군수·구청장","시·도지사","교육감","국민건강보험공단"):
-        if role in directive:return role
+    actor=re.search(
+        r"(?<![가-힣])([가-힣]{2,28}(?:공사|공단|재단|진흥원|위원회|교육청|부|처|청)|교육감|시장[·ㆍ]군수[·ㆍ]구청장)"
+        r"\\s*(?:은|는|이|가|에게|에서)\\s*",directive)
+    if actor:return actor.group(1)
     return law.get("ministry") or None
 
 def change_pairs(directive):

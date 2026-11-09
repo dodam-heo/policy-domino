@@ -36,10 +36,11 @@ DOMAINS = (
     ("의무·제재", ("준수", "의무", "금지", "과태료", "제재", "점검", "감독")),
     ("조직·인력", ("정원", "직제", "직급", "사무분장", "하부조직", "직렬")),
 )
-ACTORS = (
-    "시장·군수·구청장", "시장ㆍ군수ㆍ구청장", "특별자치시장",
-    "시·도지사", "시ㆍ도지사", "교육감", "국민건강보험공단",
-    "한국장학재단", "근로복지공단", "시장", "군수", "구청장",
+ACTOR_RE = re.compile(
+    r"(?<![가-힣])("
+    r"시장[·ㆍ]군수[·ㆍ]구청장|시[·ㆍ]도지사|교육감|"
+    r"[가-힣]{2,28}(?:공사|공단|재단|진흥원|관리원|정보원|연구원|교육청|위원회|부|처|청)"
+    r")\\s*(?:은|는|이|가|에게|에서|을|를)"
 )
 REFERENCE_RE = re.compile(r"「([^」]{2,100})」")
 FIGURE_RE = re.compile(r"(?<!\d)\d{1,3}(?:,\d{3})*(?:\.\d+)?\s*(?:원|만원|퍼센트|%|세|일|개월|년)(?![가-힣])")
@@ -288,11 +289,8 @@ def changed_domains(change):
     return [label for label, keys in DOMAINS if any(word in delta for word in keys)]
 
 def actors(text):
-    names = []
-    for actor in ACTORS:
-        if actor in text and not any(actor in other for other in names):
-            names.append(actor)
-    return names[:6]
+    """Identify acting institution from the actual sentence, not a list of names."""
+    return list(dict.fromkeys(m.group(1) for m in ACTOR_RE.finditer(text)))[:6]
 
 def action_records(event):
     output = []

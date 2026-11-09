@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-09T14:12:06.133985+00:00",
+  "completed_at": "2026-11-09T15:20:52.117442+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 337,
-        "range": "2026-09-28~2026-10-12"
+        "listed": 85,
+        "range": "2026-09-14~2026-09-28"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,17 +27,17 @@
       },
       "law": {
         "status": "정상",
-        "listed": 438
+        "listed": 186
       },
       "admrul:최근": {
         "status": "정상",
-        "listed": 223,
+        "listed": 249,
         "range": "2026-10-26~2026-11-09"
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 500,
-        "range": "2026-09-28~2026-10-12"
+        "listed": 225,
+        "range": "2026-09-14~2026-09-28"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -46,14 +46,14 @@
       },
       "admrul:시행연도 본문검색": {
         "status": "부분",
-        "listed": 658,
-        "future_related": 36,
+        "listed": 663,
+        "future_related": 39,
         "saturated_months": 1,
         "year": 2027
       },
       "admrul": {
         "status": "정상",
-        "listed": 893
+        "listed": 637
       }
     },
     "partial": true,
@@ -94,35 +94,35 @@
         "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       }
     ],
-    "verified_compared": 15,
-    "not_compared": 2,
-    "candidate_relations": 60,
-    "confirmed_relations": 445,
-    "collect_at": "2026-11-09T14:03:52+00:00",
+    "verified_compared": 16,
+    "not_compared": 1,
+    "candidate_relations": 66,
+    "confirmed_relations": 530,
+    "collect_at": "2026-11-09T15:13:30+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 10948,
+    "pending_details": 11022,
     "newly_examined": 17,
-    "events": 470,
-    "actions": 4819,
+    "events": 487,
+    "actions": 5094,
     "status": "부분 수집"
   },
   "impact_health": {
-    "events": 470,
-    "verified_documents": 452,
-    "substantive_policy_events": 310,
-    "direct_actor_actions": 194,
+    "events": 487,
+    "verified_documents": 468,
+    "substantive_policy_events": 323,
+    "direct_actor_actions": 208,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 5,
     "cross_policy_links": {
-      "links": 219,
-      "explicit_standard_uses": 219,
+      "links": 256,
+      "explicit_standard_uses": 256,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 11,
+    "dependent_rules_found": 14,
     "dependency_errors": [],
     "dependency_actors_to_review": 0
   }

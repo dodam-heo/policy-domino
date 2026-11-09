@@ -13,6 +13,35 @@ for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용
 for(const label of ["① 정책에서 실제 바뀐 내용","② 원문 변경에 따른 업무 검토 후보","③ 변경이 파급되는 관련 규정","공식 변경 목록 확인 · 본문 비교 대기"]){
  assert.ok(html.includes(label),"Missing policy-first change presentation: "+label);
 }
+// Functional regression: even a change with zero verified actions must retain
+// navigable source-law agency chips. Never relabel such agencies as operators.
+for(const label of ["data-doc-jump","data-doc-agency","data-evidence",
+                    "공식 변경 직접 검토","집행기관 추가 조사",
+                    "agencyNavigator(current,sourceGroups)"]){
+ assert.ok(html.includes(label),"Missing agency controls: "+label);
+}
+const standalone=scripts[0][1].replace(/load\(\);\s*$/,"")+
+ "\n;globalThis.__agencyHelpers={sourceAgencyGroups,agencyNavigator,officialSourceDocumentGroups};";
+const sandbox={document:{
+  getElementById(){return {};},
+  querySelectorAll(){return [];}
+},window:{addEventListener(){}},URL,Date,Intl};
+vm.runInNewContext(standalone,sandbox);
+const sourceEvent={official_change_documents:[
+ {agency:"가상공사",agency_role:"직제 규정에 명시된 기관",
+  law_title:"가상공사 직제",source_url:"https://www.law.go.kr/법령/a",
+  verification:"verified_repeal_notice"},
+ {agency:"가상위원회",agency_role:"공포·개정 소관기관 (집행기관 미확인)",
+  law_title:"가상지원규칙",source_url:"https://www.law.go.kr/법령/b",
+  verification:"verified_changed_clauses"}
+]};
+const grouped=sandbox.__agencyHelpers.sourceAgencyGroups(sourceEvent);
+assert.equal(grouped.length,2);
+const chips=sandbox.__agencyHelpers.agencyNavigator([],grouped);
+assert.ok(chips.includes('data-doc-jump')&&chips.includes('가상공사'));
+const body=sandbox.__agencyHelpers.officialSourceDocumentGroups(grouped);
+assert.ok(body.includes('data-doc-agency')&&body.includes('가상위원회'));
+assert.ok(!body.includes('조치 완료'));
 const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));
 assert.ok(html.includes('data-law="high-impact"'));
 assert.ok(html.includes('>영향도 큼</button>'));

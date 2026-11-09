@@ -1,0 +1,46 @@
+name: Validate institutional policy cascades without deployment
+on:
+  push:
+    branches: [fix/institution-operations-graph-20261109]
+    paths:
+      - 'v4/institutional_impact.py'
+      - 'v4/test_institutional_impact.py'
+      - 'site/classic/index.html'
+      - 'data/institution_policy_sources.json'
+      - '.github/workflows/check-institution-cascades.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Test general source-value and program evidence across all cases
+        run: |
+          python -m compileall -q v4
+          python -m unittest discover -s v4 -p 'test_*.py' -v
+          python -m v4.classic_bridge
+          node site/classic/test_ui.cjs
+      - name: Validate cross-agency impact display in real output
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('site/classic/data.json',encoding='utf8'))
+          matches=[a for a in d['actions'] if a.get('evidence_scope')==
+              'official_institutional_program_dependency']
+          assert len(matches)>=3,matches
+          assert any(a['agency']=='한국장학재단' and '학자금' in a['work'] for a in matches)
+          assert any('LH' in a['agency'] and '통합공공임대' in a['work'] for a in matches)
+          assert all(a['institutional_implementation_verified'] is False for a in matches)
+          assert all(a.get('institution_evidence',{}).get('excerpt') for a in matches)
+          print("ACTUAL_OPERATING_PROGRAM_CASCADES",
+                json.dumps([{"agency":a["agency"],"program":a["service"],
+                    "source":a["agency_basis"],"task":a["required_change"][:140]}
+                for a in matches],ensure_ascii=False))
+          PY

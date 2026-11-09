@@ -12,6 +12,8 @@
     "v4_official_index": 1810,
     "pending_details": 7355,
     "legacy_recheck": 8,
+    "institutional_dependency_actions": 3,
+    "institutional_evidence_sources": 3,
     "error": "기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
   },
   "events": [
@@ -543,11 +545,11 @@
       "policy_profile": "welfare",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 60,
+      "impact_priority": 66,
       "impact_level": "high",
-      "impact_reason": "변경된 업무의 직접 검토 기관 2곳",
+      "impact_reason": "변경된 업무의 직접 검토 기관 4곳",
       "impact_scope": {
-        "institutions": 2,
+        "institutions": 4,
         "proven_dependent_rules": 0,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": true,
@@ -717,55 +719,6 @@
       }
     },
     {
-      "id": "policy:education",
-      "mst": "",
-      "event_id": "legacy:a7549a940de0ea7324",
-      "title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
-      "promulgated_at": "2026-09-18",
-      "promulgation_number": "2026-21호",
-      "effective_date": "2027-01-01",
-      "revision": "전부개정",
-      "ministry": "교육부",
-      "law_type": "고시·행정규칙",
-      "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
-      "source": "국가법령정보센터 고시 원문·소관부처 공식자료",
-      "change_count": 1,
-      "article_differences": [
-        {
-          "id": "ae07a4e2535939855f",
-          "article": "교육급여:4인",
-          "title": "공식 선정기준",
-          "type": "기준액 변경",
-          "before": "3,247,369원",
-          "after": "3,464,943원",
-          "source_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
-          "directive": "교육급여:4인: 3,247,369원 → 3,464,943원"
-        }
-      ],
-      "comparison_status": "이전 V2 공식 개정문 확인 · 최신 버전 재검증 대기",
-      "amendment_reason": "교육급여 소득인정액 선정기준에 관한 2027년 확정 기준",
-      "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
-      "downstream_changes": [],
-      "upstream_changes": [],
-      "policy_source_urls": [
-        "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=107233&lev=0&m=040401",
-        "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=104926&lev=0&m=0302"
-      ],
-      "policy_profile": "education",
-      "value_verified": true,
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 50,
-      "impact_level": "high",
-      "impact_reason": "변경된 업무의 직접 검토 기관 2곳",
-      "impact_scope": {
-        "institutions": 2,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-      }
-    },
-    {
       "id": "policy:housing",
       "mst": "",
       "event_id": "legacy:5499deb5fa4caff958",
@@ -801,6 +754,55 @@
         "https://www.molit.go.kr/USR/I0204/m_45/dtl.jsp?idx=18653"
       ],
       "policy_profile": "housing",
+      "value_verified": true,
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "impact_priority": 53,
+      "impact_level": "high",
+      "impact_reason": "변경된 업무의 직접 검토 기관 3곳",
+      "impact_scope": {
+        "institutions": 3,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "id": "policy:education",
+      "mst": "",
+      "event_id": "legacy:a7549a940de0ea7324",
+      "title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
+      "promulgated_at": "2026-09-18",
+      "promulgation_number": "2026-21호",
+      "effective_date": "2027-01-01",
+      "revision": "전부개정",
+      "ministry": "교육부",
+      "law_type": "고시·행정규칙",
+      "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "source": "국가법령정보센터 고시 원문·소관부처 공식자료",
+      "change_count": 1,
+      "article_differences": [
+        {
+          "id": "ae07a4e2535939855f",
+          "article": "교육급여:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "3,247,369원",
+          "after": "3,464,943원",
+          "source_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+          "directive": "교육급여:4인: 3,247,369원 → 3,464,943원"
+        }
+      ],
+      "comparison_status": "이전 V2 공식 개정문 확인 · 최신 버전 재검증 대기",
+      "amendment_reason": "교육급여 소득인정액 선정기준에 관한 2027년 확정 기준",
+      "amendment_url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000285242",
+      "downstream_changes": [],
+      "upstream_changes": [],
+      "policy_source_urls": [
+        "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=107233&lev=0&m=040401",
+        "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=104926&lev=0&m=0302"
+      ],
+      "policy_profile": "education",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
       "impact_priority": 50,
@@ -6272,6 +6274,132 @@
       "upstream_event_ids": [],
       "impact_link_basis": "해당 개정문에서 기관별 업무 기준을 직접 변경",
       "evidence_scope": "legacy_official_directive_awaiting_recheck"
+    },
+    {
+      "id": "institution:1c7640db08d09bd7c4b53f",
+      "event_id": "legacy:5499deb5fa4caff958",
+      "agency": "한국토지주택공사(LH)",
+      "agency_role": "주거급여 주택조사 전담기관 (선정·지급 기관이 아님)",
+      "work": "주거급여 주택조사 접수·자료연계",
+      "service": "주거급여 주택조사·보장결정 정보 연계",
+      "law_title": "2027년도 주거급여 선정기준 및 최저보장수준 제정",
+      "article": "주거급여:4인",
+      "effective_date": "2027-01-01",
+      "target_location": "주거급여 신규·갱신 조사대상 접수, 임대차 현황·주택상태 조사 및 지자체 결과 회신",
+      "what_to_change": "2027년도 주거급여 선정기준 변경으로 주택조사 의뢰대상이나 자료 연계 방식이 달라지는지 지자체와 확인. LH의 역할은 주택조사이며 소득인정액 판정·급여액 결정·지급을 LH가 직접 수정해야 한다고 단정하지 않음.",
+      "required_change": "2027년도 주거급여 선정기준 변경으로 주택조사 의뢰대상이나 자료 연계 방식이 달라지는지 지자체와 확인. LH의 역할은 주택조사이며 소득인정액 판정·급여액 결정·지급을 LH가 직접 수정해야 한다고 단정하지 않음.",
+      "changes": [
+        {
+          "field": "주거급여:4인",
+          "before": "3,117,474원",
+          "after": "3,326,345원",
+          "meaning": "원천 정책의 변경값(기관별 적용 금액 미확정)"
+        }
+      ],
+      "basis": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000284670",
+      "agency_basis": "https://www.lh.or.kr/menu.es?mid=a10401050100",
+      "institution_evidence": {
+        "publisher": "한국토지주택공사(LH)",
+        "heading": "주거급여 지원절차 및 주택조사",
+        "excerpt": "신청접수(읍면동) → 소득·재산 조사(시군구) → 주택조사(LH) → 보장결정 및 지급(시군구).",
+        "source_year": 2026,
+        "followup_year": 2027,
+        "program": "주거급여 주택조사·보장결정 정보 연계",
+        "relationship": "process_dependency"
+      },
+      "status": "기관별 업무 연계 검토",
+      "status_evidence": null,
+      "confidence": "공식 운영기관의 기준 사용·업무 역할 확인",
+      "verification_note": "LH 공식 안내는 시·군·구가 소득·재산 조사 및 보장결정·지급을 하고, LH가 주택조사를 수행한다고 설명함. 기준금액 변경과 LH 조사절차 수정의 직접 인과관계는 미확정이며 업무 연계 검토 대상으로만 표시.",
+      "impact_link_basis": "공식 변경된 원천 기준 → 해당 기관이 공개한 기준 사용·업무 역할",
+      "evidence_scope": "official_institutional_program_dependency",
+      "institutional_implementation_verified": false,
+      "is_direct_legal_amendment": false,
+      "role_scope": "조사·업무 절차 연계"
+    },
+    {
+      "id": "institution:d36ad4cdf4f81f30b2d90f",
+      "event_id": "legacy:8efcae799dd5fe26de",
+      "agency": "한국장학재단",
+      "agency_role": "학자금 지원구간 경곗값 산정·공표 및 국가장학금 운영",
+      "work": "학자금 지원구간 경곗값 산정·안내",
+      "service": "국가장학금·학자금 지원구간 경곗값",
+      "law_title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "article": "중위소득:4인",
+      "effective_date": "2027-01-01",
+      "target_location": "학자금 지원구간 경곗값·국가장학금 선정 관련 업무 기준",
+      "what_to_change": "기준 중위소득 개정에 따른 2027학년도 학자금 지원구간 산정·공표 기준과 신청·심사 안내 반영 여부를 검토. 2027년 1학기부터 10구간→5구간(가~마) 개편도 별도 반영해야 하므로 이전 구간별 경곗값을 그대로 대체하지 않음.",
+      "required_change": "기준 중위소득 개정에 따른 2027학년도 학자금 지원구간 산정·공표 기준과 신청·심사 안내 반영 여부를 검토. 2027년 1학기부터 10구간→5구간(가~마) 개편도 별도 반영해야 하므로 이전 구간별 경곗값을 그대로 대체하지 않음.",
+      "changes": [
+        {
+          "field": "중위소득:4인",
+          "before": "6,494,738원",
+          "after": "6,929,885원",
+          "meaning": "원천 정책의 변경값(기관별 적용 금액 미확정)"
+        }
+      ],
+      "basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "agency_basis": "https://www.kosaf.go.kr/ko/tuition.do?pg=tuition04_09_07&type=scholar",
+      "institution_evidence": {
+        "publisher": "한국장학재단",
+        "heading": "학자금 지원구간 경곗값 확인",
+        "excerpt": "학자금 지원구간 경곗값 = 기준중위소득 × 구간별 기준중위소득 대비 비율. 2027년 1학기부터 5구간 체계 개편 예정.",
+        "source_year": 2026,
+        "followup_year": 2027,
+        "program": "국가장학금·학자금 지원구간 경곗값",
+        "relationship": "numeric_formula"
+      },
+      "status": "기관별 기준 반영 검토",
+      "status_evidence": null,
+      "confidence": "공식 운영기관의 기준 사용·업무 역할 확인",
+      "verification_note": "공식 웹페이지에는 2026년 기준 중위소득 연계 산식과 2027년 구간 통합 개편이 공지됨. 2027년 구간별 최종 경곗값과 실제 내부시스템 변경 완료 여부는 확인하지 못함.",
+      "impact_link_basis": "공식 변경된 원천 기준 → 해당 기관이 공개한 기준 사용·업무 역할",
+      "evidence_scope": "official_institutional_program_dependency",
+      "institutional_implementation_verified": false,
+      "is_direct_legal_amendment": false,
+      "role_scope": "수치·비율 적용 기준"
+    },
+    {
+      "id": "institution:61e5b38250a58c4509c6c1",
+      "event_id": "legacy:8efcae799dd5fe26de",
+      "agency": "한국토지주택공사(LH)",
+      "agency_role": "공공임대주택 입주자 모집·청약·자격 관련 운영기관",
+      "work": "통합공공임대 소득자격 기준표·청약 안내",
+      "service": "통합공공임대주택 소득기준·입주자격",
+      "law_title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "article": "중위소득:4인",
+      "effective_date": "2027-01-01",
+      "target_location": "통합공공임대 입주자격의 가구원수별 기준 중위소득 비율 적용·모집공고·자격심사",
+      "what_to_change": "2027년도 기준 중위소득 적용 시 가구원수·공급유형별 소득기준표, 청약 안내 및 입주자격 심사에 사용하는 기준금액을 재확인. 공급유형·세대원수별 가산비율과 모집공고 적용연도를 확인한 뒤 반영 필요 여부를 판단.",
+      "required_change": "2027년도 기준 중위소득 적용 시 가구원수·공급유형별 소득기준표, 청약 안내 및 입주자격 심사에 사용하는 기준금액을 재확인. 공급유형·세대원수별 가산비율과 모집공고 적용연도를 확인한 뒤 반영 필요 여부를 판단.",
+      "changes": [
+        {
+          "field": "중위소득:4인",
+          "before": "6,494,738원",
+          "after": "6,929,885원",
+          "meaning": "원천 정책의 변경값(기관별 적용 금액 미확정)"
+        }
+      ],
+      "basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "agency_basis": "https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?cntntsId=1201333&mi=1201585",
+      "institution_evidence": {
+        "publisher": "한국토지주택공사(LH)",
+        "heading": "통합공공임대 입주자격",
+        "excerpt": "2026년 가구원수별 기준 중위소득 및 구간별 30%, 50%, 70%, 100%, 150% 등의 소득기준을 공개하고 있음.",
+        "source_year": 2026,
+        "followup_year": 2027,
+        "program": "통합공공임대주택 소득기준·입주자격",
+        "relationship": "numeric_formula"
+      },
+      "status": "기관별 기준 반영 검토",
+      "status_evidence": null,
+      "confidence": "공식 운영기관의 기준 사용·업무 역할 확인",
+      "verification_note": "LH 공식 입주자격 안내는 2026년 가구원수별 기준 중위소득과 소득 비율표를 명시함. 2027 모집공고별 적용액, 반올림 방식 및 실제 시스템 수정은 확인되지 않음.",
+      "impact_link_basis": "공식 변경된 원천 기준 → 해당 기관이 공개한 기준 사용·업무 역할",
+      "evidence_scope": "official_institutional_program_dependency",
+      "institutional_implementation_verified": false,
+      "is_direct_legal_amendment": false,
+      "role_scope": "수치·비율 적용 기준"
     }
   ],
   "status_counts": {},

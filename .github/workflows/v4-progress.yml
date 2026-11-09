@@ -5,8 +5,12 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/v4-progress.yml'
+      - 'v4/pipeline.py'
+      - 'v4/classic_bridge.py'
+      - 'v4/test_pipeline.py'
+      - 'site/classic/index.html'
   schedule:
-    - cron: '5 */6 * * *'
+    - cron: '5 */4 * * *'
 permissions:
   contents: write
   pages: write
@@ -29,14 +33,10 @@ jobs:
           python -m compileall -q v4
           python -m unittest discover -s v4 -p 'test_*.py' -v
           node site/v4/test_ui.cjs
-      - name: Publish source-backed preview from staged verified records on first run
-        if: github.event_name == 'push'
-        run: python -m v4.stage_refresh
       - name: Incremental official source collection and evidence analysis
-        if: github.event_name != 'push'
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
-          PD_V4_DETAILS: '20'
+          PD_V4_DETAILS: '32'
           PD_V4_DELEGATIONS: '5'
           PD_V4_SEARCH_PARENTS: '2'
           PD_V4_VERIFY_DEPENDENTS: '12'

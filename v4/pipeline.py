@@ -200,6 +200,43 @@ def output_groups(state):
     auxiliary.sort(key=recency,reverse=True)
     return primary,auxiliary,graph
 
+def recent_uninspected(state,limit=300):
+    """Expose actual official index rows without inventing before/after analysis.
+
+    This only tells the interface that the version was indexed. The article,
+    responsible implementing agency and duties remain UNKNOWN until inspected.
+    Mix every discovered document type rather than favoring one policy area.
+    """
+    catalog=state.get("catalog",{})
+    inspected=state.get("inspected",{})
+    waiting=[
+        r for key,r in catalog.items()
+        if key not in inspected and r.get("discovery_kind")!="legacy_index_only_not_verified"
+        and r.get("title") and r.get("published_at")
+        and r.get("source") in ("law","admrul","ordin")
+    ]
+    waiting.sort(key=lambda r:(r["published_at"],r.get("serial","")),reverse=True)
+    queues={k:[r for r in waiting if r["source"]==k]
+            for k in ("law","admrul","ordin")}
+    rows=[]
+    while len(rows)<limit and any(queues.values()):
+        for kind in ("law","admrul","ordin"):
+            if len(rows)>=limit:break
+            if not queues[kind]:continue
+            r=queues[kind].pop(0)
+            rows.append({
+                "record_id":events.key(r),"title":r["title"],
+                "source":r["source"],"kind":r.get("kind",""),
+                "revision":r.get("revision",""),
+                "published_at":r["published_at"],
+                "effective_date":r.get("effective_date",""),
+                "ministry":r.get("ministry",""),
+                "url":r.get("url",""),
+                "verification":"official_index_only",
+                "source_kind":r.get("discovery_kind","")
+            })
+    return rows
+
 def build(state,today):
     groups,other,graph=output_groups(state)
     coverage=state.get("coverage",[])
@@ -234,7 +271,8 @@ def build(state,today):
         },
         "featured_events":groups,
         "other_events":other,
-        "explanation":"문서명 인용만으로 정책 파급 또는 기관별 조치가 확정되지 않습니다."}
+        "pending_index":recent_uninspected(state),
+        "explanation":"공식 목록은 변경 사건의 존재만 확인하며 신구 조문 비교·기관별 영향은 별도 검증합니다."}
     return report
 
 def run():

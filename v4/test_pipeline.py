@@ -20,6 +20,24 @@ class PublicationSafeguards(unittest.TestCase):
         self.assertEqual(d["collection"]["pending_details"],1)
         self.assertFalse(d["collection"]["whole_corpus_complete"])
 
+    def test_multiple_uninspected_sectors_visible_but_not_verified(self):
+        records=[
+            r(10,kind="law",date="2026-11-09",discovery="official_law_change_history"),
+            r(20,kind="admrul",date="2026-11-09",discovery="official_date_index"),
+            r(30,kind="ordin",date="2026-11-09",discovery="official_date_index"),
+            r(40,kind="law",date="2025-04-01",
+              discovery="legacy_index_only_not_verified"),
+        ]
+        state={"catalog":{events.key(x):x for x in records},"inspected":{},
+               "coverage":[],"verified_snapshots":{}}
+        data=pipeline.build(state,dt.date(2026,11,9))
+        self.assertEqual(len(data["pending_index"]),3)
+        self.assertEqual({x["source"] for x in data["pending_index"]},
+                         {"law","admrul","ordin"})
+        self.assertTrue(all(x["verification"]=="official_index_only"
+                            for x in data["pending_index"]))
+        self.assertEqual(data["collection"]["pending_details"],4)
+
     def test_wrong_article_citations_not_counted_as_dependents(self):
         a=r(1);b=r(2)
         ea,eb=events.inspect(a,[],load=lambda x:{"제1조":"조항"},

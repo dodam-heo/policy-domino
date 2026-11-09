@@ -183,8 +183,21 @@ def group_event(g):
     valid_docs=[d for d in docs if d.get("verification") in (
         "verified_changed_clauses","verified_annual_replacement",
         "verified_enactment","verified_repeal_notice")]
+    states={d.get("verification","") for d in docs}
+    if any(d.get("excerpts") and d.get("verification") in (
+            "verified_changed_clauses","verified_annual_replacement") for d in docs):
+        state_label="official_changes_compared"
+    elif "verified_enactment" in states:
+        state_label="official_enactment_only"
+    elif "verified_repeal_notice" in states:
+        state_label="official_repeal_only"
+    else:state_label="details_not_compared"
+    source_notes=list(dict.fromkeys(
+        str(note)[:200] for d in docs for note in d.get("notes",[]) if note))[:6]
     e={
         "event_id":v4id,"title":title,
+        "comparison_state":state_label,
+        "source_notes":source_notes,
         "promulgated_at":g.get("date",""),
         "effective_date":g.get("effective_at",""),
         "revision":docs[0].get("revision","개정"),
@@ -200,7 +213,10 @@ def group_event(g):
             if count>1 else ""),
         "article_differences":[],
         "change_count":sum(len(d.get("changed_articles",[])) for d in valid_docs),
-        "comparison_status":"공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+        "comparison_status":("공식 신구 문장 비교 확인" if state_label=="official_changes_compared" else
+                             "제정 사실만 확인" if state_label=="official_enactment_only" else
+                             "폐지 사실만 확인" if state_label=="official_repeal_only" else
+                             "공식 공포 정보 확인 · 조문 비교 미완료"),
         "policy_profile":bool(g.get("dependencies")),
         "downstream_changes":[{
             "title":a.get("target_title",""),
@@ -351,6 +367,23 @@ def assess_impact_scope(event, actions):
         }
     }
 
+def indexed_pending_event(item):
+    """Index-only candidate; never issue an institution instruction."""
+    return {
+        "event_id":"pending:"+item["record_id"],
+        "title":item["title"],"promulgated_at":item["published_at"],
+        "effective_date":item.get("effective_date",""),
+        "revision":item.get("revision",""),"law_type":item.get("kind","법령·고시"),
+        "ministry":item.get("ministry",""),
+        "url":source_url(item.get("url")),"amendment_url":source_url(item.get("url")),
+        "article_differences":[],"downstream_changes":[],
+        "comparison_state":"official_index_only",
+        "comparison_status":"공식 변경이력·목록 확인 / 본문 신구 비교 대기",
+        "source_notes":["공식 변경일 기준 목록에 수록됐으나 조문 비교와 실제 기관별 영향 검증이 아직 완료되지 않았습니다."],
+        "presentation_source":"official_index_pending",
+        "impact_priority":0
+    }
+
 def build(v4,legacy):
     events=[];actions=[]
     source_titles=set()
@@ -360,21 +393,32 @@ def build(v4,legacy):
         events.append(e);actions+=aa
         source_titles.update(doc.get("title","") for doc in g.get("source_docs",[])
                              if doc.get("verification","").startswith("verified_"))
+    # All indexed official change types must be browsable even before
+    # their source content has been compared. No fabricated institution links.
+    represented={d.get("id") for g in v4.get("featured_events",[])+v4.get("other_events",[])
+                 for d in g.get("source_docs",[])}
+    for item in v4.get("pending_index",[]):
+        if item.get("record_id") in represented:continue
+        if not item.get("record_id") or not item.get("title"):continue
+        events.append(indexed_pending_event(item))
     old_events,old_actions=legacy_fallback(legacy,source_titles)
     events+=old_events;actions+=old_actions
     actions=unique_actions(actions)
-    # Discover institutions from live public pages, never an enrolled source list.
-    findings,discovery_health=institutional_impact.discover(events)
+    # Discovery only against source-verified changes; metadata cannot produce
+    # a public agency task.
+    grounded=[e for e in events if e.get("presentation_source") in (
+        "v4_official_source","legacy_official_directive_awaiting_recheck")]
+    findings,discovery_health=institutional_impact.discover(grounded)
     actions,institutional_actions=institutional_impact.connect(events,actions,findings)
     event_ids={e["event_id"] for e in events}
     actions=[a for a in actions if a.get("event_id") in event_ids]
-    # Rank policy events first by VERIFIED operational work and cross-institution
-    # dependencies. Old V2 items remain clearly marked historic recheck.
+    # Impact scoring is evidence-based, not a replacement for the public
+    # chronological view of newly promulgated official events.
     action_counts=collections.Counter(a["event_id"] for a in actions)
     for e in events:
         e.update(assess_impact_scope(e,actions))
         e["impact_priority"]=e.get("impact_priority",0)+min(40,action_counts[e["event_id"]]*3)
-    events.sort(key=lambda e:(e["impact_priority"],e.get("promulgated_at","")),reverse=True)
+    events.sort(key=lambda e:(e.get("promulgated_at",""),e.get("impact_priority",0)),reverse=True)
     checked=v4.get("collection",{})
     return {
         "schema":"policy-domino-next-v1",
@@ -383,7 +427,9 @@ def build(v4,legacy):
             "source_status":"공식 공포·개정문 연결",
             "partial":True,
             "official_records":len(events),
-            "compared":len([e for e in events if e["presentation_source"]=="v4_official_source"]),
+            "compared":sum(e.get("comparison_state")=="official_changes_compared" for e in events),
+            "source_records_inspected":checked.get("detailed_checked",0),
+            "official_index_waiting_visible":sum(e.get("presentation_source")=="official_index_pending" for e in events),
             "amendments_read":len(events),
             "amendments_verified_total":checked.get("detailed_checked",0),
             "catalogue_candidates":checked.get("official_catalogue",0),

@@ -13,12 +13,12 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 0,
-    "institutional_evidence_sources": 0,
+    "institutional_evidence_sources": 8,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 0,
+      "pages_checked": 8,
       "matched": 0,
-      "errors": 0
+      "errors": 1
     },
     "error": "기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
   },

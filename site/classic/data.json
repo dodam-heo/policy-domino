@@ -15,32 +15,27 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 1,
-    "institutional_evidence_sources": 21,
+    "institutional_evidence_sources": 15,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 21,
+      "pages_checked": 15,
       "matched": 1,
       "errors": 12,
       "search_leads": [
         {
           "query": "\"교육급여\" \"3,247,369\"",
-          "found": 3,
+          "found": 2,
           "urls": [
-            "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
             "https://dl.nanet.go.kr/detail/REFD0001120584",
             "https://dl.nanet.go.kr/storage/pictab/REFD/0001/1205/REFD0001120584/REFD0001120584.jpg"
           ]
         },
         {
           "query": "\"교육급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 6,
+          "found": 2,
           "urls": [
             "https://www.moe.go.kr/main.do",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
-            "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
-            "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316"
+            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0"
           ]
         },
         {
@@ -84,12 +79,11 @@
         },
         {
           "query": "\"중위소득\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 4,
+          "found": 3,
           "urls": [
             "https://www.mohw.go.kr/menu.es?mid=a10708010300",
             "https://www.bokjiro.go.kr",
-            "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do",
-            "https://awoo.or.kr/issues/median-income-calculation-guide/"
+            "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do"
           ]
         },
         {
@@ -108,14 +102,6 @@
         }
       ],
       "rejected_pages": [
-        {
-          "url": "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
-          "title": "교육급여(맞춤형 급여) < 교육지원 < 저소득주민 < 생애주기별복지 < 분야별정보 < 포털사이트Insert title here만족도",
-          "publisher": "",
-          "identified_publisher": true,
-          "identified_program": true,
-          "baseline_proof": false
-        },
         {
           "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
@@ -138,38 +124,6 @@
           "publisher": "",
           "identified_publisher": false,
           "identified_program": true,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
-          "title": "요청하신 페이지를 찾을수 없습니다",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
-          "title": "공지사항",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
-          "title": "인천광역시교육청",
-          "publisher": "인천광역시교육청",
-          "identified_publisher": true,
-          "identified_program": true,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316",
-          "title": "요청하신 페이지를 찾을수 없습니다",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
           "baseline_proof": false
         },
         {
@@ -202,6 +156,46 @@
           "publisher": "한국토지주택공사",
           "identified_publisher": true,
           "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=2762",
+          "title": "지표서비스 | e-나라지표",
+          "publisher": "",
+          "identified_publisher": true,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10708010900",
+          "title": "기준 중위소득 < 기초생활보장 < 복지 < 정책 : 힘이 되는 평생 친구, 보건복지부",
+          "publisher": "보건복지부 대표홈페이지",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.easylaw.go.kr/CSP/Main.laf",
+          "title": "찾기쉬운 생활법령정보",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.easylaw.go.kr/CSP/OnhunqueansInfoRetrieve.laf?onhunqnaAstSeq=97&onhunqueSeq=5739",
+          "title": "복지 > 기준 중위소득 | 찾기쉬운 생활법령정보",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10708010300",
+          "title": "수급자선정기준 < 기초생활보장 < 복지 < 정책 : 힘이 되는 평생 친구, 보건복지부",
+          "publisher": "보건복지부 대표홈페이지",
+          "identified_publisher": false,
+          "identified_program": true,
           "baseline_proof": false
         }
       ]

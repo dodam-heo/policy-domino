@@ -29,6 +29,20 @@ jobs:
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
+      - name: Materialize newest official index entries without invented impact claims
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from v4.pipeline import recent_uninspected
+          source=Path('site/v4/data.json')
+          state=Path('data/v4_state.json')
+          data=json.loads(source.read_text('utf8'))
+          history=json.loads(state.read_text('utf8'))
+          data['pending_index']=recent_uninspected(history)
+          source.write_text(json.dumps(data,ensure_ascii=False,indent=2),'utf8')
+          print('OFFICIAL_PENDING_VISIBLE',len(data['pending_index']))
+          PY
       - name: Validate unseeded official institution discovery across policies
         run: python -m unittest -v v4.test_institutional_impact
       - name: Discover affected institutions from official public sources and rebuild grounded view
@@ -39,7 +53,7 @@ jobs:
         run: |
           git config user.name policy-domino-classic-bot
           git config user.email policy-domino-classic-bot@users.noreply.github.com
-          git add site/classic/data.json site/impact/index.html
+          git add site/v4/data.json site/classic/data.json site/impact/index.html
           if ! git diff --cached --quiet; then
             git commit -m 'data(classic): rebuild source-backed institution actions [skip ci]'
             for attempt in 1 2 3; do

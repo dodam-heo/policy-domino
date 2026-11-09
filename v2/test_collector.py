@@ -82,6 +82,66 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(len(clauses),2)
         self.assertIn("100원",clauses["제2조"])
 
+    def test_admin_rule_annex_only_has_actual_body(self):
+        root=ET.fromstring("""<AdmRulService><별표><별표단위>
+          <별표번호>1</별표번호><별표제목>지원 기준표</별표제목>
+          <별표내용>가구별 지원금액 120만원</별표내용>
+          </별표단위></별표></AdmRulService>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(self.entry())
+        self.assertEqual(len(clauses),1)
+        self.assertIn("지원금액 120만원",next(iter(clauses.values())))
+
+    def test_flat_escaped_html_is_text_not_markup(self):
+        root=ET.fromstring("""<AdmRulService><조문내용>
+        &lt;p&gt;제1조(지급)&lt;/p&gt; 100만원을 지급한다.
+        &lt;p&gt;제2조(선정)&lt;/p&gt; 20세 이상에 적용한다.
+        </조문내용></AdmRulService>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(self.entry())
+        self.assertEqual(len(clauses),2)
+        self.assertNotIn("<p>",str(clauses))
+        self.assertIn("20세",clauses["제2조"])
+
+    def test_unchanged_numbered_clause_and_changed_annex_preserved(self):
+        root=ET.fromstring("""<AdmRulService><조문단위>
+          <조문번호>3</조문번호><조문내용>제3조(신청) 신청한다.</조문내용>
+          </조문단위><별표단위><별표번호>2</별표번호>
+          <별표내용>심사 기준 40만원</별표내용>
+          </별표단위></AdmRulService>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(self.entry())
+        self.assertIn("제3조",clauses)
+        self.assertTrue(any(k.startswith("별표 2") for k in clauses))
+
+    def test_supplement_actual_text_is_parsed(self):
+        root=ET.fromstring("""<AdmRulService><부칙><부칙공포번호>3</부칙공포번호>
+          <부칙공포일자>20261109</부칙공포일자>
+          <부칙내용>이 규칙은 2027년 1월 1일부터 시행한다.</부칙내용>
+          </부칙></AdmRulService>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(self.entry())
+        self.assertTrue(any(k.startswith("부칙") for k in clauses))
+        self.assertIn("2027년",next(iter(clauses.values())))
+
+    def test_attachment_link_alone_never_becomes_changed_text(self):
+        root=ET.fromstring("""<AdmRulService><별표><별표단위>
+          <별표번호>1</별표번호>
+          <별표제목>연도별 선정표</별표제목>
+          <별표서식파일링크>https://www.law.go.kr/doc/download</별표서식파일링크>
+          </별표단위></별표></AdmRulService>""")
+        with patch.object(m,"request",return_value=root):
+            with self.assertRaisesRegex(RuntimeError,"첨부파일 참조만 확인"):
+                m.read_clauses(self.entry())
+
+    def test_flat_text_split_preserves_unheaded_annex_and_unrelated_citation(self):
+        root=ET.fromstring("""<AdmRulService><조문내용>「가상급여규정」 제15조를
+          준용한다. 선정 금액은 20만원이다.</조문내용></AdmRulService>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(self.entry())
+        self.assertEqual(list(clauses),["본문"])
+        self.assertIn("제15조",clauses["본문"])
+
     def test_annual_standard_search_is_generic_not_policy_specific(self):
         new=self.entry(name="2027년도 가상 서비스 기준",serial="500")
         older=ET.fromstring("""<root><admrul><행정규칙명>2026년도 가상 서비스 기준</행정규칙명>

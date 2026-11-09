@@ -210,64 +210,118 @@ def historical_predecessor(record, cached=None):
     prior = exact[0]
     return {"record": prior, "clauses": read_clauses(prior), "annual_comparison": True}
 
+def _official_tag(node):
+    return node.tag.rsplit("}", 1)[-1]
+
+
+def _legal_text(value):
+    """Decode HTML escaped inside official XML without importing metadata."""
+    decoded=html.unescape(str(value or ""))
+    decoded=re.sub(r"<[^>]{1,600}>", " ", decoded)
+    return re.sub(r"\s+", " ", decoded).strip()
+
+
+def _text_element(node):
+    return _legal_text("".join(node.itertext()))
+
+
+def _safe_excerpt(value, limit=12000):
+    # A result of exactly 12000 characters is intentionally flagged as
+    # incomplete in v4/events.py. Never claim a truncated clause is complete.
+    return value[:limit]
+
+
 def read_clauses(record):
-    opts = {"MST": record["serial"]} if record["source"] == "law" else {"ID": record["serial"]}
-    root = request(record["source"], endpoint="lawService.do", **opts)
-    items = {}
-    for node in root.iter():
-        tag = node.tag.split("}")[-1]
-        if tag == "조문단위":
-            num = field(node, "조문번호")
-            branch = field(node, "조문가지번호")
-            label = f"제{num}조" + (f"의{branch}" if branch not in ("", "0") else "")
-            if not num:
+    """Read source-authored body content across official legal XML layouts.
+
+    A title, attachment URL or document metadata never counts as a legal
+    paragraph. Errors remain retryable when the official body is unavailable.
+    """
+    opts={"MST":record["serial"]} if record["source"]=="law" else {"ID":record["serial"]}
+    root=request(record["source"],endpoint="lawService.do",**opts)
+    articles={}
+    attachments={}
+    supplements={}
+    for unit in root.iter():
+        tag=_official_tag(unit)
+        if tag=="조문단위":
+            number=field(unit,"조문번호")
+            branch=field(unit,"조문가지번호")
+            if not number:continue
+            label=f"제{number}조"+(f"의{branch}" if branch not in ("","0") else "")
+            parts=[]
+            text_tags={"조문내용","항내용","호내용","목내용"}
+            for node in unit.iter():
+                if _official_tag(node) not in text_tags:continue
+                nested=[child for child in node.iter() if child is not node
+                        and _official_tag(child) in text_tags]
+                value=_legal_text(node.text) if nested else _text_element(node)
+                if value and (not parts or parts[-1]!=value):parts.append(value)
+            body=_legal_text(" ".join(parts))
+            if body:articles[label]=_safe_excerpt(body)
+        # Official documents may wrap annexes in a generic <별표> container
+        # with individual <별표단위> children.
+        if tag=="별표" and any(_official_tag(x)=="별표단위" for x in unit):
+            continue
+        if tag in ("별표","별표단위"):
+            number=field(unit,"별표번호")
+            branch=field(unit,"별표가지번호")
+            title=field(unit,"별표제목")
+            text=field(unit,"별표내용")
+            if not text and _official_tag(unit)=="별표단위":
+                text=field(unit,"본문내용")
+            if not text:continue
+            appendix="별표 "+(number or str(len(attachments)+1))
+            if branch not in ("","0"):appendix+="의"+branch
+            if title:appendix+=" ("+title[:60]+")"
+            attachments[appendix]=_safe_excerpt(_legal_text(text))
+        if tag in ("부칙","부칙단위"):
+            if tag=="부칙" and any(_official_tag(x)=="부칙단위" for x in unit):
                 continue
-            # Collect each XML provision component exactly once. The old
-            # implementation added the first 항/호/목 with field() and then
-            # added every 항/호/목 again through node.iter(), producing fake
-            # reordered or repeated clauses in text diffs.
-            parts = []
-            tags = {"조문내용","항내용","호내용","목내용"}
-            for x in node.iter():
-                if x.tag.split("}")[-1] not in tags:
-                    continue
-                # When a component wraps child provision nodes, its itertext
-                # includes their text. Use its own text in that case.
-                children = [y for y in x.iter() if y is not x and
-                            y.tag.split("}")[-1] in tags]
-                value = normalize(x.text if children else "".join(x.itertext()))
-                if value and (not parts or parts[-1] != value):
-                    parts.append(value)
-            txt = normalize(" ".join(parts))
-            if txt:
-                items[label] = txt[:12000]
-        if tag in ("별표", "별표단위"):
-            number = field(node, "별표번호") or str(len(items) + 1)
-            text = field(node, "별표내용")
+            text=field(unit,"부칙내용")
             if text:
-                items["별표 " + number] = text[:12000]
-    if items:
-        return items
-    # Several administrative-rule responses expose a flat 조문내용 instead.
-    full = " ".join(normalize("".join(x.itertext())) for x in root.iter()
-                    if x.tag.split("}")[-1] == "조문내용")
-    if not full:
-        raise RuntimeError("공식 본문에서 조문을 추출하지 못했습니다.")
-    # Split only structural headings. A sentence citing "제6조" is not a new article.
-    # Some flat administrative-rule XML concatenates all article titles
-    # after numbered list items (not a period). Detect real named headings
-    # rather than attributing 제3조 obligations to 제2조.
-    matches = list(re.finditer(
-        r"(?<![가-힣0-9])제\s*\d+\s*조(?:의\s*\d+)?\s*\([^)\n]{1,75}\)",
-        full))
-    if matches:
-        for i, match in enumerate(matches[:150]):
-            end = matches[i + 1].start() if i + 1 < len(matches) else len(full)
-            label = re.sub(r"\s+", "", match.group(0).split("(")[0])
-            items[label] = full[match.start():end][:12000]
-    else:
-        items["본문"] = full[:16000]
-    return items
+                number=field(unit,"부칙공포번호")
+                day=field(unit,"부칙공포일자")
+                key="부칙"+(" "+number if number else "")+(" ("+day+")" if day else "")
+                if key in supplements:key+=" "+str(len(supplements)+1)
+                supplements[key]=_safe_excerpt(_legal_text(text))
+    # Some administrative rules expose a single or several flat <조문내용>
+    # tags instead of numbered <조문단위> elements.
+    if not articles:
+        flat=[]
+        for node in root.iter():
+            tag=_official_tag(node)
+            if tag in ("조문내용","본문","본문내용","행정규칙내용","행정규칙본문"):
+                if tag in ("조문내용","본문","본문내용") and any(
+                    _official_tag(child) in ("조문내용","본문","본문내용")
+                    for child in node if child is not node):
+                    continue
+                if tag=="조문내용" and any(
+                    _official_tag(parent)=="조문단위" for parent in root.iter()
+                    if node in list(parent)):
+                    continue
+                value=_text_element(node)
+                if value and (not flat or flat[-1]!=value):flat.append(value)
+        full=_legal_text(" ".join(flat))
+        if full:
+            matches=list(re.finditer(
+                r"(?<![가-힣0-9])제\s*\d+\s*조(?:의\s*\d+)?\s*\([^)\n]{1,75}\)",
+                full))
+            if matches:
+                for index,match in enumerate(matches[:150]):
+                    stop=matches[index+1].start() if index+1<len(matches) else len(full)
+                    label=re.sub(r"\s+","",match.group(0).split("(")[0])
+                    articles[label]=_safe_excerpt(full[match.start():stop])
+            else:
+                articles["본문"]=_safe_excerpt(full)
+    output={**articles,**supplements,**attachments}
+    if output:return output
+    has_attachment=any(_official_tag(node) in
+        ("별표서식파일링크","별표서식PDF파일링크","첨부파일링크","첨부파일명")
+        and _text_element(node) for node in root.iter())
+    if has_attachment:
+        raise RuntimeError("첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료")
+    raise RuntimeError("공식 본문에서 조문·부칙·별표를 추출하지 못했습니다.")
 
 def compare(old, new, record):
     changes = []

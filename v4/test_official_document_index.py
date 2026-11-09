@@ -22,6 +22,21 @@ class SourceDocumentIndex(unittest.TestCase):
         self.assertFalse(any(x["actual_implementation_verified"]
                              for x in event["official_change_documents"]))
 
+    def test_explicit_changed_clause_actor_is_navigable_without_claimed_business(self):
+        rows=bridge.official_document_index([{
+          "title":"가상지원법","ministry":"가상부처",
+          "url":"https://www.law.go.kr/법령/changed",
+          "verification":"verified_changed_clauses",
+          "changed_articles":["제7조"],
+          "actor_duties":[
+              {"agency":"가상위원회","article":"제7조","status":"official_duty_changed"},
+              {"agency":"임의공사","article":"제9조","status":"official_duty_changed"}
+          ]
+        }])
+        self.assertEqual({r["agency"] for r in rows},{"가상부처","가상위원회"})
+        self.assertFalse(any(r["actual_implementation_verified"] for r in rows))
+        self.assertTrue(any("타 사업 영향 미확인" in r["agency_role"] for r in rows))
+
     def test_publisher_does_not_become_proven_program_operator(self):
         rows=bridge.official_document_index([{
           "title":"가상 지원법","ministry":"가상부처",

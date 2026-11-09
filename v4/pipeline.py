@@ -276,6 +276,45 @@ def recent_uninspected(state,limit=300):
             })
     return rows
 
+def evidence_audit(state,today):
+    """Quantify coverage and genuine source comparison, not UI card counts."""
+    from collections import Counter
+    catalog=state.get("catalog",{})
+    inspected=state.get("inspected",{})
+    retryable={"official_record_only","detail_failed","partial_official_text",
+               "verified_partial_changed_clauses",
+               "verified_annual_replacement_partial"}
+    checked={"verified_changed_clauses","verified_annual_replacement"}
+    partial={"verified_partial_changed_clauses","verified_annual_replacement_partial"}
+    lifecycle={"verified_enactment","verified_repeal_notice"}
+    results={}
+    for source in SUPPORTED:
+        keys=[k for k,r in catalog.items() if r.get("source")==source]
+        examined=[inspected[k] for k in keys if k in inspected]
+        waiting=[catalog[k] for k in keys if k not in inspected]
+        codes=Counter(x.get("verification","unknown") for x in examined)
+        results[source]={
+            "indexed":len(keys),
+            "inspected":len(examined),
+            "pending":len(waiting),
+            "verified_before_after":sum(codes[k] for k in checked),
+            "partial_before_after":sum(codes[k] for k in partial),
+            "verified_enactment_or_repeal":sum(codes[k] for k in lifecycle),
+            "body_extraction_failed":codes["detail_failed"],
+            "body_or_annex_incomplete":codes["partial_official_text"],
+            "indexed_but_not_compared":codes["official_record_only"],
+            "retryable_or_partial":sum(codes[k] for k in retryable),
+            "exhausted_retries":sum(
+                1 for k in keys if k in inspected and
+                inspected[k].get("verification") in retryable and
+                state.get("attempts",{}).get(k,0)>=3),
+            "oldest_pending_published":min(
+                (r.get("published_at","") for r in waiting
+                 if r.get("published_at")),default=""),
+            "statuses":dict(sorted(codes.items()))
+        }
+    return results
+
 def build(state,today):
     groups,other,graph=output_groups(state)
     coverage=state.get("coverage",[])
@@ -302,6 +341,7 @@ def build(state,today):
             "backfill_cursor_days":state.get("backfill_cursor_days",0),
             "scope":"공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
             "whole_corpus_complete":False},
+        "quality":evidence_audit(state,today),
         "links":{
             "confirmed_provision_or_formula_use":graph["statistics"]["actual_dependencies"],
             "title_or_wrong_article_only":graph["statistics"]["noncausal_citations"],
@@ -375,7 +415,13 @@ def run():
         "pending":data["collection"]["pending_details"],
         "featured":len(data["featured_events"]),
         "actual_dependencies":data["links"]["confirmed_provision_or_formula_use"],
-        "incomplete_windows":data["collection"]["incomplete_windows"]
+        "incomplete_windows":data["collection"]["incomplete_windows"],
+        "verified_before_after_by_source":{
+            kind:data["quality"][kind]["verified_before_after"]
+            for kind in SUPPORTED},
+        "body_extraction_failures_by_source":{
+            kind:data["quality"][kind]["body_extraction_failed"]
+            for kind in SUPPORTED}
     },ensure_ascii=False))
     return data
 

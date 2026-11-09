@@ -11,6 +11,25 @@ def r(n,date="2026-11-07",kind="law",nextyear=False,discovery=""):
             "discovery_kind":discovery}
 
 class PublicationSafeguards(unittest.TestCase):
+    def test_source_quality_reports_failure_and_partial_separately(self):
+        a=r(5,kind="law",date="2026-11-01")
+        b=r(6,kind="admrul",date="2026-11-02")
+        c=r(7,kind="ordin",date="2026-11-03")
+        ka,kb,kc=(events.key(x) for x in (a,b,c))
+        state={"catalog":{ka:a,kb:b,kc:c},
+               "inspected":{
+                   ka:{"verification":"verified_changed_clauses"},
+                   kb:{"verification":"detail_failed"}},
+               "attempts":{kb:3}}
+        audit=pipeline.evidence_audit(state,dt.date(2026,11,9))
+        self.assertEqual(audit["law"]["verified_before_after"],1)
+        self.assertEqual(audit["admrul"]["body_extraction_failed"],1)
+        self.assertEqual(audit["admrul"]["exhausted_retries"],1)
+        self.assertEqual(audit["ordin"]["pending"],1)
+        self.assertEqual(audit["ordin"]["oldest_pending_published"],"2026-11-03")
+        self.assertEqual(audit["law"]["partial_before_after"],0)
+        self.assertEqual(sum(x["indexed"] for x in audit.values()),3)
+
     def test_bootstrap_is_not_automatically_impact_verified(self):
         state={"catalog":{events.key(r(1)):r(1)},"inspected":{},
                "coverage":[],"verified_snapshots":{}}

@@ -13,24 +13,52 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 0,
-    "institutional_evidence_sources": 9,
+    "institutional_evidence_sources": 6,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 9,
+      "pages_checked": 6,
       "matched": 0,
       "errors": 2,
+      "search_leads": [
+        {
+          "field": "교육급여",
+          "found": 2,
+          "urls": [
+            "https://dl.nanet.go.kr/detail/REFD0001120584",
+            "https://dl.nanet.go.kr/"
+          ]
+        },
+        {
+          "field": "주거급여",
+          "found": 5,
+          "urls": [
+            "https://www.lh.or.kr/menu.es?mid=a10401050100",
+            "https://www.lh.or.kr/menu.e",
+            "https://www.bokjiro.go.kr/ssis-tbu/index.do",
+            "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
+            "https://www.bokjiro.go.kr/"
+          ]
+        },
+        {
+          "field": "중위소득",
+          "found": 0,
+          "urls": []
+        },
+        {
+          "field": "생계급여",
+          "found": 4,
+          "urls": [
+            "https://www.mohw.go.kr/",
+            "https://www.mohw.go.kr/menu.es?mid=a10708010100",
+            "https://www.easylaw.go.kr/CSP/Main.laf",
+            "https://www.mohw.go.kr/menu.e"
+          ]
+        }
+      ],
       "rejected_pages": [
         {
           "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": true,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://dl.nanet.go.kr/",
-          "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색",
           "publisher": "",
           "identified_publisher": false,
           "identified_program": true,
@@ -56,22 +84,6 @@
           "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
           "title": "복지로",
           "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.bokjiro.go.kr/",
-          "title": "",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.mohw.go.kr/",
-          "title": "힘이 되는 평생 친구, 보건복지부",
-          "publisher": "보건복지부 대표홈페이지",
           "identified_publisher": false,
           "identified_program": false,
           "baseline_proof": false

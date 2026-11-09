@@ -257,18 +257,27 @@ def legacy_action_ok(a,e):
     # Every old V2 card must have a MATCHING official amendment directive.
     # An inferred cross-ministry role with no old-new literal pair is not
     # reliable enough to be promoted as a fresh official change action.
-    diffs=[d for d in e.get("article_differences",[])
-           if article_key(d.get("article"))==article_key(a.get("article"))]
-    if not diffs:return False
     pairs=a.get("changes",[])
     if not pairs:return False
+    # Annual official standards can identify a table row by field rather
+    # than the host act's article number; the field must match the ACTUAL
+    # official-before/after source data, not an unrelated subject term.
+    row_names={article_key(p.get("field")) for p in pairs}
+    diffs=[d for d in e.get("article_differences",[])
+           if article_key(d.get("article"))==article_key(a.get("article"))
+           or article_key(d.get("article")) in row_names]
+    if not diffs:return False
     for d in diffs:
         directive=clean(d.get("directive"))
-        if not directive or not source_url(d.get("source_url")).startswith(TRUSTED):continue
+        if not directive or not str(d.get("source_url","")).startswith(TRUSTED):
+            continue
         for p in pairs:
-            old=clean(p.get("old_literal") or p.get("before"))
-            new=clean(p.get("new_literal") or p.get("after"))
-            if old and new and old in directive and new in directive:
+            candidates=[
+                (clean(p.get("old_literal")),clean(p.get("new_literal"))),
+                (clean(p.get("before")),clean(p.get("after")))
+            ]
+            if any(old and new and old in directive and new in directive
+                   for old,new in candidates):
                 return True
     return False
 
@@ -285,7 +294,11 @@ def legacy_fallback(source,verified_titles):
         event["event_id"]="legacy:"+e["event_id"]
         event["comparison_status"]="이전 V2 공식 개정문 확인 · 최신 버전 재검증 대기"
         event["presentation_source"]="legacy_official_directive_awaiting_recheck"
-        event["impact_priority"]=10+len(valid)*2
+        # Source-backed numeric standard announcements are visible alongside
+        # organization changes; user experience must not be dominated by
+        # a simultaneous restructuring decree simply because it has 8 files.
+        event["impact_priority"]=10+len(valid)*2+(
+            30 if e.get("law_type")=="고시·행정규칙" else 0)
         event["amendment_reason"]=clean(event.get("amendment_reason")) or (
             "이전 V2가 확보한 공식 개정문. 최신 법령 개정 여부와 기관별 "
             "반영 상태는 아직 재검증되지 않았습니다."

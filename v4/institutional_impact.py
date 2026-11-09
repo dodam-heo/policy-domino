@@ -131,7 +131,7 @@ def _search_leads(body):
     parsed=Links()
     parsed.feed(decoded)
     # Result anchors rank first. Navigation URLs must not crowd out results.
-    leads=parsed.priority+parsed.urls+re.findall(r"https?://[^\\s\"'<>]{8,400}",decoded)
+    leads=parsed.priority+parsed.urls+re.findall(r"https?://[^\s\"'<>]{8,400}",decoded)
     out=[]
     for lead in leads:
         lead=html.unescape(unquote(str(lead)))

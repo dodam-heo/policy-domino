@@ -32,7 +32,7 @@ def source_agency(law,directive=""):
         return base
     actor=re.search(
         r"(?<![가-힣])([가-힣]{2,28}(?:공사|공단|재단|진흥원|위원회|교육청|부|처|청)|교육감|시장[·ㆍ]군수[·ㆍ]구청장)"
-        r"\\s*(?:은|는|이|가|에게|에서)\\s*",directive)
+        r"\s*(?:은|는|이|가|에게|에서)\s*",directive)
     if actor:return actor.group(1)
     return law.get("ministry") or None
 

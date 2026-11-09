@@ -13,10 +13,10 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 1,
-    "institutional_evidence_sources": 17,
+    "institutional_evidence_sources": 18,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 17,
+      "pages_checked": 18,
       "matched": 1,
       "errors": 12,
       "search_leads": [
@@ -35,8 +35,8 @@
             "https://www.moe.go.kr/main.do",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
-            "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
             "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
+            "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316"
           ]
         },
@@ -74,12 +74,13 @@
         },
         {
           "query": "\"중위소득\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 4,
+          "found": 5,
           "urls": [
             "https://www.mohw.go.kr/menu.es?mid=a10708010300",
             "https://www.bokjiro.go.kr",
             "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do",
-            "https://awoo.or.kr/issues/median-income-calculation-guide/"
+            "https://awoo.or.kr/issues/median-income-calculation-guide/",
+            "https://www.mohw.go.kr/board.es?mid=a10503010100"
           ]
         },
         {
@@ -93,8 +94,10 @@
         },
         {
           "query": "\"생계급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 0,
-          "urls": []
+          "found": 1,
+          "urls": [
+            "https://www.mohw.go.kr/menu.es?mid=a10708010300"
+          ]
         }
       ],
       "rejected_pages": [
@@ -131,16 +134,16 @@
           "baseline_proof": false
         },
         {
-          "url": "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
-          "title": "인천광역시교육청",
-          "publisher": "인천광역시교육청",
-          "identified_publisher": true,
-          "identified_program": true,
+          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
+          "title": "공지사항",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
           "baseline_proof": false
         },
         {
-          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
-          "title": "공지사항",
+          "url": "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
+          "title": "",
           "publisher": "",
           "identified_publisher": false,
           "identified_program": false,
@@ -820,10 +823,10 @@
       "presentation_source": "v4_official_source",
       "impact_priority": 240,
       "impact_level": "high",
-      "impact_reason": "기관별 검토 23곳 · 실제 변경 조항 적용 규정 9건",
+      "impact_reason": "기관별 검토 23곳 · 실제 변경 조항 적용 규정 8건",
       "impact_scope": {
         "institutions": 23,
-        "proven_dependent_rules": 9,
+        "proven_dependent_rules": 8,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -872,75 +875,6 @@
       "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
       "impact_scope": {
         "institutions": 1,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": true,
-        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-      }
-    },
-    {
-      "id": "policy:welfare",
-      "mst": "",
-      "event_id": "legacy:8efcae799dd5fe26de",
-      "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
-      "promulgated_at": "2026-07-29",
-      "promulgation_number": "2026-157호",
-      "effective_date": "2027-01-01",
-      "revision": "기준 변경",
-      "ministry": "보건복지부",
-      "law_type": "고시·행정규칙",
-      "url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-      "source": "국가법령정보센터 고시 원문·소관부처 공식자료",
-      "change_count": 3,
-      "article_differences": [
-        {
-          "id": "b1790d6fce308721d8",
-          "article": "중위소득:4인",
-          "title": "공식 선정기준",
-          "type": "기준액 변경",
-          "before": "6,494,738원",
-          "after": "6,929,885원",
-          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-          "directive": "중위소득:4인: 6,494,738원 → 6,929,885원"
-        },
-        {
-          "id": "410b08a0ca860bfe25",
-          "article": "생계급여:4인",
-          "title": "공식 선정기준",
-          "type": "기준액 변경",
-          "before": "2,078,316원",
-          "after": "2,217,563원",
-          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-          "directive": "생계급여:4인: 2,078,316원 → 2,217,563원"
-        },
-        {
-          "id": "730d4dc31cf38f5827",
-          "article": "의료급여:4인",
-          "title": "공식 선정기준",
-          "type": "기준액 변경",
-          "before": "2,597,895원",
-          "after": "2,771,954원",
-          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-          "directive": "의료급여:4인: 2,597,895원 → 2,771,954원"
-        }
-      ],
-      "comparison_status": "이전 공식 개정문 확인 · 최신 재검증 대기",
-      "amendment_reason": "기준 중위소득 및 생계급여 선정기준에 관한 2027년 확정 기준",
-      "amendment_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-      "downstream_changes": [],
-      "upstream_changes": [],
-      "policy_source_urls": [
-        "https://www.mohw.go.kr/gallery.es?act=view&bid=0003&list_no=380303&mid=a10505000000",
-        "https://www.mohw.go.kr/menu.es?mid=a10708010300"
-      ],
-      "policy_profile": "welfare",
-      "value_verified": true,
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 15,
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
         "proven_dependent_rules": 0,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": true,
@@ -2122,6 +2056,75 @@
         "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=104926&lev=0&m=0302"
       ],
       "policy_profile": "education",
+      "value_verified": true,
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "impact_priority": 12,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "id": "policy:welfare",
+      "mst": "",
+      "event_id": "legacy:8efcae799dd5fe26de",
+      "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "promulgated_at": "2026-07-29",
+      "promulgation_number": "2026-157호",
+      "effective_date": "2027-01-01",
+      "revision": "기준 변경",
+      "ministry": "보건복지부",
+      "law_type": "고시·행정규칙",
+      "url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "source": "국가법령정보센터 고시 원문·소관부처 공식자료",
+      "change_count": 3,
+      "article_differences": [
+        {
+          "id": "b1790d6fce308721d8",
+          "article": "중위소득:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "6,494,738원",
+          "after": "6,929,885원",
+          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+          "directive": "중위소득:4인: 6,494,738원 → 6,929,885원"
+        },
+        {
+          "id": "410b08a0ca860bfe25",
+          "article": "생계급여:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "2,078,316원",
+          "after": "2,217,563원",
+          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+          "directive": "생계급여:4인: 2,078,316원 → 2,217,563원"
+        },
+        {
+          "id": "730d4dc31cf38f5827",
+          "article": "의료급여:4인",
+          "title": "공식 선정기준",
+          "type": "기준액 변경",
+          "before": "2,597,895원",
+          "after": "2,771,954원",
+          "source_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+          "directive": "의료급여:4인: 2,597,895원 → 2,771,954원"
+        }
+      ],
+      "comparison_status": "이전 공식 개정문 확인 · 최신 재검증 대기",
+      "amendment_reason": "기준 중위소득 및 생계급여 선정기준에 관한 2027년 확정 기준",
+      "amendment_url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
+      "downstream_changes": [],
+      "upstream_changes": [],
+      "policy_source_urls": [
+        "https://www.mohw.go.kr/gallery.es?act=view&bid=0003&list_no=380303&mid=a10505000000",
+        "https://www.mohw.go.kr/menu.es?mid=a10708010300"
+      ],
+      "policy_profile": "welfare",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
       "impact_priority": 12,

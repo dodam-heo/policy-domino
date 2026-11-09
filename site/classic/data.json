@@ -15,35 +15,36 @@
     "pending_details": 12685,
     "legacy_recheck": 6,
     "institutional_dependency_actions": 1,
-    "institutional_evidence_sources": 15,
+    "institutional_evidence_sources": 19,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 15,
+      "pages_checked": 19,
       "matched": 1,
       "errors": 13,
       "search_leads": [
         {
           "query": "\"교육급여\" \"3,247,369\"",
-          "found": 3,
+          "found": 2,
           "urls": [
-            "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
             "https://dl.nanet.go.kr/detail/REFD0001120584",
             "https://dl.nanet.go.kr/storage/pictab/REFD/0001/1205/REFD0001120584/REFD0001120584.jpg"
           ]
         },
         {
           "query": "\"교육급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 2,
+          "found": 5,
           "urls": [
             "https://www.moe.go.kr/main.do",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0"
+            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0",
+            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
+            "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
+            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141"
           ]
         },
         {
           "query": "\"주거급여\" \"3,117,474\"",
-          "found": 3,
+          "found": 2,
           "urls": [
-            "https://www.lh.or.kr/menu.es?mid=a10401050100",
             "https://www.bokjiro.go.kr/ssis-tbu/index.do",
             "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201"
           ]
@@ -52,8 +53,6 @@
           "query": "\"주거급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
           "found": 15,
           "urls": [
-            "https://www.lh.or.kr/index.es?sid=a1",
-            "https://www.lh.or.kr/menu.es?mid=a10401050100",
             "https://www.myhome.go.kr/hws/portal/cont/selectHousingBenefitView.do\\n[2]",
             "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201\\n[3]",
             "https://housing.seoul.go.kr/site/main/content/sh01_061021\\n[4]",
@@ -63,7 +62,9 @@
             "https://www.bokjiro.go.kr/favicon.ico",
             "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
             "https://housing.seoul.go.kr/favicon.ico",
-            "https://housing.seoul.go.kr/site/main/content/sh01_061021"
+            "https://housing.seoul.go.kr/site/main/content/sh01_061021",
+            "https://www.lh.or.kr/main/img/favicon/favicon.ico",
+            "https://www.lh.or.kr/menu.es?mid=a10401050100"
           ]
         },
         {
@@ -80,11 +81,13 @@
         },
         {
           "query": "\"중위소득\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 3,
+          "found": 5,
           "urls": [
             "https://www.mohw.go.kr/menu.es?mid=a10708010300",
             "https://www.bokjiro.go.kr",
-            "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do"
+            "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do",
+            "https://awoo.or.kr/issues/median-income-calculation-guide/",
+            "https://www.mohw.go.kr/board.es?mid=a10503010100"
           ]
         },
         {
@@ -128,11 +131,27 @@
           "baseline_proof": false
         },
         {
-          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
-          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
-          "publisher": "한국토지주택공사",
+          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
+          "title": "요청하신 페이지를 찾을수 없습니다",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
+          "title": "인천광역시교육청",
+          "publisher": "인천광역시교육청",
           "identified_publisher": true,
           "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141",
+          "title": "요청하신 페이지를 찾을수 없습니다",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
           "baseline_proof": false
         },
         {
@@ -152,10 +171,18 @@
           "baseline_proof": false
         },
         {
-          "url": "https://www.lh.or.kr/index.es?sid=a1",
-          "title": "한국토지주택공사",
+          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
+          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
           "publisher": "한국토지주택공사",
           "identified_publisher": true,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://m.bokjiro.go.kr/ssis-tem/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
+          "title": "복지로",
+          "publisher": "",
+          "identified_publisher": false,
           "identified_program": false,
           "baseline_proof": false
         },
@@ -173,30 +200,6 @@
           "publisher": "보건복지부 대표홈페이지",
           "identified_publisher": false,
           "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.easylaw.go.kr/CSP/Main.laf",
-          "title": "찾기쉬운 생활법령정보",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.easylaw.go.kr/CSP/OnhunqueansInfoRetrieve.laf?onhunqnaAstSeq=97&onhunqueSeq=5739",
-          "title": "복지 > 기준 중위소득 | 찾기쉬운 생활법령정보",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.mohw.go.kr/menu.es?mid=a10708010300",
-          "title": "수급자선정기준 < 기초생활보장 < 복지 < 정책 : 힘이 되는 평생 친구, 보건복지부",
-          "publisher": "보건복지부 대표홈페이지",
-          "identified_publisher": false,
-          "identified_program": true,
           "baseline_proof": false
         }
       ]

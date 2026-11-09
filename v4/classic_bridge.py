@@ -372,6 +372,67 @@ def assess_impact_scope(event, actions):
         }
     }
 
+def source_review_candidates(event,limit=12):
+    """Produce tentative work review questions from changed SOURCE wording.
+
+    This does not discover an institution or an operational program.
+    No agency/program/amount/URL can be pre-enrolled as a positive case.
+    """
+    if event.get("presentation_source") not in (
+        "v4_official_source","legacy_official_directive_awaiting_recheck"):
+        return []
+    domains=(
+        ("지원·지급 범위",r"지원|지급|급여|보조|비용|보상|환급",
+         "해당 지원 항목·지급 판단 기준을 실제 적용하는 업무가 있는지 확인"),
+        ("자격·선정 조건",r"자격|선정|소득|대상자|수급자|요건",
+         "자격·대상 판단 기준을 실제 사용하는 업무가 있는지 확인"),
+        ("금액·산식",r"금액|비율|산정|기준액|요율|단가",
+         "해당 금액·비율의 산식이나 기준표 사용 여부를 확인"),
+        ("서류·서식",r"서식|신청서|증빙|첨부|제출",
+         "제출 서류·신청서 기준의 실제 반영 여부를 확인"),
+        ("기한·시행",r"기한|이내|처리기간|유예|시행일",
+         "처리기한·적용 시점을 실제 판정하는 업무가 있는지 확인"),
+        ("허가·신고·검사",r"허가|신고|등록|검사|인증|심사",
+         "허가·신고·검사 심사기준의 실제 적용 여부를 확인"),
+        ("조직·정원",r"정원|직제|직급|배정|업무분장",
+         "정원·직급·사무배정 기준과의 적용 관계를 확인"),
+    )
+    reviews=[]
+    for d in event.get("article_differences",[]):
+        old,new=clean(d.get("before")),clean(d.get("after"))
+        article=clean(d.get("article"))
+        source=str(d.get("source_url",""))
+        if not(old and new and old!=new and article and
+               source.startswith(("https://www.law.go.kr/","https://law.go.kr/"))):
+            continue
+        matcher=difflib.SequenceMatcher(None,old,new,autojunk=True)
+        diffs=[]
+        for tag,i,j,k,l in matcher.get_opcodes():
+            if tag=="equal":continue
+            previous=old[max(0,i-9):min(len(old),j+9)].strip()
+            updated=new[max(0,k-9):min(len(new),l+9)].strip()
+            if previous==updated:continue
+            diffs.append({"before":previous[:100],"after":updated[:100]})
+            if len(diffs)>=3:break
+        if not diffs:continue
+        heading=HEADING.search(new)
+        topic=heading.group(1) if heading else article
+        text=topic+" "+" ".join(x["before"]+" "+x["after"] for x in diffs)
+        work=next(((label,prompt) for label,regex,prompt in domains
+                   if re.search(regex,text)),
+                  ("조문상 적용 기준","변경된 규정을 실제 적용하는 업무가 있는지 확인"))
+        reviews.append({
+            "id":idof(event["event_id"]+"|"+article+"|"+old+"|"+new),
+            "article":article,"topic":topic,"work_type":work[0],
+            "review_question":work[1],
+            "actual_changes":diffs,
+            "source_url":source,
+            "status":"기관·사업 적용 여부 미확인",
+            "institution_verified":False
+        })
+        if len(reviews)>=limit:break
+    return reviews
+
 def indexed_pending_event(item):
     """Index-only candidate; never issue an institution instruction."""
     return {
@@ -417,6 +478,9 @@ def build(v4,legacy):
     actions,institutional_actions=institutional_impact.connect(events,actions,findings)
     event_ids={e["event_id"] for e in events}
     actions=[a for a in actions if a.get("event_id") in event_ids]
+    # A source-grounded review topic is distinct from a proven agency duty.
+    for e in events:
+        e["work_review_candidates"]=source_review_candidates(e)
     # Impact scoring is evidence-based, not a replacement for the public
     # chronological view of newly promulgated official events.
     action_counts=collections.Counter(a["event_id"] for a in actions)

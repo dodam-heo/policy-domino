@@ -58,6 +58,17 @@ class Discovery(unittest.TestCase):
         self.assertEqual(len(found),1)
         self.assertEqual(found[0]["agency"],"가상특별시")
 
+    def test_law_change_yields_source_only_work_review_not_fabricated_agency(self):
+        e=event("가상규정","제7조","제7조(지원 범위) 검사 비용을 지원한다.",
+                "제7조(지원 범위) 검사 및 치료 비용을 지원한다.")
+        reviews=bridge.source_review_candidates(e)
+        self.assertEqual(len(reviews),1)
+        self.assertEqual(reviews[0]["work_type"],"지원·지급 범위")
+        self.assertFalse(reviews[0]["institution_verified"])
+        self.assertNotIn("agency",reviews[0])
+        e["presentation_source"]="official_index_pending"
+        self.assertEqual(bridge.source_review_candidates(e),[])
+
     def test_registry_style_manual_item_never_enters(self):
         e=change();manual={"event_id":"event-x","agency":"가상재단","work":"가상 업무",
                                "article":"가상소득기준","agency_basis":"https://sample.go.kr"}

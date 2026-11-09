@@ -8,11 +8,15 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: policy-domino-pages-single-publisher
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deploy_pages.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'

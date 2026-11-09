@@ -12,12 +12,16 @@ permissions:
 jobs:
   repair:
     runs-on: ubuntu-latest
+    concurrency:
+      group: policy-domino-pages-single-publisher
+      cancel-in-progress: false
     timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deploy_pages.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v4

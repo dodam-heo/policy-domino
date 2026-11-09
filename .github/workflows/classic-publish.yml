@@ -92,6 +92,9 @@ jobs:
     needs: build
     if: success()
     runs-on: ubuntu-latest
+    concurrency:
+      group: policy-domino-pages-single-publisher
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deploy_pages.outputs.page_url }}

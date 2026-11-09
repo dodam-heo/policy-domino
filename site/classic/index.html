@@ -190,6 +190,7 @@ function detailHTML(e){
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+statuses.map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
  const downstream=current.filter(a=>a.evidence_scope==="official_institutional_program_dependency");
  const direct=current.filter(a=>a.evidence_scope!=="official_institutional_program_dependency");
+ const noDiscovered=downstream.length?'':'<p class="smallNote" style="margin:13px 0;padding:10px;background:#f4f7f9;border-radius:8px">자동 탐색으로 검증된 추가 기관·사업 없음. 검색·열람 실패 또는 근거 부족일 수 있으며 영향이 없다는 뜻은 아닙니다.</p>';
  const actionGroups=current.length?(
    (downstream.length?
      '<div class="sourceLinkHeading" style="margin:18px 0 10px;padding:14px;background:#eaf5f1;border-radius:12px"><b>기준 변경이 파급되는 기관·사업 '+downstream.length+'건</b><p class="smallNote" style="margin-top:6px">원천 변경값과 운영기관의 공식 기준 사용·업무 역할을 연결했습니다. 실제 내부시스템 수정 또는 조치 완료를 확인한 것은 아닙니다.</p></div>'+groupedActions(downstream):'')+
@@ -197,7 +198,7 @@ function detailHTML(e){
      (downstream.length?'<h4 style="margin:24px 0 10px">원천 법령의 직접 검토 업무</h4>':'')+
      groupedActions(direct):'')
  ):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다.");
- const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관별 사업에 실제 적용되는 기준과 직접 업무를 구분합니다. 법령 자체를 다시 개정하거나 기관 내부시스템을 이미 수정했다는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+actionGroups+'</section>';
+ const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관별 사업에 실제 적용되는 기준과 직접 업무를 구분합니다. 법령 자체를 다시 개정하거나 기관 내부시스템을 이미 수정했다는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+noDiscovered+actionGroups+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
  return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }

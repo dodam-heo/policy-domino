@@ -13,6 +13,10 @@ PAGE='''<html><head><title>가상지원사업 신청 및 자격 안내 | 가상�
 <p>2026년 신청 대상자 선정시 가상소득기준 1,234,567원 기준표를 적용하여 자격을 심사합니다.</p></body></html>'''
 
 class Discovery(unittest.TestCase):
+    def test_search_url_parser_handles_web_engine_redirects(self):
+        h='<a href="/url?q=https%3A%2F%2Fagency.example.go.kr%2Fpage&amp;sa=U">page</a>'
+        self.assertEqual(d._search_leads(h),["https://agency.example.go.kr/page"])
+
     def test_new_agency_from_discovered_page_not_registry(self):
         e=change()
         hits,health=d.discover([e],search=lambda q:["https://open.example.go.kr/a"],

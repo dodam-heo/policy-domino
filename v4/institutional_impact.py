@@ -114,23 +114,69 @@ def changed_fields(event):
                     "source_url":d["source_url"]})
     return out[:4]
 
+def _search_leads(body):
+    """Parse ordinary result links and redirect links without trusting snippets."""
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__();self.urls=[]
+        def handle_starttag(self,tag,attrs):
+            if tag!="a":return
+            h=dict(attrs).get("href","")
+            if h:self.urls.append(h)
+    decoded=html.unescape(body).replace("\\/", "/")
+    parsed=Links()
+    parsed.feed(decoded)
+    # Include encoded URL strings when engines store leads in JSON scripts.
+    leads=parsed.urls+re.findall(r"https?://[^\\s\"'<>]{8,400}",decoded)
+    out=[]
+    for lead in leads:
+        lead=html.unescape(unquote(str(lead)))
+        p=urlparse(lead)
+        if "uddg=" in lead and "duckduckgo.com" in lead:
+            lead=parse_qs(p.query).get("uddg",[""])[0]
+        elif lead.startswith("/url?"):
+            lead=parse_qs(urlparse(lead).query).get("q",[""])[0]
+        elif p.hostname and p.hostname.endswith("google.com") and p.path=="/url":
+            lead=parse_qs(p.query).get("q",[""])[0]
+        if trusted(lead) and lead not in out:out.append(lead)
+    return out
+
 def search_public(query):
-    """Unseeded public index lookup. Search results are leads, NOT evidence."""
+    """Search distinct general-purpose indexes; no institution seeds.
+
+    Search and its availability are explicitly best effort. Source pages are
+    subsequently retrieved and verified; no search result text is trusted.
+    """
     from urllib.parse import urlencode
-    url="https://www.bing.com/search?"+urlencode({"format":"rss","q":query,"count":"15"})
-    try:
-        req=Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; PolicyDominoEvidenceBot/1.0)"})
-        with urlopen(req,timeout=10) as response:
-            xml=response.read(400000)
-        root=ET.fromstring(xml)
-        results=[node.text.strip() for node in root.findall(".//item/link") if node.text]
-        return list(dict.fromkeys(u for u in results if trusted(u)))[:SEARCH_LIMIT]
-    except (OSError,ValueError,ET.ParseError):
-        return []
+    urls=[
+        "https://www.bing.com/search?"+urlencode({"format":"rss","q":query}),
+        "https://search.naver.com/search.naver?"+urlencode({"where":"web","query":query}),
+        "https://www.google.com/search?"+urlencode({"q":query,"num":"25"}),
+        "https://html.duckduckgo.com/html/?"+urlencode({"q":query}),
+    ]
+    out=[]
+    for url in urls:
+        try:
+            req=Request(url,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36","Accept":"text/html,application/rss+xml"})
+            with urlopen(req,timeout=7) as response:
+                raw=response.read(550000)
+            body=raw.decode("utf-8","replace")
+            if body.lstrip().startswith("<?xml") or "<rss" in body[:1000]:
+                try:
+                    root=ET.fromstring(raw)
+                    for n in root.findall(".//item/link"):
+                        if n.text and trusted(n.text) and n.text not in out:out.append(n.text)
+                except ET.ParseError:pass
+            for link in _search_leads(body):
+                if link not in out:out.append(link)
+            if len(out)>=SEARCH_LIMIT:break
+        except (OSError,ValueError):
+            continue
+    return out[:SEARCH_LIMIT]
 
 def search_query(field,amount):
     # Generic index query: no institution/program names, source URLs or fixed values.
-    return '"'+field+'" "'+f"{amount:,}"+'" (site:go.kr OR site:or.kr OR site:ac.kr)'
+    return '"'+field+'" "'+f"{amount:,}"+'"'
 
 def _nearby_proof(text,field,old,year):
     """The exact historical amount, named field and year must coexist locally."""

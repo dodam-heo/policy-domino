@@ -21,9 +21,9 @@ for(const label of ["data-doc-jump","data-doc-agency","data-evidence",
  assert.ok(html.includes(label),"Missing agency controls: "+label);
 }
 const standalone=scripts[0][1].replace(/load\(\);\s*$/,"")+
- "\n;globalThis.__agencyHelpers={sourceAgencyGroups,agencyNavigator,officialSourceDocumentGroups};";
+ "\n;globalThis.__agencyHelpers={sourceAgencyGroups,agencyNavigator,officialSourceDocumentGroups,comparedChange,verifiedLifecycle,filteredEvents,detailHTML,setCatalog:(rows)=>{DATA.events=rows;DATA.actions=[];}};";
 const sandbox={document:{
-  getElementById(){return {};},
+  getElementById(){return {value:""};},
   querySelectorAll(){return [];}
 },window:{addEventListener(){}},URL,Date,Intl};
 vm.runInNewContext(standalone,sandbox);
@@ -42,6 +42,24 @@ assert.ok(chips.includes('data-doc-jump')&&chips.includes('가상공사'));
 const body=sandbox.__agencyHelpers.officialSourceDocumentGroups(grouped);
 assert.ok(body.includes('data-doc-agency')&&body.includes('가상위원회'));
 assert.ok(!body.includes('조치 완료'));
+// A record that has only an official index entry MUST NOT appear as a
+// verified policy impact, even if it is newer than the changed source.
+const pendingOnly={event_id:"pending:example",title:"가상 업무지침",promulgated_at:"2026-11-09",
+  presentation_source:"official_index_pending",comparison_state:"official_index_only",
+  article_differences:[],url:"https://www.law.go.kr/법령/example"};
+const actualChange={event_id:"v4:example",title:"가상 지원기준",promulgated_at:"2026-11-08",
+  presentation_source:"v4_official_source",comparison_state:"official_changes_compared",
+  article_differences:[{article:"제3조",before:"20만원",after:"30만원",
+   source_url:"https://www.law.go.kr/법령/example2"}]};
+sandbox.__agencyHelpers.setCatalog([pendingOnly,actualChange]);
+assert.equal(sandbox.__agencyHelpers.filteredEvents().map(x=>x.event_id).join(","),"v4:example",
+  "Main view must exclude uninspected source-index records");
+assert.equal(sandbox.__agencyHelpers.comparedChange(pendingOnly),false);
+assert.equal(sandbox.__agencyHelpers.comparedChange(actualChange),true);
+const pendingHtml=sandbox.__agencyHelpers.detailHTML(pendingOnly);
+assert.ok(pendingHtml.includes("상세 분석 전"));
+assert.ok(!pendingHtml.includes("② 기관별 변경 검토사항"),
+  "Pending-only record must not masquerade as an assessed institutional impact");
 // Default list keeps meaningful policy changes findable while retaining
 // every structural amendment in the explicit full list.
 assert.ok(html.includes('data-law="focus"'));

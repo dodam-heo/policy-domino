@@ -92,7 +92,7 @@ aside .empty{padding:38px 22px}
 <div class="layout" id="layout">
 <section class="panel listPanel" aria-label="최신 정책 변경 목록">
 <div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">게시글 등록일이 아니라 공식 공포·확정일 기준 최신순</div>
-<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="high-impact" title="변경 조문을 직접 검토하는 기관이 2곳 이상이거나 실제 변경 조항을 적용하는 다른 규정이 2개 이상 확인된 사건">영향도 큼</button></div>
+<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="verified">신구 비교 확인</button><button class="chip" data-law="pending">분석 대기</button><button class="chip" data-law="high-impact" title="변경 조문을 직접 검토하는 기관이 2곳 이상이거나 실제 변경 조항을 적용하는 다른 규정이 2개 이상 확인된 사건">영향도 큼</button></div>
 <div id="impactFilterHint" style="font-size:11px;color:#667c8a;margin:3px 0 8px" hidden>영향 범위 기준: 직접 검토 기관 2곳 이상 또는 변경 조항을 적용하는 다른 규정 2건 이상. 사회적 중요도 등급은 아니며, 이전 V2 근거는 최신 재검증 대기로 구분합니다.</div>
 <input class="search" id="q" aria-label="법령·정책 검색" placeholder="법령명·정책명·소관기관 검색"><div class="listCount" id="listCount"></div></div>
 <div class="list" id="lawList"><div class="empty">공식 변경내역을 불러오는 중입니다.</div></div>
@@ -110,22 +110,32 @@ function fmtDate(s){if(!s)return "미확인";if(/^\d{4}-\d{2}-\d{2}$/.test(s))re
 function typeOf(e){let s=e.revision||e.change_type||e.type||"";return /폐지/.test(s)&&!/제정/.test(s)?"abolished":/제정|신설/.test(s)&&!/개정/.test(s)?"new":"amended"}
 function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?"폐지":"개정"}
 function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
-function sorted(events){return [...events].sort((a,b)=>(b.impact_priority||0)-(a.impact_priority||0)||(b.promulgated_at||b.change_date||"").localeCompare(a.promulgated_at||a.change_date||""))}
+function sorted(events){return [...events].sort((a,b)=>(b.promulgated_at||b.change_date||"").localeCompare(a.promulgated_at||a.change_date||"")||(b.impact_priority||0)-(a.impact_priority||0))}
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
-let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",actionFilter="all";
-function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="high-impact"?e.impact_level==="high":typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
+function detailVerified(e){return !!(e.article_differences?.length||["official_enactment_only","official_repeal_only"].includes(e.comparison_state))}
+function sourceLabel(e){
+ if(e.comparison_state==="official_index_only")return "공식 변경 목록 확인 · 본문 비교 대기";
+ if(e.comparison_state==="official_changes_compared")return "공식 신구 조문 비교 확인";
+ if(e.comparison_state==="official_enactment_only")return "제정 확인 · 실제 적용업무 검토 대기";
+ if(e.comparison_state==="official_repeal_only")return "폐지 확인 · 후속 규정 검토 대기";
+ if(e.presentation_source==="legacy_official_directive_awaiting_recheck")return "이전 공식 개정문 · 최신 재검증 대기";
+ return e.article_differences?.length?"변경 문장 일부 확인":"공포·개정 목록 확인 · 조문 비교 미완료";
+}
+let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",actionFilter="all",visibleLimit=100;
+function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="high-impact"?e.impact_level==="high":filter==="verified"?detailVerified(e):filter==="pending"?!detailVerified(e):typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
 function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
 function eventRow(e){
 const num=matchingActions(e).length,hasDiff=e.article_differences?.length||0,chosen=selectedId===e.event_id;
-return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(e.impact_level==="high"?'<span class="mini" title="'+esc(e.impact_reason||"")+'">영향도 큼'+(e.impact_scope?.provisional?' · 재검증 대기':'')+'</span>':'')+'<span class="mini">'+(e.presentation_source==="v4_official_source"?"공식 신구 본문":"이전 V2 근거 · 재검증 대기")+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
+return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(e.impact_level==="high"?'<span class="mini" title="'+esc(e.impact_reason||"")+'">영향도 큼'+(e.impact_scope?.provisional?' · 재검증 대기':'')+'</span>':'')+'<span class="mini">'+sourceLabel(e)+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
 }
 function displayList(){
 $("impactFilterHint").hidden=filter!=="high-impact";
 const events=filteredEvents();
-$("listCount").textContent=(DATA.events||[]).length+"개 공식 변경 사건 중 "+events.length+"개 표시";
-$("lawList").innerHTML=events.length?events.map(eventRow).join(""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
+$("listCount").textContent="현재 제공된 "+(DATA.events||[]).length+"건 중 "+events.length+"건 · 전체 공식 목록 "+Number(DATA.health?.catalogue_candidates||0).toLocaleString("ko-KR")+"건 · 본문 분석 대기 "+Number(DATA.health?.pending_details||0).toLocaleString("ko-KR")+"건";
+$("lawList").innerHTML=events.length?events.slice(0,visibleLimit).map(eventRow).join("")+(events.length>visibleLimit?'<button type="button" class="refresh" id="loadMore" style="display:block;margin:14px auto">목록 더 보기 ('+Math.min(visibleLimit,events.length)+' / '+events.length+')</button>':''):showEmpty("표시할 공식 변경 목록이 없습니다.","검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
 $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.dataset.event));
+const more=$("loadMore");if(more)more.onclick=()=>{visibleLimit+=100;displayList()};
 }
 function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";return '<span class="status '+cls+'">'+esc(s||"반영 확인 필요")+'</span>'}
 function agencyNavigator(items){
@@ -135,6 +145,9 @@ function agencyNavigator(items){
  return '<nav class="agencyNav" aria-label="기관별 바로가기">'+[...counts].sort((a,b)=>a[0].localeCompare(b[0],"ko")).map(([name,n])=>'<button class="agencyJump" type="button" data-jump="'+esc(name)+'">'+esc(name)+' · '+n+'</button>').join("")+'</nav>';
 }
 function overviewText(e,all){
+ const diff=(e.article_differences||[]).find(x=>x.before&&x.after);
+ if(diff)return (diff.article||"변경 조문")+" · 이전: "+String(diff.before).slice(0,75)+" → 변경: "+String(diff.after).slice(0,75)+"…";
+ if(e.comparison_state==="official_index_only")return "공식 개정 목록만 확인됐습니다. 구체적인 변경 조문과 적용 기관·사업은 아직 분석되지 않았습니다.";
  const reason=String(e.amendment_reason||"").replace(/\s+/g," ").trim();
  if(reason)return reason.slice(0,165)+(reason.length>165?"…":"");
  const example=all.map(a=>a.source_change||a.what_to_change).find(Boolean);
@@ -182,7 +195,7 @@ function detailHTML(e){
  const institutions=new Set(all.map(a=>a.agency).filter(Boolean)).size;
  const dependent=(e.downstream_changes||[]).length;
  const impactSummary=e.impact_level==="high"?'<div class="smallNote" style="margin:8px 0">영향 범위: '+esc(e.impact_reason||"")+' · '+esc(e.impact_scope?.note||"")+'</div>':'';
- const provenance=e.presentation_source==="v4_official_source"?"현재 공식 신구 본문 검증":"이전 V2 공식 개정 지시문 · 최신 재검증 대기";
+ const provenance=sourceLabel(e);
  const header='<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(provenance)+'</span><span class="separator">·</span><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>';
  const overview='<section class="changeOverview"><div class="overviewLabel">이번 변경에서 무엇을 확인했나</div><div class="overviewText">'+esc(overviewText(e,all))+'</div><div class="overviewFoot"><span>검토 대상 기관 '+institutions+'곳</span><span>근거 있는 검토 항목 '+all.length+'건</span>'+(dependent?'<span>연결된 하위규정 '+dependent+'건</span>':'')+'</div></section>';
  const facts='<div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div></div>';
@@ -190,7 +203,7 @@ function detailHTML(e){
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+statuses.map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
  const downstream=current.filter(a=>a.evidence_scope==="official_institutional_program_dependency");
  const direct=current.filter(a=>a.evidence_scope!=="official_institutional_program_dependency");
- const noDiscovered=downstream.length?'':'<p class="smallNote" style="margin:13px 0;padding:10px;background:#f4f7f9;border-radius:8px">자동 탐색으로 검증된 추가 기관·사업 없음. 검색·열람 실패 또는 근거 부족일 수 있으며 영향이 없다는 뜻은 아닙니다.</p>';
+ const noDiscovered=(downstream.length||direct.length)?'':'<p class="smallNote" style="margin:13px 0;padding:10px;background:#f4f7f9;border-radius:8px">자동 탐색으로 검증된 추가 기관·사업 없음. 검색·열람 실패 또는 근거 부족일 수 있으며 영향이 없다는 뜻은 아닙니다.</p>';
  const actionGroups=current.length?(
    (downstream.length?
      '<div class="sourceLinkHeading" style="margin:18px 0 10px;padding:14px;background:#eaf5f1;border-radius:12px"><b>기준 변경이 파급되는 기관·사업 '+downstream.length+'건</b><p class="smallNote" style="margin-top:6px">원천 변경값과 운영기관의 공식 기준 사용·업무 역할을 연결했습니다. 실제 내부시스템 수정 또는 조치 완료를 확인한 것은 아닙니다.</p></div>'+groupedActions(downstream):'')+
@@ -200,7 +213,17 @@ function detailHTML(e){
  ):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다.");
  const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관별 사업에 실제 적용되는 기준과 직접 업무를 구분합니다. 법령 자체를 다시 개정하거나 기관 내부시스템을 이미 수정했다는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+noDiscovered+actionGroups+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
+ const ds=e.article_differences||[];
+ const notes=(e.source_notes||[]).slice(0,3);
+ const first=ds.length?differences({...e,article_differences:ds.slice(0,2)}):
+   '<p class="smallNote">공식 개정 목록은 확인됐지만 종전·현행 본문을 아직 비교하지 못했습니다. 금액이나 기관별 조치를 추측해서 채우지 않습니다.</p>';
+ const rest=ds.length>2?'<details class="legalDetails"><summary>나머지 변경 조문 '+(ds.length-2)+'건 보기</summary>'+differences({...e,article_differences:ds.slice(2)})+'</details>':'';
+ const sourcePanel='<section style="margin:24px 0"><h3 class="sectionHeading">① 정책에서 실제 바뀐 내용</h3><p class="smallNote" style="margin:8px 0">'+esc(sourceLabel(e))+(notes.length?' · '+esc(notes.join(" / ")):'')+'</p>'+first+rest+'</section>';
+ const links=(e.downstream_changes||[]).filter(x=>x.status==="변경 조항 적용 관계 확인"&&x.title&&x.evidence);
+ const relatedPanel='<section style="margin:20px 0"><h3 class="sectionHeading">② 변경이 파급되는 관련 규정</h3>'+
+   (links.length?links.slice(0,15).map(x=>'<article class="action"><b>'+esc(x.title)+'</b><p class="smallNote">'+esc(x.article||"")+" · "+esc(x.evidence)+'</p><a class="refLink" target="_blank" rel="noopener" href="'+validUrl(x.basis_url)+'">공식 근거 보기</a></article>').join(''):
+    '<p class="smallNote">변경 조항과 실제 적용 관계가 검증된 다른 규정은 아직 없습니다. 관련 제도가 없다는 뜻은 아닙니다.</p>')+'</section>';
+ return header+'<div class="detailBody">'+overview+impactSummary+facts+sourcePanel+relatedPanel+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }
 function renderDetail(){
 const e=getEvent();
@@ -224,7 +247,7 @@ let d=await response.json();if(d.schema!=="policy-domino-next-v1")throw Error("�
 DATA=d;const h=d.health||{},partial=h.source_status==="메타데이터만 연결",amendment=h.source_status==="공식 공포·개정문 연결",bad=h.source_status==="수집 실패";
 $("system").classList.toggle("error",bad);
 $("sourceTitle").textContent=bad?"공식 변경 데이터 수집 실패":"실제 정책 변경과 기관별 검토 업무";
-$("sourceDesc").textContent=bad?(h.error||"공식 변경 자료를 불러오지 못했습니다."):"신구 조문·공식 개정 지시문 기반 "+(d.events||[]).length+"개 변경 사건 · 기관별 검토 "+(d.actions||[]).length+"건. 현재 공식 본문과 이전 V2 자료는 검증 상태를 분리합니다. 내부 조치 완료 여부는 확인되지 않았습니다.";
+$("sourceDesc").textContent=bad?(h.error||"공식 변경 자료를 불러오지 못했습니다."):"공식 수집 목록 "+Number(h.catalogue_candidates||0).toLocaleString("ko-KR")+"건 · 상세 확인 "+Number(h.source_records_inspected||h.amendments_verified_total||0).toLocaleString("ko-KR")+"건 · 상세 분석 대기 "+Number(h.pending_details||0).toLocaleString("ko-KR")+"건. 기관별 조치는 확인된 근거가 있을 때만 표시합니다.";
 $("lastChecked").textContent="최종 확인 "+(d.generated_at?new Date(d.generated_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"}):"미확인");
 const fragment=decodeURIComponent((location.hash||"").replace(/^#change=/,""));
 if(fragment&&(d.events||[]).some(e=>e.event_id===fragment))selectedId=fragment;
@@ -233,8 +256,8 @@ if(window.innerWidth>850&&!selectedId&&(d.events||[]).length)selectedId=sorted(d
 render();
 }catch(e){DATA={events:[],actions:[],health:{source_status:"수집 실패"}};$("system").classList.add("error");$("sourceTitle").textContent="새 시스템 데이터를 불러오지 못했습니다.";$("sourceDesc").textContent=e.message;render();}
 }
-document.querySelectorAll("[data-law]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-law]").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.law;displayList()});
-$("q").oninput=displayList;$("reload").onclick=load;
+document.querySelectorAll("[data-law]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-law]").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.law;visibleLimit=100;displayList()});
+$("q").oninput=()=>{visibleLimit=100;displayList()};$("reload").onclick=load;
 window.addEventListener("popstate",()=>{if(!location.hash){$("layout").classList.remove("detailOpen")}});
 load();
 </script></body></html>

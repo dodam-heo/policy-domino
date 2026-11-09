@@ -39,6 +39,15 @@ class Discovery(unittest.TestCase):
         actions,added=d.connect([e],[],hits)
         self.assertEqual(len(added),1)
 
+    def test_private_site_address_is_not_public_agency_evidence(self):
+        html=PAGE.replace('content="가상문화재단"','content="가상사업포털"').replace(
+          '<title>가상지원사업 신청 및 자격 안내 | 가상문화재단</title>',
+          '<title>가상지원사업 신청 및 자격 안내 | 가상사업포털</title>')
+        html=html.replace('</body>','<footer>가상특별시 가상구 새길 12 대표전화 120 © Corp</footer></body>')
+        found,_=d.discover([change()],search=lambda q:["https://private.example.or.kr/article"],
+                            fetch=lambda u:html)
+        self.assertFalse(found)
+
     def test_municipal_official_footer_attribution(self):
         html=PAGE.replace('content="가상문화재단"','content="가상서비스포털"').replace(
           '<title>가상지원사업 신청 및 자격 안내 | 가상문화재단</title>',

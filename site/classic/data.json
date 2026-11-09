@@ -12,12 +12,12 @@
     "v4_official_index": 2046,
     "pending_details": 7402,
     "legacy_recheck": 8,
-    "institutional_dependency_actions": 2,
+    "institutional_dependency_actions": 1,
     "institutional_evidence_sources": 17,
     "institutional_discovery": {
       "attempted": 3,
       "pages_checked": 17,
-      "matched": 2,
+      "matched": 1,
       "errors": 12,
       "search_leads": [
         {
@@ -820,10 +820,10 @@
       "presentation_source": "v4_official_source",
       "impact_priority": 240,
       "impact_level": "high",
-      "impact_reason": "기관별 검토 23곳 · 실제 변경 조항 적용 규정 8건",
+      "impact_reason": "기관별 검토 23곳 · 실제 변경 조항 적용 규정 9건",
       "impact_scope": {
         "institutions": 23,
-        "proven_dependent_rules": 8,
+        "proven_dependent_rules": 9,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -940,7 +940,7 @@
       "impact_level": "not_assessed",
       "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
       "impact_scope": {
-        "institutions": 1,
+        "institutions": 0,
         "proven_dependent_rules": 0,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": true,
@@ -6201,49 +6201,6 @@
         "source_year": 2026,
         "followup_year": 2027,
         "program": "주거급여 수급자 지원(임차급여)",
-        "relationship": "official_public_page_numeric_match"
-      },
-      "status": "기관별 기준 반영 검토",
-      "status_evidence": null,
-      "confidence": "공식 웹페이지의 종전 기준값·연도·사용 맥락 확인",
-      "verification_note": "공식 페이지에서 종전 금액·적용연도·기준 사용을 확인했으나 변경 후 내부 운영기준과 시스템 수정 여부는 미확인",
-      "impact_link_basis": "원천 변경 조항과 공식 기관 페이지의 기준명·종전 금액·연도 일치",
-      "evidence_scope": "official_institutional_program_dependency",
-      "institutional_implementation_verified": false,
-      "is_direct_legal_amendment": false,
-      "discovery_method": "live_public_search_and_page_validation",
-      "role_scope": "공식 게시자료 기준 검토"
-    },
-    {
-      "id": "discovered:c196e448ccd73b4aa34618",
-      "event_id": "legacy:8efcae799dd5fe26de",
-      "agency": "인천광역시",
-      "agency_role": "공식자료 게시기관 (실제 수행·내부 담당 여부 미확인)",
-      "work": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표",
-      "service": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표",
-      "law_title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
-      "article": "중위소득",
-      "effective_date": "2027-01-01",
-      "target_location": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표 · 중위소득",
-      "what_to_change": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표에 표시된 중위소득의 기존 기준 6,494,738원과 변경 기준 6,929,885원을 대조하고, 적용 연도 및 해당 업무 반영 필요 여부를 확인",
-      "required_change": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표에 표시된 중위소득의 기존 기준 6,494,738원과 변경 기준 6,929,885원을 대조하고, 적용 연도 및 해당 업무 반영 필요 여부를 확인",
-      "changes": [
-        {
-          "field": "중위소득",
-          "before": "6,494,738원",
-          "after": "6,929,885원",
-          "meaning": "원천 정책 변경값 (기관 내부 반영 상태 미확인)"
-        }
-      ],
-      "basis": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000283464&chrClsCd=010202",
-      "agency_basis": "https://awoo.or.kr/issues/median-income-calculation-guide/",
-      "institution_evidence": {
-        "publisher": "인천광역시",
-        "heading": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표",
-        "excerpt": "중위소득계산어떻게하나요?2026년급여별선정기준표|지원금가이드본문으로건너뛰기지지원금가이드홈오늘의이슈지원금계산기가이드5분진단5분진단으로매칭홈오늘의이슈지원금계산기가이드←홈으로🔎후속복지2026-09-19📖5분🔗공유중위소득계산어떻게하나요?2026년급여별선정기준표한줄정답2026년기준중위소득은4인가구649만4738원이며생계급여는그32%인207만8316원이하일때받는다.핵심정보대상생계·의료·주거·교육급여신청",
-        "source_year": 2026,
-        "followup_year": 2027,
-        "program": "중위소득 계산 어떻게 하나요? 2026년 급여별 선정기준표",
         "relationship": "official_public_page_numeric_match"
       },
       "status": "기관별 기준 반영 검토",

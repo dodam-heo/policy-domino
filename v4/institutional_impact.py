@@ -18,7 +18,7 @@ SEARCH_LIMIT = 15
 MAX_EVENTS = 10
 OFFICIAL_CHANGE_HOSTS = {"law.go.kr", "www.law.go.kr"}
 OPERATION = re.compile(r"신청|접수|지급|산정|선정|자격|지원|입주|심사|급여|경곗값|기준표|대상자|소득기준|이용조건")
-NON_PROGRAM = re.compile(r"보도자료|언론보도|보도설명|뉴스|기사|개정안|입법예고|행정예고")
+NON_PROGRAM = re.compile(r"보도자료|언론보도|보도설명|뉴스|기사|개정안|입법예고|행정예고|어떻게|알아보기|총정리|해설|FAQ|자주 묻는")
 AGENCY = re.compile(r"^[가-힣\s·()]{3,40}(?:부|처|청|위원회|공사|공단|재단|진흥원|관리원|정보원|연구원|교육청|대학교|지방자치단체)$")
 
 def compact(value):
@@ -203,7 +203,7 @@ def _nearby_proof(text,field,old,year):
                 return chunk[:220]
     return ""
 
-def _name(p):
+def _name(p,allow_footer=False):
     # Official publisher must be asserted by page metadata, not inferred
     # from the search result, bare domain, or the named policy's authority.
     candidates=[p.publisher,p.page_title]
@@ -217,7 +217,7 @@ def _name(p):
     # in their copyright/address footer. Extract it from the retrieved page;
     # never infer an institution from the portal brand or domain spelling.
     footer=p.text[-1400:]
-    if "©" in footer or "대표전화" in footer or "Copyright" in footer:
+    if allow_footer and ("©" in footer or "대표전화" in footer or "Copyright" in footer):
         m=re.search(
             r"(?<![가-힣])([가-힣]{2,28}(?:특별시|광역시|특별자치시|특별자치도|시청|구청|군청|공사|공단|재단))"
             r"\s+[가-힣]{1,10}(?:구|시|군)\s+[^.]{0,100}?(?:로|길|동)\s*\d",
@@ -242,7 +242,8 @@ def _program(p,field):
 
 def candidate_action(event,change,url,page):
     if not trusted(url):return None
-    name=_name(page);program=_program(page,change["field"])
+    name=_name(page,allow_footer=(urlparse(url).hostname or "").endswith(".go.kr"))
+    program=_program(page,change["field"])
     if not name or not program:return None
     try:year=int(str(event["effective_date"])[:4])-1
     except (ValueError,TypeError,KeyError):return None
@@ -329,7 +330,8 @@ def discover(events, search=None, fetch=None):
                         health["rejected_pages"].append({
                             "url":url,"title":page.page_title[:90],
                             "publisher":page.publisher[:50],
-                            "identified_publisher":bool(_name(page)),
+                            "identified_publisher":bool(_name(
+                                page,allow_footer=(urlparse(url).hostname or "").endswith(".go.kr"))),
                             "identified_program":bool(_program(page,changed["field"])),
                             "baseline_proof":bool(_nearby_proof(
                                 page.text,changed["field"],changed["old_amount"],refyear)),

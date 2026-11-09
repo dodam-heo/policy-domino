@@ -171,7 +171,7 @@ def output_groups(state):
           (e["source"],e["stable_id"],e["serial"]) in snapshots]
     graph=relationships.build_graph(
         [e for e in verified if e.get("changed_articles") and
-         e.get("verification")=="verified_changed_clauses"],
+         e.get("verification") in ("verified_changed_clauses","verified_partial_changed_clauses")],
         docs,snapshots)
     # Independently queried official downstream documents may not themselves
     # be recently revised. Include only those whose actual text was reread
@@ -208,6 +208,7 @@ def output_groups(state):
             "excerpts":m.get("excerpts",[])[:12],
             "actor_duties":m.get("actors",[])[:20],
             "needs_attachment_check":m.get("needs_attachment_check",False),
+            "excluded_long_articles":m.get("excluded_long_articles",0),
             "notes":m.get("notes",[]),
             "comparison":m.get("comparison")} for m in members]
         del g["members"]
@@ -328,7 +329,8 @@ def run():
             item,contents=prepare_document_record(record,state)
             state["inspected"][k]=item
             if contents and item["verification"] in (
-                "verified_changed_clauses","verified_annual_replacement",
+                "verified_changed_clauses","verified_partial_changed_clauses",
+                "verified_annual_replacement","verified_annual_replacement_partial",
                 "verified_enactment"):
                 state["verified_snapshots"][k]={
                     "source":record["source"],"stable_id":record["stable_id"],

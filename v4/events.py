@@ -181,11 +181,12 @@ def inspect(record,records=None,load=None,history=None,annual=None):
         event["notes"].append("공식 현재 본문 조회 실패: "+str(exc)[:130])
         event["verification"]="detail_failed"
         return event,{}
-    if not complete_text(current):
-        event["notes"].append("별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함")
+    incomplete_current=not complete_text(current)
+    if incomplete_current:
+        event["notes"].append("일부 조문·별표 본문이 수집 한도에 도달하여 해당 부분의 비교 제외")
         event["needs_attachment_check"]=True
         event["verification"]="partial_official_text"
-        return event,{}
+        if not current:return event,{}
     if event["lifecycle"]=="enactment":
         event["verification"]="verified_enactment"
         event["changed_articles"]=list(current)[:MAX_ARTICLES]
@@ -207,11 +208,28 @@ def inspect(record,records=None,load=None,history=None,annual=None):
     except Exception as exc:
         event["notes"].append("이전 버전 본문 확인 실패: "+str(exc)[:140])
         return event,current
-    if not complete_text(previous):
-        event["notes"].append("이전 버전 조문 또는 수치표가 불완전함")
+    incomplete_prior=not complete_text(previous)
+    if incomplete_prior:
+        event["notes"].append("종전 조문·별표 중 수집 한도에 도달한 부분은 비교 제외")
         event["needs_attachment_check"]=True
-        return event,current
-    changes=api.compare(previous,current,record)
+        if not previous:return event,current
+    # Do not compare truncated text, nor mistake a missing oversized clause
+    # for an addition/deletion. Only pairs of fully retrieved clauses qualify.
+    comparable={
+        k for k in set(previous)|set(current)
+        if len(previous.get(k,""))<12000 and len(current.get(k,""))<12000
+    }
+    checked_previous={k:v for k,v in previous.items() if k in comparable}
+    checked_current={k:v for k,v in current.items() if k in comparable}
+    changes=api.compare(checked_previous,checked_current,record)
+    partially_checked=incomplete_current or incomplete_prior
+    if partially_checked:
+        event["comparable_articles"]=len(comparable)
+        event["excluded_long_articles"]=len(set(previous)|set(current))-len(comparable)
+        event["notes"].append("검증된 조문만 비교했으며 미수집된 장문 조문의 변경은 판단하지 않음")
+        if not changes:
+            event["verification"]="partial_official_text"
+            return event,current
     if len(changes)>=MAX_ARTICLES:
         event["needs_attachment_check"]=True
         event["notes"].append("변경 조문 수가 처리 한도에 도달함. 일부 결과만 표시")
@@ -239,7 +257,11 @@ def inspect(record,records=None,load=None,history=None,annual=None):
         "same_stable_id":prior["stable_id"]==record["stable_id"],
         "source":"법제처 공식 이전·현재 본문"
     }
-    event["verification"]="verified_annual_replacement" if annual_type else "verified_changed_clauses"
+    event["verification"]=(
+        ("verified_annual_replacement_partial" if partially_checked else "verified_annual_replacement")
+        if annual_type else
+        ("verified_partial_changed_clauses" if partially_checked else "verified_changed_clauses")
+    )
     if annual_type and not changes:
         event["needs_attachment_check"]=True
         event["notes"].append("연도별 고시 교체 확인. 첨부 표의 세부 금액은 아직 검증되지 않음")

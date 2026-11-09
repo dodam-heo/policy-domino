@@ -181,6 +181,32 @@ class VerifiedEvents(unittest.TestCase):
         self.assertTrue(e["excerpts"])
         self.assertEqual(e["actors"][0]["agency"],"가상항공공단")
 
+    def test_oversized_annex_does_not_discard_safe_clause_comparison(self):
+        current=rec(100,serial="190")
+        prior=rec(100,serial="180",day="2026-10-02")
+        large="별표 항목 " + "A"*12010
+        def load(r):
+            return {"제3조":("기준금액 45만원" if r["serial"]=="190"
+                           else "기준금액 35만원"),
+                    "별표 1":large}
+        result,_=event.inspect(current,[prior],load=load,history=lambda r,rr:prior)
+        self.assertEqual(result["verification"],"verified_partial_changed_clauses")
+        self.assertEqual(result["changed_articles"],["제3조"])
+        self.assertEqual(result["excluded_long_articles"],1)
+        self.assertTrue(result["needs_attachment_check"])
+
+    def test_oversized_only_changes_are_never_claimed_as_verified(self):
+        current=rec(101,serial="192")
+        prior=rec(101,serial="189",day="2026-10-02")
+        def load(r):
+            return {"제3조":"동일한 변경 없는 업무규칙",
+                    "별표 1":"별표"+"A"*12005+(
+                        "변경!" if r["serial"]=="192" else "종전")}
+        result,_=event.inspect(current,[prior],load=load,history=lambda r,rr:prior)
+        self.assertEqual(result["verification"],"partial_official_text")
+        self.assertFalse(result["changed_articles"])
+        self.assertFalse(result["excerpts"])
+
     def test_no_previous_version_is_not_fake_changed_amount(self):
         current=rec(1)
         e,clauses=event.inspect(current,[],load=lambda r:{"제1조":"지원금은 120만원이다."},

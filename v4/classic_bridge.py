@@ -225,12 +225,18 @@ def group_event(g):
     else:title=docs[0].get("title","")
     v4id="v4:"+g["id"]
     valid_docs=[d for d in docs if d.get("verification") in (
-        "verified_changed_clauses","verified_annual_replacement",
+        "verified_changed_clauses","verified_partial_changed_clauses",
+        "verified_annual_replacement","verified_annual_replacement_partial",
         "verified_enactment","verified_repeal_notice")]
     states={d.get("verification","") for d in docs}
     if any(d.get("excerpts") and d.get("verification") in (
-            "verified_changed_clauses","verified_annual_replacement") for d in docs):
-        state_label="official_changes_compared"
+            "verified_changed_clauses","verified_partial_changed_clauses",
+             "verified_annual_replacement","verified_annual_replacement_partial") for d in docs):
+        state_label=("official_changes_partially_compared"
+                     if any(d.get("verification") in (
+                         "verified_partial_changed_clauses",
+                         "verified_annual_replacement_partial") for d in docs)
+                     else "official_changes_compared")
     elif "verified_enactment" in states:
         state_label="official_enactment_only"
     elif "verified_repeal_notice" in states:
@@ -258,7 +264,8 @@ def group_event(g):
             if count>1 else ""),
         "article_differences":[],
         "change_count":sum(len(d.get("changed_articles",[])) for d in valid_docs),
-        "comparison_status":("공식 신구 문장 비교 확인" if state_label=="official_changes_compared" else
+        "comparison_status":("일부 신구 조문 비교 확인 · 미수집 별표 제외" if state_label=="official_changes_partially_compared" else
+                             "공식 신구 문장 비교 확인" if state_label=="official_changes_compared" else
                              "제정 사실만 확인" if state_label=="official_enactment_only" else
                              "폐지 사실만 확인" if state_label=="official_repeal_only" else
                              "공식 공포 정보 확인 · 조문 비교 미완료"),

@@ -424,6 +424,17 @@ def run():
     assert all(a["event_id"] in {e["event_id"] for e in result["events"]}
                for a in result["actions"])
     DEST.write_text(json.dumps(result,ensure_ascii=False,indent=2),"utf8")
+    # A standalone URL avoids mobile WebView serving an old cached page.
+    # Keep the new impact view identical to Classic while reading Classic's
+    # single updated source-of-truth data file.
+    ui=(ROOT/"site"/"classic"/"index.html").read_text("utf8")
+    old_fetch='fetch("./data.json?v="+Date.now(),{cache:"no-store"})'
+    new_fetch='fetch("../classic/data.json?v="+Date.now(),{cache:"no-store"})'
+    if old_fetch not in ui:
+        raise RuntimeError("Classic source UI changed; refresh impact mirror only after review")
+    impact=ROOT/"site"/"impact"
+    impact.mkdir(parents=True,exist_ok=True)
+    (impact/"index.html").write_text(ui.replace(old_fetch,new_fetch),"utf8")
     by_source=collections.Counter(a["evidence_scope"] for a in result["actions"])
     print("CLASSIC_V2_UX_V4_SOURCE",
           json.dumps({"events":len(result["events"]),"actions":len(result["actions"]),

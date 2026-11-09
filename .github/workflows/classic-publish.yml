@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/classic-publish.yml'
       - 'v4/classic_bridge.py'
+      - 'v4/test_official_document_index.py'
+      - 'site/classic/test_ui.cjs'
       - 'v4/institutional_impact.py'
       - 'v4/test_institutional_impact.py'
       - 'site/classic/index.html'
@@ -45,7 +47,7 @@ jobs:
           print('OFFICIAL_PENDING_VISIBLE',len(data['pending_index']))
           PY
       - name: Validate unseeded official institution discovery across policies
-        run: python -m unittest -v v4.test_institutional_impact
+        run: python -m unittest -v v4.test_institutional_impact v4.test_official_document_index
       - name: Discover affected institutions from official public sources and rebuild grounded view
         run: python -m v4.classic_bridge
       - name: Verify complete V2 interface, source provenance and no invented compliance status

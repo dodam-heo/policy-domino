@@ -14,7 +14,7 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
-SEARCH_LIMIT = 6
+SEARCH_LIMIT = 15
 MAX_EVENTS = 10
 OFFICIAL_CHANGE_HOSTS = {"law.go.kr", "www.law.go.kr"}
 OPERATION = re.compile(r"신청|접수|지급|산정|선정|자격|지원|입주|심사|급여|경곗값|기준표|대상자|소득기준|이용조건")
@@ -118,16 +118,20 @@ def _search_leads(body):
     """Parse ordinary result links and redirect links without trusting snippets."""
     class Links(HTMLParser):
         def __init__(self):
-            super().__init__();self.urls=[]
+            super().__init__();self.urls=[];self.priority=[]
         def handle_starttag(self,tag,attrs):
             if tag!="a":return
-            h=dict(attrs).get("href","")
-            if h:self.urls.append(h)
+            a=dict(attrs);h=a.get("href","")
+            if not h:return
+            cls=" ".join((a.get("class",""),a.get("data-testid","")))
+            if re.search(r"title_link|api_txt_lines|link_tit|result__a|result-title|news_tit|search-title",cls):
+                self.priority.append(h)
+            else:self.urls.append(h)
     decoded=html.unescape(body).replace("\\/", "/")
     parsed=Links()
     parsed.feed(decoded)
-    # Include encoded URL strings when engines store leads in JSON scripts.
-    leads=parsed.urls+re.findall(r"https?://[^\\s\"'<>]{8,400}",decoded)
+    # Result anchors rank first. Navigation URLs must not crowd out results.
+    leads=parsed.priority+parsed.urls+re.findall(r"https?://[^\\s\"'<>]{8,400}",decoded)
     out=[]
     for lead in leads:
         lead=html.unescape(unquote(str(lead)))
@@ -202,7 +206,7 @@ def _nearby_proof(text,field,old,year):
 def _name(p):
     # Official publisher must be asserted by page metadata, not inferred
     # from the search result, bare domain, or the named policy's authority.
-    candidates=[p.publisher]
+    candidates=[p.publisher,p.page_title]
     # Many institutional sites put a named publisher after a title delimiter.
     candidates += re.split(r"[|｜]",p.page_title)[1:]
     for c in candidates:
@@ -279,8 +283,12 @@ def discover(events, search=None, fetch=None):
             try:urls=search(search_query(changed["field"],changed["old_amount"]))[:SEARCH_LIMIT]
             except Exception:
                 health["errors"]+=1;continue
+            if len(health.setdefault("search_leads",[]))<6:
+                health["search_leads"].append({"field":changed["field"],"found":len(urls),
+                                                "urls":urls[:15]})
             for url in urls:
                 if not trusted(url) or url in seen:continue
+                if urlparse(url).path in ("","/"):continue
                 seen.add(url)
                 try:
                     page=parse_page(fetch(url))

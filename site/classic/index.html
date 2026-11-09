@@ -92,7 +92,7 @@ aside .empty{padding:38px 22px}
 <div class="layout" id="layout">
 <section class="panel listPanel" aria-label="최신 정책 변경 목록">
 <div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">게시글 등록일이 아니라 공식 공포·확정일 기준 최신순</div>
-<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="standards">급여·지원기준</button></div>
+<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="actionable">기관별 검토 있음</button></div>
 <input class="search" id="q" aria-label="법령·정책 검색" placeholder="법령명·정책명·소관기관 검색"><div class="listCount" id="listCount"></div></div>
 <div class="list" id="lawList"><div class="empty">공식 변경내역을 불러오는 중입니다.</div></div>
 </section>
@@ -112,7 +112,7 @@ function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"re
 function sorted(events){return [...events].sort((a,b)=>(b.impact_priority||0)-(a.impact_priority||0)||(b.promulgated_at||b.change_date||"").localeCompare(a.promulgated_at||a.change_date||""))}
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
 let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",actionFilter="all";
-function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="standards"?Boolean(e.policy_profile):typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
+function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="actionable"?matchingActions(e).length>0:typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
 function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
 function eventRow(e){

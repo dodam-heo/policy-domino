@@ -13,12 +13,86 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 0,
-    "institutional_evidence_sources": 8,
+    "institutional_evidence_sources": 9,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 8,
+      "pages_checked": 9,
       "matched": 0,
-      "errors": 1
+      "errors": 2,
+      "rejected_pages": [
+        {
+          "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
+          "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://dl.nanet.go.kr/",
+          "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
+          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
+          "publisher": "한국토지주택공사",
+          "identified_publisher": true,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.bokjiro.go.kr/ssis-tbu/index.do",
+          "title": "복지로",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
+          "title": "복지로",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.bokjiro.go.kr/",
+          "title": "",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.mohw.go.kr/",
+          "title": "힘이 되는 평생 친구, 보건복지부",
+          "publisher": "보건복지부 대표홈페이지",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10708010100",
+          "title": "긴급복지지원 < 기초생활보장 < 복지 < 정책 : 힘이 되는 평생 친구, 보건복지부",
+          "publisher": "보건복지부 대표홈페이지",
+          "identified_publisher": false,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.easylaw.go.kr/CSP/Main.laf",
+          "title": "찾기쉬운 생활법령정보",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        }
+      ]
     },
     "error": "기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
   },

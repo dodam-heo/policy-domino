@@ -7,6 +7,7 @@ on:
       - 'v4/classic_bridge.py'
       - 'site/classic/index.html'
       - 'site/index.html'
+      - 'site/impact/index.html'
   workflow_dispatch:
 permissions:
   contents: write
@@ -33,7 +34,7 @@ jobs:
         run: |
           git config user.name policy-domino-classic-bot
           git config user.email policy-domino-classic-bot@users.noreply.github.com
-          git add site/classic/data.json
+          git add site/classic/data.json site/impact/index.html
           if ! git diff --cached --quiet; then
             git commit -m 'data(classic): rebuild source-backed institution actions [skip ci]'
             for attempt in 1 2 3; do
@@ -62,6 +63,7 @@ jobs:
           test -s site/v4/index.html
           test -s site/classic/index.html
           test -s site/classic/data.json
+          test -s site/impact/index.html
           node site/classic/test_ui.cjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

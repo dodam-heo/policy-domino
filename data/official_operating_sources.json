@@ -1,0 +1,62 @@
+{
+  "schema": "official-operating-source-index-v1",
+  "description": "공식 기관 운영자료의 원천 기준 사용 근거. 법령명·기관명 키워드만으로 연결하지 않으며 기준명, 기준 연도와 실제 기준값 또는 산식의 일치를 확인.",
+  "sources": [
+    {
+      "id": "kosaf-tuition-boundary-2026",
+      "agency": "한국장학재단",
+      "program": "국가장학금·학자금 지원구간",
+      "operation": "학자금 지원구간 경곗값 산정·구간 판정",
+      "target_location": "학자금 지원구간 경곗값표·지원구간 판정·통지 안내",
+      "source_variable": "중위소득",
+      "source_field": "중위소득:4인",
+      "baseline_value": "6494738",
+      "baseline_year": 2026,
+      "source_url": "https://www.kosaf.go.kr/ko/tuition.do?naviParam=JH%2C01%2C01%2C03&pg=tuition04_09_07",
+      "source_heading": "학자금 지원구간 경곗값 확인",
+      "source_excerpt": "학자금 지원구간 경곗값 = 기준중위소득 x 구간별 기준중위소득 대비 비율",
+      "application_basis": "기준 중위소득을 이용한 학자금 지원구간 경곗값 산식과 2026년 4인 가구 기준액 일치",
+      "additional_source_url": "https://www.kosaf.go.kr/ko/tuition.do?pg=tuition04_09_01&type=tuition",
+      "additional_source_excerpt": "2027년 1학기부터 학자금 지원구간이 현행 10구간에서 5구간(가~마)으로 변경 예정",
+      "operational_review": "2027년 기준 중위소득 변경과 학자금 지원구간 5구간 개편을 함께 반영할 필요가 있는지 경곗값표·구간 판정·신청 안내 및 통지 기준을 확인",
+      "caution": "2027년 학자금 경곗값과 시스템 수정 완료 여부는 별도 확인해야 하며, 2026년 구간별 비율을 그대로 2027년 구간에 대입하지 않음",
+      "status": "official_operation_dependency_not_implementation"
+    },
+    {
+      "id": "lh-integrated-public-rental-2026",
+      "agency": "한국토지주택공사(LH)",
+      "program": "통합공공임대",
+      "operation": "입주자 월평균소득 기준·우선공급/일반공급 자격심사",
+      "target_location": "통합공공임대 우선공급(중위소득 100%)·일반공급(중위소득 150%) 소득기준표",
+      "source_variable": "중위소득",
+      "source_field": "중위소득:4인",
+      "baseline_value": "6494738",
+      "baseline_year": 2026,
+      "source_url": "https://apply.lh.or.kr/lhapply/cm/cntnts/cntntsView.do?cntntsId=1201331&mi=1201583",
+      "source_heading": "통합공공임대 임대가이드 · 소득",
+      "source_excerpt": "우선공급 : 월평균소득이 기준 중위소득 100% 이하 / 일반공급 : 월평균소득이 기준 중위소득 150% 이하. 2026년 4인 가구 기준 중위소득(100%): 6,494,738원",
+      "application_basis": "공식 LH 통합공공임대 안내의 중위소득 적용 비율과 2026년 4인 가구 금액 일치",
+      "operational_review": "2027년 기준 중위소득을 적용해야 하는 모집공고·우선/일반공급 소득심사 기준표·자격판정 로직의 반영 필요 여부를 확인",
+      "caution": "LH의 2027년 모집공고별 적용 기준과 실제 내부 시스템 반영 여부는 확인되지 않음. 2026년 안내표를 그대로 2027년 확정 모집기준으로 간주하지 않음",
+      "status": "official_operation_dependency_not_implementation"
+    },
+    {
+      "id": "kosaf-education-benefit-voucher-2026",
+      "agency": "한국장학재단",
+      "program": "교육급여 바우처",
+      "operation": "교육급여 바우처 신청·지급수단 배정 및 수급대상 연계",
+      "target_location": "교육급여 바우처 대상자 안내·신청·배정 연계",
+      "source_variable": "교육급여",
+      "source_field": "교육급여:4인",
+      "baseline_value": "3247369",
+      "baseline_year": 2026,
+      "source_url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0&m=020",
+      "source_heading": "교육부 2026년 교육급여 신청 절차",
+      "source_excerpt": "급여 결정·통지는 학교(교육청), 교육활동지원비 이용권(바우처) 신청 접수·배정은 한국장학재단",
+      "application_basis": "교육급여 수급자 판정 결과를 재단의 바우처 신청·배정 업무에 연계하는 공식 기관 역할 확인",
+      "operational_review": "2027년 교육급여 선정 기준이 적용되는 수급자 정보 연계와 바우처 신청·안내·배정 업무에 변경 검토가 필요한지 확인",
+      "caution": "한국장학재단이 교육급여 수급 자격 자체를 결정하는 것으로 표시하지 않음. 교육급여 기준액과 교육활동지원비 바우처 지급액은 서로 다르며, 실제 바우처 시스템 변경 여부는 미확인",
+      "status": "official_operation_dependency_not_implementation"
+    }
+  ]
+}

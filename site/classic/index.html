@@ -171,9 +171,9 @@ $("impactFilterHint").hidden=filter!=="high-impact";
 const events=filteredEvents();
 const allEvents=DATA.events||[];
  const structural=allEvents.filter(organizationOnly).length;
- $("listCount").textContent=(filter==="focus"?"조직·정원 중심 개정 "+structural+"건은 별도 분리 · ":"")+
- "화면 수집 "+allEvents.length+"건 중 "+events.length+"건 표시 · 공식 원천 목록 "+Number(DATA.health?.catalogue_candidates||0).toLocaleString("ko-KR")+"건 / 본문 검증 대기 "+Number(DATA.health?.pending_details||0).toLocaleString("ko-KR")+"건";
- $("listCount").title="주요 제도 변경은 편의상 구분한 목록입니다. 실제 정책 영향도·집행 여부를 확정하는 분류가 아닙니다.";
+ $("listCount").textContent=(filter==="focus"?"신구 비교 완료 "+events.length+"건만 우선 표시 · ":"")+
+ "현재 "+events.length+"건 / 수집 결과 "+(DATA.events||[]).length+"건 · 공식 원천 총 "+Number(DATA.health?.catalogue_candidates||0).toLocaleString("ko-KR")+"건 · 상세 비교 확인 "+(DATA.events||[]).filter(comparedChange).length+"건";
+ $("listCount").title="공식 목록 수집, 신구 조문 비교, 기관별 파급 검증은 서로 다른 단계입니다.";
 $("lawList").innerHTML=events.length?events.slice(0,visibleLimit).map(eventRow).join("")+(events.length>visibleLimit?'<button type="button" class="refresh" id="loadMore" style="display:block;margin:14px auto">목록 더 보기 ('+Math.min(visibleLimit,events.length)+' / '+events.length+')</button>':''):showEmpty("본문 비교가 확인된 변경이 없습니다.","전체 수집 목록이나 분석 대기를 선택하면 확인 중인 변경도 조회할 수 있습니다.");
 $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.dataset.event));
 const more=$("loadMore");if(more)more.onclick=()=>{visibleLimit+=100;displayList()};

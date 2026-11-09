@@ -232,9 +232,14 @@ def group_event(g):
     }
     actions=[]
     for doc in valid_docs:
-        for p in choose_excerpts(doc)[:3]:
-            a=new_action(doc,p,v4id)
-            if a:actions.append(a)
+        excerpts=choose_excerpts(doc)
+        # Keep every source-verified excerpt available for the reader, not
+        # only the three samples from which immediate direct action cards arise.
+        # Legal text and institution instructions are separate evidence layers.
+        for index,p in enumerate(excerpts[:12]):
+            if index<3:
+                a=new_action(doc,p,v4id)
+                if a:actions.append(a)
             e["article_differences"].append({
                 "article":(doc.get("title","")+" · " if count>1 else "")+p.get("article",""),
                 "type":p.get("kind","개정"),

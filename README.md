@@ -33,3 +33,6 @@ GitHub Actions에 법제처 공식 API 인증값 LAW_OC를 Secret 또는 Variabl
 - https://open.law.go.kr/LSO/openApi/guideResult.do
 - https://open.law.go.kr/LSO/openApi/guideResult.do?htmlName=admrulListGuide
 - https://open.law.go.kr/LSO/openApi/guideResult.do?htmlName=admrulInfoGuide
+
+## 기관·사업 영향 (무등록 자동 탐색)
+기관명, 사업명, 담당 역할, 기존 기준금액, 공식 링크, 조치 내용을 사전에 등록하지 않습니다. 이전 수동 목록(data/institution_policy_sources.json)은 삭제했습니다. 공식 변경된 수치·항목을 기준으로 공공 웹 검색을 실행하고, 결과 링크의 실제 공식 사이트 HTML을 별도 열람해 같은 기준·종전 금액·연도·운영 맥락과 게시기관을 검증할 때만 '검토 대상'으로 표시합니다. 검색 결과 제목 또는 유사 키워드만으로는 연결하지 않습니다. 공식자료 접속 실패나 증거 부족은 0건으로 남깁니다. 이 탐색은 전수 발견을 보증하지 않으며 기관 내부 반영도 미확인입니다. 지난 방식의 기관별 조치는 결과에 다시 사용하지 않습니다.

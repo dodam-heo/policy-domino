@@ -6,11 +6,12 @@ on:
       - '.github/workflows/classic-publish.yml'
       - 'v4/classic_bridge.py'
       - 'v4/institutional_impact.py'
-      - 'data/institution_policy_sources.json'
       - 'site/classic/index.html'
       - 'site/index.html'
       - 'site/impact/index.html'
   workflow_dispatch:
+  schedule:
+    - cron: '47 0,6,12,18 * * *'
 permissions:
   contents: write
   pages: write
@@ -28,9 +29,9 @@ jobs:
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - name: Validate cross-institutional evidence links across policies and programs
+      - name: Validate unseeded official institution discovery across policies
         run: python -m unittest -v v4.test_institutional_impact
-      - name: Generate agency tasks from official V4 evidence and labelled original V2 source
+      - name: Discover affected institutions from official public sources and rebuild grounded view
         run: python -m v4.classic_bridge
       - name: Verify complete V2 interface, source provenance and no invented compliance status
         run: node site/classic/test_ui.cjs

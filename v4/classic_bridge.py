@@ -283,50 +283,30 @@ def legacy_action_ok(a,e):
     return False
 
 def legacy_fallback(source,verified_titles):
-    extra_events=[];extra_actions=[]
-    group_actions=collections.defaultdict(list)
-    for a in source.get("actions",[]):
-        group_actions[a.get("event_id","")].append(a)
+    """Retain previously cited legal changes, never inherited agency instructions."""
+    extra_events=[]
     for e in source.get("events",[]):
         if not legacy_event_ok(e) or e.get("title") in verified_titles:continue
-        valid=[a for a in group_actions.get(e["event_id"],[]) if legacy_action_ok(a,e)]
+        # A source event's official directive must contain both amounts itself.
+        # Prior hand-registered operational roles are not evidence.
+        valid=[]
+        for diff in e.get("article_differences",[]):
+            directive=clean(diff.get("directive"))
+            before=clean(diff.get("before"))
+            after=clean(diff.get("after"))
+            if (directive and before and after and before!=after and
+                before in directive and after in directive and
+                str(diff.get("source_url","")).startswith(TRUSTED)):
+                valid.append(diff)
         if not valid:continue
         event=dict(e)
+        event["article_differences"]=valid
         event["event_id"]="legacy:"+e["event_id"]
-        event["comparison_status"]="이전 V2 공식 개정문 확인 · 최신 버전 재검증 대기"
+        event["comparison_status"]="이전 공식 개정문 확인 · 최신 재검증 대기"
         event["presentation_source"]="legacy_official_directive_awaiting_recheck"
-        # Source-backed numeric standard announcements are visible alongside
-        # organization changes; user experience must not be dominated by
-        # a simultaneous restructuring decree simply because it has 8 files.
-        event["impact_priority"]=10+len(valid)*2+(
-            30 if e.get("law_type")=="고시·행정규칙" else 0)
-        event["amendment_reason"]=clean(event.get("amendment_reason")) or (
-            "이전 V2가 확보한 공식 개정문. 최신 법령 개정 여부와 기관별 "
-            "반영 상태는 아직 재검증되지 않았습니다."
-        )
+        event["impact_priority"]=12
         extra_events.append(event)
-        for old in valid:
-            a=dict(old)
-            a["id"]="legacy:"+a["id"]
-            a["event_id"]=event["event_id"]
-            a["status"]="최신 근거 재확인 필요"
-            a["confidence"]="이전 V2 공식 개정 지시문 대조"
-            a["evidence_scope"]="legacy_official_directive_awaiting_recheck"
-            a["verification_note"]=(
-                "개정 지시문에 전후 값이 명시된 것은 확인했으나, "
-                "최신 법령·하위규정과 실제 기관별 반영 상태는 검증 전입니다."
-            )
-            # Old system generated overly prescriptive compliance commands.
-            # Rephrase as review task, while preserving EXACT actual changed
-            # old/new values and field names sourced from the directive.
-            a["required_change"]=(
-                f"{a.get('agency','해당 기관')}의 {a.get('service','관련 업무')} "
-                "운영 기준에서 해당 공식 개정 지시문에 명시된 변경값이 반영될 "
-                "필요가 있는지 확인"
-            )
-            a["basis"]=source_url(a.get("basis"))
-            extra_actions.append(a)
-    return extra_events,unique_actions(extra_actions)
+    return extra_events, []
 
 def assess_impact_scope(event, actions):
     """Scope of documented institutional/regulatory consequences, not a
@@ -383,8 +363,9 @@ def build(v4,legacy):
     old_events,old_actions=legacy_fallback(legacy,source_titles)
     events+=old_events;actions+=old_actions
     actions=unique_actions(actions)
-    actions,institutional_actions=institutional_impact.connect(
-        events,actions,institutional_impact.load_sources())
+    # Discover institutions from live public pages, never an enrolled source list.
+    findings,discovery_health=institutional_impact.discover(events)
+    actions,institutional_actions=institutional_impact.connect(events,actions,findings)
     event_ids={e["event_id"] for e in events}
     actions=[a for a in actions if a.get("event_id") in event_ids]
     # Rank policy events first by VERIFIED operational work and cross-institution
@@ -410,7 +391,8 @@ def build(v4,legacy):
             "pending_details":checked.get("pending_details",0),
             "legacy_recheck":len(old_events),
             "institutional_dependency_actions":len(institutional_actions),
-            "institutional_evidence_sources":len(institutional_impact.load_sources()),
+            "institutional_evidence_sources":discovery_health["pages_checked"],
+            "institutional_discovery":discovery_health,
             "error":"기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
         },
         "events":events,

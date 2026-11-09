@@ -1,110 +1,63 @@
-import json
 import unittest
-from pathlib import Path
-from v4 import institutional_impact as impact
-from v4 import classic_bridge as bridge
+from v4 import institutional_impact as d
 
-def event(name, field, before, after, year="2027-01-01"):
-    return {"event_id":name,"title":name,
-        "presentation_source":"legacy_official_directive_awaiting_recheck",
-        "effective_date":year,
-        "article_differences":[{"article":field,
-            "before":before,"after":after,
-            "source_url":"https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=123"}]}
+def change(field="가상소득기준",before="1,234,567원",after="1,345,678원"):
+    return {"event_id":"event-x","title":"새 기준 개정","effective_date":"2027-01-01",
+        "presentation_source":"v4_official_source","impact_priority":1,
+        "article_differences":[{"article":field,"before":before,"after":after,
+          "source_url":"https://www.law.go.kr/rule123"}]}
 
-def entry():
-    return {"id":"synthetic-public-agency","institution":"테스트시설공단",
-      "program":"특정 신규자격 수급심사","institution_role":"운영기관",
-      "criterion":{"name":"가상선정기준","aliases":["가상선정기준"],"match":"changed_field"},
-      "relation":"numeric_formula","source_year":2026,"followup_year":2027,
-      "work":"수급심사기준 점검","target_location":"가상사업 신규자격·선정 심사표",
-      "review_action":"공식 기준액이 변경된 2027년도 운영기준을 검토",
-      "scope_note":"실제 기관 내부시스템 수정 여부 미확인",
-      "source":{"url":"https://sample.go.kr/info","publisher":"가상 기관",
-                "source_heading":"공식 지원사업 안내","evidence":"가상선정기준에 따라 해당 운영업무 수행"}}
+PAGE='''<html><head><title>가상지원사업 신청 및 자격 안내 | 가상문화재단</title>
+<meta property="og:site_name" content="가상문화재단"></head>
+<body><h1>가상지원사업 신청 및 자격 안내</h1>
+<p>2026년 신청 대상자 선정시 가상소득기준 1,234,567원 기준표를 적용하여 자격을 심사합니다.</p></body></html>'''
 
-class GeneralizableAgencyCascade(unittest.TestCase):
-    def test_all_registries_loaded_with_primary_sources(self):
-        data=impact.load_sources()
-        self.assertGreaterEqual(len(data),3)
-        self.assertTrue(all(x["source"]["publisher"] and x["source"]["evidence"] for x in data))
-
-    def test_unrelated_synthetic_institution_works_without_law_name_whitelist(self):
-        e=event("무관한 새 정책", "가상선정기준:4인", "100원","120원")
-        actions,added=impact.connect([e],[],[entry()])
+class Discovery(unittest.TestCase):
+    def test_new_agency_from_discovered_page_not_registry(self):
+        e=change()
+        hits,health=d.discover([e],search=lambda q:["https://open.example.go.kr/a"],
+          fetch=lambda url:PAGE)
+        self.assertEqual(health["matched"],1)
+        self.assertEqual(hits[0]["agency"],"가상문화재단")
+        self.assertIn("가상지원사업",hits[0]["service"])
+        self.assertEqual(hits[0]["discovery_method"],"live_public_search_and_page_validation")
+        self.assertFalse(hits[0]["institutional_implementation_verified"])
+        actions,added=d.connect([e],[],hits)
         self.assertEqual(len(added),1)
-        self.assertEqual(added[0]["agency"],"테스트시설공단")
-        self.assertEqual(added[0]["target_location"],"가상사업 신규자격·선정 심사표")
-        self.assertEqual(added[0]["changes"][0]["meaning"],"원천 정책의 변경값(기관별 적용 금액 미확정)")
-        self.assertFalse(added[0]["institutional_implementation_verified"])
 
-    def test_matching_title_but_unchanged_standard_is_not_impact(self):
-        e=event("가상선정기준을 언급하는 제목", "다른 지원액:4인", "100원","120원")
-        self.assertIsNone(impact.candidate_action(e,entry()))
+    def test_registry_style_manual_item_never_enters(self):
+        e=change();manual={"event_id":"event-x","agency":"가상재단","work":"가상 업무",
+                               "article":"가상소득기준","agency_basis":"https://sample.go.kr"}
+        self.assertEqual(d.connect([e],[],[manual]),([],[]))
 
-    def test_prose_only_and_unknown_source_never_become_new_duties(self):
-        e=event("가상정책", "가상선정기준:4인", "업무의 정의를 변경한다","업무를 정하는 방식이 변경된다")
-        self.assertIsNone(impact.candidate_action(e,entry()))
-        e["article_differences"][0]["source_url"]="https://random.example.com/policy"
-        e["article_differences"][0]["before"]="100원"
-        e["article_differences"][0]["after"]="200원"
-        self.assertIsNone(impact.candidate_action(e,entry()))
-
-    def test_numeric_formula_requires_source_baseline_match(self):
-        sample=entry()
-        sample["criterion"]["reference_old_amount"]="100"
-        self.assertIsNotNone(impact.candidate_action(
-            event("가상정책","가상선정기준:4인","100원","120원"),sample))
-        self.assertIsNone(impact.candidate_action(
-            event("가상정책","가상선정기준:4인","90원","120원"),sample))
-        self.assertIsNone(impact.candidate_action(
-            event("가상정책","다른지원:4인","100원","120원"),sample))
-
-    def test_actual_official_income_source_not_linked_to_other_old_amount(self):
-        agency=next(x for x in impact.load_sources()
-                    if x["institution"]=="한국장학재단" and
-                       x["relation"]=="numeric_formula")
-        other=event("비슷한 이름의 무관한 공고","중위소득:4인",
-                    "6,000,000원","7,000,000원")
-        self.assertIsNone(impact.candidate_action(other,agency))
-
-    def test_effective_year_must_match_new_program_year(self):
-        e=event("2026 업무", "가상선정기준:4인","100원","200원","2026-01-01")
-        self.assertIsNone(impact.candidate_action(e,entry()))
-
-    def test_source_does_not_claim_installed_app_or_updated_internal_system(self):
-        e=event("가상정책", "가상선정기준:4인", "100원","200원")
-        a=impact.candidate_action(e,entry())
-        self.assertFalse(a["is_direct_legal_amendment"])
-        self.assertFalse(a["institutional_implementation_verified"])
-        self.assertIn("별도",a["verification_note"] if "별도" in a["verification_note"] else "별도")
-
-    def test_real_cross_institutional_sources_link_official_2027_income_change(self):
-        original=json.loads((impact.ROOT/"site"/"classic"/"legacy_source.json").read_text("utf8"))
-        chosen=next(e for e in original["events"]
-                    if any(d.get("article")=="중위소득:4인" for d in e["article_differences"]))
-        e={**chosen,"event_id":"legacy:"+chosen["event_id"],
-           "presentation_source":"legacy_official_directive_awaiting_recheck"}
-        actions,added=impact.connect([e],[],impact.load_sources())
-        self.assertEqual(len(added),2)
-        self.assertTrue(any("학자금" in x["work"] and x["agency"]=="한국장학재단" for x in added))
-        self.assertTrue(any("통합공공임대" in x["work"] and "LH" in x["agency"] for x in added))
-        self.assertTrue(all(x["changes"][0]["before"]=="6,494,738원" and
-                            x["changes"][0]["after"]=="6,929,885원" for x in added))
-        self.assertTrue(all(x["agency_basis"].startswith("https://") for x in added))
-
-    def test_real_lh_housing_survey_is_role_limited_not_new_eligibility_decider(self):
-        data=json.loads((impact.ROOT/"site"/"classic"/"legacy_source.json").read_text("utf8"))
-        e=next(x for x in data["events"]
-               if any(d.get("article")=="주거급여:4인" for d in x["article_differences"]))
-        source={**e,"event_id":"legacy:"+e["event_id"],
-                "presentation_source":"legacy_official_directive_awaiting_recheck"}
-        actions,added=impact.connect([source],[],impact.load_sources())
-        self.assertEqual(len(added),1)
-        self.assertIn("LH",added[0]["agency"])
-        self.assertIn("주택조사",added[0]["work"])
-        self.assertIn("지급",added[0]["verification_note"])
-        self.assertIn("3,117,474원",added[0]["changes"][0]["before"])
-        self.assertIn("3,326,345원",added[0]["changes"][0]["after"])
+    def test_source_and_old_amount_required(self):
+        e=change()
+        for p in (PAGE.replace("1,234,567","1,333,333"),
+                  PAGE.replace("가상소득기준","전혀다른기준"),
+                  PAGE.replace("2026","2025"),
+                  PAGE.replace("가상문화재단","가상장난감회사"),
+                  PAGE.replace("가상지원사업 신청 및 자격 안내","정부 정책 보도자료")):
+            found,_=d.discover([e],search=lambda q:["https://example.go.kr/a"],
+                                fetch=lambda u:p)
+            self.assertEqual(found,[])
+    def test_search_lead_alone_not_evidence(self):
+        e=change()
+        found,health=d.discover([e],search=lambda q:["https://example.go.kr/a"],
+                                fetch=lambda u: (_ for _ in ()).throw(OSError("blocked")))
+        self.assertFalse(found)
+        self.assertEqual(health["errors"],1)
+    def test_non_official_result_not_accepted(self):
+        found,_=d.discover([change()],search=lambda q:["https://commercial.com/a"],
+                           fetch=lambda u:PAGE)
+        self.assertEqual(found,[])
+    def test_no_exact_amount_no_fallback_to_keywords(self):
+        self.assertFalse(d.changed_fields(change(before="설명 문구",after="수정된 설명")))
+        self.assertFalse(d.changed_fields(change(field="가상정책",before="100원",after="200원")))
+    def test_no_live_search_on_non_numeric_event(self):
+        calls=[]
+        found,health=d.discover([change(before="서식 변경",after="양식 개편")],
+                    search=lambda q:calls.append(q),fetch=lambda u:PAGE)
+        self.assertFalse(found);self.assertFalse(calls)
+        self.assertEqual(health["attempted"],0)
 
 if __name__=="__main__":unittest.main()

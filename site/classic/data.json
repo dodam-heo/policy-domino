@@ -474,7 +474,16 @@
         }
       ],
       "presentation_source": "v4_official_source",
-      "impact_priority": 222
+      "impact_priority": 222,
+      "impact_level": "high",
+      "impact_reason": "기관별 검토 17곳 · 실제 변경 조항 적용 규정 6건",
+      "impact_scope": {
+        "institutions": 17,
+        "proven_dependent_rules": 6,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "id": "policy:welfare",
@@ -534,7 +543,16 @@
       "policy_profile": "welfare",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 60
+      "impact_priority": 60,
+      "impact_level": "high",
+      "impact_reason": "변경된 업무의 직접 검토 기관 2곳",
+      "impact_scope": {
+        "institutions": 2,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "pub:242d1ebb0f36bf1add",
@@ -687,7 +705,16 @@
         }
       ],
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 55
+      "impact_priority": 55,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "policy:education",
@@ -727,7 +754,16 @@
       "policy_profile": "education",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 50
+      "impact_priority": 50,
+      "impact_level": "high",
+      "impact_reason": "변경된 업무의 직접 검토 기관 2곳",
+      "impact_scope": {
+        "institutions": 2,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "policy:housing",
@@ -767,7 +803,16 @@
       "policy_profile": "housing",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 50
+      "impact_priority": 50,
+      "impact_level": "high",
+      "impact_reason": "변경된 업무의 직접 검토 기관 2곳",
+      "impact_scope": {
+        "institutions": 2,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "pub:33cb7f17e226735e52",
@@ -860,7 +905,16 @@
         }
       ],
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 30
+      "impact_priority": 30,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "pub:cece8f68f73754c13b",
@@ -941,7 +995,16 @@
         }
       ],
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 25
+      "impact_priority": 25,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "pub:7a33c2d60eb3cf5fdf",
@@ -1010,7 +1073,16 @@
         }
       ],
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 20
+      "impact_priority": 20,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "id": "pub:2cf6d696be9c371ce2",
@@ -1079,7 +1151,16 @@
         }
       ],
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 17
+      "impact_priority": 17,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": true,
+        "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
     },
     {
       "event_id": "v4:law|재정경제부령|2026-11-06|00053",
@@ -1123,7 +1204,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|기후에너지환경부령|2026-11-06|00068",
@@ -1167,7 +1257,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|국가보훈부령|2026-11-06|00078",
@@ -1211,7 +1310,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|중소벤처기업부령|2026-11-06|00117",
@@ -1255,7 +1363,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|총리령|2026-11-06|02169",
@@ -1299,7 +1416,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|총리령|2026-11-06|02166",
@@ -1343,7 +1469,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|총리령|2026-11-06|02168",
@@ -1387,7 +1522,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|통일부령|2026-11-06|00144",
@@ -1431,7 +1575,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|국방부령|2026-11-06|01236",
@@ -1475,7 +1628,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00179",
@@ -1519,7 +1681,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|총리령|2026-09-29|02157",
@@ -1563,7 +1734,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-09-29|36713",
@@ -1607,7 +1787,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 13
+      "impact_priority": 13,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|교육부령|2026-11-06|00396",
@@ -1643,7 +1832,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10
+      "impact_priority": 10,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|해양수산부령|2026-11-06|00836",
@@ -1679,7 +1877,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10
+      "impact_priority": 10,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|국방부령|2026-11-06|01237",
@@ -1715,7 +1922,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10
+      "impact_priority": 10,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|국방부령|2026-11-06|01238",
@@ -1751,7 +1967,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10
+      "impact_priority": 10,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|농림축산식품부령|2026-11-06|00799",
@@ -1787,7 +2012,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10
+      "impact_priority": 10,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|총리령|2026-11-06|02167",
@@ -1831,7 +2065,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10
+      "impact_priority": 10,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|고용노동부령|2026-11-06|00487",
@@ -1867,7 +2110,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 7
+      "impact_priority": 7,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|행정안전부령|2026-11-06|00655",
@@ -1895,7 +2147,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 7
+      "impact_priority": 7,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
@@ -1914,7 +2175,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 4
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|보건복지부령|2026-11-06|01207",
@@ -1933,7 +2203,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 4
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|산업통상부령|2026-11-06|00026",
@@ -1952,7 +2231,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 4
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|국토교통부령|2026-11-09|01636",
@@ -1996,7 +2284,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|산업통상부령|2026-11-09|00027",
@@ -2040,7 +2337,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|성평등가족부령|2026-11-09|00019",
@@ -2076,7 +2382,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:ed27f530102998ff9c74",
@@ -2120,7 +2435,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:b3595f41af7fbadba4a1",
@@ -2139,7 +2463,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:5dfd82628f0655693e82",
@@ -2158,7 +2491,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:ae21d9a1ee7a331fde11",
@@ -2177,7 +2519,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:80fdc8ea5342cdb9b5d7",
@@ -2196,7 +2547,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:2b998ebf9c8362de7cc7",
@@ -2215,7 +2575,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:98fd230e5a83ccd99298",
@@ -2234,7 +2603,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:89e4871cdea2fc265e6f",
@@ -2253,7 +2631,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|헌법재판소규칙|2026-10-27|00498",
@@ -2272,7 +2659,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-10-27|36791",
@@ -2291,7 +2687,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-10-20|36764",
@@ -2310,7 +2715,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|법률|2026-10-20|22103",
@@ -2329,7 +2743,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     },
     {
       "event_id": "v4:law|법률|2026-02-19|21377",
@@ -2373,7 +2796,16 @@
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
-      "impact_priority": 0
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
     }
   ],
   "actions": [

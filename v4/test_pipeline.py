@@ -84,6 +84,31 @@ class PublicationSafeguards(unittest.TestCase):
         d=pipeline.build(state,dt.date(2026,11,8))
         self.assertEqual(d["links"]["confirmed_provision_or_formula_use"],0)
 
+    def test_retry_unverified_source_without_pretending_comparison(self):
+        rec=r(25,discovery="official_date_index")
+        key=events.key(rec)
+        state={"catalog":{key:rec},
+               "inspected":{key:{"verification":"official_record_only"}},
+               "attempts":{key:1},"last_attempt_date":{key:"2026-11-08"}}
+        self.assertEqual(len(pipeline.pick_work(state,dt.date(2026,11,9),1)),1)
+        state["last_attempt_date"][key]="2026-11-09"
+        self.assertEqual(pipeline.pick_work(state,dt.date(2026,11,9),1),[])
+        state["last_attempt_date"][key]="2026-11-08"
+        state["attempts"][key]=3
+        self.assertEqual(pipeline.pick_work(state,dt.date(2026,11,9),1),[])
+
+    def test_detail_queue_includes_all_official_document_types(self):
+        recs=[r(n,kind="law",date="2026-11-09",
+               discovery="official_law_change_history") for n in range(1,22)]
+        recs += [r(30,kind="admrul",date="2026-11-09",
+                    discovery="official_date_index"),
+                 r(31,kind="ordin",date="2026-11-09",
+                    discovery="official_date_index")]
+        state={"catalog":{events.key(x):x for x in recs},"inspected":{}}
+        items=pipeline.pick_work(state,dt.date(2026,11,9),8)
+        self.assertEqual({x["source"] for x in items},
+                         {"law","admrul","ordin"})
+
     def test_official_history_beats_old_legacy_metadata_on_work_queue(self):
         current=dt.date(2026,11,8)
         xs=[r(1,date="2025-01-01",nextyear=False,discovery="legacy_index_only_not_verified"),

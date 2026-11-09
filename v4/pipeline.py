@@ -106,18 +106,33 @@ def pick_work(state,today,limit):
     catalog=state.get("catalog",{})
     processed=state.get("inspected",{})
     attempts=state.get("attempts",{})
-    waiting=[x for k,x in catalog.items() if k not in processed]
+    retryable={"official_record_only","detail_failed","partial_official_text"}
+    last_attempt=state.get("last_attempt_date",{})
+    waiting=[
+        x for k,x in catalog.items()
+        if k not in processed or
+        (processed[k].get("verification") in retryable and attempts.get(k,0)<3
+         and last_attempt.get(k)!=today.isoformat())
+    ]
     ranked=sorted(waiting,key=lambda x:(
         candidate_rank(x,today)[0]-(attempts.get(events.key(x),0)*16),
-        candidate_rank(x,today)[1],
-        candidate_rank(x,today)[2]),reverse=True)
-    # Keep most urgent events AND fresh official changes; do not starve newer
-    # updates behind a years-old backlog.
-    urgent=ranked[:max(1,(limit*2)//3)]
-    seen={events.key(x) for x in urgent}
-    fresh=sorted([x for x in waiting if events.key(x) not in seen],
-                 key=lambda x:x.get("published_at",""),reverse=True)
-    return (urgent+fresh[:max(0,limit-len(urgent))])[:limit]
+        candidate_rank(x,today)[1],candidate_rank(x,today)[2]),reverse=True)
+    # Reserve capacity for EACH official document kind. This is not a
+    # hardcoded list of agencies, policies, or examples.
+    quota=max(1,limit//4)
+    selected=[];seen=set()
+    for source in SUPPORTED:
+        for item in (x for x in ranked if x["source"]==source):
+            if sum(x["source"]==source for x in selected)>=quota:break
+            k=events.key(item)
+            if k not in seen and len(selected)<limit:
+                selected.append(item);seen.add(k)
+    for item in ranked:
+        k=events.key(item)
+        if len(selected)>=limit:break
+        if k not in seen:
+            selected.append(item);seen.add(k)
+    return selected
 
 def read_document(record):
     if record["source"] in ("law","admrul"):
@@ -307,6 +322,8 @@ def run():
     workload=pick_work(state,today,int(os.getenv("PD_V4_DETAILS","14")))
     for record in workload:
         k=events.key(record)
+        state.setdefault("attempts",{})[k]=state.setdefault("attempts",{}).get(k,0)+1
+        state.setdefault("last_attempt_date",{})[k]=today.isoformat()
         try:
             item,contents=prepare_document_record(record,state)
             state["inspected"][k]=item
@@ -319,7 +336,6 @@ def run():
         except Exception as exc:
             # Failure is explicitly recorded and retried; never converted to
             # a fabricated "changed policy" or deleted from the queue.
-            state["attempts"][k]=state["attempts"].get(k,0)+1
             state.setdefault("errors",[]).append({"id":k,
                 "error":type(exc).__name__+": "+str(exc)[:140]})
     # Official delegation endpoint is an independent source of clause-scoped

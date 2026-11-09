@@ -99,8 +99,18 @@ def relevant_change(event,entry):
         return None
     for change in changed_fields(event):
         key=compact(change["field"])
-        if any(compact(x) in key for x in entry["criterion"]["aliases"]):
-            return change
+        if not any(compact(x) in key for x in entry["criterion"]["aliases"]):
+            continue
+        # A published annual operating table must refer to the same source
+        # value that ACTUALLY changed. Similar field names alone are not proof
+        # that this institution's rule needs a changed threshold.
+        baseline=entry["criterion"].get("reference_old_amount")
+        if baseline and entry["relation"]=="numeric_formula":
+            old=re.sub(r"[^0-9]","",change["before"])
+            reference=re.sub(r"[^0-9]","",str(baseline))
+            if not reference or old!=reference:
+                continue
+        return change
     return None
 
 def candidate_action(event,entry):

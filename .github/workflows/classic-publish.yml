@@ -53,17 +53,36 @@ jobs:
         run: |
           git config user.name policy-domino-classic-bot
           git config user.email policy-domino-classic-bot@users.noreply.github.com
-          git add site/v4/data.json site/classic/data.json site/impact/index.html
-          if ! git diff --cached --quiet; then
-            git commit -m 'data(classic): rebuild source-backed institution actions [skip ci]'
-            for attempt in 1 2 3; do
-              git fetch origin main
-              git rebase FETCH_HEAD
-              if git push origin HEAD:main; then break; fi
-              if [ "$attempt" = "3" ]; then exit 1; fi
-              sleep 2
-            done
-          fi
+          # Source-refresh jobs may update the same JSON concurrently.
+          # Never rebase two generated JSON versions: refetch authoritative
+          # HEAD and regenerate from its newest source state on each retry.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard FETCH_HEAD
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          from v4.pipeline import recent_uninspected
+          p=Path('site/v4/data.json')
+          d=json.loads(p.read_text('utf8'))
+          state=json.loads(Path('data/v4_state.json').read_text('utf8'))
+          d['pending_index']=recent_uninspected(state)
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2),'utf8')
+          PY
+            python -m v4.classic_bridge
+            node site/classic/test_ui.cjs
+            git add site/v4/data.json site/classic/data.json site/impact/index.html
+            if git diff --cached --quiet; then
+              echo "Already up to date"
+              break
+            fi
+            git commit -m 'data(classic): rebuild official index and evidence-first actions [skip ci]'
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" = "3" ]; then exit 1; fi
+            sleep 3
+          done
   deploy:
     needs: build
     if: success()

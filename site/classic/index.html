@@ -92,7 +92,8 @@ aside .empty{padding:38px 22px}
 <div class="layout" id="layout">
 <section class="panel listPanel" aria-label="최신 정책 변경 목록">
 <div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">게시글 등록일이 아니라 공식 공포·확정일 기준 최신순</div>
-<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="actionable">기관별 검토 있음</button></div>
+<div class="filterbar"><button class="chip active" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip" data-law="high-impact" title="변경 조문을 직접 검토하는 기관이 2곳 이상이거나 실제 변경 조항을 적용하는 다른 규정이 2개 이상 확인된 사건">영향도 큼</button></div>
+<div id="impactFilterHint" style="font-size:11px;color:#667c8a;margin:3px 0 8px" hidden>영향 범위 기준: 직접 검토 기관 2곳 이상 또는 변경 조항을 적용하는 다른 규정 2건 이상. 사회적 중요도 등급은 아니며, 이전 V2 근거는 최신 재검증 대기로 구분합니다.</div>
 <input class="search" id="q" aria-label="법령·정책 검색" placeholder="법령명·정책명·소관기관 검색"><div class="listCount" id="listCount"></div></div>
 <div class="list" id="lawList"><div class="empty">공식 변경내역을 불러오는 중입니다.</div></div>
 </section>
@@ -112,14 +113,15 @@ function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"re
 function sorted(events){return [...events].sort((a,b)=>(b.impact_priority||0)-(a.impact_priority||0)||(b.promulgated_at||b.change_date||"").localeCompare(a.promulgated_at||a.change_date||""))}
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
 let DATA={events:[],actions:[],health:{}},selectedId=null,filter="all",actionFilter="all";
-function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="actionable"?matchingActions(e).length>0:typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
+function filteredEvents(){const q=$("q").value.trim().toLowerCase();return sorted(DATA.events||[]).filter(e=>(filter==="all"||(filter==="high-impact"?e.impact_level==="high":typeOf(e)===filter))&&(!q||[e.title,e.ministry,e.law_type,e.revision].some(v=>String(v||"").toLowerCase().includes(q))))}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
 function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
 function eventRow(e){
 const num=matchingActions(e).length,hasDiff=e.article_differences?.length||0,chosen=selectedId===e.event_id;
-return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot"><span class="mini">'+(e.presentation_source==="v4_official_source"?"공식 신구 본문":"이전 V2 근거 · 재검증 대기")+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
+return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(e.impact_level==="high"?'<span class="mini" title="'+esc(e.impact_reason||"")+'">영향도 큼'+(e.impact_scope?.provisional?' · 재검증 대기':'')+'</span>':'')+'<span class="mini">'+(e.presentation_source==="v4_official_source"?"공식 신구 본문":"이전 V2 근거 · 재검증 대기")+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
 }
 function displayList(){
+$("impactFilterHint").hidden=filter!=="high-impact";
 const events=filteredEvents();
 $("listCount").textContent=(DATA.events||[]).length+"개 공식 변경 사건 중 "+events.length+"개 표시";
 $("lawList").innerHTML=events.length?events.map(eventRow).join(""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
@@ -176,6 +178,7 @@ function detailHTML(e){
  const countNot=all.filter(a=>a.status==="미조치 확인").length;
  const institutions=new Set(all.map(a=>a.agency).filter(Boolean)).size;
  const dependent=(e.downstream_changes||[]).length;
+ const impactSummary=e.impact_level==="high"?'<div class="smallNote" style="margin:8px 0">영향 범위: '+esc(e.impact_reason||"")+' · '+esc(e.impact_scope?.note||"")+'</div>':'';
  const provenance=e.presentation_source==="v4_official_source"?"현재 공식 신구 본문 검증":"이전 V2 공식 개정 지시문 · 최신 재검증 대기";
  const header='<div class="detailHeader"><button type="button" class="back" id="back">← 신규·개정 목록으로</button><div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"법령·제도")+'</div><h2 class="detailTitle">'+esc(e.title||"변경 사건")+'</h2><div class="detailMeta"><span>'+esc(provenance)+'</span><span class="separator">·</span><span>'+esc(e.ministry||"소관기관 확인 필요")+'</span><span class="separator">·</span><span>공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div></div>';
  const overview='<section class="changeOverview"><div class="overviewLabel">이번 변경에서 무엇을 확인했나</div><div class="overviewText">'+esc(overviewText(e,all))+'</div><div class="overviewFoot"><span>검토 대상 기관 '+institutions+'곳</span><span>근거 있는 검토 항목 '+all.length+'건</span>'+(dependent?'<span>연결된 하위규정 '+dependent+'건</span>':'')+'</div></section>';
@@ -183,7 +186,7 @@ function detailHTML(e){
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","최신 근거 재확인 필요"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
  const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
+ return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }
 function renderDetail(){
 const e=getEvent();

@@ -134,6 +134,30 @@ class CollectorTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError,"첨부파일 참조만 확인"):
                 m.read_clauses(self.entry())
 
+    def test_ordinance_detail_uses_official_master_serial(self):
+        rec=self.entry(source="ordin")
+        root=ET.fromstring("""<LawService><조항>
+          <조문번호>7</조문번호><조문여부>Y</조문여부>
+          <조제목>지원기준</조제목><조내용>신청자에게 25만원을 지급한다.</조내용>
+          </조항></LawService>""")
+        with patch.object(m,"request",return_value=root) as req:
+            clauses=m.read_clauses(rec)
+        self.assertEqual(req.call_args.kwargs["MST"],"100")
+        self.assertNotIn("ID",req.call_args.kwargs)
+        self.assertIn("제7조",clauses)
+        self.assertIn("25만원",clauses["제7조"])
+
+    def test_ordinance_section_heading_not_treated_as_modified_article(self):
+        rec=self.entry(source="ordin")
+        root=ET.fromstring("""<LawService><조항>
+          <조문번호>1</조문번호><조문여부>N</조문여부>
+          <조제목>제1장 총칙</조제목><조내용>제1장 총칙</조내용>
+          </조항><조항><조문번호>2</조문번호>
+          <조내용>의무 신청 기준을 정한다.</조내용></조항></LawService>""")
+        with patch.object(m,"request",return_value=root):
+            clauses=m.read_clauses(rec)
+        self.assertEqual(list(clauses),["제2조"])
+
     def test_flat_text_split_preserves_unheaded_annex_and_unrelated_citation(self):
         root=ET.fromstring("""<AdmRulService><조문내용>「가상급여규정」 제15조를
           준용한다. 선정 금액은 20만원이다.</조문내용></AdmRulService>""")

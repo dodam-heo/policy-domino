@@ -237,7 +237,10 @@ def read_clauses(record):
     A title, attachment URL or document metadata never counts as a legal
     paragraph. Errors remain retryable when the official body is unavailable.
     """
-    opts={"MST":record["serial"]} if record["source"]=="law" else {"ID":record["serial"]}
+    # The official ordinance API identifies a serial revision by MST,
+    # unlike administrative rules, which use ID for their serial.
+    opts=({"MST":record["serial"]} if record["source"] in ("law","ordin")
+          else {"ID":record["serial"]})
     root=request(record["source"],endpoint="lawService.do",**opts)
     articles={}
     attachments={}
@@ -259,6 +262,20 @@ def read_clauses(record):
                 if value and (not parts or parts[-1]!=value):parts.append(value)
             body=_legal_text(" ".join(parts))
             if body:articles[label]=_safe_excerpt(body)
+        # Ordinance XML uses <조내용> with <조문번호> and <조제목>,
+        # rather than the statute's nested <조문단위>/<조문내용>.
+        if record["source"]=="ordin":
+            direct={_official_tag(x):x for x in unit}
+            if "조문번호" in direct and "조내용" in direct:
+                number=_text_element(direct["조문번호"])
+                is_article=_text_element(direct["조문여부"]) if "조문여부" in direct else ""
+                body=_text_element(direct["조내용"])
+                if number and body and is_article.upper()!="N":
+                    title=_text_element(direct["조제목"]) if "조제목" in direct else ""
+                    label="제"+number+"조"
+                    if title and not body.lstrip().startswith(label+"("):
+                        body=label+"("+title+") "+body
+                    articles[label]=_safe_excerpt(body)
         # Official documents may wrap annexes in a generic <별표> container
         # with individual <별표단위> children.
         if tag=="별표" and any(_official_tag(x)=="별표단위" for x in unit):
@@ -291,9 +308,9 @@ def read_clauses(record):
         flat=[]
         for node in root.iter():
             tag=_official_tag(node)
-            if tag in ("조문내용","본문","본문내용","행정규칙내용","행정규칙본문"):
-                if tag in ("조문내용","본문","본문내용") and any(
-                    _official_tag(child) in ("조문내용","본문","본문내용")
+            if tag in ("조문내용","조내용","본문","본문내용","행정규칙내용","행정규칙본문"):
+                if tag in ("조문내용","조내용","본문","본문내용") and any(
+                    _official_tag(child) in ("조문내용","조내용","본문","본문내용")
                     for child in node if child is not node):
                     continue
                 if tag=="조문내용" and any(

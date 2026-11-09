@@ -11,6 +11,9 @@ for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용
   assert.ok(html.includes(label),"Missing actionable content: "+label);
 }
 const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));
+assert.ok(html.includes('data-law="actionable">기관별 검토 있음</button>'));
+assert.ok(!html.includes('data-law="standards"'));
+assert.ok(html.includes('filter==="actionable"?matchingActions(e).length>0'));
 assert.equal(d.schema,"policy-domino-next-v1");
 assert.ok(d.events.length>0&&d.actions.length>0,"Must display actual sourced work");
 const events=new Map(d.events.map(e=>[e.event_id,e]));

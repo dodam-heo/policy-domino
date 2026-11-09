@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/v4-progress.yml'
+      - 'v2/collector.py'
+      - 'v2/test_collector.py'
       - 'v4/pipeline.py'
       - 'v4/events.py'
       - 'v4/collect_index.py'
@@ -34,7 +36,8 @@ jobs:
         with: {node-version: '22'}
       - name: V4 collection, causality, article/paragraph and viewer tests
         run: |
-          python -m compileall -q v4
+          python -m compileall -q v2 v4
+          python -m unittest discover -s v2 -p 'test_*.py' -v
           python -m unittest discover -s v4 -p 'test_*.py' -v
           node site/v4/test_ui.cjs
       - name: Incremental official source collection and evidence analysis

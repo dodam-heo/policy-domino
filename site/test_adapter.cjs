@@ -141,13 +141,21 @@ assert.equal(old.actions[0].changes[0].after,'10일');
 assert.equal(old.events[0].event_id,'x');
 assert.throws(()=>normalizePolicyData({schema:'unknown'}),/지원되지 않는/);
 
-const html=fs.readFileSync('site/index.html','utf8');
-assert.match(html,/impact_adapter\.js/);
+// The public landing page redirects to the maintained evidence-led dashboard.
+// Compatibility tests must follow the actual route, not assert a retired
+// inline UI or a category filter that was intentionally removed.
+const landing=fs.readFileSync('site/index.html','utf8');
+assert.match(landing,/\.\/impact\//);
+const html=fs.readFileSync('site/impact/index.html','utf8');
 const inline=html.match(/<script>\s*([\s\S]*?)<\/script>/);
-assert.ok(inline,'main agency-first script must be present');
-new vm.Script(inline[1],{filename:'site/index.html'});
-for(const section of ['agencyNavigator','groupedActions','어디를 바꾸나?','무엇이 달라지나?',
-  '필요한 조치','data-law="standards"','normalizePolicyData(d)','<details class="legalDetails"']){
-  assert.ok(html.includes(section),'Missing important original feature: '+section);
+assert.ok(inline,'maintained agency-impact screen must have its renderer');
+new vm.Script(inline[1],{filename:'site/impact/index.html'});
+for(const section of ['agencyNavigator','groupedActions','기관별 변경 검토사항',
+                      'data-jump','data-doc-jump','data-law="all"']){
+  assert.ok(html.includes(section),'Missing maintained agency UI: '+section);
 }
-console.log('PASS: original agency-first controls, v2/v3 data models, before/after, verified/candidate agencies');
+for(const removed of ['data-law="lifecycle"','data-law="organization"',
+                      'data-law="verified"']){
+  assert.ok(!html.includes(removed),'Retired filter returned: '+removed);
+}
+console.log('PASS: V2/V3 adapter evidence gates and maintained /impact/ UI route');

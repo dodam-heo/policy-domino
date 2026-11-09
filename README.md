@@ -16,13 +16,15 @@
 - 관계: 문서가 다른 법령·고시를 명시적으로 인용한 경우 공식 인용 관계로 기록한다. 공식 본문 검색 결과는 관계 후보이며 의존관계의 증명은 아니다.
 - 조치: 변경된 조문의 업무 유형과 주체를 근거로 영향 검토 필요 항목을 표시하며 실제 시스템 반영 여부는 확인하지 않는다.
 
-## 공개 및 자동화
-- 백엔드: v2/collector.py (Python 표준 라이브러리)
-- 자동 테스트: v2/test_collector.py
-- 인터페이스: site/index.html
-- 데이터: site/data.json (policy-domino-v2)
-- 상태: data/v2_state.json (대기열, 기록, 스냅샷, 과거 이력 스캔)
-- 워크플로: .github/workflows/auto-watch.yml (매시 21분, main 코드 변경 시)
+## 현재 운영 경로 · 데이터 계약
+- 공개 진입점: `site/index.html` → `site/impact/index.html`. 실제 영향 검토 UI 코드는 `site/classic/index.html`에 있으며 배포 시 `site/impact/index.html`로 생성됩니다.
+- 주요 원천 수집·신구 비교: `v4/pipeline.py` → `v4/events.py` → `v2/collector.py:read_clauses`. 결과는 `site/v4/data.json` (`policy-domino-v4`)이고 누적 수집 상태는 `data/v4_state.json`입니다.
+- 기관별 검토 화면의 데이터 변환: `v4/classic_bridge.py` → `site/classic/data.json`. V4 변경 근거와 기관별 실제 운영자료 검증을 별도 단계로 처리합니다.
+- 과거 V2/V3 호환 수집: `v3/runner.py`, `site/data.json` (`policy-domino-impact-v3`), `data/v2_state.json` 및 `data/v3_state.json`. 이 데이터는 새 영향 검토 화면의 직접 원천이 아니라 기존 호환 경로로 유지합니다.
+- 정기 실행: `.github/workflows/v4-progress.yml`(V4 소스 분석), `.github/workflows/classic-publish.yml`(기관별 화면 생성), `.github/workflows/auto-watch.yml`(V2/V3 호환 수집). 작업별 GitHub Pages 게시가 충돌하지 않도록 동시 배포를 제한합니다.
+- 자동 검증: `v2/test_collector.py`, `v4/test_engine.py`, `v4/test_pipeline.py`, `site/classic/test_ui.cjs`. 확인되지 않은 기관별 조치와 미완료 내부 반영 여부는 확정으로 표시하지 않습니다.
+
+이 구조는 아직 단일 파이프라인으로 통합 완료된 상태가 아닙니다. 이전 버전을 무작정 삭제하지 않고, 검증 가능한 단계로 호환 경로를 이전해야 합니다.
 
 GitHub Actions에 법제처 공식 API 인증값 LAW_OC를 Secret 또는 Variable로 등록해야 한다. 인증값을 공개 코드에 기록하지 않는다.
 

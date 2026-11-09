@@ -15,17 +15,18 @@
     "pending_details": 9358,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 1,
-    "institutional_evidence_sources": 22,
+    "institutional_evidence_sources": 21,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 22,
+      "pages_checked": 21,
       "matched": 1,
       "errors": 12,
       "search_leads": [
         {
           "query": "\"교육급여\" \"3,247,369\"",
-          "found": 2,
+          "found": 3,
           "urls": [
+            "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
             "https://dl.nanet.go.kr/detail/REFD0001120584",
             "https://dl.nanet.go.kr/storage/pictab/REFD/0001/1205/REFD0001120584/REFD0001120584.jpg"
           ]
@@ -83,13 +84,12 @@
         },
         {
           "query": "\"중위소득\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 5,
+          "found": 4,
           "urls": [
             "https://www.mohw.go.kr/menu.es?mid=a10708010300",
             "https://www.bokjiro.go.kr",
             "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do",
-            "https://awoo.or.kr/issues/median-income-calculation-guide/",
-            "https://www.mohw.go.kr/board.es?mid=a10503010100"
+            "https://awoo.or.kr/issues/median-income-calculation-guide/"
           ]
         },
         {
@@ -103,14 +103,19 @@
         },
         {
           "query": "\"생계급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 2,
-          "urls": [
-            "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001132",
-            "https://www.mohw.go.kr/menu.es?mid=a10708010300"
-          ]
+          "found": 0,
+          "urls": []
         }
       ],
       "rejected_pages": [
+        {
+          "url": "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
+          "title": "교육급여(맞춤형 급여) < 교육지원 < 저소득주민 < 생애주기별복지 < 분야별정보 < 포털사이트Insert title here만족도",
+          "publisher": "",
+          "identified_publisher": true,
+          "identified_program": true,
+          "baseline_proof": false
+        },
         {
           "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
@@ -195,14 +200,6 @@
           "url": "https://www.lh.or.kr/index.es?sid=a1",
           "title": "한국토지주택공사",
           "publisher": "한국토지주택공사",
-          "identified_publisher": true,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=2762",
-          "title": "지표서비스 | e-나라지표",
-          "publisher": "",
           "identified_publisher": true,
           "identified_program": false,
           "baseline_proof": false

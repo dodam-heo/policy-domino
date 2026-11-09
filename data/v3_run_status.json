@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-09T19:22:52.125437+00:00",
+  "completed_at": "2026-11-09T20:15:18.713040+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 79,
-        "range": "2026-08-03~2026-08-17"
+        "listed": 73,
+        "range": "2026-07-20~2026-08-03"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -27,7 +27,7 @@
       },
       "law": {
         "status": "정상",
-        "listed": 179
+        "listed": 173
       },
       "admrul:최근": {
         "status": "정상",
@@ -36,8 +36,8 @@
       },
       "admrul:과거 이력": {
         "status": "정상",
-        "listed": 255,
-        "range": "2026-08-03~2026-08-17"
+        "listed": 400,
+        "range": "2026-07-20~2026-08-03"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -53,7 +53,7 @@
       },
       "admrul": {
         "status": "정상",
-        "listed": 673
+        "listed": 819
       }
     },
     "partial": true,
@@ -92,32 +92,37 @@
         "source": "admrul",
         "title": "(산림청) 자연재난 복구비용 산정기준",
         "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
+      },
+      {
+        "source": "admrul",
+        "title": "비행절차설계요령",
+        "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       }
     ],
-    "verified_compared": 17,
-    "not_compared": 0,
-    "candidate_relations": 62,
-    "confirmed_relations": 705,
-    "collect_at": "2026-11-09T19:15:48+00:00",
+    "verified_compared": 15,
+    "not_compared": 1,
+    "candidate_relations": 46,
+    "confirmed_relations": 755,
+    "collect_at": "2026-11-09T20:08:38+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 11165,
-    "newly_examined": 17,
+    "pending_details": 11150,
+    "newly_examined": 16,
     "events": 500,
-    "actions": 5601,
+    "actions": 5669,
     "status": "부분 수집"
   },
   "impact_health": {
     "events": 500,
-    "verified_documents": 481,
-    "substantive_policy_events": 334,
-    "direct_actor_actions": 218,
+    "verified_documents": 480,
+    "substantive_policy_events": 338,
+    "direct_actor_actions": 221,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 4,
     "cross_policy_links": {
-      "links": 337,
-      "explicit_standard_uses": 337,
+      "links": 358,
+      "explicit_standard_uses": 358,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },

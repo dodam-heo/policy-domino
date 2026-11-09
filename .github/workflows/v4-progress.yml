@@ -6,9 +6,13 @@ on:
     paths:
       - '.github/workflows/v4-progress.yml'
       - 'v4/pipeline.py'
-      - 'v4/classic_bridge.py'
+      - 'v4/events.py'
+      - 'v4/collect_index.py'
+      - 'v4/relationships.py'
+      - 'v4/official_links.py'
+      - 'v4/dependents.py'
       - 'v4/test_pipeline.py'
-      - 'site/classic/index.html'
+      - 'v3/semantic_diff.py'
   schedule:
     - cron: '5 */4 * * *'
 permissions:
@@ -17,7 +21,7 @@ permissions:
   id-token: write
 concurrency:
   group: policy-domino-v4
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   update:
     runs-on: ubuntu-latest

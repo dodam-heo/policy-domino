@@ -52,8 +52,8 @@ const actualChange={event_id:"v4:example",title:"가상 지원기준",promulgate
   article_differences:[{article:"제3조",before:"20만원",after:"30만원",
    source_url:"https://www.law.go.kr/법령/example2"}]};
 sandbox.__agencyHelpers.setCatalog([pendingOnly,actualChange]);
-assert.equal(sandbox.__agencyHelpers.filteredEvents().map(x=>x.event_id).join(","),"v4:example",
-  "Main view must exclude uninspected source-index records");
+assert.equal(sandbox.__agencyHelpers.filteredEvents().map(x=>x.event_id).sort().join(","),"pending:example,v4:example",
+  "Index-only changes must remain accessible in the primary change feed");
 assert.equal(sandbox.__agencyHelpers.comparedChange(pendingOnly),false);
 assert.equal(sandbox.__agencyHelpers.comparedChange(actualChange),true);
 const pendingHtml=sandbox.__agencyHelpers.detailHTML(pendingOnly);

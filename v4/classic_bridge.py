@@ -202,7 +202,8 @@ def official_document_index(docs):
         direct=owner(title)
         add(direct or ministry,("직제 규정에 명시된 기관" if direct else
                                "공포·개정 소관기관 (집행기관 미확인)"))
-        if kind in ("verified_changed_clauses","verified_annual_replacement"):
+        if kind in ("verified_changed_clauses","verified_partial_changed_clauses",
+                "verified_annual_replacement","verified_annual_replacement_partial"):
             for actor in doc.get("actor_duties",[]):
                 if (actor.get("status")!="official_duty_changed" or
                         actor.get("article") not in changed):

@@ -186,8 +186,8 @@ class VerifiedEvents(unittest.TestCase):
         prior=rec(100,serial="180",day="2026-10-02")
         large="별표 항목 " + "A"*12010
         def load(r):
-            return {"제3조":("기준금액 45만원" if r["serial"]=="190"
-                           else "기준금액 35만원"),
+            return {"제3조":("제3조(선정 기준) 신청자의 기준금액은 45만원으로 산정한다." if r["serial"]=="190"
+                           else "제3조(선정 기준) 신청자의 기준금액은 35만원으로 산정한다."),
                     "별표 1":large}
         result,_=event.inspect(current,[prior],load=load,history=lambda r,rr:prior)
         self.assertEqual(result["verification"],"verified_partial_changed_clauses")

@@ -106,7 +106,8 @@ def pick_work(state,today,limit):
     catalog=state.get("catalog",{})
     processed=state.get("inspected",{})
     attempts=state.get("attempts",{})
-    retryable={"official_record_only","detail_failed","partial_official_text"}
+    retryable={"official_record_only","detail_failed","partial_official_text",
+               "verified_partial_changed_clauses","verified_annual_replacement_partial"}
     last_attempt=state.get("last_attempt_date",{})
     waiting=[
         x for k,x in catalog.items()
@@ -221,6 +222,8 @@ def output_groups(state):
         # the complete, searchable Official Changes tab.
         if links or (g["source_count"]>1 and g["verified_count"]>0) or any(
             m["verification"] in ("verified_changed_clauses",
+                                   "verified_partial_changed_clauses",
+                                   "verified_annual_replacement_partial",
                                   "verified_annual_replacement",
                                   "verified_enactment","verified_repeal_notice")
             and (m.get("changed_articles") or m["lifecycle"] in ("enactment","repeal"))

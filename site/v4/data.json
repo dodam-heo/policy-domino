@@ -1,25 +1,25 @@
 {
   "schema": "policy-domino-v4",
-  "generated_at": "2026-11-08T18:21:59+00:00",
+  "generated_at": "2026-11-09T01:00:22+00:00",
   "status": "PARTIAL",
   "collection": {
-    "official_catalogue": 6952,
-    "fresh_official_index": 1236,
-    "legacy_index_pending_recheck": 5716,
-    "detailed_checked": 36,
-    "pending_details": 6916,
-    "pending_downstream_verification": 0,
-    "downstream_documents_checked": 0,
-    "windows_checked": 9,
+    "official_catalogue": 7411,
+    "fresh_official_index": 1810,
+    "legacy_index_pending_recheck": 5601,
+    "detailed_checked": 56,
+    "pending_details": 7355,
+    "pending_downstream_verification": 196,
+    "downstream_documents_checked": 12,
+    "windows_checked": 18,
     "incomplete_windows": 0,
     "recent_incomplete": [],
-    "backfill_cursor_days": 7,
+    "backfill_cursor_days": 14,
     "scope": "공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
     "whole_corpus_complete": false
   },
   "links": {
-    "confirmed_provision_or_formula_use": 2,
-    "title_or_wrong_article_only": 6,
+    "confirmed_provision_or_formula_use": 7,
+    "title_or_wrong_article_only": 12,
     "official_delegation_review_candidates": 0,
     "unverified_implementation": true
   },
@@ -29,12 +29,30 @@
       "date": "2026-11-06",
       "number": "36801",
       "official_common_promulgation": true,
-      "summary": "공식 동일 공포번호 변경 법령 8개",
-      "source_count": 8,
-      "verified_count": 8,
+      "summary": "공식 동일 공포번호 변경 법령 17개",
+      "source_count": 17,
+      "verified_count": 17,
       "agency_count": 0,
       "effective_at": "2026-11-06",
       "dependencies": [
+        {
+          "type": "cited_changed_provision",
+          "source_event": "d3f7e444c8247b193ae4",
+          "target_document": "56af08a0d5ac6fd9b546",
+          "source_article": "제27조의2",
+          "source_paragraph": "제2항",
+          "target_article": "제18조",
+          "reference": "국방부와 그 소속기관 직제",
+          "excerpt": "제18조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「국방부와 그 소속기관 직제」 제27조의2제2항 후단에 따라 전문직공무원을 두는 과 또는 이에 상당하는 하부조직은 다음 각 호와 같다. 1. 군인권개선추진단: 군인권총괄담당관, 성폭력예방대응담당관, 병영문화혁신담당관, 양성평등정책팀 2. 보건복지관: 복",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "국방부와 그 소속기관 직제",
+          "target_title": "국방부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "국방부",
+          "target_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
         {
           "type": "cited_changed_provision",
           "source_event": "a39dedb2ed7c9b03c1bd",
@@ -70,6 +88,78 @@
           "target_title": "통일부와 그 소속기관 직제 시행규칙",
           "target_ministry": "통일부",
           "target_url": "https://www.law.go.kr/법령/%ED%86%B5%EC%9D%BC%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "7023ae07a382ab6322a8",
+          "target_document": "edad662c1056121c9b72",
+          "source_article": "제28조의2",
+          "source_paragraph": "제2항",
+          "target_article": "제19조의2",
+          "reference": "인사혁신처와 그 소속기관 직제",
+          "excerpt": "제19조의2(전문직공무원 정원의 배정 및 운영에 대한 특례) 「인사혁신처와 그 소속기관 직제」 제28조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 인재정보기획관: 인재기획담당관, 인재정보담당관 2. 인재채용국: 인재정책과, 공개채용과, 경력채용과, 시험출제과, 5급공채팀",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "인사혁신처와 그 소속기관 직제",
+          "target_title": "인사혁신처와 그 소속기관 직제 시행규칙",
+          "target_ministry": "인사혁신처",
+          "target_url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "7023ae07a382ab6322a8",
+          "target_document": "21ac908f20a8e114916f",
+          "source_article": "제28조의2",
+          "source_paragraph": "제2항",
+          "target_article": "제19조의2",
+          "reference": "인사혁신처와 그 소속기관 직제",
+          "excerpt": "제19조의2(전문직공무원 정원의 배정 및 운영에 대한 특례) 「인사혁신처와 그 소속기관 직제」 제28조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 인재정보기획관: 인재기획담당관, 인재정보담당관 2. 인재채용국: 인재정책과, 공개채용과, 경력채용과, 시험출제과, 5급공채팀 3. 윤리",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "인사혁신처와 그 소속기관 직제",
+          "target_title": "인사혁신처와 그 소속기관 직제 시행규칙",
+          "target_ministry": "인사혁신처",
+          "target_url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "6d91f4fcebfca834e57b",
+          "target_document": "167519b53bcf389f259c",
+          "source_article": "제63조",
+          "source_paragraph": "제2항",
+          "target_article": "제54조",
+          "reference": "행정안전부와 그 소속기관 직제",
+          "excerpt": "제54조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「행정안전부와 그 소속기관 직제」 제63조제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 인공지능정부정책국: 인공지능정부정책과, 공공인공지능혁신과, 공공데이터정책과, 공공데이터분석관리과 및 인공지능정부협력과 2. 인공지능정부서비",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "행정안전부와 그 소속기관 직제",
+          "target_title": "행정안전부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "행정안전부",
+          "target_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "592b63b8bc72aaf9ba7c",
+          "target_document": "5401690b702e17ef1270",
+          "source_article": "제40조의2",
+          "source_paragraph": "제2항",
+          "target_article": "제25조",
+          "reference": "고용노동부와 그 소속기관 직제",
+          "excerpt": "제25조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「고용노동부와 그 소속기관 직제」 제40조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 노사협력정책관: 노사협력정책과, 노사관계법제과 및 노사관계지원과 2. 근로기준정책관: 근로기준정책과, 근로감독기획과 및 고용차별개선과 ",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "고용노동부와 그 소속기관 직제",
+          "target_title": "고용노동부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "고용노동부",
+          "target_url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
         }
       ],
       "official_review_candidates": [],
@@ -722,9 +812,961 @@
             "same_stable_id": true,
             "source": "법제처 공식 이전·현재 본문"
           }
+        },
+        {
+          "id": "58568cc72c288720edc5",
+          "title": "병무청과 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,병무청",
+          "url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0003",
+            "제28조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0003",
+              "before": "■ 병무청과 그 소속기관 직제 [별표 3] 병무청 공무원 정원표(제26조제1항 관련) 총계 296 정무직 계 1 청장(차관급) 1 별정직 계 3 7급 상당 이하 3 일반직 계 292 고위공무원단 5 3급 또는 4급 이하 285 전문경력관 2",
+              "after": "■ 병무청과 그 소속기관 직제 [별표 3] 병무청 공무원 정원표(제26조제1항 관련) 총계 296 정무직 계 1 청장(차관급) 1 별정직 계 3 7급 상당 이하 3 일반직 계 292 고위공무원단 5 3급 또는 4급 이하 275 전문직공무원 10 전문경력관 2",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "",
+              "after": "제28조의2(전문직공무원 정원의 배정 및 운영에 대한 특례)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "",
+              "after": "① 「전문직공무원 인사규정」 제2조제1항에 따른 전문직공무원(이하 \"전문직공무원\"이라 한다)에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제4조제2항제5호, 제4조의2제2항제5호, 제8조의2제1항, 제23조제1항 및 제24조제1항에도 불구하고 계급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)을 통합하여 정할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 직급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)은 국방부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "",
+              "after": "② 전문직공무원은 병역자원국 외에 배정할 수 없다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 정원을 두는 과 또는 이에 상당하는 하부조직은 국방부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "",
+              "after": "③ 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "288241",
+            "after_serial": "291701",
+            "before_title": "병무청과 그 소속기관 직제",
+            "after_title": "병무청과 그 소속기관 직제",
+            "before_published": "2026-07-21",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "64bfe252087f7d8fcd2d",
+          "title": "조달청과 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,조달청",
+          "url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "제22조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "제22조의2",
+              "before": "",
+              "after": "제22조의2(전문직공무원 정원의 배정 및 운영에 대한 특례)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제22조의2",
+              "before": "",
+              "after": "① 「전문직공무원 인사규정」 제2조제1항에 따른 전문직공무원(이하 \"전문직공무원\"이라 한다)에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제4조제2항제5호, 제4조의2제2항제5호, 제8조의2제1항, 제23조제1항 및 제24조제1항에도 불구하고 계급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)을 통합하여 정할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제22조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 직급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)은 재정경제부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제22조의2",
+              "before": "",
+              "after": "② 전문직공무원은 기획조정관 및 디지털공정조달국 외에 배정할 수 없다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제22조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 정원을 두는 과 또는 이에 상당하는 하부조직은 재정경제부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제22조의2",
+              "before": "",
+              "after": "③ 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "290279",
+            "after_serial": "291699",
+            "before_title": "조달청과 그 소속기관 직제",
+            "after_title": "조달청과 그 소속기관 직제",
+            "before_published": "2026-09-29",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "0976ed9fa6d17bbabc60",
+          "title": "지식재산처와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,지식재산처",
+          "url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0001",
+            "제37조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0001",
+              "before": "■ 지식재산처와 그 소속기관 직제 [별표 1] 지식재산처 공무원 정원표(제35조제1항 관련) 총계 1,629 정무직 계 1 처장 1 별정직 계 1 7급 상당 이하 1 일반직 계 1,627 고위공무원단 13 3급 또는 4급 이하 1,610 전문경력관 4",
+              "after": "■ 지식재산처와 그 소속기관 직제 [별표 1] 지식재산처 공무원 정원표(제35조제1항 관련) 총계 1,629 정무직 계 1 처장 1 별정직 계 1 7급 상당 이하 1 일반직 계 1,627 고위공무원단 13 3급 또는 4급 이하 1,505 전문직공무원 105 전문경력관 4",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제37조의2",
+              "before": "",
+              "after": "제37조의2(전문직공무원 정원의 배정 및 운영에 대한 특례)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제37조의2",
+              "before": "",
+              "after": "① 「전문직공무원 인사규정」 제2조제1항에 따른 전문직공무원(이하 \"전문직공무원\"이라 한다)에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제4조제2항제5호, 제4조의2제2항제5호, 제8조의2제1항, 제23조제1항 및 제24조제1항에도 불구하고 계급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)을 통합하여 정할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제37조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 직급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)은 총리령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제37조의2",
+              "before": "",
+              "after": "② 전문직공무원은 디지털융합심사국, 전기통신심사국, 화학생명심사국, 기계금속심사국 및 반도체심사추진단 외에 배정할 수 없다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제37조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 정원을 두는 과 또는 이에 상당하는 하부조직은 총리령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제37조의2",
+              "before": "",
+              "after": "③ 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "288235",
+            "after_serial": "291697",
+            "before_title": "지식재산처와 그 소속기관 직제",
+            "after_title": "지식재산처와 그 소속기관 직제",
+            "before_published": "2026-07-21",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "7f41d6855e39b480d080",
+          "title": "국가데이터처와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "국가데이터처,행정안전부",
+          "url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0002",
+            "제29조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0002",
+              "before": "■ 국가데이터처와 그 소속기관 직제 [별표 2] 국가데이터처 공무원 정원표(제27조제1항 관련) 총계 708 정무직 계 1 처장(차관급) 1 일반직 계 707 고위공무원단 11 3급 또는 4급 이하 695 전문경력관 1",
+              "after": "■ 국가데이터처와 그 소속기관 직제 [별표 2] 국가데이터처 공무원 정원표(제27조제1항 관련) 총계 708 정무직 계 1 처장(차관급) 1 일반직 계 707 고위공무원단 11 3급 또는 4급 이하 690 전문직공무원 5 전문경력관 1",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제29조의2",
+              "before": "",
+              "after": "제29조의2(전문직공무원 정원의 배정 및 운영에 대한 특례)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제29조의2",
+              "before": "",
+              "after": "① 「전문직공무원 인사규정」 제2조제1항에 따른 전문직공무원(이하 \"전문직공무원\"이라 한다)에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제4조제2항제5호, 제4조의2제2항제5호, 제8조의2제1항, 제23조제1항 및 제24조제1항에도 불구하고 계급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)을 통합하여 정할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제29조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 직급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)은 총리령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제29조의2",
+              "before": "",
+              "after": "② 전문직공무원은 통계서비스국, 국가데이터관리본부에 두는 국가데이터기획협력관 및 국가데이터허브정책관 외에 배정할 수 없다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제29조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 정원을 두는 과 또는 이에 상당하는 하부조직은 총리령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제29조의2",
+              "before": "",
+              "after": "③ 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "289087",
+            "after_serial": "291695",
+            "before_title": "국가데이터처와 그 소속기관 직제",
+            "after_title": "국가데이터처와 그 소속기관 직제",
+            "before_published": "2026-08-28",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "7023ae07a382ab6322a8",
+          "title": "인사혁신처와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,인사혁신처",
+          "url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0001",
+            "별표 0002",
+            "제28조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0001",
+              "before": "■ 인사혁신처와 그 소속기관 직제 [별표 1] 인사혁신처 공무원 정원표(제26조제1항 관련) 총계 421 정무직 계 1 처장(차관급) 1 일반직 계 420 고위공무원단 9 3급 또는 4급 이하 394 전문직공무원 10 전문경력관 7",
+              "after": "■ 인사혁신처와 그 소속기관 직제 [별표 1] 인사혁신처 공무원 정원표(제26조제1항 관련) 총계 421 정무직 계 1 처장(차관급) 1 일반직 계 420 고위공무원단 9 3급 또는 4급 이하 387 전문직공무원 17 전문경력관 7",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "별표 0002",
+              "before": "■ 인사혁신처와 그 소속기관 직제 [별표 2] 인사혁신처 소속기관 공무원 정원표(제27조제1항 관련) 총계 196 정무직 계 2 국가공무원인재개발원장(차관급) 1 소청심사위원장(차관급) 1 일반직 계 194 고위공무원단 5 고위공무원단에 속하는 임기제 4 3급 또는 4급 이하 163 전문경력관 17 임기제(교수요원) 5 비고: 임기제(교수요원) 정원 5명 중 1명은 기획예산처 소속 3급 또는 4급 일반직공무원으로, 1명은 법제처 소속 3급 또는 4급 일반직 공무원으로 각각 대체하여 보할 수 있다.",
+              "after": "■ 인사혁신처와 그 소속기관 직제 [별표 2] 인사혁신처 소속기관 공무원 정원표(제27조제1항 관련) 총계 196 정무직 계 2 국가공무원인재개발원장(차관급) 1 소청심사위원장(차관급) 1 일반직 계 194 고위공무원단 5 고위공무원단에 속하는 임기제 4 3급 또는 4급 이하 160 전문직공무원 3 전문경력관 17 임기제(교수요원) 5 비고: 임기제(교수요원) 정원 5명 중 1명은 기획예산처 소속 3급 또는 4급 일반직공무원으로, 1명은 법제처 소속 3급 또는 4급 일반직 공무원으로 각각 대체하여 보할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "② 제1항에 따른 전문직공무원은 인재정보기획관 및 인재채용국 외에 배정할 수 없다.",
+              "after": "② 제1항에 따른 전문직공무원은 인재정보기획관, 인재채용국, 윤리복무국 및 소청심사위원회 외에 배정할 수 없다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제28조의2",
+              "before": "③ 제1항 및 제2항에 따른 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다), 제29조의2 및 제31조를 적용하지 아니한다.",
+              "after": "③ 제1항 및 제2항에 따른 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 아니한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9D%B8%EC%82%AC%ED%98%81%EC%8B%A0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "290161",
+            "after_serial": "291653",
+            "before_title": "인사혁신처와 그 소속기관 직제",
+            "after_title": "인사혁신처와 그 소속기관 직제",
+            "before_published": "2026-09-29",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "6d91f4fcebfca834e57b",
+          "title": "행정안전부와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부",
+          "url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0001",
+            "제63조"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0001",
+              "before": "■ 행정안전부와 그 소속기관 직제 [별표 1] 행정안전부 공무원 정원표(제59조제1항 관련) 총계 1,714 정무직 계 3 장관 1 차관 1 재난안전관리본부장 1 별정직 계 7 고위공무원단 1 3급 상당 또는 4급 상당 이하 6 일반직 계 1,684 고위공무원단 38 고위공무원단에 속하는 임기제 1 3급 또는 4급 이하 1,613 전문직공무원 13 전문경력관 19 소방공무원 계 7 소방령이하 7 경찰공무원 계 13 경정 이하 13",
+              "after": "■ 행정안전부와 그 소속기관 직제 [별표 1] 행정안전부 공무원 정원표(제59조제1항 관련) 총계 1,714 정무직 계 3 장관 1 차관 1 재난안전관리본부장 1 별정직 계 7 고위공무원단 1 3급 상당 또는 4급 상당 이하 6 일반직 계 1,684 고위공무원단 38 고위공무원단에 속하는 임기제 1 3급 또는 4급 이하 1,600 전문직공무원 26 전문경력관 19 소방공무원 계 7 소방령이하 7 경찰공무원 계 13 경정 이하 13",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제63조",
+              "before": "② 제1항에 따른 전문직공무원은 중앙재난안전상황실, 안전예방정책실에 두는 재난안전정보통신국, 자연재난실에 두는 재난관리정책국ㆍ자연재난대응국, 사회재난실에 두는 사회재난대응국, 재난복구지원국, 국가재난안전교육원 및 국립과학수사연구원 외에 배정할 수 없다.",
+              "after": "② 제1항에 따른 전문직공무원은 인공지능정부실에 두는 인공지능정부정책국ㆍ인공지능정부서비스국ㆍ인공지능정부기반국, 중앙재난안전상황실, 안전예방정책실에 두는 재난안전정보통신국, 자연재난실에 두는 재난관리정책국ㆍ자연재난대응국, 사회재난실에 두는 사회재난대응국, 재난복구지원국, 국가재난안전교육원 및 국립과학수사연구원 외에 배정할 수 없다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제63조",
+              "before": "③ 제1항 및 제2항에 따른 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다), 제29조의2 및 제31조를 적용하지 아니한다.",
+              "after": "③ 제1항 및 제2항에 따른 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 아니한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "290271",
+            "after_serial": "291633",
+            "before_title": "행정안전부와 그 소속기관 직제",
+            "after_title": "행정안전부와 그 소속기관 직제",
+            "before_published": "2026-09-29",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "6005985c9de459bfbabc",
+          "title": "농림축산식품부와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,농림축산식품부",
+          "url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "제40조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "제40조의2",
+              "before": "",
+              "after": "제40조의2(전문직공무원 정원의 배정 및 운영에 대한 특례)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제40조의2",
+              "before": "",
+              "after": "① 「전문직공무원 인사규정」 제2조제1항에 따른 전문직공무원(이하 \"전문직공무원\"이라 한다)에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제4조제2항제5호, 제4조의2제2항제5호, 제8조의2제1항, 제23조제1항 및 제24조제1항에도 불구하고 계급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)을 통합하여 정할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제40조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 직급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)은 농림축산식품부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제40조의2",
+              "before": "",
+              "after": "② 전문직공무원은 기획조정실장 밑에 두는 국제농식품협력관과 동물복지정책국, 방역정책국 및 농림축산검역본부 외에 배정할 수 없다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제40조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 정원을 두는 과 또는 이에 상당하는 하부조직은 농림축산식품부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제40조의2",
+              "before": "",
+              "after": "③ 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "289067",
+            "after_serial": "291639",
+            "before_title": "농림축산식품부와 그 소속기관 직제",
+            "after_title": "농림축산식품부와 그 소속기관 직제",
+            "before_published": "2026-08-28",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "5fb91785de96c4f5e982",
+          "title": "문화체육관광부와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,문화체육관광부",
+          "url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0001",
+            "제72조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0001",
+              "before": "■ 문화체육관광부와 그 소속기관 직제 [별표 1] 문화체육관광부 공무원 정원표(제70조제1항 관련) 총계 760 정무직 계 3 장관 1 차관 2 별정직 계 4 고위공무원단 1 3급 상당 또는 4급 상당 이하 3 일반직 계 753 고위공무원단 25 고위공무원단에 속하는 임기제 1 3급 또는 4급 이하 668 전문경력관 59",
+              "after": "■ 문화체육관광부와 그 소속기관 직제 [별표 1] 문화체육관광부 공무원 정원표(제70조제1항 관련) 총계 760 정무직 계 3 장관 1 차관 2 별정직 계 4 고위공무원단 1 3급 상당 또는 4급 상당 이하 3 일반직 계 753 고위공무원단 25 고위공무원단에 속하는 임기제 1 3급 또는 4급 이하 652 전문직공무원 16 전문경력관 59",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제72조의2",
+              "before": "",
+              "after": "제72조의2(전문직공무원 정원의 배정 및 운영에 대한 특례)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제72조의2",
+              "before": "",
+              "after": "① 「전문직공무원 인사규정」 제2조제1항에 따른 전문직공무원(이하 \"전문직공무원\"이라 한다)에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제4조제2항제5호, 제4조의2제2항제5호, 제8조의2제1항, 제23조제1항 및 제24조제1항에도 불구하고 계급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)을 통합하여 정할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제72조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 직급별 정원(과 또는 이에 상당하는 하부조직 및 소속기관의 장에 보하는 공무원의 정원은 제외한다)은 문화체육관광부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제72조의2",
+              "before": "",
+              "after": "② 전문직공무원은 문화미디어산업실에 두는 콘텐츠산업정책관, 문화산업미디어정책관, 저작권정책관 및 국제문화정책관 외에 배정할 수 없다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제72조의2",
+              "before": "",
+              "after": "이 경우 전문직공무원의 정원을 두는 과 또는 이에 상당하는 하부조직은 문화체육관광부령으로 정한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제72조의2",
+              "before": "",
+              "after": "③ 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "289021",
+            "after_serial": "291637",
+            "before_title": "문화체육관광부와 그 소속기관 직제",
+            "after_title": "문화체육관광부와 그 소속기관 직제",
+            "before_published": "2026-08-28",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        },
+        {
+          "id": "592b63b8bc72aaf9ba7c",
+          "title": "고용노동부와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "행정안전부,고용노동부",
+          "url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "제40조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "제40조의2",
+              "before": "② 제1항에 따른 전문직공무원은 노동정책실에 두는 노사협력정책관, 근로기준정책관 및 중앙노동위원회 사무처 외에 배정할 수 없다.",
+              "after": "② 제1항에 따른 전문직공무원은 노동정책실에 두는 노사협력정책관, 근로기준정책관, 산업안전보건정책실에 두는 산업안전예방정책관, 산업보건보상정책관, 안전보건감독국, 지방고용노동관서 및 중앙노동위원회 사무처 외에 배정할 수 없다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            },
+            {
+              "article": "제40조의2",
+              "before": "③ 제1항 및 제2항에 따른 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다), 제29조의2 및 제31조를 적용하지 않는다.",
+              "after": "③ 제1항 및 제2항에 따른 전문직공무원 정원의 배정 및 운영에 대해서는 「행정기관의 조직과 정원에 관한 통칙」 제25조제1항, 제27조제2항ㆍ제3항(같은 조 제1항 본문에 따라 중앙행정기관의 공무원 정원을 소속기관에 배정하는 사항을 포함한다) 및 제29조의2를 적용하지 않는다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "289071",
+            "after_serial": "291647",
+            "before_title": "고용노동부와 그 소속기관 직제",
+            "after_title": "고용노동부와 그 소속기관 직제",
+            "before_published": "2026-08-28",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
         }
       ],
-      "importance": 76
+      "importance": 164
+    },
+    {
+      "id": "law|국토교통부령|2026-11-09|01636",
+      "date": "2026-11-09",
+      "number": "01636",
+      "official_common_promulgation": true,
+      "summary": "건설기계관리법 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-09",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "1146cceed36a8cbf6a34",
+          "title": "건설기계관리법 시행규칙",
+          "kind": "국토교통부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국토교통부",
+          "url": "https://www.law.go.kr/법령/%EA%B1%B4%EC%84%A4%EA%B8%B0%EA%B3%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-09",
+          "effective": "2026-11-09",
+          "changed_articles": [
+            "제10조의3",
+            "제95조"
+          ],
+          "excerpts": [
+            {
+              "article": "제10조의3",
+              "before": "",
+              "after": "① 법 제6조의2에 따른 압류등록은 부기로써 한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B1%B4%EC%84%A4%EA%B8%B0%EA%B3%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제10조의3",
+              "before": "",
+              "after": "② 시ㆍ도지사는 법 제6조의2에 따른 압류등록의 사유가 소멸하여 압류등록을 해제하는 경우에는 건설기계등록원부의 해당 순위번호를 부기등록번호란에 적고, 종전의 압류등록사항에 취소선을 긋는다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B1%B4%EC%84%A4%EA%B8%B0%EA%B3%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제95조",
+              "before": "1. 법 제3조에 따른 건설기계의 등록 2. 법 제5조에 따른 건설기계 등록사항의 변경신고 3. 법 제6조에 따른 건설기계 등록의 말소 4. 법 제8조에 따른 건설기계 등록의 표식 5. 법 제8조의2에 따른 건설기계 등록번호표 제작자 지정 6. 법 제11조에 따른 건설기계 등록번호 새김명령 7. 법 제13조에 따른 건설기계의 검사 8. 법 제17조에 따른 건설기계 구조 변경의 제원관리 9. 법 제18조에 따른 건설기계형식 승인의 제원관리 10. 법 제19조에 따른 건설기계의 확인검사 11. 법 제21조에 따른 건설기계사업의 등록 12. 법 제24조에 따른 건설기계사업자의 변경신고 13. 법 제26조에 따른 건설기계조종사면허의 발급 14. 법 제28조에 따른 건설기계조종사면허의 취소ㆍ정지 15. 법 제30조의2에 따른 건설기계조종사의 경력관리 16. 「자동차 등 특정동산 저당법」 제5조에 따른 저당권의 등록 17. 건설기계등록원부의 비치ㆍ관리 18. 건설기계등록원부 등본ㆍ초본의 열람 및 발급 19. 건설기계사업자에 대한 행정처분",
+              "after": "1. 법 제3조에 따른 건설기계의 등록 2. 법 제5조에 따른 건설기계 등록사항의 변경신고 3. 법 제6조에 따른 건설기계 등록의 말소 3의2. 법 제6조의2에 따른 건설기계의 압류등록 및 이 영 제10조의3에 따른 건설기계의 압류등록 해제 4. 법 제8조에 따른 건설기계 등록의 표식 5. 법 제8조의2에 따른 건설기계 등록번호표 제작자 지정 6. 법 제11조에 따른 건설기계 등록번호 새김명령 7. 법 제13조에 따른 건설기계의 검사 8. 법 제17조에 따른 건설기계 구조 변경의 제원관리 9. 법 제18조에 따른 건설기계형식 승인의 제원관리 10. 법 제19조에 따른 건설기계의 확인검사 11. 법 제21조에 따른 건설기계사업의 등록 12. 법 제24조에 따른 건설기계사업자의 변경신고 13. 법 제26조에 따른 건설기계조종사면허의 발급 14. 법 제28조에 따른 건설기계조종사면허의 취소ㆍ정지 15. 법 제30조의2에 따른 건설기계조종사의 경력관리 16. 「자동차 등 특정동산 저당법」 제5조에 따른 저당권의 등록 17. 건설기계등록원부의 비치ㆍ관리 18. 건설기계등록원부 등본ㆍ초본의 열람 및 발급 19. 건설기계사업자에 대한 행정처분",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B1%B4%EC%84%A4%EA%B8%B0%EA%B3%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제95조",
+              "before": "① 법 제39조의2제1항에 따라 국토교통부장관이 전산정보처리조직을 이용하여 처리할 수 있는 업무는 다음 각 호와 같다.",
+              "after": "① 법 제39조의2제1항에 따른 전산정보처리조직을 이용하여 처리할 수 있는 업무는 다음 각 호와 같다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B1%B4%EC%84%A4%EA%B8%B0%EA%B3%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "285023",
+            "after_serial": "291857",
+            "before_title": "건설기계관리법 시행규칙",
+            "after_title": "건설기계관리법 시행규칙",
+            "before_published": "2026-03-24",
+            "after_published": "2026-11-09",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|산업통상부령|2026-11-09|00027",
+      "date": "2026-11-09",
+      "number": "00027",
+      "official_common_promulgation": true,
+      "summary": "전기용품 및 생활용품 안전관리법 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-09",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "30016ed9e561994e0a84",
+          "title": "전기용품 및 생활용품 안전관리법 시행규칙",
+          "kind": "산업통상부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "산업통상부",
+          "url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-09",
+          "effective": "2026-11-09",
+          "changed_articles": [
+            "별표 0019",
+            "별표 0020",
+            "별표 0021",
+            "제52조의2",
+            "제61조"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0019",
+              "before": "■ 전기용품 및 생활용품 안전관리법 시행규칙 [별지 제19호서식] 공급자적합성확인신고 변경신고서 (공급자적합성확인신고 변경신고 확인증명서 겸용) ──────────┬─────────────┬─────────────────────── 접수번호 │접수일시 │처리기간 7일 ──────────┴─────────────┴─────────────────────── ──────┬────────────┬──────────────────────────── 신청인 │회사명 │사업자등록번호 ├────────────┼──────────────────────────── │대표자 │전자우편 ├────────────┼──────────────────────────── │주소 │전화번호/팩스번호 ──────┴────────────┴──────────────────────────── ──────┬───────────────────────────────────────── 변경내용 │파생모델등록[ ], 부품변경[ ], 회사명변경[ ], 주소변경[ ], 그 밖의변경[ ] ──────┼───────────────────────────────────────── 세부내용 │(필요시 별지 사용) ──────┴───────────────────────────────────────── 「전기용품 및 생활용품 안전관리법」 제23조제2항 후단 및 같은 법 시행규칙 제43조제1항에 따라 위와 같이 공급자적합성확인 신고사항의 변경을 신청합니다.",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0019",
+              "before": "년 월 일장 신청인 (서명 또는 인) 한국제품안전관리원장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ──────┬───────────────┬───────────────────────── 첨부서류 │ 변경 사실을 증명하는 서류 1부│수수료 │ │ │ │「전기용품 및 생활용품 안전관리법 시행령」 │ │제17조 및 별표 2에 따른 수수료 ──────┴───────────────┴───────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처 리 절 차 ──────────────────────────────────────────────── ┌──────┐ ┌────┐ ┌────┐ ┌────────┐ ┌────────────┐ │신청서 작성 │?│접 수 │?│확인 및 결재│?│확인증명서 작성 │?│확인증명서 발급 │ └──────┘ └────┘ └────┘ └────────┘ └────────────┘ 신청인 처리기관 처리기관 처리기관 (관리원) (관리원) (관리원) ──────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ──────────────────────────────────────────────── 발급번호 「전기용품 및 생활용품 안전관리법 시행규칙」 제43조제2항에 따라 위와 같이 공급자적합성확인 신고 변경신고 확인증명서를 발급합니다.",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0019",
+              "before": "년 월 일 ┏━━┓ 한국제품안전관리원장┃직인┃ ┗━━┛ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0019",
+              "before": "",
+              "after": "■ 전기용품 및 생활용품 안전관리법 시행규칙 [별지 제19호의3서식] 어린이보호포장 사용의 면제 확인서 ──────┬─────────────────────────────────────────── 신청인 │회사명 ├────┬────────────────────────────────────── │대표자 │전자우편 ├────┼────────────────────────────────────── │전화번호│팩스번호 ├────┴────────────────────────────────────── │주소 ──────┼─────────────────────────────────────────── 제조업자 │제조국명 ├─────────────────────────────────────────── │회사명 ──────┼────┬────────────────────────────────────── 면제 확인 │제품명 │모델명 대상제품 ├────┴────────────────────────────────────── │수량 ├─────────────────────────────────────────── │사용장소 ├─────────────────────────────────────────── │면제사유 ──────┴─────────────────────────────────────────── 「전기용품 및 생활용품 안전관리법」 제32조제1항 단서 및 같은 법 시행규칙 제52조의2제2항에 따라 위와 같이 어린이보호포장 사용의 면제 확인서를 발급합니다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0019",
+              "before": "",
+              "after": "년 월 일 ┏━━━━┓ 한국제품안전관리원┃장 직 인┃ ┗━━━━┛ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ────┬───────────────────────────────────────────── 비 고 │ 본 확인서에 기재된 수량에 한정하여 어린이보호포장 사용의 면제가 인정됩니다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0019",
+              "before": "",
+              "after": "────┴───────────────────────────────────────────── 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0020",
+              "before": "",
+              "after": "■ 전기용품 및 생활용품 안전관리법 시행규칙 [별지 제20호서식] 어린이보호포장신고서 (어린이보호포장신고 확인증명서 겸용) ──────────┬────────────────────┬─────────────────────────── 접수번호 │접수일시 │처리기간 7일 ──────────┴────────────────────┴─────────────────────────── ───────┬──────────────────────┬──────────────────────────── 신고인 │업체명 │사업자등록번호 ├──────────────────────┼──────────────────────────── │대표자 성명 │전화번호/팩스번호 ├──────────────────────┴──────────────────────────── │주소 ───────┴─────────────────────────────────────────────────── ───────┬──────────────────────┬──────────────────────────── 신고대상 │제품명 │모델명 ───────┴──────────────────────┴──────────────────────────── 「전기용품 및 생활용품 안전관리법」 제32조제2항 전단 및 같은 법 시행규칙 제53조제1항에 따라 어린이보호포장을 사용하였음을 신고합니다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0021",
+              "before": "년 월 일 ┏━━┓ 안전인증기관장┃직인┃ ┗━━┛ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+              "after": "년 월 일 ┏━━━━┓ 안전인증기관┃장 직 인┃ ┗━━━━┛ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0021",
+              "before": "년 월 일 신청인 (서명 또는 인) 안전인증기관장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ────────┬──────────────────────┬────────────────── 첨부서류 │변경 사실을 증명하는 서류 1부 │수수료 │ │ │ │「전기용품 및 생활용품 안전관리법 │ │시행령」제17조 및 별표 2에 따른 수 │ │수료 ────────┴──────────────────────┴────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처 리 절 차 ────────────────────────────────────────────────── ┌──────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌─────────┐ │신청서 작성 │?│접 수 │?│확인 및 결재 │?│확인증명서 작성│?│확인증명서 발급 │ └──────┘ └───────┘ └───────┘ └───────┘ └─────────┘ 신청인 처리기관 처리기관 처리기관 (안전인증기관) (안전인증기관) (안전인증기관) ────────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ────────────────────────────────────────────────── 신고확인번호 「전기용품 및 생활용품 안전관리법 시행규칙」 제54조제2항에 따라 위와 같이 어린이보호포장신고 변경신고 확인증명서를 발급합니다.",
+              "after": "년 월 일 신고인 (서명 또는 인) 안전인증기관장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ────────┬────────────────────┬──────────────────── 첨부서류 │변경 사실을 증명하는 서류 1부 │수수료 │ │「전기용품 및 생활용품 안전관리법 │ │시행령」 제17조 및 별표 2에 따른 │ │수수료 ────────┴────────────────────┴──────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처 리 절 차 ────────────────────────────────────────────────── ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌────────────┐ │신고서 작성 │?│접 수 │?│확인 및 결재│?│확인증명서 작성│?│확인증명서 발급 │ └──────┘ └──────┘ └──────┘ └──────┘ └────────────┘ 신고인 안전인증기관 안전인증기관 안전인증기관 안전인증기관 ────────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ────────────────────────────────────────────────── 신고확인번호 「전기용품 및 생활용품 안전관리법 시행규칙」 제54조제2항에 따라 위와 같이 어린이보호포장신고 변경신고 확인증명서를 발급합니다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0021",
+              "before": "■ 전기용품 및 생활용품 안전관리법 시행규칙 [별지 제21호서식] 어린이보호포장신고 변경신고서 (어린이보호포장신고 변경신고 확인증명서 겸용) ──────────┬───────────────────┬─────────────────── 접수번호 │접수일시 │처리기간 7일 ──────────┴───────────────────┴─────────────────── ──────┬─────────────────────┬───────────────────── 신청인 │업체명 │사업자등록번호 ├─────────────────────┼───────────────────── │대표자 성명 │전화번호/팩스번호 ├─────────────────────┴───────────────────── │주소 ──────┴─────────────────────────────────────────── ──────┬─────────────────────┬───────────────────── 확인 신고 │제품명 │제조업체명 내용 ├─────────────────────┼───────────────────── │안전기준상의 모델 구분 │모델명 ├─────────────────────┼───────────────────── │제조국명 │신고확인증 번호 ──────┼─────────────────────┴───────────────────── 변경 신청 │(필요시 별지 사용) 내용 │ ──────┴─────────────────────────────────────────── 「전기용품 및 생활용품 안전관리법」 제32조제2항 후단 및 같은 법 시행규칙 제54조제1항에 따라 변경된 내용을 신고합니다.",
+              "after": "■ 전기용품 및 생활용품 안전관리법 시행규칙 [별지 제21호서식] 어린이보호포장신고 변경신고서 (어린이보호포장신고 변경신고 확인증명서 겸용) ──────────┬─────────────────┬───────────────────── 접수번호 │접수일시 │처리기간 7일 ──────────┴─────────────────┴───────────────────── ──────┬───────────────────┬─────────────────────── 신고인 │업체명 │사업자등록번호 ├───────────────────┼─────────────────────── │대표자 성명 │전화번호/팩스번호 ├───────────────────┴─────────────────────── │주소 ──────┴─────────────────────────────────────────── ──────┬───────────────────┬─────────────────────── 신고대상 │제품명 │모델명 ──────┼───────────────────┴─────────────────────── 변경 사유 │(필요시 별지 사용) 및 내용 │ ──────┴─────────────────────────────────────────── 「전기용품 및 생활용품 안전관리법」 제32조제2항 후단 및 같은 법 시행규칙 제54조제1항에 따라 변경된 내용을 신고합니다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%EA%B8%B0%EC%9A%A9%ED%92%88%20%EB%B0%8F%20%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88%20%EC%95%88%EC%A0%84%EA%B4%80%EB%A6%AC%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "286389",
+            "after_serial": "291855",
+            "before_title": "전기용품 및 생활용품 안전관리법 시행규칙",
+            "after_title": "전기용품 및 생활용품 안전관리법 시행규칙",
+            "before_published": "2026-05-27",
+            "after_published": "2026-11-09",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|성평등가족부령|2026-11-09|00019",
+      "date": "2026-11-09",
+      "number": "00019",
+      "official_common_promulgation": true,
+      "summary": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-09",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "540bfe5a52c0d71393bf",
+          "title": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+          "kind": "성평등가족부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "성평등가족부",
+          "url": "https://www.law.go.kr/법령/%EC%84%B1%EB%A7%A4%EB%A7%A4%EB%B0%A9%EC%A7%80%20%EB%B0%8F%20%ED%94%BC%ED%95%B4%EC%9E%90%EB%B3%B4%ED%98%B8%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-09",
+          "effective": "2026-11-09",
+          "changed_articles": [
+            "제19조"
+          ],
+          "excerpts": [
+            {
+              "article": "제19조",
+              "before": "제19조(의료비의 지원 범위) 국가 또는 지방자치단체는 법 제23조제2항에 따라 다음 각 호의 치료항목에 대한 의료비용 중 「의료급여법」에 따른 급여가 지급되지 아니하는 의료비용의 전부 또는 일부를 지원할 수 있다.",
+              "after": "제19조(의료비의 지원 범위) 국가 또는 지방자치단체는 법 제23조제2항에 따라 다음 각 호의 치료항목에 대한 의료비용 중 「의료급여법」에 따른 급여가 지급되지 않는 의료비용의 전부 또는 일부를 지원할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%84%B1%EB%A7%A4%EB%A7%A4%EB%B0%A9%EC%A7%80%20%EB%B0%8F%20%ED%94%BC%ED%95%B4%EC%9E%90%EB%B3%B4%ED%98%B8%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제19조",
+              "before": "1. 성병감염 여부의 진찰ㆍ검사 및 감염된 성병의 치료비용 2. 성매매 또는 성매매와 관련한 폭력으로 인한 상해의 치료비용 3. 알코올중독 및 약물중독의 치료ㆍ보호비용 4. 성매매로 인한 정신질환[기분장애, 불안장애(외상 후 스트레스 증후군), 섭식장애, 인격장애, 정신분열증, 해리성장애, 성적장애 등]의 치료비용 5. 성매매로 인하여 임신한 성매매피해자등의 검사 및 출산 등 임신과 관련한 비용 6. 성매매와 관련된 것으로 판단되는 문신 제거비용 및 피부질환 치료비용 7. 성매매와 관련한 치아손상 치료비용 8. 그 밖에 성매매피해로 인한 질환을 확인하기 위한 검진에 드는 비용(초음파, 자기공명영상 및 양전자 단층촬영을 포함한다)",
+              "after": "1. 성매매로 인한 성병 등 질환의 검사 및 치료 비용 2. 성매매 또는 성매매와 관련한 폭력으로 인한 상해의 치료비용 3. 알코올중독 및 약물중독의 치료ㆍ보호비용 4. 성매매로 인한 정신질환[기분장애, 불안장애(외상 후 스트레스 증후군), 섭식장애, 인격장애, 정신분열증, 해리성장애, 성적장애 등]의 치료비용 5. 성매매로 인하여 임신한 성매매피해자등의 검사 및 출산 등 임신과 관련한 비용 6. 성매매와 관련된 것으로 판단되는 문신 제거비용 및 피부질환 치료비용 7. 성매매와 관련한 치아손상 치료비용 8. 그 밖에 성매매피해로 인한 질환을 확인하기 위한 검사(초음파, 자기공명영상 및 양전자 단층촬영을 포함한다) 및 해당 질환의 치료 비용",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%84%B1%EB%A7%A4%EB%A7%A4%EB%B0%A9%EC%A7%80%20%EB%B0%8F%20%ED%94%BC%ED%95%B4%EC%9E%90%EB%B3%B4%ED%98%B8%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "282787",
+            "after_serial": "291693",
+            "before_title": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+            "after_title": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+            "before_published": "2026-01-13",
+            "after_published": "2026-11-09",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
     },
     {
       "id": "law|재정경제부령|2026-11-06|00053",
@@ -1963,6 +3005,351 @@
       "importance": 24
     },
     {
+      "id": "law|국방부령|2026-11-06|01236",
+      "date": "2026-11-06",
+      "number": "01236",
+      "official_common_promulgation": true,
+      "summary": "국방부와 그 소속기관 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "56af08a0d5ac6fd9b546",
+          "title": "국방부와 그 소속기관 직제 시행규칙",
+          "kind": "국방부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국방부",
+          "url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0001",
+            "제18조",
+            "제2조",
+            "제4조의2"
+          ],
+          "excerpts": [
+            {
+              "article": "제18조",
+              "before": "",
+              "after": "제18조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「국방부와 그 소속기관 직제」 제27조의2제2항 후단에 따라 전문직공무원을 두는 과 또는 이에 상당하는 하부조직은 다음 각 호와 같다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제18조",
+              "before": "",
+              "after": "1. 군인권개선추진단: 군인권총괄담당관, 성폭력예방대응담당관, 병영문화혁신담당관, 양성평등정책팀 2. 보건복지관: 복지정책과, 국방일자리정책과, 보건정책과, 군인연금과, 군인재해보상과, 감염병대응팀 3. 국방인공지능기획국: 국방인공지능정책과, 국방데이터정책과, 유무인복합체계과, 국방연구개발기획과 4. 국방정보화국: 국방정보화정책과, 국방정보화기반과, 사이버전자기정책과, 소프트웨어융합팀",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제2조",
+              "before": "② 국방보좌관 밑에 정책관리담당관 및 의전담당관 각 1명을 두되, 정책관리담당관은 부이사관ㆍ과학기술서기관ㆍ서기관 또는 4급 상당 별정직공무원으로, 의전담당관은 영관급장교로 보한다.",
+              "after": "② 국방보좌관 밑에 정책관리담당관 및 의전담당관 각 1명을 두되, 각 담당관은 부이사관ㆍ과학기술서기관ㆍ서기관 또는 영관급장교로 보한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제4조의2",
+              "before": "1. 자금운영에 관한 계획의 수립ㆍ운영 및 통제 2. 세입징수 및 채권관리 업무의 총괄 3. 주요 계약의 승인 및 사후심사 4. 국방분야 정부계약제도의 운용, 회계관련 질의 및 회신 업무 5. 삭제 6. 발생주의 복식부기 회계제도 운용 및 발전 7. 국방통합재정정보체계의 운영 및 발전 8. 자원관리체계와의 연계 관리 9. 재무결산 및 분석 10. 국군재정관리단 업무의 지도ㆍ감독",
+              "after": "1. 자금운영에 관한 계획의 수립ㆍ운영 및 통제 2. 세입징수 및 채권관리 업무의 총괄 3. 주요 계약의 승인 및 사후심사 4. 국방분야 정부계약제도의 운용, 회계관련 질의 및 회신 업무 5. 삭제 6. 발생주의 복식부기 회계제도 운용 및 발전 7. 국방통합재정정보체계의 운영 및 발전 8. 자원관리체계와의 연계 관리 9. 재무결산 및 분석 10. 국군재정관리단 업무의 지도ㆍ감독 11. 장병 경제금융교육 조정 및 지원",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "290957",
+            "after_serial": "291691",
+            "before_title": "국방부와 그 소속기관 직제 시행규칙",
+            "after_title": "국방부와 그 소속기관 직제 시행규칙",
+            "before_published": "2026-10-02",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|고용노동부령|2026-11-06|00487",
+      "date": "2026-11-06",
+      "number": "00487",
+      "official_common_promulgation": true,
+      "summary": "고용노동부와 그 소속기관 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "5401690b702e17ef1270",
+          "title": "고용노동부와 그 소속기관 직제 시행규칙",
+          "kind": "고용노동부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "고용노동부",
+          "url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "제25조"
+          ],
+          "excerpts": [
+            {
+              "article": "제25조",
+              "before": "1. 노사협력정책관: 노사협력정책과, 노사관계법제과 및 노사관계지원과 2. 근로기준정책관: 근로기준정책과, 근로감독기획과 및 고용차별개선과 3. 중앙노동위원회 사무처 조정심판국: 조정과, 교섭대표결정과, 심판1과, 심판2과 및 법무지원과",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제25조",
+              "before": "",
+              "after": "1. 노사협력정책관: 노사협력정책과, 노사관계법제과 및 노사관계지원과 2. 근로기준정책관: 근로기준정책과, 근로감독기획과 및 고용차별개선과 3. 산업안전예방정책관: 산업안전정책과, 산업안전기준과, 산재예방지원과 4. 산업보건보상정책관: 산업보건정책과, 산재보상정책과, 노무제공자안전보호과, 직업건강증진팀 5. 안전보건감독국: 안전보건감독기획과, 중대산업재해수사과, 건설산재예방감독과, 화학사고예방조사과 6. 지방고용노동관서: 광역산재예방감독과, 중대재해수사과, 중대재해수사1과, 중대재해수사2과, 산재예방감독과, 산재예방감독팀, 건설산재예방감독과 7. 중앙노동위원회 사무처 조정심판국: 조정과, 교섭대표결정과, 심판1과, 심판2과 및 법무지원과",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "289195",
+            "after_serial": "291689",
+            "before_title": "고용노동부와 그 소속기관 직제 시행규칙",
+            "after_title": "고용노동부와 그 소속기관 직제 시행규칙",
+            "before_published": "2026-08-28",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|행정안전부령|2026-11-06|00655",
+      "date": "2026-11-06",
+      "number": "00655",
+      "official_common_promulgation": true,
+      "summary": "행정안전부와 그 소속기관 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "167519b53bcf389f259c",
+          "title": "행정안전부와 그 소속기관 직제 시행규칙",
+          "kind": "행정안전부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "행정안전부",
+          "url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "제54조"
+          ],
+          "excerpts": [
+            {
+              "article": "제54조",
+              "before": "1. 중앙재난안전상황실: 상황총괄담당관, 상황담당관 및 서울상황센터 2. 재난안전정보통신국: 재난정보통신과 및 재난안전통신망과 3. 재난관리정책국: 재난관리정책과, 재난대응훈련과, 재난자원관리과, 기후재난관리과 및 재난영향분석과 4. 자연재난대응국: 재난대응총괄과, 자연재난대응과, 재난경감과, 지진방재정책과 및 지진방재관리과 5. 사회재난대응국: 사회재난대응총괄과, 국토산업재난대응과, 보건사회재난대응과, 농축산해양재난대응과 및 환경산림재난대응과 6. 재난복구지원국: 복구지원과, 재난구호과, 재난보험과, 사회재난현장지원과 및 자연재난현장지원과 7. 국가재난안전교육원: 재난안전교육과",
+              "after": "1. 인공지능정부정책국: 인공지능정부정책과, 공공인공지능혁신과, 공공데이터정책과, 공공데이터분석관리과 및 인공지능정부협력과 2. 인공지능정부서비스국: 공공서비스혁신과, 행정정보공유과, 국민맞춤서비스과 및 통합포털정책과 3. 인공지능정부기반국: 디지털보안정책과, 디지털인프라혁신과 및 지역디지털협력과 4. 중앙재난안전상황실: 상황총괄담당관, 상황담당관 및 서울상황센터 5. 재난안전정보통신국: 재난정보통신과 및 재난안전통신망과 6. 재난관리정책국: 재난관리정책과, 재난대응훈련과, 재난자원관리과, 기후재난관리과 및 재난영향분석과 7. 자연재난대응국: 재난대응총괄과, 자연재난대응과, 재난경감과, 지진방재정책과 및 지진방재관리과 8. 사회재난대응국: 사회재난대응총괄과, 국토산업재난대응과, 보건사회재난대응과, 농축산해양재난대응과 및 환경산림재난대응과 9. 재난복구지원국: 복구지원과, 재난구호과, 재난보험과, 사회재난현장지원과 및 자연재난현장지원과 10. 국가재난안전교육원: 재난안전교육과",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "290809",
+            "after_serial": "291687",
+            "before_title": "행정안전부와 그 소속기관 직제 시행규칙",
+            "after_title": "행정안전부와 그 소속기관 직제 시행규칙",
+            "before_published": "2026-09-29",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|과학기술정보통신부령|2026-11-06|00179",
+      "date": "2026-11-06",
+      "number": "00179",
+      "official_common_promulgation": true,
+      "summary": "우정사업본부 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "017250d00b7bcafeecbe",
+          "title": "우정사업본부 직제 시행규칙",
+          "kind": "과학기술정보통신부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "과학기술정보통신부",
+          "url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0002",
+            "별표 0003",
+            "제25조의2",
+            "제8조"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0002",
+              "before": "■ 우정사업본부 직제 시행규칙 [별표 2] 우정사업본부와 그 소속기관 공무원 정원표 (제23조제1항 본문 관련) 총계 33,055 일반직 계 33,055 고위공무원단에 속하는 임기제(우정사업본부장) 1 고위공무원단 14 부이사관ㆍ서기관 또는 과학기술서기관 15 서기관 102 서기관 또는 과학기술서기관 52 서기관 또는 행정사무관 44 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ 보건사무관ㆍ식품위생사무관ㆍ간호사무관ㆍ시설사 무관ㆍ전산사무관 또는 방송통신사무관 8 행정사무관ㆍ공업사무관ㆍ보건사무관ㆍ식품위생사무 관ㆍ간호사무관ㆍ시설사무관ㆍ전산사무관 또는 방 송통신사무관 626 행정주사ㆍ공업주사ㆍ식품위생주사ㆍ간호주사ㆍ시설 주사ㆍ전산주사 또는 방송통신주사 3,084 행정주사보ㆍ공업주사보ㆍ식품위생주사보ㆍ간호주사 보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 2,096 행정서기ㆍ공업서기ㆍ식품위생서기ㆍ간호서기ㆍ시설 서기ㆍ전산서기 또는 방송통신서기 2,464 전산서기 51 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또 는 방송통신서기보 808 전산서기보 4 우정주사(우정3급) 59 우정주사(우정4급) 88 우정주사(우정5급) 809 우정주사(우정6급) 2,271 우정주사보 4,552 우정서기 7,118 우정서기보 8,770 기록연구사 10 전문경력관 가군(보험계리 담당) 1 전문경력관 가군(우표ㆍ사진디자인 담당) 1 전문경력관 나군(금융리스크 담당) 2 전문경력관 나군(우표ㆍ사진디자인 담당) 3 전문경력관 나군(우표디자인 담당) 2",
+              "after": "■ 우정사업본부 직제 시행규칙 [별표 2] 우정사업본부와 그 소속기관 공무원 정원표 (제23조제1항 본문 관련) 총계 33,055 일반직 계 33,055 고위공무원단에 속하는 임기제(우정사업본부장) 1 고위공무원단 14 부이사관ㆍ서기관 또는 과학기술서기관 15 서기관 102 서기관 또는 과학기술서기관 52 서기관 또는 행정사무관 44 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ 보건사무관ㆍ식품위생사무관ㆍ간호사무관ㆍ시설사 무관ㆍ전산사무관 또는 방송통신사무관 8 행정사무관ㆍ공업사무관ㆍ보건사무관ㆍ식품위생사무 관ㆍ간호사무관ㆍ시설사무관ㆍ전산사무관 또는 방 송통신사무관 620 행정주사ㆍ공업주사ㆍ식품위생주사ㆍ간호주사ㆍ시설 주사ㆍ전산주사 또는 방송통신주사 3,072 행정주사보ㆍ공업주사보ㆍ식품위생주사보ㆍ간호주사 보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 2,096 행정서기ㆍ공업서기ㆍ식품위생서기ㆍ간호서기ㆍ시설 서기ㆍ전산서기 또는 방송통신서기 2,464 전산서기 51 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또 는 방송통신서기보 808 전산서기보 4 우정주사(우정3급) 59 우정주사(우정4급) 88 우정주사(우정5급) 809 우정주사(우정6급) 2,271 우정주사보 4,552 우정서기 7,118 우정서기보 8,770 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ 방송통신전문관 또는 행정부전문관ㆍ공업부전문관 ㆍ시설부전문관ㆍ전산부전문관ㆍ방송통신부전문관 18 기록연구사 10 전문경력관 가군(보험계리 담당) 1 전문경력관 가군(우표ㆍ사진디자인 담당) 1 전문경력관 나군(금융리스크 담당) 2 전문경력관 나군(우표ㆍ사진디자인 담당) 3 전문경력관 나군(우표디자인 담당) 2",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0003",
+              "before": "■ 우정사업본부 직제 시행규칙 [별표 3] 우정사업본부와 그 소속기관 공무원 정원표 (제23조제1항 단서 관련) 총계 32,929 일반직 계 32,929 고위공무원단에 속하는 임기제(우정사업본부장) 1 고위공무원단 14 부이사관ㆍ서기관 또는 과학기술서기관 15 서기관 102 서기관 또는 과학기술서기관 52 서기관 또는 행정사무관 44 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ 보건사무관ㆍ식품위생사무관ㆍ간호사무관ㆍ시설사 무관ㆍ전산사무관 또는 방송통신사무관 11 행정사무관ㆍ공업사무관ㆍ보건사무관ㆍ식품위생사무 관ㆍ간호사무관ㆍ시설사무관ㆍ전산사무관 또는 방 송통신사무관 701 행정주사ㆍ공업주사ㆍ식품위생주사ㆍ간호주사ㆍ시설 주사ㆍ전산주사 또는 방송통신주사 3,375 행정주사보ㆍ공업주사보ㆍ식품위생주사보ㆍ간호주사 보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 2,125 행정서기ㆍ공업서기ㆍ식품위생서기ㆍ간호서기ㆍ시설 서기ㆍ전산서기 또는 방송통신서기 2,118 전산서기 51 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또 는 방송통신서기보 711 전산서기보 4 우정주사(우정3급) 59 우정주사(우정4급) 88 우정주사(우정5급) 906 우정주사(우정6급) 2,543 우정주사보 5,098 우정서기 7,255 우정서기보 7,637 기록연구사 10 전문경력관 가군(보험계리 담당) 1 전문경력관 가군(우표ㆍ사진디자인 담당) 1 전문경력관 나군(금융리스크 담당) 2 전문경력관 나군(우표ㆍ사진디자인 담당) 3 전문경력관 나군(우표디자인 담당) 2",
+              "after": "■ 우정사업본부 직제 시행규칙 [별표 3] 우정사업본부와 그 소속기관 공무원 정원표 (제23조제1항 단서 관련) 총계 32,929 일반직 계 32,929 고위공무원단에 속하는 임기제(우정사업본부장) 1 고위공무원단 14 부이사관ㆍ서기관 또는 과학기술서기관 15 서기관 102 서기관 또는 과학기술서기관 52 서기관 또는 행정사무관 44 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ 보건사무관ㆍ식품위생사무관ㆍ간호사무관ㆍ시설사 무관ㆍ전산사무관 또는 방송통신사무관 11 행정사무관ㆍ공업사무관ㆍ보건사무관ㆍ식품위생사무 관ㆍ간호사무관ㆍ시설사무관ㆍ전산사무관 또는 방 송통신사무관 694 행정주사ㆍ공업주사ㆍ식품위생주사ㆍ간호주사ㆍ시설 주사ㆍ전산주사 또는 방송통신주사 3,364 행정주사보ㆍ공업주사보ㆍ식품위생주사보ㆍ간호주사 보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 2,125 행정서기ㆍ공업서기ㆍ식품위생서기ㆍ간호서기ㆍ시설 서기ㆍ전산서기 또는 방송통신서기 2,118 전산서기 51 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또 는 방송통신서기보 711 전산서기보 4 우정주사(우정3급) 59 우정주사(우정4급) 88 우정주사(우정5급) 906 우정주사(우정6급) 2,543 우정주사보 5,098 우정서기 7,255 우정서기보 7,637 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ 방송통신전문관 또는 행정부전문관ㆍ공업부전문관 ㆍ시설부전문관ㆍ전산부전문관ㆍ방송통신부전문관 18 기록연구사 10 전문경력관 가군(보험계리 담당) 1 전문경력관 가군(우표ㆍ사진디자인 담당) 1 전문경력관 나군(금융리스크 담당) 2 전문경력관 나군(우표ㆍ사진디자인 담당) 3 전문경력관 나군(우표디자인 담당) 2",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제25조의2",
+              "before": "",
+              "after": "제25조의2(전문직공무원 정원의 배정 및 운영에 대한 특례) 「우정사업본부 직제」 제30조의2제2항 후단에 따라 전문직공무원을 두는 과 또는 이에 상당하는 하부조직은 다음 각 호와 같다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제25조의2",
+              "before": "",
+              "after": "1. 예금사업단: 예금위험관리과, 예금증권운용과, 예금대체투자과 2. 보험사업단: 보험위험관리과, 보험증권운용과, 보험대체투자과",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제8조",
+              "before": "1. 우체국예금 사업계획 및 중장기 발전전략 수립 2. 우체국예금 규정 제정ㆍ개정 및 제도 개선 3. 우체국예금, 우편대체, 우편환 수수료와 우편대체 이자율의 결정 및 조정 4. 우체국예금 상품 및 서비스의 개발ㆍ보급 5. 우체국예금사업의 종합평가 6. 우체국예금 고객관계관리(CRM) 기본운영계획의 수립 7. 우체국금융고객센터 운영에 관한 업무(예금업무에 한정한다) 8. 우체국예금 모집경비 지급기준의 제정ㆍ개정 및 운영 9. 우체국 휴면예금 및 금융실명거래에 관한 업무 10. 우체국 체크카드사업 기본운영계획의 수립 11. 우체국예금 홍보에 관한 업무 12. 삭제 13. 삭제 14. 타행환 업무에 관한 사항 15. 국내환 및 해외송금(환전을 포함한다)에 관한 업무 16. 각종 공과금 및 국고금 수납 등 수탁업무 취급에 관한 사항 17. 우체국 자기앞수표에 관한 업무의 처리 절차 및 기준의 제정ㆍ개정 18. 어음교환업무 기본운영계획의 수립 19. 우편환, 우편대체, 우체국예금의 현금출납ㆍ계산관리 업무 20. 우편대체의 계좌대월제도 운영(채권관리는 제외한다) 21. 우체국예금, 우편환, 우편대체 관련 증서류 관리 22. 우체국금융 창구망 개방 및 제휴카드업무 계획의 수립ㆍ운영 23. 「우정사업 운영에 관한 특례법」 제2조제1호자목에 따른 투자매매업ㆍ투자중개업에 관한 업무",
+              "after": "1. 우체국예금 사업계획 및 중장기 발전전략 수립 2. 우체국예금 규정 제정ㆍ개정 및 제도 개선 3. 우체국예금, 우편대체, 우편환 수수료와 우편대체 이자율의 결정 및 조정 4. 우체국예금 상품 및 서비스의 개발ㆍ보급 5. 우체국예금사업의 종합평가 6. 우체국예금 고객관계관리(CRM) 기본운영계획의 수립 7. 우체국금융고객센터 운영에 관한 업무(예금업무에 한정한다) 8. 우체국예금 모집경비 지급기준의 제정ㆍ개정 및 운영 9. 우체국 휴면예금 및 금융실명거래에 관한 업무 10. 우체국 체크카드사업 기본운영계획의 수립 11. 우체국예금 홍보에 관한 업무 12. 삭제 13. 삭제 14. 타행환 업무에 관한 사항 15. 국내환 및 해외송금(환전을 포함한다)에 관한 업무 16. 각종 공과금 및 국고금 수납 등 수탁업무 취급에 관한 사항 17. 우체국 자기앞수표에 관한 업무의 처리 절차 및 기준의 제정ㆍ개정 18. 어음교환업무 기본운영계획의 수립 19. 우편환, 우편대체, 우체국예금의 현금출납ㆍ계산관리 업무 20. 우편대체의 계좌대월제도 운영(채권관리는 제외한다) 21. 우체국예금, 우편환, 우편대체 관련 증서류 관리 22. 우체국금융 창구망 개방 및 제휴카드업무 계획의 수립ㆍ운영 23. 「우정사업 운영에 관한 특례법」 제2조제1호차목에 따른 투자매매업ㆍ투자중개업에 관한 업무",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "287757",
+            "after_serial": "291681",
+            "before_title": "우정사업본부 직제 시행규칙",
+            "after_title": "우정사업본부 직제 시행규칙",
+            "before_published": "2026-07-01",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "5dfd82628f0655693e82",
+      "date": "2026-11-06",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "국립나주병원 인사운영규정",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "5dfd82628f0655693e82",
+          "title": "국립나주병원 인사운영규정",
+          "kind": "예규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "국립나주병원",
+          "url": "https://www.law.go.kr/행정규칙/%EA%B5%AD%EB%A6%BD%EB%82%98%EC%A3%BC%EB%B3%91%EC%9B%90%20%EC%9D%B8%EC%82%AC%EC%9A%B4%EC%98%81%EA%B7%9C%EC%A0%95",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "제13조",
+            "제14조",
+            "제15조",
+            "제16조",
+            "제17조",
+            "제18조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
       "id": "law|헌법재판소규칙|2026-10-27|00498",
       "date": "2026-10-27",
       "number": "00498",
@@ -2717,6 +4104,114 @@
           "revision": "일부개정",
           "ministry": "고용노동부",
           "url": "https://www.law.go.kr/행정규칙/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%9C%84%EC%9E%84%EC%A0%84%EA%B2%B0%EA%B7%9C%EC%A0%95",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": true,
+          "notes": [
+            "별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|보건복지부령|2026-11-06|01207",
+      "date": "2026-11-06",
+      "number": "01207",
+      "official_common_promulgation": true,
+      "summary": "질병관리청과 그 소속기관 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "922e616a47f1ded7c084",
+          "title": "질병관리청과 그 소속기관 직제 시행규칙",
+          "kind": "보건복지부령",
+          "verification": "partial_official_text",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "질병관리청",
+          "url": "https://www.law.go.kr/법령/%EC%A7%88%EB%B3%91%EA%B4%80%EB%A6%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": true,
+          "notes": [
+            "별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|산업통상부령|2026-11-06|00026",
+      "date": "2026-11-06",
+      "number": "00026",
+      "official_common_promulgation": true,
+      "summary": "산업통상부와 그 소속기관 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "76290ad0f90a337c6a51",
+          "title": "산업통상부와 그 소속기관 직제 시행규칙",
+          "kind": "산업통상부령",
+          "verification": "partial_official_text",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "산업통상부",
+          "url": "https://www.law.go.kr/법령/%EC%82%B0%EC%97%85%ED%86%B5%EC%83%81%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": true,
+          "notes": [
+            "별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "89e4871cdea2fc265e6f",
+      "date": "2026-11-06",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "국립나주병원 위임전결규정",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "89e4871cdea2fc265e6f",
+          "title": "국립나주병원 위임전결규정",
+          "kind": "예규",
+          "verification": "partial_official_text",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국립나주병원",
+          "url": "https://www.law.go.kr/행정규칙/%EA%B5%AD%EB%A6%BD%EB%82%98%EC%A3%BC%EB%B3%91%EC%9B%90%20%EC%9C%84%EC%9E%84%EC%A0%84%EA%B2%B0%EA%B7%9C%EC%A0%95",
           "published": "2026-11-06",
           "effective": "2026-11-06",
           "changed_articles": [],

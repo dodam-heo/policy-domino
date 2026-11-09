@@ -1,16 +1,16 @@
 {
   "schema": "policy-domino-v4",
-  "generated_at": "2026-11-09T13:31:17+00:00",
+  "generated_at": "2026-11-09T14:21:02+00:00",
   "status": "PARTIAL",
   "collection": {
-    "official_catalogue": 9496,
-    "fresh_official_index": 4325,
-    "legacy_index_pending_recheck": 5171,
-    "detailed_checked": 138,
-    "pending_details": 9358,
-    "pending_downstream_verification": 615,
-    "downstream_documents_checked": 48,
-    "windows_checked": 47,
+    "official_catalogue": 11943,
+    "fresh_official_index": 6890,
+    "legacy_index_pending_recheck": 5053,
+    "detailed_checked": 169,
+    "pending_details": 11774,
+    "pending_downstream_verification": 701,
+    "downstream_documents_checked": 60,
+    "windows_checked": 61,
     "incomplete_windows": 1,
     "recent_incomplete": [
       {
@@ -24,13 +24,78 @@
         "error": "RuntimeError: lsHstInf 공식 API 조회 실패: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
       }
     ],
-    "backfill_cursor_days": 35,
+    "backfill_cursor_days": 42,
     "scope": "공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
     "whole_corpus_complete": false
   },
+  "quality": {
+    "law": {
+      "indexed": 2079,
+      "inspected": 98,
+      "pending": 1981,
+      "verified_before_after": 79,
+      "partial_before_after": 3,
+      "verified_enactment_or_repeal": 10,
+      "body_extraction_failed": 0,
+      "body_or_annex_incomplete": 3,
+      "indexed_but_not_compared": 3,
+      "retryable_or_partial": 9,
+      "exhausted_retries": 0,
+      "oldest_pending_published": "1977-06-29",
+      "statuses": {
+        "official_record_only": 3,
+        "partial_official_text": 3,
+        "verified_changed_clauses": 79,
+        "verified_enactment": 10,
+        "verified_partial_changed_clauses": 3
+      }
+    },
+    "admrul": {
+      "indexed": 5057,
+      "inspected": 39,
+      "pending": 5018,
+      "verified_before_after": 26,
+      "partial_before_after": 1,
+      "verified_enactment_or_repeal": 7,
+      "body_extraction_failed": 1,
+      "body_or_annex_incomplete": 2,
+      "indexed_but_not_compared": 2,
+      "retryable_or_partial": 6,
+      "exhausted_retries": 0,
+      "oldest_pending_published": "2005-02-19",
+      "statuses": {
+        "detail_failed": 1,
+        "official_record_only": 2,
+        "partial_official_text": 2,
+        "verified_changed_clauses": 26,
+        "verified_enactment": 3,
+        "verified_partial_changed_clauses": 1,
+        "verified_repeal_notice": 4
+      }
+    },
+    "ordin": {
+      "indexed": 4807,
+      "inspected": 32,
+      "pending": 4775,
+      "verified_before_after": 0,
+      "partial_before_after": 0,
+      "verified_enactment_or_repeal": 31,
+      "body_extraction_failed": 1,
+      "body_or_annex_incomplete": 0,
+      "indexed_but_not_compared": 0,
+      "retryable_or_partial": 1,
+      "exhausted_retries": 0,
+      "oldest_pending_published": "2026-09-28",
+      "statuses": {
+        "detail_failed": 1,
+        "verified_enactment": 19,
+        "verified_repeal_notice": 12
+      }
+    }
+  },
   "links": {
-    "confirmed_provision_or_formula_use": 25,
-    "title_or_wrong_article_only": 89,
+    "confirmed_provision_or_formula_use": 29,
+    "title_or_wrong_article_only": 102,
     "official_delegation_review_candidates": 0,
     "unverified_implementation": true
   },
@@ -2043,6 +2108,531 @@
       "importance": 176
     },
     {
+      "id": "law|법률|2026-03-05|21447",
+      "date": "2026-03-05",
+      "number": "21447",
+      "official_common_promulgation": true,
+      "summary": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-07-01",
+      "dependencies": [
+        {
+          "type": "cited_changed_provision",
+          "source_event": "db2c95e3ed622d5f83e9",
+          "target_document": "a4998f30dc1db62c5ff5",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "제11조의2",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": "장한다. 1. 중소기업과 대기업의 불공정거래 근절을 위한 정책의 수립ㆍ시행 2. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 3. 대ㆍ중소기업 간 불공정 거래에 관한 민원 및 제안의 처리ㆍ개선 4. 중소기업 분야 불공정거래 근절을 위한 민ㆍ관 협력 총괄",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "db2c95e3ed622d5f83e9",
+          "target_document": "068a45725701fbf7095f",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "제14조의2",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": " 간 대ㆍ중소기업 상생협력 정책의 조정 및 지방자치단체 확산에 관한 사항 12. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 13. 수탁ㆍ위탁거래와 관련된 분쟁의 조정",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "중소벤처기업부와 그 소속기관 직제",
+          "target_ministry": "행정안전부,중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "db2c95e3ed622d5f83e9",
+          "target_document": "f8640ee944c8fe8a6d67",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "부칙 19494 (20060530)",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": "행령 일부를 다음과 같이 개정한다. 제12조의2제1호를 다음과 같이 한다. 1. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제2호에 따른 대기업 ⑤어업협정체결에따른어업인등의지원및수산업발전특별법시행령 일부를 다음과 같이 개정한다. 제5조제2항제1호를 다음과 같이 한다. 1. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제2호에 따른 대기",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "target_ministry": "중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9"
+        }
+      ],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "db2c95e3ed622d5f83e9",
+          "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "kind": "법률",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "published": "2026-03-05",
+          "effective": "2026-07-01",
+          "changed_articles": [
+            "제2조",
+            "제31조",
+            "제38조"
+          ],
+          "excerpts": [
+            {
+              "article": "제2조",
+              "before": "외상매출채권은 그 만기일이 도래하는 때에 대통령령으로 정하는 바에 따라 별도로 지정된 전용예치계좌에서 현금으로 인출되어 상환될 것 8의3. \"중앙관서 및 지방자치단체의 상생결제\"란 「국가재정법」 제6조에 따른 중앙관서 및 「지방자치법」 제2조에 따른 지방자치단체(「지방교육자치에 관한 법률」에 따른 특별시ㆍ광역시ㆍ특별자치시ㆍ도ㆍ특별자치도의 교육청을 포함한다)가 공공부문과 중소기업 간 협력을 촉진하기 위하여 상생결제 방식으로 제22조제6항에 따라 납품대금을 지급하는 것을 말한다.",
+              "after": "외상매출채권은 그 만기일이 도래하는 때에 대통령령으로 정하는 바에 따라 별도로 지정된 전용예치계좌에서 현금으로 인출되어 상환될 것 8의3. \"중앙관서 및 지방자치단체의 상생결제\"란 「국가재정법」 제6조에 따른 중앙관서 및 「지방자치법」 제2조에 따른 지방자치단체(「지방교육자치에 관한 법률」에 따른 특별시ㆍ통합특별시ㆍ광역시ㆍ특별자치시ㆍ도ㆍ특별자치도의 교육청을 포함한다)가 공공부문과 중소기업 간 협력을 촉진하기 위하여 상생결제 방식으로 제22조제6항에 따라 납품대금을 지급하는 것을 말한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제31조",
+              "before": "다만, 중소벤처기업부장관이 제38조제2항에 따라 권한의 일부를 특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사(이하 이 조에서 \"특별시장등\"이라 한다)에게 위임하는 경우에는 그 특별시장등 소속으로 지방자치단체 중소기업사업조정심의회(이하 \"지방자치단체 조정심의회\"라 한다)를 둔다.",
+              "after": "다만, 중소벤처기업부장관이 제38조제2항에 따라 권한의 일부를 특별시장ㆍ통합특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사(이하 이 조에서 \"특별시장등\"이라 한다)에게 위임하는 경우에는 그 특별시장등 소속으로 지방자치단체 중소기업사업조정심의회(이하 \"지방자치단체 조정심의회\"라 한다)를 둔다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제38조",
+              "before": "② 중소벤처기업부장관은 이 법에 따른 권한의 일부를 대통령령으로 정하는 바에 따라 소속 기관의 장, 특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사에게 위임하거나 업종별 주무부장관에게 위탁할 수 있다.",
+              "after": "② 중소벤처기업부장관은 이 법에 따른 권한의 일부를 대통령령으로 정하는 바에 따라 소속 기관의 장, 특별시장ㆍ통합특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사에게 위임하거나 업종별 주무부장관에게 위탁할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "283461",
+            "after_serial": "284057",
+            "before_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+            "after_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+            "before_published": "2026-02-19",
+            "after_published": "2026-03-05",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 60
+    },
+    {
+      "id": "law|법률|2025-12-02|21194",
+      "date": "2025-12-02",
+      "number": "21194",
+      "official_common_promulgation": true,
+      "summary": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-06-03",
+      "dependencies": [
+        {
+          "type": "cited_changed_provision",
+          "source_event": "e15d5a11f70052b063f6",
+          "target_document": "a4998f30dc1db62c5ff5",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "제11조의2",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": "장한다. 1. 중소기업과 대기업의 불공정거래 근절을 위한 정책의 수립ㆍ시행 2. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 3. 대ㆍ중소기업 간 불공정 거래에 관한 민원 및 제안의 처리ㆍ개선 4. 중소기업 분야 불공정거래 근절을 위한 민ㆍ관 협력 총괄",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "e15d5a11f70052b063f6",
+          "target_document": "068a45725701fbf7095f",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "제14조의2",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": " 간 대ㆍ중소기업 상생협력 정책의 조정 및 지방자치단체 확산에 관한 사항 12. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 13. 수탁ㆍ위탁거래와 관련된 분쟁의 조정",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "중소벤처기업부와 그 소속기관 직제",
+          "target_ministry": "행정안전부,중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "e15d5a11f70052b063f6",
+          "target_document": "f8640ee944c8fe8a6d67",
+          "source_article": "제17조",
+          "source_paragraph": null,
+          "target_article": "부칙 19494 (20060530)",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": " 및 기업간 협력증진에 관한 법률」 제17조의 규정에 의한 수탁기업체협의회\"를 \"「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제17조에 따른 수탁기업협의회\"로 한다. ③법인세법 시행령 일부를 다음과 같이 개정한다. 제50조제1호 단서중 \"「중소기업의 사업영역보호 및 기업간 협력증진에 관한 법률」 제9조\"를 \"「대ㆍ중소기업 상생협력 촉진에 관한 법",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "target_ministry": "중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9"
+        }
+      ],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e15d5a11f70052b063f6",
+          "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "kind": "법률",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "published": "2025-12-02",
+          "effective": "2026-06-03",
+          "changed_articles": [
+            "제17조",
+            "제20조의2",
+            "제20조의4",
+            "제20조의6",
+            "제21조",
+            "제22조의2",
+            "제24조",
+            "제25조",
+            "제27조",
+            "제27조의2",
+            "제28조",
+            "제28조의6",
+            "제2조",
+            "제40조",
+            "제40조의3",
+            "제4조"
+          ],
+          "excerpts": [
+            {
+              "article": "제17조",
+              "before": "① 수탁기업(수탁기업이 위탁받은 물품등을 제조하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
+              "after": "① 수탁기업(수탁기업이 위탁받은 물품등의 제조등을 하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의2",
+              "before": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
+              "after": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 상생금융지수의 산정 및 공표에 관한 사항 4. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의2",
+              "before": "④ 위원회는 동반성장지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
+              "after": "④ 위원회는 동반성장지수 및 상생금융지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업ㆍ금융회사의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의4",
+              "before": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 산입하지 아니한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
+              "after": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 제외한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의4",
+              "before": "④ 위원회는 제2항에 따라 적합업종 합의 도출 중에 있는 업종ㆍ품목이 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제3항에 따라 생계형 적합업종으로 지정ㆍ고시된 경우 적합업종 합의 도출 절차를 종료한다.",
+              "after": "④ 위원회는 제2항에 따라 적합업종 합의 도출 중에 있는 업종ㆍ품목이 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제4항 또는 제7조의2제2항에 따라 생계형 적합업종으로 지정ㆍ고시된 경우 적합업종 합의 도출 절차를 종료한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의6",
+              "before": "",
+              "after": "제20조의6(상생금융 우수금융회사 지원) 정부는 중소기업과 금융회사 간 상생금융을 촉진하기 위하여 상생금융지수 산정 결과가 우수한 금융회사에 대하여 대통령령으로 정하는 지원시책을 마련할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
+              "after": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 주요 에너지경비, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "① 위탁기업이 수탁기업에 물품등의 제조를 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
+              "after": "① 위탁기업이 수탁기업에 물품등의 제조등을 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하려는 행위를 하여서는 아니 된다.",
+              "after": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하기 위하여 다음 각 호의 어느 하나에 해당하는 행위를 하여서는 아니 된다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "",
+              "after": "1. 동일한 물품등의 제조등을 위탁하면서 정당한 사유 없이 그 기간 또는 납품대금이 각각 제3항제2호 또는 제3호에 해당하도록 기간 또는 납품대금을 나누어 수탁ㆍ위탁거래를 하는 행위 2. 납품대금 연동을 하지 아니하기로 하는 합의를 요구ㆍ유도하는 행위 3. 그 밖에 납품대금 연동을 피하기 위한 행위로서 대통령령으로 정하는 행위",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "277113",
+            "after_serial": "280163",
+            "before_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+            "after_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+            "before_published": "2025-10-01",
+            "after_published": "2025-12-02",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 60
+    },
+    {
+      "id": "law|법률|2025-12-02|21191",
+      "date": "2025-12-02",
+      "number": "21191",
+      "official_common_promulgation": true,
+      "summary": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-06-03",
+      "dependencies": [
+        {
+          "type": "cited_changed_provision",
+          "source_event": "8aab53f49bcb789d565b",
+          "target_document": "a4998f30dc1db62c5ff5",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "제11조의2",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": "장한다. 1. 중소기업과 대기업의 불공정거래 근절을 위한 정책의 수립ㆍ시행 2. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 3. 대ㆍ중소기업 간 불공정 거래에 관한 민원 및 제안의 처리ㆍ개선 4. 중소기업 분야 불공정거래 근절을 위한 민ㆍ관 협력 총괄",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "8aab53f49bcb789d565b",
+          "target_document": "068a45725701fbf7095f",
+          "source_article": "제2조",
+          "source_paragraph": null,
+          "target_article": "제14조의2",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": " 간 대ㆍ중소기업 상생협력 정책의 조정 및 지방자치단체 확산에 관한 사항 12. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 13. 수탁ㆍ위탁거래와 관련된 분쟁의 조정",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "중소벤처기업부와 그 소속기관 직제",
+          "target_ministry": "행정안전부,중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
+        },
+        {
+          "type": "cited_changed_provision",
+          "source_event": "8aab53f49bcb789d565b",
+          "target_document": "f8640ee944c8fe8a6d67",
+          "source_article": "제17조",
+          "source_paragraph": null,
+          "target_article": "부칙 19494 (20060530)",
+          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "excerpt": " 및 기업간 협력증진에 관한 법률」 제17조의 규정에 의한 수탁기업체협의회\"를 \"「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제17조에 따른 수탁기업협의회\"로 한다. ③법인세법 시행령 일부를 다음과 같이 개정한다. 제50조제1호 단서중 \"「중소기업의 사업영역보호 및 기업간 협력증진에 관한 법률」 제9조\"를 \"「대ㆍ중소기업 상생협력 촉진에 관한 법",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "target_title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "target_ministry": "중소벤처기업부",
+          "target_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9"
+        }
+      ],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "8aab53f49bcb789d565b",
+          "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+          "kind": "법률",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "published": "2025-12-02",
+          "effective": "2026-06-03",
+          "changed_articles": [
+            "제17조",
+            "제20조의2",
+            "제20조의4",
+            "제20조의6",
+            "제21조",
+            "제22조의2",
+            "제24조",
+            "제25조",
+            "제27조",
+            "제27조의2",
+            "제28조",
+            "제28조의6",
+            "제2조",
+            "제40조",
+            "제40조의3",
+            "제4조"
+          ],
+          "excerpts": [
+            {
+              "article": "제17조",
+              "before": "① 수탁기업(수탁기업이 위탁받은 물품등을 제조하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
+              "after": "① 수탁기업(수탁기업이 위탁받은 물품등의 제조등을 하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의2",
+              "before": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
+              "after": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 상생금융지수의 산정 및 공표에 관한 사항 4. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의2",
+              "before": "④ 위원회는 동반성장지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
+              "after": "④ 위원회는 동반성장지수 및 상생금융지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업ㆍ금융회사의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의4",
+              "before": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 산입하지 아니한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
+              "after": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 제외한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제20조의6",
+              "before": "",
+              "after": "제20조의6(상생금융 우수금융회사 지원) 정부는 중소기업과 금융회사 간 상생금융을 촉진하기 위하여 상생금융지수 산정 결과가 우수한 금융회사에 대하여 대통령령으로 정하는 지원시책을 마련할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
+              "after": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 주요 에너지경비, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "① 위탁기업이 수탁기업에 물품등의 제조를 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
+              "after": "① 위탁기업이 수탁기업에 물품등의 제조등을 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하려는 행위를 하여서는 아니 된다.",
+              "after": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하기 위하여 다음 각 호의 어느 하나에 해당하는 행위를 하여서는 아니 된다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제21조",
+              "before": "",
+              "after": "1. 동일한 물품등의 제조등을 위탁하면서 정당한 사유 없이 그 기간 또는 납품대금이 각각 제3항제2호 또는 제3호에 해당하도록 기간 또는 납품대금을 나누어 수탁ㆍ위탁거래를 하는 행위 2. 납품대금 연동을 하지 아니하기로 하는 합의를 요구ㆍ유도하는 행위 3. 그 밖에 납품대금 연동을 피하기 위한 행위로서 대통령령으로 정하는 행위",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            },
+            {
+              "article": "제22조의2",
+              "before": "① 수탁기업은 물품등의 제조를 위탁받은 후 물품등의 공급원가가 변동되어 납품대금의 조정이 불가피한 경우에는 위탁기업에 납품대금의 조정을 신청할 수 있다.",
+              "after": "① 수탁기업은 물품등의 제조등을 위탁받은 후 물품등의 공급원가가 변동되어 납품대금의 조정이 불가피한 경우에는 위탁기업에 납품대금의 조정을 신청할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "277113",
+            "after_serial": "280153",
+            "before_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+            "after_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+            "before_published": "2025-10-01",
+            "after_published": "2025-12-02",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 60
+    },
+    {
       "id": "law|대통령령|2025-12-30|35947",
       "date": "2025-12-30",
       "number": "35947",
@@ -2225,117 +2815,6 @@
         }
       ],
       "importance": 51
-    },
-    {
-      "id": "law|법률|2026-03-05|21447",
-      "date": "2026-03-05",
-      "number": "21447",
-      "official_common_promulgation": true,
-      "summary": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-      "source_count": 1,
-      "verified_count": 1,
-      "agency_count": 0,
-      "effective_at": "2026-07-01",
-      "dependencies": [
-        {
-          "type": "cited_changed_provision",
-          "source_event": "db2c95e3ed622d5f83e9",
-          "target_document": "a4998f30dc1db62c5ff5",
-          "source_article": "제2조",
-          "source_paragraph": null,
-          "target_article": "제11조의2",
-          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "excerpt": "장한다. 1. 중소기업과 대기업의 불공정거래 근절을 위한 정책의 수립ㆍ시행 2. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 3. 대ㆍ중소기업 간 불공정 거래에 관한 민원 및 제안의 처리ㆍ개선 4. 중소기업 분야 불공정거래 근절을 위한 민ㆍ관 협력 총괄",
-          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
-          "affected_verified": true,
-          "implementation_verified": false,
-          "needs_review": true,
-          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "target_title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
-          "target_ministry": "중소벤처기업부",
-          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
-        },
-        {
-          "type": "cited_changed_provision",
-          "source_event": "db2c95e3ed622d5f83e9",
-          "target_document": "068a45725701fbf7095f",
-          "source_article": "제2조",
-          "source_paragraph": null,
-          "target_article": "제14조의2",
-          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "excerpt": " 간 대ㆍ중소기업 상생협력 정책의 조정 및 지방자치단체 확산에 관한 사항 12. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 13. 수탁ㆍ위탁거래와 관련된 분쟁의 조정",
-          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
-          "affected_verified": true,
-          "implementation_verified": false,
-          "needs_review": true,
-          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "target_title": "중소벤처기업부와 그 소속기관 직제",
-          "target_ministry": "행정안전부,중소벤처기업부",
-          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
-        }
-      ],
-      "official_review_candidates": [],
-      "source_docs": [
-        {
-          "id": "db2c95e3ed622d5f83e9",
-          "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "kind": "법률",
-          "verification": "verified_changed_clauses",
-          "lifecycle": "amendment",
-          "revision": "타법개정",
-          "ministry": "중소벤처기업부",
-          "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
-          "published": "2026-03-05",
-          "effective": "2026-07-01",
-          "changed_articles": [
-            "제2조",
-            "제31조",
-            "제38조"
-          ],
-          "excerpts": [
-            {
-              "article": "제2조",
-              "before": "외상매출채권은 그 만기일이 도래하는 때에 대통령령으로 정하는 바에 따라 별도로 지정된 전용예치계좌에서 현금으로 인출되어 상환될 것 8의3. \"중앙관서 및 지방자치단체의 상생결제\"란 「국가재정법」 제6조에 따른 중앙관서 및 「지방자치법」 제2조에 따른 지방자치단체(「지방교육자치에 관한 법률」에 따른 특별시ㆍ광역시ㆍ특별자치시ㆍ도ㆍ특별자치도의 교육청을 포함한다)가 공공부문과 중소기업 간 협력을 촉진하기 위하여 상생결제 방식으로 제22조제6항에 따라 납품대금을 지급하는 것을 말한다.",
-              "after": "외상매출채권은 그 만기일이 도래하는 때에 대통령령으로 정하는 바에 따라 별도로 지정된 전용예치계좌에서 현금으로 인출되어 상환될 것 8의3. \"중앙관서 및 지방자치단체의 상생결제\"란 「국가재정법」 제6조에 따른 중앙관서 및 「지방자치법」 제2조에 따른 지방자치단체(「지방교육자치에 관한 법률」에 따른 특별시ㆍ통합특별시ㆍ광역시ㆍ특별자치시ㆍ도ㆍ특별자치도의 교육청을 포함한다)가 공공부문과 중소기업 간 협력을 촉진하기 위하여 상생결제 방식으로 제22조제6항에 따라 납품대금을 지급하는 것을 말한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제31조",
-              "before": "다만, 중소벤처기업부장관이 제38조제2항에 따라 권한의 일부를 특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사(이하 이 조에서 \"특별시장등\"이라 한다)에게 위임하는 경우에는 그 특별시장등 소속으로 지방자치단체 중소기업사업조정심의회(이하 \"지방자치단체 조정심의회\"라 한다)를 둔다.",
-              "after": "다만, 중소벤처기업부장관이 제38조제2항에 따라 권한의 일부를 특별시장ㆍ통합특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사(이하 이 조에서 \"특별시장등\"이라 한다)에게 위임하는 경우에는 그 특별시장등 소속으로 지방자치단체 중소기업사업조정심의회(이하 \"지방자치단체 조정심의회\"라 한다)를 둔다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제38조",
-              "before": "② 중소벤처기업부장관은 이 법에 따른 권한의 일부를 대통령령으로 정하는 바에 따라 소속 기관의 장, 특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사에게 위임하거나 업종별 주무부장관에게 위탁할 수 있다.",
-              "after": "② 중소벤처기업부장관은 이 법에 따른 권한의 일부를 대통령령으로 정하는 바에 따라 소속 기관의 장, 특별시장ㆍ통합특별시장ㆍ광역시장ㆍ특별자치시장ㆍ도지사 또는 특별자치도지사에게 위임하거나 업종별 주무부장관에게 위탁할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            }
-          ],
-          "actor_duties": [],
-          "needs_attachment_check": false,
-          "excluded_long_articles": 0,
-          "notes": [],
-          "comparison": {
-            "kind": "same_regulation_version",
-            "before_serial": "283461",
-            "after_serial": "284057",
-            "before_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-            "after_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-            "before_published": "2026-02-19",
-            "after_published": "2026-03-05",
-            "same_stable_id": true,
-            "source": "법제처 공식 이전·현재 본문"
-          }
-        }
-      ],
-      "importance": 48
     },
     {
       "id": "law|법률|2025-12-30|21254",
@@ -2670,366 +3149,6 @@
       "importance": 48
     },
     {
-      "id": "law|법률|2025-12-02|21194",
-      "date": "2025-12-02",
-      "number": "21194",
-      "official_common_promulgation": true,
-      "summary": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-      "source_count": 1,
-      "verified_count": 1,
-      "agency_count": 0,
-      "effective_at": "2026-06-03",
-      "dependencies": [
-        {
-          "type": "cited_changed_provision",
-          "source_event": "e15d5a11f70052b063f6",
-          "target_document": "a4998f30dc1db62c5ff5",
-          "source_article": "제2조",
-          "source_paragraph": null,
-          "target_article": "제11조의2",
-          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "excerpt": "장한다. 1. 중소기업과 대기업의 불공정거래 근절을 위한 정책의 수립ㆍ시행 2. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 3. 대ㆍ중소기업 간 불공정 거래에 관한 민원 및 제안의 처리ㆍ개선 4. 중소기업 분야 불공정거래 근절을 위한 민ㆍ관 협력 총괄",
-          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
-          "affected_verified": true,
-          "implementation_verified": false,
-          "needs_review": true,
-          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "target_title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
-          "target_ministry": "중소벤처기업부",
-          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
-        },
-        {
-          "type": "cited_changed_provision",
-          "source_event": "e15d5a11f70052b063f6",
-          "target_document": "068a45725701fbf7095f",
-          "source_article": "제2조",
-          "source_paragraph": null,
-          "target_article": "제14조의2",
-          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "excerpt": " 간 대ㆍ중소기업 상생협력 정책의 조정 및 지방자치단체 확산에 관한 사항 12. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 13. 수탁ㆍ위탁거래와 관련된 분쟁의 조정",
-          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
-          "affected_verified": true,
-          "implementation_verified": false,
-          "needs_review": true,
-          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "target_title": "중소벤처기업부와 그 소속기관 직제",
-          "target_ministry": "행정안전부,중소벤처기업부",
-          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
-        }
-      ],
-      "official_review_candidates": [],
-      "source_docs": [
-        {
-          "id": "e15d5a11f70052b063f6",
-          "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "kind": "법률",
-          "verification": "verified_changed_clauses",
-          "lifecycle": "amendment",
-          "revision": "타법개정",
-          "ministry": "중소벤처기업부",
-          "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
-          "published": "2025-12-02",
-          "effective": "2026-06-03",
-          "changed_articles": [
-            "제17조",
-            "제20조의2",
-            "제20조의4",
-            "제20조의6",
-            "제21조",
-            "제22조의2",
-            "제24조",
-            "제25조",
-            "제27조",
-            "제27조의2",
-            "제28조",
-            "제28조의6",
-            "제2조",
-            "제40조",
-            "제40조의3",
-            "제4조"
-          ],
-          "excerpts": [
-            {
-              "article": "제17조",
-              "before": "① 수탁기업(수탁기업이 위탁받은 물품등을 제조하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
-              "after": "① 수탁기업(수탁기업이 위탁받은 물품등의 제조등을 하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의2",
-              "before": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
-              "after": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 상생금융지수의 산정 및 공표에 관한 사항 4. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의2",
-              "before": "④ 위원회는 동반성장지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
-              "after": "④ 위원회는 동반성장지수 및 상생금융지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업ㆍ금융회사의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의4",
-              "before": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 산입하지 아니한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
-              "after": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 제외한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의4",
-              "before": "④ 위원회는 제2항에 따라 적합업종 합의 도출 중에 있는 업종ㆍ품목이 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제3항에 따라 생계형 적합업종으로 지정ㆍ고시된 경우 적합업종 합의 도출 절차를 종료한다.",
-              "after": "④ 위원회는 제2항에 따라 적합업종 합의 도출 중에 있는 업종ㆍ품목이 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제4항 또는 제7조의2제2항에 따라 생계형 적합업종으로 지정ㆍ고시된 경우 적합업종 합의 도출 절차를 종료한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의6",
-              "before": "",
-              "after": "제20조의6(상생금융 우수금융회사 지원) 정부는 중소기업과 금융회사 간 상생금융을 촉진하기 위하여 상생금융지수 산정 결과가 우수한 금융회사에 대하여 대통령령으로 정하는 지원시책을 마련할 수 있다.",
-              "kind": "문장 신설",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
-              "after": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 주요 에너지경비, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "① 위탁기업이 수탁기업에 물품등의 제조를 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
-              "after": "① 위탁기업이 수탁기업에 물품등의 제조등을 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하려는 행위를 하여서는 아니 된다.",
-              "after": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하기 위하여 다음 각 호의 어느 하나에 해당하는 행위를 하여서는 아니 된다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "",
-              "after": "1. 동일한 물품등의 제조등을 위탁하면서 정당한 사유 없이 그 기간 또는 납품대금이 각각 제3항제2호 또는 제3호에 해당하도록 기간 또는 납품대금을 나누어 수탁ㆍ위탁거래를 하는 행위 2. 납품대금 연동을 하지 아니하기로 하는 합의를 요구ㆍ유도하는 행위 3. 그 밖에 납품대금 연동을 피하기 위한 행위로서 대통령령으로 정하는 행위",
-              "kind": "문장 신설",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            }
-          ],
-          "actor_duties": [],
-          "needs_attachment_check": false,
-          "excluded_long_articles": 0,
-          "notes": [],
-          "comparison": {
-            "kind": "same_regulation_version",
-            "before_serial": "277113",
-            "after_serial": "280163",
-            "before_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-            "after_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-            "before_published": "2025-10-01",
-            "after_published": "2025-12-02",
-            "same_stable_id": true,
-            "source": "법제처 공식 이전·현재 본문"
-          }
-        }
-      ],
-      "importance": 48
-    },
-    {
-      "id": "law|법률|2025-12-02|21191",
-      "date": "2025-12-02",
-      "number": "21191",
-      "official_common_promulgation": true,
-      "summary": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-      "source_count": 1,
-      "verified_count": 1,
-      "agency_count": 0,
-      "effective_at": "2026-06-03",
-      "dependencies": [
-        {
-          "type": "cited_changed_provision",
-          "source_event": "8aab53f49bcb789d565b",
-          "target_document": "a4998f30dc1db62c5ff5",
-          "source_article": "제2조",
-          "source_paragraph": null,
-          "target_article": "제11조의2",
-          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "excerpt": "장한다. 1. 중소기업과 대기업의 불공정거래 근절을 위한 정책의 수립ㆍ시행 2. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 3. 대ㆍ중소기업 간 불공정 거래에 관한 민원 및 제안의 처리ㆍ개선 4. 중소기업 분야 불공정거래 근절을 위한 민ㆍ관 협력 총괄",
-          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
-          "affected_verified": true,
-          "implementation_verified": false,
-          "needs_review": true,
-          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "target_title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
-          "target_ministry": "중소벤처기업부",
-          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
-        },
-        {
-          "type": "cited_changed_provision",
-          "source_event": "8aab53f49bcb789d565b",
-          "target_document": "068a45725701fbf7095f",
-          "source_article": "제2조",
-          "source_paragraph": null,
-          "target_article": "제14조의2",
-          "reference": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "excerpt": " 간 대ㆍ중소기업 상생협력 정책의 조정 및 지방자치단체 확산에 관한 사항 12. 「대ㆍ중소기업 상생협력 촉진에 관한 법률」 제2조제4호에 따른 수탁ㆍ위탁거래(이하 이 항에서 \"수탁ㆍ위탁거래\"라 한다) 실태조사 및 개선 13. 수탁ㆍ위탁거래와 관련된 분쟁의 조정",
-          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
-          "affected_verified": true,
-          "implementation_verified": false,
-          "needs_review": true,
-          "source_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "target_title": "중소벤처기업부와 그 소속기관 직제",
-          "target_ministry": "행정안전부,중소벤처기업부",
-          "target_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C"
-        }
-      ],
-      "official_review_candidates": [],
-      "source_docs": [
-        {
-          "id": "8aab53f49bcb789d565b",
-          "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-          "kind": "법률",
-          "verification": "verified_changed_clauses",
-          "lifecycle": "amendment",
-          "revision": "일부개정",
-          "ministry": "중소벤처기업부",
-          "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
-          "published": "2025-12-02",
-          "effective": "2026-06-03",
-          "changed_articles": [
-            "제17조",
-            "제20조의2",
-            "제20조의4",
-            "제20조의6",
-            "제21조",
-            "제22조의2",
-            "제24조",
-            "제25조",
-            "제27조",
-            "제27조의2",
-            "제28조",
-            "제28조의6",
-            "제2조",
-            "제40조",
-            "제40조의3",
-            "제4조"
-          ],
-          "excerpts": [
-            {
-              "article": "제17조",
-              "before": "① 수탁기업(수탁기업이 위탁받은 물품등을 제조하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
-              "after": "① 수탁기업(수탁기업이 위탁받은 물품등의 제조등을 하기 위하여 그 일부를 다시 위탁하는 경우 그 2차 수탁기업을 포함한다)은 위탁기업과 대등한 거래관계를 유지하고 기술정보의 교환 및 공동기술개발 등을 촉진하기 위하여 위탁기업별ㆍ지역별ㆍ업종별로 수탁기업협의회를 구성할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의2",
-              "before": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
-              "after": "1. 동반성장지수의 산정 및 공표에 관한 사항 2. 적합업종의 합의 도출 및 공표에 관한 사항 3. 상생금융지수의 산정 및 공표에 관한 사항 4. 그 밖에 민간부문의 동반성장 추진과 관련하여 위원회가 필요하다고 인정하는 사항",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의2",
-              "before": "④ 위원회는 동반성장지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
-              "after": "④ 위원회는 동반성장지수 및 상생금융지수의 산정 및 공표를 위하여 관계 행정기관의 장, 공공기관의 장 및 기업ㆍ금융회사의 대표자 등에게 필요한 자료의 제공을 요청할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의4",
-              "before": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 산입하지 아니한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
-              "after": "② 위원회는 제1항의 신청이 있는 경우 신청일부터 1년 이내(다만, 「소상공인 생계형 적합업종 지정에 관한 특별법」 제7조제2항에 따라 생계형 적합업종의 지정을 추천하는 경우 그 추천일부터 생계형 적합업종의 지정 여부를 심의ㆍ의결하는 날까지의 기간은 제외한다)에 제32조제1항제1호부터 제3호까지의 기업, 중소기업자단체 및 전문가 등의 의견을 들어 적합업종 합의 도출을 마쳐야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제20조의6",
-              "before": "",
-              "after": "제20조의6(상생금융 우수금융회사 지원) 정부는 중소기업과 금융회사 간 상생금융을 촉진하기 위하여 상생금융지수 산정 결과가 우수한 금융회사에 대하여 대통령령으로 정하는 지원시책을 마련할 수 있다.",
-              "kind": "문장 신설",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
-              "after": "1. 위탁의 내용 2. 납품대금(지급 방법 및 지급기일을 포함한다) 3. 납품한 물품등의 검사 방법 4. 납품대금 연동의 대상인 물품등의 명칭, 주요 원재료, 주요 에너지경비, 조정요건, 기준 지표 및 산식 등 납품대금 연동에 관한 사항으로서 대통령령으로 정하는 사항 5. 그 밖에 약정서에 적어야 할 사항으로서 대통령령으로 정하는 사항",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "① 위탁기업이 수탁기업에 물품등의 제조를 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
-              "after": "① 위탁기업이 수탁기업에 물품등의 제조등을 위탁할 때에는 지체 없이 다음 각 호의 사항을 적은 약정서를 그 수탁기업에 발급하여야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하려는 행위를 하여서는 아니 된다.",
-              "after": "④ 위탁기업은 납품대금 연동과 관련하여 수탁ㆍ위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법으로 이 조의 적용을 피하기 위하여 다음 각 호의 어느 하나에 해당하는 행위를 하여서는 아니 된다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제21조",
-              "before": "",
-              "after": "1. 동일한 물품등의 제조등을 위탁하면서 정당한 사유 없이 그 기간 또는 납품대금이 각각 제3항제2호 또는 제3호에 해당하도록 기간 또는 납품대금을 나누어 수탁ㆍ위탁거래를 하는 행위 2. 납품대금 연동을 하지 아니하기로 하는 합의를 요구ㆍ유도하는 행위 3. 그 밖에 납품대금 연동을 피하기 위한 행위로서 대통령령으로 정하는 행위",
-              "kind": "문장 신설",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            },
-            {
-              "article": "제22조의2",
-              "before": "① 수탁기업은 물품등의 제조를 위탁받은 후 물품등의 공급원가가 변동되어 납품대금의 조정이 불가피한 경우에는 위탁기업에 납품대금의 조정을 신청할 수 있다.",
-              "after": "① 수탁기업은 물품등의 제조등을 위탁받은 후 물품등의 공급원가가 변동되어 납품대금의 조정이 불가피한 경우에는 위탁기업에 납품대금의 조정을 신청할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0"
-            }
-          ],
-          "actor_duties": [],
-          "needs_attachment_check": false,
-          "excluded_long_articles": 0,
-          "notes": [],
-          "comparison": {
-            "kind": "same_regulation_version",
-            "before_serial": "277113",
-            "after_serial": "280153",
-            "before_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-            "after_title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
-            "before_published": "2025-10-01",
-            "after_published": "2025-12-02",
-            "same_stable_id": true,
-            "source": "법제처 공식 이전·현재 본문"
-          }
-        }
-      ],
-      "importance": 48
-    },
-    {
       "id": "law|법률|2009-01-30|09346",
       "date": "2009-01-30",
       "number": "09346",
@@ -3162,6 +3281,317 @@
         }
       ],
       "importance": 48
+    },
+    {
+      "id": "law|법률|2026-04-21|21553",
+      "date": "2026-04-21",
+      "number": "21553",
+      "official_common_promulgation": true,
+      "summary": "전파법",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 1,
+      "effective_at": "2026-10-22",
+      "dependencies": [
+        {
+          "type": "cited_changed_provision",
+          "source_event": "2118e6e413894fcffacc",
+          "target_document": "923eb848fc081c5dacd1",
+          "source_article": "제78조",
+          "source_paragraph": "제2항",
+          "target_article": "제19조",
+          "reference": "전파법",
+          "excerpt": "도의 측정ㆍ조사에 관한 사항 19. 무선국 검사, 무선종사자의 자격검정 시험 등 「전파법」 제78조제2항에 따라 과학기술정보통신부장관이 한국방송통신전파진흥원에 위탁한 업무의 지도ㆍ감독에 관한 사항 ⑦ 전파보호과장은 다음 사항을 분장한다. 1. 전파조사 및 보호에 관한 기본계획의 수립ㆍ시행 2. 불법감청설비 탐지업",
+          "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "affected_verified": true,
+          "implementation_verified": false,
+          "needs_review": true,
+          "source_title": "전파법",
+          "target_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+          "target_ministry": "과학기술정보통신부",
+          "target_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+        }
+      ],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "2118e6e413894fcffacc",
+          "title": "전파법",
+          "kind": "법률",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "과학기술정보통신부,방송미디어통신위원회",
+          "url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
+          "published": "2026-04-21",
+          "effective": "2026-10-22",
+          "changed_articles": [
+            "제22조",
+            "제24조",
+            "제24조의2",
+            "제29조",
+            "제66조의3",
+            "제69조",
+            "제71조의2",
+            "제72조",
+            "제78조",
+            "제84조",
+            "제86조",
+            "제90조"
+          ],
+          "excerpts": [
+            {
+              "article": "제22조",
+              "before": "1. 주파수 사용승인은 제18조의2제3항에 따라 주파수 사용승인을 받은 날 2. 무선국 개설허가는 제24조제3항 본문에 따른 검사증명서를 발급받은 날.",
+              "after": "1. 주파수 사용승인은 제18조의2제3항에 따라 주파수 사용승인을 받은 날 2. 무선국 개설허가는 제24조제4항 본문에 따른 검사증명서를 발급받은 날.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조",
+              "before": "② 과학기술정보통신부장관은 제1항 각 호의 어느 하나에 해당하는 자로부터 허가증 또는 무선국 신고증명서에 적힌 준공기한의 연장신청을 받은 경우 그 사유가 합당하다고 인정하면 준공기한을 연장할 수 있다.",
+              "after": "③ 과학기술정보통신부장관은 제1항 각 호의 어느 하나에 해당하는 자로부터 허가증 또는 무선국 신고증명서에 적힌 준공기한의 연장신청을 받은 경우 그 사유가 합당하다고 인정하면 준공기한을 연장할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조",
+              "before": "",
+              "after": "② 제1항에도 불구하고 대통령령으로 정하는 무선국의 시설자는 대통령령으로 정하는 바에 따라 그 무선설비가 기술기준 및 무선종사자의 자격ㆍ정원배치기준에 적합한지의 여부에 대하여 스스로 확인하고 그 결과(이하 \"무선국자기적합확인서\"라 한다)를 과학기술정보통신부장관에게 제출하여 준공검사를 갈음할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조",
+              "before": "③ 과학기술정보통신부장관은 제1항, 제5항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
+              "after": "④ 과학기술정보통신부장관은 제1항, 제6항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조",
+              "before": "④ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다.",
+              "after": "⑤ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조",
+              "before": "⑤ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다.",
+              "after": "⑥ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조",
+              "before": "⑨ 제1항ㆍ제4항ㆍ제5항 및 제8항에 따른 검사의 대상ㆍ시기ㆍ방법 및 절차에 관하여 필요한 사항은 대통령령으로 정한다.",
+              "after": "⑨ 제1항ㆍ제2항ㆍ제5항ㆍ제6항 및 제8항에 따른 검사의 대상ㆍ시기ㆍ방법 및 절차에 관하여 필요한 사항은 대통령령으로 정한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제24조의2",
+              "before": "② 과학기술정보통신부장관은 제24조제4항에도 불구하고 정기검사 시기에 외국을 항행 중인 선박 또는 항공기의 무선국, 그 밖에 정기검사를 실시할 필요가 없다고 인정되는 무선국의 경우에는 정기검사 시기를 연기하거나 정기검사를 면제 또는 생략할 수 있다.",
+              "after": "② 과학기술정보통신부장관은 제24조제5항에도 불구하고 정기검사 시기에 외국을 항행 중인 선박 또는 항공기의 무선국, 그 밖에 정기검사를 실시할 필요가 없다고 인정되는 무선국의 경우에는 정기검사 시기를 연기하거나 정기검사를 면제 또는 생략할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제29조",
+              "before": "⑤ 전파차단장치를 제조ㆍ수입 또는 판매하고자 하는 자는 과학기술정보통신부장관의 인가를 받아야 한다.",
+              "after": "⑧ 전파차단장치를 제조ㆍ수입 또는 판매하고자 하는 자는 과학기술정보통신부장관의 인가를 받아야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            },
+            {
+              "article": "제29조",
+              "before": "④ 중앙행정기관(그 소속기관을 포함한다) 또는 그 감독을 받는 기관이 전파차단장치를 도입하거나 폐기하는 경우 해당 중앙행정기관의 장은 그 제원 및 수량 등 대통령령으로 정하는 사항을 과학기술정보통신부장관에게 신고하여야 한다.",
+              "after": "⑦ 제3항 각 호에 해당하는 활동 또는 조치 등을 하는 기관이 전파차단장치를 도입하거나 폐기하는 경우 해당 기관의 장은 그 제원 및 수량 등 대통령령으로 정하는 사항을 과학기술정보통신부장관에게 신고하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
+            }
+          ],
+          "actor_duties": [
+            {
+              "agency": "과학기술정보통신부장관",
+              "article": "제24조",
+              "status": "official_duty_changed",
+              "basis": "동일 변경 조문에서 기관명과 변경 의무 문장 확인",
+              "before": "③ 과학기술정보통신부장관은 제1항, 제5항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
+              "after": "④ 과학기술정보통신부장관은 제1항, 제6항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
+              "action": "해당 조문에 명시된 업무 의무의 변경 내용 확인",
+              "implementation_verified": false
+            }
+          ],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "277373",
+            "after_serial": "285531",
+            "before_title": "전파법",
+            "after_title": "전파법",
+            "before_published": "2025-10-01",
+            "after_published": "2026-04-21",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 39
+    },
+    {
+      "id": "law|재정경제부령|2026-10-14|00053",
+      "date": "2026-10-14",
+      "number": "00053",
+      "official_common_promulgation": true,
+      "summary": "공기업ㆍ준정부기관 계약사무규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 1,
+      "effective_at": "2026-10-14",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "aa45b73e61e699891328",
+          "title": "공기업ㆍ준정부기관 계약사무규칙",
+          "kind": "재정경제부령",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-14",
+          "effective": "2026-10-14",
+          "changed_articles": [
+            "부칙 00053 (20261014)",
+            "제7조",
+            "제7조의2",
+            "제9조"
+          ],
+          "excerpts": [
+            {
+              "article": "부칙 00053 (20261014)",
+              "before": "",
+              "after": "부칙 이 규칙은 공포한 날부터 시행한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "⑥ 제2항의 임직원에 대하여 중징계 외의 처분이나 무죄판결이 확정되는 경우 해당 기관장은 제2항에 따른 계약사무의 위탁을 철회할 수 있으며, 이 경우 조달청장은 위탁 철회의 통지를 받은 날부터 30일 이내에 사무를 인계하여야 한다.",
+              "after": "⑦ 제2항의 임직원에 대하여 중징계 외의 처분이나 무죄판결이 확정되는 경우 해당 기관장은 제4항에 따른 계약사무의 위탁을 철회할 수 있으며, 이 경우 조달청장은 위탁 철회의 통지를 받은 날부터 30일 이내에 사무를 인계하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "⑦ 계약사무의 위탁, 철회 및 위탁기간의 종료의 경우 다음 각 호의 구분에 따른 사무는 인계하지 아니한다.",
+              "after": "⑧ 계약사무의 위탁, 철회 및 위탁기간의 종료의 경우 다음 각 호의 구분에 따른 사무는 인계하지 아니한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "⑤ 조달청장은 위탁받은 사무의 범위가 제2항에 따라 이사회가 심의ㆍ의결한 위탁 범위와 다른 경우 또는 전문성이 요구되는 등 조달청장이 수행하기 곤란한 경우에는 기관장에게 위탁사무 범위의 조정을 요구할 수 있으며, 기관장은 특별한 사유가 없으면 이에 따라야 한다.",
+              "after": "⑥ 조달청장은 위탁받은 사무의 범위가 제2항에 따라 이사회가 심의ㆍ의결한 위탁 범위와 다른 경우 또는 전문성이 요구되는 등 조달청장이 수행하기 곤란한 경우에는 기관장에게 위탁사무 범위의 조정 또는 인력 지원을 요구할 수 있으며, 기관장은 특별한 사유가 없으면 이에 따라야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "② 제1항에도 불구하고 기관장은 해당 공기업ㆍ준정부기관의 임직원이 계약에 관한 사무와 관련하여 「형법」 제129조부터 제132조까지, 제314조, 제315조, 제347조, 제347조의2, 제355조부터 제357조까지 및 제359조 중 어느 하나에 해당하는 죄를 범하였다는 혐의로 기소되거나 해당 공기업ㆍ준정부기관의 임직원에 대하여 감사원, 주무부처 또는 해당 공기업ㆍ준정부기관의 감사로부터 파면, 해임, 강등 또는 정직(이하 \"중징계\"라 한다) 요구받은 경우에는 기소되거나 중징계 처분을 요구받은 날부터 10일 이내에 재정경제부장관과 조달청장에게 기소 또는 중징계 처분요구 사실을 통보하여야 하며, 그 기소되거나 중징계 처분을 요구받은 날부터 60일 이내에 해당 임직원이 관리하는 단위 부서(기소 또는 중징계 요구의 원인이 된 행위가 있었던 때를 기준으로 판단하며, 해당 임직원이 관리자가 아닌 경우에는 직상급 관리자가 관리하는 단위 부서를 말한다) 소관의 계약사무를 조달청장에게 위탁하는 방안을 마련하여 이사회의 심의ㆍ의결을 요청하고, 이사회가 의결한 경우 해당 계약사무를 조달청장에게 위탁하여야 한다.",
+              "after": "② 제1항에도 불구하고 기관장은 해당 공기업ㆍ준정부기관의 임직원이 계약사무와 관련하여 「형법」 제129조부터 제132조까지, 제314조, 제315조, 제347조, 제347조의2, 제355조부터 제357조까지 및 제359조 중 어느 하나에 해당하는 죄를 범하였다는 혐의로 기소되거나 해당 공기업ㆍ준정부기관의 임직원에 대하여 감사원, 주무부처 또는 해당 공기업ㆍ준정부기관의 감사로부터 파면, 해임, 강등 또는 정직(이하 \"중징계\"라 한다) 처분을 요구받은 경우에는 기소되거나 중징계 처분을 요구받은 날부터 10일 이내에 재정경제부장관과 조달청장에게 기소 또는 중징계 처분요구 사실을 통보하여야 하며, 그 기소되거나 중징계 처분을 요구받은 날부터 90일 이내에 해당 임직원이 관리하는 단위 부서(기소 또는 중징계 요구의 원인이 된 행위가 있었던 때를 기준으로 판단하며, 해당 임직원이 관리자가 아닌 경우에는 직상급 관리자가 관리하는 단위 부서를 말한다) 소관의 계약사무를 조달청장에게 위탁하는 방안을 마련하여 이사회의 심의ㆍ의결을 요청해야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "③ 제2항에 따라 계약사무를 조달청장에게 위탁하는 경우 그 위탁기간은 위탁받은 날부터 2년으로 한다.",
+              "after": "⑤ 제4항에 따라 계약사무를 조달청장에게 위탁하는 경우 그 위탁기간은 위탁받은 날부터 2년으로 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "⑧ 제1항과 제2항에 따라 계약에 관한 사무를 위탁하는 경우에는 위탁조건, 위탁수수료, 그 밖에 필요한 사항을 명백히 하여야 한다.",
+              "after": "⑨ 제1항과 제4항에 따라 계약사무를 위탁하는 경우에는 위탁조건, 위탁수수료, 그 밖에 필요한 사항을 명백히 하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "① 기관장은 계약에 관한 사무를 그 소속직원에게 위임하거나 국가 또는 지방자치단체의 기관이나 다른 기관장(소속 직원을 포함한다)에게 위탁할 수 있다.",
+              "after": "① 기관장은 계약에 관한 사무(계약의 체결, 이행 및 사후관리 등을 포함한다. 이하 \"계약사무\"라 한다)를 그 소속직원에게 위임하거나 국가 또는 지방자치단체의 기관이나 다른 기관장(소속 직원을 포함한다)에게 위탁할 수 있다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "1. 계약사무의 위탁: 제2항에 따른 이사회의 의결일 이전에 입찰공고를 하거나 계약을 체결한 계약사무 2. 계약사무의 철회: 제6항에 따라 조달청장이 위탁철회의 통지를 받은 날 이전에 입찰공고를 하거나 계약을 체결한 계약사무 3. 계약사무 위탁기간의 종료: 위탁기간 종료일 이전에 입찰공고를 하거나 계약을 체결한 계약사무",
+              "after": "1. 계약사무의 위탁: 제4항에 따른 이사회의 의결일 이전에 입찰공고 또는 「국가를 당사자로 하는 계약에 관한 법률 시행령」 제30조제3항에 따른 안내공고(이하 \"입찰공고등\"이라 한다)를 한 계약의 체결 사무 2. 계약사무의 철회: 제7항에 따라 조달청장이 위탁철회의 통지를 받은 날 이전에 입찰공고등을 한 계약의 체결 사무 3. 계약사무 위탁기간의 종료: 위탁기간 종료일 이전에 입찰공고등을 한 계약의 체결 사무",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제7조",
+              "before": "④ 기관장은 제2항에 따른 이사회의 의결 결과(조달청장에게 계약사무를 위탁하는 경우에는 위탁하는 사무의 구체적인 범위를 포함한다)를 재정경제부장관과 조달청장에게 통보하여야 한다.",
+              "after": "④ 이사회가 제2항에 따른 위탁방안을 의결한 경우 기관장은 그 의결에 따라 계약사무를 조달청장에게 위탁해야 하며, 이사회의 의결 결과(위탁하는 사무의 구체적인 범위를 포함한다)를 재정경제부장관과 조달청장에게 통보하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [
+            {
+              "agency": "조달청장",
+              "article": "제7조",
+              "status": "official_duty_changed",
+              "basis": "동일 변경 조문에서 기관명과 변경 의무 문장 확인",
+              "before": "⑥ 제2항의 임직원에 대하여 중징계 외의 처분이나 무죄판결이 확정되는 경우 해당 기관장은 제2항에 따른 계약사무의 위탁을 철회할 수 있으며, 이 경우 조달청장은 위탁 철회의 통지를 받은 날부터 30일 이내에 사무를 인계하여야 한다.",
+              "after": "⑦ 제2항의 임직원에 대하여 중징계 외의 처분이나 무죄판결이 확정되는 경우 해당 기관장은 제4항에 따른 계약사무의 위탁을 철회할 수 있으며, 이 경우 조달청장은 위탁 철회의 통지를 받은 날부터 30일 이내에 사무를 인계하여야 한다.",
+              "action": "해당 조문에 명시된 업무 의무의 변경 내용 확인",
+              "implementation_verified": false
+            }
+          ],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "285569",
+            "after_serial": "291201",
+            "before_title": "공기업ㆍ준정부기관 계약사무규칙",
+            "after_title": "공기업ㆍ준정부기관 계약사무규칙",
+            "before_published": "2026-04-20",
+            "after_published": "2026-10-14",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 27
     },
     {
       "id": "law|보건복지부령|2026-05-08|01173",
@@ -3418,156 +3848,6 @@
             "after_title": "주택건설기준 등에 관한 규정",
             "before_published": "2026-03-24",
             "after_published": "2026-05-06",
-            "same_stable_id": true,
-            "source": "법제처 공식 이전·현재 본문"
-          }
-        }
-      ],
-      "importance": 27
-    },
-    {
-      "id": "law|법률|2026-04-21|21553",
-      "date": "2026-04-21",
-      "number": "21553",
-      "official_common_promulgation": true,
-      "summary": "전파법",
-      "source_count": 1,
-      "verified_count": 1,
-      "agency_count": 1,
-      "effective_at": "2026-10-22",
-      "dependencies": [],
-      "official_review_candidates": [],
-      "source_docs": [
-        {
-          "id": "2118e6e413894fcffacc",
-          "title": "전파법",
-          "kind": "법률",
-          "verification": "verified_changed_clauses",
-          "lifecycle": "amendment",
-          "revision": "일부개정",
-          "ministry": "과학기술정보통신부,방송미디어통신위원회",
-          "url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
-          "published": "2026-04-21",
-          "effective": "2026-10-22",
-          "changed_articles": [
-            "제22조",
-            "제24조",
-            "제24조의2",
-            "제29조",
-            "제66조의3",
-            "제69조",
-            "제71조의2",
-            "제72조",
-            "제78조",
-            "제84조",
-            "제86조",
-            "제90조"
-          ],
-          "excerpts": [
-            {
-              "article": "제22조",
-              "before": "1. 주파수 사용승인은 제18조의2제3항에 따라 주파수 사용승인을 받은 날 2. 무선국 개설허가는 제24조제3항 본문에 따른 검사증명서를 발급받은 날.",
-              "after": "1. 주파수 사용승인은 제18조의2제3항에 따라 주파수 사용승인을 받은 날 2. 무선국 개설허가는 제24조제4항 본문에 따른 검사증명서를 발급받은 날.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조",
-              "before": "② 과학기술정보통신부장관은 제1항 각 호의 어느 하나에 해당하는 자로부터 허가증 또는 무선국 신고증명서에 적힌 준공기한의 연장신청을 받은 경우 그 사유가 합당하다고 인정하면 준공기한을 연장할 수 있다.",
-              "after": "③ 과학기술정보통신부장관은 제1항 각 호의 어느 하나에 해당하는 자로부터 허가증 또는 무선국 신고증명서에 적힌 준공기한의 연장신청을 받은 경우 그 사유가 합당하다고 인정하면 준공기한을 연장할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조",
-              "before": "",
-              "after": "② 제1항에도 불구하고 대통령령으로 정하는 무선국의 시설자는 대통령령으로 정하는 바에 따라 그 무선설비가 기술기준 및 무선종사자의 자격ㆍ정원배치기준에 적합한지의 여부에 대하여 스스로 확인하고 그 결과(이하 \"무선국자기적합확인서\"라 한다)를 과학기술정보통신부장관에게 제출하여 준공검사를 갈음할 수 있다.",
-              "kind": "문장 신설",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조",
-              "before": "③ 과학기술정보통신부장관은 제1항, 제5항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
-              "after": "④ 과학기술정보통신부장관은 제1항, 제6항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조",
-              "before": "④ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다.",
-              "after": "⑤ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조",
-              "before": "⑤ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다.",
-              "after": "⑥ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조",
-              "before": "⑨ 제1항ㆍ제4항ㆍ제5항 및 제8항에 따른 검사의 대상ㆍ시기ㆍ방법 및 절차에 관하여 필요한 사항은 대통령령으로 정한다.",
-              "after": "⑨ 제1항ㆍ제2항ㆍ제5항ㆍ제6항 및 제8항에 따른 검사의 대상ㆍ시기ㆍ방법 및 절차에 관하여 필요한 사항은 대통령령으로 정한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제24조의2",
-              "before": "② 과학기술정보통신부장관은 제24조제4항에도 불구하고 정기검사 시기에 외국을 항행 중인 선박 또는 항공기의 무선국, 그 밖에 정기검사를 실시할 필요가 없다고 인정되는 무선국의 경우에는 정기검사 시기를 연기하거나 정기검사를 면제 또는 생략할 수 있다.",
-              "after": "② 과학기술정보통신부장관은 제24조제5항에도 불구하고 정기검사 시기에 외국을 항행 중인 선박 또는 항공기의 무선국, 그 밖에 정기검사를 실시할 필요가 없다고 인정되는 무선국의 경우에는 정기검사 시기를 연기하거나 정기검사를 면제 또는 생략할 수 있다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제29조",
-              "before": "⑤ 전파차단장치를 제조ㆍ수입 또는 판매하고자 하는 자는 과학기술정보통신부장관의 인가를 받아야 한다.",
-              "after": "⑧ 전파차단장치를 제조ㆍ수입 또는 판매하고자 하는 자는 과학기술정보통신부장관의 인가를 받아야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            },
-            {
-              "article": "제29조",
-              "before": "④ 중앙행정기관(그 소속기관을 포함한다) 또는 그 감독을 받는 기관이 전파차단장치를 도입하거나 폐기하는 경우 해당 중앙행정기관의 장은 그 제원 및 수량 등 대통령령으로 정하는 사항을 과학기술정보통신부장관에게 신고하여야 한다.",
-              "after": "⑦ 제3항 각 호에 해당하는 활동 또는 조치 등을 하는 기관이 전파차단장치를 도입하거나 폐기하는 경우 해당 기관의 장은 그 제원 및 수량 등 대통령령으로 정하는 사항을 과학기술정보통신부장관에게 신고하여야 한다.",
-              "kind": "문장 개정",
-              "quality": "complete_statement",
-              "source_url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95"
-            }
-          ],
-          "actor_duties": [
-            {
-              "agency": "과학기술정보통신부장관",
-              "article": "제24조",
-              "status": "official_duty_changed",
-              "basis": "동일 변경 조문에서 기관명과 변경 의무 문장 확인",
-              "before": "③ 과학기술정보통신부장관은 제1항, 제5항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
-              "after": "④ 과학기술정보통신부장관은 제1항, 제6항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
-              "action": "해당 조문에 명시된 업무 의무의 변경 내용 확인",
-              "implementation_verified": false
-            }
-          ],
-          "needs_attachment_check": false,
-          "excluded_long_articles": 0,
-          "notes": [],
-          "comparison": {
-            "kind": "same_regulation_version",
-            "before_serial": "277373",
-            "after_serial": "285531",
-            "before_title": "전파법",
-            "after_title": "전파법",
-            "before_published": "2025-10-01",
-            "after_published": "2026-04-21",
             "same_stable_id": true,
             "source": "법제처 공식 이전·현재 본문"
           }
@@ -4205,6 +4485,148 @@
             "after_serial": "291849",
             "before_title": "교육부와 그 소속기관 직제 시행규칙",
             "after_title": "교육부와 그 소속기관 직제 시행규칙",
+            "before_published": "2026-07-21",
+            "after_published": "2026-11-06",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|과학기술정보통신부령|2026-11-06|00178",
+      "date": "2026-11-06",
+      "number": "00178",
+      "official_common_promulgation": true,
+      "summary": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-06",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "923eb848fc081c5dacd1",
+          "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+          "kind": "과학기술정보통신부령",
+          "verification": "verified_partial_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "과학기술정보통신부",
+          "url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-06",
+          "effective": "2026-11-06",
+          "changed_articles": [
+            "별표 0003의00 (과학기술정보통신부 공무원 정원표(제27조제1항 본문 관련))",
+            "별표 0004의00 (과학기술정보통신부 공무원 정원표(제27조제1항 단서 관련))",
+            "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))",
+            "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))",
+            "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))",
+            "별표 0008의00 (중앙전파관리소 공무원 정원표(제28조제2항 단서 관련))",
+            "부칙 00178 (20261106)",
+            "제19조",
+            "제21조",
+            "제30조",
+            "제8조"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))",
+              "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 5] 국립전파연구원 공무원 정원표(제28조제1항 본문 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전산 사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 21 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 또는 공업연구사 52 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 서기 15 방호서기 2 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 방송통신서기보 4 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1",
+              "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 5] 국립전파연구원 공무원 정원표(제28조제1항 본문 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전산 사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 20 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 또는 공업연구사 50 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 서기 15 방호서기 2 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 방송통신서기보 4 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 3 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))",
+              "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 6] 국립전파연구원 공무원 정원표(제28조제1항 단서 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전 산사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방 송통신사무관 또는 공업연구관 23 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주 사 또는 공업연구사 50 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 방호주사보 1 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통 15 신서기 방호서기 1 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 4 방송통신서기보 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1",
+              "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 6] 국립전파연구원 공무원 정원표(제28조제1항 단서 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전 산사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방 송통신사무관 또는 공업연구관 22 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주 사 또는 공업연구사 48 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 방호주사보 1 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통 15 신서기 방호서기 1 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 4 방송통신서기보 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방 3 송통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시 설부전문관ㆍ전산부전문관ㆍ방송통신부전문관",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))",
+              "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 7] 중앙전파관리소 공무원 정원표(제28조제2항 본문 관련) 총계 855 일반직 계 855 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 64 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 212 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 214 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 202 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 38 방송통신서기보 방호서기보 6 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4",
+              "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 7] 중앙전파관리소 공무원 정원표(제28조제2항 본문 관련) 총계 855 일반직 계 855 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 63 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 200 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 214 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 202 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 38 방송통신서기보 방호서기보 6 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송통 13 신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부전 문관ㆍ전산부전문관ㆍ방송통신부전문관",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "별표 0008의00 (중앙전파관리소 공무원 정원표(제28조제2항 단서 관련))",
+              "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 8] 중앙전파관리소 공무원 정원표(제28조제2항 단서 관련) 총계 853 일반직 계 853 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 70 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 209 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 216 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 199 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 36 방송통신서기보 방호서기보 4 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4",
+              "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 8] 중앙전파관리소 공무원 정원표(제28조제2항 단서 관련) 총계 853 일반직 계 853 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 69 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 197 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 216 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 199 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 36 방송통신서기보 방호서기보 4 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 13 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "부칙 00178 (20261106)",
+              "before": "",
+              "after": "부칙 제1조(시행일) 이 규칙은 공포한 날부터 시행한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "부칙 00178 (20261106)",
+              "before": "",
+              "after": "제2조(정원에 관한 경과조치)",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "부칙 00178 (20261106)",
+              "before": "",
+              "after": "① 이 규칙 시행 이후 최초로 실시하는 「전문직공무원 인사규정」 제9조에 따른 전직시험 합격자 수가 이 규칙 시행으로 증원된 전문직공무원 정원의 수에 미달하여 전문직공무원 정원을 배정할 수 있는 보조기관 및 보좌기관에서 전문직공무원이 아닌 일반직공무원의 초과현원이 발생하는 경우에는 2028년 11월 5일까지 그 초과현원에 상응하는 일반직공무원 정원이 과학기술정보통신부에 따로 있는 것으로 본다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "부칙 00178 (20261106)",
+              "before": "",
+              "after": "② 제1항에 따라 인정되는 초과현원에 상응하는 일반직공무원 정원은 이 규칙 시행 이후 최초로 실시한 전직시험 이후 제1항에 따른 존속기간까지 「전문직공무원 인사규정」 제6조에 따른 경력경쟁채용시험 또는 같은 영 제9조에 따른 전직시험을 실시하여 합격자가 추가로 발생할 때마다 그 합격자 수만큼 감소한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제19조",
+              "before": "1. 무선국 및 전파응용설비의 허가ㆍ신고ㆍ검사 등에 관한 기본계획 수립ㆍ시행 2. 통신보안에 관한 사항 3. 삭제 4. 무선국 및 전파응용설비의 허가ㆍ검사 및 행정처분에 관한 사항 5. 삭제 6. 방송수신 장애의 조사 및 처리 7. 전송망사업의 등록 및 전송ㆍ선로설비 적합확인 8. 삭제 9. 삭제 10. 무선국 무선설비의 임대ㆍ위탁 운용 및 공동사용 승인 등에 관한 사항 11. 삭제 12. 주파수사용승인 무선국 검사에 관한 사항 13. 디지털 방송프로그램 음량기준 사후관리에 관한 사항 14. 종합유선방송사업자 및 위성방송사업자의 허가조건의 이행 여부에 대한 자료 제출 요구 및 시정명령에 관한 사항 15. 「방송법」 제83조제1항제1호에 따른 방송사업자의 방송프로그램 편성비율과 관련된 「방송법」 위반에 관한 업무 16. 「방송법」 제83조제1항에 따른 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 17. 「방송법」 제108조제1항제4호ㆍ제17호 및 제18호에 따른 과태료의 부과에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 무선국 전자파 강도의 측정ㆍ조사에 관한 사항 19. 무선국 검사, 무선종사자의 자격검정 시험 등 「전파법」 제78조제2항에 따라 과학기술정보통신부장관이 한국방송통신전파진흥원에 위탁한 업무의 지도ㆍ감독에 관한 사항",
+              "after": "1. 무선국 및 전파응용설비의 허가ㆍ신고ㆍ검사 등에 관한 기본계획 수립ㆍ시행 2. 통신보안에 관한 사항 3. 삭제 4. 무선국 및 전파응용설비의 허가ㆍ검사 및 행정처분에 관한 사항 5. 삭제 6. 방송수신 장애의 조사 및 처리 7. 전송망사업의 등록 및 전송ㆍ선로설비 적합확인 8. 삭제 9. 삭제 10. 무선국 무선설비의 임대ㆍ위탁 운용 및 공동사용 승인 등에 관한 사항 11. 삭제 12. 주파수사용승인 무선국 검사에 관한 사항 13. 디지털 방송프로그램 음량기준 사후관리에 관한 사항 14. 종합유선방송사업자 및 위성방송사업자의 허가조건의 이행 여부에 대한 자료 제출 요구 및 시정명령에 관한 사항 15. 방송사업자의 방송프로그램 편성비율과 관련된 「방송법」 위반에 관한 업무(과학기술정보통신부 소관 방송사업자로 한정한다) 16. 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 17. 「방송법」 제108조제1항제4호ㆍ제8호ㆍ제17호 및 제18호에 따른 과태료의 부과에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 무선국 전자파 강도의 측정ㆍ조사에 관한 사항 19. 무선국 검사, 무선종사자의 자격검정 시험 등 「전파법」 제78조제2항에 따라 과학기술정보통신부장관이 한국방송통신전파진흥원에 위탁한 업무의 지도ㆍ감독에 관한 사항",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            },
+            {
+              "article": "제21조",
+              "before": "1. 방송사 소유 무선국의 허가 및 검사 2. 삭제 3. 방송프로그램 편성비율 법규 위반 조사 4. 전송망사업자 등록, 전송ㆍ선로설비 적합 확인 및 행정처분 5. 삭제 6. 삭제 7. 삭제 8. 삭제 9. 회선설비 미보유 기간통신사업과 특수유형부가통신사업의 등록 및 행정처분, 부가통신사업의 신고 및 행정처분, 자가전기통신설비의 사용정지에 관한 사항 10. 비영리법인의 설립허가 및 관리에 관한 사항 11. 삭제 12. 삭제 13. 삭제 14. 삭제 15. 삭제 16. 삭제 17. 「방송법」 제83조제1항에 따른 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 주요방송통신사업자의 방송통신설비 설치지역ㆍ사업장 등에 대한 출입 및 지도ㆍ점검 19. 전화번호의 거짓표시 금지 등에 관한 자료의 열람ㆍ제출 요청, 검사 및 행정처분",
+              "after": "1. 방송사 소유 무선국의 허가 및 검사 2. 삭제 3. 방송프로그램 편성비율 법규 위반 조사 4. 전송망사업자 등록, 전송ㆍ선로설비 적합 확인 및 행정처분 5. 삭제 6. 삭제 7. 삭제 8. 삭제 9. 회선설비 미보유 기간통신사업과 특수유형부가통신사업의 등록 및 행정처분, 부가통신사업의 신고 및 행정처분, 자가전기통신설비의 사용정지에 관한 사항 10. 비영리법인의 설립허가 및 관리에 관한 사항 11. 삭제 12. 삭제 13. 삭제 14. 삭제 15. 삭제 16. 삭제 17. 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 주요방송통신사업자의 방송통신설비 설치지역ㆍ사업장 등에 대한 출입 및 지도ㆍ점검 19. 전화번호의 거짓표시 금지 등에 관한 자료의 열람ㆍ제출 요청, 검사 및 행정처분",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": true,
+          "excluded_long_articles": 2,
+          "notes": [
+            "일부 조문·별표 본문이 수집 한도에 도달하여 해당 부분의 비교 제외",
+            "종전 조문·별표 중 수집 한도에 도달한 부분은 비교 제외",
+            "검증된 조문만 비교했으며 미수집된 장문 조문의 변경은 판단하지 않음"
+          ],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "288305",
+            "after_serial": "291847",
+            "before_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+            "after_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
             "before_published": "2026-07-21",
             "after_published": "2026-11-06",
             "same_stable_id": true,
@@ -6933,6 +7355,333 @@
       "importance": 24
     },
     {
+      "id": "1d277e0b4dc3cee6a84f",
+      "date": "2026-10-23",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부당한 표시 또는 광고로 보지 아니하는 식품등의 기능성 표시 또는 광고에 관한 규정",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2028-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "1d277e0b4dc3cee6a84f",
+          "title": "부당한 표시 또는 광고로 보지 아니하는 식품등의 기능성 표시 또는 광고에 관한 규정",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "식품의약품안전처",
+          "url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "published": "2026-10-23",
+          "effective": "2028-01-01",
+          "changed_articles": [
+            "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+            "별표 0001의00 (기능성 표시 식품등의 영양성분 함량 기준(제3조제2항제2호 관련))"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+              "before": "년 월 일 신청인 (서명 또는 인) 식품의약품안전처장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ─────┬─────────────────────────────────────────────────────── 신청인 │ 건강기능식품 기능성 원료 인정서 제출서류│ ━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 행정정보 공동이용 동의서 ───────────────────────────────────────────────────────────── 본인은 이 건 업무처리와 관련하여 담당 공무원이 「전자정부법」 제36조에 따른 행정정보의 공동이용을 통하여 위의 담당 공 무원 확인 사항을 확인하는 것에 동의합니다.",
+              "after": "년 월 일 신청인 (서명 또는 인) 식품의약품안전처장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ─────┬──────────────────────────────────────────────────────── 신청인 │ 건강기능식품 기능성 원료 인정서 제출서류│ ━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 행정정보 공동이용 동의서 ────────────────────────────────────────────────────────────── 본인은 이 건 업무처리와 관련하여 담당 공무원이 「전자정부법」 제36조에 따른 행정정보의 공동이용을 통하여 위의 담당 공무 원 확인 사항을 확인하는 것에 동의합니다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95"
+            },
+            {
+              "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+              "before": "신청인 (서명 또는 인) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 유의사항 ───────────────────────────────────────────────────────────── 「식품의 기준 및 규격」에 적합한 원재료 또는 성분에 한하여 신청이 가능합니다.",
+              "after": "신청인 (서명 또는 인) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 유의사항 ────────────────────────────────────────────────────────────── 「식품의 기준 및 규격」에 적합한 원재료 또는 성분에 한하여 신청이 가능합니다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95"
+            },
+            {
+              "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+              "before": "───────────────────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처리절차 ───────────────────────────────────────────────────────────── ┌──────┐ ┌───┐ ┌───┐ ┌─────────┐ ┌────────────────────┐ │신청서 작성 │?│접 수 │? │검 토 │?│결 재 │?│통보 │ └──────┘ └───┘ └───┘ └─────────┘ └────────────────────┘ 신청인 처리기관: 식품의약품안전처(일반식품 기능성 표시 담당 부서) ───────────────────────────────────────────────────────────── 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+              "after": "────────────────────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처리절차 ────────────────────────────────────────────────────────────── ┌──────┐ ┌────┐ ┌───┐ ┌─────────┐ ┌─────────────────────┐ │신청서 작성 │?│접 수 │? │검 토 │?│결 재 │?│통보 │ └──────┘ └────┘ └───┘ └─────────┘ └─────────────────────┘ 신청인 처리기관: 식품의약품안전처(일반식품 기능성 표시 담당 부서) ────────────────────────────────────────────────────────────── 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95"
+            },
+            {
+              "article": "별표 0001의00 (기능성 표시 식품등의 영양성분 함량 기준(제3조제2항제2호 관련))",
+              "before": "",
+              "after": "식후 혈당상승 억제에 도움 등을 줄 수 있는 기능성 원재료 또는 성분을 사용하여 해당 기능성을 표시 또는 광고하려는 식품등은 「식품첨가물의 기준 및 규격」에 따른 감미료를 사용하지 않으면서 저 당류 표시기준에 충족하여야 한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000248274",
+            "after_serial": "2100000287310",
+            "before_title": "부당한 표시 또는 광고로 보지 아니하는 식품등의 기능성 표시 또는 광고에 관한 규정",
+            "after_title": "부당한 표시 또는 광고로 보지 아니하는 식품등의 기능성 표시 또는 광고에 관한 규정",
+            "before_published": "2024-10-17",
+            "after_published": "2026-10-23",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "5b36a34a74921d7f6c20",
+      "date": "2026-10-23",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "통계작성의 변경승인(협의) 고시(범죄분석통계)",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-12-14",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "5b36a34a74921d7f6c20",
+          "title": "통계작성의 변경승인(협의) 고시(범죄분석통계)",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국가데이터처",
+          "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29",
+          "published": "2026-10-23",
+          "effective": "2026-12-14",
+          "changed_articles": [
+            "본문"
+          ],
+          "excerpts": [
+            {
+              "article": "본문",
+              "before": "1. 통계의 명칭 : 범죄분석통계 2. 통계작성기관의 명칭 : 검찰청 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제135001호 [1976.07.29.] 4. 통계작성의 변경 연월일 : 2025.12.15. 5. 통계작성의 변경 내용과 사유 :",
+              "after": "1. 통계의 명칭 : 범죄분석통계 2. 통계작성기관의 명칭 : 공소청 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제135001호 [1976.07.29.] 4. 통계작성의 변경 연월일 : 2026.12.14. 5. 통계작성의 변경 내용과 사유 :",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000268326",
+            "after_serial": "2100000287264",
+            "before_title": "통계작성의 변경승인(협의) 고시(범죄분석통계)",
+            "after_title": "통계작성의 변경승인(협의) 고시(범죄분석통계)",
+            "before_published": "2025-11-20",
+            "after_published": "2026-10-23",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "9099a360fe3142098117",
+      "date": "2026-10-23",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "초고층건축물등 총괄재난관리자 교육운영기준",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "9099a360fe3142098117",
+          "title": "초고층건축물등 총괄재난관리자 교육운영기준",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "소방청",
+          "url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "published": "2026-10-23",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "별표 0000의00 (수료증)",
+            "별표 0001의00 (교육과정별 시간 및 교육내용(제3조관련))",
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제6조"
+          ],
+          "excerpts": [
+            {
+              "article": "별표 0000의00 (수료증)",
+              "before": "초고층건축물등 총괄재난관리자 교육 운영 기준[별지서식] 제 호 수 료 증 성 명 : (건물명 : ) 생년월일 : 주 소 : 위 사람은「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」제4조에 따른 총괄재난관리자 교육과정을 아래와 같이 수료하였음을 증명합니다.",
+              "after": "초고층건축물등 총괄재난관리자 교육 운영 기준[별지서식] ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃제 호 ┃ ┃ ┃ ┃수 료 증 ┃ ┃ ┃ ┃ ┃ ┃성 명 : (건물명 : ) ┃ ┃생년월일 : ┃ ┃주 소 : ┃ ┃ ┃ ┃ 위 사람은「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」제4조 ┃ ┃에 따른 총괄재난관리자 교육과정을 아래와 같이 수료하였음을 증명합니다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "별표 0000의00 (수료증)",
+              "before": "○ 교육과정 : 제○기 총괄재난관리자 ○○교육과정 ○ 교육기간 : 0000.00.00 ~ 0000.00.00 (○○시간) 년 월 일 직인 중앙소방학교장",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "별표 0000의00 (수료증)",
+              "before": "",
+              "after": "┃ ┃ ┃ ┃ ○ 교육과정 : 제○기 총괄재난관리자 ○○교육과정 ┃ ┃ ○ 교육기간 : 0000.00.00 ~ 0000.00.00 (○○시간) ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃년 월 일 ┃ ┃ ┃ ┃ ┃ ┃ ┌──┐ ┃ ┃ │직인│ ┃ ┃ │ │ ┃ ┃ 중앙소방학교장 │ │ ┃ ┃ │ │ ┃ ┃ │ │ ┃ ┃ └──┘ ┃ ┃ ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "별표 0001의00 (교육과정별 시간 및 교육내용(제3조관련))",
+              "before": "별표 1 교육과정별 시간 및 교육내용(제3조관련) 과정구분 교육시간 교육내용 기본교육과정 21시간 이상 ․규칙 제4조제1항 각호에서 정한 사항 보수교육과정 5시간 이상 ․규칙 제4조제1항 각호의 내용과 관련된 재난관리 환경변화 및 기술개발 동향 ․재난관리와 관련하여 소방청장 또는 중앙소방학교장이 정하는 사항",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "별표 0001의00 (교육과정별 시간 및 교육내용(제3조관련))",
+              "before": "",
+              "after": "별표 1 교육과정별 시간 및 교육내용(제3조관련) ┏━━━━━━┯━━━━┯━━━━━━━━━━━━━━━━━━━━━┓ ┃과정구분 │교육시간│교육내용 ┃ ┣━━━━━━┿━━━━┿━━━━━━━━━━━━━━━━━━━━━┫ ┃기본교육과정│21시간 │ ㆍ규칙 제4조제1항 각호에서 정한 사항 ┃ ┃ │ 이상 │ ┃ ┠──────┼────┼─────────────────────┨ ┃보수교육과정│ 5시간 │ ㆍ규칙 제4조제1항 각호의 내용과 관련된 ┃ ┃ │ 이상 │재난관리 환경변화 및 기술개발 동향 ┃ ┃ │ │ ㆍ재난관리와 관련하여 소방청장 또는 교육 ┃ ┃ │ │기관의 장 정하는 사항 ┃ ┗━━━━━━┷━━━━┷━━━━━━━━━━━━━━━━━━━━━┛",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "제2조",
+              "before": "제2조(교육기관의 지정) 「소방청과 그 소속기관 직제」제2조에 따른 중앙소방학교를 「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」(이하 \"규칙”이라 한다)제4조제2항에 따른 총괄재난관리자 교육기관(이하 \"교육기관”이라 한다)으로 지정한다.",
+              "after": "제2조(교육기관의 지정) 「소방청과 그 소속기관 직제」 제2조에 따른 중앙소방학교 및 「지방소방기관 설치에 관한 규정」 제2조에 따른 지방소방학교를 「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」 제4조제2항에 따른 총괄재난관리자 교육기관(이하 \"교육기관\"이라 한다)으로 지정한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "제3조",
+              "before": "1. 기본교육과정 : 총괄재난관리자로 처음 지정된 자가 6개월 이내에 받아야 하는 교육과정(기본교육을 받은 총괄재난관리자가 다른 건물의 총괄재난관리자로 지정되는 경우에는 기본교육과정을 받지 않고 보수교육을 받을 수 있다.) 2. 보수교육과정 : 기본교육을 수료한 총괄재난관리자가 2년마다 받아야 하는 교육과정",
+              "after": "1. 기본교육과정 : 총괄재난관리자로 처음 선임된 자가 6개월 이내에 받아야 하는 교육과정(기본교육을 받은 총괄재난관리자가 다른 건물의 총괄재난관리자로 선임되는 경우에는 기본교육과정을 받지 않고 보수교육을 받을 수 있다.) 2. 보수교육과정 : 기본교육을 수료한 총괄재난관리자가 2년마다 1회 이상 받아야 하는 교육과정",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "제4조",
+              "before": "③ 지방자치단체의 장은 제1항의 교육운영 세부계획을 통보받은 날로부터 10일 이내에 초고층 및 지하연계복합건축물의 관리주체 등에게 알려야 한다.",
+              "after": "③ 지방자치단체의 장은 제2항의 교육운영 세부계획을 통보받은 날로부터 10일 이내에 초고층 및 지하연계 복합건축물의 관리주체 등에게 알려야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "제4조",
+              "before": "④ 교육기관의 장은 제3조제1항 각 호의 교육을 받은 사람에 대해서는 별지서식의 수료증을 발급하고, 수료증 발급대장에 기록·관리하여야 한다.(단, 사이버교육을 수료한 사람은 온라인 수료증으로 갈음할 수 있다.)",
+              "after": "④ 교육기관의 장은 제3조제1항 각 호의 교육을 받은 사람에 대해서는 별지 서식의 수료증을 발급하고, 수료증 발급대장에 기록ㆍ관리하여야 한다.",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            },
+            {
+              "article": "제4조",
+              "before": "",
+              "after": "다만, 사이버교육을 수료한 사람에게는 전자적 방법으로 수료증을 발급할 수 있다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000192163",
+            "after_serial": "2100000287142",
+            "before_title": "초고층건축물등 총괄재난관리자 교육운영기준",
+            "after_title": "초고층건축물등 총괄재난관리자 교육운영기준",
+            "before_published": "2020-08-24",
+            "after_published": "2026-10-23",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "c3fad6ffec3bc79b3cb7",
+      "date": "2026-10-22",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "통계작성의 변경승인(협의) 고시(여성과학기술인력활용실태조사)",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-12-31",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "c3fad6ffec3bc79b3cb7",
+          "title": "통계작성의 변경승인(협의) 고시(여성과학기술인력활용실태조사)",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국가데이터처",
+          "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+          "published": "2026-10-22",
+          "effective": "2026-12-31",
+          "changed_articles": [
+            "본문"
+          ],
+          "excerpts": [
+            {
+              "article": "본문",
+              "before": "1. 통계의 명칭 : 여성과학기술인력활용실태조사 2. 통계작성기관의 명칭 : 과학기술정보통신부 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제105003호 [2005.09.29.] 4. 통계작성의 변경 연월일 : 2025.06.19. 5. 통계작성의 변경 내용과 사유 :",
+              "after": "1. 통계의 명칭 : 여성과학기술인력활용실태조사 2. 통계작성기관의 명칭 : 과학기술정보통신부 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제105003호 [2005.09.29.] 4. 통계작성의 변경 연월일 : 2026.12.31. 5. 통계작성의 변경 내용과 사유 :",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000260808",
+            "after_serial": "2100000287270",
+            "before_title": "통계작성의 변경승인(협의) 고시(여성과학기술인력활용실태조사)",
+            "after_title": "통계작성의 변경승인(협의) 고시(여성과학기술인력활용실태조사)",
+            "before_published": "2025-06-26",
+            "after_published": "2026-10-22",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
       "id": "law|대통령령|2026-10-20|36764",
       "date": "2026-10-20",
       "number": "36764",
@@ -7209,6 +7958,206 @@
       "importance": 24
     },
     {
+      "id": "2b27c352d44b6f43fc5e",
+      "date": "2026-10-20",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "지방공무원 균형인사 운영지침",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "2b27c352d44b6f43fc5e",
+          "title": "지방공무원 균형인사 운영지침",
+          "kind": "예규",
+          "verification": "verified_partial_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "행정안전부",
+          "url": "https://www.law.go.kr/행정규칙/%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EA%B7%A0%ED%98%95%EC%9D%B8%EC%82%AC%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+          "published": "2026-10-20",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "제13조의2",
+            "제46조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": true,
+          "excluded_long_articles": 1,
+          "notes": [
+            "일부 조문·별표 본문이 수집 한도에 도달하여 해당 부분의 비교 제외",
+            "종전 조문·별표 중 수집 한도에 도달한 부분은 비교 제외",
+            "검증된 조문만 비교했으며 미수집된 장문 조문의 변경은 판단하지 않음"
+          ],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000281534",
+            "after_serial": "2100000287716",
+            "before_title": "지방공무원 균형인사 운영지침",
+            "after_title": "지방공무원 균형인사 운영지침",
+            "before_published": "2026-06-30",
+            "after_published": "2026-10-20",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "c4a4147dcddb9af6da9d",
+      "date": "2026-10-19",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "건강보험요양급여비용의 내역",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "c4a4147dcddb9af6da9d",
+          "title": "건강보험요양급여비용의 내역",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "전부개정",
+          "ministry": "보건복지부",
+          "url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+          "published": "2026-10-19",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "본문",
+            "부칙 2025-186 (20251118)",
+            "부칙 2026-217 (20261019)",
+            "제1조",
+            "제2조"
+          ],
+          "excerpts": [
+            {
+              "article": "본문",
+              "before": "「국민건강보험법」 제45조제4항에 의한 요양급여비용의 명세는 같은 법 시행령 제21조제2항에 따른 요양급여의 각 항목에 대한 상대가치점수에 다음 표에서 정한 유형별 분류에 따른 점수당 단가를 곱한 것으로 한다.",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD"
+            },
+            {
+              "article": "부칙 2025-186 (20251118)",
+              "before": "부칙 이 고시는 2026년 1월 1일부터 시행한다.",
+              "after": "",
+              "kind": "문장 삭제",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD"
+            },
+            {
+              "article": "부칙 2026-217 (20261019)",
+              "before": "",
+              "after": "부칙 이 고시는 2027년 1월 1일부터 시행한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD"
+            },
+            {
+              "article": "제1조",
+              "before": "",
+              "after": "제1조(목적) 이 고시는 「국민건강보험법」 제45조제4항에 따라 요양급여비용의 명세에 관한 사항을 정함을 목적으로 한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD"
+            },
+            {
+              "article": "제2조",
+              "before": "",
+              "after": "제2조(요양급여비용의 명세) 「국민건강보험법」 제45조제4항에 따른 요양급여비용의 명세는 「국민건강보험법 시행령」 제21조제2항에 따른 요양급여 각 항목에 대한 상대가치점수에 다음의 표에서 정한 유형별 분류에 따른 점수당 단가를 곱한 것으로 한다.",
+              "kind": "문장 신설",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000268180",
+            "after_serial": "2100000287058",
+            "before_title": "건강보험요양급여비용의 내역",
+            "after_title": "건강보험요양급여비용의 내역",
+            "before_published": "2025-11-18",
+            "after_published": "2026-10-19",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "ac5595fa51f019f94cc4",
+      "date": "2026-10-16",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "통계작성의 변경승인(협의) 고시(전남광주통합특별시진도군기본통계)",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-11-30",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ac5595fa51f019f94cc4",
+          "title": "통계작성의 변경승인(협의) 고시(전남광주통합특별시진도군기본통계)",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국가데이터처",
+          "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+          "published": "2026-10-16",
+          "effective": "2026-11-30",
+          "changed_articles": [
+            "본문"
+          ],
+          "excerpts": [
+            {
+              "article": "본문",
+              "before": "1. 통계의 명칭 : 전라남도진도군기본통계 2. 통계작성기관의 명칭 : 전라남도 진도군 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제751001호 [2007.05.04.] 4. 통계작성의 변경 연월일 : 2025.10.31. 5. 통계작성의 변경 내용과 사유 :",
+              "after": "1. 통계의 명칭 : 전라남도진도군기본통계 2. 통계작성기관의 명칭 : 전남광주통합특별시 진도군 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제751001호 [2007.05.04.] 4. 통계작성의 변경 연월일 : 2026.11.30. 5. 통계작성의 변경 내용과 사유 :",
+              "kind": "문장 개정",
+              "quality": "complete_statement",
+              "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29"
+            }
+          ],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000265348",
+            "after_serial": "2100000287072",
+            "before_title": "통계작성의 변경승인(협의) 고시(전라남도진도군기본통계)",
+            "after_title": "통계작성의 변경승인(협의) 고시(전남광주통합특별시진도군기본통계)",
+            "before_published": "2025-10-23",
+            "after_published": "2026-10-16",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
+    },
+    {
       "id": "68c88f74df29978e9741",
       "date": "2026-10-13",
       "number": "",
@@ -7326,6 +8275,573 @@
       "importance": 24
     },
     {
+      "id": "d96dfa31346f73686f78",
+      "date": "2026-10-12",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "인제군 버스 무료 이용 지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "d96dfa31346f73686f78",
+          "title": "인제군 버스 무료 이용 지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "강원특별자치도 인제군",
+          "url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%A0%9C%EA%B5%B0%20%EB%B2%84%EC%8A%A4%20%EB%AC%B4%EB%A3%8C%20%EC%9D%B4%EC%9A%A9%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-12",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "fc5b1a916a10bef45423",
+      "date": "2026-10-08",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "충청북도 환경영향평가 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "fc5b1a916a10bef45423",
+          "title": "충청북도 환경영향평가 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "충청북도",
+          "url": "https://www.law.go.kr/자치법규/%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%ED%99%98%EA%B2%BD%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-08",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "66655a672019faffbc43",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "광양시 병원 동행 서비스 지원 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-07",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "66655a672019faffbc43",
+          "title": "광양시 병원 동행 서비스 지원 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "전남광주통합특별시 광양시",
+          "url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%96%91%EC%8B%9C%20%EB%B3%91%EC%9B%90%20%EB%8F%99%ED%96%89%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-07",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "59e9143949504fd10d6e",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 노인복지기금 설치 및 운용에 관한 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "59e9143949504fd10d6e",
+          "title": "안양시 노인복지기금 설치 및 운용에 관한 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "1fba71973b5fa3b3ffbd",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 문화예술진흥기금 설치 및 운용 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "1fba71973b5fa3b3ffbd",
+          "title": "안양시 문화예술진흥기금 설치 및 운용 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%98%88%EC%88%A0%EC%A7%84%ED%9D%A5%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "e06250e83014694d6474",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 보훈기금 조성 및 운용에 관한 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e06250e83014694d6474",
+          "title": "안양시 보훈기금 조성 및 운용에 관한 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "4f2ff731a91f64fe1e39",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 장애인복지기금 조성 및 운용에 관한 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "4f2ff731a91f64fe1e39",
+          "title": "안양시 장애인복지기금 조성 및 운용에 관한 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "201de8b24d25edc6bcad",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 양성평등 기본 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "201de8b24d25edc6bcad",
+          "title": "안양시 양성평등 기본 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%96%91%EC%84%B1%ED%8F%89%EB%93%B1%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "775bd73e1364116588d9",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 장애인복지기금 조성 및 운용에 관한 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "775bd73e1364116588d9",
+          "title": "안양시 장애인복지기금 조성 및 운용에 관한 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "343ec9958448871448d9",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 노인복지기금 설치 및 운용에 관한 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "343ec9958448871448d9",
+          "title": "안양시 노인복지기금 설치 및 운용에 관한 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "2743afa7718a312b8953",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "안양시 보훈기금 조성 및 운용에 관한 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "2743afa7718a312b8953",
+          "title": "안양시 보훈기금 조성 및 운용에 관한 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 안양시",
+          "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "5d77c6f84d6f0897efd2",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "전남광주통합특별시 광산구 지하수 관리 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "5d77c6f84d6f0897efd2",
+          "title": "전남광주통합특별시 광산구 지하수 관리 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "전남광주통합특별시 광산구",
+          "url": "https://www.law.go.kr/자치법규/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%A7%80%ED%95%98%EC%88%98%20%EA%B4%80%EB%A6%AC%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "a8cfc8fd989023903529",
+      "date": "2026-10-07",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "화성시 시책일몰제 운영 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "a8cfc8fd989023903529",
+          "title": "화성시 시책일몰제 운영 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "경기도 화성시",
+          "url": "https://www.law.go.kr/자치법규/%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%8B%9C%EC%B1%85%EC%9D%BC%EB%AA%B0%EC%A0%9C%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-07",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "0f28e00f104d5394b413",
+      "date": "2026-10-06",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부천시 문화시설건립특별회계 설치 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "0f28e00f104d5394b413",
+          "title": "부천시 문화시설건립특별회계 설치 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 부천시",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%8B%9C%EC%84%A4%EA%B1%B4%EB%A6%BD%ED%8A%B9%EB%B3%84%ED%9A%8C%EA%B3%84%20%EC%84%A4%EC%B9%98%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-06",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "aab39d80c73bdcae0793",
+      "date": "2026-10-06",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "인천광역시부평구 소아청소년 야간ㆍ휴일 의료기관 지정 및 지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-12-10",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "aab39d80c73bdcae0793",
+          "title": "인천광역시부평구 소아청소년 야간ㆍ휴일 의료기관 지정 및 지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "인천광역시 부평구",
+          "url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%EB%B6%80%ED%8F%89%EA%B5%AC%20%EC%86%8C%EC%95%84%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%95%BC%EA%B0%84%E3%86%8D%ED%9C%B4%EC%9D%BC%20%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B4%80%20%EC%A7%80%EC%A0%95%20%EB%B0%8F%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-06",
+          "effective": "2026-12-10",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
       "id": "c0335219ba7636ca618a",
       "date": "2026-10-02",
       "number": "",
@@ -7393,6 +8909,45 @@
           "excluded_long_articles": 0,
           "notes": [
             "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "04d3871f1b5e457ab53d",
+      "date": "2026-10-01",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 금정구 화재피해주민 지원 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "04d3871f1b5e457ab53d",
+          "title": "부산광역시 금정구 화재피해주민 지원 조례",
+          "kind": "자치법규",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "부산광역시 금정구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B8%88%EC%A0%95%EA%B5%AC%20%ED%99%94%EC%9E%AC%ED%94%BC%ED%95%B4%EC%A3%BC%EB%AF%BC%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-01",
+          "effective": "2027-01-01",
+          "changed_articles": [
+            "제000100조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
           ],
           "comparison": null
         }
@@ -8979,6 +10534,340 @@
         }
       ],
       "importance": 24
+    },
+    {
+      "id": "law|산업자원부령|2006-08-16|00356",
+      "date": "2006-08-16",
+      "number": "00356",
+      "official_common_promulgation": true,
+      "summary": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2006-08-16",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "05cbd60e9b5d7a18dc53",
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+          "kind": "산업자원부령",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2006-08-16",
+          "effective": "2006-08-16",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "부칙 00356 (20060816)",
+            "별표 0001의00 (수·위탁분쟁□사전조정신청서□조정신청서)",
+            "별표 0002의00 (중소기업고유업종사업의[인수][개시][확장]신고서)",
+            "별표 0003의00 (사업조정신청서)"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|대통령령|2006-05-30|19494",
+      "date": "2006-05-30",
+      "number": "19494",
+      "official_common_promulgation": true,
+      "summary": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2006-06-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "f8640ee944c8fe8a6d67",
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "kind": "대통령령",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "published": "2006-05-30",
+          "effective": "2006-06-04",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "제13조",
+            "제14조",
+            "제15조",
+            "제16조",
+            "제17조",
+            "제18조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|법률|2006-03-03|07864",
+      "date": "2006-03-03",
+      "number": "07864",
+      "official_common_promulgation": true,
+      "summary": "대·중소기업 상생협력 촉진에 관한 법률",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2006-06-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "115e10b1ae219b68669b",
+          "title": "대·중소기업 상생협력 촉진에 관한 법률",
+          "kind": "법률",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "published": "2006-03-03",
+          "effective": "2006-06-04",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "제13조",
+            "제14조",
+            "제15조",
+            "제16조",
+            "제17조",
+            "제18조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|재무부령|1977-03-11|01247",
+      "date": "1977-03-11",
+      "number": "01247",
+      "official_common_promulgation": true,
+      "summary": "특별소비세법시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "1977-03-11",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "6a262099fb718b14c9be",
+          "title": "특별소비세법시행규칙",
+          "kind": "재무부령",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "1977-03-11",
+          "effective": "1977-03-11",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "제13조",
+            "제14조",
+            "제15조",
+            "제16조",
+            "부칙 01247 (19770311)",
+            "별표 0001의00 (과세물품환입신고서)"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|대통령령|1976-12-31|08408",
+      "date": "1976-12-31",
+      "number": "08408",
+      "official_common_promulgation": true,
+      "summary": "특별소비세법시행령",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "1977-07-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "4b675ce35c103144f8ba",
+          "title": "특별소비세법시행령",
+          "kind": "대통령령",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "published": "1976-12-31",
+          "effective": "1977-07-01",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "제13조",
+            "제14조",
+            "제15조",
+            "제16조",
+            "제17조",
+            "제18조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "law|법률|1976-12-22|02935",
+      "date": "1976-12-22",
+      "number": "02935",
+      "official_common_promulgation": true,
+      "summary": "특별소비세법",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "1977-07-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "d9535ae67a55862f57b0",
+          "title": "특별소비세법",
+          "kind": "법률",
+          "verification": "verified_enactment",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+          "published": "1976-12-22",
+          "effective": "1977-07-01",
+          "changed_articles": [
+            "제1조",
+            "제2조",
+            "제3조",
+            "제4조",
+            "제5조",
+            "제6조",
+            "제7조",
+            "제8조",
+            "제9조",
+            "제10조",
+            "제11조",
+            "제12조",
+            "제13조",
+            "제14조",
+            "제15조",
+            "제16조",
+            "제17조",
+            "제18조"
+          ],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [
+            "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
     }
   ],
   "other_events": [
@@ -9161,43 +11050,6 @@
         }
       ],
       "importance": 24
-    },
-    {
-      "id": "law|과학기술정보통신부령|2026-11-06|00178",
-      "date": "2026-11-06",
-      "number": "00178",
-      "official_common_promulgation": true,
-      "summary": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
-      "source_count": 1,
-      "verified_count": 0,
-      "agency_count": 0,
-      "effective_at": "2026-11-06",
-      "dependencies": [],
-      "official_review_candidates": [],
-      "source_docs": [
-        {
-          "id": "923eb848fc081c5dacd1",
-          "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
-          "kind": "과학기술정보통신부령",
-          "verification": "partial_official_text",
-          "lifecycle": "amendment",
-          "revision": "일부개정",
-          "ministry": "과학기술정보통신부",
-          "url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-          "published": "2026-11-06",
-          "effective": "2026-11-06",
-          "changed_articles": [],
-          "excerpts": [],
-          "actor_duties": [],
-          "needs_attachment_check": true,
-          "excluded_long_articles": 0,
-          "notes": [
-            "별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함"
-          ],
-          "comparison": null
-        }
-      ],
-      "importance": 4
     },
     {
       "id": "80fdc8ea5342cdb9b5d7",
@@ -9785,6 +11637,51 @@
         }
       ],
       "importance": 4
+    },
+    {
+      "id": "b380cf5d185e2a0aca6b",
+      "date": "2026-10-16",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "통계작성의 변경승인(협의) 고시(장애인경제활동실태조사)",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2026-12-31",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "b380cf5d185e2a0aca6b",
+          "title": "통계작성의 변경승인(협의) 고시(장애인경제활동실태조사)",
+          "kind": "고시",
+          "verification": "verified_changed_clauses",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "국가데이터처",
+          "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%9E%A5%EC%95%A0%EC%9D%B8%EA%B2%BD%EC%A0%9C%ED%99%9C%EB%8F%99%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+          "published": "2026-10-16",
+          "effective": "2026-12-31",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "excluded_long_articles": 0,
+          "notes": [],
+          "comparison": {
+            "kind": "same_regulation_version",
+            "before_serial": "2100000278804",
+            "after_serial": "2100000286974",
+            "before_title": "통계작성의 변경승인(협의) 고시(장애인경제활동실태조사)",
+            "after_title": "통계작성의 변경승인(협의) 고시(장애인경제활동실태조사)",
+            "before_published": "2026-05-07",
+            "after_published": "2026-10-16",
+            "same_stable_id": true,
+            "source": "법제처 공식 이전·현재 본문"
+          }
+        }
+      ],
+      "importance": 24
     },
     {
       "id": "law|성평등가족부령|2026-01-13|00005",

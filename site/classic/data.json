@@ -1,26 +1,26 @@
 {
   "schema": "policy-domino-next-v1",
-  "generated_at": "2026-11-09T13:31:17+00:00",
+  "generated_at": "2026-11-09T14:21:02+00:00",
   "health": {
     "source_status": "공식 공포·개정문 연결",
     "partial": true,
-    "official_records": 423,
-    "compared": 66,
-    "source_records_inspected": 138,
+    "official_records": 454,
+    "compared": 73,
+    "source_records_inspected": 169,
     "official_index_waiting_visible": 300,
-    "amendments_read": 423,
-    "amendments_verified_total": 138,
-    "catalogue_candidates": 9496,
-    "v4_official_index": 4325,
-    "pending_details": 9358,
+    "amendments_read": 454,
+    "amendments_verified_total": 169,
+    "catalogue_candidates": 11943,
+    "v4_official_index": 6890,
+    "pending_details": 11774,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 1,
-    "institutional_evidence_sources": 21,
+    "institutional_evidence_sources": 15,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 21,
+      "pages_checked": 15,
       "matched": 1,
-      "errors": 12,
+      "errors": 13,
       "search_leads": [
         {
           "query": "\"교육급여\" \"3,247,369\"",
@@ -33,21 +33,16 @@
         },
         {
           "query": "\"교육급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 6,
+          "found": 2,
           "urls": [
             "https://www.moe.go.kr/main.do",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
-            "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
-            "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316"
+            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0"
           ]
         },
         {
           "query": "\"주거급여\" \"3,117,474\"",
-          "found": 3,
+          "found": 2,
           "urls": [
-            "https://www.lh.or.kr/menu.es?mid=a10401050100",
             "https://www.bokjiro.go.kr/ssis-tbu/index.do",
             "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201"
           ]
@@ -84,12 +79,11 @@
         },
         {
           "query": "\"중위소득\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 4,
+          "found": 3,
           "urls": [
             "https://www.mohw.go.kr/menu.es?mid=a10708010300",
             "https://www.bokjiro.go.kr",
-            "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do",
-            "https://awoo.or.kr/issues/median-income-calculation-guide/"
+            "https://www.nhis.or.kr/nhis/minwon/wbhabd05500m01.do"
           ]
         },
         {
@@ -108,14 +102,6 @@
         }
       ],
       "rejected_pages": [
-        {
-          "url": "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
-          "title": "교육급여(맞춤형 급여) < 교육지원 < 저소득주민 < 생애주기별복지 < 분야별정보 < 포털사이트Insert title here만족도",
-          "publisher": "",
-          "identified_publisher": true,
-          "identified_program": true,
-          "baseline_proof": false
-        },
         {
           "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
@@ -141,46 +127,6 @@
           "baseline_proof": false
         },
         {
-          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
-          "title": "요청하신 페이지를 찾을수 없습니다",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
-          "title": "인천광역시교육청",
-          "publisher": "인천광역시교육청",
-          "identified_publisher": true,
-          "identified_program": true,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
-          "title": "공지사항",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316",
-          "title": "요청하신 페이지를 찾을수 없습니다",
-          "publisher": "",
-          "identified_publisher": false,
-          "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
-          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
-          "publisher": "한국토지주택공사",
-          "identified_publisher": true,
-          "identified_program": true,
-          "baseline_proof": false
-        },
-        {
           "url": "https://www.bokjiro.go.kr/ssis-tbu/index.do",
           "title": "복지로",
           "publisher": "",
@@ -202,6 +148,54 @@
           "publisher": "한국토지주택공사",
           "identified_publisher": true,
           "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
+          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
+          "publisher": "한국토지주택공사",
+          "identified_publisher": true,
+          "identified_program": true,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=2762",
+          "title": "지표서비스 | e-나라지표",
+          "publisher": "",
+          "identified_publisher": true,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10708010900",
+          "title": "기준 중위소득 < 기초생활보장 < 복지 < 정책 : 힘이 되는 평생 친구, 보건복지부",
+          "publisher": "보건복지부 대표홈페이지",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.easylaw.go.kr/CSP/Main.laf",
+          "title": "찾기쉬운 생활법령정보",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.easylaw.go.kr/CSP/OnhunqueansInfoRetrieve.laf?onhunqnaAstSeq=97&onhunqueSeq=5739",
+          "title": "복지 > 기준 중위소득 | 찾기쉬운 생활법령정보",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10708010300",
+          "title": "수급자선정기준 < 기초생활보장 < 복지 < 정책 : 힘이 되는 평생 친구, 보건복지부",
+          "publisher": "보건복지부 대표홈페이지",
+          "identified_publisher": false,
+          "identified_program": true,
           "baseline_proof": false
         }
       ]
@@ -2579,6 +2573,251 @@
             }
           ],
           "source_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%B3%B4%ED%9B%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
+      "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "comparison_state": "official_changes_partially_compared",
+      "source_notes": [
+        "일부 조문·별표 본문이 수집 한도에 도달하여 해당 부분의 비교 제외",
+        "종전 조문·별표 중 수집 한도에 도달한 부분은 비교 제외",
+        "검증된 조문만 비교했으며 미수집된 장문 조문의 변경은 판단하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "과학기술정보통신부",
+          "agency_role": "직제 규정에 명시된 기관",
+          "law_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_partial_changed_clauses",
+          "changed_article_count": 11,
+          "actual_implementation_verified": false,
+          "kind": "과학기술정보통신부령"
+        }
+      ],
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "과학기술정보통신부령",
+      "ministry": "과학기술정보통신부",
+      "url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))",
+          "type": "문장 개정",
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 5] 국립전파연구원 공무원 정원표(제28조제1항 본문 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전산 사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 21 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 또는 공업연구사 52 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 서기 15 방호서기 2 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 방송통신서기보 4 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 5] 국립전파연구원 공무원 정원표(제28조제1항 본문 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전산 사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 20 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 또는 공업연구사 50 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 서기 15 방호서기 2 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 방송통신서기보 4 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 3 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))",
+          "type": "문장 개정",
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 6] 국립전파연구원 공무원 정원표(제28조제1항 단서 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전 산사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방 송통신사무관 또는 공업연구관 23 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주 사 또는 공업연구사 50 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 방호주사보 1 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통 15 신서기 방호서기 1 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 4 방송통신서기보 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 6] 국립전파연구원 공무원 정원표(제28조제1항 단서 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전 산사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방 송통신사무관 또는 공업연구관 22 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주 사 또는 공업연구사 48 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 방호주사보 1 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통 15 신서기 방호서기 1 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 4 방송통신서기보 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방 3 송통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시 설부전문관ㆍ전산부전문관ㆍ방송통신부전문관",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))",
+          "type": "문장 개정",
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 7] 중앙전파관리소 공무원 정원표(제28조제2항 본문 관련) 총계 855 일반직 계 855 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 64 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 212 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 214 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 202 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 38 방송통신서기보 방호서기보 6 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 7] 중앙전파관리소 공무원 정원표(제28조제2항 본문 관련) 총계 855 일반직 계 855 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 63 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 200 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 214 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 202 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 38 방송통신서기보 방호서기보 6 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송통 13 신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부전 문관ㆍ전산부전문관ㆍ방송통신부전문관",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "별표 0008의00 (중앙전파관리소 공무원 정원표(제28조제2항 단서 관련))",
+          "type": "문장 개정",
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 8] 중앙전파관리소 공무원 정원표(제28조제2항 단서 관련) 총계 853 일반직 계 853 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 70 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 209 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 216 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 199 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 36 방송통신서기보 방호서기보 4 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 8] 중앙전파관리소 공무원 정원표(제28조제2항 단서 관련) 총계 853 일반직 계 853 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 69 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 197 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 216 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 199 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 36 방송통신서기보 방호서기보 4 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 13 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제19조",
+          "type": "문장 개정",
+          "before": "1. 무선국 및 전파응용설비의 허가ㆍ신고ㆍ검사 등에 관한 기본계획 수립ㆍ시행 2. 통신보안에 관한 사항 3. 삭제 4. 무선국 및 전파응용설비의 허가ㆍ검사 및 행정처분에 관한 사항 5. 삭제 6. 방송수신 장애의 조사 및 처리 7. 전송망사업의 등록 및 전송ㆍ선로설비 적합확인 8. 삭제 9. 삭제 10. 무선국 무선설비의 임대ㆍ위탁 운용 및 공동사용 승인 등에 관한 사항 11. 삭제 12. 주파수사용승인 무선국 검사에 관한 사항 13. 디지털 방송프로그램 음량기준 사후관리에 관한 사항 14. 종합유선방송사업자 및 위성방송사업자의 허가조건의 이행 여부에 대한 자료 제출 요구 및 시정명령에 관한 사항 15. 「방송법」 제83조제1항제1호에 따른 방송사업자의 방송프로그램 편성비율과 관련된 「방송법」 위반에 관한 업무 16. 「방송법」 제83조제1항에 따른 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 17. 「방송법」 제108조제1항제4호ㆍ제17호 및 제18호에 따른 과태료의 부과에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 무선국 전자파 강도의 측정ㆍ조사에 관한 사항 19. 무선국 검사, 무선종사자의 자격검정 시험 등 「전파법」 제78조제2항에 따라 과학기술정보통신부장관이 한국방송통신전파진흥원에 위탁한 업무의 지도ㆍ감독에 관한 사항",
+          "after": "1. 무선국 및 전파응용설비의 허가ㆍ신고ㆍ검사 등에 관한 기본계획 수립ㆍ시행 2. 통신보안에 관한 사항 3. 삭제 4. 무선국 및 전파응용설비의 허가ㆍ검사 및 행정처분에 관한 사항 5. 삭제 6. 방송수신 장애의 조사 및 처리 7. 전송망사업의 등록 및 전송ㆍ선로설비 적합확인 8. 삭제 9. 삭제 10. 무선국 무선설비의 임대ㆍ위탁 운용 및 공동사용 승인 등에 관한 사항 11. 삭제 12. 주파수사용승인 무선국 검사에 관한 사항 13. 디지털 방송프로그램 음량기준 사후관리에 관한 사항 14. 종합유선방송사업자 및 위성방송사업자의 허가조건의 이행 여부에 대한 자료 제출 요구 및 시정명령에 관한 사항 15. 방송사업자의 방송프로그램 편성비율과 관련된 「방송법」 위반에 관한 업무(과학기술정보통신부 소관 방송사업자로 한정한다) 16. 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 17. 「방송법」 제108조제1항제4호ㆍ제8호ㆍ제17호 및 제18호에 따른 과태료의 부과에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 무선국 전자파 강도의 측정ㆍ조사에 관한 사항 19. 무선국 검사, 무선종사자의 자격검정 시험 등 「전파법」 제78조제2항에 따라 과학기술정보통신부장관이 한국방송통신전파진흥원에 위탁한 업무의 지도ㆍ감독에 관한 사항",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제21조",
+          "type": "문장 개정",
+          "before": "1. 방송사 소유 무선국의 허가 및 검사 2. 삭제 3. 방송프로그램 편성비율 법규 위반 조사 4. 전송망사업자 등록, 전송ㆍ선로설비 적합 확인 및 행정처분 5. 삭제 6. 삭제 7. 삭제 8. 삭제 9. 회선설비 미보유 기간통신사업과 특수유형부가통신사업의 등록 및 행정처분, 부가통신사업의 신고 및 행정처분, 자가전기통신설비의 사용정지에 관한 사항 10. 비영리법인의 설립허가 및 관리에 관한 사항 11. 삭제 12. 삭제 13. 삭제 14. 삭제 15. 삭제 16. 삭제 17. 「방송법」 제83조제1항에 따른 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 주요방송통신사업자의 방송통신설비 설치지역ㆍ사업장 등에 대한 출입 및 지도ㆍ점검 19. 전화번호의 거짓표시 금지 등에 관한 자료의 열람ㆍ제출 요청, 검사 및 행정처분",
+          "after": "1. 방송사 소유 무선국의 허가 및 검사 2. 삭제 3. 방송프로그램 편성비율 법규 위반 조사 4. 전송망사업자 등록, 전송ㆍ선로설비 적합 확인 및 행정처분 5. 삭제 6. 삭제 7. 삭제 8. 삭제 9. 회선설비 미보유 기간통신사업과 특수유형부가통신사업의 등록 및 행정처분, 부가통신사업의 신고 및 행정처분, 자가전기통신설비의 사용정지에 관한 사항 10. 비영리법인의 설립허가 및 관리에 관한 사항 11. 삭제 12. 삭제 13. 삭제 14. 삭제 15. 삭제 16. 삭제 17. 방송 실시결과 접수에 관한 사항(과학기술정보통신부 소관 방송사업자로 한정한다) 18. 주요방송통신사업자의 방송통신설비 설치지역ㆍ사업장 등에 대한 출입 및 지도ㆍ점검 19. 전화번호의 거짓표시 금지 등에 관한 자료의 열람ㆍ제출 요청, 검사 및 행정처분",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "부칙 00178 (20261106)",
+          "type": "문장 신설",
+          "before": "",
+          "after": "① 이 규칙 시행 이후 최초로 실시하는 「전문직공무원 인사규정」 제9조에 따른 전직시험 합격자 수가 이 규칙 시행으로 증원된 전문직공무원 정원의 수에 미달하여 전문직공무원 정원을 배정할 수 있는 보조기관 및 보좌기관에서 전문직공무원이 아닌 일반직공무원의 초과현원이 발생하는 경우에는 2028년 11월 5일까지 그 초과현원에 상응하는 일반직공무원 정원이 과학기술정보통신부에 따로 있는 것으로 본다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "부칙 00178 (20261106)",
+          "type": "문장 신설",
+          "before": "",
+          "after": "② 제1항에 따라 인정되는 초과현원에 상응하는 일반직공무원 정원은 이 규칙 시행 이후 최초로 실시한 전직시험 이후 제1항에 따른 존속기간까지 「전문직공무원 인사규정」 제6조에 따른 경력경쟁채용시험 또는 같은 영 제9조에 따른 전직시험을 실시하여 합격자가 추가로 발생할 때마다 그 합격자 수만큼 감소한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        }
+      ],
+      "change_count": 11,
+      "comparison_status": "일부 신구 조문 비교 확인 · 미수집 별표 제외",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 13,
+      "work_review_candidates": [
+        {
+          "id": "3d11ac448762683c5977",
+          "article": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))",
+          "topic": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))",
+          "work_type": "조직·정원",
+          "review_question": "정원·직급·사무배정 기준과의 적용 관계를 확인",
+          "actual_changes": [
+            {
+              "before": "는 공업연구관 21 행정주사ㆍ공업주",
+              "after": "는 공업연구관 20 행정주사ㆍ공업주"
+            },
+            {
+              "before": "는 공업연구사 52 운전주사 1 행",
+              "after": "는 공업연구사 50 운전주사 1 행"
+            },
+            {
+              "before": "사무운영주사보 1",
+              "after": "사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 3 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "95c1d0f2338b4d527b80",
+          "article": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))",
+          "topic": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))",
+          "work_type": "조직·정원",
+          "review_question": "정원·직급·사무배정 기준과의 적용 관계를 확인",
+          "actual_changes": [
+            {
+              "before": "는 공업연구관 23 행정주사ㆍ공업주",
+              "after": "는 공업연구관 22 행정주사ㆍ공업주"
+            },
+            {
+              "before": "또는 공업연구사 50 운전주사 1 행",
+              "after": "또는 공업연구사 48 운전주사 1 행"
+            },
+            {
+              "before": "사무운영주사보 1",
+              "after": "사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방 3 송통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시 설부전문관ㆍ전산부전문관ㆍ방송통신부전문관"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "b286939b82c8263cf05c",
+          "article": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))",
+          "topic": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))",
+          "work_type": "조직·정원",
+          "review_question": "정원·직급·사무배정 기준과의 적용 관계를 확인",
+          "actual_changes": [
+            {
+              "before": "는 공업연구관 64 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 212 ㆍ공업연구사 또",
+              "after": "는 공업연구관 63 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 200 ㆍ공업연구사 또"
+            },
+            {
+              "before": "사무운영서기보 4",
+              "after": "사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송통 13 신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부전 문관ㆍ전산부전문관ㆍ방송통신부전문관"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "33ed9f7d945ac33c8eb8",
+          "article": "별표 0008의00 (중앙전파관리소 공무원 정원표(제28조제2항 단서 관련))",
+          "topic": "별표 0008의00 (중앙전파관리소 공무원 정원표(제28조제2항 단서 관련))",
+          "work_type": "조직·정원",
+          "review_question": "정원·직급·사무배정 기준과의 적용 관계를 확인",
+          "actual_changes": [
+            {
+              "before": "또는 공업연구관 70 행정주사ㆍ공",
+              "after": "또는 공업연구관 69 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 197 ㆍ공업연구사"
+            },
+            {
+              "before": "는 공업연구관 70 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 209 ㆍ공업연구사 또",
+              "after": "송통신주사 197 ㆍ공업연구사 또"
+            },
+            {
+              "before": "사무운영서기보 4",
+              "after": "사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 13 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "b5bb7cbfb75e95101fcf",
+          "article": "제19조",
+          "topic": "제19조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "한 사항 15. 「방송법」 제83조제1항제1호에 따른 방송사업자의 방송",
+              "after": "한 사항 15. 방송사업자의 방송"
+            },
+            {
+              "before": "위반에 관한 업무 16. 「방송법",
+              "after": "위반에 관한 업무(과학기술정보통신부 소관 방송사업자로 한정한다) 16. 방송 실"
+            },
+            {
+              "before": "관한 업무 16. 「방송법」 제83조제1항에 따른 방송 실시결과",
+              "after": "한정한다) 16. 방송 실시결과"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "9ba79f400873f082cf3e",
+          "article": "제21조",
+          "topic": "제21조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": ". 삭제 17. 「방송법」 제83조제1항에 따른 방송 실시결과 접",
+              "after": ". 삭제 17. 방송 실시결과 접"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
           "status": "기관·사업 적용 여부 미확인",
           "institution_verified": false
         }
@@ -5007,51 +5246,6 @@
       "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
       "impact_scope": {
         "institutions": 1,
-        "proven_dependent_rules": 0,
-        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-        "provisional": false,
-        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
-      }
-    },
-    {
-      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
-      "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
-      "comparison_state": "details_not_compared",
-      "source_notes": [
-        "별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함"
-      ],
-      "official_change_documents": [
-        {
-          "agency": "과학기술정보통신부",
-          "agency_role": "직제 규정에 명시된 기관",
-          "law_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
-          "source_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-          "verification": "partial_official_text",
-          "changed_article_count": 0,
-          "actual_implementation_verified": false,
-          "kind": "과학기술정보통신부령"
-        }
-      ],
-      "promulgated_at": "2026-11-06",
-      "effective_date": "2026-11-06",
-      "revision": "일부개정",
-      "law_type": "과학기술정보통신부령",
-      "ministry": "과학기술정보통신부",
-      "url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
-      "amendment_reason": "",
-      "article_differences": [],
-      "change_count": 0,
-      "comparison_status": "공식 공포 정보 확인 · 조문 비교 미완료",
-      "policy_profile": false,
-      "downstream_changes": [],
-      "presentation_source": "v4_official_source",
-      "impact_priority": 4,
-      "work_review_candidates": [],
-      "impact_level": "not_assessed",
-      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
-      "impact_scope": {
-        "institutions": 0,
         "proven_dependent_rules": 0,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
@@ -18230,6 +18424,469 @@
       }
     },
     {
+      "event_id": "v4:1d277e0b4dc3cee6a84f",
+      "title": "부당한 표시 또는 광고로 보지 아니하는 식품등의 기능성 표시 또는 광고에 관한 규정",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "식품의약품안전처",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "부당한 표시 또는 광고로 보지 아니하는 식품등의 기능성 표시 또는 광고에 관한 규정",
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 2,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-23",
+      "effective_date": "2028-01-01",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "식품의약품안전처",
+      "url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "type": "문장 개정",
+          "before": "년 월 일 신청인 (서명 또는 인) 식품의약품안전처장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ─────┬─────────────────────────────────────────────────────── 신청인 │ 건강기능식품 기능성 원료 인정서 제출서류│ ━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 행정정보 공동이용 동의서 ───────────────────────────────────────────────────────────── 본인은 이 건 업무처리와 관련하여 담당 공무원이 「전자정부법」 제36조에 따른 행정정보의 공동이용을 통하여 위의 담당 공 무원 확인 사항을 확인하는 것에 동의합니다.",
+          "after": "년 월 일 신청인 (서명 또는 인) 식품의약품안전처장 귀하 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ─────┬──────────────────────────────────────────────────────── 신청인 │ 건강기능식품 기능성 원료 인정서 제출서류│ ━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 행정정보 공동이용 동의서 ────────────────────────────────────────────────────────────── 본인은 이 건 업무처리와 관련하여 담당 공무원이 「전자정부법」 제36조에 따른 행정정보의 공동이용을 통하여 위의 담당 공무 원 확인 사항을 확인하는 것에 동의합니다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "directive": ""
+        },
+        {
+          "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "type": "문장 개정",
+          "before": "───────────────────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처리절차 ───────────────────────────────────────────────────────────── ┌──────┐ ┌───┐ ┌───┐ ┌─────────┐ ┌────────────────────┐ │신청서 작성 │?│접 수 │? │검 토 │?│결 재 │?│통보 │ └──────┘ └───┘ └───┘ └─────────┘ └────────────────────┘ 신청인 처리기관: 식품의약품안전처(일반식품 기능성 표시 담당 부서) ───────────────────────────────────────────────────────────── 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+          "after": "────────────────────────────────────────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 처리절차 ────────────────────────────────────────────────────────────── ┌──────┐ ┌────┐ ┌───┐ ┌─────────┐ ┌─────────────────────┐ │신청서 작성 │?│접 수 │? │검 토 │?│결 재 │?│통보 │ └──────┘ └────┘ └───┘ └─────────┘ └─────────────────────┘ 신청인 처리기관: 식품의약품안전처(일반식품 기능성 표시 담당 부서) ────────────────────────────────────────────────────────────── 210mm×297mm[백상지(80g/㎡) 또는 중질지(80g/㎡)]",
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "directive": ""
+        },
+        {
+          "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "type": "문장 개정",
+          "before": "신청인 (서명 또는 인) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 유의사항 ───────────────────────────────────────────────────────────── 「식품의 기준 및 규격」에 적합한 원재료 또는 성분에 한하여 신청이 가능합니다.",
+          "after": "신청인 (서명 또는 인) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 유의사항 ────────────────────────────────────────────────────────────── 「식품의 기준 및 규격」에 적합한 원재료 또는 성분에 한하여 신청이 가능합니다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "directive": ""
+        },
+        {
+          "article": "별표 0001의00 (기능성 표시 식품등의 영양성분 함량 기준(제3조제2항제2호 관련))",
+          "type": "문장 신설",
+          "before": "",
+          "after": "식후 혈당상승 억제에 도움 등을 줄 수 있는 기능성 원재료 또는 성분을 사용하여 해당 기능성을 표시 또는 광고하려는 식품등은 「식품첨가물의 기준 및 규격」에 따른 감미료를 사용하지 않으면서 저 당류 표시기준에 충족하여야 한다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "directive": ""
+        }
+      ],
+      "change_count": 2,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [
+        {
+          "id": "42512d5afbc3a5426f6d",
+          "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "topic": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "work_type": "서류·서식",
+          "review_question": "제출 서류·신청서 기준의 실제 반영 여부를 확인",
+          "actual_changes": [
+            {
+              "before": "━━━━━━━━━ ─────┬──",
+              "after": "━━━━━━━━━━ ─────┬──"
+            },
+            {
+              "before": "━━ ─────┬─────────",
+              "after": "━━ ─────┬──────────"
+            },
+            {
+              "before": "━━━━━━━━━ 행정정보 공동이",
+              "after": "━━━━━━━━━━ 행정정보 공동이"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "946925ef06796674ed1f",
+          "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "topic": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "work_type": "서류·서식",
+          "review_question": "제출 서류·신청서 기준의 실제 반영 여부를 확인",
+          "actual_changes": [
+            {
+              "before": "───────── ━━━━━━━━━",
+              "after": "────────── ━━━━━━━━━━"
+            },
+            {
+              "before": "───────── ┌──────┐",
+              "after": "────────── ┌──────┐"
+            },
+            {
+              "before": "───┐ ┌───┐ ┌───┐ ┌",
+              "after": "───┐ ┌────┐ ┌───┐ ┌"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "22fe0c7dbc7ea5593832",
+          "article": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "topic": "별표 0000의00 (기능성을 나타내는 원재료의 일반식품 사용 신청서)",
+          "work_type": "서류·서식",
+          "review_question": "제출 서류·신청서 기준의 실제 반영 여부를 확인",
+          "actual_changes": [
+            {
+              "before": "서명 또는 인) ━━━━━━━━━",
+              "after": "서명 또는 인) ━━━━━━━━━━"
+            },
+            {
+              "before": "───────── 「식품의 기준",
+              "after": "────────── 「식품의 기준"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EB%B6%80%EB%8B%B9%ED%95%9C%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EB%A1%9C%20%EB%B3%B4%EC%A7%80%20%EC%95%84%EB%8B%88%ED%95%98%EB%8A%94%20%EC%8B%9D%ED%92%88%EB%93%B1%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%84%B1%20%ED%91%9C%EC%8B%9C%20%EB%98%90%EB%8A%94%20%EA%B4%91%EA%B3%A0%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:5b36a34a74921d7f6c20",
+      "title": "통계작성의 변경승인(협의) 고시(범죄분석통계)",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "국가데이터처",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "통계작성의 변경승인(협의) 고시(범죄분석통계)",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-23",
+      "effective_date": "2026-12-14",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "본문",
+          "type": "문장 개정",
+          "before": "1. 통계의 명칭 : 범죄분석통계 2. 통계작성기관의 명칭 : 검찰청 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제135001호 [1976.07.29.] 4. 통계작성의 변경 연월일 : 2025.12.15. 5. 통계작성의 변경 내용과 사유 :",
+          "after": "1. 통계의 명칭 : 범죄분석통계 2. 통계작성기관의 명칭 : 공소청 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제135001호 [1976.07.29.] 4. 통계작성의 변경 연월일 : 2026.12.14. 5. 통계작성의 변경 내용과 사유 :",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29",
+          "directive": ""
+        }
+      ],
+      "change_count": 1,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [
+        {
+          "id": "43c5d7beb8558a77ea33",
+          "article": "본문",
+          "topic": "본문",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "기관의 명칭 : 검찰청 3. 통계작성",
+              "after": "기관의 명칭 : 공소청 3. 통계작성"
+            },
+            {
+              "before": "연월일 : 2025.12.15. 5",
+              "after": "연월일 : 2026.12.14. 5"
+            },
+            {
+              "before": "2025.12.15. 5. 통계작성",
+              "after": "2026.12.14. 5. 통계작성"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EB%B2%94%EC%A3%84%EB%B6%84%EC%84%9D%ED%86%B5%EA%B3%84%29",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:9099a360fe3142098117",
+      "title": "초고층건축물등 총괄재난관리자 교육운영기준",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "소방청",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "초고층건축물등 총괄재난관리자 교육운영기준",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 7,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-23",
+      "effective_date": "2027-01-01",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "소방청",
+      "url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "제4조",
+          "type": "문장 개정",
+          "before": "③ 지방자치단체의 장은 제1항의 교육운영 세부계획을 통보받은 날로부터 10일 이내에 초고층 및 지하연계복합건축물의 관리주체 등에게 알려야 한다.",
+          "after": "③ 지방자치단체의 장은 제2항의 교육운영 세부계획을 통보받은 날로부터 10일 이내에 초고층 및 지하연계 복합건축물의 관리주체 등에게 알려야 한다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "별표 0000의00 (수료증)",
+          "type": "문장 개정",
+          "before": "초고층건축물등 총괄재난관리자 교육 운영 기준[별지서식] 제 호 수 료 증 성 명 : (건물명 : ) 생년월일 : 주 소 : 위 사람은「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」제4조에 따른 총괄재난관리자 교육과정을 아래와 같이 수료하였음을 증명합니다.",
+          "after": "초고층건축물등 총괄재난관리자 교육 운영 기준[별지서식] ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃제 호 ┃ ┃ ┃ ┃수 료 증 ┃ ┃ ┃ ┃ ┃ ┃성 명 : (건물명 : ) ┃ ┃생년월일 : ┃ ┃주 소 : ┃ ┃ ┃ ┃ 위 사람은「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」제4조 ┃ ┃에 따른 총괄재난관리자 교육과정을 아래와 같이 수료하였음을 증명합니다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "제2조",
+          "type": "문장 개정",
+          "before": "제2조(교육기관의 지정) 「소방청과 그 소속기관 직제」제2조에 따른 중앙소방학교를 「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」(이하 \"규칙”이라 한다)제4조제2항에 따른 총괄재난관리자 교육기관(이하 \"교육기관”이라 한다)으로 지정한다.",
+          "after": "제2조(교육기관의 지정) 「소방청과 그 소속기관 직제」 제2조에 따른 중앙소방학교 및 「지방소방기관 설치에 관한 규정」 제2조에 따른 지방소방학교를 「초고층 및 지하연계 복합건축물 재난관리에 관한 특별법 시행규칙」 제4조제2항에 따른 총괄재난관리자 교육기관(이하 \"교육기관\"이라 한다)으로 지정한다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "제3조",
+          "type": "문장 개정",
+          "before": "1. 기본교육과정 : 총괄재난관리자로 처음 지정된 자가 6개월 이내에 받아야 하는 교육과정(기본교육을 받은 총괄재난관리자가 다른 건물의 총괄재난관리자로 지정되는 경우에는 기본교육과정을 받지 않고 보수교육을 받을 수 있다.) 2. 보수교육과정 : 기본교육을 수료한 총괄재난관리자가 2년마다 받아야 하는 교육과정",
+          "after": "1. 기본교육과정 : 총괄재난관리자로 처음 선임된 자가 6개월 이내에 받아야 하는 교육과정(기본교육을 받은 총괄재난관리자가 다른 건물의 총괄재난관리자로 선임되는 경우에는 기본교육과정을 받지 않고 보수교육을 받을 수 있다.) 2. 보수교육과정 : 기본교육을 수료한 총괄재난관리자가 2년마다 1회 이상 받아야 하는 교육과정",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "제4조",
+          "type": "문장 개정",
+          "before": "④ 교육기관의 장은 제3조제1항 각 호의 교육을 받은 사람에 대해서는 별지서식의 수료증을 발급하고, 수료증 발급대장에 기록·관리하여야 한다.(단, 사이버교육을 수료한 사람은 온라인 수료증으로 갈음할 수 있다.)",
+          "after": "④ 교육기관의 장은 제3조제1항 각 호의 교육을 받은 사람에 대해서는 별지 서식의 수료증을 발급하고, 수료증 발급대장에 기록ㆍ관리하여야 한다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "별표 0000의00 (수료증)",
+          "type": "문장 삭제",
+          "before": "○ 교육과정 : 제○기 총괄재난관리자 ○○교육과정 ○ 교육기간 : 0000.00.00 ~ 0000.00.00 (○○시간) 년 월 일 직인 중앙소방학교장",
+          "after": "",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "별표 0000의00 (수료증)",
+          "type": "문장 신설",
+          "before": "",
+          "after": "┃ ┃ ┃ ┃ ○ 교육과정 : 제○기 총괄재난관리자 ○○교육과정 ┃ ┃ ○ 교육기간 : 0000.00.00 ~ 0000.00.00 (○○시간) ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃년 월 일 ┃ ┃ ┃ ┃ ┃ ┃ ┌──┐ ┃ ┃ │직인│ ┃ ┃ │ │ ┃ ┃ 중앙소방학교장 │ │ ┃ ┃ │ │ ┃ ┃ │ │ ┃ ┃ └──┘ ┃ ┃ ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "별표 0001의00 (교육과정별 시간 및 교육내용(제3조관련))",
+          "type": "문장 삭제",
+          "before": "별표 1 교육과정별 시간 및 교육내용(제3조관련) 과정구분 교육시간 교육내용 기본교육과정 21시간 이상 ․규칙 제4조제1항 각호에서 정한 사항 보수교육과정 5시간 이상 ․규칙 제4조제1항 각호의 내용과 관련된 재난관리 환경변화 및 기술개발 동향 ․재난관리와 관련하여 소방청장 또는 중앙소방학교장이 정하는 사항",
+          "after": "",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "별표 0001의00 (교육과정별 시간 및 교육내용(제3조관련))",
+          "type": "문장 신설",
+          "before": "",
+          "after": "별표 1 교육과정별 시간 및 교육내용(제3조관련) ┏━━━━━━┯━━━━┯━━━━━━━━━━━━━━━━━━━━━┓ ┃과정구분 │교육시간│교육내용 ┃ ┣━━━━━━┿━━━━┿━━━━━━━━━━━━━━━━━━━━━┫ ┃기본교육과정│21시간 │ ㆍ규칙 제4조제1항 각호에서 정한 사항 ┃ ┃ │ 이상 │ ┃ ┠──────┼────┼─────────────────────┨ ┃보수교육과정│ 5시간 │ ㆍ규칙 제4조제1항 각호의 내용과 관련된 ┃ ┃ │ 이상 │재난관리 환경변화 및 기술개발 동향 ┃ ┃ │ │ ㆍ재난관리와 관련하여 소방청장 또는 교육 ┃ ┃ │ │기관의 장 정하는 사항 ┃ ┗━━━━━━┷━━━━┷━━━━━━━━━━━━━━━━━━━━━┛",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        },
+        {
+          "article": "제4조",
+          "type": "문장 신설",
+          "before": "",
+          "after": "다만, 사이버교육을 수료한 사람에게는 전자적 방법으로 수료증을 발급할 수 있다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "directive": ""
+        }
+      ],
+      "change_count": 7,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [
+        {
+          "id": "671a9941ea5a0d436649",
+          "article": "제4조",
+          "topic": "제4조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "치단체의 장은 제1항의 교육운영 세",
+              "after": "치단체의 장은 제2항의 교육운영 세"
+            },
+            {
+              "before": "고층 및 지하연계복합건축물의 관리",
+              "after": "고층 및 지하연계 복합건축물의 관리"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "dc3d2dd9f115c385d62c",
+          "article": "별표 0000의00 (수료증)",
+          "topic": "별표 0000의00 (수료증)",
+          "work_type": "서류·서식",
+          "review_question": "제출 서류·신청서 기준의 실제 반영 여부를 확인",
+          "actual_changes": [
+            {
+              "before": "기준[별지서식] 제 호 수 료 증",
+              "after": "기준[별지서식] ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃제 호 ┃ ┃ ┃"
+            },
+            {
+              "before": "지서식] 제 호 수 료 증 성 명",
+              "after": "━━┓ ┃제 호 ┃ ┃ ┃ ┃수 료 증 ┃ ┃"
+            },
+            {
+              "before": "호 수 료 증 성 명 : (건물",
+              "after": "┃ ┃수 료 증 ┃ ┃ ┃ ┃ ┃ ┃성 명 : (건물"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "211d9d9ec0fce67f7fab",
+          "article": "제2조",
+          "topic": "교육기관의 지정",
+          "work_type": "조직·정원",
+          "review_question": "정원·직급·사무배정 기준과의 적용 관계를 확인",
+          "actual_changes": [
+            {
+              "before": "소속기관 직제」제2조에 따른 중",
+              "after": "소속기관 직제」 제2조에 따른 중"
+            },
+            {
+              "before": "2조에 따른 중앙소방학교를 「초고",
+              "after": "2조에 따른 중앙소방학교 및 「지방소방기관 설치에 관한 규정」 제2조에 따른 지방소방학교를 「초고"
+            },
+            {
+              "before": "특별법 시행규칙」(이하 \"규칙”이라 한",
+              "after": "특별법 시행규칙」 제4조제2항에"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "cdce448457e8619f7054",
+          "article": "제3조",
+          "topic": "제3조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "난관리자로 처음 지정된 자가 6개월",
+              "after": "난관리자로 처음 선임된 자가 6개월"
+            },
+            {
+              "before": "총괄재난관리자로 지정되는 경우에는 기",
+              "after": "총괄재난관리자로 선임되는 경우에는 기"
+            },
+            {
+              "before": "리자가 2년마다 받아야 하는 교육",
+              "after": "리자가 2년마다 1회 이상 받아야 하는 교육"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "f5c5b17543087184f2fa",
+          "article": "제4조",
+          "topic": "제4조",
+          "work_type": "서류·서식",
+          "review_question": "제출 서류·신청서 기준의 실제 반영 여부를 확인",
+          "actual_changes": [
+            {
+              "before": "에 대해서는 별지서식의 수료증을",
+              "after": "에 대해서는 별지 서식의 수료증을"
+            },
+            {
+              "before": "발급대장에 기록·관리하여야 한다.",
+              "after": "발급대장에 기록ㆍ관리하여야 한다."
+            },
+            {
+              "before": "관리하여야 한다.(단, 사이버교육을 수료한 사람은 온라인 수료증으로 갈음할 수 있다.)",
+              "after": "관리하여야 한다."
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%B4%88%EA%B3%A0%EC%B8%B5%EA%B1%B4%EC%B6%95%EB%AC%BC%EB%93%B1%20%EC%B4%9D%EA%B4%84%EC%9E%AC%EB%82%9C%EA%B4%80%EB%A6%AC%EC%9E%90%20%EA%B5%90%EC%9C%A1%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "pending:0890e869389e8c3cbfd6",
       "title": "선거관리위원회 사무관리규칙",
       "promulgated_at": "2026-10-23",
@@ -18479,6 +19136,79 @@
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": true,
         "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "event_id": "v4:c3fad6ffec3bc79b3cb7",
+      "title": "통계작성의 변경승인(협의) 고시(여성과학기술인력활용실태조사)",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "국가데이터처",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "통계작성의 변경승인(협의) 고시(여성과학기술인력활용실태조사)",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-22",
+      "effective_date": "2026-12-31",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "본문",
+          "type": "문장 개정",
+          "before": "1. 통계의 명칭 : 여성과학기술인력활용실태조사 2. 통계작성기관의 명칭 : 과학기술정보통신부 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제105003호 [2005.09.29.] 4. 통계작성의 변경 연월일 : 2025.06.19. 5. 통계작성의 변경 내용과 사유 :",
+          "after": "1. 통계의 명칭 : 여성과학기술인력활용실태조사 2. 통계작성기관의 명칭 : 과학기술정보통신부 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제105003호 [2005.09.29.] 4. 통계작성의 변경 연월일 : 2026.12.31. 5. 통계작성의 변경 내용과 사유 :",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+          "directive": ""
+        }
+      ],
+      "change_count": 1,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [
+        {
+          "id": "d22e084bf92c45666073",
+          "article": "본문",
+          "topic": "본문",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "연월일 : 2025.06.19. 5.",
+              "after": "연월일 : 2026.12.31."
+            },
+            {
+              "before": "2025.06.19. 5. 통계작성",
+              "after": ": 2026.12.31. 5. 통계작성"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%97%AC%EC%84%B1%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EB%A0%A5%ED%99%9C%EC%9A%A9%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
       }
     },
     {
@@ -19005,6 +19735,53 @@
       "article_differences": [],
       "change_count": 1,
       "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:2b27c352d44b6f43fc5e",
+      "title": "지방공무원 균형인사 운영지침",
+      "comparison_state": "details_not_compared",
+      "source_notes": [
+        "일부 조문·별표 본문이 수집 한도에 도달하여 해당 부분의 비교 제외",
+        "종전 조문·별표 중 수집 한도에 도달한 부분은 비교 제외",
+        "검증된 조문만 비교했으며 미수집된 장문 조문의 변경은 판단하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "행정안전부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "지방공무원 균형인사 운영지침",
+          "source_url": "https://www.law.go.kr/행정규칙/%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EA%B7%A0%ED%98%95%EC%9D%B8%EC%82%AC%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+          "verification": "verified_partial_changed_clauses",
+          "changed_article_count": 2,
+          "actual_implementation_verified": false,
+          "kind": "예규"
+        }
+      ],
+      "promulgated_at": "2026-10-20",
+      "effective_date": "2027-01-01",
+      "revision": "일부개정",
+      "law_type": "예규",
+      "ministry": "행정안전부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EA%B7%A0%ED%98%95%EC%9D%B8%EC%82%AC%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EA%B7%A0%ED%98%95%EC%9D%B8%EC%82%AC%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 2,
+      "comparison_status": "공식 공포 정보 확인 · 조문 비교 미완료",
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
@@ -20575,6 +21352,82 @@
       }
     },
     {
+      "event_id": "v4:c4a4147dcddb9af6da9d",
+      "title": "건강보험요양급여비용의 내역",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "보건복지부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "건강보험요양급여비용의 내역",
+          "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 5,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-19",
+      "effective_date": "2027-01-01",
+      "revision": "전부개정",
+      "law_type": "고시",
+      "ministry": "보건복지부",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "본문",
+          "type": "문장 삭제",
+          "before": "「국민건강보험법」 제45조제4항에 의한 요양급여비용의 명세는 같은 법 시행령 제21조제2항에 따른 요양급여의 각 항목에 대한 상대가치점수에 다음 표에서 정한 유형별 분류에 따른 점수당 단가를 곱한 것으로 한다.",
+          "after": "",
+          "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+          "directive": ""
+        },
+        {
+          "article": "제1조",
+          "type": "문장 신설",
+          "before": "",
+          "after": "제1조(목적) 이 고시는 「국민건강보험법」 제45조제4항에 따라 요양급여비용의 명세에 관한 사항을 정함을 목적으로 한다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+          "directive": ""
+        },
+        {
+          "article": "제2조",
+          "type": "문장 신설",
+          "before": "",
+          "after": "제2조(요양급여비용의 명세) 「국민건강보험법」 제45조제4항에 따른 요양급여비용의 명세는 「국민건강보험법 시행령」 제21조제2항에 따른 요양급여 각 항목에 대한 상대가치점수에 다음의 표에서 정한 유형별 분류에 따른 점수당 단가를 곱한 것으로 한다.",
+          "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+          "directive": ""
+        },
+        {
+          "article": "부칙 2025-186 (20251118)",
+          "type": "문장 삭제",
+          "before": "부칙 이 고시는 2026년 1월 1일부터 시행한다.",
+          "after": "",
+          "source_url": "https://www.law.go.kr/행정규칙/%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EC%9A%94%EC%96%91%EA%B8%89%EC%97%AC%EB%B9%84%EC%9A%A9%EC%9D%98%20%EB%82%B4%EC%97%AD",
+          "directive": ""
+        }
+      ],
+      "change_count": 5,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:law|행정안전부령|2026-10-19|00653",
       "title": "규제 재검토기한 정비를 위한 2개 법령의 일부개정에 관한 행정안전부령",
       "comparison_state": "details_not_compared",
@@ -20746,6 +21599,441 @@
       }
     },
     {
+      "event_id": "v4:ac5595fa51f019f94cc4",
+      "title": "통계작성의 변경승인(협의) 고시(전남광주통합특별시진도군기본통계)",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "국가데이터처",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "통계작성의 변경승인(협의) 고시(전남광주통합특별시진도군기본통계)",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-16",
+      "effective_date": "2026-11-30",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "본문",
+          "type": "문장 개정",
+          "before": "1. 통계의 명칭 : 전라남도진도군기본통계 2. 통계작성기관의 명칭 : 전라남도 진도군 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제751001호 [2007.05.04.] 4. 통계작성의 변경 연월일 : 2025.10.31. 5. 통계작성의 변경 내용과 사유 :",
+          "after": "1. 통계의 명칭 : 전라남도진도군기본통계 2. 통계작성기관의 명칭 : 전남광주통합특별시 진도군 3. 통계작성승인(협의)번호 [작성승인(협의)일] : 제751001호 [2007.05.04.] 4. 통계작성의 변경 연월일 : 2026.11.30. 5. 통계작성의 변경 내용과 사유 :",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+          "directive": ""
+        }
+      ],
+      "change_count": 1,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [
+        {
+          "id": "0838ccabaf4ff5614773",
+          "article": "본문",
+          "topic": "본문",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "관의 명칭 : 전라남도 진도군 3.",
+              "after": "관의 명칭 : 전남광주통합특별시"
+            },
+            {
+              "before": "명칭 : 전라남도 진도군 3. 통",
+              "after": "의 명칭 : 전남광주통합특별시 진도군 3. 통"
+            },
+            {
+              "before": "연월일 : 2025.10.31. 5",
+              "after": "연월일 : 2026.11.30. 5"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A7%84%EB%8F%84%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:b380cf5d185e2a0aca6b",
+      "title": "통계작성의 변경승인(협의) 고시(장애인경제활동실태조사)",
+      "comparison_state": "details_not_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "국가데이터처",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "통계작성의 변경승인(협의) 고시(장애인경제활동실태조사)",
+          "source_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%9E%A5%EC%95%A0%EC%9D%B8%EA%B2%BD%EC%A0%9C%ED%99%9C%EB%8F%99%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "고시"
+        }
+      ],
+      "promulgated_at": "2026-10-16",
+      "effective_date": "2026-12-31",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%9E%A5%EC%95%A0%EC%9D%B8%EA%B2%BD%EC%A0%9C%ED%99%9C%EB%8F%99%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%9E%A5%EC%95%A0%EC%9D%B8%EA%B2%BD%EC%A0%9C%ED%99%9C%EB%8F%99%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC%29",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 공포 정보 확인 · 조문 비교 미완료",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|재정경제부령|2026-10-14|00053",
+      "title": "공기업ㆍ준정부기관 계약사무규칙",
+      "comparison_state": "official_changes_compared",
+      "source_notes": [],
+      "official_change_documents": [
+        {
+          "agency": "재정경제부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "공기업ㆍ준정부기관 계약사무규칙",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 4,
+          "actual_implementation_verified": false,
+          "kind": "재정경제부령"
+        },
+        {
+          "agency": "조달청장",
+          "agency_role": "실제 변경 조문에 명시된 수행주체 (타 사업 영향 미확인)",
+          "law_title": "공기업ㆍ준정부기관 계약사무규칙",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "verification": "verified_changed_clauses",
+          "changed_article_count": 4,
+          "actual_implementation_verified": false,
+          "kind": "재정경제부령"
+        }
+      ],
+      "promulgated_at": "2026-10-14",
+      "effective_date": "2026-10-14",
+      "revision": "일부개정",
+      "law_type": "재정경제부령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "⑦ 계약사무의 위탁, 철회 및 위탁기간의 종료의 경우 다음 각 호의 구분에 따른 사무는 인계하지 아니한다.",
+          "after": "⑧ 계약사무의 위탁, 철회 및 위탁기간의 종료의 경우 다음 각 호의 구분에 따른 사무는 인계하지 아니한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "③ 제2항에 따라 계약사무를 조달청장에게 위탁하는 경우 그 위탁기간은 위탁받은 날부터 2년으로 한다.",
+          "after": "⑤ 제4항에 따라 계약사무를 조달청장에게 위탁하는 경우 그 위탁기간은 위탁받은 날부터 2년으로 한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "1. 계약사무의 위탁: 제2항에 따른 이사회의 의결일 이전에 입찰공고를 하거나 계약을 체결한 계약사무 2. 계약사무의 철회: 제6항에 따라 조달청장이 위탁철회의 통지를 받은 날 이전에 입찰공고를 하거나 계약을 체결한 계약사무 3. 계약사무 위탁기간의 종료: 위탁기간 종료일 이전에 입찰공고를 하거나 계약을 체결한 계약사무",
+          "after": "1. 계약사무의 위탁: 제4항에 따른 이사회의 의결일 이전에 입찰공고 또는 「국가를 당사자로 하는 계약에 관한 법률 시행령」 제30조제3항에 따른 안내공고(이하 \"입찰공고등\"이라 한다)를 한 계약의 체결 사무 2. 계약사무의 철회: 제7항에 따라 조달청장이 위탁철회의 통지를 받은 날 이전에 입찰공고등을 한 계약의 체결 사무 3. 계약사무 위탁기간의 종료: 위탁기간 종료일 이전에 입찰공고등을 한 계약의 체결 사무",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "② 제1항에도 불구하고 기관장은 해당 공기업ㆍ준정부기관의 임직원이 계약에 관한 사무와 관련하여 「형법」 제129조부터 제132조까지, 제314조, 제315조, 제347조, 제347조의2, 제355조부터 제357조까지 및 제359조 중 어느 하나에 해당하는 죄를 범하였다는 혐의로 기소되거나 해당 공기업ㆍ준정부기관의 임직원에 대하여 감사원, 주무부처 또는 해당 공기업ㆍ준정부기관의 감사로부터 파면, 해임, 강등 또는 정직(이하 \"중징계\"라 한다) 요구받은 경우에는 기소되거나 중징계 처분을 요구받은 날부터 10일 이내에 재정경제부장관과 조달청장에게 기소 또는 중징계 처분요구 사실을 통보하여야 하며, 그 기소되거나 중징계 처분을 요구받은 날부터 60일 이내에 해당 임직원이 관리하는 단위 부서(기소 또는 중징계 요구의 원인이 된 행위가 있었던 때를 기준으로 판단하며, 해당 임직원이 관리자가 아닌 경우에는 직상급 관리자가 관리하는 단위 부서를 말한다) 소관의 계약사무를 조달청장에게 위탁하는 방안을 마련하여 이사회의 심의ㆍ의결을 요청하고, 이사회가 의결한 경우 해당 계약사무를 조달청장에게 위탁하여야 한다.",
+          "after": "② 제1항에도 불구하고 기관장은 해당 공기업ㆍ준정부기관의 임직원이 계약사무와 관련하여 「형법」 제129조부터 제132조까지, 제314조, 제315조, 제347조, 제347조의2, 제355조부터 제357조까지 및 제359조 중 어느 하나에 해당하는 죄를 범하였다는 혐의로 기소되거나 해당 공기업ㆍ준정부기관의 임직원에 대하여 감사원, 주무부처 또는 해당 공기업ㆍ준정부기관의 감사로부터 파면, 해임, 강등 또는 정직(이하 \"중징계\"라 한다) 처분을 요구받은 경우에는 기소되거나 중징계 처분을 요구받은 날부터 10일 이내에 재정경제부장관과 조달청장에게 기소 또는 중징계 처분요구 사실을 통보하여야 하며, 그 기소되거나 중징계 처분을 요구받은 날부터 90일 이내에 해당 임직원이 관리하는 단위 부서(기소 또는 중징계 요구의 원인이 된 행위가 있었던 때를 기준으로 판단하며, 해당 임직원이 관리자가 아닌 경우에는 직상급 관리자가 관리하는 단위 부서를 말한다) 소관의 계약사무를 조달청장에게 위탁하는 방안을 마련하여 이사회의 심의ㆍ의결을 요청해야 한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "① 기관장은 계약에 관한 사무를 그 소속직원에게 위임하거나 국가 또는 지방자치단체의 기관이나 다른 기관장(소속 직원을 포함한다)에게 위탁할 수 있다.",
+          "after": "① 기관장은 계약에 관한 사무(계약의 체결, 이행 및 사후관리 등을 포함한다. 이하 \"계약사무\"라 한다)를 그 소속직원에게 위임하거나 국가 또는 지방자치단체의 기관이나 다른 기관장(소속 직원을 포함한다)에게 위탁할 수 있다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "⑥ 제2항의 임직원에 대하여 중징계 외의 처분이나 무죄판결이 확정되는 경우 해당 기관장은 제2항에 따른 계약사무의 위탁을 철회할 수 있으며, 이 경우 조달청장은 위탁 철회의 통지를 받은 날부터 30일 이내에 사무를 인계하여야 한다.",
+          "after": "⑦ 제2항의 임직원에 대하여 중징계 외의 처분이나 무죄판결이 확정되는 경우 해당 기관장은 제4항에 따른 계약사무의 위탁을 철회할 수 있으며, 이 경우 조달청장은 위탁 철회의 통지를 받은 날부터 30일 이내에 사무를 인계하여야 한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "⑤ 조달청장은 위탁받은 사무의 범위가 제2항에 따라 이사회가 심의ㆍ의결한 위탁 범위와 다른 경우 또는 전문성이 요구되는 등 조달청장이 수행하기 곤란한 경우에는 기관장에게 위탁사무 범위의 조정을 요구할 수 있으며, 기관장은 특별한 사유가 없으면 이에 따라야 한다.",
+          "after": "⑥ 조달청장은 위탁받은 사무의 범위가 제2항에 따라 이사회가 심의ㆍ의결한 위탁 범위와 다른 경우 또는 전문성이 요구되는 등 조달청장이 수행하기 곤란한 경우에는 기관장에게 위탁사무 범위의 조정 또는 인력 지원을 요구할 수 있으며, 기관장은 특별한 사유가 없으면 이에 따라야 한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "⑧ 제1항과 제2항에 따라 계약에 관한 사무를 위탁하는 경우에는 위탁조건, 위탁수수료, 그 밖에 필요한 사항을 명백히 하여야 한다.",
+          "after": "⑨ 제1항과 제4항에 따라 계약사무를 위탁하는 경우에는 위탁조건, 위탁수수료, 그 밖에 필요한 사항을 명백히 하여야 한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        },
+        {
+          "article": "제7조",
+          "type": "문장 개정",
+          "before": "④ 기관장은 제2항에 따른 이사회의 의결 결과(조달청장에게 계약사무를 위탁하는 경우에는 위탁하는 사무의 구체적인 범위를 포함한다)를 재정경제부장관과 조달청장에게 통보하여야 한다.",
+          "after": "④ 이사회가 제2항에 따른 위탁방안을 의결한 경우 기관장은 그 의결에 따라 계약사무를 조달청장에게 위탁해야 하며, 이사회의 의결 결과(위탁하는 사무의 구체적인 범위를 포함한다)를 재정경제부장관과 조달청장에게 통보하여야 한다.",
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "directive": ""
+        }
+      ],
+      "change_count": 4,
+      "comparison_status": "공식 신구 문장 비교 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 7,
+      "work_review_candidates": [
+        {
+          "id": "8711b4a5b481e27cd9af",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "⑦ 계약사무의 위탁",
+              "after": "⑧ 계약사무의 위탁"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "de81c4768169b0ae6a1d",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "③ 제2항에 따라",
+              "after": "⑤ 제4항에 따라"
+            },
+            {
+              "before": "③ 제2항에 따라 계약사",
+              "after": "⑤ 제4항에 따라 계약사"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "1ce453f3443ca3e9edcf",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "사무의 위탁: 제2항에 따른 이사회",
+              "after": "사무의 위탁: 제4항에 따른 이사회"
+            },
+            {
+              "before": "이전에 입찰공고를 하거나 계약을",
+              "after": "이전에 입찰공고 또는 「국가를 당사자로 하는"
+            },
+            {
+              "before": "전에 입찰공고를 하거나 계약을 체",
+              "after": "또는 「국가를 당사자로 하는 계약에 관한"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "15561d93e08b9c013978",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "기한·시행",
+          "review_question": "처리기한·적용 시점을 실제 판정하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "의 임직원이 계약에 관한 사무와 관련하여",
+              "after": "의 임직원이 계약사무와 관련하여"
+            },
+            {
+              "before": "징계\"라 한다) 요구받은 경우에는",
+              "after": "징계\"라 한다) 처분을 요구받은 경우에는"
+            },
+            {
+              "before": "요구받은 날부터 60일 이내에 해당",
+              "after": "요구받은 날부터 90일 이내에 해당"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "1138bcf8b3b7d34c5f40",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "계약에 관한 사무를 그 소속직원에",
+              "after": "계약에 관한 사무(계약의 체결, 이행 및 사후관리 등을 포함한다. 이하 \"계약사무\"라 한다)를 그 소속직원에"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "0f6ea2366e9531fcc8a1",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "⑥ 제2항의 임직원",
+              "after": "⑦ 제2항의 임직원"
+            },
+            {
+              "before": "해당 기관장은 제2항에 따른 계약사",
+              "after": "해당 기관장은 제4항에 따른 계약사"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "5112e9cbbf5777016c9e",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "지원·지급 범위",
+          "review_question": "해당 지원 항목·지급 판단 기준을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "⑤ 조달청장은 위탁",
+              "after": "⑥ 조달청장은 위탁"
+            },
+            {
+              "before": "사무 범위의 조정을 요구할 수 있",
+              "after": "사무 범위의 조정 또는 인력 지원을 요구할 수 있"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "9c27f79984d2c421bef7",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "⑧ 제1항과 제2항",
+              "after": "⑨ 제1항과 제4항"
+            },
+            {
+              "before": "⑧ 제1항과 제2항에 따라 계약에",
+              "after": "⑨ 제1항과 제4항에 따라 계약사"
+            },
+            {
+              "before": "2항에 따라 계약에 관한 사무를 위탁하는",
+              "after": "4항에 따라 계약사무를 위탁하는"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        },
+        {
+          "id": "012f59b59780503187c8",
+          "article": "제7조",
+          "topic": "제7조",
+          "work_type": "조문상 적용 기준",
+          "review_question": "변경된 규정을 실제 적용하는 업무가 있는지 확인",
+          "actual_changes": [
+            {
+              "before": "④ 기관장은 제2항에 따른",
+              "after": "④ 이사회가 제2항에 따른"
+            },
+            {
+              "before": "은 제2항에 따른 이사회의 의결",
+              "after": "가 제2항에 따른 위탁방안을 의결한 경우 기관장은 그 의결에 따라 계약사무를 조달청장에게 위탁해야 하며, 이사회의 의결"
+            },
+            {
+              "before": "회의 의결 결과(조달청장에게 계약사무를 위탁하는 경우에는 위탁하는 사무의",
+              "after": "회의 의결 결과(위탁하는 사무의"
+            }
+          ],
+          "source_url": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+          "status": "기관·사업 적용 여부 미확인",
+          "institution_verified": false
+        }
+      ],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 1,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:68c88f74df29978e9741",
       "title": "영월군 수의계약 운영 및 관리에 관한 조례",
       "comparison_state": "official_enactment_only",
@@ -20881,6 +22169,681 @@
       }
     },
     {
+      "event_id": "v4:d96dfa31346f73686f78",
+      "title": "인제군 버스 무료 이용 지원에 관한 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "강원특별자치도 인제군",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "인제군 버스 무료 이용 지원에 관한 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%A0%9C%EA%B5%B0%20%EB%B2%84%EC%8A%A4%20%EB%AC%B4%EB%A3%8C%20%EC%9D%B4%EC%9A%A9%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-12",
+      "effective_date": "2027-01-01",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "강원특별자치도 인제군",
+      "url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%A0%9C%EA%B5%B0%20%EB%B2%84%EC%8A%A4%20%EB%AC%B4%EB%A3%8C%20%EC%9D%B4%EC%9A%A9%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%A0%9C%EA%B5%B0%20%EB%B2%84%EC%8A%A4%20%EB%AC%B4%EB%A3%8C%20%EC%9D%B4%EC%9A%A9%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:fc5b1a916a10bef45423",
+      "title": "충청북도 환경영향평가 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "충청북도",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "충청북도 환경영향평가 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%ED%99%98%EA%B2%BD%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-08",
+      "effective_date": "2027-01-01",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "충청북도",
+      "url": "https://www.law.go.kr/자치법규/%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%ED%99%98%EA%B2%BD%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%ED%99%98%EA%B2%BD%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:66655a672019faffbc43",
+      "title": "광양시 병원 동행 서비스 지원 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "전남광주통합특별시 광양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "광양시 병원 동행 서비스 지원 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%96%91%EC%8B%9C%20%EB%B3%91%EC%9B%90%20%EB%8F%99%ED%96%89%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-07",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "전남광주통합특별시 광양시",
+      "url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%96%91%EC%8B%9C%20%EB%B3%91%EC%9B%90%20%EB%8F%99%ED%96%89%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EA%B4%91%EC%96%91%EC%8B%9C%20%EB%B3%91%EC%9B%90%20%EB%8F%99%ED%96%89%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:59e9143949504fd10d6e",
+      "title": "안양시 노인복지기금 설치 및 운용에 관한 조례",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 노인복지기금 설치 및 운용에 관한 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:1fba71973b5fa3b3ffbd",
+      "title": "안양시 문화예술진흥기금 설치 및 운용 조례",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 문화예술진흥기금 설치 및 운용 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%98%88%EC%88%A0%EC%A7%84%ED%9D%A5%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%98%88%EC%88%A0%EC%A7%84%ED%9D%A5%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%98%88%EC%88%A0%EC%A7%84%ED%9D%A5%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:e06250e83014694d6474",
+      "title": "안양시 보훈기금 조성 및 운용에 관한 조례",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 보훈기금 조성 및 운용에 관한 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:4f2ff731a91f64fe1e39",
+      "title": "안양시 장애인복지기금 조성 및 운용에 관한 조례",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 장애인복지기금 조성 및 운용에 관한 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:201de8b24d25edc6bcad",
+      "title": "안양시 양성평등 기본 조례 시행규칙",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 양성평등 기본 조례 시행규칙",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%96%91%EC%84%B1%ED%8F%89%EB%93%B1%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%96%91%EC%84%B1%ED%8F%89%EB%93%B1%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%96%91%EC%84%B1%ED%8F%89%EB%93%B1%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:775bd73e1364116588d9",
+      "title": "안양시 장애인복지기금 조성 및 운용에 관한 조례 시행규칙",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 장애인복지기금 조성 및 운용에 관한 조례 시행규칙",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EC%9E%A5%EC%95%A0%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:343ec9958448871448d9",
+      "title": "안양시 노인복지기금 설치 및 운용에 관한 조례 시행규칙",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 노인복지기금 설치 및 운용에 관한 조례 시행규칙",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%85%B8%EC%9D%B8%EB%B3%B5%EC%A7%80%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:2743afa7718a312b8953",
+      "title": "안양시 보훈기금 조성 및 운용에 관한 조례 시행규칙",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 안양시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "안양시 보훈기금 조성 및 운용에 관한 조례 시행규칙",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 안양시",
+      "url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%95%88%EC%96%91%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EA%B8%B0%EA%B8%88%20%EC%A1%B0%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:5d77c6f84d6f0897efd2",
+      "title": "전남광주통합특별시 광산구 지하수 관리 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "전남광주통합특별시 광산구",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "전남광주통합특별시 광산구 지하수 관리 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%A7%80%ED%95%98%EC%88%98%20%EA%B4%80%EB%A6%AC%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "전남광주통합특별시 광산구",
+      "url": "https://www.law.go.kr/자치법규/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%A7%80%ED%95%98%EC%88%98%20%EA%B4%80%EB%A6%AC%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%A7%80%ED%95%98%EC%88%98%20%EA%B4%80%EB%A6%AC%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:a8cfc8fd989023903529",
+      "title": "화성시 시책일몰제 운영 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 화성시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "화성시 시책일몰제 운영 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%8B%9C%EC%B1%85%EC%9D%BC%EB%AA%B0%EC%A0%9C%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-07",
+      "effective_date": "2027-01-01",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "경기도 화성시",
+      "url": "https://www.law.go.kr/자치법규/%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%8B%9C%EC%B1%85%EC%9D%BC%EB%AA%B0%EC%A0%9C%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%8B%9C%EC%B1%85%EC%9D%BC%EB%AA%B0%EC%A0%9C%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:0f28e00f104d5394b413",
+      "title": "부천시 문화시설건립특별회계 설치 조례",
+      "comparison_state": "official_repeal_only",
+      "source_notes": [
+        "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "경기도 부천시",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "부천시 문화시설건립특별회계 설치 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%8B%9C%EC%84%A4%EA%B1%B4%EB%A6%BD%ED%8A%B9%EB%B3%84%ED%9A%8C%EA%B3%84%20%EC%84%A4%EC%B9%98%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_repeal_notice",
+          "changed_article_count": 0,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-06",
+      "effective_date": "2027-01-01",
+      "revision": "폐지",
+      "law_type": "자치법규",
+      "ministry": "경기도 부천시",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%8B%9C%EC%84%A4%EA%B1%B4%EB%A6%BD%ED%8A%B9%EB%B3%84%ED%9A%8C%EA%B3%84%20%EC%84%A4%EC%B9%98%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%AC%B8%ED%99%94%EC%8B%9C%EC%84%A4%EA%B1%B4%EB%A6%BD%ED%8A%B9%EB%B3%84%ED%9A%8C%EA%B3%84%20%EC%84%A4%EC%B9%98%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:aab39d80c73bdcae0793",
+      "title": "인천광역시부평구 소아청소년 야간ㆍ휴일 의료기관 지정 및 지원에 관한 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "인천광역시 부평구",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "인천광역시부평구 소아청소년 야간ㆍ휴일 의료기관 지정 및 지원에 관한 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%EB%B6%80%ED%8F%89%EA%B5%AC%20%EC%86%8C%EC%95%84%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%95%BC%EA%B0%84%E3%86%8D%ED%9C%B4%EC%9D%BC%20%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B4%80%20%EC%A7%80%EC%A0%95%20%EB%B0%8F%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-06",
+      "effective_date": "2026-12-10",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "인천광역시 부평구",
+      "url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%EB%B6%80%ED%8F%89%EA%B5%AC%20%EC%86%8C%EC%95%84%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%95%BC%EA%B0%84%E3%86%8D%ED%9C%B4%EC%9D%BC%20%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B4%80%20%EC%A7%80%EC%A0%95%20%EB%B0%8F%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%EB%B6%80%ED%8F%89%EA%B5%AC%20%EC%86%8C%EC%95%84%EC%B2%AD%EC%86%8C%EB%85%84%20%EC%95%BC%EA%B0%84%E3%86%8D%ED%9C%B4%EC%9D%BC%20%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B4%80%20%EC%A7%80%EC%A0%95%20%EB%B0%8F%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:c0335219ba7636ca618a",
       "title": "범죄통계 개선",
       "comparison_state": "official_repeal_only",
@@ -20955,6 +22918,51 @@
       "article_differences": [],
       "change_count": 0,
       "comparison_status": "폐지 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:04d3871f1b5e457ab53d",
+      "title": "부산광역시 금정구 화재피해주민 지원 조례",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "부산광역시 금정구",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "부산광역시 금정구 화재피해주민 지원 조례",
+          "source_url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B8%88%EC%A0%95%EA%B5%AC%20%ED%99%94%EC%9E%AC%ED%94%BC%ED%95%B4%EC%A3%BC%EB%AF%BC%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "verification": "verified_enactment",
+          "changed_article_count": 1,
+          "actual_implementation_verified": false,
+          "kind": "자치법규"
+        }
+      ],
+      "promulgated_at": "2026-10-01",
+      "effective_date": "2027-01-01",
+      "revision": "제정",
+      "law_type": "자치법규",
+      "ministry": "부산광역시 금정구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B8%88%EC%A0%95%EA%B5%AC%20%ED%99%94%EC%9E%AC%ED%94%BC%ED%95%B4%EC%A3%BC%EB%AF%BC%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "amendment_url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B8%88%EC%A0%95%EA%B5%AC%20%ED%99%94%EC%9E%AC%ED%94%BC%ED%95%B4%EC%A3%BC%EB%AF%BC%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 1,
+      "comparison_status": "제정 사실만 확인",
       "policy_profile": false,
       "downstream_changes": [],
       "presentation_source": "v4_official_source",
@@ -23156,10 +25164,19 @@
       ],
       "change_count": 12,
       "comparison_status": "공식 신구 문장 비교 확인",
-      "policy_profile": false,
-      "downstream_changes": [],
+      "policy_profile": true,
+      "downstream_changes": [
+        {
+          "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+          "institution": "과학기술정보통신부",
+          "evidence": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "article": "제78조",
+          "basis_url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "status": "변경 조항 적용 관계 확인"
+        }
+      ],
       "presentation_source": "v4_official_source",
-      "impact_priority": 10,
+      "impact_priority": 19,
       "work_review_candidates": [
         {
           "id": "35f48066ea4f0868cf9e",
@@ -23326,7 +25343,7 @@
       "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
       "impact_scope": {
         "institutions": 1,
-        "proven_dependent_rules": 0,
+        "proven_dependent_rules": 1,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -23584,10 +25601,18 @@
           "article": "제2조",
           "basis_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
           "status": "변경 조항 적용 관계 확인"
+        },
+        {
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "institution": "중소벤처기업부",
+          "evidence": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "article": "제2조",
+          "basis_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "status": "변경 조항 적용 관계 확인"
         }
       ],
       "presentation_source": "v4_official_source",
-      "impact_priority": 18,
+      "impact_priority": 27,
       "work_review_candidates": [
         {
           "id": "d57611d26d7a421ef6b4",
@@ -23639,10 +25664,10 @@
         }
       ],
       "impact_level": "high",
-      "impact_reason": "실제 변경 조항을 적용하는 다른 규정 2건",
+      "impact_reason": "실제 변경 조항을 적용하는 다른 규정 3건",
       "impact_scope": {
         "institutions": 0,
-        "proven_dependent_rules": 2,
+        "proven_dependent_rules": 3,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -25249,10 +27274,18 @@
           "article": "제2조",
           "basis_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
           "status": "변경 조항 적용 관계 확인"
+        },
+        {
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "institution": "중소벤처기업부",
+          "evidence": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "article": "제17조",
+          "basis_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "status": "변경 조항 적용 관계 확인"
         }
       ],
       "presentation_source": "v4_official_source",
-      "impact_priority": 18,
+      "impact_priority": 27,
       "work_review_candidates": [
         {
           "id": "f30853e8aef90d529adb",
@@ -25392,10 +27425,10 @@
         }
       ],
       "impact_level": "high",
-      "impact_reason": "실제 변경 조항을 적용하는 다른 규정 2건",
+      "impact_reason": "실제 변경 조항을 적용하는 다른 규정 3건",
       "impact_scope": {
         "institutions": 0,
-        "proven_dependent_rules": 2,
+        "proven_dependent_rules": 3,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -25527,10 +27560,18 @@
           "article": "제2조",
           "basis_url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
           "status": "변경 조항 적용 관계 확인"
+        },
+        {
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "institution": "중소벤처기업부",
+          "evidence": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+          "article": "제17조",
+          "basis_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "status": "변경 조항 적용 관계 확인"
         }
       ],
       "presentation_source": "v4_official_source",
-      "impact_priority": 18,
+      "impact_priority": 27,
       "work_review_candidates": [
         {
           "id": "42e5adab9123d0617457",
@@ -25670,10 +27711,10 @@
         }
       ],
       "impact_level": "high",
-      "impact_reason": "실제 변경 조항을 적용하는 다른 규정 2건",
+      "impact_reason": "실제 변경 조항을 적용하는 다른 규정 3건",
       "impact_scope": {
         "institutions": 0,
-        "proven_dependent_rules": 2,
+        "proven_dependent_rules": 3,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -25800,6 +27841,276 @@
       "impact_scope": {
         "institutions": 0,
         "proven_dependent_rules": 1,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|산업자원부령|2006-08-16|00356",
+      "title": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "중소벤처기업부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+          "source_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_enactment",
+          "changed_article_count": 16,
+          "actual_implementation_verified": false,
+          "kind": "산업자원부령"
+        }
+      ],
+      "promulgated_at": "2006-08-16",
+      "effective_date": "2006-08-16",
+      "revision": "제정",
+      "law_type": "산업자원부령",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 16,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2006-05-30|19494",
+      "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "중소벤처기업부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "source_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "verification": "verified_enactment",
+          "changed_article_count": 18,
+          "actual_implementation_verified": false,
+          "kind": "대통령령"
+        }
+      ],
+      "promulgated_at": "2006-05-30",
+      "effective_date": "2006-06-04",
+      "revision": "제정",
+      "law_type": "대통령령",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 18,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|법률|2006-03-03|07864",
+      "title": "대·중소기업 상생협력 촉진에 관한 법률",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "중소벤처기업부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "대·중소기업 상생협력 촉진에 관한 법률",
+          "source_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "verification": "verified_enactment",
+          "changed_article_count": 18,
+          "actual_implementation_verified": false,
+          "kind": "법률"
+        }
+      ],
+      "promulgated_at": "2006-03-03",
+      "effective_date": "2006-06-04",
+      "revision": "제정",
+      "law_type": "법률",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 18,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|재무부령|1977-03-11|01247",
+      "title": "특별소비세법시행규칙",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "재정경제부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "특별소비세법시행규칙",
+          "source_url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "verification": "verified_enactment",
+          "changed_article_count": 18,
+          "actual_implementation_verified": false,
+          "kind": "재무부령"
+        }
+      ],
+      "promulgated_at": "1977-03-11",
+      "effective_date": "1977-03-11",
+      "revision": "제정",
+      "law_type": "재무부령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 18,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|1976-12-31|08408",
+      "title": "특별소비세법시행령",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "재정경제부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "특별소비세법시행령",
+          "source_url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "verification": "verified_enactment",
+          "changed_article_count": 18,
+          "actual_implementation_verified": false,
+          "kind": "대통령령"
+        }
+      ],
+      "promulgated_at": "1976-12-31",
+      "effective_date": "1977-07-01",
+      "revision": "제정",
+      "law_type": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 18,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|법률|1976-12-22|02935",
+      "title": "특별소비세법",
+      "comparison_state": "official_enactment_only",
+      "source_notes": [
+        "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+      ],
+      "official_change_documents": [
+        {
+          "agency": "재정경제부",
+          "agency_role": "공포·개정 소관기관 (집행기관 미확인)",
+          "law_title": "특별소비세법",
+          "source_url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+          "verification": "verified_enactment",
+          "changed_article_count": 18,
+          "actual_implementation_verified": false,
+          "kind": "법률"
+        }
+      ],
+      "promulgated_at": "1976-12-22",
+      "effective_date": "1977-07-01",
+      "revision": "제정",
+      "law_type": "법률",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 18,
+      "comparison_status": "제정 사실만 확인",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "work_review_candidates": [],
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": false,
         "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
@@ -26996,6 +29307,93 @@
       "evidence_scope": "v4_verified_source"
     },
     {
+      "id": "e941527de37e5ef19b54",
+      "event_id": "v4:law|법률|2026-04-21|21553",
+      "agency": "과학기술정보통신부장관",
+      "agency_role": "변경된 조문에 명시된 집행기관",
+      "work": "조직·정원 운영",
+      "target_location": "제24조 · 정원·직급·인력 배정",
+      "what_to_change": "제24조의 조직·정원 운영 관련 규정 변경",
+      "changes": [
+        {
+          "before": "③ 과학기술정보통신부장관은 제1항, 제5항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
+          "after": "④ 과학기술정보통신부장관은 제1항, 제6항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다."
+        },
+        {
+          "before": "⑤ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다.",
+          "after": "⑥ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다."
+        }
+      ],
+      "required_change": "과학기술정보통신부장관의 정원·직급·인력 배정에서 제24조의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
+      "article": "제24조",
+      "law_title": "전파법",
+      "effective_date": "2026-10-22",
+      "basis": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
+      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
+      "status": "반영 확인 필요",
+      "confidence": "공식 신구 조문 확인",
+      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
+      "evidence_scope": "v4_verified_source"
+    },
+    {
+      "id": "c03f4c2f0acdb87e63b7",
+      "event_id": "v4:law|법률|2026-04-21|21553",
+      "agency": "과학기술정보통신부장관",
+      "agency_role": "변경된 조문에 명시된 집행기관",
+      "work": "인허가·검사 운영",
+      "target_location": "제24조 · 허가·검사·신고 심사조건",
+      "what_to_change": "제24조의 인허가·검사 운영 관련 규정 변경",
+      "changes": [
+        {
+          "before": "④ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다.",
+          "after": "⑤ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다."
+        }
+      ],
+      "required_change": "과학기술정보통신부장관의 허가·검사·신고 심사조건에서 제24조의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
+      "article": "제24조",
+      "law_title": "전파법",
+      "effective_date": "2026-10-22",
+      "basis": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
+      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
+      "status": "반영 확인 필요",
+      "confidence": "공식 신구 조문 확인",
+      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
+      "evidence_scope": "v4_verified_source"
+    },
+    {
+      "id": "e7111e5ca09a65144c73",
+      "event_id": "v4:law|재정경제부령|2026-10-14|00053",
+      "agency": "조달청장",
+      "agency_role": "변경된 조문에 명시된 집행기관",
+      "work": "처리기한·시행",
+      "target_location": "제7조 · 접수·처리·유예기간",
+      "what_to_change": "제7조의 처리기한·시행 관련 규정 변경",
+      "changes": [
+        {
+          "before": "⑦ 계약사무의 위탁, 철회 및 위탁기간의 종료의 경우 다음 각 호의 구분에 따른 사무는 인계하지 아니한다.",
+          "after": "⑧ 계약사무의 위탁, 철회 및 위탁기간의 종료의 경우 다음 각 호의 구분에 따른 사무는 인계하지 아니한다."
+        },
+        {
+          "before": "③ 제2항에 따라 계약사무를 조달청장에게 위탁하는 경우 그 위탁기간은 위탁받은 날부터 2년으로 한다.",
+          "after": "⑤ 제4항에 따라 계약사무를 조달청장에게 위탁하는 경우 그 위탁기간은 위탁받은 날부터 2년으로 한다."
+        },
+        {
+          "before": "1. 계약사무의 위탁: 제2항에 따른 이사회의 의결일 이전에 입찰공고를 하거나 계약을 체결한 계약사무 2. 계약사무의 철회: 제6항에 따라 조달청장이 위탁철회의 통지를 받은 날 이전에 입찰공고를 하거나 계약을 체결한 계약사무 3. 계약사무 위탁기간의 종료: 위탁기간 종료일 이전에 입찰공고를 하거나 계약을 체결한 계약사무",
+          "after": "1. 계약사무의 위탁: 제4항에 따른 이사회의 의결일 이전에 입찰공고 또는 「국가를 당사자로 하는 계약에 관한 법률 시행령」 제30조제3항에 따른 안내공고(이하 \"입찰공고등\"이라 한다)를 한 계약의 체결 사무 2. 계약사무의 철회: 제7항에 따라 조달청장이 위탁철회의 통지를 받은 날 이전에 입찰공고등을 한 계약의 체결 사무 3. 계약사무 위탁기간의 종료: 위탁기간 종료일 이전에 입찰공고등을 한 계약의 체결 사무"
+        }
+      ],
+      "required_change": "조달청장의 접수·처리·유예기간에서 제7조의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
+      "article": "제7조",
+      "law_title": "공기업ㆍ준정부기관 계약사무규칙",
+      "effective_date": "2026-10-14",
+      "basis": "https://www.law.go.kr/법령/%EA%B3%B5%EA%B8%B0%EC%97%85%E3%86%8D%EC%A4%80%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%20%EA%B3%84%EC%95%BD%EC%82%AC%EB%AC%B4%EA%B7%9C%EC%B9%99",
+      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
+      "status": "반영 확인 필요",
+      "confidence": "공식 신구 조문 확인",
+      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
+      "evidence_scope": "v4_verified_source"
+    },
+    {
       "id": "86e1c3761af478f71419",
       "event_id": "v4:law|보건복지부령|2026-05-08|01173",
       "agency": "보건복지부장관",
@@ -27097,60 +29495,6 @@
       "law_title": "주택건설기준 등에 관한 규정",
       "effective_date": "2026-05-06",
       "basis": "https://www.law.go.kr/법령/%EC%A3%BC%ED%83%9D%EA%B1%B4%EC%84%A4%EA%B8%B0%EC%A4%80%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
-      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
-      "status": "반영 확인 필요",
-      "confidence": "공식 신구 조문 확인",
-      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
-    },
-    {
-      "id": "e941527de37e5ef19b54",
-      "event_id": "v4:law|법률|2026-04-21|21553",
-      "agency": "과학기술정보통신부장관",
-      "agency_role": "변경된 조문에 명시된 집행기관",
-      "work": "조직·정원 운영",
-      "target_location": "제24조 · 정원·직급·인력 배정",
-      "what_to_change": "제24조의 조직·정원 운영 관련 규정 변경",
-      "changes": [
-        {
-          "before": "③ 과학기술정보통신부장관은 제1항, 제5항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다.",
-          "after": "④ 과학기술정보통신부장관은 제1항, 제6항 또는 제8항에 따라 검사한 결과 그 무선설비가 제45조에 따른 기술기준에 적합하고 무선종사자의 자격과 정원이 제71조에 따른 자격ㆍ정원배치기준에 적합하면 지체 없이 검사를 받은 자에게 검사증명서를 발급하여야 한다."
-        },
-        {
-          "before": "⑤ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다.",
-          "after": "⑥ 과학기술정보통신부장관은 무선국이 있는 선박이나 항공기가 외국에 출항하려는 경우나 그 밖에 전파의 효율적 이용이나 관리를 위하여 특히 필요한 경우에는 무선설비의 기술기준, 무선종사자의 자격과 정원, 그 밖에 필요한 사항 등을 검사할 수 있다."
-        }
-      ],
-      "required_change": "과학기술정보통신부장관의 정원·직급·인력 배정에서 제24조의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
-      "article": "제24조",
-      "law_title": "전파법",
-      "effective_date": "2026-10-22",
-      "basis": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
-      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
-      "status": "반영 확인 필요",
-      "confidence": "공식 신구 조문 확인",
-      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
-    },
-    {
-      "id": "c03f4c2f0acdb87e63b7",
-      "event_id": "v4:law|법률|2026-04-21|21553",
-      "agency": "과학기술정보통신부장관",
-      "agency_role": "변경된 조문에 명시된 집행기관",
-      "work": "인허가·검사 운영",
-      "target_location": "제24조 · 허가·검사·신고 심사조건",
-      "what_to_change": "제24조의 인허가·검사 운영 관련 규정 변경",
-      "changes": [
-        {
-          "before": "④ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다.",
-          "after": "⑤ 과학기술정보통신부장관은 다음 각 호의 어느 하나에 해당하는 무선국에 대하여 5년의 범위에서 무선국별로 대통령령으로 정하는 기간마다 정기검사를 실시하여야 한다."
-        }
-      ],
-      "required_change": "과학기술정보통신부장관의 허가·검사·신고 심사조건에서 제24조의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
-      "article": "제24조",
-      "law_title": "전파법",
-      "effective_date": "2026-10-22",
-      "basis": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
       "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
@@ -27426,6 +29770,81 @@
       "law_title": "교육부와 그 소속기관 직제 시행규칙",
       "effective_date": "2026-11-06",
       "basis": "https://www.law.go.kr/법령/%EA%B5%90%EC%9C%A1%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
+      "status": "반영 확인 필요",
+      "confidence": "공식 신구 조문 확인",
+      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
+      "evidence_scope": "v4_verified_source"
+    },
+    {
+      "id": "66ee1bb77410f493c87c",
+      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
+      "agency": "과학기술정보통신부",
+      "agency_role": "개정 직제의 직접 규율 대상 기관",
+      "work": "조직·정원 운영",
+      "target_location": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련)) · 정원·직급·인력 배정",
+      "what_to_change": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))의 조직·정원 운영 관련 규정 변경",
+      "changes": [
+        {
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 5] 국립전파연구원 공무원 정원표(제28조제1항 본문 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전산 사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 21 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 또는 공업연구사 52 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 서기 15 방호서기 2 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 방송통신서기보 4 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 5] 국립전파연구원 공무원 정원표(제28조제1항 본문 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전산 사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 20 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 또는 공업연구사 50 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 서기 15 방호서기 2 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 방송통신서기보 4 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송 3 통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부 전문관ㆍ전산부전문관ㆍ방송통신부전문관"
+        }
+      ],
+      "required_change": "과학기술정보통신부의 정원·직급·인력 배정에서 별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
+      "article": "별표 0005의00 (국립전파연구원 공무원 정원표(제28조제1항 본문 관련))",
+      "law_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "effective_date": "2026-11-06",
+      "basis": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
+      "status": "반영 확인 필요",
+      "confidence": "공식 신구 조문 확인",
+      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
+      "evidence_scope": "v4_verified_source"
+    },
+    {
+      "id": "eb28b4f9dc5722c5e76a",
+      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
+      "agency": "과학기술정보통신부",
+      "agency_role": "개정 직제의 직접 규율 대상 기관",
+      "work": "조직·정원 운영",
+      "target_location": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련)) · 정원·직급·인력 배정",
+      "what_to_change": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))의 조직·정원 운영 관련 규정 변경",
+      "changes": [
+        {
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 6] 국립전파연구원 공무원 정원표(제28조제1항 단서 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전 산사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방 송통신사무관 또는 공업연구관 23 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주 사 또는 공업연구사 50 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 방호주사보 1 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통 15 신서기 방호서기 1 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 4 방송통신서기보 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 6] 국립전파연구원 공무원 정원표(제28조제1항 단서 관련) 총계 169 일반직 계 169 고위공무원단 1 서기관ㆍ과학기술서기관 또는 공업연구관 4 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ전 산사무관 또는 방송통신사무관 3 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방 송통신사무관 또는 공업연구관 22 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주 사 또는 공업연구사 48 운전주사 1 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 방송통신주사보 28 방호주사보 1 운전주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통 15 신서기 방호서기 1 위생서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 4 방송통신서기보 방호서기보 4 공업연구관 7 공업연구사 23 사무운영주사 1 사무운영주사보 1 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방 3 송통신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시 설부전문관ㆍ전산부전문관ㆍ방송통신부전문관"
+        }
+      ],
+      "required_change": "과학기술정보통신부의 정원·직급·인력 배정에서 별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
+      "article": "별표 0006의00 (국립전파연구원 공무원 정원표(제28조제1항 단서 관련))",
+      "law_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "effective_date": "2026-11-06",
+      "basis": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
+      "status": "반영 확인 필요",
+      "confidence": "공식 신구 조문 확인",
+      "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
+      "evidence_scope": "v4_verified_source"
+    },
+    {
+      "id": "bb1b5668c63ef7e6ec02",
+      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
+      "agency": "과학기술정보통신부",
+      "agency_role": "개정 직제의 직접 규율 대상 기관",
+      "work": "조직·정원 운영",
+      "target_location": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련)) · 정원·직급·인력 배정",
+      "what_to_change": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련)) · 4 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 212 → 3 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 200",
+      "changes": [
+        {
+          "before": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 7] 중앙전파관리소 공무원 정원표(제28조제2항 본문 관련) 총계 855 일반직 계 855 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 64 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 212 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 214 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 202 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 38 방송통신서기보 방호서기보 6 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4",
+          "after": "■ 과학기술정보통신부와 그 소속기관 직제 시행규칙 [별표 7] 중앙전파관리소 공무원 정원표(제28조제2항 본문 관련) 총계 855 일반직 계 855 고위공무원단 1 부이사관ㆍ서기관 또는 과학기술서기관 1 서기관 또는 과학기술서기관 8 서기관ㆍ과학기술서기관ㆍ행정사무관ㆍ공업사무관ㆍ시설 사무관ㆍ전산사무관ㆍ방송통신사무관 또는 공업연구관 9 행정사무관ㆍ공업사무관ㆍ시설사무관ㆍ전산사무관ㆍ방송 통신사무관 또는 공업연구관 63 행정주사ㆍ공업주사ㆍ시설주사ㆍ전산주사ㆍ방송통신주사 200 ㆍ공업연구사 또는 기록연구사 방호주사 1 운전주사 11 행정주사보ㆍ공업주사보ㆍ시설주사보ㆍ전산주사보 또는 214 방송통신주사보 운전주사보 8 위생주사보 1 행정서기ㆍ공업서기ㆍ시설서기ㆍ전산서기 또는 방송통신 202 서기 방호서기 1 운전서기 5 조리서기 1 행정서기보ㆍ공업서기보ㆍ시설서기보ㆍ전산서기보 또는 38 방송통신서기보 방호서기보 6 운전서기보 17 위생서기보 10 조리서기보 8 통신운영주사 24 열관리운영주사 2 사무운영주사 4 사무운영주사보 1 전기운영서기 1 사무운영서기 1 사무운영서기보 4 행정전문관ㆍ공업전문관ㆍ시설전문관ㆍ전산전문관ㆍ방송통 13 신전문관 또는 행정부전문관ㆍ공업부전문관ㆍ시설부"
+        }
+      ],
+      "required_change": "과학기술정보통신부의 정원·직급·인력 배정에서 별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))의 변경 내용을 확인하고 해당 운영 기준·업무분장표 반영 필요 여부를 검토",
+      "article": "별표 0007의00 (중앙전파관리소 공무원 정원표(제28조제2항 본문 관련))",
+      "law_title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "effective_date": "2026-11-06",
+      "basis": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
       "impact_link_basis": "동일 법령의 공식 이전·현재 조문 직접 비교",
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",

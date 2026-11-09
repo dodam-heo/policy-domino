@@ -13,30 +13,27 @@
     "pending_details": 7402,
     "legacy_recheck": 8,
     "institutional_dependency_actions": 0,
-    "institutional_evidence_sources": 6,
+    "institutional_evidence_sources": 5,
     "institutional_discovery": {
       "attempted": 3,
-      "pages_checked": 6,
+      "pages_checked": 5,
       "matched": 0,
-      "errors": 2,
+      "errors": 1,
       "search_leads": [
         {
           "field": "교육급여",
           "found": 2,
           "urls": [
             "https://dl.nanet.go.kr/detail/REFD0001120584",
-            "https://dl.nanet.go.kr/"
+            "https://dl.nanet.go.kr/storage/pictab/REFD/0001/1205/REFD0001120584/REFD0001120584.jpg"
           ]
         },
         {
           "field": "주거급여",
-          "found": 5,
+          "found": 2,
           "urls": [
-            "https://www.lh.or.kr/menu.es?mid=a10401050100",
-            "https://www.lh.or.kr/menu.e",
             "https://www.bokjiro.go.kr/ssis-tbu/index.do",
-            "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
-            "https://www.bokjiro.go.kr/"
+            "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201"
           ]
         },
         {
@@ -46,12 +43,11 @@
         },
         {
           "field": "생계급여",
-          "found": 4,
+          "found": 3,
           "urls": [
             "https://www.mohw.go.kr/",
             "https://www.mohw.go.kr/menu.es?mid=a10708010100",
-            "https://www.easylaw.go.kr/CSP/Main.laf",
-            "https://www.mohw.go.kr/menu.e"
+            "https://www.easylaw.go.kr/CSP/Main.laf"
           ]
         }
       ],
@@ -61,14 +57,6 @@
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
           "publisher": "",
           "identified_publisher": false,
-          "identified_program": true,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
-          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
-          "publisher": "한국토지주택공사",
-          "identified_publisher": true,
           "identified_program": true,
           "baseline_proof": false
         },

@@ -1,0 +1,54 @@
+name: Institution-linked policy change verification
+on:
+  push:
+    branches: [feat/institutional-policy-dependencies-20261109]
+    paths:
+      - 'v4/institutional_impact.py'
+      - 'v4/test_institutional_impact.py'
+      - 'v4/classic_bridge.py'
+      - 'site/classic/index.html'
+      - 'site/classic/test_ui.cjs'
+      - 'data/institution_policy_sources.json'
+      - '.github/workflows/institutional-check.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Complete generic cross-agency logic and negative-test assertions
+        run: |
+          python -m compileall -q v4
+          python -m unittest -v v4.test_institutional_impact
+      - name: Build actionable institution-level output without replacing the current public site
+        run: |
+          python -m v4.classic_bridge
+          node site/classic/test_ui.cjs
+      - name: Verify each public-institution role and published source, against real official standards
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('site/classic/data.json').read_text('utf8'))
+          additions=[a for a in d['actions'] if a.get('evidence_scope')=='official_institutional_program_dependency']
+          by={}
+          for a in additions:by.setdefault(a['event_id'],[]).append(a)
+          assert len(additions)>=3
+          assert len(by)>=2
+          assert all(a['status'] in ('기관별 기준 반영 검토','기관별 업무 연계 검토')
+                     for a in additions)
+          print('INSTITUTIONAL_DEPENDENCY_ACCEPTANCE',json.dumps({
+            'events':len(d['events']),'agency_actions':len(d['actions']),
+            'new_official_institutional_links':len(additions),
+            'review_actions':[{'agency':a['agency'],'policy':a['law_title'],
+               'program':a['service'],'review':a['required_change'],
+               'role':a['agency_role'],'source':a['agency_basis'],
+               'changes':a['changes']} for a in additions]
+          },ensure_ascii=False)[:10000])
+          PY

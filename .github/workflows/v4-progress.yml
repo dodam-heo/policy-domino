@@ -78,17 +78,31 @@ jobs:
         run: |
           git config user.name policy-domino-v4-bot
           git config user.email policy-domino-v4-bot@users.noreply.github.com
-          git add data/v4_state.json site/v4/data.json site/classic/data.json site/impact/index.html
-          if ! git diff --cached --quiet; then
-            git commit -m 'data(v4): advance official indexed sources and evidence [skip ci]'
-            for attempt in 1 2 3; do
-              git fetch origin main
-              git rebase FETCH_HEAD
-              if git push origin HEAD:main; then break; fi
-              if [ "$attempt" = "3" ]; then exit 1; fi
-              sleep 3
-            done
-          fi
+          # The source crawl produced a new verified state. Do not rebase
+          # generated JSON against the Classic UI publisher: that causes
+          # merge conflicts and discards otherwise successful crawl results.
+          mkdir -p "$RUNNER_TEMP/pd-v4"
+          cp data/v4_state.json "$RUNNER_TEMP/pd-v4/state.json"
+          cp site/v4/data.json "$RUNNER_TEMP/pd-v4/report.json"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard FETCH_HEAD
+            cp "$RUNNER_TEMP/pd-v4/state.json" data/v4_state.json
+            cp "$RUNNER_TEMP/pd-v4/report.json" site/v4/data.json
+            python -m v4.classic_bridge
+            node site/classic/test_ui.cjs
+            git add data/v4_state.json site/v4/data.json site/classic/data.json site/impact/index.html
+            if git diff --cached --quiet; then
+              echo "Official evidence output is already published"
+              break
+            fi
+            git commit -m 'data(v4): publish source-verified progress [skip ci]'
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" = "3" ]; then exit 1; fi
+            sleep 3
+          done
   deploy:
     needs: update
     if: success()

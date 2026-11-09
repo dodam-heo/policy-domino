@@ -226,7 +226,11 @@ def _name(p):
     return ""
 
 def _program(p,field):
-    candidates=list(p.heading[:8])+re.split(r"[|｜]",p.page_title)[:1]
+    # Prefer the specific document title and changed-standard section over
+    # site-wide navigation headings (which may name unrelated programs).
+    candidates=(re.split(r"[|｜]",p.page_title)[:1]+
+                [h for h in p.heading if compact(field) in compact(h)]+
+                list(p.heading[:8]))
     for candidate in candidates:
         c=" ".join(candidate.split()).strip()
         if not (5<=len(c)<=110) or NON_PROGRAM.search(c):continue

@@ -78,7 +78,7 @@ jobs:
         run: |
           git config user.name policy-domino-v4-bot
           git config user.email policy-domino-v4-bot@users.noreply.github.com
-          git add data/v4_state.json site/v4/data.json site/classic/data.json
+          git add data/v4_state.json site/v4/data.json site/classic/data.json site/impact/index.html
           if ! git diff --cached --quiet; then
             git commit -m 'data(v4): advance official indexed sources and evidence [skip ci]'
             for attempt in 1 2 3; do
@@ -105,6 +105,7 @@ jobs:
           test -s site/v4/index.html
           test -s site/classic/data.json
           test -s site/classic/index.html
+          test -s site/impact/index.html
           node site/v4/test_ui.cjs
           python - <<'PY'
           import json

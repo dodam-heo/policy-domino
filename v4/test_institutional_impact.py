@@ -50,6 +50,24 @@ class GeneralizableAgencyCascade(unittest.TestCase):
         e["article_differences"][0]["after"]="200원"
         self.assertIsNone(impact.candidate_action(e,entry()))
 
+    def test_numeric_formula_requires_source_baseline_match(self):
+        sample=entry()
+        sample["criterion"]["reference_old_amount"]="100"
+        self.assertIsNotNone(impact.candidate_action(
+            event("가상정책","가상선정기준:4인","100원","120원"),sample))
+        self.assertIsNone(impact.candidate_action(
+            event("가상정책","가상선정기준:4인","90원","120원"),sample))
+        self.assertIsNone(impact.candidate_action(
+            event("가상정책","다른지원:4인","100원","120원"),sample))
+
+    def test_actual_official_income_source_not_linked_to_other_old_amount(self):
+        agency=next(x for x in impact.load_sources()
+                    if x["institution"]=="한국장학재단" and
+                       x["relation"]=="numeric_formula")
+        other=event("비슷한 이름의 무관한 공고","중위소득:4인",
+                    "6,000,000원","7,000,000원")
+        self.assertIsNone(impact.candidate_action(other,agency))
+
     def test_effective_year_must_match_new_program_year(self):
         e=event("2026 업무", "가상선정기준:4인","100원","200원","2026-01-01")
         self.assertIsNone(impact.candidate_action(e,entry()))

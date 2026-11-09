@@ -14,7 +14,9 @@
           "기준 중위소득",
           "중위소득"
         ],
-        "match": "changed_field"
+        "match": "changed_field",
+        "reference_old_amount": "6494738",
+        "reference_old_year": 2026
       },
       "relation": "numeric_formula",
       "source_year": 2026,
@@ -41,7 +43,9 @@
           "기준 중위소득",
           "중위소득"
         ],
-        "match": "changed_field"
+        "match": "changed_field",
+        "reference_old_amount": "6494738",
+        "reference_old_year": 2026
       },
       "relation": "numeric_formula",
       "source_year": 2026,

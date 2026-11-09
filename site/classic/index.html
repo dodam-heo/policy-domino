@@ -188,7 +188,16 @@ function detailHTML(e){
  const facts='<div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div></div>';
  const statuses=[...new Set(all.map(a=>a.status).filter(Boolean))];
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+statuses.map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
- const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
+ const downstream=current.filter(a=>a.evidence_scope==="official_institutional_program_dependency");
+ const direct=current.filter(a=>a.evidence_scope!=="official_institutional_program_dependency");
+ const actionGroups=current.length?(
+   (downstream.length?
+     '<div class="sourceLinkHeading" style="margin:18px 0 10px;padding:14px;background:#eaf5f1;border-radius:12px"><b>기준 변경이 파급되는 기관·사업 '+downstream.length+'건</b><p class="smallNote" style="margin-top:6px">원천 변경값과 운영기관의 공식 기준 사용·업무 역할을 연결했습니다. 실제 내부시스템 수정 또는 조치 완료를 확인한 것은 아닙니다.</p></div>'+groupedActions(downstream):'')+
+   (direct.length?
+     (downstream.length?'<h4 style="margin:24px 0 10px">원천 법령의 직접 검토 업무</h4>':'')+
+     groupedActions(direct):'')
+ ):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다.");
+ const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관별 사업에 실제 적용되는 기준과 직접 업무를 구분합니다. 법령 자체를 다시 개정하거나 기관 내부시스템을 이미 수정했다는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+actionGroups+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
  return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }

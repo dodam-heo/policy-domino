@@ -14,39 +14,38 @@
     "v4_official_index": 2046,
     "pending_details": 7402,
     "legacy_recheck": 8,
-    "institutional_dependency_actions": 1,
+    "institutional_dependency_actions": 0,
     "institutional_evidence_sources": 20,
     "institutional_discovery": {
       "attempted": 3,
       "pages_checked": 20,
-      "matched": 1,
+      "matched": 0,
       "errors": 13,
       "search_leads": [
         {
           "query": "\"교육급여\" \"3,247,369\"",
-          "found": 3,
+          "found": 2,
           "urls": [
-            "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
             "https://dl.nanet.go.kr/detail/REFD0001120584",
             "https://dl.nanet.go.kr/storage/pictab/REFD/0001/1205/REFD0001120584/REFD0001120584.jpg"
           ]
         },
         {
           "query": "\"교육급여\" 2026 (신청 OR 지원 OR 자격 OR 선정)",
-          "found": 5,
+          "found": 6,
           "urls": [
             "https://www.moe.go.kr/main.do",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105459&lev=0",
             "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294",
+            "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
             "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
-            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141"
+            "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316"
           ]
         },
         {
           "query": "\"주거급여\" \"3,117,474\"",
-          "found": 3,
+          "found": 2,
           "urls": [
-            "https://www.lh.or.kr/menu.es?mid=a10401050100",
             "https://www.bokjiro.go.kr/ssis-tbu/index.do",
             "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201"
           ]
@@ -109,14 +108,6 @@
       ],
       "rejected_pages": [
         {
-          "url": "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200434",
-          "title": "교육급여(맞춤형 급여) < 교육지원 < 저소득주민 < 생애주기별복지 < 분야별정보 < 포털사이트Insert title here만족도",
-          "publisher": "",
-          "identified_publisher": true,
-          "identified_program": true,
-          "baseline_proof": false
-        },
-        {
           "url": "https://dl.nanet.go.kr/detail/REFD0001120584",
           "title": "대한민국 국회도서관 | 정보검색 > 소장정보 검색 > 초·중·고 학생 대상 교육급여 대폭 인상 - '19학년도 교육급여 항목별 연간 지원금액 (1인)",
           "publisher": "",
@@ -149,6 +140,14 @@
           "baseline_proof": false
         },
         {
+          "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/customer/notice/1309394_1141.html",
+          "title": "공지사항",
+          "publisher": "",
+          "identified_publisher": false,
+          "identified_program": false,
+          "baseline_proof": false
+        },
+        {
           "url": "https://www.ice.go.kr/ice/na/ntt/selectNttInfo.do?nttSn=3363919",
           "title": "인천광역시교육청",
           "publisher": "인천광역시교육청",
@@ -157,19 +156,11 @@
           "baseline_proof": false
         },
         {
-          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141",
+          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=316",
           "title": "요청하신 페이지를 찾을수 없습니다",
           "publisher": "",
           "identified_publisher": false,
           "identified_program": false,
-          "baseline_proof": false
-        },
-        {
-          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
-          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
-          "publisher": "한국토지주택공사",
-          "identified_publisher": true,
-          "identified_program": true,
           "baseline_proof": false
         },
         {
@@ -194,6 +185,14 @@
           "publisher": "한국토지주택공사",
           "identified_publisher": true,
           "identified_program": false,
+          "baseline_proof": false
+        },
+        {
+          "url": "https://www.lh.or.kr/menu.es?mid=a10401050100",
+          "title": "주거급여 | 주거급여 | 주거복지사업 | 사업소개 : 한국토지주택공사",
+          "publisher": "한국토지주택공사",
+          "identified_publisher": true,
+          "identified_program": true,
           "baseline_proof": false
         },
         {
@@ -3565,11 +3564,11 @@
       "policy_profile": "housing",
       "value_verified": true,
       "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "impact_priority": 15,
+      "impact_priority": 12,
       "impact_level": "not_assessed",
       "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
       "impact_scope": {
-        "institutions": 1,
+        "institutions": 0,
         "proven_dependent_rules": 0,
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": true,
@@ -6322,49 +6321,6 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source"
-    },
-    {
-      "id": "discovered:9155347856fdf58fb5d400",
-      "event_id": "legacy:5499deb5fa4caff958",
-      "agency": "서울특별시",
-      "agency_role": "공식자료 게시기관 (실제 수행·내부 담당 여부 미확인)",
-      "work": "주거급여 수급자 지원(임차급여)",
-      "service": "주거급여 수급자 지원(임차급여)",
-      "law_title": "2027년도 주거급여 선정기준 및 최저보장수준 제정",
-      "article": "주거급여",
-      "effective_date": "2027-01-01",
-      "target_location": "주거급여 수급자 지원(임차급여) · 주거급여",
-      "what_to_change": "주거급여 수급자 지원(임차급여)에 표시된 주거급여의 기존 기준 3,117,474원과 변경 기준 3,326,345원을 대조하고, 적용 연도 및 해당 업무 반영 필요 여부를 확인",
-      "required_change": "주거급여 수급자 지원(임차급여)에 표시된 주거급여의 기존 기준 3,117,474원과 변경 기준 3,326,345원을 대조하고, 적용 연도 및 해당 업무 반영 필요 여부를 확인",
-      "changes": [
-        {
-          "field": "주거급여",
-          "before": "3,117,474원",
-          "after": "3,326,345원",
-          "meaning": "원천 정책 변경값 (기관 내부 반영 상태 미확인)"
-        }
-      ],
-      "basis": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000284670",
-      "agency_basis": "https://housing.seoul.go.kr/site/main/content/sh01_061021",
-      "institution_evidence": {
-        "publisher": "서울특별시",
-        "heading": "주거급여 수급자 지원(임차급여)",
-        "excerpt": "하인가구2026년주거급여선정기준2026년주거급여선정기준(단위:원)구분1인가구2인가구3인가구4인가구5인가구6인가구기준중위소득48%1230834원2015660원2572337원3117474원3627225원4106857원※기준중위소득:보건복지부장관이급여의기준등에활용하기위하여중앙생활보장위원회심의·의결을거쳐고시하는국민가구소득의중위값지원대상타인의주택등에거주하면서임대차계약등(사용대차확인서전대차확인서포함)을",
-        "source_year": 2026,
-        "followup_year": 2027,
-        "program": "주거급여 수급자 지원(임차급여)",
-        "relationship": "official_public_page_numeric_match"
-      },
-      "status": "기관별 기준 반영 검토",
-      "status_evidence": null,
-      "confidence": "공식 웹페이지의 종전 기준값·연도·사용 맥락 확인",
-      "verification_note": "공식 페이지에서 종전 금액·적용연도·기준 사용을 확인했으나 변경 후 내부 운영기준과 시스템 수정 여부는 미확인",
-      "impact_link_basis": "원천 변경 조항과 공식 기관 페이지의 기준명·종전 금액·연도 일치",
-      "evidence_scope": "official_institutional_program_dependency",
-      "institutional_implementation_verified": false,
-      "is_direct_legal_amendment": false,
-      "discovery_method": "live_public_search_and_page_validation",
-      "role_scope": "공식 게시자료 기준 검토"
     }
   ],
   "status_counts": {},

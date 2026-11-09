@@ -134,7 +134,7 @@ function sorted(events){
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
 function comparedChange(e){
  return e.presentation_source==="v4_official_source" &&
- e.comparison_state==="official_changes_compared" &&
+ ["official_changes_compared","official_changes_partially_compared"].includes(e.comparison_state) &&
  (e.article_differences||[]).some(d=>String(d.before||"").trim()&&String(d.after||"").trim()&&String(d.before).trim()!==String(d.after).trim());
 }
 function verifiedLifecycle(e){return e.presentation_source==="v4_official_source" && ["official_enactment_only","official_repeal_only"].includes(e.comparison_state)}
@@ -142,6 +142,7 @@ function detailVerified(e){return comparedChange(e)||verifiedLifecycle(e)}
 function sourceLabel(e){
  if(e.comparison_state==="official_index_only")return "공식 변경 목록 확인 · 본문 비교 대기";
  if(e.comparison_state==="official_changes_compared")return "공식 신구 조문 비교 확인";
+ if(e.comparison_state==="official_changes_partially_compared")return "일부 조문 비교 확인 · 장문·별표 재검증 필요";
  if(e.comparison_state==="official_enactment_only")return "제정 확인 · 실제 적용업무 검토 대기";
  if(e.comparison_state==="official_repeal_only")return "폐지 확인 · 후속 규정 검토 대기";
  if(e.presentation_source==="legacy_official_directive_awaiting_recheck")return "이전 공식 개정문 · 최신 재검증 대기";

@@ -13,7 +13,9 @@
    └─ v2/collector.py              공식 목록·이력·본문 수집, 비교
        └─ v4/pipeline.py           공식 변경 사건과 증빙·연계규정 탐색
            └─ site/v4/data.json    출처 검증 데이터 (미확인과 분리)
-               └─ v4/classic_bridge.py     화면용 변경 사건·검토항목 조립
+               └─ v4/classic_bridge.py     화면 데이터 조립 오케스트레이터
+                   ├─ v4/agency_actions.py 공식 변경 조문→기관 검토 증거
+                   ├─ v4/legacy_recheck.py V2 개정 지시문 격리·재검증 라벨
                    ├─ v4/impact_scope.py   증빙된 영향 범위 평가
                    └─ site/classic/data.json
                        └─ site/assets/impact-model.js    순수 필터/선택 로직
@@ -49,7 +51,7 @@ LH·SH·한국장학재단을 포함한 여러 공공기관으로 정책의 영�
 - **단일 화면 소스:** 템플릿 1개, CSS 1개, 순수 JS 모델 1개, 화면 제어 JS 1개. 라우트별 데이터 경로만 다르다.
 - **결정적 산출물:** `python -m v4.classic_pages` 반복 실행 시 결과가 동일해야 한다.
 - **단방향 의존성:** Python 증빙 모델은 화면 HTML을 조작하지 않고, UI는 정책 효과를 임의 계산하지 않는다.
-- **검증:** `python -m unittest v4.test_impact_scope v4.test_classic_pages -v` / `node site/classic/test_ui.cjs` / `node site/test_adapter.cjs`.
+- **검증:** `python -m unittest discover -s v4 -p 'test_*.py' -v` / `node site/classic/test_ui.cjs` / `node site/test_adapter.cjs`.
 - **CI:** 공개 사이트 배포 전 데이터·증빙·라우트·스크립트 구문 검사 필수. 변경 전 원본은 별도 브랜치로 보존한다.
 - **추가 개발:** v2/v3/v4에 분산된 수집 책임과 대규모 상태 JSON을 통합·분리하고, 안정적인 데이터 계약 및 재수집 멱등성 테스트를 강화해야 최종 공모전 제출 수준이다.
 

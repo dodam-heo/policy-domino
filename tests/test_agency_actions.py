@@ -54,6 +54,7 @@ class AgencyActionTests(unittest.TestCase):
         self.assertEqual(actions[0]["evidence_scope"], "v4_verified_source")
         self.assertIn("정원", actions[0]["work"])
         self.assertEqual(e["presentation_source"], "v4_official_source")
+        self.assertEqual(e["source_verification"], "verified_changed_clauses")
         self.assertIn("192",e["change_summary"])
         self.assertIn("197",e["change_summary"])
         self.assertEqual(len(e["source_documents"]),1)

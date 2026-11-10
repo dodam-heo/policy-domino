@@ -198,8 +198,18 @@ def group_event(g):
     e={
         "event_id":v4id,"title":title,
         "issuing_authorities":authorities,
+        "source_verification":(
+            "verified_changed_clauses" if any(d.get("verification") in
+                ("verified_changed_clauses","verified_annual_replacement") for d in docs)
+            else "verified_other" if valid_docs
+            else "official_index_only" if all(d.get("verification")=="official_index_only"
+                for d in docs) else "detail_pending"
+        ),
         "source_documents":[{"title":d.get("title",""),"kind":d.get("kind",""),
-                             "url":source_url(d.get("url",""))}
+                             "url":source_url(d.get("url","")),
+                             "verification":d.get("verification",""),
+                             "needs_attachment_check":d.get("needs_attachment_check",False),
+                             "unresolved_attachments":d.get("unresolved_attachments",[])}
                             for d in docs if d.get("title")],
         "promulgated_at":g.get("date",""),
         "effective_date":g.get("effective_at",""),

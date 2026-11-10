@@ -56,8 +56,12 @@ def build(v4,service_catalog=None):
             "source_status":"공식 공포·개정문 연결",
             "partial":True,
             "official_records":len(events),
-            "compared":len([e for e in events if e["presentation_source"]=="v4_official_source"]),
-            "amendments_read":len(events),
+            "compared":sum(e.get("source_verification")=="verified_changed_clauses"
+                           for e in events),
+            "amendments_read":sum(e.get("source_verification") in
+                           ("verified_changed_clauses","verified_other") for e in events),
+            "indexed_waiting":sum(e.get("source_verification")=="official_index_only"
+                           for e in events),
             "amendments_verified_total":checked.get("detailed_checked",0),
             "catalogue_candidates":checked.get("official_catalogue",0),
             "v4_official_index":checked.get("fresh_official_index",0),

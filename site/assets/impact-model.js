@@ -1,7 +1,7 @@
 "use strict";
 /** Pure, source-agnostic list and selection rules for the agency-impact view. */
 (function(root) {
-  const DEFAULT_FILTER = "high-impact";
+  const DEFAULT_FILTER = "all";
   function typeOf(event) {
     const label=event.revision||event.change_type||event.type||"";
     return /폐지/.test(label)&&!/제정/.test(label)?"abolished":

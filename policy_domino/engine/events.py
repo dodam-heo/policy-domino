@@ -77,15 +77,24 @@ def predecessor(record,records=None,fetch=None):
     if not versions:return None
     return max(versions,key=lambda x:(x["published_at"],x["serial"]))
 
-def annual_baseline(record,fetch=None):
+def annual_baseline(record,fetch=None,records=None):
     """Separate annual rule, separate legal identity; do not label amendment."""
     if record["source"]!="admrul":return None
     match=YEAR.search(record.get("title",""))
     if not match:return None
     year=int(re.search(r"\d{4}",match.group()).group())
     previous=record["title"][:match.start()]+str(year-1)+record["title"][match.start()+4:]
+    options=[
+        item for item in (records or ())
+        if item.get("source")=="admrul"
+        and api.normalize(item.get("title"))==api.normalize(previous)
+        and item.get("published_at","")<record.get("published_at","")
+        and (not record.get("ministry") or not item.get("ministry") or
+             item["ministry"]==record["ministry"])
+    ]
+    if options:
+        return max(options,key=lambda x:(x["published_at"],x["serial"]))
     fetch=fetch or api.request
-    options=[]
     for nw in ("1","2"):
         root=fetch("admrul",query=previous,nw=nw,sort="ddes",display=100,page=1)
         from policy_domino.engine.collect_index import as_record
@@ -95,7 +104,9 @@ def annual_baseline(record,fetch=None):
                 continue
             item=as_record(node,"admrul")
             if item and api.normalize(item["title"])==api.normalize(previous) and (
-                    item["published_at"]<record["published_at"]):
+                    item["published_at"]<record["published_at"]) and (
+                    not record.get("ministry") or not item.get("ministry") or
+                    item["ministry"]==record["ministry"]):
                 options.append(item)
         if options:break
     return max(options,key=lambda x:(x["published_at"],x["serial"])) if options else None
@@ -181,16 +192,16 @@ def inspect(record,records=None,load=None,history=None,annual=None):
         event["notes"].append("공식 현재 본문 조회 실패: "+str(exc)[:130])
         event["verification"]="detail_failed"
         return event,{}
+    missing=getattr(current,"unresolved_attachments",[])
+    if missing:
+        event["needs_attachment_check"]=True
+        event["unresolved_attachments"]=[{**item,"version":"current"} for item in missing]
+        event["notes"].append("공식 별표·첨부 원문을 아직 읽지 못함")
     if not complete_text(current):
         event["notes"].append("별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함")
         event["needs_attachment_check"]=True
         event["verification"]="partial_official_text"
         return event,{}
-    if event["lifecycle"]=="enactment":
-        event["verification"]="verified_enactment"
-        event["changed_articles"]=list(current)[:MAX_ARTICLES]
-        event["notes"].append("새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지")
-        return event,current
     try:
         prior=history(record,records)
     except TypeError:
@@ -200,13 +211,24 @@ def inspect(record,records=None,load=None,history=None,annual=None):
         except Exception:prior=None
         if prior:event["comparison"]="annual_successor_standard"
     if not prior:
-        event["notes"].append("정확한 구 버전 미확보. 변경값을 추정하지 않음")
+        if event["lifecycle"]=="enactment":
+            event["verification"]="verified_enactment"
+            event["changed_articles"]=list(current)[:MAX_ARTICLES]
+            event["notes"].append("공식 제정 사실 확인. 연도별 이전 기준이 없으면 숫자 비교하지 않음")
+        else:
+            event["notes"].append("정확한 구 버전 미확보. 변경값을 추정하지 않음")
         return event,current
     try:
         previous=load(prior)
     except Exception as exc:
         event["notes"].append("이전 버전 본문 확인 실패: "+str(exc)[:140])
         return event,current
+    missing=getattr(previous,"unresolved_attachments",[])
+    if missing:
+        event["needs_attachment_check"]=True
+        event.setdefault("unresolved_attachments",[]).extend(
+            {**item,"version":"previous"} for item in missing)
+        event["notes"].append("종전 기준의 별표·첨부 원문을 아직 읽지 못함")
     if not complete_text(previous):
         event["notes"].append("이전 버전 조문 또는 수치표가 불완전함")
         event["needs_attachment_check"]=True
@@ -244,6 +266,26 @@ def inspect(record,records=None,load=None,history=None,annual=None):
         event["needs_attachment_check"]=True
         event["notes"].append("연도별 고시 교체 확인. 첨부 표의 세부 금액은 아직 검증되지 않음")
     return event,current
+
+def index_only(record):
+    """An authenticated public API index record, not a verified text change."""
+    return {
+        "id": key(record), "title": record["title"],
+        "source": record["source"], "stable_id": record["stable_id"],
+        "serial": record["serial"], "kind": record.get("kind",""),
+        "promulgated_at": record.get("published_at",""),
+        "effective_date": record.get("effective_date",""),
+        "revision": record.get("revision",""),
+        "promulgation_number": record.get("number",""),
+        "ministry": record.get("ministry",""),
+        "url": record.get("url",""),
+        "verification": "official_index_only",
+        "lifecycle": label_revision(record.get("revision","")),
+        "changed_articles": [], "changes": [], "excerpts": [],
+        "actors": [], "needs_attachment_check": False,
+        "notes": ["공식 목록 확인. 본문 및 이전 버전 대조 대기"],
+    }
+
 
 def cluster_promulgations(events):
     """A real omnibus act may amend many different laws on ONE official

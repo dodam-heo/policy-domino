@@ -44,3 +44,17 @@ node site/ai-impact/test_ui.cjs
 GitHub Actions 단일 정기 파이프라인이 공식 수집·검증·결과 저장·GitHub Pages 배포를 담당합니다. `LAW_OC`, `PD_PUBLIC_SERVICE_KEY` 및 LLM 설정은 Secrets/Variables로 제공하며 코드에 포함하지 않습니다.
 
 상세 데이터 계약, 제출 범위와 한계: [아키텍처](docs/architecture.md). AI 설정: [AI 분석](docs/ai-impact.md).
+
+## 공식 수집·누적 저장 및 누락 감지
+
+기관명·급여명·분야명을 등록하지 않습니다. 법제처 공식 API의 법령(`law`), 행정규칙(`admrul`: 훈령·예규·고시·공고·지침 등), 자치법규(`ordin`)를 **발령일자 구간 전체**로 탐색합니다. 법령 변경이력도 별도 날짜 인덱스로 확인합니다.
+
+- **공식 목록 발견:** 문서 ID·버전·발령기관·일자와 원문 링크를 `data/v4_state.json`에 보존하고, 본문 분석 전이라도 화면의 전체 목록에 ‘본문 대조 대기’로 표시합니다.
+- **상세 추출:** 문서별 신구 조문·별표·첨부자료를 확인합니다. 공식 PDF와 HWPX에서 읽을 수 있는 텍스트는 대조 자료로 보존하며, 읽을 수 없는 HWP·이미지형 첨부는 공식 링크와 함께 미확인 상태로 유지합니다.
+- **과거 범위:** 기본 최근 3년을 28일 구간으로 순환 스캔하며, 각 회차 6구간을 수집합니다. 실패한 구간을 재시도하고 성공·미완료 상태를 날짜별로 기록합니다. 수집된 공식 자료를 이전 버전의 분석 결과로 대체하지 않습니다.
+- **무손실 재실행:** 신규 조회 결과가 없어도 기존 공식 기록을 유지하며, 파일은 임시 파일에서 원자적으로 교체합니다. 인증이 없거나 완료된 공식 수집 구간이 전혀 없으면 새로고침 실패로 처리합니다.
+- **범위와 한계:** ‘공식 목록 등록’, ‘원문 비교 완료’, ‘공공기관 영향 확인’은 각각 다른 상태입니다. 전체 법령과 모든 공공기관의 영향 분석이 이미 완료됐다고 주장하지 않습니다.
+
+실제 수집 실행에는 GitHub 저장소 **Settings → Secrets and variables → Actions**의 `LAW_OC` 값(Secret 또는 Variable)이 반드시 필요합니다. 설정되지 않았을 때 저장된 파일만 재생성하는 `stored` 모드는 신규 정책을 발견하지 못합니다. 외부 인증값을 소스에 하드코딩하지 않습니다.
+
+조정 변수: `PD_HISTORY_DAYS`, `PD_BACKFILL_WINDOWS_PER_RUN`, `PD_BACKFILL_WINDOW_DAYS`, `PD_V4_DETAILS`, `PD_FETCH_OFFICIAL_ATTACHMENTS`. 재생성만 할 때는 `python -m policy_domino --source stored`, 실제 수집·저장은 `python -m policy_domino --source official`입니다.

@@ -15,7 +15,7 @@ assert.equal(impact,template.replace("__POLICY_DATA_URL__","../classic/data.json
   "Impact route must read the same official source-backed dataset");
 for(const page of [classic,impact]){
   assert.ok(page.includes('data-law="high-impact"'));
-  assert.ok(page.includes('class="chip active" data-law="high-impact"'),
+  assert.ok(page.includes('class="chip active" data-law="all"'),
     "High impact must be selected in initial HTML");
   assert.ok(page.includes('>영향도 큼</button>'));
   assert.ok(!page.includes('data-law="standards"'));
@@ -26,7 +26,7 @@ for(const page of [classic,impact]){
 }
 new vm.Script(script,{filename:"site/assets/classic.js"});
 assert.ok(styles.includes(".chip.active"));
-assert.equal(view.DEFAULT_FILTER,"high-impact");
+assert.equal(view.DEFAULT_FILTER,"all");
 assert.ok(script.includes("document.body.dataset.policyDataUrl"));
 assert.ok(script.includes("filter=DEFAULT_FILTER"));
 const fixtures=[
@@ -34,9 +34,10 @@ const fixtures=[
   {event_id:"new-low",impact_level:"not_assessed",promulgated_at:"2026-12-01",title:"가상 신규",revision:"제정"},
   {event_id:"new-high",impact_level:"high",promulgated_at:"2026-11-01",title:"가상 최근 변경",revision:"개정"}
 ];
-assert.deepEqual(view.filterEvents(fixtures).map(e=>e.event_id),["new-high","old-high"]);
-assert.equal(view.resolveSelection(view.filterEvents(fixtures),"new-low"),"new-high");
+assert.deepEqual(view.filterEvents(fixtures).map(e=>e.event_id),["new-low","new-high","old-high"]);
+assert.equal(view.resolveSelection(view.filterEvents(fixtures),"new-low"),"new-low");
 assert.equal(view.resolveSelection([],"old-high"),null);
+assert.equal(view.filterEvents(fixtures,"high-impact").length,2);
 assert.equal(view.filterEvents(fixtures,"all").length,3);
 assert.equal(view.filterEvents(fixtures,"new").length,1);
 assert.equal(view.sorted(fixtures)[0].event_id,"new-low");

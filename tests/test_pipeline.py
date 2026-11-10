@@ -50,6 +50,33 @@ class PublicationSafeguards(unittest.TestCase):
         self.assertEqual(picked[0]["stable_id"],"2")
         self.assertIn(picked[1]["stable_id"],("3","2"))
 
+    def test_official_index_is_visible_before_detail_without_fabricating_impact(self):
+        sources=[r(i,kind=kind,discovery="official_date_index")
+                 for i,kind in enumerate(("law","admrul","ordin"),1)]
+        historical=r(9,discovery="legacy_index_only_not_verified")
+        catalog={events.key(x):x for x in sources+[historical]}
+        d=pipeline.build({"catalog":catalog,"inspected":{},
+                          "coverage":[],"verified_snapshots":{}},
+                         dt.date(2026,11,10))
+        titles=[doc["title"] for group in d["other_events"]
+                for doc in group["source_docs"]]
+        self.assertEqual(set(titles),{x["title"] for x in sources})
+        self.assertEqual(d["collection"]["official_catalogue"],3)
+        self.assertEqual(d["collection"]["legacy_index_pending_recheck"],1)
+        self.assertEqual(d["collection"]["pending_details"],3)
+        self.assertFalse(d["featured_events"])
+
+    def test_failed_detail_rejoins_queue_after_retry_date(self):
+        record=r(1,discovery="official_date_index")
+        previous=events.index_only(record)
+        previous["verification"]="detail_failed"
+        state={"catalog":{events.key(record):record},
+               "inspected":{events.key(record):previous},
+               "retry_after":{events.key(record):"2026-11-09"}}
+        self.assertEqual(len(pipeline.pick_work(state,dt.date(2026,11,10),10)),1)
+        state["retry_after"][events.key(record)]="2026-11-15"
+        self.assertEqual(pipeline.pick_work(state,dt.date(2026,11,10),10),[])
+
     def test_one_promulgation_does_not_join_different_law_types(self):
         a=events.inspect(r(1),load=lambda r:{"제1조":"a"},
             history=lambda r,x:None,annual=lambda r:None)[0]

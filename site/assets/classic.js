@@ -10,7 +10,7 @@ function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?
 function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
 let DATA={events:[],actions:[],health:{}},AI_DATA=null,selectedId=null,filter=DEFAULT_FILTER;
-let selectedAgency=null,agencySearch="",resultLimit=20;
+let selectedAgency=null,agencySearch="",resultLimit=20,lawVisibleLimit=80;
 const openAgencyTypes=new Set(),openAgencyRegions=new Set();
 function filteredEvents(){return filterPolicyEvents(DATA.events,filter,$("q").value)}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
@@ -22,15 +22,23 @@ return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-even
  '<div class="lawName">'+esc(e.title||"법령명 확인 중")+'</div>'+
  '<div class="lawMeta">'+esc(e.ministry||"소관기관 확인 중")+'</div>'+
  '<div class="lawFoot">'+(num?'<span class="mini">검토사항 '+num+'건</span>':'<span class="mini">영향 검토 중</span>')+
- (e.presentation_source!=="v4_official_source"?'<span class="mini">근거 재확인 필요</span>':'')+
+ (e.source_verification==="official_index_only"?
+ '<span class="mini">본문 대조 대기</span>':
+ e.source_verification==="detail_pending"?
+ '<span class="mini">원문 재확인 대기</span>':'')+
+ ((e.source_documents||[]).some(d=>d.needs_attachment_check)?
+ '<span class="mini">첨부 표 확인 대기</span>':'')+
  '<span>기관별 보기 ›</span></div></button>';
 }
 function displayList(){
 
 const events=filteredEvents();
 $("listCount").textContent="전체 "+(DATA.events||[]).length+"건 · 표시 "+events.length+"건";
-$("lawList").innerHTML=events.length?events.map(eventRow).join(""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
+$("lawList").innerHTML=events.length?events.slice(0,lawVisibleLimit).map(eventRow).join("")+
+ (events.length>lawVisibleLimit?'<button type="button" class="listMore" id="lawMore">더 보기 · 남은 '+(events.length-lawVisibleLimit)+'건</button>':""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
 $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.dataset.event));
+const more=$("lawMore");
+if(more)more.onclick=()=>{lawVisibleLimit+=80;displayList()};
 }
 function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";const label=s==="최신 근거 재확인 필요"?"확인 중":(s||"반영 확인 필요");return '<span class="status '+cls+'">'+esc(label)+'</span>'}
 // Institution grouping comes from the official source name. Region labels
@@ -246,12 +254,18 @@ function detailHTML(e){
     showEmpty("기관별 검토사항 확인 중","공식 근거가 확인되면 표시됩니다."))+
  '</div></div></section>';
  const sourceChanges='<section class="sourceChanges"><h3 class="sectionHeading">실제 변경사항 · 신구 비교</h3>'+differences(e,3)+'</section>';
+ const missingAttachments=(e.source_documents||[]).flatMap(d=>d.unresolved_attachments||[]);
+ const annexes=missingAttachments.length?
+ '<details class="legalDetails"><summary>미확인 공식 별표·첨부 '+missingAttachments.length+'건</summary>'+
+ missingAttachments.map(d=>'<div><a class="refLink" href="'+validUrl(d.url)+
+ '" target="_blank" rel="noopener">'+esc(d.title||d.label||"공식 첨부")+' ↗</a> · 원문 수치 검증 대기</div>').join("")+
+ '</details>':"";
  const legal='<details class="legalDetails"><summary>전체 개정 이유·상세 조문 보기</summary>'+
  (e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유</b><p style="margin-top:8px">'+
  esc(e.amendment_reason)+'</p></div>':'')+differences(e)+
  '<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+
  '" target="_blank" rel="noopener">공식 원문 보기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+sourceChanges+legal+
+ return header+'<div class="detailBody">'+overview+sourceChanges+annexes+legal+
  legalRelationships(e)+impact+'</div>';
 }
 function bindSidebarGroups(){
@@ -334,7 +348,7 @@ document.querySelectorAll("[data-law]").forEach(b=>b.onclick=()=>{
   selectedId=resolveSelection(filteredEvents(),selectedId);
   render();
 });
-$("q").oninput=()=>{selectedId=resolveSelection(filteredEvents(),selectedId);render()};$("reload").onclick=load;
+$("q").oninput=()=>{lawVisibleLimit=80;selectedId=resolveSelection(filteredEvents(),selectedId);render()};$("reload").onclick=load;
 window.addEventListener("popstate",()=>{if(!location.hash){$("layout").classList.remove("detailOpen")}});
 load();
 })();

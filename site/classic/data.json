@@ -1,6 +1,6 @@
 {
   "schema": "policy-domino-next-v1",
-  "generated_at": "2026-11-10T06:05:53+00:00",
+  "generated_at": "2026-11-10T06:53:53+00:00",
   "health": {
     "source_status": "공식 공포·개정문 연결",
     "partial": true,
@@ -2832,7 +2832,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "2c35b4052043b10dfae67c096a766c44bfc6cb83ec8f03b958dd369257515c83"
     },
     {
       "id": "6e5287498d8d7a5b9749",
@@ -2861,7 +2862,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "4a26f809ff3eac75b46d65f75af2411a875c575efb5facf407d4b13c7f22ab49"
     },
     {
       "id": "b09940e861d74fff2619",
@@ -2894,7 +2896,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "0f33401e6002927ff77de12526a85de3accf1b6b332b90c00d346d50c7b0334c"
     },
     {
       "id": "be712977a39e0e7491d1",
@@ -2919,7 +2922,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "7e7babaf59105d41a6ff3c768ebfc4839622d203da5c0d0c040d231059fbda90"
     },
     {
       "id": "9fdbfe44d57fdea8bde2",
@@ -2944,7 +2948,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "9f24a801d45de89f52d516b0482b7902bc2dd55858245b0bac34c24cee427ab1"
     },
     {
       "id": "ea896211afa62c5c44ff",
@@ -2969,7 +2974,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "f843bd213162d266ac7e09d1624ba357dc52aabc423842c48b72d7245e9ef99e"
     },
     {
       "id": "ec5dbd29637cf537307f",
@@ -2994,7 +3000,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "ae5d74befa92e0b833448da87cd5cfe3199d6902bdbc4da2758cd0b9f81839ba"
     },
     {
       "id": "f48bb0a00b41561d4bba",
@@ -3019,7 +3026,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "3b0323e7ad2a0208b356f17cd140ee455b80526803be53a358f59b7fd5c6fb28"
     },
     {
       "id": "1aeb31a4548f9a72bdc5",
@@ -3044,7 +3052,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "9b63b37d0c2ad18965f3d3d483f816e8066416a14bba3782c4ac58fc88a2cca9"
     },
     {
       "id": "a35e5cd464059bfe87a2",
@@ -3069,7 +3078,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "6d3f7721c27c16d72447e306c81c381da88307e17ede212ad85e0c35f0b34648"
     },
     {
       "id": "e94abb7309a7b87a18d7",
@@ -3094,7 +3104,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "9a702ea3bb485c4834fb3b30816590a39fa8f1e58e138d6b1fda2c696c2c959a"
     },
     {
       "id": "e5ba79d6def4aa4d5ffd",
@@ -3119,7 +3130,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "df8e28588972f965b8262c8a38e7a44ada06de240d08eca5f547cd06c9a24f0b"
     },
     {
       "id": "ca1a2ae2d223dccbf256",
@@ -3144,7 +3156,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "b107eb33625a251d9833b8eb2cef814d4b7084699e85717a2ae462d53af09e12"
     },
     {
       "id": "1a21f3b7f3646b08906b",
@@ -3177,7 +3190,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "dda4413dc55be227e8ea60f6e95139332b7f34550a1c3fa2dfb11a771b4969e8"
     },
     {
       "id": "0048fb04bf1dddcf05e3",
@@ -3206,7 +3220,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "26a8c3df180dfff46aefc73b9fa9c84541bbd57394f5fde8b5c66452b1957cdf"
     },
     {
       "id": "a5258d5fd8e68752210c",
@@ -3231,7 +3246,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "a6d4eea223a7b84a6d03b51596f9a01138e4274615947fe540ca05e1cdffb840"
     },
     {
       "id": "fb00fc144fd5c28acf9f",
@@ -3256,7 +3272,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "9361b8893738458093474b306c98dfe2507c59e34b3b872c85400b82c8aea3a4"
     },
     {
       "id": "30ec1fdf37f2c49f663e",
@@ -3285,7 +3302,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "274705c5a05d2bb2c2ac11f8ca29f1ab3dbcab603891120b9c03a61341b51668"
     },
     {
       "id": "bf7fb826974b4fded056",
@@ -3318,7 +3336,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "66f925998334131152b89e4b1a8dde425bed4daf2bde52ee2afa58efadcabc7a"
     },
     {
       "id": "803a6cb96edde90c093e",
@@ -3343,7 +3362,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "f86cb53e0cd3e7847bd7fc3a21b36531f3c1a3e0509b3c8ee9f0b37b68d9f129"
     },
     {
       "id": "0390dc2c192a8ce07479",
@@ -3372,7 +3392,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "398abe0f1bc0f8d3f829bc5d73aae3da5b34f7b74af1466594dc084efc897480"
     },
     {
       "id": "563e2381a7e40f08a942",
@@ -3397,7 +3418,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "56bcd0c17c940af26342e95c9e9c8748b7899dcf4181d27f3cfdf078139ec72f"
     },
     {
       "id": "9d180ec8756eafe86ab5",
@@ -3426,7 +3448,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "98e0775b9ab3efb214834418abad06431979f7301e7584bbd2010d3792600fe6"
     },
     {
       "id": "0bfcd26e5e7aad457a2c",
@@ -3455,7 +3478,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "334800d404c753f9bed11dcddbb991e9c516c5f72e69d86c59a4a7727bbdb66b"
     },
     {
       "id": "87ed817f88d90d95b8dd",
@@ -3480,7 +3504,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "423c212bcee2855288cd21d17c867048fde12973daa74f4a535c1e30bdf3bbb4"
     },
     {
       "id": "85642c9c98d471409101",
@@ -3509,7 +3534,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "d8b1eed1f4dadcace7447d313b2f1566f25de4e291f582d02991bdee2149693a"
     },
     {
       "id": "4a4d568b0311edad5062",
@@ -3534,7 +3560,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "bfaa3b2117efe5c80da27e1c6c0e856c7047fd2e649ed8ee47abaeae048e043c"
     },
     {
       "id": "389d2af5ae465e95c88b",
@@ -3567,7 +3594,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "712db457cd1436b0b9d63b0ab0b083ddef5ffd6137e7d35f7bf5ded102a303af"
     },
     {
       "id": "40d6eeda1047f0639746",
@@ -3592,7 +3620,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "361b9b4b9cb6fafae92c3dfac6df1666cedf2a558143ebe0baa82b4f5d11edd3"
     },
     {
       "id": "072b01dfd12b3884e143",
@@ -3621,7 +3650,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "b2172fcc426c5dc88c9dcd138c1540694061bd864393613eb7419bc16a28e814"
     },
     {
       "id": "7ac82de268d9f98187aa",
@@ -3650,7 +3680,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "d1f599fdb22c800790540b6c7f465118adcbd24b0f7f32bb106a368808a6538f"
     },
     {
       "id": "d64a66e262f2d8c09cbc",
@@ -3675,7 +3706,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "3d0800517868c869996f156d69e7614b874d8986d1d6acda03066574d94ac5f3"
     },
     {
       "id": "22d05f0d4c413e8cf749",
@@ -3700,7 +3732,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "a8a4c332bb8e198c9e926c1edd5e8b74b1693f57e00caa67ceff785f5fd8292b"
     },
     {
       "id": "aebe938501c26e2df6b8",
@@ -3725,7 +3758,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "a298600d087e166fa948434a3f07fb4f893a38ad1441c6864fddc6390098935f"
     },
     {
       "id": "0867bd73184a11860f17",
@@ -3750,7 +3784,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "d261fac26a32dcdf86dbe009abc60f2fc3550dbbae5fcdc9cb0acb4bfe3e0afe"
     },
     {
       "id": "77ba3a69e72df690c987",
@@ -3775,7 +3810,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "9d011b3c4ea64f851c6b07e5dc7c10be9ed012f358b9949a541a03333eb3c75d"
     },
     {
       "id": "752d33365221ba36cb20",
@@ -3800,7 +3836,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "5fdc5c2325183d0f205d0949badf54f1a80e900fb799c63a0ae96343f0f87cba"
     },
     {
       "id": "1ce43452a51285b05fb2",
@@ -3825,7 +3862,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "35a084e63145d6fc7db65873d05985edc140a9a7369317b323470f483068885c"
     },
     {
       "id": "4ad1c6440b09147b3b4f",
@@ -3850,7 +3888,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "b42eca5cd3c381c6d511d40e051cc2747b4860b6cef7f1beb99e2c7d33dde957"
     },
     {
       "id": "5fc519c0fcdfa3ade341",
@@ -3875,7 +3914,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "887d2a5a243c1e80dc78a2da14832db8f7f2ea86eeaea3b3bc9c47462151e1dd"
     },
     {
       "id": "3ed23033e1cdf6c539db",
@@ -3900,7 +3940,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "979d5aa44445d5297eb87f76c6dfac6e0e36f1a9265d9b9eb9f9ede627adf9c0"
     },
     {
       "id": "6d7e1ed076010d5a8203",
@@ -3925,7 +3966,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "b822ecf4d44993234ec695b6cf33acb2b120a092bd3edb10dd2bdc1f7e70e291"
     },
     {
       "id": "1d4d0c38a45d97d1f034",
@@ -3950,7 +3992,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "656dcace90ba57787c46126b1902ec081b220356ce683e261089aad79b97172f"
     },
     {
       "id": "57abb619867f65bdfa5e",
@@ -3975,7 +4018,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "168036baabe4725c2833d5eea262afc1b26d0c2911b753599dcd9cf370e62008"
     },
     {
       "id": "ad86663853b6bc87178e",
@@ -4000,7 +4044,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "8047dbef9e3258045fa20833f89be0cf46c1cefc695ae53c94845f9238d8137f"
     },
     {
       "id": "02a6dfd1753c2749bc2c",
@@ -4025,7 +4070,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "cd0718f59ae734b895ae76b61bd04a066e79884baf767fb317ebdb90d9c62a51"
     },
     {
       "id": "4220b4643feae368e408",
@@ -4050,7 +4096,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "4b2dea2ee1938ac708738be89f79882c60a852a40ed829f1cf476a4b0edbf2dd"
     },
     {
       "id": "280384d59f8fcb11a616",
@@ -4075,7 +4122,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "f42e7cad1b63224055839e17312145868792fd13907b7d5e420d393dead87b21"
     },
     {
       "id": "98002b40ef47cb6abdd5",
@@ -4100,7 +4148,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "b55b3745dc918d66a9881f6e1746089bb64be9afc89da044409950e312cdb13a"
     },
     {
       "id": "e42b572ea36f8c9049d5",
@@ -4125,7 +4174,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "79b493bd55c2c1c7bf54bd499a0ddb042384bdcf1ace296794e45a8d3ca97843"
     },
     {
       "id": "f58fa0aed07f818b80a8",
@@ -4150,7 +4200,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "084de456dd079bb38f8f199ee608591abd9aaf97d237d5abb2e5f077819c6439"
     },
     {
       "id": "678dbb997a78b5f50679",
@@ -4175,7 +4226,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "e665f69f25636521200e452e4aae2bce6aca7562378bc8ae48394a78976c8bf4"
     },
     {
       "id": "f159f67392a6349fe295",
@@ -4200,7 +4252,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "eed256b5e426123a56212a92a6c97dd4f99954ce28277ab099d1abf80a83b805"
     },
     {
       "id": "10da8b1ae4094992ea7d",
@@ -4225,7 +4278,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "ccab3d8b2426d1d91c46f71e4d81d402b029d0ac96625c0393f229525cabc3ec"
     },
     {
       "id": "008db8afc614cfe43238",
@@ -4250,7 +4304,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "80567acd9688de70d0d47b3561857380f83675a6275ef923dd59941b63371d31"
     },
     {
       "id": "aa4b20fc7176a1b9a2cc",
@@ -4275,7 +4330,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "38ba638c05adb0c1623a922307313f7e44f1d4800fa04e586588e8f5f4a5f4be"
     },
     {
       "id": "8fd97d66766aa314d36b",
@@ -4304,7 +4360,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "e139c3d49440fa41fbe9fe6a8e7621183c1897746c60a7b285554ca12b6eca13"
     },
     {
       "id": "ad3379fc8cf171dbde25",
@@ -4329,7 +4386,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "e92cd840208960e3d1f0a77a5323ac3e2432049a2fb2562c31d174add5464a4d"
     },
     {
       "id": "fb36591cb1dad94dae47",
@@ -4354,7 +4412,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "ed9a4a45b7003d844fe6b8189f30971bd5e6ac637bf772530b28ec38ab288c3c"
     },
     {
       "id": "7c1a7539063872e560ab",
@@ -4379,7 +4438,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "fc458ec823ca43a284d4146d4d99c78b01d9a57d5308e9b0fbf8f58bcaefc742"
     },
     {
       "id": "1aa15c885c0559532017",
@@ -4404,7 +4464,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "03f2ad8c0e125192d7684fb0ab730be6313bf2b97e17408131b81fa2560af6c1"
     },
     {
       "id": "8283a73af3906c060941",
@@ -4429,7 +4490,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "19f8dc852c4bdec599efd2ef285f0fdabef6477bc9ddf0e3c6c9a65354b4c6cc"
     },
     {
       "id": "6d9fb33f6af94d1060a3",
@@ -4454,7 +4516,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "5b7777f3743746008747569cdcac23a5de35cda162fdfb15398810afde516fa2"
     },
     {
       "id": "2fe7622b29481e432290",
@@ -4479,7 +4542,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "973596bca53567cd25e9724469ee46e6ac4d029cc9242651784bbbfb11f56701"
     },
     {
       "id": "0180e3e3fcbe7316a87b",
@@ -4504,7 +4568,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "40c0007475d52b07f38d377c2bd776f0f4cfff0403bab7dbc01b8e5d04e29449"
     },
     {
       "id": "1bdefbd0ea627ad83949",
@@ -4529,7 +4594,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "a25eba80b0ad3e7946605f1a2f3f63fadcca5af2e4a4176b53c94054a8a35afc"
     },
     {
       "id": "a1d054d6661a167ad162",
@@ -4554,7 +4620,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "72086c769161073048ad8c6c2640e4cdb1fed2d39b25fa60cd37489f38abfba2"
     },
     {
       "id": "fc6c6e4c1edd74480198",
@@ -4579,7 +4646,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "50ae58e9bd7b3f1bad6c39928bb397c0ab0a012de5575f0e363b7009608f3da7"
     },
     {
       "id": "5108672e3967b169c816",
@@ -4604,7 +4672,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "ae29687238d18c7cb59565f66fe701a0d7ff54efbb0eca51b686f7b7af797cbc"
     },
     {
       "id": "90357b657a9a6f4d055c",
@@ -4629,7 +4698,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "7fd8a428d77c5e323d051ced8c5c9f1b5e6b3d430ba64168a14db691c69a7b73"
     },
     {
       "id": "48fcb821124a69bc9569",
@@ -4658,7 +4728,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "51b1fc034c5fe2cd94c6a91cf8dec9023652573d88f7cb0d5f8a076139e3c751"
     },
     {
       "id": "fa359170c666296b8c4f",
@@ -4683,7 +4754,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "8e2562d63d26664354f86b99362892025c055a8edf90f86b93b7c8b5718966fe"
     },
     {
       "id": "81c8da340541fef4ca7b",
@@ -4708,7 +4780,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "2528708f1ee0a7db6f714ad12cfe57fdf2d7eb1a51222a107b9b540f671f59b0"
     },
     {
       "id": "140322be939aa242a0cf",
@@ -4733,7 +4806,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "b39c6c7ebe28810ae865d34178456a400be21a9a76dbea7237d189e71ce2c84b"
     },
     {
       "id": "56ca74a2763dff89c9d4",
@@ -4758,7 +4832,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "42f42bce2138e0504c4425946efdd1814963b0b063f1ff29744d9d010b00e7cd"
     },
     {
       "id": "6c122f6da186bd247642",
@@ -4783,7 +4858,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "c04cf9fade128da561585cf85e214df67c8729a6cddaab24c71295e7d32343ee"
     },
     {
       "id": "0001a4cd0d9cff04c5a1",
@@ -4808,7 +4884,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "27bfea3da00b1f188613429200e7c479309dcf67c9bb304e842f4d6ac4fefa87"
     },
     {
       "id": "fc79f44e6b5ebdff5b81",
@@ -4833,7 +4910,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "cdedd46096ace96097ab5a866a6c84c12f52b3271dbeae2ba5d98d1b69be25f4"
     },
     {
       "id": "5824c549c8166eababac",
@@ -4858,7 +4936,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "7269d2d03df0cb9b2bcbb428138fafc64cd7050fbbf28fda2f9d96832aa94dcd"
     },
     {
       "id": "fd4287858cb4bf1847eb",
@@ -4883,7 +4962,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "55a3fad5b6e7abdb57dcd4a4731df4eb8e43e007d76371f1472370792a852370"
     },
     {
       "id": "9870aa6f4a692d65a11c",
@@ -4908,7 +4988,8 @@
       "status": "반영 확인 필요",
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
-      "evidence_scope": "v4_verified_source"
+      "evidence_scope": "v4_verified_source",
+      "evidence_fingerprint": "ca303e3eb0a89442e5251d32de2c185d479560657d193a652401b96914df9cc8"
     },
     {
       "id": "legacy:fe6adc6917361a5ceb",

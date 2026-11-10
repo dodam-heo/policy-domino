@@ -1,51 +1,450 @@
 {
-  "schema": "policy-domino-llm-impact-v1",
-  "generated_at": "2026-11-10T06:06:10+00:00",
-  "source_generated_at": "2026-11-10T06:05:53+00:00",
-  "event_id": "v4:law|대통령령|2026-11-06|36801",
-  "event_title": "전문직공무원 정원의 배정 및 운영에 대한 특례 · 관련 법령 17건 동시 개정",
-  "model": "gemini-3.5-flash-lite",
-  "summary": "대통령령 개정에 따라 우정사업본부와 공정거래위원회의 직제가 개정되어 전문직공무원 정원 배정 및 운영 특례 규정이 신설되었습니다.",
-  "findings": [
+  "schema": "policy-domino-llm-impact-v2",
+  "generated_at": "2026-11-10T06:53:55+00:00",
+  "source_generated_at": "2026-11-10T06:53:53+00:00",
+  "events": [
     {
-      "action_id": "0c07c63de952057bb91f",
-      "agency": "우정사업본부",
-      "law_title": "우정사업본부 직제",
-      "article": "별표 0002",
-      "work": "조직·정원 운영",
-      "target_location": "별표 0002 · 정원·직급·인력 배정",
-      "basis_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C",
-      "evidence_id": "E1",
-      "operational_impact": "우정사업본부 직제 [별표 2] 개정으로 3급 또는 4급 이하 정원이 33,031명에서 33,013명으로 조정되고 전문직공무원 18명이 신규 반영됨.",
-      "review_task": "우정사업본부의 인력 운영 계획상 전문직공무원 18명에 대한 정원 배정 및 관리 내역을 확인해야 함.",
-      "status": "AI 검토 제안 · 실제 반영 미확인"
+      "event_id": "v4:law|대통령령|2026-11-06|36801",
+      "title": "전문직공무원 정원의 배정 및 운영에 대한 특례 · 관련 법령 17건 동시 개정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 31,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
     },
     {
-      "action_id": "6e5287498d8d7a5b9749",
-      "agency": "우정사업본부",
-      "law_title": "우정사업본부 직제",
-      "article": "제30조의2",
-      "work": "조직·정원 운영",
-      "target_location": "제30조의2 · 정원·직급·인력 배정",
-      "basis_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C",
-      "evidence_id": "E2",
-      "operational_impact": "전문직공무원에 대해 통칙 일부 조항을 배제하고 계급별 정원을 통합 운영할 수 있는 근거(제30조의2)가 신설됨.",
-      "review_task": "우정사업본부 내 전문직공무원 정원 통합 운영 및 통칙 예외 적용에 따른 인사·조직 운영 지침의 반영 여부를 확인해야 함.",
-      "status": "AI 검토 제안 · 실제 반영 미확인"
+      "event_id": "legacy:8efcae799dd5fe26de",
+      "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
     },
     {
-      "action_id": "b09940e861d74fff2619",
-      "agency": "공정거래위원회",
-      "law_title": "공정거래위원회와 그 소속기관 직제",
-      "article": "제24조의2",
-      "work": "조직·정원 운영",
-      "target_location": "제24조의2 · 정원·직급·인력 배정",
-      "basis_url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A0%95%EA%B1%B0%EB%9E%98%EC%9C%84%EC%9B%90%ED%9A%8C%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
-      "evidence_id": "E3",
-      "operational_impact": "공정거래위원회 직제 제24조의2 신설로 전문직공무원 계급별 정원 통합 운영 근거가 마련되고 배치 부서가 경쟁정책국, 시장감시국, 카르텔조사국, 기업집단감시국 및 경제분석국으로 한정됨.",
-      "review_task": "공정거래위원회의 전문직공무원 배치 부서 제한 규정에 맞추어 인력 배치 현황을 검토하고 추가 배정 부서 확인이 필요함.",
-      "status": "AI 검토 제안 · 실제 반영 미확인"
+      "event_id": "legacy:af9a365c2024a814ca",
+      "title": "산업통상부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "legacy:a7549a940de0ea7324",
+      "title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "legacy:5499deb5fa4caff958",
+      "title": "2027년도 주거급여 선정기준 및 최저보장수준 제정",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "legacy:aed5ecbbe6ca584f50",
+      "title": "농림축산식품부와 그 소속기관 직제 시행규...",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "legacy:756f912b70bde26615",
+      "title": "질병관리청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "legacy:34ee0a23306680f302",
+      "title": "중소벤처기업부와 그 소속기관 직제 시행규...",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "legacy:5d5ca69008e0a7ae83",
+      "title": "문화체육관광부와 그 소속기관 직제 시행규...",
+      "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|재정경제부령|2026-11-06|00053",
+      "title": "조달청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|기후에너지환경부령|2026-11-06|00068",
+      "title": "기후에너지환경부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|국가보훈부령|2026-11-06|00078",
+      "title": "국가보훈부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|중소벤처기업부령|2026-11-06|00117",
+      "title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|총리령|2026-11-06|02169",
+      "title": "국가데이터처와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|총리령|2026-11-06|02166",
+      "title": "지식재산처와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|총리령|2026-11-06|02168",
+      "title": "인사혁신처와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|통일부령|2026-11-06|00144",
+      "title": "통일부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|국방부령|2026-11-06|01236",
+      "title": "국방부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00179",
+      "title": "우정사업본부 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|총리령|2026-09-29|02157",
+      "title": "인사혁신처와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-09-29|36713",
+      "title": "인사혁신처와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 3,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|교육부령|2026-11-06|00396",
+      "title": "교육부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 2,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|해양수산부령|2026-11-06|00836",
+      "title": "해양수산부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 2,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|국방부령|2026-11-06|01237",
+      "title": "병무청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 2,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|국방부령|2026-11-06|01238",
+      "title": "방위사업청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 2,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|농림축산식품부령|2026-11-06|00799",
+      "title": "농림축산식품부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 2,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|총리령|2026-11-06|02167",
+      "title": "공정거래위원회와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 2,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|고용노동부령|2026-11-06|00487",
+      "title": "고용노동부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 1,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|행정안전부령|2026-11-06|00655",
+      "title": "행정안전부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 1,
+      "analyzed_actions": 0,
+      "status": "pending",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|과학기술정보통신부령|2026-11-06|00178",
+      "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|보건복지부령|2026-11-06|01207",
+      "title": "질병관리청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|산업통상부령|2026-11-06|00026",
+      "title": "산업통상부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|국토교통부령|2026-11-09|01636",
+      "title": "건설기계관리법 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|산업통상부령|2026-11-09|00027",
+      "title": "전기용품 및 생활용품 안전관리법 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|성평등가족부령|2026-11-09|00019",
+      "title": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ed27f530102998ff9c74",
+      "title": "국립나주병원 임상연구규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:b3595f41af7fbadba4a1",
+      "title": "국립나주병원 공적심사위원회규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:5dfd82628f0655693e82",
+      "title": "국립나주병원 인사운영규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ae21d9a1ee7a331fde11",
+      "title": "고용노동부 공무원 정원배정표",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:80fdc8ea5342cdb9b5d7",
+      "title": "비행절차설계요령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:2b998ebf9c8362de7cc7",
+      "title": "지방자치단체 입찰 및 계약집행기준",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:98fd230e5a83ccd99298",
+      "title": "고용노동부와 그 소속기관 위임전결규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:89e4871cdea2fc265e6f",
+      "title": "국립나주병원 위임전결규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|헌법재판소규칙|2026-10-27|00498",
+      "title": "헌법재판소 기부심사위원회 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-10-27|36791",
+      "title": "국제문화행사 지원에 관한 법률 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-10-20|36764",
+      "title": "재외공관 협의체의 구성 및 운영 등에 관한 규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2026-10-20|22103",
+      "title": "예방접종관리법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2026-02-19|21377",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
     }
   ],
-  "caveat": "LLM이 공식 근거를 바탕으로 제안한 검토 초안입니다. 기관의 실제 업무 반영 여부를 확인한 결과가 아닙니다."
+  "status_counts": {
+    "pending": 21,
+    "awaiting_verified_evidence": 27
+  },
+  "last_success_model": "",
+  "last_error": "Provider did not return valid JSON",
+  "total_events": 48,
+  "eligible_events": 21,
+  "total_verified_actions": 81,
+  "total_analyzed_actions": 0,
+  "requests_this_run": 1
 }

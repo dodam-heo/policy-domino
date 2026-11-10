@@ -78,3 +78,18 @@ aside .empty{padding:38px 22px}
 .evidenceDrawer summary{cursor:pointer;color:#426d84;font-weight:750;font-size:11px}
 .evidenceDrawer .evidence{margin-top:10px}
 .evidenceDrawer .verification{margin:9px 0 0}
+
+/* Model-generated hypotheses are visually distinct from verified legal evidence. */
+.aiAnalysis{margin:0 0 24px;padding:18px;border:1px solid #8eb3d0;border-radius:12px;background:#f4f9fd;color:#183a56}
+.aiAnalysisHead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.aiAnalysisHead strong{font-size:17px}
+.aiAnalysisHead span{padding:4px 9px;border-radius:999px;background:#dcebf7;font-size:11px;font-weight:700}
+.aiAnalysisMeta{margin-top:8px;color:#57718a;font-size:11px}
+.aiAnalysisSummary{line-height:1.7;margin:12px 0;font-size:14px}
+.aiImpactCard{padding:14px 0;border-top:1px solid #d2e3ef}
+.aiImpactCard>b{display:block;font-size:14px}
+.aiImpactLocation{font-size:11px;margin:5px 0 10px;color:#5c7587}
+.aiImpactLabel{font-size:11px;font-weight:800;color:#31658b;margin:8px 0 3px}
+.aiImpactCard p{font-size:13px;line-height:1.65;margin:0}
+.aiImpactCard a{display:inline-block;margin-top:8px;font-size:12px;color:#206596;text-decoration:underline}
+.aiAnalysisCaution{font-size:11px;line-height:1.6;color:#526c81;margin:12px 0 0}

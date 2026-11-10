@@ -42,15 +42,18 @@ def evidence_identity(event: dict, action: dict) -> str:
         "action": {key: action.get(key, "") for key in (
             "id", "agency", "agency_role", "law_title", "article",
             "work", "target_location", "basis", "impact_link_basis")},
-        "service_evidence": {key: action.get(key, "") for key in (
-            "service_id", "service", "service_url", "service_criteria",
-            "service_evidence_source", "service_evidence_rule",
-            "service_record_updated")},
         "changes": [
             {"before": str(c.get("before", "")), "after": str(c.get("after", ""))}
             for c in action["changes"] if isinstance(c, dict)
         ],
     }
+    # Preserve existing law-only cache identities: an unrelated schema change
+    # must NOT re-run 81 previously verified LLM analyses.
+    if action.get("service_id"):
+        facts["service_evidence"] = {key: action.get(key, "") for key in (
+            "service_id", "service", "service_url", "service_criteria",
+            "service_evidence_source", "service_evidence_rule",
+            "service_record_updated")}
     payload = json.dumps(facts, ensure_ascii=False, sort_keys=True,
                          separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()

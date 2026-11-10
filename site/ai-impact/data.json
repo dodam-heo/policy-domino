@@ -1,7 +1,7 @@
 {
   "schema": "policy-domino-llm-impact-v2",
-  "generated_at": "2026-11-10T08:36:51+00:00",
-  "source_generated_at": "2026-11-10T08:34:20+00:00",
+  "generated_at": "2026-11-10T09:13:27+00:00",
+  "source_generated_at": "2026-11-10T09:12:13+00:00",
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
@@ -536,6 +536,24 @@
       "event_id": "legacy:756f912b70bde26615",
       "title": "질병관리청과 그 소속기관 직제 시행규칙",
       "presentation_source": "legacy_official_directive_awaiting_recheck",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-07-21|36514",
+      "title": "3개 법령 동시 개정 · 병무청과 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-06-23|36423",
+      "title": "3개 법령 동시 개정 · 중소벤처기업부와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
       "eligible_actions": 0,
       "analyzed_actions": 0,
       "status": "awaiting_verified_evidence",
@@ -1708,6 +1726,132 @@
       "findings": []
     },
     {
+      "event_id": "v4:law|국방부령|2026-08-14|01220",
+      "title": "방위사업청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-08-14|36577",
+      "title": "방위사업청과 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|교육부령|2026-07-21|00389",
+      "title": "교육부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|과학기술정보통신부령|2026-07-21|00172",
+      "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|국방부령|2026-07-21|01216",
+      "title": "병무청과 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-07-21|36512",
+      "title": "교육부와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|총리령|2026-07-21|02138",
+      "title": "지식재산처와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|중소벤처기업부령|2026-07-01|00114",
+      "title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|과학기술정보통신부령|2026-07-01|00170",
+      "title": "우정사업본부 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|통일부령|2026-06-30|00143",
+      "title": "통일부와 그 소속기관 직제 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-06-30|36461",
+      "title": "공정거래위원회와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-03-24|36195",
+      "title": "기후에너지환경부와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-01-06|36022",
+      "title": "통일부와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2025-12-30|35957",
+      "title": "기후에너지환경부와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
       "event_id": "v4:law|국토교통부령|2026-11-09|01636",
       "title": "건설기계관리법 시행규칙",
       "presentation_source": "v4_official_source",
@@ -1996,6 +2140,186 @@
       "findings": []
     },
     {
+      "event_id": "v4:d54928eecb08fc9a994e",
+      "title": "서해지방해양경찰청과 그 소속기관 위임전결 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:b3e637fc2b07c8ffc07f",
+      "title": "서해지방해양경찰청과 그 소속기관 사무분장 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:a1c571ddffa7bf00d505",
+      "title": "감항증명 발급 지침",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:923957d1eb490a79fe6d",
+      "title": "자율기구 과학기술인공지능혁신과 설치 및 운영에 관한 규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:5f8180eef221d4ef3cfb",
+      "title": "송아지생산안정사업 운영요령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:5e7e6287b756430d6966",
+      "title": "서해지방해양경찰청 및 소속 해양경찰서 정책자문위원회 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:4f316195e5c3c4ad6679",
+      "title": "교육국제화특구 지정 고시",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:43b3e1cc2582305907c0",
+      "title": "지리적표시품 사후관리 요령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:2f2756888884d222e9d2",
+      "title": "조달청 보조사업 관리규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:16a7bad8e765ccc7db43",
+      "title": "국립춘천병원 비급여수가규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:2a878a5f6b404c134942",
+      "title": "구미시 중소기업육성기금 설치 및 운용 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:02ddcc20d11182c75a53",
+      "title": "부산광역시 남구의회 의원 윤리강령 및 윤리실천규범 등에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:555b10a2988a0e7f06b5",
+      "title": "세종특별자치시 상수도 급수 조례 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:19cb08dac0b22bf584aa",
+      "title": "부산광역시 남구 시설관리공단 회계감사인선임위원회 구성 및 운영에 관한 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:8c6063cafbf5331d03a8",
+      "title": "부산광역시 영도구 대한노인회 영도구지회 지원에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:dd8cc939288bb19dfd22",
+      "title": "부산광역시 남구 청년시설 운영 및 지원 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ae26f3a11073b1f42aaa",
+      "title": "울산광역시 남구의회 인사청문회 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:5947c35394e445f84043",
+      "title": "부산광역시 영도구 구보 발행 및 소셜네트워크서비스 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ff3d0bf50daefbb39e40",
+      "title": "부산광역시 영도구 구세 감면 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:c4df3bb3585795202e73",
+      "title": "부산광역시 남구 주차장 설치 및 관리 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
       "event_id": "v4:law|대통령령|2026-11-03|36800",
       "title": "청년 등의 사회진출 지원을 위한 실무경력 인정 확대에 관한 4개 법령의 일부개정에 관한 대통령령",
       "presentation_source": "v4_official_source",
@@ -2095,7 +2419,187 @@
       "findings": []
     },
     {
+      "event_id": "v4:law|대통령령|2026-07-30|36545",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-06-30|36449",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-06-23|36424",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-06-02|36381",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-05-06|36308",
+      "title": "주택건설기준 등에 관한 규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-04-30|36289",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2026-04-21|21553",
+      "title": "전파법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|재정경제부령|2026-03-20|00017",
+      "title": "개별소비세법 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2026-03-05|21447",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-02-27|36135",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
       "event_id": "v4:law|법률|2026-02-19|21377",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-01-27|36055",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|재정경제부령|2026-01-02|00001",
+      "title": "개별소비세법 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2025-12-31|36003",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2025-12-30|21254",
+      "title": "개별소비세법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2025-12-30|35947",
+      "title": "개별소비세법 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2025-12-23|35939",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2025-12-23|21206",
+      "title": "개별소비세법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2025-12-23|21216",
+      "title": "개별소비세법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2025-12-02|21194",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2025-12-02|21191",
       "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
       "presentation_source": "v4_official_source",
       "eligible_actions": 0,
@@ -2106,13 +2610,13 @@
   ],
   "status_counts": {
     "complete": 21,
-    "awaiting_verified_evidence": 75
+    "awaiting_verified_evidence": 131
   },
   "last_success_model": "gemini-3.5-flash-lite",
   "last_error": null,
-  "total_events": 96,
+  "total_events": 152,
   "eligible_events": 21,
   "total_verified_actions": 81,
   "total_analyzed_actions": 81,
-  "requests_this_run": 11
+  "requests_this_run": 0
 }

@@ -109320,6 +109320,1566 @@
         "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
       ],
       "needs_attachment_check": false
+    },
+    "2dfdf4fd29170c5f0659": {
+      "id": "2dfdf4fd29170c5f0659",
+      "title": "방위사업청과 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "010151",
+      "serial": "288937",
+      "promulgated_at": "2026-08-14",
+      "effective_date": "2026-08-14",
+      "revision": "일부개정",
+      "kind": "국방부령",
+      "ministry": "방위사업청",
+      "url": "https://www.law.go.kr/법령/%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97%85%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "01220",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "988b61af3b4030acef70": {
+      "id": "988b61af3b4030acef70",
+      "title": "방위사업청과 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "010149",
+      "serial": "288759",
+      "promulgated_at": "2026-08-14",
+      "effective_date": "2026-08-14",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "방위사업청,행정안전부",
+      "url": "https://www.law.go.kr/법령/%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97%85%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36577",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "756b4724aa10eca2d49a": {
+      "id": "756b4724aa10eca2d49a",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "288441",
+      "promulgated_at": "2026-07-30",
+      "effective_date": "2026-07-30",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36545",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "8b83cf354aa88539dbab": {
+      "id": "8b83cf354aa88539dbab",
+      "title": "교육부와 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "011811",
+      "serial": "288307",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "일부개정",
+      "kind": "교육부령",
+      "ministry": "교육부",
+      "url": "https://www.law.go.kr/법령/%EA%B5%90%EC%9C%A1%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00389",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "9311e49b819c68ca0396": {
+      "id": "9311e49b819c68ca0396",
+      "title": "과학기술정보통신부와 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "012923",
+      "serial": "288305",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "일부개정",
+      "kind": "과학기술정보통신부령",
+      "ministry": "과학기술정보통신부",
+      "url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00172",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "6de22076bbca506f219c": {
+      "id": "6de22076bbca506f219c",
+      "title": "병무청과 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "007245",
+      "serial": "288279",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "일부개정",
+      "kind": "국방부령",
+      "ministry": "병무청",
+      "url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "01216",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "9ea36b40ffada54c0bee": {
+      "id": "9ea36b40ffada54c0bee",
+      "title": "병무청과 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "003625",
+      "serial": "288241",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,병무청",
+      "url": "https://www.law.go.kr/법령/%EB%B3%91%EB%AC%B4%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36514",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "0da5d73a9ebd8a406009": {
+      "id": "0da5d73a9ebd8a406009",
+      "title": "지식재산처와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "014939",
+      "serial": "288235",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,지식재산처",
+      "url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36514",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "b59b22d77ac0296ee327": {
+      "id": "b59b22d77ac0296ee327",
+      "title": "과학기술정보통신부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "012908",
+      "serial": "288211",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,과학기술정보통신부",
+      "url": "https://www.law.go.kr/법령/%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36514",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "f503efc3422284f72e75": {
+      "id": "f503efc3422284f72e75",
+      "title": "교육부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "011779",
+      "serial": "288207",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-08-20",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,교육부",
+      "url": "https://www.law.go.kr/법령/%EA%B5%90%EC%9C%A1%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36512",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "79aad88ca48d5be42567": {
+      "id": "79aad88ca48d5be42567",
+      "title": "지식재산처와 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "014934",
+      "serial": "288171",
+      "promulgated_at": "2026-07-21",
+      "effective_date": "2026-07-21",
+      "revision": "일부개정",
+      "kind": "총리령",
+      "ministry": "지식재산처",
+      "url": "https://www.law.go.kr/법령/%EC%A7%80%EC%8B%9D%EC%9E%AC%EC%82%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "02138",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "304dc81ace9a302b6dcb": {
+      "id": "304dc81ace9a302b6dcb",
+      "title": "중소벤처기업부와 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "012954",
+      "serial": "287759",
+      "promulgated_at": "2026-07-01",
+      "effective_date": "2026-07-01",
+      "revision": "일부개정",
+      "kind": "중소벤처기업부령",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00114",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "6897985b3fc70c4e1bcf": {
+      "id": "6897985b3fc70c4e1bcf",
+      "title": "우정사업본부 직제 시행규칙",
+      "source": "law",
+      "stable_id": "011883",
+      "serial": "287757",
+      "promulgated_at": "2026-07-01",
+      "effective_date": "2026-07-01",
+      "revision": "일부개정",
+      "kind": "과학기술정보통신부령",
+      "ministry": "과학기술정보통신부",
+      "url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00170",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "63c3017af9566146aa87": {
+      "id": "63c3017af9566146aa87",
+      "title": "통일부와 그 소속기관 직제 시행규칙",
+      "source": "law",
+      "stable_id": "008537",
+      "serial": "287751",
+      "promulgated_at": "2026-06-30",
+      "effective_date": "2026-06-30",
+      "revision": "일부개정",
+      "kind": "통일부령",
+      "ministry": "통일부",
+      "url": "https://www.law.go.kr/법령/%ED%86%B5%EC%9D%BC%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00143",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "64c94c74274cc66234a1": {
+      "id": "64c94c74274cc66234a1",
+      "title": "공정거래위원회와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "002370",
+      "serial": "287561",
+      "promulgated_at": "2026-06-30",
+      "effective_date": "2026-10-01",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,공정거래위원회",
+      "url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A0%95%EA%B1%B0%EB%9E%98%EC%9C%84%EC%9B%90%ED%9A%8C%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36461",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "f39649b40d970fd58ebb": {
+      "id": "f39649b40d970fd58ebb",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "287541",
+      "promulgated_at": "2026-06-30",
+      "effective_date": "2026-07-01",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36449",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "afaf06c7acce44cedc37": {
+      "id": "afaf06c7acce44cedc37",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률 시행령",
+      "source": "law",
+      "stable_id": "010213",
+      "serial": "287277",
+      "promulgated_at": "2026-06-23",
+      "effective_date": "2026-07-01",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36424",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "9656ebc22bf28c41b542": {
+      "id": "9656ebc22bf28c41b542",
+      "title": "중소벤처기업부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "012914",
+      "serial": "287187",
+      "promulgated_at": "2026-06-23",
+      "effective_date": "2026-07-01",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EC%A4%91%EC%86%8C%EB%B2%A4%EC%B2%98%EA%B8%B0%EC%97%85%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36423",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "5a14fa6e6e7e6189e3b2": {
+      "id": "5a14fa6e6e7e6189e3b2",
+      "title": "우정사업본부 직제",
+      "source": "law",
+      "stable_id": "011879",
+      "serial": "287167",
+      "promulgated_at": "2026-06-23",
+      "effective_date": "2026-07-01",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "행정안전부,과학기술정보통신부",
+      "url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36423",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "c138670621f05340eb39": {
+      "id": "c138670621f05340eb39",
+      "title": "기후에너지환경부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "014937",
+      "serial": "287101",
+      "promulgated_at": "2026-06-23",
+      "effective_date": "2026-07-01",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "기후에너지환경부,행정안전부",
+      "url": "https://www.law.go.kr/법령/%EA%B8%B0%ED%9B%84%EC%97%90%EB%84%88%EC%A7%80%ED%99%98%EA%B2%BD%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36423",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "218f5bfcc487243f3182": {
+      "id": "218f5bfcc487243f3182",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률 시행령",
+      "source": "law",
+      "stable_id": "010213",
+      "serial": "286633",
+      "promulgated_at": "2026-06-02",
+      "effective_date": "2026-06-03",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36381",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "f3013bd55e6278fb9028": {
+      "id": "f3013bd55e6278fb9028",
+      "title": "주택건설기준 등에 관한 규정",
+      "source": "law",
+      "stable_id": "004948",
+      "serial": "285833",
+      "promulgated_at": "2026-05-06",
+      "effective_date": "2026-05-06",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/법령/%EC%A3%BC%ED%83%9D%EA%B1%B4%EC%84%A4%EA%B8%B0%EC%A4%80%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "promulgation_number": "36308",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "b98efff4b0c3bef0b429": {
+      "id": "b98efff4b0c3bef0b429",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "285781",
+      "promulgated_at": "2026-04-30",
+      "effective_date": "2026-05-01",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36289",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "2118e6e413894fcffacc": {
+      "id": "2118e6e413894fcffacc",
+      "title": "전파법",
+      "source": "law",
+      "stable_id": "001732",
+      "serial": "285531",
+      "promulgated_at": "2026-04-21",
+      "effective_date": "2026-10-22",
+      "revision": "일부개정",
+      "kind": "법률",
+      "ministry": "과학기술정보통신부,방송미디어통신위원회",
+      "url": "https://www.law.go.kr/법령/%EC%A0%84%ED%8C%8C%EB%B2%95",
+      "promulgation_number": "21553",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "981912d9ed6b3d42dcba": {
+      "id": "981912d9ed6b3d42dcba",
+      "title": "기후에너지환경부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "014937",
+      "serial": "284585",
+      "promulgated_at": "2026-03-24",
+      "effective_date": "2026-03-24",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "기후에너지환경부,행정안전부",
+      "url": "https://www.law.go.kr/법령/%EA%B8%B0%ED%9B%84%EC%97%90%EB%84%88%EC%A7%80%ED%99%98%EA%B2%BD%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36195",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "a17cd886bce40d585fe6": {
+      "id": "a17cd886bce40d585fe6",
+      "title": "개별소비세법 시행규칙",
+      "source": "law",
+      "stable_id": "008542",
+      "serial": "284605",
+      "promulgated_at": "2026-03-20",
+      "effective_date": "2026-04-01",
+      "revision": "일부개정",
+      "kind": "재정경제부령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00017",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "db2c95e3ed622d5f83e9": {
+      "id": "db2c95e3ed622d5f83e9",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "source": "law",
+      "stable_id": "010165",
+      "serial": "284057",
+      "promulgated_at": "2026-03-05",
+      "effective_date": "2026-07-01",
+      "revision": "타법개정",
+      "kind": "법률",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "promulgation_number": "21447",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "132b1dca874be710fa4f": {
+      "id": "132b1dca874be710fa4f",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "283645",
+      "promulgated_at": "2026-02-27",
+      "effective_date": "2026-02-27",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36135",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "84107171048d6187ecbe": {
+      "id": "84107171048d6187ecbe",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "282917",
+      "promulgated_at": "2026-01-27",
+      "effective_date": "2026-02-01",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36055",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "5b677891facfb4c3f19b": {
+      "id": "5b677891facfb4c3f19b",
+      "title": "통일부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "005300",
+      "serial": "282495",
+      "promulgated_at": "2026-01-06",
+      "effective_date": "2026-01-06",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "통일부,행정안전부",
+      "url": "https://www.law.go.kr/법령/%ED%86%B5%EC%9D%BC%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "36022",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "3cad73d9668333b86107": {
+      "id": "3cad73d9668333b86107",
+      "title": "개별소비세법 시행규칙",
+      "source": "law",
+      "stable_id": "008542",
+      "serial": "282591",
+      "promulgated_at": "2026-01-02",
+      "effective_date": "2026-01-02",
+      "revision": "타법개정",
+      "kind": "재정경제부령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "00001",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "3218e64912558d0818a1": {
+      "id": "3218e64912558d0818a1",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "282435",
+      "promulgated_at": "2025-12-31",
+      "effective_date": "2026-01-01",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "36003",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "08a69301f678bf06bbfe": {
+      "id": "08a69301f678bf06bbfe",
+      "title": "개별소비세법",
+      "source": "law",
+      "stable_id": "001570",
+      "serial": "281901",
+      "promulgated_at": "2025-12-30",
+      "effective_date": "2026-03-31",
+      "revision": "타법개정",
+      "kind": "법률",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+      "promulgation_number": "21254",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "9519fa1982b65091e17f": {
+      "id": "9519fa1982b65091e17f",
+      "title": "기후에너지환경부와 그 소속기관 직제",
+      "source": "law",
+      "stable_id": "014937",
+      "serial": "281779",
+      "promulgated_at": "2025-12-30",
+      "effective_date": "2025-12-30",
+      "revision": "일부개정",
+      "kind": "대통령령",
+      "ministry": "기후에너지환경부,행정안전부",
+      "url": "https://www.law.go.kr/법령/%EA%B8%B0%ED%9B%84%EC%97%90%EB%84%88%EC%A7%80%ED%99%98%EA%B2%BD%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "promulgation_number": "35957",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "e39fe03b4d39fc8b9e98": {
+      "id": "e39fe03b4d39fc8b9e98",
+      "title": "개별소비세법 시행령",
+      "source": "law",
+      "stable_id": "005308",
+      "serial": "280779",
+      "promulgated_at": "2025-12-30",
+      "effective_date": "2026-01-02",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "35947",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "b5ed9b07960d866e0434": {
+      "id": "b5ed9b07960d866e0434",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률 시행령",
+      "source": "law",
+      "stable_id": "010213",
+      "serial": "280557",
+      "promulgated_at": "2025-12-23",
+      "effective_date": "2025-12-23",
+      "revision": "타법개정",
+      "kind": "대통령령",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "promulgation_number": "35939",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "0fb8f15489cd39f2e702": {
+      "id": "0fb8f15489cd39f2e702",
+      "title": "개별소비세법",
+      "source": "law",
+      "stable_id": "001570",
+      "serial": "280359",
+      "promulgated_at": "2025-12-23",
+      "effective_date": "2026-04-01",
+      "revision": "일부개정",
+      "kind": "법률",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+      "promulgation_number": "21206",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "c45e976dea26b5cb3a61": {
+      "id": "c45e976dea26b5cb3a61",
+      "title": "개별소비세법",
+      "source": "law",
+      "stable_id": "001570",
+      "serial": "280345",
+      "promulgated_at": "2025-12-23",
+      "effective_date": "2026-04-24",
+      "revision": "타법개정",
+      "kind": "법률",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+      "promulgation_number": "21216",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "e15d5a11f70052b063f6": {
+      "id": "e15d5a11f70052b063f6",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "source": "law",
+      "stable_id": "010165",
+      "serial": "280163",
+      "promulgated_at": "2025-12-02",
+      "effective_date": "2026-06-03",
+      "revision": "타법개정",
+      "kind": "법률",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "promulgation_number": "21194",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "8aab53f49bcb789d565b": {
+      "id": "8aab53f49bcb789d565b",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "source": "law",
+      "stable_id": "010165",
+      "serial": "280153",
+      "promulgated_at": "2025-12-02",
+      "effective_date": "2026-06-03",
+      "revision": "일부개정",
+      "kind": "법률",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "promulgation_number": "21191",
+      "discovery": "official_law_change_history",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "d54928eecb08fc9a994e": {
+      "id": "d54928eecb08fc9a994e",
+      "title": "서해지방해양경찰청과 그 소속기관 위임전결 규칙",
+      "source": "admrul",
+      "stable_id": "63607",
+      "serial": "2100000287622",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "훈령",
+      "ministry": "서해지방해양경찰청",
+      "url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%9C%84%EC%9E%84%EC%A0%84%EA%B2%B0%20%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "59",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "b3e637fc2b07c8ffc07f": {
+      "id": "b3e637fc2b07c8ffc07f",
+      "title": "서해지방해양경찰청과 그 소속기관 사무분장 규칙",
+      "source": "admrul",
+      "stable_id": "63680",
+      "serial": "2100000287536",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "훈령",
+      "ministry": "서해지방해양경찰청",
+      "url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%82%AC%EB%AC%B4%EB%B6%84%EC%9E%A5%20%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "57",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "a1c571ddffa7bf00d505": {
+      "id": "a1c571ddffa7bf00d505",
+      "title": "감항증명 발급 지침",
+      "source": "admrul",
+      "stable_id": "35749",
+      "serial": "2100000287740",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "전부개정",
+      "kind": "훈령",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B0%90%ED%95%AD%EC%A6%9D%EB%AA%85%20%EB%B0%9C%EA%B8%89%20%EC%A7%80%EC%B9%A8",
+      "promulgation_number": "2006",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "923957d1eb490a79fe6d": {
+      "id": "923957d1eb490a79fe6d",
+      "title": "자율기구 과학기술인공지능혁신과 설치 및 운영에 관한 규정",
+      "source": "admrul",
+      "stable_id": "96957",
+      "serial": "2100000287352",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "훈령",
+      "ministry": "과학기술정보통신부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%ED%98%81%EC%8B%A0%EA%B3%BC%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "promulgation_number": "332",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "5f8180eef221d4ef3cfb": {
+      "id": "5f8180eef221d4ef3cfb",
+      "title": "송아지생산안정사업 운영요령",
+      "source": "admrul",
+      "stable_id": "22828",
+      "serial": "2100000287736",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "고시",
+      "ministry": "농림축산식품부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%86%A1%EC%95%84%EC%A7%80%EC%83%9D%EC%82%B0%EC%95%88%EC%A0%95%EC%82%AC%EC%97%85%20%EC%9A%B4%EC%98%81%EC%9A%94%EB%A0%B9",
+      "promulgation_number": "2026-104",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "5e7e6287b756430d6966": {
+      "id": "5e7e6287b756430d6966",
+      "title": "서해지방해양경찰청 및 소속 해양경찰서 정책자문위원회 규칙",
+      "source": "admrul",
+      "stable_id": "63609",
+      "serial": "2100000287538",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "훈령",
+      "ministry": "서해지방해양경찰청",
+      "url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%20%EB%B0%8F%20%EC%86%8C%EC%86%8D%20%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%84%9C%20%EC%A0%95%EC%B1%85%EC%9E%90%EB%AC%B8%EC%9C%84%EC%9B%90%ED%9A%8C%20%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "60",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "4f316195e5c3c4ad6679": {
+      "id": "4f316195e5c3c4ad6679",
+      "title": "교육국제화특구 지정 고시",
+      "source": "admrul",
+      "stable_id": "2056986",
+      "serial": "2100000287804",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-10",
+      "revision": "일부개정",
+      "kind": "고시",
+      "ministry": "교육부",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B5%90%EC%9C%A1%EA%B5%AD%EC%A0%9C%ED%99%94%ED%8A%B9%EA%B5%AC%20%EC%A7%80%EC%A0%95%20%EA%B3%A0%EC%8B%9C",
+      "promulgation_number": "2026-22",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "43b3e1cc2582305907c0": {
+      "id": "43b3e1cc2582305907c0",
+      "title": "지리적표시품 사후관리 요령",
+      "source": "admrul",
+      "stable_id": "2057365",
+      "serial": "2100000287794",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "예규",
+      "ministry": "국립농산물품질관리원",
+      "url": "https://www.law.go.kr/행정규칙/%EC%A7%80%EB%A6%AC%EC%A0%81%ED%91%9C%EC%8B%9C%ED%92%88%20%EC%82%AC%ED%9B%84%EA%B4%80%EB%A6%AC%20%EC%9A%94%EB%A0%B9",
+      "promulgation_number": "250",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "2f2756888884d222e9d2": {
+      "id": "2f2756888884d222e9d2",
+      "title": "조달청 보조사업 관리규정",
+      "source": "admrul",
+      "stable_id": "98639",
+      "serial": "2100000287770",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "제정",
+      "kind": "훈령",
+      "ministry": "조달청",
+      "url": "https://www.law.go.kr/행정규칙/%EC%A1%B0%EB%8B%AC%EC%B2%AD%20%EB%B3%B4%EC%A1%B0%EC%82%AC%EC%97%85%20%EA%B4%80%EB%A6%AC%EA%B7%9C%EC%A0%95",
+      "promulgation_number": "2418",
+      "discovery": "official_date_index",
+      "lifecycle": "enactment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "16a7bad8e765ccc7db43": {
+      "id": "16a7bad8e765ccc7db43",
+      "title": "국립춘천병원 비급여수가규정",
+      "source": "admrul",
+      "stable_id": "77245",
+      "serial": "2100000287788",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "예규",
+      "ministry": "국립춘천병원",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B5%AD%EB%A6%BD%EC%B6%98%EC%B2%9C%EB%B3%91%EC%9B%90%20%EB%B9%84%EA%B8%89%EC%97%AC%EC%88%98%EA%B0%80%EA%B7%9C%EC%A0%95",
+      "promulgation_number": "390",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "2a878a5f6b404c134942": {
+      "id": "2a878a5f6b404c134942",
+      "title": "구미시 중소기업육성기금 설치 및 운용 조례",
+      "source": "ordin",
+      "stable_id": "2038946",
+      "serial": "2182139",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "자치법규",
+      "ministry": "경상북도 구미시",
+      "url": "https://www.law.go.kr/자치법규/%EA%B5%AC%EB%AF%B8%EC%8B%9C%20%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%EC%9C%A1%EC%84%B1%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "2152",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "02ddcc20d11182c75a53": {
+      "id": "02ddcc20d11182c75a53",
+      "title": "부산광역시 남구의회 의원 윤리강령 및 윤리실천규범 등에 관한 조례",
+      "source": "ordin",
+      "stable_id": "2188163",
+      "serial": "2182077",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "전부개정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 남구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%EC%9D%98%ED%9A%8C%20%EC%9D%98%EC%9B%90%20%EC%9C%A4%EB%A6%AC%EA%B0%95%EB%A0%B9%20%EB%B0%8F%20%EC%9C%A4%EB%A6%AC%EC%8B%A4%EC%B2%9C%EA%B7%9C%EB%B2%94%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1823",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "555b10a2988a0e7f06b5": {
+      "id": "555b10a2988a0e7f06b5",
+      "title": "세종특별자치시 상수도 급수 조례 시행규칙",
+      "source": "ordin",
+      "stable_id": "2152785",
+      "serial": "2182147",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "자치법규",
+      "ministry": "세종특별자치시",
+      "url": "https://www.law.go.kr/자치법규/%EC%84%B8%EC%A2%85%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EC%8B%9C%20%EC%83%81%EC%88%98%EB%8F%84%20%EA%B8%89%EC%88%98%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "411",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "19cb08dac0b22bf584aa": {
+      "id": "19cb08dac0b22bf584aa",
+      "title": "부산광역시 남구 시설관리공단 회계감사인선임위원회 구성 및 운영에 관한 규칙",
+      "source": "ordin",
+      "stable_id": "2268646",
+      "serial": "2182055",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "제정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 남구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%8B%9C%EC%84%A4%EA%B4%80%EB%A6%AC%EA%B3%B5%EB%8B%A8%20%ED%9A%8C%EA%B3%84%EA%B0%90%EC%82%AC%EC%9D%B8%EC%84%A0%EC%9E%84%EC%9C%84%EC%9B%90%ED%9A%8C%20%EA%B5%AC%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+      "promulgation_number": "1005",
+      "discovery": "official_date_index",
+      "lifecycle": "enactment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "8c6063cafbf5331d03a8": {
+      "id": "8c6063cafbf5331d03a8",
+      "title": "부산광역시 영도구 대한노인회 영도구지회 지원에 관한 조례",
+      "source": "ordin",
+      "stable_id": "2268645",
+      "serial": "2182049",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "제정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 영도구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EB%8F%84%EA%B5%AC%20%EB%8C%80%ED%95%9C%EB%85%B8%EC%9D%B8%ED%9A%8C%20%EC%98%81%EB%8F%84%EA%B5%AC%EC%A7%80%ED%9A%8C%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1734",
+      "discovery": "official_date_index",
+      "lifecycle": "enactment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "dd8cc939288bb19dfd22": {
+      "id": "dd8cc939288bb19dfd22",
+      "title": "부산광역시 남구 청년시설 운영 및 지원 조례",
+      "source": "ordin",
+      "stable_id": "2215950",
+      "serial": "2182057",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 남구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%B2%AD%EB%85%84%EC%8B%9C%EC%84%A4%20%EC%9A%B4%EC%98%81%20%EB%B0%8F%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1817",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "ae26f3a11073b1f42aaa": {
+      "id": "ae26f3a11073b1f42aaa",
+      "title": "울산광역시 남구의회 인사청문회 조례",
+      "source": "ordin",
+      "stable_id": "2268651",
+      "serial": "2182117",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "제정",
+      "kind": "자치법규",
+      "ministry": "울산광역시 남구",
+      "url": "https://www.law.go.kr/자치법규/%EC%9A%B8%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%EC%9D%98%ED%9A%8C%20%EC%9D%B8%EC%82%AC%EC%B2%AD%EB%AC%B8%ED%9A%8C%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1507",
+      "discovery": "official_date_index",
+      "lifecycle": "enactment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "5947c35394e445f84043": {
+      "id": "5947c35394e445f84043",
+      "title": "부산광역시 영도구 구보 발행 및 소셜네트워크서비스 운영 조례",
+      "source": "ordin",
+      "stable_id": "2065452",
+      "serial": "2182011",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 영도구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EB%8F%84%EA%B5%AC%20%EA%B5%AC%EB%B3%B4%20%EB%B0%9C%ED%96%89%20%EB%B0%8F%20%EC%86%8C%EC%85%9C%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1729",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "ff3d0bf50daefbb39e40": {
+      "id": "ff3d0bf50daefbb39e40",
+      "title": "부산광역시 영도구 구세 감면 조례",
+      "source": "ordin",
+      "stable_id": "2065544",
+      "serial": "2182059",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2027-01-01",
+      "revision": "일부개정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 영도구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EB%8F%84%EA%B5%AC%20%EA%B5%AC%EC%84%B8%20%EA%B0%90%EB%A9%B4%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1732",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
+    },
+    "c4df3bb3585795202e73": {
+      "id": "c4df3bb3585795202e73",
+      "title": "부산광역시 남구 주차장 설치 및 관리 조례",
+      "source": "ordin",
+      "stable_id": "2061375",
+      "serial": "2182099",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "kind": "자치법규",
+      "ministry": "부산광역시 남구",
+      "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%A3%BC%EC%B0%A8%EC%9E%A5%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%20%EC%A1%B0%EB%A1%80",
+      "promulgation_number": "1820",
+      "discovery": "official_date_index",
+      "lifecycle": "amendment",
+      "verification": "detail_failed",
+      "comparison": null,
+      "changes": [],
+      "changed_articles": [],
+      "excerpts": [],
+      "actors": [],
+      "notes": [
+        "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+      ],
+      "needs_attachment_check": false
     }
   },
   "coverage": [
@@ -109601,6 +111161,101 @@
       "source": "ordin",
       "first": "2026-10-17",
       "last": "2026-10-23",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection",
+      "edition": "history"
+    },
+    {
+      "source": "law_history",
+      "first": "2026-11-09",
+      "last": "2026-11-09",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "law_history",
+      "first": "2026-11-08",
+      "last": "2026-11-08",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "law_history",
+      "first": "2026-11-07",
+      "last": "2026-11-07",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "law_history",
+      "first": "2026-11-06",
+      "last": "2026-11-06",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "law",
+      "first": "2026-10-10",
+      "last": "2026-10-16",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection",
+      "edition": "current"
+    },
+    {
+      "source": "admrul",
+      "first": "2026-10-10",
+      "last": "2026-10-16",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection",
+      "edition": "current"
+    },
+    {
+      "source": "admrul",
+      "first": "2026-10-10",
+      "last": "2026-10-16",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection",
+      "edition": "history"
+    },
+    {
+      "source": "ordin",
+      "first": "2026-10-10",
+      "last": "2026-10-16",
+      "reported": -1,
+      "collected": 0,
+      "pages": 0,
+      "complete": false,
+      "error": "RuntimeError: LAW_OC must be configured for official API collection",
+      "edition": "current"
+    },
+    {
+      "source": "ordin",
+      "first": "2026-10-10",
+      "last": "2026-10-16",
       "reported": -1,
       "collected": 0,
       "pages": 0,
@@ -112401,7 +114056,7 @@
   "attempts": {},
   "bootstrapped": true,
   "bootstrap_records": 5913,
-  "backfill_cursor_days": 21,
+  "backfill_cursor_days": 28,
   "latest_official_scan": "2026-11-10",
   "delegation_links": {
     "aa0bbc953976575180af": {
@@ -112539,6 +114194,26 @@
       "candidates": 0,
       "search_errors": 3,
       "partial_search": true
+    },
+    "d2ae8e3b67ff1221bdd6": {
+      "candidates": 0,
+      "search_errors": 3,
+      "partial_search": true
+    },
+    "a8c79514ac64b09c0117": {
+      "candidates": 0,
+      "search_errors": 3,
+      "partial_search": true
+    },
+    "a4998f30dc1db62c5ff5": {
+      "candidates": 0,
+      "search_errors": 3,
+      "partial_search": true
+    },
+    "43fcff9c69dfe61b30d2": {
+      "candidates": 0,
+      "search_errors": 3,
+      "partial_search": true
     }
   },
   "dependent_queue": {
@@ -112559,7 +114234,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000286118": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112578,7 +114253,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285400": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112597,7 +114272,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285992": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112616,7 +114291,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285618": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112635,7 +114310,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285258": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112654,7 +114329,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285200": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112673,7 +114348,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285166": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112692,7 +114367,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285194": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112711,7 +114386,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285326": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112730,7 +114405,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000285082": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112749,7 +114424,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284930": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112768,7 +114443,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000287688": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112787,7 +114462,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284878": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112806,7 +114481,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284772": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112825,7 +114500,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284622": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112844,7 +114519,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284556": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112863,7 +114538,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284598": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112882,7 +114557,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2200000108939": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112901,7 +114576,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284266": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112920,7 +114595,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000284032": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112939,7 +114614,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000287060": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112958,7 +114633,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|admrul|2100000283710": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112977,7 +114652,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|law|291687": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -112996,7 +114671,7 @@
         "search_term": "건설기계관리법 시행규칙",
         "search_provenance": "official_fulltext_candidate"
       },
-      "attempts": 1
+      "attempts": 2
     },
     "1146cceed36a8cbf6a34|law|291845": {
       "parent_id": "1146cceed36a8cbf6a34",
@@ -116155,67 +117830,92 @@
     "search_errors": [
       {
         "source": "admrul",
-        "term": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+        "term": "교육부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "law",
-        "term": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+        "term": "교육부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "ordin",
-        "term": "성매매방지 및 피해자보호 등에 관한 법률 시행규칙",
+        "term": "교육부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "admrul",
-        "term": "조달청과 그 소속기관 직제 시행규칙",
+        "term": "해양수산부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "law",
-        "term": "조달청과 그 소속기관 직제 시행규칙",
+        "term": "해양수산부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "ordin",
-        "term": "조달청과 그 소속기관 직제 시행규칙",
+        "term": "해양수산부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "admrul",
-        "term": "기후에너지환경부와 그 소속기관 직제 시행규칙",
+        "term": "중소벤처기업부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "law",
-        "term": "기후에너지환경부와 그 소속기관 직제 시행규칙",
+        "term": "중소벤처기업부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "ordin",
-        "term": "기후에너지환경부와 그 소속기관 직제 시행규칙",
+        "term": "중소벤처기업부와 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "admrul",
-        "term": "국가보훈부와 그 소속기관 직제 시행규칙",
+        "term": "병무청과 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "law",
-        "term": "국가보훈부와 그 소속기관 직제 시행규칙",
+        "term": "병무청과 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       },
       {
         "source": "ordin",
-        "term": "국가보훈부와 그 소속기관 직제 시행규칙",
+        "term": "병무청과 그 소속기관 직제 시행규칙",
         "error": "RuntimeError: LAW_OC must be configured for official API collection"
       }
     ]
   },
   "errors": [
+    {
+      "source": "lsDelegated",
+      "title": "국가데이터처와 그 소속기관 직제 시행규칙",
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "lsDelegated",
+      "title": "공정거래위원회와 그 소속기관 직제 시행규칙",
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "lsDelegated",
+      "title": "지식재산처와 그 소속기관 직제 시행규칙",
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "lsDelegated",
+      "title": "인사혁신처와 그 소속기관 직제 시행규칙",
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
+    {
+      "source": "lsDelegated",
+      "title": "우정사업본부 직제",
+      "error": "RuntimeError: LAW_OC must be configured for official API collection"
+    },
     {
       "source": "lsDelegated",
       "title": "국가데이터처와 그 소속기관 직제 시행규칙",

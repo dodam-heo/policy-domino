@@ -169,3 +169,5 @@ aside .empty{padding:38px 22px}
 .otherChanges{border:1px solid #dde7ed;border-radius:9px;background:#fafcfd;margin-top:10px;padding:12px}
 .otherChanges .change{background:#fff}
 @media(max-width:850px){.sourceFullColumns{grid-template-columns:1fr}}
+
+.overviewProof{font-size:11px;margin-top:7px;color:#52788f;font-weight:650}

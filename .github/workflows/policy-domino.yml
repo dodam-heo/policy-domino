@@ -104,6 +104,7 @@ jobs:
           PD_LLM_FALLBACK_MODEL: ${{ vars.PD_LLM_FALLBACK_MODEL || 'gemini-3.5-flash-lite' }}
           PD_AI_PREFER_FALLBACK: ${{ vars.PD_AI_PREFER_FALLBACK || 'true' }}
           PD_AI_MAX_REQUESTS: ${{ vars.PD_AI_MAX_REQUESTS || '36' }}
+          PD_AI_SUMMARY_REQUESTS: ${{ vars.PD_AI_SUMMARY_REQUESTS || '6' }}
           PD_AI_REQUEST_INTERVAL: ${{ vars.PD_AI_REQUEST_INTERVAL || '12' }}
         run: |
           if [ -z "$PD_LLM_API_KEY" ] || [ -z "$PD_LLM_MODEL" ]; then
@@ -136,7 +137,11 @@ jobs:
               if ai['schema']=='policy-domino-llm-impact-v2':
                   assert len(ai['events'])==len(view['events'])
                   actions={a['id']:a for a in view['actions']}
+                  source_events={e['event_id']:e for e in view['events']}
                   for e in ai['events']:
+                      summary=e.get('source_summary')
+                      if summary:
+                          assert summary['source_fingerprint']==source_events[e['event_id']].get('source_fingerprint')
                       for finding in e['findings']:
                           official=actions[finding['action_id']]
                           assert official['event_id']==e['event_id']

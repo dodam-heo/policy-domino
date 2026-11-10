@@ -59,7 +59,16 @@ function institutionType(name){
  if(/(?:부|처|청|위원회)$/.test(label))return "중앙행정기관";
  return "공공기관·기타";
 }
+function verifiedSourceSummary(e){
+ const record=(AI_DATA?.events||[]).find(row=>row.event_id===e.event_id);
+ const summary=record?.source_summary;
+ if(!summary||!e.source_fingerprint||summary.source_fingerprint!==e.source_fingerprint ||
+    !summary.text||!summary.model)return null;
+ return summary.text;
+}
 function overviewText(e){
+ const aiSummary=verifiedSourceSummary(e);
+ if(aiSummary)return aiSummary;
  const summary=String(e.change_summary||"").trim();
  if(summary)return summary;
  const d=(e.article_differences||[]).find(x=>x.before!==x.after);
@@ -273,8 +282,11 @@ function detailHTML(e){
  '<div class="detailKicker">'+esc(e.ministry||"발령기관 확인 중")+' · '+esc(e.law_type||"정책 변경")+' · '+typeLabel(e)+'</div>'+
  '<h2 class="detailTitle">'+esc(e.title||"변경사항")+'</h2>'+
  '<div class="detailMeta">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+esc(provenance)+'</div></div>';
+ const hasAiSummary=Boolean(verifiedSourceSummary(e));
  const overview='<section class="changeOverview"><div class="overviewLabel">핵심 변경 개요</div>'+
  '<div class="overviewText">'+esc(overviewText(e))+'</div>'+
+ '<div class="overviewProof">'+(hasAiSummary?'AI 보조 설명 · 공식 변경 조문에 연결됨':
+ '공식 변경 조문의 구조적 개요 · 설명 확인 중')+'</div>'+
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
  const impact='<section class="agencyImpactSection">'+
  '<div class="agencySectionHead"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+

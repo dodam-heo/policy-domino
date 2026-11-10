@@ -11,7 +11,13 @@ import json
 
 def has_verified_action(action: dict) -> bool:
     return (
-        action.get("evidence_scope") == "v4_verified_source"
+        action.get("evidence_scope") in (
+            "v4_verified_source", "service_formula_dependency_verified")
+        and (action.get("evidence_scope") != "service_formula_dependency_verified"
+             or (action.get("service_evidence_source") == "gov24_api"
+                 and all(action.get(k) for k in (
+                     "service_id", "service", "service_evidence_rule",
+                     "service_criteria"))))
         and all(action.get(key) for key in ("id", "event_id", "agency", "article",
                                             "law_title", "work", "changes"))
         and str(action.get("basis", "")).startswith(
@@ -36,6 +42,10 @@ def evidence_identity(event: dict, action: dict) -> str:
         "action": {key: action.get(key, "") for key in (
             "id", "agency", "agency_role", "law_title", "article",
             "work", "target_location", "basis", "impact_link_basis")},
+        "service_evidence": {key: action.get(key, "") for key in (
+            "service_id", "service", "service_url", "service_criteria",
+            "service_evidence_source", "service_evidence_rule",
+            "service_record_updated")},
         "changes": [
             {"before": str(c.get("before", "")), "after": str(c.get("after", ""))}
             for c in action["changes"] if isinstance(c, dict)

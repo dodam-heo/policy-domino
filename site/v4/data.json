@@ -1,6 +1,6 @@
 {
   "schema": "policy-domino-v4",
-  "generated_at": "2026-11-10T15:34:57+00:00",
+  "generated_at": "2026-11-10T17:40:48+00:00",
   "status": "PARTIAL",
   "collection": {
     "official_catalogue": 31109,
@@ -37,14 +37,17 @@
       }
     ],
     "backfill_cursor_days": 203,
+    "latest_official_scan": "2026-11-10",
+    "last_official_scan_error": "",
+    "retained_complete_clause_versions": 0,
+    "detail_work_budget_exceeded": false,
     "scope": "공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
     "whole_corpus_complete": false
   },
   "links": {
     "confirmed_provision_or_formula_use": 7,
     "title_or_wrong_article_only": 13,
-    "official_delegation_review_candidates": 0,
-    "unverified_implementation": true
+    "official_delegation_review_candidates": 0
   },
   "featured_events": [
     {
@@ -69,7 +72,6 @@
           "excerpt": "제18조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「국방부와 그 소속기관 직제」 제27조의2제2항 후단에 따라 전문직공무원을 두는 과 또는 이에 상당하는 하부조직은 다음 각 호와 같다. 1. 군인권개선추진단: 군인권총괄담당관, 성폭력예방대응담당관, 병영문화혁신담당관, 양성평등정책팀 2. 보건복지관: 복",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "국방부와 그 소속기관 직제",
           "target_title": "국방부와 그 소속기관 직제 시행규칙",
@@ -87,7 +89,6 @@
           "excerpt": "제56조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「기후에너지환경부와 그 소속기관 직제」 제72조제2항 후단에 따라 전문직공무원을 두는 과 또는 이에 상당하는 하부조직 및 소속기관은 다음 각 호와 같다. 1. 대기환경국: 대기환경정책과, 대기관리과, 교통환경과, 통합허가제도과 2. 환경보건국: 환경보건정책과, ",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "기후에너지환경부와 그 소속기관 직제",
           "target_title": "기후에너지환경부와 그 소속기관 직제 시행규칙",
@@ -105,7 +106,6 @@
           "excerpt": "제23조의2(전문직공무원 정원의 배정 및 운영에 대한 특례) 「통일부와 그 소속기관 직제」 제36조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 정세분석국: 정세분석총괄과, 정치군사분석과, 경제분석과, 사회문화분석팀 2. 남북회담본부: 정치군사회담과, 경제인도회담과, 회담운영연락",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "통일부와 그 소속기관 직제",
           "target_title": "통일부와 그 소속기관 직제 시행규칙",
@@ -123,7 +123,6 @@
           "excerpt": "제19조의2(전문직공무원 정원의 배정 및 운영에 대한 특례) 「인사혁신처와 그 소속기관 직제」 제28조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 인재정보기획관: 인재기획담당관, 인재정보담당관 2. 인재채용국: 인재정책과, 공개채용과, 경력채용과, 시험출제과, 5급공채팀",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "인사혁신처와 그 소속기관 직제",
           "target_title": "인사혁신처와 그 소속기관 직제 시행규칙",
@@ -141,7 +140,6 @@
           "excerpt": "제19조의2(전문직공무원 정원의 배정 및 운영에 대한 특례) 「인사혁신처와 그 소속기관 직제」 제28조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 인재정보기획관: 인재기획담당관, 인재정보담당관 2. 인재채용국: 인재정책과, 공개채용과, 경력채용과, 시험출제과, 5급공채팀 3. 윤리",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "인사혁신처와 그 소속기관 직제",
           "target_title": "인사혁신처와 그 소속기관 직제 시행규칙",
@@ -159,7 +157,6 @@
           "excerpt": "제54조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「행정안전부와 그 소속기관 직제」 제63조제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 인공지능정부정책국: 인공지능정부정책과, 공공인공지능혁신과, 공공데이터정책과, 공공데이터분석관리과 및 인공지능정부협력과 2. 인공지능정부서비",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "행정안전부와 그 소속기관 직제",
           "target_title": "행정안전부와 그 소속기관 직제 시행규칙",
@@ -177,7 +174,6 @@
           "excerpt": "제25조(전문직공무원 정원의 배정 및 운영에 대한 특례) 「고용노동부와 그 소속기관 직제」 제40조의2제2항 후단에 따라 전문직공무원을 두는 하부조직은 다음 각 호와 같다. 1. 노사협력정책관: 노사협력정책과, 노사관계법제과 및 노사관계지원과 2. 근로기준정책관: 근로기준정책과, 근로감독기획과 및 고용차별개선과 ",
           "proof": "공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
           "affected_verified": true,
-          "implementation_verified": false,
           "needs_review": true,
           "source_title": "고용노동부와 그 소속기관 직제",
           "target_title": "고용노동부와 그 소속기관 직제 시행규칙",

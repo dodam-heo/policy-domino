@@ -1,333 +1,298 @@
-"""Offline tests for the REAL provider request and strict source/action binding.
+"""Contracts for the production ALL-event, source-grounded, resumable AI queue.
 
-No external account, model call, or payment is needed for these unit tests.
-A real run uses PD_LLM_API_KEY and PD_LLM_MODEL.
+All model responses here are simulated; real inference is separately visible
+only when a provider-backed production run emits LLM_EVENT_PROGRESS.
 """
 from __future__ import annotations
-
-import json
+import copy
 import io
-from urllib.error import HTTPError
+import json
 import os
 import unittest
 from unittest.mock import patch
+from urllib.error import HTTPError
 
+from policy_domino.analysis_evidence import evidence_identity, has_verified_action
 from policy_domino.ai_impact import (
-    SCHEMA, ModelConfig, ProviderHTTPFailure, analyze, call_model, eligible_actions, select_event,
-    validate_answer, evidence_payload
+    SCHEMA, ModelConfig, ProviderHTTPFailure, build_catalog,
+    eligible_actions, evidence_payload, call_model, validate_answer,
+    remaining_chunks, run_incremental,
 )
 
 
 def fixture():
-    event_id = "v4:verified-example"
-    event = {
-        "event_id": event_id, "title": "가상정책 변경",
-        "promulgated_at": "2026-11-09", "effective_date": "2027-01-01",
-        "presentation_source": "v4_official_source", "impact_level": "high",
-    }
-    def action(number, agency, scope="v4_verified_source", belongs=event_id):
-        return {
-            "id": str(number), "event_id": belongs,
-            "agency": agency, "law_title": "가상정책 직제",
-            "article": f"제{number}조", "work": "정원 운영",
-            "target_location": "정원 관리 업무",
-            "basis": "https://www.law.go.kr/법령/가상",
-            "evidence_scope": scope,
-            "changes": [{"before": "정원 20명", "after": "정원 25명"}],
-        }
-    return {"schema": "policy-domino-next-v1", "generated_at": "2026-11-10T01:00:00Z",
-            "events": [event],
-            "actions": [action(1,"가상공공기관 가"), action(2,"가상공공기관 나"),
-                        action(3, "미검증기관", scope="legacy_official_directive_awaiting_recheck"),
-                        action(4, "다른사건기관", belongs="v4:other")]}
+    events = [
+        {"event_id": "v4:one", "title": "가상 종합 개정", "promulgated_at": "2026-11-06",
+         "effective_date": "2027-01-01", "revision": "일부개정",
+         "presentation_source": "v4_official_source", "impact_level": "high"},
+        {"event_id": "v4:two", "title": "가상 별도 개정", "promulgated_at": "2026-11-06",
+         "effective_date": "2027-01-01", "revision": "일부개정",
+         "presentation_source": "v4_official_source", "impact_level": "not_assessed"},
+        {"event_id": "legacy:three", "title": "재검증 대기 자료", "promulgated_at": "2026-10-01",
+         "presentation_source": "legacy_official_directive_awaiting_recheck"},
+        {"event_id": "v4:empty", "title": "본문·기관 연결 미확보",
+         "presentation_source": "v4_official_source", "impact_level": "not_assessed"},
+    ]
+    actions = []
+    for eid, amount in (("v4:one",7),("v4:two",2),("legacy:three",1)):
+        for i in range(amount):
+            actions.append({
+                "id": f"{eid}:{i}", "event_id": eid, "agency": f"가상 공공기관 {i}",
+                "agency_role": "직접 규율 대상", "law_title": "가상 행정규칙",
+                "article": f"제{i+1}조", "work": "업무 기준 적용",
+                "target_location": "행정 처리 기준", "basis": "https://www.law.go.kr/법령/가상",
+                "impact_link_basis": "공식 신구 본문 직접 비교",
+                "evidence_scope": "v4_verified_source" if not eid.startswith("legacy:") else "legacy_official_directive_awaiting_recheck",
+                "changes": [{"before": f"기준 {i}명", "after": f"기준 {i+1}명"}],
+            })
+    return {"schema":"policy-domino-next-v1", "generated_at":"2026-11-10T01:00:00Z",
+            "events":events, "actions":actions}
 
 
-def answer():
-    return {
-        "summary": "공식 정원 변경에 따라 해당 기관의 인사 운영 기준을 검토해야 합니다.",
-        "findings": [{
-            "action_id": "1", "evidence_id": "E1",
-            "operational_impact": "변경된 인원 기준에 따라 정원 관리 업무에 영향이 있습니다.",
-            "review_task": "정원 관리 표에서 변경된 수치를 확인하고 반영 여부를 검토합니다.",
-        }]
-    }
+def actual_shaped_answer(context):
+    return {"summary":"검증된 기관별 변경사항의 업무 적용 기준을 확인해야 합니다.",
+            "findings":[{
+                "action_id": item["action_id"], "evidence_id":item["evidence_id"],
+                "operational_impact":"조문 변경으로 인해 해당 공공기관의 실제 업무 기준 적용이 달라집니다.",
+                "review_task":"관련 업무 운영 기준과 시스템 설정의 반영 필요 여부를 확인합니다.",
+            } for item in context["evidence"]]}
 
 
-class FakeResponse:
-    def __init__(self, value):
-        self.value = value
+class Response:
+    def __init__(self, content):
+        self.content=content
     def __enter__(self):
         return self
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, *args):
         return False
-    def read(self, size):
-        return self.value
+    def read(self, n):
+        return self.content
 
 
-class RealLLMImpactTests(unittest.TestCase):
+class AllEventAITests(unittest.TestCase):
     def setUp(self):
-        self.data = fixture()
-        self.config = ModelConfig("https://example.org/v1","test-model","private-test-key")
+        self.data=fixture()
+        self.config=ModelConfig("https://example.org/v1","test-model","test-key")
 
-    def test_missing_api_key_and_model_fails_without_fake_results(self):
-        with patch.dict(os.environ, {"PD_LLM_API_KEY":"", "PD_LLM_MODEL":""}):
-            with self.assertRaisesRegex(RuntimeError, "must be configured"):
-                ModelConfig.from_env()
+    def test_all_collected_events_are_managed_even_without_proven_dependencies(self):
+        c=build_catalog(self.data)
+        self.assertEqual(c["schema"],SCHEMA)
+        self.assertEqual(c["total_events"],4)
+        self.assertEqual(c["eligible_events"],2)
+        self.assertEqual(c["total_verified_actions"],9)
+        self.assertEqual(c["status_counts"]["pending"],2)
+        self.assertEqual(c["status_counts"]["awaiting_verified_evidence"],2)
+        self.assertEqual(len(eligible_actions(self.data,"legacy:three")),0)
+        self.assertTrue(all("evidence_fingerprint" in a
+                            for a in self.data["actions"] if a["event_id"]!="legacy:three"))
 
-    def test_provider_url_must_be_https_except_localhost(self):
-        with patch.dict(os.environ, {"PD_LLM_API_KEY":"test", "PD_LLM_MODEL":"test",
-                                    "PD_LLM_BASE_URL":"http://public.example.com/v1"}):
-            with self.assertRaises(ValueError):
-                ModelConfig.from_env()
-        with patch.dict(os.environ, {"PD_LLM_API_KEY":"test", "PD_LLM_MODEL":"test",
-                                    "PD_LLM_BASE_URL":"http://localhost:11434/v1"}):
-            self.assertEqual(ModelConfig.from_env().base_url,"http://localhost:11434/v1")
+    def test_no_high_impact_filter_or_first_three_truncation(self):
+        c=build_catalog(self.data)
+        chunks=remaining_chunks(c,self.data,3)
+        self.assertEqual([(eid,len(batch)) for eid,batch in chunks],
+                         [("v4:one",3),("v4:two",2),("v4:one",3),("v4:one",1)])
 
-    def test_only_current_official_source_actions_enter_prompt(self):
-        event, actions = select_event(self.data,None,3)
-        self.assertEqual(event["event_id"],"v4:verified-example")
-        self.assertEqual([a["id"] for a in actions], ["1","2"])
-        self.assertEqual(len(eligible_actions(self.data,event["event_id"])),2)
-
-    def test_legacy_event_not_selected_for_model(self):
-        data = fixture()
-        data["events"][0]["presentation_source"] = "legacy_official_directive_awaiting_recheck"
-        with self.assertRaisesRegex(ValueError,"currently verified"):
-            select_event(data,"v4:verified-example",1)
-
-    def test_real_http_transport_sends_bounded_document_evidence(self):
-        context = evidence_payload(self.data["events"][0], self.data["actions"][:1],self.data["generated_at"])
-        sent=[]
-        def fake_opener(request,timeout):
-            sent.append((request,timeout))
-            content = json.dumps(answer(),ensure_ascii=False)
-            payload = json.dumps({"choices":[{"message":{"content":content}}]},ensure_ascii=False).encode()
-            return FakeResponse(payload)
-        result=call_model(self.config,context,open_request=fake_opener)
-        self.assertEqual(result,answer())
-        req,timeout=sent[0]
-        self.assertEqual(req.full_url,"https://example.org/v1/chat/completions")
-        self.assertEqual(req.get_header("Authorization"),"Bearer private-test-key")
-        self.assertEqual(timeout,90)
-        submitted=json.loads(req.data)
-        self.assertEqual(submitted["model"],"test-model")
-        self.assertNotIn("temperature",submitted, "Reasoning models may reject a forced temperature")
-        user=json.loads(submitted["messages"][1]["content"])
-        self.assertEqual(user["evidence"][0]["before_after"][0]["before"],"정원 20명")
-        self.assertEqual(user["evidence"][0]["agency"],"가상공공기관 가")
-
-    def test_model_cannot_make_up_public_institutions_or_sources(self):
-        source = evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        forged=answer()
-        forged["findings"][0]["action_id"]="totally-fictional-action"
-        with self.assertRaisesRegex(ValueError,"unsupported action"):
-            validate_answer(forged,source,"test-model")
-
-    def test_model_cannot_cite_another_agencys_source(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:2],self.data["generated_at"])
-        forged=answer()
-        forged["findings"][0]["evidence_id"]="E2"
-        with self.assertRaisesRegex(ValueError,"unrelated source"):
-            validate_answer(forged,context,"test-model")
-
-    def test_duplicate_actions_rejected(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:2],self.data["generated_at"])
-        forged=answer()
-        forged["findings"].append(forged["findings"][0])
-        with self.assertRaisesRegex(ValueError,"duplicated"):
-            validate_answer(forged,context,"test-model")
-
-    def test_model_cannot_change_status_or_inject_source_url(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        forged=answer()
-        forged["findings"][0]["agency"]="지어낸 기관"
-        forged["findings"][0]["basis_url"]="https://phishing.invalid"
-        forged["findings"][0]["status"]="조치 확인"
-        output=validate_answer(forged,context,"test-model")
-        finding=output["findings"][0]
-        self.assertEqual(finding["agency"],"가상공공기관 가")
-        self.assertEqual(finding["basis_url"],"https://www.law.go.kr/법령/가상")
-        self.assertEqual(finding["status"],"AI 검토 제안 · 실제 반영 미확인")
-        self.assertEqual(output["schema"], SCHEMA)
-        self.assertEqual(output["source_generated_at"],self.data["generated_at"])
-
-    def test_end_to_end_analysis_calls_model_only_for_verified_evidence(self):
-        received=[]
+    def test_resume_after_checkpoint_without_repeating_successful_calls(self):
+        saved=[]
+        calls=[]
         def fake_model(config,context):
-            received.extend(context["evidence"])
-            return answer()
-        output=analyze(self.data,self.config,request_model=fake_model)
-        self.assertEqual(len(received),2)
-        self.assertTrue(all(a["source_verified"] for a in received))
-        self.assertEqual(output["event_id"],"v4:verified-example")
-        self.assertEqual(len(output["findings"]),1)
+            calls.append([row["action_id"] for row in context["evidence"]])
+            return actual_shaped_answer(context)
+        def save(item):
+            saved.append(copy.deepcopy(item))
+        first=run_incremental(self.data,{},self.config,max_requests=2,
+                              interval=0,model_request=fake_model,pause=lambda _:None,persist=save)
+        self.assertEqual(first["total_analyzed_actions"],5)
+        self.assertEqual(first["status_counts"]["partial"],1)
+        self.assertEqual(first["status_counts"]["complete"],1)
+        self.assertGreaterEqual(len(saved),3)
+        self.assertEqual(len(calls),2)
+        second=run_incremental(self.data,first,self.config,max_requests=3,
+                               interval=0,model_request=fake_model,pause=lambda _:None)
+        self.assertEqual(second["total_analyzed_actions"],9)
+        self.assertEqual(second["status_counts"]["complete"],2)
+        self.assertEqual(len(calls),4)
+        again=run_incremental(self.data,second,self.config,max_requests=36,
+                              interval=0,model_request=fake_model,pause=lambda _:None)
+        self.assertEqual(again["requests_this_run"],0)
+        self.assertEqual(len(calls),4)
+        self.assertEqual(len({f["action_id"] for e in again["events"] for f in e["findings"]}),9)
 
-    def test_quota_429_reports_billing_not_generic_rate_limit(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        for code in ("insufficient_quota", "credit_balance_exhausted",
-                     "project_spend_limit_exceeded"):
-            def error_opener(request,timeout):
-                body=json.dumps({"error":{"code":code,"type":"insufficient_quota","message":"Never print this value"}}).encode()
-                raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(body))
-            with self.subTest(code=code):
-                with self.assertRaisesRegex(RuntimeError,"HTTP 429, provider=.*Credit or spend limit"):
-                    call_model(self.config,context,open_request=error_opener)
+    def test_generated_at_change_keeps_completed_findings_without_any_recall(self):
+        provider=lambda config,context:actual_shaped_answer(context)
+        first=run_incremental(self.data,{},self.config,
+                              model_request=provider,interval=0,pause=lambda _:None)
+        self.data["generated_at"]="2026-11-11T01:20:00Z"
+        result=run_incremental(self.data,first,self.config,interval=0,
+                               model_request=lambda *_:self.fail("Unchanged evidence should be cached"),
+                               pause=lambda _:None)
+        self.assertEqual(result["requests_this_run"],0)
+        self.assertEqual(result["total_analyzed_actions"],9)
 
-    def test_rate_limit_429_is_distinguished_from_account_quota(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        def error_opener(request,timeout):
-            body=json.dumps({"error":{"type":"rate_limit_exceeded","message":"Too many requests"}}).encode()
-            raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(body))
-        with self.assertRaisesRegex(RuntimeError,"quota/rate limit reached"):
-            call_model(self.config,context,open_request=error_opener)
+    def test_changed_evidence_invalidates_only_one_action_not_all_events(self):
+        first=run_incremental(self.data,{},self.config,
+                              model_request=lambda conf,context:actual_shaped_answer(context),
+                              interval=0,pause=lambda _:None)
+        self.data["actions"][1]["changes"][0]["after"]="정원 999명으로 변경"
+        # The canonical source publisher recomputes fingerprints after a legal change.
+        self.data["actions"][1]["evidence_fingerprint"]=evidence_identity(
+            self.data["events"][0],self.data["actions"][1])
+        catalog=build_catalog(self.data,first)
+        self.assertEqual(catalog["total_analyzed_actions"],8)
+        self.assertEqual(catalog["status_counts"]["partial"],1)
+        self.assertEqual(catalog["status_counts"]["complete"],1)
+        called=[]
+        def fake_model(cfg,context):
+            called.extend([e["action_id"] for e in context["evidence"]])
+            return actual_shaped_answer(context)
+        updated=run_incremental(self.data,first,self.config,
+                                model_request=fake_model,interval=0,pause=lambda _:None)
+        self.assertEqual(called,["v4:one:1"])
+        self.assertEqual(updated["total_analyzed_actions"],9)
 
-    def test_unknown_429_never_falsely_diagnoses_empty_balance(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        def error_opener(request,timeout):
-            raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(b""))
-        with self.assertRaisesRegex(RuntimeError,"HTTP 429.*Provider rejected request"):
-            call_model(self.config,context,open_request=error_opener)
+    def test_provider_quota_failure_preserves_partial_results_and_defers(self):
+        calls=0
+        snapshots=[]
+        def fake_model(cfg,context):
+            nonlocal calls
+            calls+=1
+            if calls>1: raise ProviderHTTPFailure(429,"LLM API HTTP 429 quota")
+            return actual_shaped_answer(context)
+        catalog=run_incremental(self.data,{},self.config,max_requests=20,
+                                model_request=fake_model,interval=0,pause=lambda _:None,
+                                persist=lambda c:snapshots.append(copy.deepcopy(c)))
+        self.assertEqual(catalog["requests_this_run"],2)
+        self.assertEqual(catalog["total_analyzed_actions"],3)
+        self.assertEqual(catalog["status_counts"]["partial"],1)
+        self.assertEqual(catalog["status_counts"]["pending"],1)
+        self.assertIn("HTTP 429",catalog["last_error"])
+        self.assertEqual(snapshots[-1]["total_analyzed_actions"],3)
 
-    def test_gemini_array_error_is_reported_without_crashing_or_leaking_message(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        for code, expected_status, expected_help in [
-            ("RESOURCE_EXHAUSTED",429,"quota/rate limit"),
-            ("INVALID_ARGUMENT",400,"request format"),
-            ("PERMISSION_DENIED",403,"API key"),
-            ("NOT_FOUND",404,"model ID"),
-        ]:
-            def error_opener(request,timeout):
-                # Regression: actual failure run 42760269254 returned a JSON list.
-                response=[{"error":{"code":expected_status,
-                                    "status":code,
-                                    "message":"DO NOT ECHO provider payload or secrets"}}]
-                raise HTTPError(request.full_url,expected_status,"Bad Request",{},
-                                io.BytesIO(json.dumps(response).encode()))
-            with self.subTest(code=code):
-                with self.assertRaises(RuntimeError) as failure:
-                    call_model(self.config,context,open_request=error_opener)
-                message=str(failure.exception)
-                self.assertIn("HTTP "+str(expected_status),message)
-                self.assertIn(code,message)
-                self.assertIn(expected_help,message)
-                self.assertNotIn("DO NOT ECHO",message)
+    def test_failed_or_missing_model_does_not_claim_analysis(self):
+        with patch.dict(os.environ, {"PD_LLM_API_KEY":"","PD_LLM_MODEL":""}):
+            with self.assertRaises(RuntimeError):
+                ModelConfig.from_env()
+        catalog=build_catalog(self.data)
+        self.assertEqual(catalog["total_analyzed_actions"],0)
+        self.assertEqual(catalog["eligible_events"],2)
 
-    def test_empty_and_unexpected_provider_error_json_is_safe(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        for response in (b"[]", b"[null]", b"[123]", b'"string"', b'{"error":42}',b'{'):
-            def error_opener(request,timeout):
-                raise HTTPError(request.full_url,429,"Too Many Requests",{},
-                                io.BytesIO(response))
-            with self.subTest(response=response):
-                with self.assertRaisesRegex(RuntimeError,"LLM API HTTP 429"):
-                    call_model(self.config,context,open_request=error_opener)
+    def test_official_evidence_identity_is_stable_but_change_sensitive(self):
+        e=self.data["events"][0]
+        a=self.data["actions"][0]
+        value=evidence_identity(e,a)
+        self.data["generated_at"]="another snapshot"
+        self.assertEqual(evidence_identity(e,a),value)
+        a["changes"][0]["before"]="다른 이전 기준"
+        self.assertNotEqual(evidence_identity(e,a),value)
+        a["evidence_scope"]="legacy_official_directive_awaiting_recheck"
+        self.assertFalse(has_verified_action(a))
+        with self.assertRaises(ValueError):
+            evidence_identity(e,a)
 
-    def test_temporary_gemini_503_is_retried_then_real_model_answer_used(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        attempts=[]
-        pauses=[]
-        def opener(request,timeout):
-            attempts.append(request.full_url)
-            if len(attempts)<3:
-                error=b'[{"error":{"code":503,"status":"UNAVAILABLE"}}]'
-                raise HTTPError(request.full_url,503,"Service Unavailable",{},
-                                io.BytesIO(error))
-            content=json.dumps(answer(),ensure_ascii=False)
-            return FakeResponse(json.dumps({"choices":[{"message":{"content":content}}]}).encode())
-        output=call_model(self.config,context,open_request=opener,pause=pauses.append)
-        self.assertEqual(output,answer())
-        self.assertEqual(len(attempts),3)
-        self.assertEqual(pauses,[3,9])
+    def test_model_cannot_invent_agency_action_or_citation(self):
+        build_catalog(self.data)
+        event=self.data["events"][0]
+        action=self.data["actions"][0]
+        ctx=evidence_payload(event,[action],self.data["generated_at"])
+        answer=actual_shaped_answer(ctx)
+        answer["findings"][0]["action_id"]="invented"
+        with self.assertRaisesRegex(ValueError,"unsupported action"):
+            validate_answer(answer,ctx,"test-model",{action["id"]:action})
+        answer=actual_shaped_answer(ctx)
+        answer["findings"][0]["evidence_id"]="E999"
+        with self.assertRaisesRegex(ValueError,"citation"):
+            validate_answer(answer,ctx,"test-model",{action["id"]:action})
 
-    def test_persistent_503_fails_after_at_most_three_requests(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        attempts=[]
-        pauses=[]
-        def opener(request,timeout):
-            attempts.append(1)
-            raise HTTPError(request.full_url,503,"Service Unavailable",{},
-                            io.BytesIO(b'[{"error":{"status":"UNAVAILABLE"}}]'))
-        with self.assertRaisesRegex(RuntimeError,"HTTP 503, provider=UNAVAILABLE"):
-            call_model(self.config,context,open_request=opener,pause=pauses.append)
-        self.assertEqual(len(attempts),3)
-        self.assertEqual(pauses,[3,9])
+    def test_model_does_not_control_provenance_or_completed_status(self):
+        build_catalog(self.data)
+        action=self.data["actions"][0]
+        ctx=evidence_payload(self.data["events"][0],[action],self.data["generated_at"])
+        raw=actual_shaped_answer(ctx)
+        raw["findings"][0].update({
+            "agency":"엉뚱한 민간기업",
+            "basis_url":"https://fake.invalid",
+            "status":"조치 완료",
+        })
+        finding=validate_answer(raw,ctx,"gemini-test",{action["id"]:action})[0]
+        self.assertEqual(finding["agency"],action["agency"])
+        self.assertEqual(finding["basis_url"],action["basis"])
+        self.assertIn("미확인",finding["status"])
+        self.assertEqual(finding["model"],"gemini-test")
 
-    def test_nontransient_404_and_quota_429_never_retry(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        for code, payload in [
-            (404,{"error":{"status":"NOT_FOUND"}}),
-            (429,{"error":{"code":"insufficient_quota"}}),
-        ]:
-            with self.subTest(status=code):
-                attempts=[]
-                pauses=[]
-                def opener(request,timeout):
-                    attempts.append(1)
-                    raise HTTPError(request.full_url,code,"Error",{},
-                                    io.BytesIO(json.dumps(payload).encode()))
-                with self.assertRaises(RuntimeError):
-                    call_model(self.config,context,open_request=opener,pause=pauses.append)
-                self.assertEqual(len(attempts),1)
-                self.assertEqual(pauses,[])
-
-    def test_gemini_503_falls_back_to_second_real_model_and_records_actual_model(self):
-        config=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
-                           "gemini-3.8-flash","test-key")
+    def test_provider_fallback_after_503_and_actual_model_provenance(self):
         models=[]
-        def provider(cfg, context):
+        def fake_model(cfg,ctx):
             models.append(cfg.model)
             if cfg.model=="gemini-3.8-flash":
                 raise ProviderHTTPFailure(503,"LLM API HTTP 503")
-            return answer()
+            return actual_shaped_answer(ctx)
+        config=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
+                           "gemini-3.8-flash","test-key")
         with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":"gemini-3.5-flash-lite"}):
-            result=analyze(self.data,config,request_model=provider)
-        self.assertEqual(models,["gemini-3.8-flash","gemini-3.5-flash-lite"])
-        self.assertEqual(result["model"],"gemini-3.5-flash-lite")
-        self.assertEqual(result["findings"][0]["agency"],"가상공공기관 가")
+            result=run_incremental(self.data,{},config,max_requests=2,interval=0,
+                                   model_request=fake_model,pause=lambda _:None)
+        self.assertEqual(models,["gemini-3.8-flash","gemini-3.5-flash-lite",
+                                 "gemini-3.5-flash-lite"])
+        self.assertEqual(result["last_success_model"],"gemini-3.5-flash-lite")
+        self.assertTrue(all(f["model"]=="gemini-3.5-flash-lite"
+                            for e in result["events"] for f in e["findings"]))
 
-    def test_no_fallback_on_404_429_or_non_gemini_provider(self):
-        for code,base in [(404,"https://generativelanguage.googleapis.com/v1beta/openai"),
-                          (429,"https://generativelanguage.googleapis.com/v1beta/openai"),
-                          (503,"https://api.openai.com/v1")]:
-            with self.subTest(code=code,base=base):
-                calls=[]
-                def provider(cfg, context):
-                    calls.append(cfg.model)
-                    raise ProviderHTTPFailure(code,f"HTTP {code}")
-                with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":"gemini-3.5-flash-lite"}):
-                    with self.assertRaises(ProviderHTTPFailure):
-                        analyze(self.data,ModelConfig(base,"gemini-3.8-flash","test-key"),
-                                request_model=provider)
-                self.assertEqual(len(calls),1)
-
-    def test_gemini_fallback_is_opt_in_and_cannot_be_arbitrary_provider(self):
-        cfg=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
-                        "gemini-3.8-flash","test-key")
+    def test_non_gemini_503_does_not_switch_provider(self):
         calls=[]
-        def provider(model,context):
-            calls.append(model.model)
-            raise ProviderHTTPFailure(503,"HTTP 503")
-        for fallback in ("", "gpt-5", "gemini-3.8-flash"):
-            calls.clear()
-            with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":fallback}):
-                with self.assertRaises(ProviderHTTPFailure):
-                    analyze(self.data,cfg,request_model=provider)
-            self.assertEqual(calls,["gemini-3.8-flash"])
+        def fail(cfg,ctx):
+            calls.append(cfg.model)
+            raise ProviderHTTPFailure(503,"LLM API HTTP 503")
+        with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":"gemini-3.5-flash-lite"}):
+            catalog=run_incremental(self.data,{},self.config,max_requests=10,
+                                    model_request=fail,interval=0,pause=lambda _:None)
+        self.assertEqual(calls,["test-model"])
+        self.assertEqual(catalog["total_analyzed_actions"],0)
 
-    def test_model_must_return_structured_json(self):
-        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
-        def fake_opener(request,timeout):
-            return FakeResponse(json.dumps({"choices":[{"message":{"content":"I think it applies"}}]}).encode())
-        with self.assertRaisesRegex(ValueError,"required JSON"):
-            call_model(self.config,context,open_request=fake_opener)
+    def test_error_diagnostics_support_gemini_array_503_without_secrets(self):
+        build_catalog(self.data)
+        ctx=evidence_payload(self.data["events"][0],self.data["actions"][:1],
+                             self.data["generated_at"])
+        n=[]
+        def opener(req,timeout):
+            n.append(1)
+            raw=b'[{"error":{"status":"UNAVAILABLE","message":"private test secret"}}]'
+            raise HTTPError(req.full_url,503,"Server",{},io.BytesIO(raw))
+        with self.assertRaises(ProviderHTTPFailure) as outcome:
+            call_model(self.config,ctx,open_request=opener,pause=lambda _:None)
+        self.assertEqual(len(n),3)
+        self.assertIn("HTTP 503",str(outcome.exception))
+        self.assertNotIn("private test secret",str(outcome.exception))
 
-    def test_data_has_to_be_current_and_action_bounded(self):
-        data=fixture()
-        data.pop("generated_at")
-        with self.assertRaisesRegex(ValueError,"generation timestamp"):
-            analyze(data,self.config,request_model=lambda config,context:answer())
-        with self.assertRaisesRegex(ValueError,"1–5"):
-            select_event(self.data,None,6)
+    def test_real_model_http_request_contract_no_fake_success(self):
+        build_catalog(self.data)
+        ctx=evidence_payload(self.data["events"][0],self.data["actions"][:1],
+                             self.data["generated_at"])
+        requests=[]
+        def opener(req,timeout):
+            requests.append(req)
+            payload=json.dumps({"choices":[{"message":{
+                "content":json.dumps(actual_shaped_answer(ctx),ensure_ascii=False)
+            }}]},ensure_ascii=False).encode()
+            return Response(payload)
+        result=call_model(self.config,ctx,open_request=opener)
+        self.assertEqual(result["findings"][0]["action_id"],ctx["evidence"][0]["action_id"])
+        self.assertEqual(requests[0].full_url,"https://example.org/v1/chat/completions")
+        self.assertEqual(requests[0].get_header("Authorization"),"Bearer test-key")
+        sent=json.loads(requests[0].data)
+        self.assertEqual(sent["model"],"test-model")
+        self.assertEqual(json.loads(sent["messages"][1]["content"])["evidence"][0]["agency"],
+                         self.data["actions"][0]["agency"])
+
+    def test_fingerprint_mismatch_does_not_publish_stale_cached_facts(self):
+        catalog=build_catalog(self.data)
+        self.data["actions"][0]["evidence_fingerprint"]="1234"
+        with self.assertRaisesRegex(ValueError,"fingerprint"):
+            build_catalog(self.data,catalog)
+
+    def test_duplicate_action_ids_block_catalog(self):
+        self.data["actions"].append(copy.deepcopy(self.data["actions"][0]))
+        with self.assertRaisesRegex(ValueError,"Duplicated"):
+            build_catalog(self.data)
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ on:
         type: choice
         options: [official, stored]
       analyze_ai:
-        description: 'Run ONE real LLM agency impact analysis using the configured private model credentials'
+        description: 'Analyze ALL eligible policy events incrementally; reuse unchanged cached evidence results'
         required: false
         default: false
         type: boolean
@@ -67,14 +67,21 @@ jobs:
       - name: Rebuild agency impact from persisted official evidence
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
         run: python -m policy_domino --source stored
-      - name: One real model-backed agency impact analysis (explicit opt-in only)
-        if: (github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[ai-run-once]'))
+      - name: Incremental real LLM analysis for every verified policy event
+        if: (github.event_name == 'schedule' && vars.PD_AI_AUTO_ENABLED != 'false') || (github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[ai-run-once]'))
         env:
           PD_LLM_API_KEY: ${{ secrets.PD_LLM_API_KEY }}
           PD_LLM_MODEL: ${{ vars.PD_LLM_MODEL }}
           PD_LLM_BASE_URL: ${{ vars.PD_LLM_BASE_URL || 'https://api.openai.com/v1' }}
           PD_LLM_FALLBACK_MODEL: ${{ vars.PD_LLM_FALLBACK_MODEL || 'gemini-3.5-flash-lite' }}
-        run: python -m policy_domino.ai_impact --limit 3
+          PD_AI_MAX_REQUESTS: ${{ vars.PD_AI_MAX_REQUESTS || '36' }}
+          PD_AI_REQUEST_INTERVAL: ${{ vars.PD_AI_REQUEST_INTERVAL || '12' }}
+        run: |
+          if [ -z "$PD_LLM_API_KEY" ] || [ -z "$PD_LLM_MODEL" ]; then
+            echo "::notice::AI model settings absent; official evidence still published without fabricated AI output."
+          else
+            python -m policy_domino.ai_impact --max-requests "$PD_AI_MAX_REQUESTS" --interval "$PD_AI_REQUEST_INTERVAL"
+          fi
       - name: Validate generated public data and both user routes
         run: |
           python -m unittest discover -s tests -p 'test_*.py' -v
@@ -90,6 +97,21 @@ jobs:
           assert view['schema']=='policy-domino-next-v1'
           assert view['events']
           assert all(e.get('impact_scope') for e in view['events'])
+          ai_file=Path('site/ai-impact/data.json')
+          if ai_file.exists():
+              ai=json.loads(ai_file.read_text('utf-8'))
+              if ai['schema']=='policy-domino-llm-impact-v2':
+                  assert len(ai['events'])==len(view['events'])
+                  actions={a['id']:a for a in view['actions']}
+                  for e in ai['events']:
+                      for finding in e['findings']:
+                          official=actions[finding['action_id']]
+                          assert official['event_id']==e['event_id']
+                          assert official['evidence_scope']=='v4_verified_source'
+                          assert official['evidence_fingerprint']==finding['evidence_fingerprint']
+                  print('AI_CATALOG_GATE',ai['total_events'],ai['total_analyzed_actions'],ai['status_counts'])
+              else:
+                  print('AI_LEGACY_FILE_PRESENT: awaiting conversion to v2 by next model run')
           print('PUBLICATION_GATE',len(view['events']),len(view['actions']))
           PY
       - name: Commit only source-backed generated outputs

@@ -1,7 +1,7 @@
 {
   "schema": "policy-domino-llm-impact-v2",
-  "generated_at": "2026-11-10T09:13:27+00:00",
-  "source_generated_at": "2026-11-10T09:12:13+00:00",
+  "generated_at": "2026-11-10T12:59:51+00:00",
+  "source_generated_at": "2026-11-10T12:58:50+00:00",
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
@@ -1852,6 +1852,15 @@
       "findings": []
     },
     {
+      "event_id": "v4:law|대통령령|2025-10-01|35804",
+      "title": "기후에너지환경부와 그 소속기관 직제",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
       "event_id": "v4:law|국토교통부령|2026-11-09|01636",
       "title": "건설기계관리법 시행규칙",
       "presentation_source": "v4_official_source",
@@ -2320,8 +2329,449 @@
       "findings": []
     },
     {
+      "event_id": "v4:b0772783b28896b1cf1f",
+      "title": "울산광역시 남구 문화ㆍ관광ㆍ체육 행사 이에스지(ESG) 실천에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:f99167dc19f963b93ea2",
+      "title": "옹진군의회 교섭단체 구성 및 운영에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:e3c18ee43126bed5e2d7",
+      "title": "부산광역시 금정구의회 의원 의정활동비 등 지급에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:4aeecf81d7fcc7fbb4cb",
+      "title": "부산광역시 북구 회계관리에 관한 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:88b9c2af564e28c4836a",
+      "title": "부산광역시 남구 사회복지사 등의 처우 및 지위 향상을 위한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:e90066b2398673e7ba03",
+      "title": "부산광역시 남구 수수료 징수 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:257564d00e16f1afb7fd",
+      "title": "부산광역시 남구 지방공무원 당직 및 비상근무 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ccc55b9c74a1475b10f3",
+      "title": "울산광역시 남구 청소년정책위원회 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:e0e32af0c895fd1b4f87",
+      "title": "부여군 사회재난 구호 및 복구 지원 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:e94b5ed51c5df1f991c4",
+      "title": "부산광역시 영도구 구보 발행 및 소셜네트워크서비스 운영 조례 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:79e6388504cefc072be8",
+      "title": "부여군 농업기계 순회교육반 설치 및 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:90d9bf5831c30ec6327c",
+      "title": "세종특별자치시 119구급상황관리센터 설치 및 운영에 관한 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:623af5ef04a72af6c7ba",
+      "title": "구미시 새마을지도자 자녀장학기금 설치 및 운용 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:8fe5ddd67dd8d0bf5ff6",
+      "title": "부여군 고향사랑 기부금 모금 및 운용에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:7fb481dda6a4bce24d05",
+      "title": "부여군 기후위기 대응을 위한 탄소중립ㆍ녹색성장 기본 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:62da059b19d29b8302ab",
+      "title": "부산광역시 북구 공무원 당직 및 비상근무 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:0c342370463fbbcf49df",
+      "title": "부산광역시 남구 소상공인 지원에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:49af585584cfd0621dd4",
+      "title": "박정희대통령 생가 재단 설립 및 운영지원에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:159d5db7266ff295778a",
+      "title": "울산광역시 남구 기후위기 대응을 위한 탄소중립ㆍ녹색성장 기본 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ba818a15e202fd8536e0",
+      "title": "경산시의회 직무대리규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:6837e0905f3536058fb7",
+      "title": "부여군 에너지 기본 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:5bf2386f36140789c1a7",
+      "title": "경산시의회 비위공직자의 의원면직 처리제한에 관한 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:083d3f5f8ab77bb7bd3b",
+      "title": "부산광역시 영도구 경로당 운영 및 지원에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:5f91f3c55bfe5b355506",
+      "title": "부산광역시 영도구 지방세무조사 운영 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
       "event_id": "v4:law|대통령령|2026-11-03|36800",
       "title": "청년 등의 사회진출 지원을 위한 실무경력 인정 확대에 관한 4개 법령의 일부개정에 관한 대통령령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ac621bcd6482374b4ee0",
+      "title": "칠곡군 출산장려 및 다자녀 가정 지원에 관한 조례 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:075d0e38ddcaf87c8c59",
+      "title": "증권의 발행 및 공시 등에 관한 규정",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:b695a3069f3473d8d46d",
+      "title": "남동구 뇌병변장애인 지원에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:8307b1bc1863d0698432",
+      "title": "경상북도 저소득주민 국민건강보험료 및 노인장기요양보험료 지원 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:27445c6eb0e5c955f7f8",
+      "title": "천안시 도시계획 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:45a6764da778b9eb5f2a",
+      "title": "천안시 공중화장실 설치 및 관리 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:de4b2e14e131609ad0ff",
+      "title": "경상북도교육감 소속 공무원 특수지 근무수당 지급대상 지역 및 기관과 그 등급에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ad99b1b623b6b4d8cb99",
+      "title": "경상북도립학교 설치 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:8ef2eebb865dc56ca1be",
+      "title": "옥천군 복지기동대 설치 및 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:8899a7ed2641d4fd61a0",
+      "title": "고성군 예방접종 지원 및 위탁에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:61e21a0249b863a3b994",
+      "title": "옥천군 행복드림기동대 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:a7bce2a142ff7f8cda20",
+      "title": "정선군 응급환자 이송 지원에 관한 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ab54a55441bde1af7d44",
+      "title": "논산시 청년기금 설치 및 운용 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:9eac8beeaee941a442e3",
+      "title": "대구광역시 중구 인구정책 기본 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:9f8171fcef63063a3b95",
+      "title": "충청남도 회계관리에 관한 규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:f9be84d9ab41dcfaa331",
+      "title": "대구광역시 건축 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:7a1fee85fe075adbf20d",
+      "title": "대구광역시 여성회관 운영 및 사용 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:8ac692f593168d510d0f",
+      "title": "대구광역시종합복지회관 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:4e6fe6f2cc50a3ff1bd6",
+      "title": "대구광역시 시세 감면 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:da817d5ae4b78161a1ab",
+      "title": "화성시청 직장운동경기부 설치 및 운영에 관한 조례 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:97fe2c0feebb5744b7d3",
+      "title": "청송군 지방공무원 정원 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:7a87786f3f2e3b75d354",
+      "title": "청송군 행정기구 설치 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:95eda4e143c1ed4a88ae",
+      "title": "대구광역시 동부여성문화회관 운영 및 사용 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:3d7281f1c043c3b01f1e",
+      "title": "논산시 보훈명예수당 지급 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:ad52a1bfd35798b39e1c",
+      "title": "진천군 신청사 건립기금 설치 및 운용 조례",
       "presentation_source": "v4_official_source",
       "eligible_actions": 0,
       "analyzed_actions": 0,
@@ -2340,6 +2790,24 @@
     {
       "event_id": "v4:law|대통령령|2026-10-27|36791",
       "title": "국제문화행사 지원에 관한 법률 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:e2f3e612d2e16e9565e3",
+      "title": "성남시 복지이음정보센터 설치 및 운영 조례",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:91fe541973483ff87a9d",
+      "title": "성남시 복지이음정보센터 설치 및 운영 조례 시행규칙",
       "presentation_source": "v4_official_source",
       "eligible_actions": 0,
       "analyzed_actions": 0,
@@ -2367,6 +2835,15 @@
     {
       "event_id": "v4:law|행정안전부령|2026-10-19|00653",
       "title": "규제 재검토기한 정비를 위한 2개 법령의 일부개정에 관한 행정안전부령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:c0335219ba7636ca618a",
+      "title": "범죄통계 개선",
       "presentation_source": "v4_official_source",
       "eligible_actions": 0,
       "analyzed_actions": 0,
@@ -2606,15 +3083,78 @@
       "analyzed_actions": 0,
       "status": "awaiting_verified_evidence",
       "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2009-01-30|09346",
+      "title": "개별소비세법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|산업자원부령|2006-08-16|00356",
+      "title": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|2006-05-30|19494",
+      "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|2006-03-03|07864",
+      "title": "대·중소기업 상생협력 촉진에 관한 법률",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|재무부령|1977-03-11|01247",
+      "title": "특별소비세법시행규칙",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|대통령령|1976-12-31|08408",
+      "title": "특별소비세법시행령",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
+    },
+    {
+      "event_id": "v4:law|법률|1976-12-22|02935",
+      "title": "특별소비세법",
+      "presentation_source": "v4_official_source",
+      "eligible_actions": 0,
+      "analyzed_actions": 0,
+      "status": "awaiting_verified_evidence",
+      "findings": []
     }
   ],
   "status_counts": {
     "complete": 21,
-    "awaiting_verified_evidence": 131
+    "awaiting_verified_evidence": 191
   },
   "last_success_model": "gemini-3.5-flash-lite",
   "last_error": null,
-  "total_events": 152,
+  "total_events": 212,
   "eligible_events": 21,
   "total_verified_actions": 81,
   "total_analyzed_actions": 81,

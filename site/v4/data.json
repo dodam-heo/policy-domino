@@ -1,17 +1,17 @@
 {
   "schema": "policy-domino-v4",
-  "generated_at": "2026-11-10T10:47:05+00:00",
+  "generated_at": "2026-11-10T12:58:50+00:00",
   "status": "PARTIAL",
   "collection": {
     "official_catalogue": 7411,
     "fresh_official_index": 1810,
     "legacy_index_pending_recheck": 5601,
-    "detailed_checked": 176,
-    "pending_details": 7235,
-    "pending_downstream_verification": 196,
+    "detailed_checked": 236,
+    "pending_details": 7175,
+    "pending_downstream_verification": 172,
     "downstream_documents_checked": 12,
-    "windows_checked": 36,
-    "incomplete_windows": 18,
+    "windows_checked": 45,
+    "incomplete_windows": 27,
     "recent_incomplete": [
       {
         "source": "law_history",
@@ -45,8 +45,8 @@
       },
       {
         "source": "law",
-        "first": "2026-10-10",
-        "last": "2026-10-16",
+        "first": "2026-10-03",
+        "last": "2026-10-09",
         "reported": -1,
         "collected": 0,
         "pages": 0,
@@ -56,8 +56,8 @@
       },
       {
         "source": "admrul",
-        "first": "2026-10-10",
-        "last": "2026-10-16",
+        "first": "2026-10-03",
+        "last": "2026-10-09",
         "reported": -1,
         "collected": 0,
         "pages": 0,
@@ -67,8 +67,8 @@
       },
       {
         "source": "admrul",
-        "first": "2026-10-10",
-        "last": "2026-10-16",
+        "first": "2026-10-03",
+        "last": "2026-10-09",
         "reported": -1,
         "collected": 0,
         "pages": 0,
@@ -78,8 +78,8 @@
       },
       {
         "source": "ordin",
-        "first": "2026-10-10",
-        "last": "2026-10-16",
+        "first": "2026-10-03",
+        "last": "2026-10-09",
         "reported": -1,
         "collected": 0,
         "pages": 0,
@@ -89,8 +89,8 @@
       },
       {
         "source": "ordin",
-        "first": "2026-10-10",
-        "last": "2026-10-16",
+        "first": "2026-10-03",
+        "last": "2026-10-09",
         "reported": -1,
         "collected": 0,
         "pages": 0,
@@ -99,7 +99,7 @@
         "edition": "history"
       }
     ],
-    "backfill_cursor_days": 28,
+    "backfill_cursor_days": 35,
     "scope": "공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
     "whole_corpus_complete": false
   },
@@ -3612,6 +3612,42 @@
       "importance": 24
     },
     {
+      "id": "8ef2eebb865dc56ca1be",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "옥천군 복지기동대 설치 및 운영 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "8ef2eebb865dc56ca1be",
+          "title": "옥천군 복지기동대 설치 및 운영 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "충청북도 옥천군",
+          "url": "https://www.law.go.kr/자치법규/%EC%98%A5%EC%B2%9C%EA%B5%B0%20%EB%B3%B5%EC%A7%80%EA%B8%B0%EB%8F%99%EB%8C%80%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
       "id": "law|헌법재판소규칙|2026-10-27|00498",
       "date": "2026-10-27",
       "number": "00498",
@@ -3697,6 +3733,78 @@
           "needs_attachment_check": false,
           "notes": [
             "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "e2f3e612d2e16e9565e3",
+      "date": "2026-10-26",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "성남시 복지이음정보센터 설치 및 운영 조례",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e2f3e612d2e16e9565e3",
+          "title": "성남시 복지이음정보센터 설치 및 운영 조례",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 성남시",
+          "url": "https://www.law.go.kr/자치법규/%EC%84%B1%EB%82%A8%EC%8B%9C%20%EB%B3%B5%EC%A7%80%EC%9D%B4%EC%9D%8C%EC%A0%95%EB%B3%B4%EC%84%BC%ED%84%B0%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-26",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "91fe541973483ff87a9d",
+      "date": "2026-10-26",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "성남시 복지이음정보센터 설치 및 운영 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "91fe541973483ff87a9d",
+          "title": "성남시 복지이음정보센터 설치 및 운영 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "경기도 성남시",
+          "url": "https://www.law.go.kr/자치법규/%EC%84%B1%EB%82%A8%EC%8B%9C%20%EB%B3%B5%EC%A7%80%EC%9D%B4%EC%9D%8C%EC%A0%95%EB%B3%B4%EC%84%BC%ED%84%B0%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-26",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
           ],
           "comparison": null
         }
@@ -3798,6 +3906,42 @@
           "needs_attachment_check": false,
           "notes": [
             "새 규정의 제정 사실 확인. 별도 집행기관 의무 추론 금지"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 24
+    },
+    {
+      "id": "c0335219ba7636ca618a",
+      "date": "2026-10-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "범죄통계 개선",
+      "source_count": 1,
+      "verified_count": 1,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "c0335219ba7636ca618a",
+          "title": "범죄통계 개선",
+          "kind": "예규",
+          "verification": "verified_repeal_notice",
+          "lifecycle": "repeal",
+          "revision": "폐지",
+          "ministry": "공소청",
+          "url": "https://www.law.go.kr/행정규칙/%EB%B2%94%EC%A3%84%ED%86%B5%EA%B3%84%20%EA%B0%9C%EC%84%A0",
+          "published": "2026-10-02",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "폐지 사실 확인. 과거 조문에 등장한 기관의 새 의무를 추정하지 않음"
           ],
           "comparison": null
         }
@@ -5965,6 +6109,870 @@
       "importance": 4
     },
     {
+      "id": "b0772783b28896b1cf1f",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "울산광역시 남구 문화ㆍ관광ㆍ체육 행사 이에스지(ESG) 실천에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "b0772783b28896b1cf1f",
+          "title": "울산광역시 남구 문화ㆍ관광ㆍ체육 행사 이에스지(ESG) 실천에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "울산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EC%9A%B8%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EB%AC%B8%ED%99%94%E3%86%8D%EA%B4%80%EA%B4%91%E3%86%8D%EC%B2%B4%EC%9C%A1%20%ED%96%89%EC%82%AC%20%EC%9D%B4%EC%97%90%EC%8A%A4%EC%A7%80%28ESG%29%20%EC%8B%A4%EC%B2%9C%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "f99167dc19f963b93ea2",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "옹진군의회 교섭단체 구성 및 운영에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "f99167dc19f963b93ea2",
+          "title": "옹진군의회 교섭단체 구성 및 운영에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "인천광역시 옹진군",
+          "url": "https://www.law.go.kr/자치법규/%EC%98%B9%EC%A7%84%EA%B5%B0%EC%9D%98%ED%9A%8C%20%EA%B5%90%EC%84%AD%EB%8B%A8%EC%B2%B4%20%EA%B5%AC%EC%84%B1%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "e3c18ee43126bed5e2d7",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 금정구의회 의원 의정활동비 등 지급에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e3c18ee43126bed5e2d7",
+          "title": "부산광역시 금정구의회 의원 의정활동비 등 지급에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 금정구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B8%88%EC%A0%95%EA%B5%AC%EC%9D%98%ED%9A%8C%20%EC%9D%98%EC%9B%90%20%EC%9D%98%EC%A0%95%ED%99%9C%EB%8F%99%EB%B9%84%20%EB%93%B1%20%EC%A7%80%EA%B8%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "4aeecf81d7fcc7fbb4cb",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 북구 회계관리에 관한 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "4aeecf81d7fcc7fbb4cb",
+          "title": "부산광역시 북구 회계관리에 관한 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 북구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%ED%9A%8C%EA%B3%84%EA%B4%80%EB%A6%AC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "88b9c2af564e28c4836a",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 남구 사회복지사 등의 처우 및 지위 향상을 위한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "88b9c2af564e28c4836a",
+          "title": "부산광역시 남구 사회복지사 등의 처우 및 지위 향상을 위한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%EC%82%AC%20%EB%93%B1%EC%9D%98%20%EC%B2%98%EC%9A%B0%20%EB%B0%8F%20%EC%A7%80%EC%9C%84%20%ED%96%A5%EC%83%81%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "e90066b2398673e7ba03",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 남구 수수료 징수 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e90066b2398673e7ba03",
+          "title": "부산광역시 남구 수수료 징수 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%88%98%EC%88%98%EB%A3%8C%20%EC%A7%95%EC%88%98%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "257564d00e16f1afb7fd",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 남구 지방공무원 당직 및 비상근무 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "257564d00e16f1afb7fd",
+          "title": "부산광역시 남구 지방공무원 당직 및 비상근무 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EB%8B%B9%EC%A7%81%20%EB%B0%8F%20%EB%B9%84%EC%83%81%EA%B7%BC%EB%AC%B4%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "ccc55b9c74a1475b10f3",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "울산광역시 남구 청소년정책위원회 운영 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-10-29",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ccc55b9c74a1475b10f3",
+          "title": "울산광역시 남구 청소년정책위원회 운영 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "울산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EC%9A%B8%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%B2%AD%EC%86%8C%EB%85%84%EC%A0%95%EC%B1%85%EC%9C%84%EC%9B%90%ED%9A%8C%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-10-29",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "e0e32af0c895fd1b4f87",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부여군 사회재난 구호 및 복구 지원 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e0e32af0c895fd1b4f87",
+          "title": "부여군 사회재난 구호 및 복구 지원 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 부여군",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%97%AC%EA%B5%B0%20%EC%82%AC%ED%9A%8C%EC%9E%AC%EB%82%9C%20%EA%B5%AC%ED%98%B8%20%EB%B0%8F%20%EB%B3%B5%EA%B5%AC%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "e94b5ed51c5df1f991c4",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 영도구 구보 발행 및 소셜네트워크서비스 운영 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "e94b5ed51c5df1f991c4",
+          "title": "부산광역시 영도구 구보 발행 및 소셜네트워크서비스 운영 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 영도구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EB%8F%84%EA%B5%AC%20%EA%B5%AC%EB%B3%B4%20%EB%B0%9C%ED%96%89%20%EB%B0%8F%20%EC%86%8C%EC%85%9C%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "79e6388504cefc072be8",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부여군 농업기계 순회교육반 설치 및 운영 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "79e6388504cefc072be8",
+          "title": "부여군 농업기계 순회교육반 설치 및 운영 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 부여군",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%97%AC%EA%B5%B0%20%EB%86%8D%EC%97%85%EA%B8%B0%EA%B3%84%20%EC%88%9C%ED%9A%8C%EA%B5%90%EC%9C%A1%EB%B0%98%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "90d9bf5831c30ec6327c",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "세종특별자치시 119구급상황관리센터 설치 및 운영에 관한 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "90d9bf5831c30ec6327c",
+          "title": "세종특별자치시 119구급상황관리센터 설치 및 운영에 관한 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "세종특별자치시",
+          "url": "https://www.law.go.kr/자치법규/%EC%84%B8%EC%A2%85%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EC%8B%9C%20119%EA%B5%AC%EA%B8%89%EC%83%81%ED%99%A9%EA%B4%80%EB%A6%AC%EC%84%BC%ED%84%B0%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "623af5ef04a72af6c7ba",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "구미시 새마을지도자 자녀장학기금 설치 및 운용 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "623af5ef04a72af6c7ba",
+          "title": "구미시 새마을지도자 자녀장학기금 설치 및 운용 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도 구미시",
+          "url": "https://www.law.go.kr/자치법규/%EA%B5%AC%EB%AF%B8%EC%8B%9C%20%EC%83%88%EB%A7%88%EC%9D%84%EC%A7%80%EB%8F%84%EC%9E%90%20%EC%9E%90%EB%85%80%EC%9E%A5%ED%95%99%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "8fe5ddd67dd8d0bf5ff6",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부여군 고향사랑 기부금 모금 및 운용에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "8fe5ddd67dd8d0bf5ff6",
+          "title": "부여군 고향사랑 기부금 모금 및 운용에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 부여군",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%97%AC%EA%B5%B0%20%EA%B3%A0%ED%96%A5%EC%82%AC%EB%9E%91%20%EA%B8%B0%EB%B6%80%EA%B8%88%20%EB%AA%A8%EA%B8%88%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "7fb481dda6a4bce24d05",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부여군 기후위기 대응을 위한 탄소중립ㆍ녹색성장 기본 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "7fb481dda6a4bce24d05",
+          "title": "부여군 기후위기 대응을 위한 탄소중립ㆍ녹색성장 기본 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 부여군",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%97%AC%EA%B5%B0%20%EA%B8%B0%ED%9B%84%EC%9C%84%EA%B8%B0%20%EB%8C%80%EC%9D%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%E3%86%8D%EB%85%B9%EC%83%89%EC%84%B1%EC%9E%A5%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "62da059b19d29b8302ab",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 북구 공무원 당직 및 비상근무 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "62da059b19d29b8302ab",
+          "title": "부산광역시 북구 공무원 당직 및 비상근무 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 북구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EB%8B%B9%EC%A7%81%20%EB%B0%8F%20%EB%B9%84%EC%83%81%EA%B7%BC%EB%AC%B4%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "0c342370463fbbcf49df",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 남구 소상공인 지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "0c342370463fbbcf49df",
+          "title": "부산광역시 남구 소상공인 지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "49af585584cfd0621dd4",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "박정희대통령 생가 재단 설립 및 운영지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "49af585584cfd0621dd4",
+          "title": "박정희대통령 생가 재단 설립 및 운영지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "경상북도 구미시",
+          "url": "https://www.law.go.kr/자치법규/%EB%B0%95%EC%A0%95%ED%9D%AC%EB%8C%80%ED%86%B5%EB%A0%B9%20%EC%83%9D%EA%B0%80%20%EC%9E%AC%EB%8B%A8%20%EC%84%A4%EB%A6%BD%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "159d5db7266ff295778a",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "울산광역시 남구 기후위기 대응을 위한 탄소중립ㆍ녹색성장 기본 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "159d5db7266ff295778a",
+          "title": "울산광역시 남구 기후위기 대응을 위한 탄소중립ㆍ녹색성장 기본 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "울산광역시 남구",
+          "url": "https://www.law.go.kr/자치법규/%EC%9A%B8%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EA%B8%B0%ED%9B%84%EC%9C%84%EA%B8%B0%20%EB%8C%80%EC%9D%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%ED%83%84%EC%86%8C%EC%A4%91%EB%A6%BD%E3%86%8D%EB%85%B9%EC%83%89%EC%84%B1%EC%9E%A5%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "ba818a15e202fd8536e0",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "경산시의회 직무대리규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ba818a15e202fd8536e0",
+          "title": "경산시의회 직무대리규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도 경산시",
+          "url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%82%B0%EC%8B%9C%EC%9D%98%ED%9A%8C%20%EC%A7%81%EB%AC%B4%EB%8C%80%EB%A6%AC%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "6837e0905f3536058fb7",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부여군 에너지 기본 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "6837e0905f3536058fb7",
+          "title": "부여군 에너지 기본 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 부여군",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%97%AC%EA%B5%B0%20%EC%97%90%EB%84%88%EC%A7%80%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "5bf2386f36140789c1a7",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "경산시의회 비위공직자의 의원면직 처리제한에 관한 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "5bf2386f36140789c1a7",
+          "title": "경산시의회 비위공직자의 의원면직 처리제한에 관한 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도 경산시",
+          "url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%82%B0%EC%8B%9C%EC%9D%98%ED%9A%8C%20%EB%B9%84%EC%9C%84%EA%B3%B5%EC%A7%81%EC%9E%90%EC%9D%98%20%EC%9D%98%EC%9B%90%EB%A9%B4%EC%A7%81%20%EC%B2%98%EB%A6%AC%EC%A0%9C%ED%95%9C%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "083d3f5f8ab77bb7bd3b",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 영도구 경로당 운영 및 지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "083d3f5f8ab77bb7bd3b",
+          "title": "부산광역시 영도구 경로당 운영 및 지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "부산광역시 영도구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EB%8F%84%EA%B5%AC%20%EA%B2%BD%EB%A1%9C%EB%8B%B9%20%EC%9A%B4%EC%98%81%20%EB%B0%8F%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "5f91f3c55bfe5b355506",
+      "date": "2026-11-04",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "부산광역시 영도구 지방세무조사 운영 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "5f91f3c55bfe5b355506",
+          "title": "부산광역시 영도구 지방세무조사 운영 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "부산광역시 영도구",
+          "url": "https://www.law.go.kr/자치법규/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%98%81%EB%8F%84%EA%B5%AC%20%EC%A7%80%EB%B0%A9%EC%84%B8%EB%AC%B4%EC%A1%B0%EC%82%AC%20%EC%9A%B4%EC%98%81%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-04",
+          "effective": "2026-11-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
       "id": "law|대통령령|2026-11-03|36800",
       "date": "2026-11-03",
       "number": "36800",
@@ -5988,6 +6996,870 @@
           "url": "https://www.law.go.kr/법령/%EC%B2%AD%EB%85%84%20%EB%93%B1%EC%9D%98%20%EC%82%AC%ED%9A%8C%EC%A7%84%EC%B6%9C%20%EC%A7%80%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%8B%A4%EB%AC%B4%EA%B2%BD%EB%A0%A5%20%EC%9D%B8%EC%A0%95%20%ED%99%95%EB%8C%80%EC%97%90%20%EA%B4%80%ED%95%9C%204%EA%B0%9C%20%EB%B2%95%EB%A0%B9%EC%9D%98%20%EC%9D%BC%EB%B6%80%EA%B0%9C%EC%A0%95%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%ED%86%B5%EB%A0%B9%EB%A0%B9",
           "published": "2026-11-03",
           "effective": "2026-11-03",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "ac621bcd6482374b4ee0",
+      "date": "2026-11-03",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "칠곡군 출산장려 및 다자녀 가정 지원에 관한 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ac621bcd6482374b4ee0",
+          "title": "칠곡군 출산장려 및 다자녀 가정 지원에 관한 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "전부개정",
+          "ministry": "경상북도 칠곡군",
+          "url": "https://www.law.go.kr/자치법규/%EC%B9%A0%EA%B3%A1%EA%B5%B0%20%EC%B6%9C%EC%82%B0%EC%9E%A5%EB%A0%A4%20%EB%B0%8F%20%EB%8B%A4%EC%9E%90%EB%85%80%20%EA%B0%80%EC%A0%95%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-11-03",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "075d0e38ddcaf87c8c59",
+      "date": "2026-11-03",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "증권의 발행 및 공시 등에 관한 규정",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-13",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "075d0e38ddcaf87c8c59",
+          "title": "증권의 발행 및 공시 등에 관한 규정",
+          "kind": "고시",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "금융위원회",
+          "url": "https://www.law.go.kr/행정규칙/%EC%A6%9D%EA%B6%8C%EC%9D%98%20%EB%B0%9C%ED%96%89%20%EB%B0%8F%20%EA%B3%B5%EC%8B%9C%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+          "published": "2026-11-03",
+          "effective": "2026-11-13",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "b695a3069f3473d8d46d",
+      "date": "2026-11-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "남동구 뇌병변장애인 지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "b695a3069f3473d8d46d",
+          "title": "남동구 뇌병변장애인 지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "인천광역시 남동구",
+          "url": "https://www.law.go.kr/자치법규/%EB%82%A8%EB%8F%99%EA%B5%AC%20%EB%87%8C%EB%B3%91%EB%B3%80%EC%9E%A5%EC%95%A0%EC%9D%B8%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-02",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "8307b1bc1863d0698432",
+      "date": "2026-11-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "경상북도 저소득주민 국민건강보험료 및 노인장기요양보험료 지원 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "8307b1bc1863d0698432",
+          "title": "경상북도 저소득주민 국민건강보험료 및 노인장기요양보험료 지원 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "전부개정",
+          "ministry": "경상북도",
+          "url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EC%A0%80%EC%86%8C%EB%93%9D%EC%A3%BC%EB%AF%BC%20%EA%B5%AD%EB%AF%BC%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EB%A3%8C%20%EB%B0%8F%20%EB%85%B8%EC%9D%B8%EC%9E%A5%EA%B8%B0%EC%9A%94%EC%96%91%EB%B3%B4%ED%97%98%EB%A3%8C%20%EC%A7%80%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-02",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "27445c6eb0e5c955f7f8",
+      "date": "2026-11-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "천안시 도시계획 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-02-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "27445c6eb0e5c955f7f8",
+          "title": "천안시 도시계획 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 천안시",
+          "url": "https://www.law.go.kr/자치법규/%EC%B2%9C%EC%95%88%EC%8B%9C%20%EB%8F%84%EC%8B%9C%EA%B3%84%ED%9A%8D%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-02",
+          "effective": "2027-02-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "45a6764da778b9eb5f2a",
+      "date": "2026-11-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "천안시 공중화장실 설치 및 관리 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-02-12",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "45a6764da778b9eb5f2a",
+          "title": "천안시 공중화장실 설치 및 관리 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 천안시",
+          "url": "https://www.law.go.kr/자치법규/%EC%B2%9C%EC%95%88%EC%8B%9C%20%EA%B3%B5%EC%A4%91%ED%99%94%EC%9E%A5%EC%8B%A4%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-02",
+          "effective": "2027-02-12",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "de4b2e14e131609ad0ff",
+      "date": "2026-11-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "경상북도교육감 소속 공무원 특수지 근무수당 지급대상 지역 및 기관과 그 등급에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-03-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "de4b2e14e131609ad0ff",
+          "title": "경상북도교육감 소속 공무원 특수지 근무수당 지급대상 지역 및 기관과 그 등급에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도교육청",
+          "url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%EA%B5%90%EC%9C%A1%EA%B0%90%20%EC%86%8C%EC%86%8D%20%EA%B3%B5%EB%AC%B4%EC%9B%90%20%ED%8A%B9%EC%88%98%EC%A7%80%20%EA%B7%BC%EB%AC%B4%EC%88%98%EB%8B%B9%20%EC%A7%80%EA%B8%89%EB%8C%80%EC%83%81%20%EC%A7%80%EC%97%AD%20%EB%B0%8F%20%EA%B8%B0%EA%B4%80%EA%B3%BC%20%EA%B7%B8%20%EB%93%B1%EA%B8%89%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-02",
+          "effective": "2027-03-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "ad99b1b623b6b4d8cb99",
+      "date": "2026-11-02",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "경상북도립학교 설치 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-03-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ad99b1b623b6b4d8cb99",
+          "title": "경상북도립학교 설치 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도교육청",
+          "url": "https://www.law.go.kr/자치법규/%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%EB%A6%BD%ED%95%99%EA%B5%90%20%EC%84%A4%EC%B9%98%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-11-02",
+          "effective": "2027-03-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "8899a7ed2641d4fd61a0",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "고성군 예방접종 지원 및 위탁에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "8899a7ed2641d4fd61a0",
+          "title": "고성군 예방접종 지원 및 위탁에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "경상남도 고성군",
+          "url": "https://www.law.go.kr/자치법규/%EA%B3%A0%EC%84%B1%EA%B5%B0%20%EC%98%88%EB%B0%A9%EC%A0%91%EC%A2%85%20%EC%A7%80%EC%9B%90%20%EB%B0%8F%20%EC%9C%84%ED%83%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "61e21a0249b863a3b994",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "옥천군 행복드림기동대 운영 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "61e21a0249b863a3b994",
+          "title": "옥천군 행복드림기동대 운영 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "충청북도 옥천군",
+          "url": "https://www.law.go.kr/자치법규/%EC%98%A5%EC%B2%9C%EA%B5%B0%20%ED%96%89%EB%B3%B5%EB%93%9C%EB%A6%BC%EA%B8%B0%EB%8F%99%EB%8C%80%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "a7bce2a142ff7f8cda20",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "정선군 응급환자 이송 지원에 관한 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "a7bce2a142ff7f8cda20",
+          "title": "정선군 응급환자 이송 지원에 관한 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "강원특별자치도 정선군",
+          "url": "https://www.law.go.kr/자치법규/%EC%A0%95%EC%84%A0%EA%B5%B0%20%EC%9D%91%EA%B8%89%ED%99%98%EC%9E%90%20%EC%9D%B4%EC%86%A1%20%EC%A7%80%EC%9B%90%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "ab54a55441bde1af7d44",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "논산시 청년기금 설치 및 운용 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ab54a55441bde1af7d44",
+          "title": "논산시 청년기금 설치 및 운용 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "충청남도 논산시",
+          "url": "https://www.law.go.kr/자치법규/%EB%85%BC%EC%82%B0%EC%8B%9C%20%EC%B2%AD%EB%85%84%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "9eac8beeaee941a442e3",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "대구광역시 중구 인구정책 기본 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "9eac8beeaee941a442e3",
+          "title": "대구광역시 중구 인구정책 기본 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "대구광역시 중구",
+          "url": "https://www.law.go.kr/자치법규/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EC%9D%B8%EA%B5%AC%EC%A0%95%EC%B1%85%20%EA%B8%B0%EB%B3%B8%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "9f8171fcef63063a3b95",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "충청남도 회계관리에 관한 규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "9f8171fcef63063a3b95",
+          "title": "충청남도 회계관리에 관한 규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도",
+          "url": "https://www.law.go.kr/자치법규/%EC%B6%A9%EC%B2%AD%EB%82%A8%EB%8F%84%20%ED%9A%8C%EA%B3%84%EA%B4%80%EB%A6%AC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "f9be84d9ab41dcfaa331",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "대구광역시 건축 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-11-12",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "f9be84d9ab41dcfaa331",
+          "title": "대구광역시 건축 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "대구광역시",
+          "url": "https://www.law.go.kr/자치법규/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EA%B1%B4%EC%B6%95%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2026-11-12",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "7a1fee85fe075adbf20d",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "대구광역시 여성회관 운영 및 사용 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "7a1fee85fe075adbf20d",
+          "title": "대구광역시 여성회관 운영 및 사용 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "대구광역시",
+          "url": "https://www.law.go.kr/자치법규/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%AC%EC%84%B1%ED%9A%8C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "8ac692f593168d510d0f",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "대구광역시종합복지회관 운영 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "8ac692f593168d510d0f",
+          "title": "대구광역시종합복지회관 운영 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "대구광역시",
+          "url": "https://www.law.go.kr/자치법규/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%EC%A2%85%ED%95%A9%EB%B3%B5%EC%A7%80%ED%9A%8C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "4e6fe6f2cc50a3ff1bd6",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "대구광역시 시세 감면 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "4e6fe6f2cc50a3ff1bd6",
+          "title": "대구광역시 시세 감면 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "대구광역시",
+          "url": "https://www.law.go.kr/자치법규/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%8B%9C%EC%84%B8%20%EA%B0%90%EB%A9%B4%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "da817d5ae4b78161a1ab",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "화성시청 직장운동경기부 설치 및 운영에 관한 조례 시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "da817d5ae4b78161a1ab",
+          "title": "화성시청 직장운동경기부 설치 및 운영에 관한 조례 시행규칙",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경기도 화성시",
+          "url": "https://www.law.go.kr/자치법규/%ED%99%94%EC%84%B1%EC%8B%9C%EC%B2%AD%20%EC%A7%81%EC%9E%A5%EC%9A%B4%EB%8F%99%EA%B2%BD%EA%B8%B0%EB%B6%80%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%A1%B0%EB%A1%80%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "97fe2c0feebb5744b7d3",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "청송군 지방공무원 정원 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-12-28",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "97fe2c0feebb5744b7d3",
+          "title": "청송군 지방공무원 정원 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도 청송군",
+          "url": "https://www.law.go.kr/자치법규/%EC%B2%AD%EC%86%A1%EA%B5%B0%20%EC%A7%80%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90%20%EC%A0%95%EC%9B%90%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2026-12-28",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "7a87786f3f2e3b75d354",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "청송군 행정기구 설치 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2026-12-28",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "7a87786f3f2e3b75d354",
+          "title": "청송군 행정기구 설치 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "경상북도 청송군",
+          "url": "https://www.law.go.kr/자치법규/%EC%B2%AD%EC%86%A1%EA%B5%B0%20%ED%96%89%EC%A0%95%EA%B8%B0%EA%B5%AC%20%EC%84%A4%EC%B9%98%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2026-12-28",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "95eda4e143c1ed4a88ae",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "대구광역시 동부여성문화회관 운영 및 사용 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "95eda4e143c1ed4a88ae",
+          "title": "대구광역시 동부여성문화회관 운영 및 사용 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "대구광역시",
+          "url": "https://www.law.go.kr/자치법규/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%8F%99%EB%B6%80%EC%97%AC%EC%84%B1%EB%AC%B8%ED%99%94%ED%9A%8C%EA%B4%80%20%EC%9A%B4%EC%98%81%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "3d7281f1c043c3b01f1e",
+      "date": "2026-10-30",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "논산시 보훈명예수당 지급 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "3d7281f1c043c3b01f1e",
+          "title": "논산시 보훈명예수당 지급 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "일부개정",
+          "ministry": "충청남도 논산시",
+          "url": "https://www.law.go.kr/자치법규/%EB%85%BC%EC%82%B0%EC%8B%9C%20%EB%B3%B4%ED%9B%88%EB%AA%85%EC%98%88%EC%88%98%EB%8B%B9%20%EC%A7%80%EA%B8%89%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-30",
+          "effective": "2027-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "ad52a1bfd35798b39e1c",
+      "date": "2026-10-28",
+      "number": "",
+      "official_common_promulgation": false,
+      "summary": "진천군 신청사 건립기금 설치 및 운용 조례",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2027-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "ad52a1bfd35798b39e1c",
+          "title": "진천군 신청사 건립기금 설치 및 운용 조례",
+          "kind": "자치법규",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "충청북도 진천군",
+          "url": "https://www.law.go.kr/자치법규/%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EC%8B%A0%EC%B2%AD%EC%82%AC%20%EA%B1%B4%EB%A6%BD%EA%B8%B0%EA%B8%88%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%9A%A9%20%EC%A1%B0%EB%A1%80",
+          "published": "2026-10-28",
+          "effective": "2027-01-01",
           "changed_articles": [],
           "excerpts": [],
           "actor_duties": [],
@@ -8364,6 +10236,294 @@
           "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
           "published": "2025-12-02",
           "effective": "2026-06-03",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|대통령령|2025-10-01|35804",
+      "date": "2025-10-01",
+      "number": "35804",
+      "official_common_promulgation": true,
+      "summary": "기후에너지환경부와 그 소속기관 직제",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2025-10-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "f2bb01492af0f9c7187b",
+          "title": "기후에너지환경부와 그 소속기관 직제",
+          "kind": "대통령령",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "기후에너지환경부,행정안전부",
+          "url": "https://www.law.go.kr/법령/%EA%B8%B0%ED%9B%84%EC%97%90%EB%84%88%EC%A7%80%ED%99%98%EA%B2%BD%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+          "published": "2025-10-01",
+          "effective": "2025-10-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|법률|2009-01-30|09346",
+      "date": "2009-01-30",
+      "number": "09346",
+      "official_common_promulgation": true,
+      "summary": "개별소비세법",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2028-01-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "31b853dd531f1a44dc5f",
+          "title": "개별소비세법",
+          "kind": "법률",
+          "verification": "detail_failed",
+          "lifecycle": "amendment",
+          "revision": "타법개정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+          "published": "2009-01-30",
+          "effective": "2028-01-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|산업자원부령|2006-08-16|00356",
+      "date": "2006-08-16",
+      "number": "00356",
+      "official_common_promulgation": true,
+      "summary": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2006-08-16",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "05cbd60e9b5d7a18dc53",
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행규칙",
+          "kind": "산업자원부령",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "2006-08-16",
+          "effective": "2006-08-16",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|대통령령|2006-05-30|19494",
+      "date": "2006-05-30",
+      "number": "19494",
+      "official_common_promulgation": true,
+      "summary": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2006-06-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "f8640ee944c8fe8a6d67",
+          "title": "대·중소기업 상생협력 촉진에 관한 법률 시행령",
+          "kind": "대통령령",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "published": "2006-05-30",
+          "effective": "2006-06-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|법률|2006-03-03|07864",
+      "date": "2006-03-03",
+      "number": "07864",
+      "official_common_promulgation": true,
+      "summary": "대·중소기업 상생협력 촉진에 관한 법률",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "2006-06-04",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "115e10b1ae219b68669b",
+          "title": "대·중소기업 상생협력 촉진에 관한 법률",
+          "kind": "법률",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "중소벤처기업부",
+          "url": "https://www.law.go.kr/법령/%EB%8C%80%C2%B7%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+          "published": "2006-03-03",
+          "effective": "2006-06-04",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|재무부령|1977-03-11|01247",
+      "date": "1977-03-11",
+      "number": "01247",
+      "official_common_promulgation": true,
+      "summary": "특별소비세법시행규칙",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "1977-03-11",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "6a262099fb718b14c9be",
+          "title": "특별소비세법시행규칙",
+          "kind": "재무부령",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+          "published": "1977-03-11",
+          "effective": "1977-03-11",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|대통령령|1976-12-31|08408",
+      "date": "1976-12-31",
+      "number": "08408",
+      "official_common_promulgation": true,
+      "summary": "특별소비세법시행령",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "1977-07-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "4b675ce35c103144f8ba",
+          "title": "특별소비세법시행령",
+          "kind": "대통령령",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9",
+          "published": "1976-12-31",
+          "effective": "1977-07-01",
+          "changed_articles": [],
+          "excerpts": [],
+          "actor_duties": [],
+          "needs_attachment_check": false,
+          "notes": [
+            "공식 현재 본문 조회 실패: LAW_OC must be configured for official API collection"
+          ],
+          "comparison": null
+        }
+      ],
+      "importance": 4
+    },
+    {
+      "id": "law|법률|1976-12-22|02935",
+      "date": "1976-12-22",
+      "number": "02935",
+      "official_common_promulgation": true,
+      "summary": "특별소비세법",
+      "source_count": 1,
+      "verified_count": 0,
+      "agency_count": 0,
+      "effective_at": "1977-07-01",
+      "dependencies": [],
+      "official_review_candidates": [],
+      "source_docs": [
+        {
+          "id": "d9535ae67a55862f57b0",
+          "title": "특별소비세법",
+          "kind": "법률",
+          "verification": "detail_failed",
+          "lifecycle": "enactment",
+          "revision": "제정",
+          "ministry": "재정경제부",
+          "url": "https://www.law.go.kr/법령/%ED%8A%B9%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95",
+          "published": "1976-12-22",
+          "effective": "1977-07-01",
           "changed_articles": [],
           "excerpts": [],
           "actor_duties": [],

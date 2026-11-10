@@ -109,9 +109,9 @@ def pick_work(state,today,limit):
         old=processed.get(k)
         if old is None:
             return True
-        if old.get("verification") not in (
-            "detail_failed","partial_official_text","official_record_only") and
-                not old.get("needs_attachment_check"):
+        if (old.get("verification") not in (
+                "detail_failed","partial_official_text","official_record_only")
+                and not old.get("needs_attachment_check")):
             return False
         return state.get("retry_after",{}).get(k,"")<=today.isoformat()
     waiting=[x for k,x in catalog.items() if eligible(k,x)]

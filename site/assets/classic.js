@@ -26,6 +26,8 @@ return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-even
  '<span class="mini">본문 대조 대기</span>':
  e.source_verification==="detail_pending"?
  '<span class="mini">원문 재확인 대기</span>':'')+
+ ((e.source_documents||[]).some(d=>d.needs_attachment_check)?
+ '<span class="mini">첨부 표 확인 대기</span>':'')+
  '<span>기관별 보기 ›</span></div></button>';
 }
 function displayList(){
@@ -252,12 +254,18 @@ function detailHTML(e){
     showEmpty("기관별 검토사항 확인 중","공식 근거가 확인되면 표시됩니다."))+
  '</div></div></section>';
  const sourceChanges='<section class="sourceChanges"><h3 class="sectionHeading">실제 변경사항 · 신구 비교</h3>'+differences(e,3)+'</section>';
+ const missingAttachments=(e.source_documents||[]).flatMap(d=>d.unresolved_attachments||[]);
+ const annexes=missingAttachments.length?
+ '<details class="legalDetails"><summary>미확인 공식 별표·첨부 '+missingAttachments.length+'건</summary>'+
+ missingAttachments.map(d=>'<div><a class="refLink" href="'+validUrl(d.url)+
+ '" target="_blank" rel="noopener">'+esc(d.title||d.label||"공식 첨부")+' ↗</a> · 원문 수치 검증 대기</div>').join("")+
+ '</details>':"";
  const legal='<details class="legalDetails"><summary>전체 개정 이유·상세 조문 보기</summary>'+
  (e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유</b><p style="margin-top:8px">'+
  esc(e.amendment_reason)+'</p></div>':'')+differences(e)+
  '<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+
  '" target="_blank" rel="noopener">공식 원문 보기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+sourceChanges+legal+
+ return header+'<div class="detailBody">'+overview+sourceChanges+annexes+legal+
  legalRelationships(e)+impact+'</div>';
 }
 function bindSidebarGroups(){

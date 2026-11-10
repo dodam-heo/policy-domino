@@ -1,35 +1,43 @@
-# 정책도미노 · 공식 정책 변경 추적기 v2
+# 정책도미노 | 공식 정책 변경 → 공공기관별 업무 영향
 
-서비스: https://dodam-heo.github.io/policy-domino/
+공개: https://dodam-heo.github.io/policy-domino/impact/
 
-## 설계 원칙
-변경 수집은 특정 정책명이나 분야를 사전에 등록하지 않는다. 법제처 공식 법령(법률·시행령·시행규칙) 및 행정규칙(고시·훈령·예규 등)의 목록·연혁을 범위 조회한다. 급여, 금융, 교육, 환경, 노동, 조직 등 같은 수집·비교 엔진을 사용한다.
+정책도미노는 법률·시행령·시행규칙·행정규칙의 공식 변경을 추적하고, **어느 공공기관의 어떤 검토 업무로 이어지는지**를 근거와 함께 보여주는 프로젝트입니다. 법령을 다시 고치라는 순환 지시를 만들거나, 증거 없이 기관 조치의 완료 여부를 판단하지 않습니다.
 
-수집 → 본문 추출 → 전후 비교 → 공식 인용 관계 → 기관 업무 검토 항목은 각각 구분한다. 문서 간 인용만으로 정책 변경의 인과관계를 확정하지 않으며, 본문 검색 후보는 검증된 연결과 분리한다.
+## 현재 데이터와 화면
 
-## 수집과 검증
-- 소스: 국가법령정보 공동활용 API의 법령 목록(target=law), 행정규칙 목록(target=admrul), 행정규칙 연혁(nw=2), 법령 연혁(target=eflaw), 상세본문(lawService.do).
-- 정기 수집: 최근 14일 + 과거 14일짜리 기간창을 병행 조회. 과거 기간은 순차 역추적. 처리하지 못한 문서는 상태 파일 대기열에서 다음 실행으로 이월한다.
-- 변경 식별: 자료 종류 + 공식 고유 ID + 버전 일련번호.
-- 신구 비교: 이전 공식 버전과 해당 버전의 조문·별표. 이전 버전이 없으면 이전 연혁 본문 미확보 표시.
-- 연도별 기준: 제목의 연도만 바뀌는 규정은 이전 연도의 해당 공식 제목을 검색해 실제 이전 본문이 확보되었을 때만 연도별 기준 비교 완료로 구분한다. 특정 사업 기준이나 퍼센트는 하드코딩하지 않는다.
-- 관계: 문서가 다른 법령·고시를 명시적으로 인용한 경우 공식 인용 관계로 기록한다. 공식 본문 검색 결과는 관계 후보이며 의존관계의 증명은 아니다.
-- 조치: 변경된 조문의 업무 유형과 주체를 근거로 영향 검토 필요 항목을 표시하며 실제 시스템 반영 여부는 확인하지 않는다.
+- `/impact/`: 기본 '영향도 큼' 필터가 적용된 신규·개정 변경 목록과 기관별 영향 분석.
+- `/classic/`: 동일한 변경/검토 데이터를 사용하는 별도 접근 경로.
+- `/v4/`: 공식 원문 수집·검증 진행 상태 및 연계 탐색.
+- `/previous.html`: 예전 화면 참고용.
+- `site/classic/data.json`: V4 공식 신구 본문에 근거한 분석과 이전 V2 공식 개정 지시문 기반 항목을 **서로 다른 검증 상태**로 제공.
 
-## 공개 및 자동화
-- 백엔드: v2/collector.py (Python 표준 라이브러리)
-- 자동 테스트: v2/test_collector.py
-- 인터페이스: site/index.html
-- 데이터: site/data.json (policy-domino-v2)
-- 상태: data/v2_state.json (대기열, 기록, 스냅샷, 과거 이력 스캔)
-- 워크플로: .github/workflows/auto-watch.yml (매시 21분, main 코드 변경 시)
+분류 '영향도 큼'은 검증된 직접 검토 기관 2곳 이상 또는 실제 변경 조항이 적용되는 규정 2건 이상이다. 이전 V2 근거는 최신 재검증 대기 표시를 유지한다. 수집 공백과 미확인 항목을 '영향 없음'으로 단정하지 않는다.
 
-GitHub Actions에 법제처 공식 API 인증값 LAW_OC를 Secret 또는 Variable로 등록해야 한다. 인증값을 공개 코드에 기록하지 않는다.
+## 설계와 코드
 
-## 한계
-공식 API 제공 범위에서 단계적으로 수집하므로 전국 모든 법령·고시의 전수 수집이나 개별 기관 시스템의 조치 완료를 보증하지 않는다. 원천 조회 실패, 수집량 초과, 종전 본문 미확보는 별도로 표시한다. 특정 정책의 정답을 만들어내기 위해 사례별 수집 대상이나 퍼센트를 코드에 넣지 않는다.
+[기술 설계·품질 기준](docs/architecture.md) 참고.
 
-공식 문서
-- https://open.law.go.kr/LSO/openApi/guideResult.do
-- https://open.law.go.kr/LSO/openApi/guideResult.do?htmlName=admrulListGuide
-- https://open.law.go.kr/LSO/openApi/guideResult.do?htmlName=admrulInfoGuide
+| 책임 | 구현 |
+| --- | --- |
+| 공식 자료 수집·비교 | `v2/collector.py` |
+| 공식 원문 근거/연계 탐색 | `v4/pipeline.py` |
+| 기관별 검토 화면용 데이터 | `v4/classic_bridge.py` |
+| 증빙에 따른 영향 범위 | `v4/impact_scope.py` |
+| 단일 화면 템플릿 생성 | `v4/classic_pages.py`, `site/templates/agency.html` |
+| 공유 프론트엔드 | `site/assets/classic.css`, `site/assets/classic.js`, `site/assets/impact-model.js` |
+| 검증과 배포 | `.github/workflows/classic-publish.yml` |
+
+## 개발 검증
+
+```bash
+python -m unittest v4.test_impact_scope v4.test_classic_pages -v
+node site/classic/test_ui.cjs
+node site/test_adapter.cjs
+```
+
+화면만 재생성하려면 `python -m v4.classic_pages`, 공식 검증 자료로 기관별 검토 데이터를 재작성하려면 `python -m v4.classic_bridge`. GitHub Actions에서 법제처 API용 `LAW_OC`를 Secret 또는 Variable로 설정한다. 인증값을 코드에 저장하지 않는다.
+
+## 알려진 한계
+
+기관별 업무 연계는 공식 근거가 검증된 범위만 제공하며 LH·SH·한국장학재단 등 여러 집행기관 전체를 자동 추적하는 기능은 아직 완성되지 않았다. 전국 공공기관에 대한 전수 판정이나 실제 내부 시스템의 반영 완료를 보장하지 않는다. 전체 수집 파이프라인과 데이터 계약 구조는 추가 개선 대상이다.

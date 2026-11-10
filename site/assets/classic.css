@@ -23,7 +23,6 @@ main{max-width:1230px;margin:auto;padding:30px 20px 68px}
 .change{border:1px solid #e4eaf0;border-radius:10px;margin-top:10px;overflow:hidden}.changeHead{background:#f7fafc;padding:9px 12px;border-bottom:1px solid #e3e9ef;font-size:12px;font-weight:760;display:flex;justify-content:space-between;gap:8px}.changePair{display:grid;grid-template-columns:1fr 1fr}.changeCol{padding:12px 13px;min-width:0}.changeCol+ .changeCol{border-left:1px solid #e5ebef}.changeCol small{color:#7a8a99;font-size:10px;font-weight:800}.changeCol p{font-size:12px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;max-height:230px;overflow:auto;margin-top:7px}
 .before{background:#fffafa}.after{background:#f8fffc}.smallNote{color:#708496;font-size:12px;line-height:1.6;margin-top:10px}
 .actionSummary{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.actionTotal{font-size:12px;color:#5b7586}
-.statusFilters{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}.statusFilter{font-size:11px;font-weight:720;padding:7px 9px;background:white;border:1px solid #dde7eb;color:#557080;border-radius:8px}.statusFilter.active{background:#163e5b;color:white;border-color:#163e5b}
 .action{border:1px solid #e1e9ef;border-radius:11px;margin:9px 0;padding:14px 15px}.actionTop{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}.agency{font-size:14px;font-weight:850;color:#263e52}.role{font-size:11px;color:#708697;margin-top:4px}.status{display:inline-block;border-radius:7px;padding:5px 7px;font-weight:790;font-size:10px;white-space:nowrap;background:#edf1f5;color:#5f7586}.status.done{background:#e4f6ed;color:#11834f}.status.pending{background:#fff0e7;color:#b65729}.status.upcoming{background:#e8f2fb;color:#2a709d}
 .taskTitle{font-size:12px;line-height:1.7;margin-top:12px;font-weight:800}.taskDesc{font-size:12px;color:#516d80;line-height:1.65;margin-top:5px}.evidence{background:#f6f9fb;padding:10px 11px;border-radius:7px;margin-top:10px;font-size:11px;color:#687f8e;line-height:1.6}.evidence b{color:#425b70}
 .copyMeta{margin-top:15px;font-size:11px;color:#72899a;line-height:1.7}.refLink{font-size:12px;font-weight:800;display:inline-flex;gap:6px;align-items:center;margin-top:8px}
@@ -51,33 +50,28 @@ aside .empty{padding:38px 22px}
 .legalDetails .change{margin:10px 0}
 @media(max-width:850px){.valueRow{grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr)}}
 
-/* Three-level hierarchy: institution type -> administrative region ->
-   source-backed institution. Closed by default so hundreds of bodies
-   never flood the viewport. Native details is keyboard accessible. */
-.institutionTree{display:grid;gap:9px;margin:3px 0 17px}
-.institutionTypeGroup{border:1px solid #dbe8ef;border-radius:12px;background:#fff;overflow:hidden}
-.institutionTypeHeading,.institutionRegionHeading,.groupHeading{display:flex;align-items:center;gap:9px;cursor:pointer;list-style:none;min-width:0}
-.institutionTypeHeading::-webkit-details-marker,.institutionRegionHeading::-webkit-details-marker,.groupHeading::-webkit-details-marker{display:none}
-.institutionTypeHeading::after,.institutionRegionHeading::after,.groupHeading::after{content:"⌄";font-size:17px;color:#46758a;font-weight:800;margin-left:3px;transition:transform .18s}
-.institutionTypeGroup[open]>.institutionTypeHeading::after,.institutionRegionGroup[open]>.institutionRegionHeading::after,.impactAgencyGroup[open]>.groupHeading::after{transform:rotate(180deg)}
-.institutionTypeHeading{padding:15px;background:#f4f9fc;color:#184967}
-.institutionTypeHeading strong{font-size:14px;flex:1;min-width:0}
-.institutionTypeHeading span{color:#597e93;font-size:11px;white-space:nowrap}
-.institutionTypeGroup[open]>.institutionTypeHeading{border-bottom:1px solid #dbe8ef}
-.institutionTypeChildren{padding:8px 12px 13px}
-.institutionRegionGroup{border:1px solid #e0eaf0;border-radius:9px;overflow:hidden;margin:7px 0;background:#fff}
-.institutionRegionHeading{padding:12px 13px;background:#f9fbfd}
-.institutionRegionHeading strong{color:#2e5972;font-size:13px;flex:1;min-width:0}
-.institutionRegionHeading span{color:#718a9c;font-size:11px;white-space:nowrap}
-.institutionRegionGroup[open]>.institutionRegionHeading{border-bottom:1px solid #e4edf1}
-.institutionRegionChildren{padding:4px 10px 10px}
-.impactAgencyGroup{border:1px solid #e1e9ef;border-radius:9px;margin-top:7px;background:#fff;overflow:hidden}
-.groupHeading{padding:11px 12px;background:#fff}
-.groupHeading strong{font-size:12px;font-weight:760;color:#2a526a;flex:1;min-width:0;overflow-wrap:anywhere}
-.groupHeading span{color:#7890a0;font-size:11px;white-space:nowrap}
-.impactAgencyGroup[open]>.groupHeading{border-bottom:1px solid #e6eef2;background:#f8fbfc}
-.agencyTaskList{padding:4px 10px 12px}
-.agencyTaskList .action:last-child{margin-bottom:0}
+/* Institution finder is an actual filter: choices first, one matching
+   agency's task list second. No hundreds of expanded task cards. */
+.agencyFilterPanel{border:1px solid #dfebf1;border-radius:12px;background:#f9fbfd;padding:13px 14px;margin-bottom:14px}
+.agencyFilterTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:830;color:#244c64;margin-bottom:12px}
+.agencyFilterTitle span{font-size:11px;font-weight:600;color:#7c90a0}
+.agencyTypeChoices,.agencyRegionChoices{display:flex;gap:7px;flex-wrap:wrap}
+.agencyTypeChoice,.agencyRegionChoice,.agencyPick{border:1px solid #d8e6ec;border-radius:8px;background:#fff;color:#295671;font-size:12px;padding:9px 11px;font-weight:730;text-align:left;line-height:1.4}
+.agencyTypeChoice span,.agencyRegionChoice span,.agencyPick span{color:#7c91a1;font-size:10px;font-weight:650;margin-left:4px}
+.agencyTypeChoice:hover,.agencyRegionChoice:hover,.agencyPick:hover{background:#eff7fa}
+.agencyTypeChoice.active,.agencyRegionChoice.active,.agencyPick.active{background:#175d7b;color:#fff;border-color:#175d7b}
+.agencyTypeChoice.active span,.agencyRegionChoice.active span,.agencyPick.active span{color:#cde6f2}
+.agencyTypeChoice:focus-visible,.agencyRegionChoice:focus-visible,.agencyPick:focus-visible{outline:2px solid #167ba6;outline-offset:2px}
+.agencyFilterLevel{border-top:1px solid #e4edf2;padding-top:11px;margin-top:11px}
+.agencyFilterLabel{font-size:11px;font-weight:780;color:#516f83;display:block;margin:0 0 8px}
+.agencyChoiceList{display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px;max-height:255px;overflow-y:auto;padding:2px 4px 3px 1px;scrollbar-width:thin}
+.agencySearch{width:100%;border:1px solid #d5e5ed;border-radius:9px;background:#fff;padding:10px 11px;font-size:12px;margin:0 0 9px}
+.agencyPick{font-size:11px;padding:8px 10px;overflow-wrap:anywhere;max-width:100%}
+.agencyNoMatch,.agencySelectionHint{color:#718a9b;font-size:12px;line-height:1.7;padding:14px 2px}
+.agencyResultHeader{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:17px 0 10px;padding-bottom:10px;border-bottom:1px solid #e3edf2}
+.agencyResultHeader strong{color:#234b62;font-size:14px}
+.agencyResultHeader span{font-size:12px;color:#6b8597}
+@media(max-width:850px){.agencyFilterPanel{padding:12px 10px}.agencyTypeChoice{flex:1 1 44%}.agencyChoiceList{max-height:250px}.agencyPick{font-size:11px}}
 .actionStatusNote{display:block;font-size:11px;color:#63839a;line-height:1.5;margin-top:6px}
 
 /* Detail: a brief change overview, visible institution actions, optional law source */
@@ -91,7 +85,7 @@ aside .empty{padding:38px 22px}
 .legalDetails{background:#fbfcfd;border:1px solid #dfe8ee;border-radius:11px;padding:11px 13px;margin-top:20px}
 .legalDetails summary{font-size:13px;font-weight:800}
 .legalReasonFull{font-size:12px;line-height:1.8;background:#fff;color:#4f687d;border-radius:8px;padding:13px;margin:11px 0;white-space:pre-wrap}
-@media(max-width:850px){.changeOverview{padding:13px}.detailBody{padding-top:13px}.institutionTypeChildren{padding:7px}.institutionRegionChildren{padding:3px 6px 8px}.institutionTypeHeading{padding:13px 11px}.institutionRegionHeading{padding:11px 9px}.groupHeading{padding:11px 9px}.agencyTaskList{padding:2px 7px 9px}.institutionTypeHeading span,.institutionRegionHeading span{font-size:10px}}
+@media(max-width:850px){.changeOverview{padding:13px}.detailBody{padding-top:13px}}
 
 .evidenceDrawer{margin-top:12px;border:1px solid #e4ebf0;border-radius:9px;padding:9px 12px;background:#fafcfd}
 .evidenceDrawer summary{cursor:pointer;color:#426d84;font-weight:750;font-size:11px}

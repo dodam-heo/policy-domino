@@ -6,7 +6,7 @@ article and the target document's actual use can justify an impact link.
 """
 from __future__ import annotations
 import re,urllib.parse
-from v2 import collector as api
+from policy_domino import official_api as api
 
 def article(value):
     raw=str(value or "").strip()

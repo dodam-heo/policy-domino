@@ -301,14 +301,18 @@ function detailHTML(e){
  const visibleChanges=allChanges.length;
  const totalChanges=Math.max(visibleChanges,Number(e.change_count||0));
  const extra=totalChanges>visibleChanges?' · '+(totalChanges-visibleChanges)+'개 조문은 공식 원문 확인':'';
- const sourceChanges='<section class="sourceChanges">'+
- '<h3 class="sectionHeading">실제 변경사항 · 신구 비교</h3>'+
- '<p class="sourceChangeCount">전체 '+totalChanges+'개 변경 조문 · 원문 비교 확보 '+
- visibleChanges+'건'+extra+'</p>'+
+ const sourceChanges='<details class="sourceChanges">'+
+ '<summary class="sourceChangesToggle"><span class="sourceChangesTitle">실제 변경사항 · 신구 비교</span>'+
+ '<span class="sourceChangesCount">총 '+totalChanges+'개 변경 조문 · 신구 대조 '+
+ visibleChanges+'건</span><span class="sourceChangesHint">'+
+ '<span class="whenClosed">펼쳐보기 ▾</span><span class="whenOpen">접기 ▴</span>'+
+ '</span></summary>'+
+ '<div class="sourceChangesContent">'+
+ (extra?'<p class="sourceChangeCount">'+extra.slice(3)+'</p>':"")+
  differences(e,0,3)+
- (visibleChanges>3?'<details class="otherChanges"><summary>다른 '+(visibleChanges-3)+
- '건의 조문별 신구 비교 펼쳐보기</summary>'+differences(e,3)+'</details>':"")+
- '</section>';
+ (visibleChanges>3?'<details class="otherChanges"><summary>나머지 '+(visibleChanges-3)+
+ '건의 신구 비교 펼쳐보기</summary>'+differences(e,3)+'</details>':"")+
+ '</div></details>';
  const missingAttachments=(e.source_documents||[]).flatMap(d=>d.unresolved_attachments||[]);
  const annexes=missingAttachments.length?
  '<details class="legalDetails"><summary>미확인 공식 별표·첨부 '+missingAttachments.length+'건</summary>'+

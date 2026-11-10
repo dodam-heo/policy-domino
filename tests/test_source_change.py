@@ -60,6 +60,17 @@ class OfficialChangePresentationTests(unittest.TestCase):
         self.assertTrue(event["source_fingerprint"])
         self.assertLessEqual(len(actions),3)
 
+
+    def test_source_summary_priority_favors_verified_cross_institution_event(self):
+        from policy_domino.ai_impact import source_summary_priority
+        high={"event_id":"high","promulgated_at":"2026-11-06",
+              "source_fingerprint":"abc","impact_priority":175,
+              "article_differences":[{"before":"옛 기준","after":"새 기준"}]}
+        recent={"event_id":"recent","promulgated_at":"2026-11-10",
+                "source_fingerprint":"def","impact_priority":5,
+                "article_differences":[{"before":"옛 문장","after":"새 문장"}]}
+        self.assertGreater(source_summary_priority(high),source_summary_priority(recent))
+
     def test_ai_summary_must_bind_to_actual_source_evidence(self):
         before="제5조(공고) 조성계획안 공모는 관보와 일간신문에 공고하여야 한다."
         after="제5조(공고) 조성계획안 공모는 관보, 신문, 인터넷신문 및 방송에 공고하여야 한다."

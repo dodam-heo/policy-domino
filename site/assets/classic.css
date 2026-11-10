@@ -171,3 +171,34 @@ aside .empty{padding:38px 22px}
 @media(max-width:850px){.sourceFullColumns{grid-template-columns:1fr}}
 
 .overviewProof{font-size:11px;margin-top:7px;color:#52788f;font-weight:650}
+
+/* Policy detail hierarchy: short key change first, evidence disclosed on demand. */
+details.sourceChanges{border:1px solid #d9e5ed;border-radius:12px;background:#fbfdfe;margin:14px 0 20px;overflow:hidden}
+.sourceChangesToggle{cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;padding:15px 16px;color:#264e66;list-style:revert}
+.sourceChangesToggle::marker{color:#267396}
+.sourceChangesToggle::-webkit-details-marker{color:#267396}
+.sourceChangesTitle{font-size:14px;font-weight:850}
+.sourceChangesCount{font-size:11px;color:#658195;font-weight:650}
+.sourceChangesContent{padding:0 12px 13px}
+details.sourceChanges[open] .sourceChangesToggle{border-bottom:1px solid #d9e5ed;margin-bottom:10px}
+.sourceChanges .changePair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.sourceChanges .changeCol+.changeCol{border-left:1px solid #e5ebef;border-top:0}
+.sourceChanges .changeCol{min-width:0}
+.sourceChanges .changeCol p{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:850px){
+ .sourceChanges .changePair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .sourceChanges .changeCol{padding:10px 9px}
+ .sourceChanges .changeCol p{font-size:11px;line-height:1.65}
+ .sourceChanges .changeCol small{font-size:10px}
+ .sourceChanges .sourceFullColumns{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .sourceChanges .sourceFullColumns>div{padding:9px}
+ .sourceChangesToggle{padding:13px 12px}
+ .sourceChangesContent{padding:0 8px 10px}
+}
+
+/* Explicit, keyboard-accessible disclosure state on narrow screens. */
+details.sourceChanges .sourceChangesToggle{list-style:none}
+details.sourceChanges .sourceChangesToggle::-webkit-details-marker{display:none}
+.sourceChangesHint{margin-left:auto;white-space:nowrap;color:#196280;font-size:11px;font-weight:800}
+details.sourceChanges:not([open]) .whenOpen{display:none}
+details.sourceChanges[open] .whenClosed{display:none}

@@ -600,6 +600,23 @@ def analyze_batch(event: dict, actions: list[dict], config: ModelConfig,
     return validate_answer(answer, context, config.model, {a["id"]: a for a in actions})
 
 
+def source_summary_priority(event: dict) -> tuple:
+    """Serve source-verified, operationally important changes before index-only
+    entries, without named-law or named-ministry exceptions. Recency breaks ties.
+    """
+    compared = sum(
+        bool(row.get("before") or row.get("after"))
+        for row in event.get("article_differences", [])
+    )
+    return (
+        bool(compared and event.get("source_fingerprint")),
+        int(event.get("impact_priority") or 0),
+        min(compared, 70),
+        str(event.get("promulgated_at") or ""),
+        str(event.get("event_id") or ""),
+    )
+
+
 def run_incremental(data: dict, previous: dict, config: ModelConfig,
                     max_requests: int = 36, batch_size: int = 3,
                     interval: float = 12.0, summary_requests: int = 0,
@@ -622,7 +639,7 @@ def run_incremental(data: dict, previous: dict, config: ModelConfig,
         [event for event in data["events"]
          if (event.get("source_fingerprint") or source_change.fingerprint(event))
          and not results[event["event_id"]].get("source_summary")],
-        key=lambda event:event.get("promulgated_at",""),reverse=True)
+        key=source_summary_priority,reverse=True)
     for event in candidates[:summary_requests]:
         if tried:pause(interval)
         tried+=1

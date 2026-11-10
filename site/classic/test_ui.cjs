@@ -87,6 +87,8 @@ assert.ok(script.includes('<details class="sourceChanges"'),
   "Actual changed clauses must be collapsed by default");
 assert.ok(!script.includes('<details class="sourceChanges" open'),
   "Source comparisons must not begin expanded");
+assert.ok(script.includes('sourceChangesHint')&&script.includes('펼쳐보기 ▾')&&script.includes('접기 ▴'),
+  "Comparison disclosure must clearly communicate open/close actions");
 assert.ok(script.includes('sourceChangesToggle'),
   "Change summary must expose an accessible disclosure control");
 assert.ok(styles.includes(".sourceChanges .changePair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}"),

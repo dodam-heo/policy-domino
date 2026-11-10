@@ -304,7 +304,9 @@ function detailHTML(e){
  const sourceChanges='<details class="sourceChanges">'+
  '<summary class="sourceChangesToggle"><span class="sourceChangesTitle">실제 변경사항 · 신구 비교</span>'+
  '<span class="sourceChangesCount">총 '+totalChanges+'개 변경 조문 · 신구 대조 '+
- visibleChanges+'건</span></summary>'+
+ visibleChanges+'건</span><span class="sourceChangesHint">'+
+ '<span class="whenClosed">펼쳐보기 ▾</span><span class="whenOpen">접기 ▴</span>'+
+ '</span></summary>'+
  '<div class="sourceChangesContent">'+
  (extra?'<p class="sourceChangeCount">'+extra.slice(3)+'</p>':"")+
  differences(e,0,3)+

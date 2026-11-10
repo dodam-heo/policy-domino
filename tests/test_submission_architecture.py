@@ -78,10 +78,29 @@ class PublicationContract(unittest.TestCase):
         self.assertEqual(len(requested_changes), 8)
         self.assertEqual(requested_changes[0], "2026-11-10")
         self.assertIn(("admrul", [("2026-08-01", "2026-08-07")]), queried)
-        self.assertEqual(state["backfill_cursor_days"], 182)
-        self.assertEqual(state["coverage_plan"], "official_rolling_all_sources_v2")
+        self.assertEqual(state["backfill_cursor_days"], 393)
+        self.assertEqual(state["recent_backfill_cursor_days"],36)
+        self.assertEqual(state["coverage_plan"], "official_incremental_rolling_sources_v3")
         self.assertEqual(state["latest_official_scan"], "2026-11-10")
         self.assertEqual(len(state.get("catalog",{})),0)
+
+    def test_recent_backfill_is_independent_of_historical_cursor(self):
+        date=dt.date(2026,11,10)
+        state={"catalog":{},"coverage":[],"backfill_cursor_days":1927}
+        windows=[]
+        def changes(data,days,max_pages):
+            data["_source_pages_confirmed"]=1
+        def index(data,source,ranges,max_pages):
+            windows.extend((source,a,b) for a,b in ranges)
+        with patch.dict("os.environ",{"PD_BACKFILL_WINDOWS_PER_RUN":"2",
+                "PD_RETRY_WINDOWS_PER_RUN":"1","LAW_OC":"dori"}),patch.object(
+                pipeline.collect_index,"ingest_changes",changes),patch.object(
+                pipeline.collect_index,"ingest_index",index):
+            pipeline.scan_new(state,date)
+        self.assertIn(("admrul","2026-10-06","2026-11-02"),windows)
+        self.assertGreater(state["backfill_cursor_days"],365)
+        self.assertEqual(state["recent_backfill_cursor_days"],36)
+        self.assertEqual(len(state["catalog"]),0)
 
     def test_missing_secret_uses_configured_official_identifier(self):
         from policy_domino import official_api as api
@@ -106,7 +125,7 @@ class PublicationContract(unittest.TestCase):
                pipeline.collect_index,"ingest_index",index):
             pipeline.scan_new(state,date,checkpoint=lambda data:checkpoints.append(len(queried)))
         for source in ("law","admrul","ordin"):
-            self.assertIn((source,(("2026-11-03","2026-11-10"),)),queried)
+            self.assertIn((source,(("2026-11-09","2026-11-10"),)),queried)
         self.assertIn(("law_history",("2026-10-03",)),queried)
         self.assertEqual(len(state["catalog"]),1)
         self.assertGreaterEqual(len(checkpoints),5)

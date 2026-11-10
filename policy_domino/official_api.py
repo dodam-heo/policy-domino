@@ -103,12 +103,12 @@ class ExtractedClauses(dict):
 
 
 def read_clauses(record):
-    opts = {"MST": record["serial"]} if record["source"] == "law" else {"ID": record["serial"]}
+    opts = {"MST": record["serial"]} if record["source"] in ("law","ordin") else {"ID": record["serial"]}
     root = request(record["source"], endpoint="lawService.do", **opts)
     items = {}
     for node in root.iter():
         tag = node.tag.split("}")[-1]
-        if tag == "조문단위":
+        if tag in ("조문단위","조문"):
             num = field(node, "조문번호")
             branch = field(node, "조문가지번호")
             label = f"제{num}조" + (f"의{branch}" if branch not in ("", "0") else "")

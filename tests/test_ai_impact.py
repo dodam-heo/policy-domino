@@ -109,7 +109,7 @@ class RealLLMImpactTests(unittest.TestCase):
         self.assertEqual(timeout,90)
         submitted=json.loads(req.data)
         self.assertEqual(submitted["model"],"test-model")
-        self.assertEqual(submitted["temperature"],0)
+        self.assertNotIn("temperature",submitted, "Reasoning models may reject a forced temperature")
         user=json.loads(submitted["messages"][1]["content"])
         self.assertEqual(user["evidence"][0]["before_after"][0]["before"],"정원 20명")
         self.assertEqual(user["evidence"][0]["agency"],"가상공공기관 가")

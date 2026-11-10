@@ -13,8 +13,8 @@ function filteredEvents(){return filterPolicyEvents(DATA.events,filter,$("q").va
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
 function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
 function eventRow(e){
-const num=matchingActions(e).length,hasDiff=e.article_differences?.length||0,chosen=selectedId===e.event_id;
-return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(e.impact_level==="high"?'<span class="mini" title="'+esc(e.impact_reason||"")+'">영향도 큼'+(e.impact_scope?.provisional?' · 재검증 대기':'')+'</span>':'')+'<span class="mini">'+(e.presentation_source==="v4_official_source"?"공식 신구 본문":"이전 V2 근거 · 재검증 대기")+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
+const num=matchingActions(e).length,hasDiff=e.article_differences?.length||0,chosen=selectedId===e.event_id,aiProgress=window.PolicyDominoAiView.statusLabel(e,DATA,AI_DATA);
+return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-event="'+esc(e.event_id)+'" aria-selected="'+chosen+'"><div class="lawTop"><span class="lawType '+typeClass(e)+'">'+typeLabel(e)+'</span><span class="lawDate">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+'</span></div><div class="lawName">'+esc(e.title||"이름 미확인")+'</div><div class="lawMeta">'+esc(e.ministry||"소관기관 미확인")+' · '+esc(e.law_type||"정책·법령")+'</div><div class="lawFoot">'+(e.impact_level==="high"?'<span class="mini" title="'+esc(e.impact_reason||"")+'">영향도 큼'+(e.impact_scope?.provisional?' · 재검증 대기':'')+'</span>':'')+'<span class="mini">'+(e.presentation_source==="v4_official_source"?"공식 신구 본문":"이전 V2 근거 · 재검증 대기")+'</span>'+(num?'<span class="mini">기관별 검토 '+num+'건</span>':'<span class="mini">기관별 영향 분석 대기</span>')+(aiProgress?'<span class="mini">'+esc(aiProgress)+'</span>':'')+'<span>'+(hasDiff?'변경 조문 '+hasDiff+'개 · ':'')+'기관별 변경 보기 ›</span></div></button>'
 }
 function displayList(){
 $("impactFilterHint").hidden=filter!=="high-impact";
@@ -109,8 +109,7 @@ DATA=d;AI_DATA=null;
 try{
   const aiResponse=await fetch("../ai-impact/data.json?v="+Date.now(),{cache:"no-store"});
   if(aiResponse.ok){const candidate=await aiResponse.json();
-    if(candidate?.schema==="policy-domino-llm-impact-v1" &&
-       candidate.source_generated_at===d.generated_at){AI_DATA=candidate;}
+    if(candidate?.schema==="policy-domino-llm-impact-v2"){AI_DATA=candidate;}
   }
 }catch(_){/* No model output: never imply that an AI analysis was performed. */}
 const h=d.health||{},partial=h.source_status==="메타데이터만 연결",amendment=h.source_status==="공식 공포·개정문 연결",bad=h.source_status==="수집 실패";

@@ -286,7 +286,8 @@ function detailHTML(e){
  const overview='<section class="changeOverview"><div class="overviewLabel">변경 핵심</div>'+
  '<div class="overviewText">'+esc(overviewText(e))+'</div>'+
  '<div class="overviewProof">'+(hasAiSummary?'AI 보조 설명 · 공식 변경 조문에 연결됨':
- '공식 근거에 따른 변경 개요')+'</div>'+
+ (e.source_verification==="official_index_only"?
+ '공식 변경목록 기반 개요 · 상세 조문 미확인':'공식 조문 대조 기반 개요'))+'</div>'+
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
  const impact='<section class="agencyImpactSection">'+
  '<div class="agencySectionHead"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+

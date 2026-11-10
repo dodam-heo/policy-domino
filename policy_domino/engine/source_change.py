@@ -114,7 +114,7 @@ def source_pairs(changes: list[dict], limit: int = 70) -> list[dict]:
 
 def _numeric_changes(before: str, after: str) -> list[tuple[str, str]]:
     """Align complete numeric tokens, never character fragments such as 2→7."""
-    pattern = re.compile(r"(?<!\\d)(?:\\d{1,3}(?:,\\d{3})+|\\d+)(?:\\.\\d+)?\\s*(?:만원|원|명|일|개월|년|세|%)?")
+    pattern = re.compile(r"(?<!\d)(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:만원|원|명|일|개월|년|세|%)?")
     left = [x.strip() for x in pattern.findall(before)]
     right = [x.strip() for x in pattern.findall(after)]
     matcher = difflib.SequenceMatcher(None, left, right, autojunk=False)
@@ -168,7 +168,7 @@ def concise_summary(comparisons: list[dict], count: int, *,
     # Describe a uniquely aligned numeric standard without guessing what an
     # individual programme should implement or what a bare year refers to.
     values = [(a,b) for a,b in numeric if
-              re.search(r"\\d",a) and re.search(r"\\d",b) and a != b]
+              re.search(r"\d",a) and re.search(r"\d",b) and a != b]
     if len(values) == 1 and re.search(r"정원|총계|기준|금액|급여|기간|인원|수수료|지원|선정", old+" "+new):
         a,b=values[0]
         subject = "정원·인원" if re.search(r"정원|인원|총계",old+" "+new) else "해당 기준값"
@@ -194,7 +194,7 @@ def concise_summary(comparisons: list[dict], count: int, *,
         detail += (f" 함께 변경된 조문은 {remaining}개이며, "
                    + (f"{follow} 등의 변경이 포함됩니다." if follow else
                       "전체 신구 비교에서 확인할 수 있습니다."))
-    return (label + "에서 " + detail) if title else detail
+    return (label + "의 " + detail) if title else detail
 
 
 def fingerprint(event: dict) -> str:

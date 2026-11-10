@@ -68,6 +68,7 @@ jobs:
             exit 1
           fi
       - name: Live official crawl and agency impact publication
+        id: official_crawl
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
@@ -83,6 +84,19 @@ jobs:
           PD_V4_SEARCH_PARENTS: '4'
           PD_V4_VERIFY_DEPENDENTS: '24'
         run: python -m policy_domino --source official
+      - name: Persist collection checkpoints even if official refresh fails
+        if: failure() && steps.official_crawl.outcome == 'failure'
+        run: |
+          test -s data/v4_state.json || exit 0
+          git config user.name policy-domino-bot
+          git config user.email policy-domino-bot@users.noreply.github.com
+          git add data/v4_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: preserve partial official crawl audit [skip ci]'
+            git fetch origin main
+            git rebase FETCH_HEAD
+            git push origin HEAD:main
+          fi
       - name: Rebuild agency impact from persisted official evidence
         if: (github.event_name == 'push' && !contains(github.event.head_commit.message, '[full-refresh-once]')) || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
         run: python -m policy_domino --source stored

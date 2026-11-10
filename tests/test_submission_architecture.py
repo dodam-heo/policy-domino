@@ -81,6 +81,7 @@ class PublicationContract(unittest.TestCase):
         self.assertEqual(state["backfill_cursor_days"], 168)
         self.assertEqual(state["coverage_plan"], "official_rolling_three_years_v1")
         self.assertEqual(state["latest_official_scan"], "2026-11-10")
+        self.assertEqual(len(state.get("catalog",{})),0)
 
     def test_missing_credentials_fail_before_data_mutation(self):
         state={"catalog":{"key":{"title":"previous official record"}}}

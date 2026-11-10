@@ -6,6 +6,8 @@ official before/after clauses into inspectable, bounded source excerpts.
 from __future__ import annotations
 
 import difflib
+import hashlib
+import json
 import re
 
 from policy_domino import semantic_diff
@@ -138,3 +140,19 @@ def concise_summary(comparisons: list[dict], count: int) -> str:
             phrases.append(f"{label} 규정 내용 개정")
     extra = max(0, int(count or 0) - len(comparisons[:3]))
     return " · ".join(phrases) + (f" · 그 밖의 {extra}개 조문 변경" if extra else "")
+
+def fingerprint(event: dict) -> str:
+    """Stable binding between a published policy change and its AI explanation."""
+    pairs = [
+        (row.get("article",""), row.get("before",""), row.get("after",""))
+        for row in event.get("article_differences",[])
+        if row.get("before","") != row.get("after","")
+    ]
+    if not pairs or event.get("source_verification") not in (
+        "verified_changed_clauses","verified_other"):
+        return ""
+    payload = (event.get("event_id",""),event.get("title",""),
+               event.get("promulgated_at",""),pairs)
+    return hashlib.sha256(
+        json.dumps(payload,ensure_ascii=False,separators=(",",":")).encode("utf-8")
+    ).hexdigest()[:24]

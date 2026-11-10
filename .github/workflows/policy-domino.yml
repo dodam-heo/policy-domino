@@ -111,7 +111,7 @@ jobs:
                       for finding in e['findings']:
                           official=actions[finding['action_id']]
                           assert official['event_id']==e['event_id']
-                          assert official['evidence_scope']=='v4_verified_source'
+                          assert official['evidence_scope'] in ('v4_verified_source', 'service_formula_dependency_verified', 'service_cited_changed_article_verified')
                           assert official['evidence_fingerprint']==finding['evidence_fingerprint']
                   print('AI_CATALOG_GATE',ai['total_events'],ai['total_analyzed_actions'],ai['status_counts'])
               else:

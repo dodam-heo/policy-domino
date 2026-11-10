@@ -17,6 +17,11 @@ on:
         default: official
         type: choice
         options: [official, stored]
+      analyze_ai:
+        description: 'Run ONE real LLM agency impact analysis using the configured private model credentials'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -48,6 +53,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_*.py' -v
           node site/v4/test_ui.cjs
           node site/classic/test_ui.cjs
+          node site/ai-impact/test_ui.cjs
           node site/test_adapter.cjs
       - name: Live official crawl and agency impact publication
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official')
@@ -61,6 +67,13 @@ jobs:
       - name: Rebuild agency impact from persisted official evidence
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
         run: python -m policy_domino --source stored
+      - name: One real model-backed agency impact analysis (explicit opt-in only)
+        if: github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true
+        env:
+          PD_LLM_API_KEY: ${{ secrets.PD_LLM_API_KEY }}
+          PD_LLM_MODEL: ${{ vars.PD_LLM_MODEL }}
+          PD_LLM_BASE_URL: ${{ vars.PD_LLM_BASE_URL || 'https://api.openai.com/v1' }}
+        run: python -m policy_domino.ai_impact --limit 3
       - name: Validate generated public data and both user routes
         run: |
           python -m unittest discover -s tests -p 'test_*.py' -v
@@ -83,6 +96,7 @@ jobs:
           git config user.name policy-domino-bot
           git config user.email policy-domino-bot@users.noreply.github.com
           git add data/v4_state.json site/v4/data.json site/classic/data.json site/classic/index.html site/impact/index.html
+          if [ -f site/ai-impact/data.json ]; then git add site/ai-impact/data.json; fi
           if ! git diff --cached --quiet; then
             git commit -m 'data: refresh official evidence and agency impacts [skip ci]'
             for attempt in 1 2 3; do
@@ -115,6 +129,7 @@ jobs:
           test -s site/classic/data.json
           test -s site/assets/impact-model.js
           node site/classic/test_ui.cjs
+          node site/ai-impact/test_ui.cjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

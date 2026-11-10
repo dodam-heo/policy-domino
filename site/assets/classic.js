@@ -8,7 +8,7 @@ const {typeOf,sorted,filterEvents:filterPolicyEvents,resolveSelection,DEFAULT_FI
 function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?"폐지":"개정"}
 function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
-let DATA={events:[],actions:[],health:{}},selectedId=null,filter=DEFAULT_FILTER,actionFilter="all";
+let DATA={events:[],actions:[],health:{}},AI_DATA=null,selectedId=null,filter=DEFAULT_FILTER,actionFilter="all";
 function filteredEvents(){return filterPolicyEvents(DATA.events,filter,$("q").value)}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
 function showEmpty(title,body){return '<div class="empty"><svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 4h18v16H3z"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><b>'+esc(title)+'</b><p style="margin-top:8px">'+esc(body)+'</p></div>'}
@@ -82,7 +82,7 @@ function detailHTML(e){
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","최신 근거 재확인 필요"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
  const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
+ return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+window.PolicyDominoAiView.render(e,DATA,AI_DATA)+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }
 function renderDetail(){
 const e=getEvent();
@@ -105,7 +105,15 @@ const dataUrl=document.body.dataset.policyDataUrl;
 if(!dataUrl)throw Error("정책 데이터 경로가 설정되지 않았습니다.");
 let response=await fetch(dataUrl+"?v="+Date.now(),{cache:"no-store"});if(!response.ok)throw Error("HTTP "+response.status);
 let d=await response.json();if(d.schema!=="policy-domino-next-v1")throw Error("기존 데이터 형식이므로 새 변경내역과 연결되지 않았습니다.");
-DATA=d;const h=d.health||{},partial=h.source_status==="메타데이터만 연결",amendment=h.source_status==="공식 공포·개정문 연결",bad=h.source_status==="수집 실패";
+DATA=d;AI_DATA=null;
+try{
+  const aiResponse=await fetch("../ai-impact/data.json?v="+Date.now(),{cache:"no-store"});
+  if(aiResponse.ok){const candidate=await aiResponse.json();
+    if(candidate?.schema==="policy-domino-llm-impact-v1" &&
+       candidate.source_generated_at===d.generated_at){AI_DATA=candidate;}
+  }
+}catch(_){/* No model output: never imply that an AI analysis was performed. */}
+const h=d.health||{},partial=h.source_status==="메타데이터만 연결",amendment=h.source_status==="공식 공포·개정문 연결",bad=h.source_status==="수집 실패";
 $("system").classList.toggle("error",bad);
 $("sourceTitle").textContent=bad?"공식 변경 데이터 수집 실패":"실제 정책 변경과 기관별 검토 업무";
 $("sourceDesc").textContent=bad?(h.error||"공식 변경 자료를 불러오지 못했습니다."):"신구 조문·공식 개정 지시문 기반 "+(d.events||[]).length+"개 변경 사건 · 기관별 검토 "+(d.actions||[]).length+"건. 현재 공식 본문과 이전 V2 자료는 검증 상태를 분리합니다. 내부 조치 완료 여부는 확인되지 않았습니다.";

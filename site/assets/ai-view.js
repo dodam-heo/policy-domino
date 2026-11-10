@@ -44,30 +44,34 @@
       done === total ? "complete" : done ? "partial" : "pending";
     return {total, done, state};
   }
-  function statusLabel(event, data, catalog) {
-    const p = progress(event, data, catalog);
-    if (!p) return "";
-    if (!p.total) return "AI 근거 확인 대기";
-    return "AI 분석 " + p.done + "/" + p.total;
+  function latestAnalyzedAt(data, catalog) {
+    if (catalog?.schema !== SCHEMA) return null;
+    let latest = "";
+    for (const event of data.events || []) {
+      for (const card of verifiedCards(event, data, catalog)) {
+        if (typeof card.analyzed_at === "string" &&
+            /^[0-9]{4}-[0-9]{2}-[0-9]{2}T/.test(card.analyzed_at) &&
+            card.analyzed_at > latest) latest = card.analyzed_at;
+      }
+    }
+    return latest || null;
   }
   function renderForAction(action, card) {
     if (!card || card.action_id !== action.id) return "";
     // The caller must get card from verifiedCards(), which checks all
     // official event/action identity and current evidence fingerprints.
     return '<details class="aiActionNote">'+
-      '<summary>AI 업무 영향·추가 검토사항 보기</summary>'+
+      '<summary>AI 검토 의견</summary>'+
       '<div class="aiActionBody">'+
-      '<div class="aiActionLabel">업무에 미치는 영향</div>'+
+      '<div class="aiActionLabel">업무 영향</div>'+
       '<p>'+esc(card.operational_impact)+'</p>'+
-      '<div class="aiActionLabel">AI가 제안한 확인사항</div>'+
+      '<div class="aiActionLabel">추가 확인사항</div>'+
       '<p>'+esc(card.review_task)+'</p>'+
-      '<p class="aiActionProvenance">Gemini 등 실제 분석 모델: '+esc(card.model)+
-      ' · AI 검토 초안 / 조치 완료 여부 미확인</p>'+
       '</div></details>';
   }
   const api = Object.freeze({
     SCHEMA, eventEntry, verifiedActions, verifiedCards,
-    progress, statusLabel, renderForAction
+    progress, latestAnalyzedAt, renderForAction
   });
   root.PolicyDominoAiView = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;

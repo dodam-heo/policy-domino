@@ -50,7 +50,7 @@
     for (const event of data.events || []) {
       for (const card of verifiedCards(event, data, catalog)) {
         if (typeof card.analyzed_at === "string" &&
-            /^\\d{4}-\\d{2}-\\d{2}T/.test(card.analyzed_at) &&
+            /^[0-9]{4}-[0-9]{2}-[0-9]{2}T/.test(card.analyzed_at) &&
             card.analyzed_at > latest) latest = card.analyzed_at;
       }
     }

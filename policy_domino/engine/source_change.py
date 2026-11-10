@@ -181,6 +181,23 @@ def concise_summary(comparisons: list[dict], count: int, *,
         detail = f"{heading}의 문구와 표기 방식을 정비했습니다."
     else:
         detail = f"{heading}에 관한 규정을 개정했습니다."
+        # When there is no numeric formula to describe, preserve the exact
+        # old/new wording rather than claiming an invented policy effect.
+        # A concise side-by-side citation is more useful than 'content amended'.
+        if old and new:
+            def excerpt(text: str) -> str:
+                return text[:105].rstrip() + ("…" if len(text) > 105 else "")
+            old_quote, new_quote = excerpt(old), excerpt(new)
+            if old_quote == new_quote:
+                matcher=difflib.SequenceMatcher(None,old,new,autojunk=False)
+                first=next(((a,c) for op,a,b,c,d in matcher.get_opcodes()
+                            if op!="equal"),None)
+                if first:
+                    a,c=first
+                    old_quote=("…" if a>35 else "")+old[max(0,a-35):a+70]+("…" if a+70<len(old) else "")
+                    new_quote=("…" if c>35 else "")+new[max(0,c-35):c+70]+("…" if c+70<len(new) else "")
+            if old_quote != new_quote:
+                detail += f" 종전 ‘{old_quote}’에서 개정 후 ‘{new_quote}’로 문구가 바뀌었습니다."
     remaining = num - 1
     if remaining > 0:
         headings = []

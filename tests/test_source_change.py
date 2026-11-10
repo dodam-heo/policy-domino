@@ -21,6 +21,8 @@ class OfficialChangePresentationTests(unittest.TestCase):
         self.assertIn("전산정보처리조직",summary)
         self.assertIn("규정을 개정",summary)
         self.assertNotIn("따라 국토교통부장관이 → 따른",summary)
+        self.assertIn("국토교통부장관이",summary)
+        self.assertIn("문구가 바뀌었습니다",summary)
         rendered="".join(p["text"] for p in changes[0]["preview"]["after"])
         self.assertTrue(rendered)
         self.assertTrue(any(p["changed"] for p in changes[0]["preview"]["after"]))

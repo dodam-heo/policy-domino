@@ -27,6 +27,11 @@ jobs:
         run: |
           python -m policy_domino.audit
           python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: End-to-end rebuild from persisted official evidence
+        run: |
+          python -m policy_domino --source stored
+          node site/v4/test_ui.cjs
+          node site/classic/test_ui.cjs
       - name: Screen and source adapter contract tests
         run: |
           node site/classic/test_ui.cjs

@@ -15,7 +15,7 @@ from urllib.error import HTTPError
 from policy_domino.analysis_evidence import evidence_identity, has_verified_action
 from policy_domino.ai_impact import (
     SCHEMA, ModelConfig, ProviderHTTPFailure, build_catalog,
-    eligible_actions, evidence_payload, call_model, validate_answer,
+    eligible_actions, evidence_payload, call_model, parse_model_response, validate_answer,
     remaining_chunks, run_incremental,
 )
 
@@ -282,6 +282,48 @@ class AllEventAITests(unittest.TestCase):
         self.assertEqual(sent["model"],"test-model")
         self.assertEqual(json.loads(sent["messages"][1]["content"])["evidence"][0]["agency"],
                          self.data["actions"][0]["agency"])
+
+    def test_json_object_mode_for_provider_completions(self):
+        build_catalog(self.data)
+        ctx=evidence_payload(self.data["events"][0],self.data["actions"][:1],
+                             self.data["generated_at"])
+        sent=[]
+        def opener(req,timeout):
+            sent.append(json.loads(req.data))
+            return Response(json.dumps({"choices":[{"message":{
+                "content":json.dumps(actual_shaped_answer(ctx),ensure_ascii=False)
+            }}]},ensure_ascii=False).encode())
+        call_model(self.config,ctx,open_request=opener)
+        self.assertEqual(sent[0]["response_format"],{"type":"json_object"})
+
+    def test_provider_structured_json_normalizes_fenced_and_text_parts(self):
+        result={"summary":"공공기관 검토사항입니다.","findings":[]}
+        content=json.dumps(result,ensure_ascii=False)
+        fence=chr(96)*3
+        examples=[
+            content,
+            fence+"json\n"+content+"\n"+fence,
+            fence+"\n"+content+"\n"+fence,
+            [{"type":"text","text":content}],
+            result,
+        ]
+        for item in examples:
+            with self.subTest(item=str(item)[:30]):
+                raw=json.dumps({"choices":[{"message":{"content":item}}]},
+                               ensure_ascii=False).encode()
+                self.assertEqual(parse_model_response(raw),result)
+
+    def test_incomplete_or_nonstrict_json_stays_unpublished(self):
+        raw_candidates=[
+            {"choices":[{"message":{"content":None}}]},
+            {"choices":[{"message":{"content":"hello not json"}}]},
+            {"choices":[{"message":{"content":"[1,2,3]"}}]},
+            {"choices":[{"message":{"content":"{incomplete"}}]},
+        ]
+        for example in raw_candidates:
+            with self.subTest(example=str(example)[:50]):
+                with self.assertRaisesRegex(ValueError,"structured JSON"):
+                    parse_model_response(json.dumps(example).encode())
 
     def test_fingerprint_mismatch_does_not_publish_stale_cached_facts(self):
         catalog=build_catalog(self.data)

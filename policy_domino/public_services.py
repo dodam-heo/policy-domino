@@ -287,6 +287,60 @@ def matched_operating_rule(concept: str, text: str) -> str:
     return neighborhood[:160]
 
 
+def changed_provisions(event: dict) -> list[dict]:
+    """Actual changed clause with an unambiguous law title."""
+    out = []
+    for change in event.get("article_differences") or []:
+        if change.get("before") == change.get("after"):
+            continue
+        raw = normalize_text(change.get("article"))
+        hit = ARTICLE.search(raw)
+        if not hit:
+            continue
+        law = raw.split(" · ", 1)[0].strip() if " · " in raw else ""
+        if not law and event.get("presentation_source") == "v4_official_source":
+            title = normalize_text(event.get("title"))
+            if "동시 개정" not in title and "관련 법령" not in title:
+                law = title
+        if not law:
+            continue
+        out.append({"law": law, "article": normalize_text(hit.group()),
+                    "source_url": change.get("source_url", ""),
+                    "before": normalize_text(change.get("before"))[:300],
+                    "after": normalize_text(change.get("after"))[:300]})
+    return out
+
+
+def cited_changed_provision(provisions: list[dict], service: dict) -> dict | None:
+    """A serviceDetail law citation must name the SAME changed clause and
+    apply it operatively; a law title alone cannot establish dependency.
+    """
+    detail = service.get("detail") or {}
+    citations = " ".join(str(detail.get(k) or "") for k in (
+        "laws", "rules", "ordinances"))
+    criteria = " ".join(str(x or "") for x in (
+        service.get("criteria"), detail.get("criteria"),
+        service.get("eligible"), detail.get("eligible")))
+    if not citations.strip() or not criteria.strip():
+        return None
+    compact = re.sub(r"\\s+", "", citations)
+    for item in provisions:
+        title = re.sub(r"\\s+", "", item["law"])
+        article = re.sub(r"\\s+", "", item["article"])
+        if len(title) < 5 or not article:
+            continue
+        # Close adjacency prohibits importing a cited article from a second
+        # unrelated statute in the public programme's legal-basis list.
+        match = re.search(re.escape(title) + r".{0,35}?" + re.escape(article),
+                          compact)
+        if not match:
+            continue
+        excerpt = compact[max(0, match.start()-12):match.end()+50]
+        if re.search(r"따른|따라|적용|준용|기준|해당", excerpt):
+            return {**item, "excerpt": excerpt}
+    return None
+
+
 def service_edges(events: list[dict], catalog: dict,
                   max_edges: int = 1000) -> list[dict]:
     """No external institution inferences: owner, program and threshold must
@@ -297,7 +351,8 @@ def service_edges(events: list[dict], catalog: dict,
     edges, seen = [], set()
     for event in events:
         concepts = changed_concepts(event)
-        if not concepts:
+        provisions = changed_provisions(event)
+        if not concepts and not provisions:
             continue
         for service in (catalog.get("services") or {}).values():
             agency = service.get("agency")
@@ -337,6 +392,34 @@ def service_edges(events: list[dict], catalog: dict,
                 })
                 if len(edges) >= max_edges:
                     return edges
+            # A separately verified changed-clause citation can link
+            # non-monetary eligibility provisions without keyword guesses.
+            cited = cited_changed_provision(provisions, service)
+            if cited:
+                identity = (event["event_id"], sid, cited["law"], cited["article"])
+                if identity not in seen:
+                    seen.add(identity)
+                    criteria_text = " ".join(filter(None, (
+                        service.get("criteria", ""), detail.get("criteria", ""),
+                        service.get("eligible", ""), detail.get("eligible", ""),
+                    )))
+                    edges.append({
+                        "event_id": event["event_id"], "service_id": sid,
+                        "agency": agency, "agency_code": service.get("agency_code", ""),
+                        "agency_type": service.get("agency_type", ""),
+                        "service": program, "service_url": service.get("detail_url", ""),
+                        "policy_concept": cited["article"],
+                        "operating_rule": cited["excerpt"],
+                        "source_rule": criteria_text[:500],
+                        "source_updated": service.get("updated", ""),
+                        "policy_before": cited["before"],
+                        "policy_after": cited["after"],
+                        "policy_article": cited["article"],
+                        "policy_source_url": cited["source_url"],
+                        "evidence_status": "service_clause_citation_matched",
+                    })
+                    if len(edges) >= max_edges:
+                        return edges
     return edges
 
 
@@ -354,7 +437,9 @@ def agency_service_action(event: dict, edge: dict) -> dict:
     parent_evidence = source_url(edge.get("policy_source_url"))
     if parent_evidence == "https://www.law.go.kr":
         raise ValueError("Public-service relation has no verified policy citation")
-    source_kind = ("service_formula_dependency_verified" if parent_current
+    source_kind = (("service_cited_changed_article_verified"
+                    if edge.get("evidence_status") == "service_clause_citation_matched"
+                    else "service_formula_dependency_verified") if parent_current
                    else "legacy_service_dependency_pending_recheck")
     # These values are the PARENT base standard, not a claimed pre/post
     # threshold in the agency's own published programme.
@@ -382,8 +467,11 @@ def agency_service_action(event: dict, edge: dict) -> dict:
         "law_title": event.get("title", ""),
         "effective_date": event.get("effective_date", ""),
         "basis": parent_evidence,
-        "impact_link_basis": "행정안전부 공공서비스 선정기준의 " +
-                             edge["policy_concept"] + " 비율·산식 인용",
+        "impact_link_basis": (
+            "행정안전부 공공서비스의 실제 변경 조항 적용 인용"
+            if edge.get("evidence_status") == "service_clause_citation_matched"
+            else "행정안전부 공공서비스 선정기준의 " +
+                 edge["policy_concept"] + " 비율·산식 인용"),
         "status": ("반영 확인 필요" if parent_current
                    else "최신 근거 재확인 필요"),
         "confidence": ("공식 정책 기준값·정부24 사업 선정기준 교차 확인"

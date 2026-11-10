@@ -190,6 +190,13 @@ def explain_provider_http_error(http_status: int, raw: bytes) -> str:
     return prefix + "Provider did not accept the request. No AI report published."
 
 
+class ProviderHTTPFailure(RuntimeError):
+    """Sanitized provider failure with structured HTTP status for safe routing."""
+    def __init__(self, status: int, explanation: str):
+        super().__init__(explanation)
+        self.status = status
+
+
 def call_model(config: ModelConfig, context: dict,
                open_request: Callable[..., Any] = urlopen,
                pause: Callable[[float], Any] = time.sleep) -> dict:
@@ -231,7 +238,7 @@ def call_model(config: ModelConfig, context: dict,
                 )
                 pause(delay)
                 continue
-            raise RuntimeError(explain_provider_http_error(exc.code, safe_body)) from None
+            raise ProviderHTTPFailure(exc.code, explain_provider_http_error(exc.code, safe_body)) from None
         except (URLError, TimeoutError, OSError):
             raise RuntimeError(
                 "LLM provider is unreachable; no AI output will be published"
@@ -307,8 +314,22 @@ def analyze(data: dict, config: ModelConfig, event_id: str | None = None,
     context = evidence_payload(event, actions, str(data.get("generated_at") or ""))
     if not context["source_generated_at"]:
         raise ValueError("Source data is missing generation timestamp")
-    answer = request_model(config, context)
-    return validate_answer(answer, context, config.model)
+    chosen_model = config.model
+    try:
+        answer = request_model(config, context)
+    except ProviderHTTPFailure as exc:
+        # Only Google Gemini's *503 overload* may select a provider-local
+        # fallback. Never switch vendors or retry account/quota failures.
+        url = urlsplit(config.base_url)
+        fallback = os.getenv("PD_LLM_FALLBACK_MODEL", "").strip()
+        if (exc.status != 503 or url.hostname != "generativelanguage.googleapis.com"
+                or not fallback or fallback == config.model
+                or not fallback.startswith("gemini-")):
+            raise
+        chosen_model = fallback
+        print(f"LLM_PROVIDER_FALLBACK HTTP 503: {config.model} -> {chosen_model}", flush=True)
+        answer = request_model(ModelConfig(config.base_url, chosen_model, config.api_key), context)
+    return validate_answer(answer, context, chosen_model)
 
 
 def main() -> None:

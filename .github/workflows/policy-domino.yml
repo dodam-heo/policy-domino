@@ -68,11 +68,12 @@ jobs:
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
         run: python -m policy_domino --source stored
       - name: One real model-backed agency impact analysis (explicit opt-in only)
-        if: github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true
+        if: (github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[ai-run-once]'))
         env:
           PD_LLM_API_KEY: ${{ secrets.PD_LLM_API_KEY }}
           PD_LLM_MODEL: ${{ vars.PD_LLM_MODEL }}
           PD_LLM_BASE_URL: ${{ vars.PD_LLM_BASE_URL || 'https://api.openai.com/v1' }}
+          PD_LLM_FALLBACK_MODEL: ${{ vars.PD_LLM_FALLBACK_MODEL || 'gemini-3.5-flash-lite' }}
         run: python -m policy_domino.ai_impact --limit 3
       - name: Validate generated public data and both user routes
         run: |

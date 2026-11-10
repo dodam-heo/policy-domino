@@ -13,7 +13,7 @@ import unittest
 from unittest.mock import patch
 
 from policy_domino.ai_impact import (
-    SCHEMA, ModelConfig, analyze, call_model, eligible_actions, select_event,
+    SCHEMA, ModelConfig, ProviderHTTPFailure, analyze, call_model, eligible_actions, select_event,
     validate_answer, evidence_payload
 )
 
@@ -269,6 +269,50 @@ class RealLLMImpactTests(unittest.TestCase):
                     call_model(self.config,context,open_request=opener,pause=pauses.append)
                 self.assertEqual(len(attempts),1)
                 self.assertEqual(pauses,[])
+
+    def test_gemini_503_falls_back_to_second_real_model_and_records_actual_model(self):
+        config=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
+                           "gemini-3.8-flash","test-key")
+        models=[]
+        def provider(cfg, context):
+            models.append(cfg.model)
+            if cfg.model=="gemini-3.8-flash":
+                raise ProviderHTTPFailure(503,"LLM API HTTP 503")
+            return answer()
+        with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":"gemini-3.5-flash-lite"}):
+            result=analyze(self.data,config,request_model=provider)
+        self.assertEqual(models,["gemini-3.8-flash","gemini-3.5-flash-lite"])
+        self.assertEqual(result["model"],"gemini-3.5-flash-lite")
+        self.assertEqual(result["findings"][0]["agency"],"가상공공기관 가")
+
+    def test_no_fallback_on_404_429_or_non_gemini_provider(self):
+        for code,base in [(404,"https://generativelanguage.googleapis.com/v1beta/openai"),
+                          (429,"https://generativelanguage.googleapis.com/v1beta/openai"),
+                          (503,"https://api.openai.com/v1")]:
+            with self.subTest(code=code,base=base):
+                calls=[]
+                def provider(cfg, context):
+                    calls.append(cfg.model)
+                    raise ProviderHTTPFailure(code,f"HTTP {code}")
+                with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":"gemini-3.5-flash-lite"}):
+                    with self.assertRaises(ProviderHTTPFailure):
+                        analyze(self.data,ModelConfig(base,"gemini-3.8-flash","test-key"),
+                                request_model=provider)
+                self.assertEqual(len(calls),1)
+
+    def test_gemini_fallback_is_opt_in_and_cannot_be_arbitrary_provider(self):
+        cfg=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
+                        "gemini-3.8-flash","test-key")
+        calls=[]
+        def provider(model,context):
+            calls.append(model.model)
+            raise ProviderHTTPFailure(503,"HTTP 503")
+        for fallback in ("", "gpt-5", "gemini-3.8-flash"):
+            calls.clear()
+            with patch.dict(os.environ,{"PD_LLM_FALLBACK_MODEL":fallback}):
+                with self.assertRaises(ProviderHTTPFailure):
+                    analyze(self.data,cfg,request_model=provider)
+            self.assertEqual(calls,["gemini-3.8-flash"])
 
     def test_model_must_return_structured_json(self):
         context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])

@@ -64,6 +64,7 @@ class PublicationContract(unittest.TestCase):
         queried = []
         def changes(state_arg, days, max_pages):
             requested_changes.extend(days)
+            state_arg["_source_pages_confirmed"]=1
             state_arg["coverage"].append({
                 "source":"law_history","first":days[0],"last":days[0],
                 "complete":True,"edition":"history",

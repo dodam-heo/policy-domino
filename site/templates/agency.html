@@ -3,23 +3,20 @@
 <meta name="theme-color" content="#0d263c"><title>정책 도미노 | 신규·개정 정책과 기관별 조치</title>
 <link rel="stylesheet" href="../assets/classic.css"></head>
 <body data-policy-data-url="__POLICY_DATA_URL__">
-<header><div><div class="brand">POLICY <em>DOMINO</em></div><div class="brandSub">CHANGE → IMPACT → ACTION</div></div><div class="headright"><a class="tinyLink" href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">수집 상태</a></div></header>
+<header><div><div class="brand">POLICY <em>DOMINO</em></div><div class="brandSub">CHANGE → IMPACT → ACTION</div></div><div class="headright"><a class="tinyLink" href="https://github.com/dodam-heo/policy-domino/actions" target="_blank" rel="noopener">갱신 기록</a></div></header>
 <main>
-<div class="intro"><div><div class="eyebrow">법령·정책 변경 자동 분석</div><h1>신규·개정 내역</h1><p class="lead">공식 변경을 선택하면 기관별로 실제 확인된 업무 기준과 검토할 변경사항이 펼쳐집니다.</p></div><button class="refresh" id="reload">↻ 최신 결과 새로고침</button></div>
-<div class="system" id="system"><span class="dot"></span><div class="systemInfo"><strong id="sourceTitle">공식 데이터 상태를 확인하는 중입니다.</strong><div id="sourceDesc"></div><div class="statusSmall" id="lastChecked"></div></div></div>
-<div class="workflow"><span class="primary">① 신규·개정 변경 확인</span><i></i><span>② 변경 내용 비교</span><i></i><span>③ 기관별 조치 전체 확인</span></div>
+<div class="intro"><div><div class="eyebrow">정책 변경과 기관별 조치</div><h1>신규·개정 내역</h1></div><button class="refresh" id="reload">↻ 새로고침</button></div>
+<div class="system" id="system"><span class="dot"></span><div class="systemInfo"><strong id="sourceTitle">자료 갱신 상태 확인 중</strong><div id="sourceDesc"></div><div class="statusSmall" id="lastChecked"></div></div></div>
 <div class="layout" id="layout">
 <section class="panel listPanel" aria-label="최신 정책 변경 목록">
-<div class="listHeader"><div class="panelTitle">확정된 변경 사건</div><div class="panelIntro">게시글 등록일이 아니라 공식 공포·확정일 기준 최신순</div>
+<div class="listHeader"><div class="panelTitle">정책 변경 목록</div><div class="panelIntro">공포·확정일 최신순</div>
 <div class="filterbar"><button class="chip" data-law="all">전체</button><button class="chip" data-law="new">신규</button><button class="chip" data-law="amended">개정</button><button class="chip" data-law="abolished">폐지</button><button class="chip active" data-law="high-impact" title="변경 조문을 직접 검토하는 기관이 2곳 이상이거나 실제 변경 조항을 적용하는 다른 규정이 2개 이상 확인된 사건">영향도 큼</button></div>
-<div id="impactFilterHint" style="font-size:11px;color:#667c8a;margin:3px 0 8px" hidden>영향 범위 기준: 직접 검토 기관 2곳 이상 또는 변경 조항을 적용하는 다른 규정 2건 이상. 사회적 중요도 등급은 아니며, 이전 V2 근거는 최신 재검증 대기로 구분합니다.</div>
 <input class="search" id="q" aria-label="법령·정책 검색" placeholder="법령명·정책명·소관기관 검색"><div class="listCount" id="listCount"></div></div>
 <div class="list" id="lawList"><div class="empty">공식 변경내역을 불러오는 중입니다.</div></div>
 </section>
 <section class="panel detailPanel" id="detailPanel" aria-label="선택한 법령 변경과 기관별 조치">
-<div id="detail"><div class="empty">왼쪽에서 변경된 법령·정책을 선택하면 해당 변경과 연결된 기관별 조치사항을 확인할 수 있어요.</div></div>
+<div id="detail"><div class="empty">왼쪽 목록에서 정책을 선택하세요.</div></div>
 </section></div>
-<div class="foot">정책 도미노 · 공식 변경 근거가 없는 항목이나 확인되지 않은 조치 여부는 임의로 표시하지 않습니다.</div>
 </main>
 <script src="../assets/impact-model.js" defer></script>
 <script src="../assets/ai-view.js" defer></script>

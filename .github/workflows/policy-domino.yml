@@ -56,22 +56,22 @@ jobs:
           node site/ai-impact/test_ui.cjs
           node site/test_adapter.cjs
       - name: Live official crawl and agency impact publication
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official')
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
           PD_PUBLIC_SERVICE_KEY: ${{ secrets.PD_PUBLIC_SERVICE_KEY }}
           PD_PUBLIC_SERVICE_PAGES: ${{ vars.PD_PUBLIC_SERVICE_PAGES || '40' }}
-          PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '120' }}
+          PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '250' }}
           PD_V4_DETAILS: '60'
           PD_V4_DELEGATIONS: '5'
           PD_V4_SEARCH_PARENTS: '4'
           PD_V4_VERIFY_DEPENDENTS: '24'
         run: python -m policy_domino --source official
       - name: Rebuild agency impact from persisted official evidence
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
+        if: (github.event_name == 'push' && !contains(github.event.head_commit.message, '[full-refresh-once]')) || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
         run: python -m policy_domino --source stored
       - name: Incremental real LLM analysis for every verified policy event
-        if: (github.event_name == 'schedule' && vars.PD_AI_AUTO_ENABLED != 'false') || (github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[ai-run-once]'))
+        if: (github.event_name == 'schedule' && vars.PD_AI_AUTO_ENABLED != 'false') || (github.event_name == 'workflow_dispatch' && inputs.analyze_ai == true) || (github.event_name == 'push' && (contains(github.event.head_commit.message, '[ai-run-once]') || contains(github.event.head_commit.message, '[full-refresh-once]')))
         env:
           PD_LLM_API_KEY: ${{ secrets.PD_LLM_API_KEY }}
           PD_LLM_MODEL: ${{ vars.PD_LLM_MODEL }}

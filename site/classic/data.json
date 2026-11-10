@@ -1,28 +1,30 @@
 {
   "schema": "policy-domino-next-v1",
-  "generated_at": "2026-11-10T07:59:34+00:00",
+  "generated_at": "2026-11-10T08:34:20+00:00",
   "health": {
     "source_status": "공식 공포·개정문 연결",
     "partial": true,
-    "official_records": 48,
-    "compared": 40,
-    "amendments_read": 48,
-    "amendments_verified_total": 56,
+    "official_records": 96,
+    "compared": 88,
+    "amendments_read": 96,
+    "amendments_verified_total": 116,
     "catalogue_candidates": 7411,
     "v4_official_index": 1810,
-    "pending_details": 7355,
+    "pending_details": 7295,
     "legacy_recheck": 8,
+    "public_service_catalogue": 0,
+    "public_service_dependencies": 0,
     "error": "기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
   },
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
-      "title": "전문직공무원 정원의 배정 및 운영에 대한 특례 · 관련 법령 17건 동시 개정",
+      "title": "전문직공무원 정원의 배정 및 운영에 대한 특례 · 관련 법령 24건 동시 개정",
       "promulgated_at": "2026-11-06",
       "effective_date": "2026-11-06",
       "revision": "타법개정",
-      "law_type": "동일 공포번호 법령 17건",
-      "ministry": "직접 변경 대상 기관 17곳",
+      "law_type": "동일 공포번호 법령 24건",
+      "ministry": "직접 변경 대상 기관 23곳",
       "url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C",
       "amendment_url": "https://www.law.go.kr/법령/%EC%9A%B0%EC%A0%95%EC%82%AC%EC%97%85%EB%B3%B8%EB%B6%80%20%EC%A7%81%EC%A0%9C",
       "amendment_reason": "공식 공포번호 36801의 동일 변경 사건. 전문직공무원 정원의 배정 및 운영에 대한 특례 관련 규정을 변경.",
@@ -474,7 +476,7 @@
         }
       ],
       "presentation_source": "v4_official_source",
-      "impact_priority": 222,
+      "impact_priority": 240,
       "impact_level": "high",
       "impact_reason": "기관별 검토 17곳 · 실제 변경 조항 적용 규정 6건",
       "impact_scope": {
@@ -812,6 +814,34 @@
         "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
         "provisional": true,
         "note": "이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-08-28|36631",
+      "title": "6개 법령 동시 개정 · 질병관리청과 그 소속기관 직제",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "타법개정",
+      "law_type": "동일 공포번호 법령 6건",
+      "ministry": "직접 변경 대상 기관 6곳",
+      "url": "https://www.law.go.kr/법령/%EC%A7%88%EB%B3%91%EA%B4%80%EB%A6%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%A7%88%EB%B3%91%EA%B4%80%EB%A6%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_reason": "공식 공포번호 36631의 동일 변경 사건. 관련 법령들의 실제 신구 조문을 아래에서 확인할 수 있습니다.",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 42,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
       }
     },
     {
@@ -2243,6 +2273,538 @@
       }
     },
     {
+      "event_id": "v4:law|문화체육관광부령|2026-11-06|00653",
+      "title": "문화체육관광부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "문화체육관광부령",
+      "ministry": "문화체육관광부",
+      "url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|산업통상부령|2026-10-20|00023",
+      "title": "산업통상부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-10-20",
+      "effective_date": "2026-10-20",
+      "revision": "일부개정",
+      "law_type": "산업통상부령",
+      "ministry": "산업통상부",
+      "url": "https://www.law.go.kr/법령/%EC%82%B0%EC%97%85%ED%86%B5%EC%83%81%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%82%B0%EC%97%85%ED%86%B5%EC%83%81%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-10-20|36767",
+      "title": "산업통상부와 그 소속기관 직제",
+      "promulgated_at": "2026-10-20",
+      "effective_date": "2026-10-20",
+      "revision": "일부개정",
+      "law_type": "대통령령",
+      "ministry": "행정안전부",
+      "url": "https://www.law.go.kr/법령/%EC%82%B0%EC%97%85%ED%86%B5%EC%83%81%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%82%B0%EC%97%85%ED%86%B5%EC%83%81%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|기후에너지환경부령|2026-10-08|00061",
+      "title": "기후에너지환경부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-10-08",
+      "effective_date": "2026-10-08",
+      "revision": "타법개정",
+      "law_type": "기후에너지환경부령",
+      "ministry": "기후에너지환경부",
+      "url": "https://www.law.go.kr/법령/%EA%B8%B0%ED%9B%84%EC%97%90%EB%84%88%EC%A7%80%ED%99%98%EA%B2%BD%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B8%B0%ED%9B%84%EC%97%90%EB%84%88%EC%A7%80%ED%99%98%EA%B2%BD%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|국방부령|2026-10-02|01230",
+      "title": "국방부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-10-02",
+      "effective_date": "2026-10-02",
+      "revision": "일부개정",
+      "law_type": "국방부령",
+      "ministry": "국방부",
+      "url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|총리령|2026-09-30|02159",
+      "title": "공정거래위원회와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-09-30",
+      "effective_date": "2026-09-30",
+      "revision": "일부개정",
+      "law_type": "총리령",
+      "ministry": "공정거래위원회",
+      "url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A0%95%EA%B1%B0%EB%9E%98%EC%9C%84%EC%9B%90%ED%9A%8C%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%B5%EC%A0%95%EA%B1%B0%EB%9E%98%EC%9C%84%EC%9B%90%ED%9A%8C%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|행정안전부령|2026-09-29|00645",
+      "title": "행정안전부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-09-29",
+      "effective_date": "2026-10-01",
+      "revision": "일부개정",
+      "law_type": "행정안전부령",
+      "ministry": "행정안전부",
+      "url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|재정경제부령|2026-09-29|00051",
+      "title": "조달청과 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-09-29",
+      "effective_date": "2026-09-29",
+      "revision": "일부개정",
+      "law_type": "재정경제부령",
+      "ministry": "조달청",
+      "url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-09-29|36728",
+      "title": "국방부와 그 소속기관 직제",
+      "promulgated_at": "2026-09-29",
+      "effective_date": "2026-10-02",
+      "revision": "타법개정",
+      "law_type": "대통령령",
+      "ministry": "행정안전부,국방부",
+      "url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-09-29|36714",
+      "title": "조달청과 그 소속기관 직제",
+      "promulgated_at": "2026-09-29",
+      "effective_date": "2026-09-29",
+      "revision": "일부개정",
+      "law_type": "대통령령",
+      "ministry": "행정안전부,조달청",
+      "url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%A1%B0%EB%8B%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-09-29|36710",
+      "title": "행정안전부와 그 소속기관 직제",
+      "promulgated_at": "2026-09-29",
+      "effective_date": "2026-10-01",
+      "revision": "일부개정",
+      "law_type": "대통령령",
+      "ministry": "행정안전부",
+      "url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|해양수산부령|2026-09-28|00826",
+      "title": "해양수산부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-09-28",
+      "effective_date": "2026-10-01",
+      "revision": "일부개정",
+      "law_type": "해양수산부령",
+      "ministry": "해양수산부",
+      "url": "https://www.law.go.kr/법령/%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|문화체육관광부령|2026-08-28|00647",
+      "title": "문화체육관광부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "문화체육관광부령",
+      "ministry": "문화체육관광부",
+      "url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|국가보훈부령|2026-08-28|00076",
+      "title": "국가보훈부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "국가보훈부령",
+      "ministry": "국가보훈부",
+      "url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%B3%B4%ED%9B%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%B3%B4%ED%9B%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|고용노동부령|2026-08-28|00482",
+      "title": "고용노동부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "고용노동부령",
+      "ministry": "고용노동부",
+      "url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B3%A0%EC%9A%A9%EB%85%B8%EB%8F%99%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|농림축산식품부령|2026-08-28|00789",
+      "title": "농림축산식품부와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "농림축산식품부령",
+      "ministry": "농림축산식품부",
+      "url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%86%8D%EB%A6%BC%EC%B6%95%EC%82%B0%EC%8B%9D%ED%92%88%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|총리령|2026-08-28|02148",
+      "title": "국가데이터처와 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "총리령",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B5%AD%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B2%98%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|보건복지부령|2026-08-28|01197",
+      "title": "질병관리청과 그 소속기관 직제 시행규칙",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "보건복지부령",
+      "ministry": "질병관리청",
+      "url": "https://www.law.go.kr/법령/%EC%A7%88%EB%B3%91%EA%B4%80%EB%A6%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%A7%88%EB%B3%91%EA%B4%80%EB%A6%AC%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-08-28|36629",
+      "title": "문화체육관광부와 그 소속기관 직제",
+      "promulgated_at": "2026-08-28",
+      "effective_date": "2026-08-28",
+      "revision": "일부개정",
+      "law_type": "대통령령",
+      "ministry": "행정안전부,문화체육관광부",
+      "url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%AC%B8%ED%99%94%EC%B2%B4%EC%9C%A1%EA%B4%80%EA%B4%91%EB%B6%80%EC%99%80%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%A7%81%EC%A0%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 4,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:law|국토교통부령|2026-11-09|01636",
       "title": "건설기계관리법 시행규칙",
       "promulgated_at": "2026-11-09",
@@ -2503,6 +3065,34 @@
       }
     },
     {
+      "event_id": "v4:0f540c378bc7b08486e8",
+      "title": "국립나주병원 보통승진심사위원회규정",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "타법폐지",
+      "law_type": "예규",
+      "ministry": "국립나주병원",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B5%AD%EB%A6%BD%EB%82%98%EC%A3%BC%EB%B3%91%EC%9B%90%20%EB%B3%B4%ED%86%B5%EC%8A%B9%EC%A7%84%EC%8B%AC%EC%82%AC%EC%9C%84%EC%9B%90%ED%9A%8C%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EA%B5%AD%EB%A6%BD%EB%82%98%EC%A3%BC%EB%B3%91%EC%9B%90%20%EB%B3%B4%ED%86%B5%EC%8A%B9%EC%A7%84%EC%8B%AC%EC%82%AC%EC%9C%84%EC%9B%90%ED%9A%8C%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:ae21d9a1ee7a331fde11",
       "title": "고용노동부 공무원 정원배정표",
       "promulgated_at": "2026-11-06",
@@ -2643,6 +3233,594 @@
       }
     },
     {
+      "event_id": "v4:5104e6873a9cba13598e",
+      "title": "중국 및 대만산 고체 수산화나트륨에 대한 잠정덤핑방지관세 부과",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "제정",
+      "law_type": "고시",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%A4%91%EA%B5%AD%20%EB%B0%8F%20%EB%8C%80%EB%A7%8C%EC%82%B0%20%EA%B3%A0%EC%B2%B4%20%EC%88%98%EC%82%B0%ED%99%94%EB%82%98%ED%8A%B8%EB%A5%A8%EC%97%90%20%EB%8C%80%ED%95%9C%20%EC%9E%A0%EC%A0%95%EB%8D%A4%ED%95%91%EB%B0%A9%EC%A7%80%EA%B4%80%EC%84%B8%20%EB%B6%80%EA%B3%BC",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%A4%91%EA%B5%AD%20%EB%B0%8F%20%EB%8C%80%EB%A7%8C%EC%82%B0%20%EA%B3%A0%EC%B2%B4%20%EC%88%98%EC%82%B0%ED%99%94%EB%82%98%ED%8A%B8%EB%A5%A8%EC%97%90%20%EB%8C%80%ED%95%9C%20%EC%9E%A0%EC%A0%95%EB%8D%A4%ED%95%91%EB%B0%A9%EC%A7%80%EA%B4%80%EC%84%B8%20%EB%B6%80%EA%B3%BC",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:31cb59c3d0f65d5709a9",
+      "title": "가석방 업무지침",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "예규",
+      "ministry": "법무부",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B0%80%EC%84%9D%EB%B0%A9%20%EC%97%85%EB%AC%B4%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EA%B0%80%EC%84%9D%EB%B0%A9%20%EC%97%85%EB%AC%B4%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:302dd8306566a18d2444",
+      "title": "소년원ㆍ소년분류심사원 감호업무지침",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "훈령",
+      "ministry": "법무부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%86%8C%EB%85%84%EC%9B%90%E3%86%8D%EC%86%8C%EB%85%84%EB%B6%84%EB%A5%98%EC%8B%AC%EC%82%AC%EC%9B%90%20%EA%B0%90%ED%98%B8%EC%97%85%EB%AC%B4%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%86%8C%EB%85%84%EC%9B%90%E3%86%8D%EC%86%8C%EB%85%84%EB%B6%84%EB%A5%98%EC%8B%AC%EC%82%AC%EC%9B%90%20%EA%B0%90%ED%98%B8%EC%97%85%EB%AC%B4%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:231d9d567e0c32b1cbc9",
+      "title": "자율기구 \"소속특수법인설립추진단\" 설치 및 운영에 관한 규정",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "훈령",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%22%EC%86%8C%EC%86%8D%ED%8A%B9%EC%88%98%EB%B2%95%EC%9D%B8%EC%84%A4%EB%A6%BD%EC%B6%94%EC%A7%84%EB%8B%A8%22%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%9E%90%EC%9C%A8%EA%B8%B0%EA%B5%AC%20%22%EC%86%8C%EC%86%8D%ED%8A%B9%EC%88%98%EB%B2%95%EC%9D%B8%EC%84%A4%EB%A6%BD%EC%B6%94%EC%A7%84%EB%8B%A8%22%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%9A%B4%EC%98%81%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:0ff0a1c9c0cdebc5e36c",
+      "title": "주택건설사업 기반시설 기부채납 운영기준",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%A3%BC%ED%83%9D%EA%B1%B4%EC%84%A4%EC%82%AC%EC%97%85%20%EA%B8%B0%EB%B0%98%EC%8B%9C%EC%84%A4%20%EA%B8%B0%EB%B6%80%EC%B1%84%EB%82%A9%20%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%A3%BC%ED%83%9D%EA%B1%B4%EC%84%A4%EC%82%AC%EC%97%85%20%EA%B8%B0%EB%B0%98%EC%8B%9C%EC%84%A4%20%EA%B8%B0%EB%B6%80%EC%B1%84%EB%82%A9%20%EC%9A%B4%EC%98%81%EA%B8%B0%EC%A4%80",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:058d50383d245f52eb21",
+      "title": "무역위원회 직제운영규정",
+      "promulgated_at": "2026-11-06",
+      "effective_date": "2026-11-06",
+      "revision": "일부개정",
+      "law_type": "훈령",
+      "ministry": "무역위원회",
+      "url": "https://www.law.go.kr/행정규칙/%EB%AC%B4%EC%97%AD%EC%9C%84%EC%9B%90%ED%9A%8C%20%EC%A7%81%EC%A0%9C%EC%9A%B4%EC%98%81%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EB%AC%B4%EC%97%AD%EC%9C%84%EC%9B%90%ED%9A%8C%20%EC%A7%81%EC%A0%9C%EC%9A%B4%EC%98%81%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:e12b890473b86d5ee9b5",
+      "title": "스마트도시 조성 위탁업무 및 수탁기관 지정 고시",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-05",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%8A%A4%EB%A7%88%ED%8A%B8%EB%8F%84%EC%8B%9C%20%EC%A1%B0%EC%84%B1%20%EC%9C%84%ED%83%81%EC%97%85%EB%AC%B4%20%EB%B0%8F%20%EC%88%98%ED%83%81%EA%B8%B0%EA%B4%80%20%EC%A7%80%EC%A0%95%20%EA%B3%A0%EC%8B%9C",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%8A%A4%EB%A7%88%ED%8A%B8%EB%8F%84%EC%8B%9C%20%EC%A1%B0%EC%84%B1%20%EC%9C%84%ED%83%81%EC%97%85%EB%AC%B4%20%EB%B0%8F%20%EC%88%98%ED%83%81%EA%B8%B0%EA%B4%80%20%EC%A7%80%EC%A0%95%20%EA%B3%A0%EC%8B%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:d9af14809e1f36443e27",
+      "title": "범죄피해자에 대한 경제적 지원 업무처리지침",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-05",
+      "revision": "일부개정",
+      "law_type": "예규",
+      "ministry": "공소청",
+      "url": "https://www.law.go.kr/행정규칙/%EB%B2%94%EC%A3%84%ED%94%BC%ED%95%B4%EC%9E%90%EC%97%90%20%EB%8C%80%ED%95%9C%20%EA%B2%BD%EC%A0%9C%EC%A0%81%20%EC%A7%80%EC%9B%90%20%EC%97%85%EB%AC%B4%EC%B2%98%EB%A6%AC%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EB%B2%94%EC%A3%84%ED%94%BC%ED%95%B4%EC%9E%90%EC%97%90%20%EB%8C%80%ED%95%9C%20%EA%B2%BD%EC%A0%9C%EC%A0%81%20%EC%A7%80%EC%9B%90%20%EC%97%85%EB%AC%B4%EC%B2%98%EB%A6%AC%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:c4edfff7932f17fa2d34",
+      "title": "달방댐 안전성강화사업 실시계획 변경(4차) 승인",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-11",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "원주지방환경청",
+      "url": "https://www.law.go.kr/행정규칙/%EB%8B%AC%EB%B0%A9%EB%8C%90%20%EC%95%88%EC%A0%84%EC%84%B1%EA%B0%95%ED%99%94%EC%82%AC%EC%97%85%20%EC%8B%A4%EC%8B%9C%EA%B3%84%ED%9A%8D%20%EB%B3%80%EA%B2%BD%284%EC%B0%A8%29%20%EC%8A%B9%EC%9D%B8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EB%8B%AC%EB%B0%A9%EB%8C%90%20%EC%95%88%EC%A0%84%EC%84%B1%EA%B0%95%ED%99%94%EC%82%AC%EC%97%85%20%EC%8B%A4%EC%8B%9C%EA%B3%84%ED%9A%8D%20%EB%B3%80%EA%B2%BD%284%EC%B0%A8%29%20%EC%8A%B9%EC%9D%B8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:c393a0f72ac94a46b85a",
+      "title": "횡성다목적댐 안전성강화사업 실시계획 변경(2차) 승인 고시",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-11",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "원주지방환경청",
+      "url": "https://www.law.go.kr/행정규칙/%ED%9A%A1%EC%84%B1%EB%8B%A4%EB%AA%A9%EC%A0%81%EB%8C%90%20%EC%95%88%EC%A0%84%EC%84%B1%EA%B0%95%ED%99%94%EC%82%AC%EC%97%85%20%EC%8B%A4%EC%8B%9C%EA%B3%84%ED%9A%8D%20%EB%B3%80%EA%B2%BD%282%EC%B0%A8%29%20%EC%8A%B9%EC%9D%B8%20%EA%B3%A0%EC%8B%9C",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%9A%A1%EC%84%B1%EB%8B%A4%EB%AA%A9%EC%A0%81%EB%8C%90%20%EC%95%88%EC%A0%84%EC%84%B1%EA%B0%95%ED%99%94%EC%82%AC%EC%97%85%20%EC%8B%A4%EC%8B%9C%EA%B3%84%ED%9A%8D%20%EB%B3%80%EA%B2%BD%282%EC%B0%A8%29%20%EC%8A%B9%EC%9D%B8%20%EA%B3%A0%EC%8B%9C",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:891ab6793558f625f5fc",
+      "title": "항행서비스협의회 운영지침",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-05",
+      "revision": "제정",
+      "law_type": "훈령",
+      "ministry": "항공교통본부",
+      "url": "https://www.law.go.kr/행정규칙/%ED%95%AD%ED%96%89%EC%84%9C%EB%B9%84%EC%8A%A4%ED%98%91%EC%9D%98%ED%9A%8C%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%95%AD%ED%96%89%EC%84%9C%EB%B9%84%EC%8A%A4%ED%98%91%EC%9D%98%ED%9A%8C%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:7e7a7becafa916073c90",
+      "title": "통계작성의 변경승인(협의) 고시(인천광역시강화군기본통계)",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-12-31",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%EA%B0%95%ED%99%94%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%EA%B0%95%ED%99%94%EA%B5%B0%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:64e36aedf3e2579906d8",
+      "title": "친환경차 전환 촉진을 위한 이차보전 사업 운영규정",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-05",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "산업통상부",
+      "url": "https://www.law.go.kr/행정규칙/%EC%B9%9C%ED%99%98%EA%B2%BD%EC%B0%A8%20%EC%A0%84%ED%99%98%20%EC%B4%89%EC%A7%84%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84%20%EC%82%AC%EC%97%85%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%B9%9C%ED%99%98%EA%B2%BD%EC%B0%A8%20%EC%A0%84%ED%99%98%20%EC%B4%89%EC%A7%84%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84%20%EC%82%AC%EC%97%85%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:457437f3c0a72ba42150",
+      "title": "감항성개선지시서 발행 및 관리 지침",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-05",
+      "revision": "일부개정",
+      "law_type": "훈령",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/행정규칙/%EA%B0%90%ED%95%AD%EC%84%B1%EA%B0%9C%EC%84%A0%EC%A7%80%EC%8B%9C%EC%84%9C%20%EB%B0%9C%ED%96%89%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%20%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EA%B0%90%ED%95%AD%EC%84%B1%EA%B0%9C%EC%84%A0%EC%A7%80%EC%8B%9C%EC%84%9C%20%EB%B0%9C%ED%96%89%20%EB%B0%8F%20%EA%B4%80%EB%A6%AC%20%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:35e0905da4c8ade99ed2",
+      "title": "항공교통업무 지원시스템 운영지침",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-05",
+      "revision": "제정",
+      "law_type": "훈령",
+      "ministry": "항공교통본부",
+      "url": "https://www.law.go.kr/행정규칙/%ED%95%AD%EA%B3%B5%EA%B5%90%ED%86%B5%EC%97%85%EB%AC%B4%20%EC%A7%80%EC%9B%90%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%95%AD%EA%B3%B5%EA%B5%90%ED%86%B5%EC%97%85%EB%AC%B4%20%EC%A7%80%EC%9B%90%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%9A%B4%EC%98%81%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:216cd61fd6d9c77f54f0",
+      "title": "환경위성 기본 산출물 생산 업무처리지침",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-11-11",
+      "revision": "일부개정",
+      "law_type": "예규",
+      "ministry": "국립환경과학원",
+      "url": "https://www.law.go.kr/행정규칙/%ED%99%98%EA%B2%BD%EC%9C%84%EC%84%B1%20%EA%B8%B0%EB%B3%B8%20%EC%82%B0%EC%B6%9C%EB%AC%BC%20%EC%83%9D%EC%82%B0%20%EC%97%85%EB%AC%B4%EC%B2%98%EB%A6%AC%EC%A7%80%EC%B9%A8",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%99%98%EA%B2%BD%EC%9C%84%EC%84%B1%20%EA%B8%B0%EB%B3%B8%20%EC%82%B0%EC%B6%9C%EB%AC%BC%20%EC%83%9D%EC%82%B0%20%EC%97%85%EB%AC%B4%EC%B2%98%EB%A6%AC%EC%A7%80%EC%B9%A8",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:012151a143c6fd415a2b",
+      "title": "통계작성의 변경 승인(협의) 고시(안동시기본통계)",
+      "promulgated_at": "2026-11-05",
+      "effective_date": "2026-10-30",
+      "revision": "일부개정",
+      "law_type": "고시",
+      "ministry": "국가데이터처",
+      "url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%20%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%95%88%EB%8F%99%EC%8B%9C%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%ED%86%B5%EA%B3%84%EC%9E%91%EC%84%B1%EC%9D%98%20%EB%B3%80%EA%B2%BD%20%EC%8A%B9%EC%9D%B8%28%ED%98%91%EC%9D%98%29%20%EA%B3%A0%EC%8B%9C%28%EC%95%88%EB%8F%99%EC%8B%9C%EA%B8%B0%EB%B3%B8%ED%86%B5%EA%B3%84%29",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|기후에너지환경부령|2026-11-04|00067",
+      "title": "대기환경보전법 시행규칙",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "law_type": "기후에너지환경부령",
+      "ministry": "기후에너지환경부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%EA%B8%B0%ED%99%98%EA%B2%BD%EB%B3%B4%EC%A0%84%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%8C%80%EA%B8%B0%ED%99%98%EA%B2%BD%EB%B3%B4%EC%A0%84%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:df8397c27b418f021397",
+      "title": "서해지방해양경찰청 기록관리 및 기록관 운영규칙",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "law_type": "훈령",
+      "ministry": "서해지방해양경찰청",
+      "url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%20%EA%B8%B0%EB%A1%9D%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20%EA%B8%B0%EB%A1%9D%EA%B4%80%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EC%84%9C%ED%95%B4%EC%A7%80%EB%B0%A9%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%EC%B2%AD%20%EA%B8%B0%EB%A1%9D%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20%EA%B8%B0%EB%A1%9D%EA%B4%80%20%EC%9A%B4%EC%98%81%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:d5cfbeaf54f9df7c367f",
+      "title": "방위사업청과 그 소속기관 위임전결 규정",
+      "promulgated_at": "2026-11-04",
+      "effective_date": "2026-11-04",
+      "revision": "일부개정",
+      "law_type": "훈령",
+      "ministry": "방위사업청",
+      "url": "https://www.law.go.kr/행정규칙/%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97%85%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%9C%84%EC%9E%84%EC%A0%84%EA%B2%B0%20%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/행정규칙/%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97%85%EC%B2%AD%EA%B3%BC%20%EA%B7%B8%20%EC%86%8C%EC%86%8D%EA%B8%B0%EA%B4%80%20%EC%9C%84%EC%9E%84%EC%A0%84%EA%B2%B0%20%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-11-03|36800",
+      "title": "청년 등의 사회진출 지원을 위한 실무경력 인정 확대에 관한 4개 법령의 일부개정에 관한 대통령령",
+      "promulgated_at": "2026-11-03",
+      "effective_date": "2026-11-03",
+      "revision": "일괄개정",
+      "law_type": "대통령령",
+      "ministry": "기후에너지환경부,국방부,농림축산식품부,성평등가족부",
+      "url": "https://www.law.go.kr/법령/%EC%B2%AD%EB%85%84%20%EB%93%B1%EC%9D%98%20%EC%82%AC%ED%9A%8C%EC%A7%84%EC%B6%9C%20%EC%A7%80%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%8B%A4%EB%AC%B4%EA%B2%BD%EB%A0%A5%20%EC%9D%B8%EC%A0%95%20%ED%99%95%EB%8C%80%EC%97%90%20%EA%B4%80%ED%95%9C%204%EA%B0%9C%20%EB%B2%95%EB%A0%B9%EC%9D%98%20%EC%9D%BC%EB%B6%80%EA%B0%9C%EC%A0%95%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%ED%86%B5%EB%A0%B9%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%B2%AD%EB%85%84%20%EB%93%B1%EC%9D%98%20%EC%82%AC%ED%9A%8C%EC%A7%84%EC%B6%9C%20%EC%A7%80%EC%9B%90%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%8B%A4%EB%AC%B4%EA%B2%BD%EB%A0%A5%20%EC%9D%B8%EC%A0%95%20%ED%99%95%EB%8C%80%EC%97%90%20%EA%B4%80%ED%95%9C%204%EA%B0%9C%20%EB%B2%95%EB%A0%B9%EC%9D%98%20%EC%9D%BC%EB%B6%80%EA%B0%9C%EC%A0%95%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%8C%80%ED%86%B5%EB%A0%B9%EB%A0%B9",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:law|헌법재판소규칙|2026-10-27|00498",
       "title": "헌법재판소 기부심사위원회 규칙",
       "promulgated_at": "2026-10-27",
@@ -2755,6 +3933,174 @@
       }
     },
     {
+      "event_id": "v4:law|행정안전부령|2026-10-19|00653",
+      "title": "규제 재검토기한 정비를 위한 2개 법령의 일부개정에 관한 행정안전부령",
+      "promulgated_at": "2026-10-19",
+      "effective_date": "2026-10-19",
+      "revision": "일괄개정",
+      "law_type": "행정안전부령",
+      "ministry": "행정안전부",
+      "url": "https://www.law.go.kr/법령/%EA%B7%9C%EC%A0%9C%20%EC%9E%AC%EA%B2%80%ED%86%A0%EA%B8%B0%ED%95%9C%20%EC%A0%95%EB%B9%84%EB%A5%BC%20%EC%9C%84%ED%95%9C%202%EA%B0%9C%20%EB%B2%95%EB%A0%B9%EC%9D%98%20%EC%9D%BC%EB%B6%80%EA%B0%9C%EC%A0%95%EC%97%90%20%EA%B4%80%ED%95%9C%20%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B7%9C%EC%A0%9C%20%EC%9E%AC%EA%B2%80%ED%86%A0%EA%B8%B0%ED%95%9C%20%EC%A0%95%EB%B9%84%EB%A5%BC%20%EC%9C%84%ED%95%9C%202%EA%B0%9C%20%EB%B2%95%EB%A0%B9%EC%9D%98%20%EC%9D%BC%EB%B6%80%EA%B0%9C%EC%A0%95%EC%97%90%20%EA%B4%80%ED%95%9C%20%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EB%A0%B9",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-09-30|36734",
+      "title": "개별소비세법 시행령",
+      "promulgated_at": "2026-09-30",
+      "effective_date": "2026-09-30",
+      "revision": "일부개정",
+      "law_type": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|법률|2026-09-29|22033",
+      "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
+      "promulgated_at": "2026-09-29",
+      "effective_date": "2026-09-29",
+      "revision": "일부개정",
+      "law_type": "법률",
+      "ministry": "중소벤처기업부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%8C%80%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%20%EC%83%81%EC%83%9D%ED%98%91%EB%A0%A5%20%EC%B4%89%EC%A7%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-09-08|36658",
+      "title": "주택건설기준 등에 관한 규정",
+      "promulgated_at": "2026-09-08",
+      "effective_date": "2026-09-08",
+      "revision": "일부개정",
+      "law_type": "대통령령",
+      "ministry": "국토교통부",
+      "url": "https://www.law.go.kr/법령/%EC%A3%BC%ED%83%9D%EA%B1%B4%EC%84%A4%EA%B8%B0%EC%A4%80%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_url": "https://www.law.go.kr/법령/%EC%A3%BC%ED%83%9D%EA%B1%B4%EC%84%A4%EA%B8%B0%EC%A4%80%20%EB%93%B1%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|기후에너지환경부령|2026-08-31|00056",
+      "title": "대기환경보전법 시행규칙",
+      "promulgated_at": "2026-08-31",
+      "effective_date": "2026-09-18",
+      "revision": "타법개정",
+      "law_type": "기후에너지환경부령",
+      "ministry": "기후에너지환경부",
+      "url": "https://www.law.go.kr/법령/%EB%8C%80%EA%B8%B0%ED%99%98%EA%B2%BD%EB%B3%B4%EC%A0%84%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_url": "https://www.law.go.kr/법령/%EB%8C%80%EA%B8%B0%ED%99%98%EA%B2%BD%EB%B3%B4%EC%A0%84%EB%B2%95%20%EC%8B%9C%ED%96%89%EA%B7%9C%EC%B9%99",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
+      "event_id": "v4:law|대통령령|2026-08-18|36587",
+      "title": "개별소비세법 시행령",
+      "promulgated_at": "2026-08-18",
+      "effective_date": "2026-09-18",
+      "revision": "타법개정",
+      "law_type": "대통령령",
+      "ministry": "재정경제부",
+      "url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_url": "https://www.law.go.kr/법령/%EA%B0%9C%EB%B3%84%EC%86%8C%EB%B9%84%EC%84%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9",
+      "amendment_reason": "",
+      "article_differences": [],
+      "change_count": 0,
+      "comparison_status": "공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+      "policy_profile": false,
+      "downstream_changes": [],
+      "presentation_source": "v4_official_source",
+      "impact_priority": 0,
+      "impact_level": "not_assessed",
+      "impact_reason": "확인된 기관·제도 영향 범위가 분류 기준에 미달",
+      "impact_scope": {
+        "institutions": 0,
+        "proven_dependent_rules": 0,
+        "criteria": "직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
+        "provisional": false,
+        "note": "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+      }
+    },
+    {
       "event_id": "v4:law|법률|2026-02-19|21377",
       "title": "대ㆍ중소기업 상생협력 촉진에 관한 법률",
       "promulgated_at": "2026-02-19",
@@ -2833,7 +4179,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "2c35b4052043b10dfae67c096a766c44bfc6cb83ec8f03b958dd369257515c83"
+      "evidence_fingerprint": "7c392ff12fef2dd1fd10d91ace4fc199485adb17714b62c350d048d3d78c6822"
     },
     {
       "id": "6e5287498d8d7a5b9749",
@@ -2863,7 +4209,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "4a26f809ff3eac75b46d65f75af2411a875c575efb5facf407d4b13c7f22ab49"
+      "evidence_fingerprint": "1587436aeeca677a4f7af671b03acd6487044a77045c2a4c42646f22cf977c0d"
     },
     {
       "id": "b09940e861d74fff2619",
@@ -2897,7 +4243,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "0f33401e6002927ff77de12526a85de3accf1b6b332b90c00d346d50c7b0334c"
+      "evidence_fingerprint": "9fa4f8ff71b681c7a4cd20f9fcb4d2a48c26255eedf949c4bf4db7743ca2cf0e"
     },
     {
       "id": "be712977a39e0e7491d1",
@@ -2923,7 +4269,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "7e7babaf59105d41a6ff3c768ebfc4839622d203da5c0d0c040d231059fbda90"
+      "evidence_fingerprint": "f3bc098deb4db7bd840be8dcd40365e1cf11baf8351fd9857cffb7308cc45350"
     },
     {
       "id": "9fdbfe44d57fdea8bde2",
@@ -2949,7 +4295,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "9f24a801d45de89f52d516b0482b7902bc2dd55858245b0bac34c24cee427ab1"
+      "evidence_fingerprint": "8d45c4ad141200c414058dc5d227d5747777c2180d53f80e08a76ed8231369de"
     },
     {
       "id": "ea896211afa62c5c44ff",
@@ -2975,7 +4321,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "f843bd213162d266ac7e09d1624ba357dc52aabc423842c48b72d7245e9ef99e"
+      "evidence_fingerprint": "b0023ecfe17e804300b261fbf805a337d6cfa5943346bd35688464a404901b3f"
     },
     {
       "id": "ec5dbd29637cf537307f",
@@ -3001,7 +4347,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "ae5d74befa92e0b833448da87cd5cfe3199d6902bdbc4da2758cd0b9f81839ba"
+      "evidence_fingerprint": "edc7c6601a103d0aed690de4d4aa5a25be72fbb1b32fe6004dc3db935cb375bd"
     },
     {
       "id": "f48bb0a00b41561d4bba",
@@ -3027,7 +4373,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "3b0323e7ad2a0208b356f17cd140ee455b80526803be53a358f59b7fd5c6fb28"
+      "evidence_fingerprint": "87e9933ac5cd71abdf3d4e1c0e58d85990bd4659d0e12b84bd9929a82d0fa0f4"
     },
     {
       "id": "1aeb31a4548f9a72bdc5",
@@ -3053,7 +4399,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "9b63b37d0c2ad18965f3d3d483f816e8066416a14bba3782c4ac58fc88a2cca9"
+      "evidence_fingerprint": "3e0f3e5c2efa2314a78f92b55684351bd077f67aee3c4791f8f06f8c45d11bd0"
     },
     {
       "id": "a35e5cd464059bfe87a2",
@@ -3079,7 +4425,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "6d3f7721c27c16d72447e306c81c381da88307e17ede212ad85e0c35f0b34648"
+      "evidence_fingerprint": "0a6e663d556ed98a91454dc5dc0478e9facd44bfb971d6e3690bcd36b4e8738f"
     },
     {
       "id": "e94abb7309a7b87a18d7",
@@ -3105,7 +4451,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "9a702ea3bb485c4834fb3b30816590a39fa8f1e58e138d6b1fda2c696c2c959a"
+      "evidence_fingerprint": "9be773d3426389666b1c24894a3ce19e4265af704da4c1c62758d41fea933bbe"
     },
     {
       "id": "e5ba79d6def4aa4d5ffd",
@@ -3131,7 +4477,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "df8e28588972f965b8262c8a38e7a44ada06de240d08eca5f547cd06c9a24f0b"
+      "evidence_fingerprint": "ba190060e077e649a261a3638f326e7c7cbf9cfac761aeedc55559a4d7889a5d"
     },
     {
       "id": "ca1a2ae2d223dccbf256",
@@ -3157,7 +4503,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "b107eb33625a251d9833b8eb2cef814d4b7084699e85717a2ae462d53af09e12"
+      "evidence_fingerprint": "17c8a7dce006932f92fb74206caca7761ef8696a0a591ea9eb37602dc203007f"
     },
     {
       "id": "1a21f3b7f3646b08906b",
@@ -3191,7 +4537,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "dda4413dc55be227e8ea60f6e95139332b7f34550a1c3fa2dfb11a771b4969e8"
+      "evidence_fingerprint": "d90b26f3479670e7d149334993d0d1aef4d2dff96bd18af5a9f715e30d68bd42"
     },
     {
       "id": "0048fb04bf1dddcf05e3",
@@ -3221,7 +4567,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "26a8c3df180dfff46aefc73b9fa9c84541bbd57394f5fde8b5c66452b1957cdf"
+      "evidence_fingerprint": "a5cd74b4d2ae12e8b7420b9ed5067574933ba180e92218cdf24f7da568939666"
     },
     {
       "id": "a5258d5fd8e68752210c",
@@ -3247,7 +4593,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "a6d4eea223a7b84a6d03b51596f9a01138e4274615947fe540ca05e1cdffb840"
+      "evidence_fingerprint": "e010c54b4357dcfcc595b79fd6283cc846870f6b57c95c279516c7f1523d879c"
     },
     {
       "id": "fb00fc144fd5c28acf9f",
@@ -3273,7 +4619,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "9361b8893738458093474b306c98dfe2507c59e34b3b872c85400b82c8aea3a4"
+      "evidence_fingerprint": "03a5aab11d8b6dc154672f7605f4dc2654d4caf8d21d0999421b768edc6aa429"
     },
     {
       "id": "30ec1fdf37f2c49f663e",
@@ -3303,7 +4649,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "274705c5a05d2bb2c2ac11f8ca29f1ab3dbcab603891120b9c03a61341b51668"
+      "evidence_fingerprint": "a3e5ecae43fbb52076ad9bd6743ec5c7c61526ef85cffbcfe0952b8faa02673f"
     },
     {
       "id": "bf7fb826974b4fded056",
@@ -3337,7 +4683,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "66f925998334131152b89e4b1a8dde425bed4daf2bde52ee2afa58efadcabc7a"
+      "evidence_fingerprint": "742c0824573274b483cbbfca98699b921e29315cb8bd98cbad8afb19211a0278"
     },
     {
       "id": "803a6cb96edde90c093e",
@@ -3363,7 +4709,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "f86cb53e0cd3e7847bd7fc3a21b36531f3c1a3e0509b3c8ee9f0b37b68d9f129"
+      "evidence_fingerprint": "be63f41aa94b22f80c7f1a331a088db65f703baee1fe36f36cda947b79139e4d"
     },
     {
       "id": "0390dc2c192a8ce07479",
@@ -3393,7 +4739,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "398abe0f1bc0f8d3f829bc5d73aae3da5b34f7b74af1466594dc084efc897480"
+      "evidence_fingerprint": "ff91ea1b09d517a2027236a24be8909a77e9efab1b23d1d7eec6a7fbe2c0ecd2"
     },
     {
       "id": "563e2381a7e40f08a942",
@@ -3419,7 +4765,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "56bcd0c17c940af26342e95c9e9c8748b7899dcf4181d27f3cfdf078139ec72f"
+      "evidence_fingerprint": "4f6041c2a754272494be3a814d741962ac497d8a444ea052ab9d83c242ad5137"
     },
     {
       "id": "9d180ec8756eafe86ab5",
@@ -3449,7 +4795,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "98e0775b9ab3efb214834418abad06431979f7301e7584bbd2010d3792600fe6"
+      "evidence_fingerprint": "c5ba3ddbd92d0d73e291fb33557bb13d0dfa86abab18a9d2365753f422bb691d"
     },
     {
       "id": "0bfcd26e5e7aad457a2c",
@@ -3479,7 +4825,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "334800d404c753f9bed11dcddbb991e9c516c5f72e69d86c59a4a7727bbdb66b"
+      "evidence_fingerprint": "29c847ce7c21760bebaab4be78da3db5770f3c7a74f7493c58722fd2e99e73fd"
     },
     {
       "id": "87ed817f88d90d95b8dd",
@@ -3505,7 +4851,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "423c212bcee2855288cd21d17c867048fde12973daa74f4a535c1e30bdf3bbb4"
+      "evidence_fingerprint": "51c2b3c8b8afb0fe27597a5400d398776a73865d8bf6edfe8e5e4fec867c1dce"
     },
     {
       "id": "85642c9c98d471409101",
@@ -3535,7 +4881,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "d8b1eed1f4dadcace7447d313b2f1566f25de4e291f582d02991bdee2149693a"
+      "evidence_fingerprint": "690e1b19055d7b9b170fe163ddd2dd9e6a9975a6303a3083ecd3970ddcdb343a"
     },
     {
       "id": "4a4d568b0311edad5062",
@@ -3561,7 +4907,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "bfaa3b2117efe5c80da27e1c6c0e856c7047fd2e649ed8ee47abaeae048e043c"
+      "evidence_fingerprint": "d8524e51842c7a82845337e20e99ef36074d998c3063c38a117cd4e9e062fbf2"
     },
     {
       "id": "389d2af5ae465e95c88b",
@@ -3595,7 +4941,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "712db457cd1436b0b9d63b0ab0b083ddef5ffd6137e7d35f7bf5ded102a303af"
+      "evidence_fingerprint": "13a7f7b9aa3ca9ed01f7f3fc9826235f0d72ee2e3abffec61f02c54092459e8a"
     },
     {
       "id": "40d6eeda1047f0639746",
@@ -3621,7 +4967,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "361b9b4b9cb6fafae92c3dfac6df1666cedf2a558143ebe0baa82b4f5d11edd3"
+      "evidence_fingerprint": "65bc6258faaf8f8978de683605953e89bdacc60b507654413180ed5520c6999d"
     },
     {
       "id": "072b01dfd12b3884e143",
@@ -3651,7 +4997,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "b2172fcc426c5dc88c9dcd138c1540694061bd864393613eb7419bc16a28e814"
+      "evidence_fingerprint": "0706249d4d382dd3bf311fabc3bdbe225628d2cc8183c00b850a3753043c0374"
     },
     {
       "id": "7ac82de268d9f98187aa",
@@ -3681,7 +5027,7 @@
       "confidence": "공식 신구 조문 확인",
       "verification_note": "업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음 · 동일 조문 내 변경사항 통합 표시",
       "evidence_scope": "v4_verified_source",
-      "evidence_fingerprint": "d1f599fdb22c800790540b6c7f465118adcbd24b0f7f32bb106a368808a6538f"
+      "evidence_fingerprint": "142d4359eff2c9a01389bcbde7e24a456560d8c7674a4831ca7a6cbf645813d9"
     },
     {
       "id": "d64a66e262f2d8c09cbc",

@@ -82,7 +82,7 @@ python -m policy_domino --source stored
 # 실제 모델의 비공개 환경변수 설정
 export PD_LLM_API_KEY="YOUR_PRIVATE_API_KEY"
 export PD_LLM_MODEL="YOUR_PROVIDER_MODEL_ID"
-export PD_LLM_BASE_URL="YOUR_PROVIDER_OPENAI_COMPATIBLE_BASE_URL"
+export PD_LLM_BASE_URL="YOUR_PROVIDER_API_BASE_URL"
 python -m policy_domino.ai_impact --max-requests 36 --batch-size 3 --interval 12
 ```
 

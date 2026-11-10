@@ -47,13 +47,14 @@ site/ai-impact/data.json (v2, 전체 사건의 진행 상황과 개별 검토 �
 | Variable | `PD_LLM_MODEL` | 기본 모델 ID |
 | Variable | `PD_LLM_BASE_URL` | OpenAI 호환 Chat Completions API 기본 URL |
 | Variable | `PD_LLM_FALLBACK_MODEL` | (선택) Gemini 503의 백업 모델 |
+| Variable | `PD_AI_PREFER_FALLBACK` | (선택) Gemini 백업 모델을 우선 사용 (`true` 기본값, 기존 3.8 과부하 회피) |
 | Variable | `PD_AI_AUTO_ENABLED` | (선택) `false`일 때 정기 AI 처리 중단 |
 | Variable | `PD_AI_MAX_REQUESTS` | (선택) 한 실행의 최대 LLM 배치 요청 수, 기본 36 |
 | Variable | `PD_AI_REQUEST_INTERVAL` | (선택) 배치 요청 간 초 간격, 기본 12 |
 
 저장소: `dodam-heo/policy-domino`. GitHub Actions의 **Policy Domino — Official Policy Impact Pipeline → Run workflow**에서 `main`, `source=stored`, `analyze_ai=true`를 선택하면 공식 자료를 다시 수집하지 않고 기존 검증 근거의 **미분석 전체 대기열**을 처리합니다. 수동 요청 없이 정기 갱신할 때는 기존 단일 수집 워크플로가 같은 AI 단계를 실행합니다.
 
-API 키는 브라우저와 GitHub Pages 정적 사이트에 노출하지 않습니다. Python 표준 라이브러리 `urllib`로 서버 측에서 요청합니다. Google의 무료 API로 전송하는 내용은 **공개 법령 근거만** 포함해야 합니다. 내부기관 자료·개인정보 등을 같은 경로에 넣으면 안 됩니다.
+API 키는 브라우저와 GitHub Pages 정적 사이트에 노출하지 않습니다. Python 표준 라이브러리 `urllib`로 서버 측에서 요청합니다. Google Gemini는 전용 GenerateContent API의 구조화 JSON 스키마를 사용하며, 다른 모델 공급업체에는 OpenAI 호환 Chat Completions 프로토콜을 사용합니다. Google의 무료 API로 전송하는 내용은 **공개 법령 근거만** 포함해야 합니다. 내부기관 자료·개인정보 등을 같은 경로에 넣으면 안 됩니다.
 
 ## 로컬 실행
 
@@ -61,7 +62,7 @@ API 키는 브라우저와 GitHub Pages 정적 사이트에 노출하지 않습�
 python -m policy_domino --source stored
 export PD_LLM_API_KEY="실제 API 키"
 export PD_LLM_MODEL="사용 가능한 제공업체 모델 ID"
-export PD_LLM_BASE_URL="해당 제공업체의 OpenAI 호환 /v1 주소"
+export PD_LLM_BASE_URL="해당 제공업체의 Gemini용 /v1beta/openai 또는 다른 제공업체의 OpenAI 호환 /v1 주소"
 python -m policy_domino.ai_impact --max-requests 36 --batch-size 3 --interval 12
 python -m http.server 8000 --directory site
 # http://localhost:8000/impact/

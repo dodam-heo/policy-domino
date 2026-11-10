@@ -20,7 +20,7 @@ def run(source: Literal["official", "stored"] = "official") -> dict:
     else:
         raise ValueError(f"Unsupported evidence source: {source}")
 
-    from policy_domino.engine.classic_bridge import run as publish_agency_impact
+    from policy_domino.engine.publication import run as publish_agency_impact
 
     evidence = refresh_evidence()
     if evidence.get("schema") != "policy-domino-v4":

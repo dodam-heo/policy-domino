@@ -26,36 +26,23 @@ def save_json(path,item):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(item,ensure_ascii=False,indent=2),"utf8")
 
-def bootstrap_old_index(state):
-    """Retain older official citations as an index, not as trusted findings.
-
-    The V2 comparison/extracted agency cards are discarded. Only stable
-    metadata (ID, serial, promulgation date) may enter v4 candidate queue.
-    """
-    if state.get("bootstrapped"):return
-    earlier=load_json(ROOT/"data"/"v2_state.json",{})
-    raw=[x for x in earlier.get("pending",[]) if isinstance(x,dict)]
-    raw +=[x for x in earlier.get("events",{}).values() if isinstance(x,dict)]
-    for x in raw:
-        source=x.get("source")
-        if source not in ("law","admrul"):continue
-        issued=x.get("published_at") or x.get("promulgated_at")
-        if not all((x.get("stable_id"),x.get("serial"),issued,x.get("title"))):
-            continue
-        rec={k:x.get(k,"") for k in
-             ("source","stable_id","serial","title","published_at",
-              "effective_date","number","revision","kind","ministry","url")}
-        rec["published_at"]=issued
-        rec["discovery_kind"]="legacy_index_only_not_verified"
-        state.setdefault("catalog",{})[events.key(rec)]=rec
-    state["bootstrapped"]=True
-    state["bootstrap_records"]=len(state.get("catalog",{}))
-
 def scan_new(state,today):
     # The change-history index is the primary legal event entry point.
     # Yesterday and recent days are rescanned to tolerate delayed indexing.
-    days=[str(today-dt.timedelta(days=i)) for i in range(1,5)]
+    days=[str(today-dt.timedelta(days=i)) for i in range(0,8)]
     collect_index.ingest_changes(state,days,max_pages=10)
+    # Revisit incomplete windows rather than silently declaring missing data done.
+    retry=[]
+    for row in reversed(state.get("coverage",[])):
+        if row.get("source") not in SUPPORTED or row.get("complete"):
+            continue
+        k=(row.get("source"),row.get("first"),row.get("last"))
+        if all(k) and k not in retry:
+            retry.append(k)
+        if len(retry)>=2:
+            break
+    for source,first,last in retry:
+        collect_index.ingest_index(state,source,[(first,last)],max_pages=12)
     backfill=state.get("backfill_cursor_days",0)
     # A moving 7-day sweep discovers administrative acts that became public
     # before this monitor was installed. It never searches hardcoded sectors.
@@ -63,7 +50,7 @@ def scan_new(state,today):
     last=str(today-dt.timedelta(days=backfill+4))
     for source in SUPPORTED:
         collect_index.ingest_index(state,source,[(first,last)],max_pages=12)
-    state["backfill_cursor_days"]=0 if backfill>=210 else backfill+7
+    state["backfill_cursor_days"]=0 if backfill>=365 else backfill+7
     state["latest_official_scan"]=today.isoformat()
 
 def candidate_rank(record,today):
@@ -240,7 +227,6 @@ def build(state,today):
 def run():
     state=load_json(STATE,{"catalog":{},"inspected":{},"coverage":[],
                            "verified_snapshots":{},"attempts":{}})
-    bootstrap_old_index(state)
     today=dt.date.today()
     scanning=True
     if os.getenv("PD_V4_OFFLINE")=="1":scanning=False

@@ -56,7 +56,7 @@ def evidence_identity(event: dict, action: dict) -> str:
         facts["service_evidence"] = {key: action.get(key, "") for key in (
             "service_id", "service", "service_url", "service_criteria",
             "service_evidence_source", "service_evidence_rule",
-            "service_record_updated")}
+            "service_record_updated", "comparison_scope")}
     payload = json.dumps(facts, ensure_ascii=False, sort_keys=True,
                          separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()

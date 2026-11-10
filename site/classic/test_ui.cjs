@@ -71,16 +71,17 @@ for(const a of d.actions){
   assert.ok(events.has(a.event_id),"Every action must have a clickable event");
   assert.ok(a.agency && a.work && a.article && a.required_change);
   assert.ok(a.changes?.length>0 && a.basis.startsWith("https://www.law.go.kr"));
-  assert.ok(["v4_verified_source","legacy_official_directive_awaiting_recheck",
-    "service_formula_dependency_verified",
-    "legacy_service_dependency_pending_recheck"].includes(a.evidence_scope));
+  assert.ok(["v4_verified_source","service_formula_dependency_verified",
+    "service_cited_changed_article_verified"].includes(a.evidence_scope));
+  if(a.service_id) assert.equal(a.comparison_scope,"source_policy_only");
   assert.notEqual(a.status,"조치 확인");
   assert.notEqual(a.status,"미조치 확인");
 }
 const official=d.actions.filter(a=>["v4_verified_source",
   "service_formula_dependency_verified"].includes(a.evidence_scope));
-const legacy=d.actions.filter(a=>["legacy_official_directive_awaiting_recheck",
-  "legacy_service_dependency_pending_recheck"].includes(a.evidence_scope));
-assert.ok(official.length>0&&legacy.length>0);
+assert.ok(official.length>0);
+assert.ok(d.events.every(e=>e.presentation_source==="v4_official_source"));
+assert.ok(script.includes("실제 변경사항 · 신구 비교"));
+assert.ok(script.includes("상위 정책 기준의 변경값"));
 console.log("CLASSIC_PASS",{events:d.events.length,agencyTasks:d.actions.length,
-  official:official.length,oldOfficialPendingReview:legacy.length});
+  official:official.length});

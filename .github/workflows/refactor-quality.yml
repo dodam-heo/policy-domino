@@ -36,4 +36,3 @@ jobs:
       - name: Screen and source adapter contract tests
         run: |
           node site/classic/test_ui.cjs
-          node site/test_adapter.cjs

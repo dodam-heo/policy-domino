@@ -518,10 +518,14 @@ def agency_service_action(event: dict, edge: dict) -> dict:
         "service_record_updated": edge["source_updated"],
         "work": "공공서비스 선정·지원기준",
         "target_location": edge["service"] + " · " + edge["policy_concept"],
-        "what_to_change": edge["policy_concept"] + ": " + before + " → " + after,
+        "what_to_change": edge["policy_concept"] + "를 사용하는 사업의 기준 영향 확인",
         "changes": [{"before": before, "after": after}],
-        "required_change": (edge["service"] + " · " + edge["policy_concept"] +
-                            " 기준 변경: " + before + " → " + after),
+        "comparison_scope": "source_policy_only",
+        "required_change": (
+            edge["service"] + "의 실제 적용비율·산식·가구 유형·금액과 공식 운영기준을 "
+            "대조하여 반영 여부 확인. 위 신구 금액은 상위 정책 기준이며 "
+            "해당 사업의 최종 선정금액이 아님"
+        ),
         "article": edge["policy_article"],
         "law_title": event.get("title", ""),
         "effective_date": event.get("effective_date", ""),

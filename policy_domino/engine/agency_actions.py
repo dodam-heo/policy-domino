@@ -211,6 +211,30 @@ def group_event(g):
         "change_count":sum(len(d.get("changed_articles",[])) for d in valid_docs),
         "comparison_status":"공식 신구 본문 대조 (기관별 반영 여부 미확인)",
         "policy_profile":bool(g.get("dependencies")),
+        # These sections describe sourced legal relationships, not agency
+        # implementation. The actual documents/citations are preserved and
+        # presented in separate disclosures above the institution browser.
+        "simultaneous_laws":[{
+            "title":doc.get("title",""),
+            "kind":doc.get("kind",""),
+            "revision":doc.get("revision",""),
+            "effective_date":doc.get("effective",""),
+            "changed_articles":list(dict.fromkeys(doc.get("changed_articles",[]))),
+            "url":source_url(doc.get("url","")),
+        } for doc in docs if doc.get("title") and
+             doc.get("url","").startswith(("https://www.law.go.kr/","https://law.go.kr/"))]
+             if count>1 and g.get("official_common_promulgation") else [],
+        "citing_regulations":[{
+            "title":a.get("target_title",""),
+            "source_title":a.get("source_title",""),
+            "source_article":a.get("source_article",""),
+            "target_article":a.get("target_article",""),
+            "excerpt":a.get("excerpt","")[:520],
+            "proof":a.get("proof",""),
+            "url":source_url(a.get("target_url","")),
+        } for a in g.get("dependencies",[]) if a.get("affected_verified") is True
+             and a.get("target_title") and
+             a.get("target_url","").startswith(("https://www.law.go.kr/","https://law.go.kr/"))],
         "downstream_changes":[{
             "title":a.get("target_title",""),
             "institution":a.get("target_ministry",""),

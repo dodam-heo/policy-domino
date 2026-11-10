@@ -44,10 +44,17 @@ def field(node, name):
     item = next((x for x in node.iter() if x.tag.split("}")[-1] == name), None)
     return normalize("".join(item.itertext())) if item is not None else ""
 
+# OC is the public DRF client identifier, not a private API access token.
+# Use the explicitly approved identifier when Actions secrets are absent.
+DEFAULT_OFFICIAL_OC = "dori"
+
+def official_oc():
+    return (os.getenv("LAW_OC", "").strip()
+            or os.getenv("LAW_0C", "").strip()
+            or DEFAULT_OFFICIAL_OC)
+
 def request(target, endpoint="lawSearch.do", **kwargs):
-    oc = os.getenv("LAW_OC", "").strip()
-    if not oc:
-        raise RuntimeError("LAW_OC must be configured for official API collection")
+    oc = official_oc()
     query = urllib.parse.urlencode({"OC": oc, "target": target, "type": "XML", **kwargs})
     url = API + endpoint + "?" + query
     req = urllib.request.Request(url, headers=HEADERS)

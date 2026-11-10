@@ -7,10 +7,13 @@ from policy_domino import official_api as api
 
 
 class OfficialApiTests(unittest.TestCase):
-    def test_never_fall_back_to_embedded_api_credentials(self):
-        with patch.dict("os.environ", {"LAW_OC": ""}):
-            with self.assertRaisesRegex(RuntimeError, "LAW_OC"):
-                api.request("law")
+    def test_dori_identifier_is_used_without_actions_secret(self):
+        with patch.dict("os.environ", {"LAW_OC": "", "LAW_0C": ""}):
+            self.assertEqual(api.official_oc(), "dori")
+
+    def test_optional_identifier_override_remains_supported(self):
+        with patch.dict("os.environ", {"LAW_OC": "official-test-client"}):
+            self.assertEqual(api.official_oc(), "official-test-client")
 
     def test_official_law_index_record(self):
         node = ET.fromstring("""

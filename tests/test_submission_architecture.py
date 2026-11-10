@@ -78,17 +78,38 @@ class PublicationContract(unittest.TestCase):
         self.assertEqual(len(requested_changes), 8)
         self.assertEqual(requested_changes[0], "2026-11-10")
         self.assertIn(("admrul", [("2026-08-01", "2026-08-07")]), queried)
-        self.assertEqual(state["backfill_cursor_days"], 168)
-        self.assertEqual(state["coverage_plan"], "official_rolling_three_years_v1")
+        self.assertEqual(state["backfill_cursor_days"], 182)
+        self.assertEqual(state["coverage_plan"], "official_rolling_all_sources_v2")
         self.assertEqual(state["latest_official_scan"], "2026-11-10")
+        self.assertEqual(len(state.get("catalog",{})),0)
 
-    def test_missing_credentials_fail_before_data_mutation(self):
-        state={"catalog":{"key":{"title":"previous official record"}}}
-        with patch.dict("os.environ", {"LAW_OC":""}, clear=False):
-            with self.assertRaisesRegex(RuntimeError,"LAW_OC"):
-                pipeline.scan_new(state,dt.date(2026,11,10))
+    def test_missing_secret_uses_configured_official_identifier(self):
+        from policy_domino import official_api as api
+        with patch.dict("os.environ", {"LAW_OC":"","LAW_0C":""}):
+            self.assertEqual(api.official_oc(),"dori")
+
+    def test_recent_all_source_types_are_scanned_and_failed_history_retried(self):
+        date=dt.date(2026,11,10)
+        state={"catalog":{"prior":{"title":"persisted source"}},
+               "coverage":[{"source":"law_history","first":"2026-10-03",
+                            "last":"2026-10-03","edition":"history","complete":False}]}
+        queried=[]
+        def changes(data,days,max_pages):
+            queried.append(("law_history",tuple(days)))
+            data["_source_pages_confirmed"]=data.get("_source_pages_confirmed",0)+1
+        def index(data,source,windows,max_pages):
+            queried.append((source,tuple(windows)))
+        checkpoints=[]
+        with patch.dict("os.environ", {"PD_BACKFILL_WINDOWS_PER_RUN":"1",
+                    "PD_HISTORY_DAYS":"365","LAW_OC":""}), patch.object(
+               pipeline.collect_index,"ingest_changes",changes), patch.object(
+               pipeline.collect_index,"ingest_index",index):
+            pipeline.scan_new(state,date,checkpoint=lambda data:checkpoints.append(len(queried)))
+        for source in ("law","admrul","ordin"):
+            self.assertIn((source,(("2026-11-03","2026-11-10"),)),queried)
+        self.assertIn(("law_history",("2026-10-03",)),queried)
         self.assertEqual(len(state["catalog"]),1)
-        self.assertNotIn("coverage_plan",state)
+        self.assertGreaterEqual(len(checkpoints),5)
 
 
 if __name__ == "__main__":

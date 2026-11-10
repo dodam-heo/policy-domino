@@ -31,11 +31,11 @@ def save_json(path,item):
 
 def scan_new(state,today,checkpoint=None):
     """Authenticated, sector-neutral discovery across a rolling three years."""
-    if not os.getenv("LAW_OC","").strip():
-        raise RuntimeError("LAW_OC is missing; refusing to claim an official refresh")
-    if state.get("coverage_plan")!="official_rolling_three_years_v1":
-        state["coverage_plan"]="official_rolling_three_years_v1"
-        state["backfill_cursor_days"]=0
+    # The official DRF identifier is resolved centrally by official_api.
+    # Never erase an existing cursor or catalogue when upgrading the collector.
+    api.official_oc()
+    state["coverage_plan"]="official_rolling_all_sources_v2"
+    state.setdefault("backfill_cursor_days",0)
     # An old append-only ledger may contain many duplicate failed attempts.
     history=list(state.get("coverage",[]))
     state["coverage"]=[]
@@ -44,19 +44,40 @@ def scan_new(state,today,checkpoint=None):
     state["_source_pages_confirmed"]=0
     budget=max(1,min(12,int(os.getenv("PD_BACKFILL_WINDOWS_PER_RUN","6"))))
     span=max(7,min(31,int(os.getenv("PD_BACKFILL_WINDOW_DAYS","28"))))
-    horizon=max(365,min(3650,int(os.getenv("PD_HISTORY_DAYS","1095"))))
+    horizon=max(365,min(10950,int(os.getenv("PD_HISTORY_DAYS","3650"))))
     recent=[str(today-dt.timedelta(days=i)) for i in range(8)]
-    collect_index.ingest_changes(state,recent,max_pages=10)
-    # Revisit previous incomplete source windows without enrolling any title.
+    # The law-history feed is supplemental; legal rules and local ordinances
+    # are indexed independently, including enacted/repealed rules.
+    collect_index.ingest_changes(state,recent,max_pages=20)
+    if checkpoint:
+        checkpoint(state)
+    recent_window=[(recent[-1],recent[0])]
+    for source in SUPPORTED:
+        collect_index.ingest_index(state,source,recent_window,max_pages=35)
+        if checkpoint:
+            checkpoint(state)
+    # Retry incomplete law-change days as well as all editions of incomplete
+    # official law/rule/ordinance date windows. No keyword or ministry filters.
     attempted=set()
+    retry_budget=max(1,min(24,int(os.getenv("PD_RETRY_WINDOWS_PER_RUN","8"))))
     for row in reversed(state.get("coverage",[])):
         source=row.get("source")
-        key=(source,row.get("first"),row.get("last"))
-        if source not in SUPPORTED or row.get("complete") or not all(key) or key in attempted:
+        first,last=row.get("first"),row.get("last")
+        edition=row.get("edition","current")
+        key=(source,first,last,edition)
+        if source not in (*SUPPORTED,"law_history") or row.get("complete") or not first or not last or key in attempted:
             continue
         attempted.add(key)
-        collect_index.ingest_index(state,source,[(key[1],key[2])],max_pages=20)
-        if len(attempted)>=2:
+        if source=="law_history":
+            for day in (first,last) if first!=last else (first,):
+                collect_index.ingest_changes(state,[day],max_pages=30)
+        else:
+            # ingest_index checks both current and historical editions;
+            # successful old windows stay marked complete during transient failures.
+            collect_index.ingest_index(state,source,[(first,last)],max_pages=35)
+        if checkpoint:
+            checkpoint(state)
+        if len(attempted)>=retry_budget:
             break
     cursor=int(state.get("backfill_cursor_days",0))%horizon
     for n in range(budget):
@@ -75,8 +96,14 @@ def scan_new(state,today,checkpoint=None):
     # Without a confirmed response in this run, failure is not "no change".
     successful=state.pop("_source_pages_confirmed",0)
     if not successful:
+        state["last_official_scan_error"]="No fully confirmed official collection window"
+        if checkpoint:
+            checkpoint(state)
         raise RuntimeError("Official APIs returned no confirmed complete collection window")
+    state.pop("last_official_scan_error",None)
     state["latest_official_scan"]=today.isoformat()
+    if checkpoint:
+        checkpoint(state)
 
 
 def candidate_rank(record,today):
@@ -286,7 +313,12 @@ def run():
     scanning=True
     if os.getenv("PD_V4_OFFLINE")=="1":scanning=False
     if scanning:
-        scan_new(state,today,checkpoint=lambda current:save_json(STATE,current))
+        try:
+            scan_new(state,today,checkpoint=lambda current:save_json(STATE,current))
+        finally:
+            # Write partial official evidence and coverage failures on exception.
+            # A later run resumes from this same append-only official catalogue.
+            save_json(STATE,state)
     workload=pick_work(state,today,int(os.getenv("PD_V4_DETAILS","14")))
     for record in workload:
         k=events.key(record)

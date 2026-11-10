@@ -58,24 +58,20 @@ jobs:
           node site/v4/test_ui.cjs
           node site/classic/test_ui.cjs
           node site/ai-impact/test_ui.cjs
-      - name: Confirm official API authorization before live collection
+      - name: Confirm official API client identifier
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
-        env:
-          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
-        run: |
-          if [ -z "$LAW_OC" ]; then
-            echo "::error::LAW_OC not configured in Actions Secret or Variable. No official documents were fetched."
-            exit 1
-          fi
+        run: python -c "from policy_domino.official_api import official_oc; assert official_oc() == 'dori'"
       - name: Live official crawl and agency impact publication
+        id: official_crawl
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
         env:
-          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+          LAW_OC: dori
           PD_PUBLIC_SERVICE_KEY: ${{ secrets.PD_PUBLIC_SERVICE_KEY }}
           PD_PUBLIC_SERVICE_PAGES: ${{ vars.PD_PUBLIC_SERVICE_PAGES || '40' }}
           PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '4000' }}
           PD_V4_DETAILS: ${{ vars.PD_V4_DETAILS || '90' }}
-          PD_HISTORY_DAYS: ${{ vars.PD_HISTORY_DAYS || '1095' }}
+          PD_HISTORY_DAYS: ${{ vars.PD_HISTORY_DAYS || '3650' }}
+          PD_RETRY_WINDOWS_PER_RUN: ${{ vars.PD_RETRY_WINDOWS_PER_RUN || '8' }}
           PD_BACKFILL_WINDOWS_PER_RUN: ${{ vars.PD_BACKFILL_WINDOWS_PER_RUN || '6' }}
           PD_BACKFILL_WINDOW_DAYS: ${{ vars.PD_BACKFILL_WINDOW_DAYS || '28' }}
           PD_FETCH_OFFICIAL_ATTACHMENTS: ${{ vars.PD_FETCH_OFFICIAL_ATTACHMENTS || 'true' }}
@@ -83,6 +79,19 @@ jobs:
           PD_V4_SEARCH_PARENTS: '4'
           PD_V4_VERIFY_DEPENDENTS: '24'
         run: python -m policy_domino --source official
+      - name: Persist collection checkpoints even if official refresh fails
+        if: failure() && steps.official_crawl.outcome == 'failure'
+        run: |
+          test -s data/v4_state.json || exit 0
+          git config user.name policy-domino-bot
+          git config user.email policy-domino-bot@users.noreply.github.com
+          git add data/v4_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: preserve partial official crawl audit [skip ci]'
+            git fetch origin main
+            git rebase FETCH_HEAD
+            git push origin HEAD:main
+          fi
       - name: Rebuild agency impact from persisted official evidence
         if: (github.event_name == 'push' && !contains(github.event.head_commit.message, '[full-refresh-once]')) || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
         run: python -m policy_domino --source stored

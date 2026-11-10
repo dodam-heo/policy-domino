@@ -78,6 +78,8 @@ return '<article class="action">'+
  '<a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">법령 변경 근거 ↗</a>'+
  (a.service_id&&a.service_url?
  ' · <a target="_blank" rel="noopener" href="'+validUrl(a.service_url)+'">공공서비스 기준 확인 ↗</a>':'')+
+ (a.service_id&&a.reported_receiving_institution?
+ '<div>정부24 등록 접수기관: '+esc(a.reported_receiving_institution)+'</div>':'')+
  (a.status_evidence?'<div>조치 상태 근거: '+esc(a.status_evidence)+'</div>':'')+
  '</div></details></article>';
 }

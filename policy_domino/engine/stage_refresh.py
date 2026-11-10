@@ -19,7 +19,7 @@ def run():
         for edge in group.get("dependencies",[]):
             assert edge["affected_verified"] is True
             assert edge["type"] in ("cited_changed_provision","formula_dependency")
-            assert edge["implementation_verified"] is False
+            assert "implementation_verified" not in edge, "retired implementation-status field in impact evidence"
             if edge["type"]=="cited_changed_provision" and edge.get("source_paragraph"):
                 src=state["inspected"][edge["source_event"]]
                 actual=relationships.changed_paragraphs(src,edge["source_article"])

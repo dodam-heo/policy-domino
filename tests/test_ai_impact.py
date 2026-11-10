@@ -341,7 +341,7 @@ class AllEventAITests(unittest.TestCase):
         body=json.loads(request.data)
         self.assertEqual(body["contents"][0]["role"],"user")
         self.assertEqual(body["generationConfig"]["responseFormat"]["text"]["mimeType"],
-                         "application/json")
+                         "APPLICATION_JSON")
         self.assertEqual(body["generationConfig"]["responseFormat"]["text"]["schema"]["type"],
                          "object")
         self.assertEqual(body["generationConfig"]["maxOutputTokens"],4096)

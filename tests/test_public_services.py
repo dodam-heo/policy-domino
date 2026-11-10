@@ -51,30 +51,102 @@ class PublicServicesTests(unittest.TestCase):
         self.assertEqual(normalize_service(bad)["detail_url"],"")
         self.assertIsNone(normalize_service({**record(),"소관기관명":""}))
 
-    def test_resumable_full_service_catalogue_and_deduplication(self):
-        raw=[record(str(i),agency="가상운영기관"+str(i)) for i in range(101)]
-        calls=[]
-        def fetch(endpoint,key,params):
-            self.assertEqual(key,"test-key")
-            calls.append((endpoint,params))
-            if endpoint=="serviceDetail":
-                return {"data":[raw[int(params["cond[서비스ID::EQ]"])]]}
-            page=params["page"]
-            return {"totalCount":101,"data":raw[(page-1)*100:page*100]}
-        saved=[]
-        partial=collect_services({}, "test-key", max_pages=1,
-                                 max_details=0, fetch=fetch,
-                                 checkpoint=lambda c:saved.append(copy.deepcopy(c)))
+    def test_resumable_full_service_catalogue_and_bulk_details(self):
+        listed = [record(str(i), agency="가상운영기관"+str(i))
+                  for i in range(1001)]
+        detail_rows = [
+            {**record(str(i)), "법령": "「가상법률」 제1조에 따른 적용"}
+            for i in range(201)
+        ]
+        calls = []
+        def fetch(endpoint, key, params):
+            self.assertEqual(key, "test-key")
+            calls.append((endpoint, params["page"], params["perPage"]))
+            size, page = params["perPage"], params["page"]
+            if endpoint == "serviceDetail":
+                return {"totalCount":201,
+                        "data":detail_rows[(page-1)*size:page*size]}
+            return {"totalCount":1001,
+                    "data":listed[(page-1)*size:page*size]}
+        saved = []
+        partial = collect_services({}, "test-key", max_pages=1,
+                                   max_details=0, fetch=fetch,
+                                   checkpoint=lambda item:saved.append(
+                                       copy.deepcopy(item)))
         self.assertFalse(partial["complete"])
-        self.assertEqual(partial["next_page"],2)
-        self.assertEqual(len(partial["services"]),100)
-        final=collect_services(partial,"test-key",max_pages=2,
-                               max_details=2,fetch=fetch)
-        self.assertTrue(final["complete"])
-        self.assertEqual(final["next_page"],1)
-        self.assertEqual(len(final["services"]),101)
-        self.assertEqual(sum(bool(s.get("detail")) for s in final["services"].values()),2)
+        self.assertEqual(partial["next_page"], 2)
+        self.assertEqual(len(partial["services"]), 1000)
+        self.assertEqual(calls[0], ("serviceList", 1, 1000))
+
+        middle = collect_services(partial, "test-key", max_pages=2,
+                                  max_details=200, fetch=fetch)
+        self.assertTrue(middle["complete"])
+        self.assertEqual(middle["next_page"], 1)
+        self.assertEqual(len(middle["services"]), 1001)
+        self.assertFalse(middle["detail_complete"])
+        self.assertEqual(middle["detail_next_page"], 2)
+        self.assertEqual(sum(bool(s.get("detail"))
+                             for s in middle["services"].values()), 200)
+        self.assertIn(("serviceDetail", 1, 200), calls)
+        final = collect_services(middle, "test-key", max_pages=2,
+                                 max_details=200, fetch=fetch)
+        self.assertTrue(final["detail_complete"])
+        self.assertEqual(final["detail_next_page"], 1)
+        self.assertEqual(sum(bool(s.get("detail"))
+                             for s in final["services"].values()), 201)
+        self.assertEqual(final["services"]["0"]["detail"]["laws"],
+                         "「가상법률」 제1조에 따른 적용")
         self.assertTrue(saved)
+
+    def test_failed_page_keeps_previous_official_services_and_cursor(self):
+        prior={"schema":SCHEMA,"services":{
+            "existing":normalize_service(record("existing"))},
+            "next_page":1, "total_reported":10, "complete":False}
+        def failed(endpoint, key, params):
+            raise RuntimeError("Gov24 API HTTP 403")
+        result=collect_services(prior, "test-key", fetch=failed)
+        self.assertEqual(list(result["services"]),["existing"])
+        self.assertEqual(result["next_page"],1)
+        self.assertFalse(result["complete"])
+        self.assertEqual(result["last_error"],"Gov24 API HTTP 403")
+
+    def test_api_uses_documented_auth_query_then_header_fallback_without_secret_leak(self):
+        from io import BytesIO
+        from urllib.error import HTTPError
+        from unittest.mock import patch
+        from policy_domino.public_services import fetch_page
+        seen=[]
+        secret="test-only-secret-never-print"
+        class Response:
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                return False
+            def read(self, length):
+                return b'{"data":[],"totalCount":0}'
+        def handler(request, timeout):
+            seen.append(request)
+            if len(seen)==1:
+                raise HTTPError(request.full_url, 401, "denied",
+                                {}, BytesIO(b'private diagnostic'))
+            self.assertNotIn("serviceKey",request.full_url)
+            self.assertEqual(request.get_header("Authorization"),
+                             "Infuser "+secret)
+            return Response()
+        with patch("urllib.request.urlopen",handler):
+            result=fetch_page("serviceList", secret,
+                              {"page":1,"perPage":1000})
+        self.assertEqual(result["data"],[])
+        self.assertIn("serviceKey=",seen[0].full_url)
+        self.assertEqual(len(seen),2)
+        def always_denied(request,timeout):
+            raise HTTPError(request.full_url,403,
+                            "secret="+secret,{},BytesIO(b'private'))
+        with patch("urllib.request.urlopen",always_denied):
+            with self.assertRaisesRegex(RuntimeError,
+                                        "both Swagger schemes tried") as error:
+                fetch_page("serviceList",secret,{"page":1,"perPage":1000})
+        self.assertNotIn(secret,str(error.exception))
 
     def test_named_standard_requires_real_numeric_legal_change(self):
         e=legal_event()

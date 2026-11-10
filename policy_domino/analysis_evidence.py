@@ -12,8 +12,11 @@ import json
 def has_verified_action(action: dict) -> bool:
     return (
         action.get("evidence_scope") in (
-            "v4_verified_source", "service_formula_dependency_verified")
-        and (action.get("evidence_scope") != "service_formula_dependency_verified"
+            "v4_verified_source", "service_formula_dependency_verified",
+            "service_cited_changed_article_verified")
+        and (action.get("evidence_scope") not in (
+             "service_formula_dependency_verified",
+             "service_cited_changed_article_verified")
              or (action.get("service_evidence_source") == "gov24_api"
                  and all(action.get(k) for k in (
                      "service_id", "service", "service_evidence_rule",

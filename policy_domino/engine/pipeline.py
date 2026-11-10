@@ -118,13 +118,26 @@ def pick_work(state,today,limit):
         candidate_rank(x,today)[0]-(attempts.get(events.key(x),0)*16),
         candidate_rank(x,today)[1],
         candidate_rank(x,today)[2]),reverse=True)
-    # Keep most urgent events AND fresh official changes; do not starve newer
-    # updates behind a years-old backlog.
-    urgent=ranked[:max(1,(limit*2)//3)]
-    seen={events.key(x) for x in urgent}
-    fresh=sorted([x for x in waiting if events.key(x) not in seen],
-                 key=lambda x:x.get("published_at",""),reverse=True)
-    return (urgent+fresh[:max(0,limit-len(urgent))])[:limit]
+    # Different regulatory types must receive detail capacity even while
+    # another type has a much larger backlog. No policy name or ministry quota.
+    selected=[];seen=set()
+    types=[source for source in SUPPORTED if any(x["source"]==source for x in ranked)]
+    quota=max(1,limit//max(1,len(types)))
+    for source in types:
+        for record in (x for x in ranked if x["source"]==source):
+            if sum(x["source"]==source for x in selected)>=quota:
+                break
+            selected.append(record)
+            seen.add(events.key(record))
+            if len(selected)>=limit:
+                return selected
+    for record in ranked:
+        if len(selected)>=limit:
+            break
+        if events.key(record) not in seen:
+            selected.append(record)
+            seen.add(events.key(record))
+    return selected
 
 def read_document(record):
     if record["source"] in ("law","admrul"):

@@ -207,7 +207,9 @@ def group_event(g):
         ),
         "source_documents":[{"title":d.get("title",""),"kind":d.get("kind",""),
                              "url":source_url(d.get("url","")),
-                             "verification":d.get("verification","")}
+                             "verification":d.get("verification",""),
+                             "needs_attachment_check":d.get("needs_attachment_check",False),
+                             "unresolved_attachments":d.get("unresolved_attachments",[])}
                             for d in docs if d.get("title")],
         "promulgated_at":g.get("date",""),
         "effective_date":g.get("effective_at",""),

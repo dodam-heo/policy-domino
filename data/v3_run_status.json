@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-09T23:20:33.925975+00:00",
+  "completed_at": "2026-11-10T00:01:27.991441+00:00",
   "schema": "policy-domino-impact-v3",
   "source_health": {
     "sources": {
@@ -10,8 +10,8 @@
       },
       "law:과거 이력": {
         "status": "정상",
-        "listed": 78,
-        "range": "2026-06-08~2026-06-22"
+        "listed": 80,
+        "range": "2026-05-25~2026-06-08"
       },
       "law:연도별 선제 탐색": {
         "status": "정상",
@@ -20,24 +20,24 @@
       },
       "law:시행연도 본문검색": {
         "status": "정상",
-        "listed": 235,
+        "listed": 233,
         "future_related": 0,
         "saturated_months": 0,
         "year": 2027
       },
       "law": {
         "status": "정상",
-        "listed": 178
+        "listed": 180
       },
       "admrul:최근": {
-        "status": "실패",
-        "listed": 0,
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
+        "status": "정상",
+        "listed": 249,
+        "range": "2026-10-26~2026-11-09"
       },
       "admrul:과거 이력": {
-        "status": "실패",
-        "listed": 0,
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
+        "status": "정상",
+        "listed": 330,
+        "range": "2026-05-25~2026-06-08"
       },
       "admrul:연도별 선제 탐색": {
         "status": "정상",
@@ -45,39 +45,19 @@
         "year": 2027
       },
       "admrul:시행연도 본문검색": {
-        "status": "정상",
-        "listed": 306,
-        "future_related": 26,
-        "saturated_months": 0,
+        "status": "부분",
+        "listed": 663,
+        "future_related": 39,
+        "saturated_months": 1,
         "year": 2027
       },
       "admrul": {
-        "status": "실패",
-        "listed": 166
+        "status": "정상",
+        "listed": 748
       }
     },
     "partial": true,
     "errors": [
-      {
-        "source": "admrul",
-        "range": "최근",
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
-      },
-      {
-        "source": "admrul",
-        "range": "과거 이력",
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
-      },
-      {
-        "source": "admrul",
-        "range": "2026-10-01~2026-10-31 시행연도 본문",
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
-      },
-      {
-        "source": "admrul",
-        "range": "2026-08-01~2026-08-31 시행연도 본문",
-        "error": "admrul 공식 API 조회 실패: URLError: <urlopen error timed out>"
-      },
       {
         "source": "admrul",
         "title": "2027년 적용 최저임금 고시",
@@ -119,35 +99,35 @@
         "error": "첨부파일 참조만 확인: 공식 조문·별표 본문 추출 미완료"
       }
     ],
-    "verified_compared": 16,
-    "not_compared": 0,
-    "candidate_relations": 63,
-    "confirmed_relations": 1108,
-    "collect_at": "2026-11-09T22:59:58+00:00",
+    "verified_compared": 15,
+    "not_compared": 1,
+    "candidate_relations": 48,
+    "confirmed_relations": 1171,
+    "collect_at": "2026-11-09T23:53:33+00:00",
     "scope": "법제처 법령+행정규칙 발령 목록; 실행별 처리 한도 있음",
-    "pending_details": 11139,
+    "pending_details": 11126,
     "newly_examined": 16,
     "events": 500,
-    "actions": 5795,
+    "actions": 5624,
     "status": "부분 수집"
   },
   "impact_health": {
     "events": 500,
-    "verified_documents": 482,
-    "substantive_policy_events": 347,
-    "direct_actor_actions": 246,
+    "verified_documents": 481,
+    "substantive_policy_events": 348,
+    "direct_actor_actions": 241,
     "agency_owners_to_verify": 0,
     "limitations": "특정 기관 내부규정·시스템 변경 여부는 공식자료만으로 확정할 수 없음",
     "evidence_gated": true,
     "repeal_events": 4,
     "cross_policy_links": {
-      "links": 480,
-      "explicit_standard_uses": 480,
+      "links": 507,
+      "explicit_standard_uses": 507,
       "shared_statutory_basis_candidates": 0,
       "note": "인용·적용 문맥 확인만 집계. 기관 조치 또는 인과관계는 자동 확정하지 않음"
     },
     "dependent_rules_checked": 14,
-    "dependent_rules_found": 47,
+    "dependent_rules_found": 50,
     "dependency_errors": [],
     "dependency_actors_to_review": 0
   }

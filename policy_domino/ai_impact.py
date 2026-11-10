@@ -159,6 +159,42 @@ class ProviderHTTPFailure(RuntimeError):
         self.status = status
 
 
+def parse_model_response(raw: bytes) -> dict:
+    """Normalize JSON text from OpenAI-compatible providers; never log model text."""
+    try:
+        response = json.loads(raw)
+        choice = response["choices"][0]
+        content = choice["message"]["content"]
+        if isinstance(content, list):
+            if not all(isinstance(item, dict) and
+                       item.get("type") == "text" and
+                       isinstance(item.get("text"), str) for item in content):
+                raise ValueError("Unsupported chat text parts")
+            content = "".join(item["text"] for item in content)
+        if isinstance(content, dict):
+            parsed = content
+        else:
+            if not isinstance(content, str) or not content.strip():
+                raise ValueError("Empty provider response")
+            content = content.strip()
+            fence = chr(96) * 3
+            if content.startswith(fence):
+                parts = content.split("\n", 1)
+                if len(parts) < 2 or parts[0].strip().lower() not in (
+                    fence, fence + "json"):
+                    raise ValueError("Unexpected fenced response")
+                content = parts[1].strip()
+                if not content.endswith(fence):
+                    raise ValueError("Incomplete JSON fence")
+                content = content[:-3].strip()
+            parsed = json.loads(content)
+        if not isinstance(parsed, dict):
+            raise ValueError("Expected a JSON object")
+        return parsed
+    except (KeyError, IndexError, TypeError, ValueError, UnicodeDecodeError):
+        raise ValueError("Provider did not return the required structured JSON answer") from None
+
+
 def call_model(config: ModelConfig, context: dict,
                open_request: Callable[..., Any] = urlopen,
                pause: Callable[[float], Any] = time.sleep) -> dict:
@@ -168,6 +204,7 @@ def call_model(config: ModelConfig, context: dict,
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": json.dumps(context, ensure_ascii=False, separators=(",", ":"))},
         ],
+        "response_format": {"type": "json_object"},
     }
     request = Request(
         config.base_url + "/chat/completions",
@@ -195,17 +232,7 @@ def call_model(config: ModelConfig, context: dict,
             raise RuntimeError("LLM provider unreachable; saved findings remain available") from None
     if len(raw) > 150_000:
         raise ValueError("Provider response exceeds limit")
-    try:
-        data = json.loads(raw)
-        content = data["choices"][0]["message"]["content"]
-        if not isinstance(content, str):
-            raise TypeError("Expected JSON text")
-        response = json.loads(content)
-    except (KeyError, IndexError, TypeError, ValueError):
-        raise ValueError("Provider did not return valid JSON") from None
-    if not isinstance(response, dict):
-        raise ValueError("Provider answer must be an object")
-    return response
+    return parse_model_response(raw)
 
 
 def bounded_text(value: Any, field: str, max_size: int = 550) -> str:

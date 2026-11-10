@@ -195,26 +195,98 @@ def parse_model_response(raw: bytes) -> dict:
         raise ValueError("Provider did not return the required structured JSON answer") from None
 
 
+GEMINI_RESPONSE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "summary": {"type": "string"},
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "action_id": {"type": "string"},
+                    "evidence_id": {"type": "string"},
+                    "operational_impact": {"type": "string"},
+                    "review_task": {"type": "string"},
+                },
+                "required": ["action_id", "evidence_id",
+                             "operational_impact", "review_task"],
+            },
+        },
+    },
+    "required": ["summary", "findings"],
+}
+
+
+def make_model_request(config: ModelConfig, context: dict) -> tuple[Request, bool]:
+    """Choose ONE transport, not another production pipeline.
+
+    Google AI Studio keys use Google's native GenerateContent with JSON schema.
+    Other providers retain the OpenAI-compatible Chat Completions protocol.
+    """
+    is_google = urlsplit(config.base_url).hostname == "generativelanguage.googleapis.com"
+    prompt = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
+    if is_google:
+        from urllib.parse import quote
+        if not config.model.startswith("gemini-"):
+            raise ValueError("Google endpoint requires a Gemini model ID")
+        url = ("https://generativelanguage.googleapis.com/v1beta/models/"
+               + quote(config.model, safe="-_.") + ":generateContent")
+        body = {
+            "systemInstruction": {"parts": [{"text": SYSTEM_PROMPT}]},
+            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "responseFormat": {"text": {
+                    "mimeType": "application/json",
+                    "schema": GEMINI_RESPONSE_SCHEMA,
+                }},
+                "maxOutputTokens": 4096,
+            },
+        }
+        headers = {"x-goog-api-key": config.api_key, "Content-Type": "application/json"}
+    else:
+        url = config.base_url + "/chat/completions"
+        body = {
+            "model": config.model,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
+            "response_format": {"type": "json_object"},
+        }
+        headers = {"Authorization": "Bearer " + config.api_key,
+                   "Content-Type": "application/json"}
+    return Request(url, data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+                   headers=headers, method="POST"), is_google
+
+
+def parse_native_gemini_response(raw: bytes) -> dict:
+    try:
+        data = json.loads(raw)
+        candidate = data["candidates"][0]
+        if candidate.get("finishReason") not in (None, "STOP"):
+            raise ValueError("Gemini response truncated or blocked")
+        parts = candidate["content"]["parts"]
+        if not isinstance(parts, list):
+            raise ValueError("Missing Gemini output parts")
+        content = "".join(p["text"] for p in parts
+                          if isinstance(p, dict) and isinstance(p.get("text"), str))
+        if not content:
+            raise ValueError("No generated text")
+        return parse_model_response(json.dumps({
+            "choices": [{"message": {"content": content}}]
+        }, ensure_ascii=False).encode("utf-8"))
+    except (KeyError, IndexError, TypeError, ValueError):
+        raise ValueError("Gemini did not return a valid structured JSON object") from None
+
+
 def call_model(config: ModelConfig, context: dict,
                open_request: Callable[..., Any] = urlopen,
                pause: Callable[[float], Any] = time.sleep) -> dict:
-    body = {
-        "model": config.model,
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": json.dumps(context, ensure_ascii=False, separators=(",", ":"))},
-        ],
-        "response_format": {"type": "json_object"},
-    }
-    request = Request(
-        config.base_url + "/chat/completions",
-        data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
-        headers={"Authorization": "Bearer " + config.api_key,
-                 "Content-Type": "application/json"}, method="POST",
-    )
+    request, native_gemini = make_model_request(config, context)
     for attempt in range(3):
         try:
-            with open_request(request, timeout=90) as response:
+            with open_request(request, timeout=45 if native_gemini else 70) as response:
                 raw = response.read(150_001)
             break
         except HTTPError as exc:
@@ -232,7 +304,7 @@ def call_model(config: ModelConfig, context: dict,
             raise RuntimeError("LLM provider unreachable; saved findings remain available") from None
     if len(raw) > 150_000:
         raise ValueError("Provider response exceeds limit")
-    return parse_model_response(raw)
+    return parse_native_gemini_response(raw) if native_gemini else parse_model_response(raw)
 
 
 def bounded_text(value: Any, field: str, max_size: int = 550) -> str:
@@ -433,6 +505,8 @@ def _fallback_from(previous: dict, config: ModelConfig) -> str:
     explicit = os.getenv("PD_LLM_FALLBACK_MODEL", "").strip()
     if not explicit.startswith("gemini-"):
         return ""
+    if os.getenv("PD_AI_PREFER_FALLBACK", "").lower() == "true":
+        return explicit
     if previous.get("schema") == SCHEMA:
         last = previous.get("last_success_model")
     elif previous.get("schema") == LEGACY_SCHEMA:

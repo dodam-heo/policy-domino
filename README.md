@@ -58,3 +58,9 @@ GitHub Actions 단일 정기 파이프라인이 공식 수집·검증·결과 �
 `LAW_OC`는 DRF 호출 식별자로 `dori`를 기본 사용하므로 Secret을 별도로 등록할 필요가 없습니다. Actions의 `official` 모드는 신규 공식 정책을 수집하고 누적 저장하지만 `stored` 모드는 과거에 저장한 공식 근거만 재분석합니다. 별도의 LLM 키와 서비스 API 키는 노출하지 않습니다.
 
 조정 변수: `PD_HISTORY_DAYS`, `PD_BACKFILL_WINDOWS_PER_RUN`, `PD_BACKFILL_WINDOW_DAYS`, `PD_RETRY_WINDOWS_PER_RUN`, `PD_V4_DETAILS`, `PD_FETCH_OFFICIAL_ATTACHMENTS`. 재생성만 할 때는 `python -m policy_domino --source stored`, 실제 수집·저장은 `python -m policy_domino --source official`입니다.
+
+## 공식 변경내용 설명
+
+정책 변경 사건 자체의 원문 비교는 기관별 검토카드 3개 선정과 독립적으로 생성합니다. 공식 조항별로 실제 달라진 구절을 강조하고, 전체 원문은 접어서 확인합니다. 실질 내용 개정과 표기 정비·신설·삭제를 구분하며, 확인한 조문 수와 화면에 표시할 수 있는 신구 비교 건수를 각각 공개합니다.
+
+기본 개요는 검증된 변경 조문·금액만으로 생성한 구조적 안내입니다. 자연어 **AI 보조 설명**은 동일한 기존 LLM 분석 파이프라인에서 생성하고, 공식 원문의 내용으로 검증 가능한 범위와 변경 증거 지문이 일치할 때에만 표시합니다. 기존 결과보다 근거가 바뀌면 자동 무효화됩니다. 분석 키가 없거나 검증되지 않은 경우 모델이 요약한 것처럼 표시하지 않습니다.

@@ -1,0 +1,33 @@
+name: Policy Domino — Code Quality Gates
+on:
+  push:
+    branches:
+      - 'refactor/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    name: Domain and presentation regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python import and syntax validation
+        run: python -m compileall -q v2 v3 v4
+      - name: Policy impact and route unit tests
+        run: |
+          python -m unittest v4.test_impact_scope v4.test_classic_pages -v
+          python -m unittest discover -s v4 -p 'test_*.py' -v
+      - name: Screen and source adapter contract tests
+        run: |
+          node site/classic/test_ui.cjs
+          node site/test_adapter.cjs

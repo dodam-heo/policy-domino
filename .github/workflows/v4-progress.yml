@@ -92,6 +92,9 @@ jobs:
   deploy:
     needs: update
     if: success()
+    concurrency:
+      group: policy-domino-pages-release
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     environment:
       name: github-pages

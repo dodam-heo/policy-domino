@@ -71,12 +71,16 @@ for(const a of d.actions){
   assert.ok(events.has(a.event_id),"Every action must have a clickable event");
   assert.ok(a.agency && a.work && a.article && a.required_change);
   assert.ok(a.changes?.length>0 && a.basis.startsWith("https://www.law.go.kr"));
-  assert.ok(["v4_verified_source","legacy_official_directive_awaiting_recheck"].includes(a.evidence_scope));
+  assert.ok(["v4_verified_source","legacy_official_directive_awaiting_recheck",
+    "service_formula_dependency_verified",
+    "legacy_service_dependency_pending_recheck"].includes(a.evidence_scope));
   assert.notEqual(a.status,"조치 확인");
   assert.notEqual(a.status,"미조치 확인");
 }
-const official=d.actions.filter(a=>a.evidence_scope==="v4_verified_source");
-const legacy=d.actions.filter(a=>a.evidence_scope==="legacy_official_directive_awaiting_recheck");
+const official=d.actions.filter(a=>["v4_verified_source",
+  "service_formula_dependency_verified"].includes(a.evidence_scope));
+const legacy=d.actions.filter(a=>["legacy_official_directive_awaiting_recheck",
+  "legacy_service_dependency_pending_recheck"].includes(a.evidence_scope));
 assert.ok(official.length>0&&legacy.length>0);
 console.log("CLASSIC_PASS",{events:d.events.length,agencyTasks:d.actions.length,
   official:official.length,oldOfficialPendingReview:legacy.length});

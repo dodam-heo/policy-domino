@@ -176,10 +176,55 @@ const ds=e.article_differences||[];
 if(!ds.length)return '<p class="smallNote">공식 공포 정보는 확인됐지만 종전·변경 조문의 실제 비교가 아직 완료되지 않았습니다. 변경 전후 내용을 추측해 채우지 않습니다.</p>';
 return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+' '+esc(d.title||"")+'</span><span>'+esc(d.type||"변경")+'</span></div><div class="changePair"><div class="changeCol before"><small>종전 내용</small><p>'+esc(d.before||(d.type==="신설"?"신설 이전 규정 없음":"종전 조문 전문 별도 대조 필요"))+'</p></div><div class="changeCol after"><small>'+(d.directive?"공식 개정 지시문":"변경 후 조문")+'</small><p>'+esc(d.directive||d.after||"변경 내용 확인 필요")+'</p></div></div></div>').join("")
 }
+function legalRelationships(event){
+ // The counts are the actual official source records carried by the
+ // evidence pipeline, NOT numbers guessed from the title of the event.
+ const laws=[],seenLaws=new Set();
+ for(const item of event.simultaneous_laws||[]){
+   if(!item.title||!item.url||validUrl(item.url)==="#")continue;
+   const key=item.title+"|"+item.url;
+   if(seenLaws.has(key))continue;
+   seenLaws.add(key);laws.push(item);
+ }
+ const cites=new Map();
+ for(const item of event.citing_regulations||[]){
+   if(!item.title||!item.url||validUrl(item.url)==="#")continue;
+   const key=item.title+"|"+item.url;
+   if(!cites.has(key))cites.set(key,{title:item.title,url:item.url,
+      references:[]});
+   const refs=cites.get(key).references;
+   if(!refs.some(x=>x.source_title===item.source_title&&
+     x.source_article===item.source_article&&
+     x.target_article===item.target_article))refs.push(item);
+ }
+ const lawSection=laws.length>0?
+ '<details class="lawConnection"><summary>동시 개정된 법령 '+laws.length+'건 확인</summary>'+
+ '<div class="lawConnectionBody"><p class="lawConnectionNote">동일 공포번호로 함께 개정된 법령</p>'+
+ laws.map(law=>'<div class="lawConnectionItem"><div class="lawConnectionMain">'+
+ '<strong>'+esc(law.title)+'</strong><small>'+esc(law.kind||"")+
+ (law.changed_articles?.length?' · 변경 조문 '+law.changed_articles.length+'개':'')+
+ '</small></div><a href="'+validUrl(law.url)+
+ '" target="_blank" rel="noopener">법령 원문 ↗</a></div>').join("")+'</div></details>':"";
+ const refs=[...cites.values()];
+ const citingSection=refs.length>0?
+ '<details class="lawConnection"><summary>변경 조문을 인용하는 관련 규정 '+
+ refs.length+'건 확인</summary><div class="lawConnectionBody">'+
+ refs.map(rule=>'<div class="lawConnectionItem">'+
+ '<div class="lawConnectionMain"><strong>'+esc(rule.title)+'</strong>'+
+ rule.references.map(ref=>'<small>'+
+ esc(ref.source_title||"")+' '+esc(ref.source_article||"")+
+ ' → '+esc(ref.target_article||"")+' · '+esc(ref.proof||"적용 관계 확인")+
+ '</small>').join("")+'</div>'+
+ '<a href="'+validUrl(rule.url)+
+ '" target="_blank" rel="noopener">관련 규정 ↗</a></div>').join("")+
+ '</div></details>':"";
+ return lawSection||citingSection?'<section class="lawConnections" aria-label="법령 연결 관계">'+
+ lawSection+citingSection+'</section>':"";
+}
 function detailHTML(e){
- const all=matchingActions(e);
- const current=selectedAgency?
-   all.filter(a=>(a.agency||"기관 확인 필요")===selectedAgency):[];
+ const all=matchingActions(e),entries=agencyEntries(all);
+ const active=selectedAgency&&entries.some(x=>x.name===selectedAgency);
+ if(selectedAgency&&!active)selectedAgency=null;
  const aiFindings=new Map(window.PolicyDominoAiView.verifiedCards(e,DATA,AI_DATA)
    .map(f=>[f.action_id,f]));
  const provenance=e.presentation_source==="v4_official_source"?"":" · 최신 근거 재확인 필요";
@@ -190,60 +235,59 @@ function detailHTML(e){
  const overview='<section class="changeOverview"><div class="overviewLabel">변경 핵심</div>'+
  '<div class="overviewText">'+esc(overviewText(e,all))+'</div>'+
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
- const results=selectedAgency?
-  '<div class="agencyResultHeader"><strong>'+esc(selectedAgency)+'</strong><span>검토사항 '+current.length+'건</span></div>'+
-  current.map(a=>actionCard(a,aiFindings)).join(""):
-  (all.length?'<p class="agencySelectionHint">위에서 기관을 선택하면 해당 기관의 변경사항이 표시됩니다.</p>':
-    showEmpty("기관별 검토사항 확인 중","공식 근거가 확인되면 표시됩니다."));
- const impact='<section class="agencyImpactSection"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+
- institutionFilter(all)+results+'</section>';
+ const impact='<section class="agencyImpactSection">'+
+ '<div class="agencySectionHead"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+
+ '<span>'+entries.length+'개 기관 · '+all.length+'건</span></div>'+
+ '<div class="agencyWorkbench">'+institutionSidebar(entries)+
+ '<div class="agencyResults" aria-live="polite">'+
+ (all.length?(selectedAgency?selectedAgencyResults(selectedAgency,all,aiFindings):
+    allAgencyResults(entries,all,aiFindings)):
+    showEmpty("기관별 검토사항 확인 중","공식 근거가 확인되면 표시됩니다."))+
+ '</div></div></section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문</summary>'+
  (e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유</b><p style="margin-top:8px">'+
  esc(e.amendment_reason)+'</p></div>':'')+differences(e)+
  '<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+
  '" target="_blank" rel="noopener">공식 원문 보기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+impact+legal+'</div>';
+ return header+'<div class="detailBody">'+overview+legalRelationships(e)+
+ impact+legal+'</div>';
 }
-function bindAgencyPick(){
+function bindSidebarGroups(){
  $("detail").querySelectorAll("[data-agency-pick]").forEach(b=>b.onclick=()=>{
    selectedAgency=b.dataset.agencyPick;
    renderDetail();
  });
+ $("detail").querySelectorAll("[data-side-type]").forEach(d=>{
+   d.ontoggle=()=>{if(d.open)openAgencyTypes.add(d.dataset.sideType);
+     else openAgencyTypes.delete(d.dataset.sideType)};
+ });
+ $("detail").querySelectorAll("[data-side-region]").forEach(d=>{
+   d.ontoggle=()=>{if(d.open)openAgencyRegions.add(d.dataset.sideRegion);
+     else openAgencyRegions.delete(d.dataset.sideRegion)};
+ });
 }
 function renderDetail(){
-const e=getEvent();
-$("detail").innerHTML=e?detailHTML(e):showEmpty("변경 사건을 선택해 주세요.","법령·정책 변경을 선택하면 기관별로 무엇을 바꿔야 하는지 한 번에 보여줍니다.");
-const back=$("back");
-if(back)back.onclick=()=>{$("layout").classList.remove("detailOpen");
-  history.replaceState(null,"",location.pathname+location.search)};
-$("detail").querySelectorAll("[data-agency-type]").forEach(b=>b.onclick=()=>{
-  selectedType=b.dataset.agencyType;
-  selectedRegion=null;
-  selectedAgency=null;
-  agencySearch="";
-  renderDetail();
-});
-$("detail").querySelectorAll("[data-agency-region]").forEach(b=>b.onclick=()=>{
-  selectedRegion=b.dataset.agencyRegion;
-  selectedAgency=null;
-  agencySearch="";
-  renderDetail();
-});
-bindAgencyPick();
-const search=$("agencySearch");
-if(search){
- search.oninput=()=>{
+ const e=getEvent();
+ $("detail").innerHTML=e?detailHTML(e):
+   showEmpty("변경 사건을 선택해 주세요.","법령·정책 변경을 선택하면 기관별로 무엇을 바꿔야 하는지 한 번에 보여줍니다.");
+ const back=$("back");
+ if(back)back.onclick=()=>{$("layout").classList.remove("detailOpen");
+    history.replaceState(null,"",location.pathname+location.search)};
+ const all=$("detail").querySelector("[data-agency-all]");
+ if(all)all.onclick=()=>{selectedAgency=null;agencySearch="";resultLimit=20;renderDetail()};
+ bindSidebarGroups();
+ const search=$("agencySearch");
+ if(search)search.oninput=()=>{
    agencySearch=search.value.trim();
-   const parent=$("agencyChoiceList");
-   if(parent){
-     parent.innerHTML=agencyButtons(currentAgencyChoices(agencyEntries(matchingActions(e))));
-     bindAgencyPick();
-   }
+   const list=$("agencySidebarGroups");
+   if(list){list.innerHTML=sidebarGroups(agencyEntries(matchingActions(e)));
+     bindSidebarGroups();}
  };
-}
+ const more=$("detail").querySelector("[data-agency-more]");
+ if(more)more.onclick=()=>{resultLimit+=20;renderDetail()};
 }
 function choose(id){
-if(selectedId!==id){selectedType=null;selectedRegion=null;selectedAgency=null;agencySearch="";}
+if(selectedId!==id){selectedAgency=null;agencySearch="";resultLimit=20;openAgencyTypes.clear();openAgencyRegions.clear();}
 selectedId=id;$("layout").classList.add("detailOpen");displayList();renderDetail();
 try{history.replaceState(null,"","#change="+encodeURIComponent(id))}catch(e){}
 if(window.innerWidth<=850)window.scrollTo({top:0,behavior:"smooth"});

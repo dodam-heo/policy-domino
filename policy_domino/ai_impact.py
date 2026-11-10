@@ -75,7 +75,7 @@ def source_summary_payload(event: dict) -> dict:
     }
 
 
-SUMMARY_UNITS = re.compile(r"(?<!\\d)\\d[\\d,]*(?:\\.\\d+)?\\s*(?:만원|원|명|일|개월|년|%)(?![가-힣])")
+SUMMARY_UNITS = re.compile(r"(?<!\d)\d[\d,]*(?:\.\d+)?\s*(?:만원|원|명|일|개월|년|%)(?![가-힣])")
 
 
 def validate_source_summary(answer: dict, event: dict) -> str:

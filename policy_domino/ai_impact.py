@@ -147,7 +147,49 @@ def call_model(config: ModelConfig, context: dict,
         with open_request(request, timeout=90) as response:
             raw = response.read(150_001)
     except HTTPError as exc:
-        raise RuntimeError(f"LLM provider rejected request (HTTP {exc.code})") from None
+        # Do not print the raw provider response: it may contain request data.
+        # Only surface known non-sensitive error codes to guide account setup.
+        provider_code = ""
+        provider_type = ""
+        try:
+            error_response = json.loads(exc.read(8192))
+            detail = error_response.get("error", {})
+            if isinstance(detail, dict):
+                provider_code = str(detail.get("code") or "")
+                provider_type = str(detail.get("type") or "")
+        except (OSError, TypeError, ValueError):
+            pass
+        quota_codes = {
+            "insufficient_quota", "credit_balance_exhausted",
+            "organization_usage_limit_exceeded",
+            "organization_spend_limit_exceeded",
+            "project_spend_limit_exceeded",
+            "billing_hard_limit_reached",
+        }
+        if exc.code == 429:
+            if provider_code in quota_codes or provider_type in quota_codes:
+                label = provider_code if provider_code in quota_codes else provider_type
+                raise RuntimeError(
+                    "LLM API quota/billing limit (HTTP 429, code="
+                    + label + "). Check platform.openai.com billing balance "
+                    "and project/organization spend limits. Retrying will not fix "
+                    "a depleted balance. No AI report was published."
+                ) from None
+            if provider_code == "rate_limit_exceeded" or provider_type == "rate_limit_exceeded":
+                raise RuntimeError(
+                    "LLM API temporary rate limit (HTTP 429, code=rate_limit_exceeded). "
+                    "Check model RPM/TPM limits and retry after the provider's "
+                    "cooldown. No AI report was published."
+                ) from None
+            raise RuntimeError(
+                "LLM API rejected request (HTTP 429). Cause not disclosed; "
+                "check billing balance, project spend caps and RPM/TPM limits. "
+                "No AI report was published."
+            ) from None
+        raise RuntimeError(
+            f"LLM provider rejected request (HTTP {exc.code}). "
+            "No AI report was published."
+        ) from None
     except (URLError, TimeoutError, OSError):
         raise RuntimeError("LLM provider is unreachable; no AI output will be published") from None
     if len(raw) > 150_000:

@@ -112,7 +112,7 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
    event_id:"v4:many",title:"전문직공무원 정원 특례 · 관련 법령 동시 개정",
    revision:"타법개정",law_type:"동일 공포번호 법령 17건",
    amendment_reason:"공식 정원 기준 개정",
-   presentation_source:"v4_official_source",
+   presentation_source:"v4_official_source",impact_level:"high",
    promulgated_at:"2026-11-06",effective_date:"2026-11-06"
  };
  const agencies=["고용노동부","공정거래위원회","국가데이터처",

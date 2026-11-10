@@ -112,6 +112,36 @@ def source_pairs(changes: list[dict], limit: int = 70) -> list[dict]:
     return result
 
 
+def focused_pair(before: str, after: str, max_chars: int = 700) -> tuple[str, str]:
+    """Keep actual changed evidence within an LLM input budget.
+
+    Blind [:700] truncation loses a changed rule near the end of a lengthy
+    official clause. Keep source verbatim near the substantive delta instead.
+    """
+    before, after = str(before or ""), str(after or "")
+    if max(len(before),len(after)) <= max_chars:
+        return before, after
+    operations=difflib.SequenceMatcher(None,before,after,autojunk=False).get_opcodes()
+    changed=[(a,b,c,d) for tag,a,b,c,d in operations if tag!="equal"]
+    if not changed:
+        return before[:max_chars],after[:max_chars]
+    a,b,c,d=max(changed,key=lambda item:(
+        bool(re.search(r"\d",before[item[0]:item[1]]+after[item[2]:item[3]])),
+        min(100,item[1]-item[0]+item[3]-item[2]),
+    ))
+    def excerpt(text: str, start: int, end: int) -> str:
+        if len(text)<=max_chars:return text
+        left=max(0,start-max_chars//3)
+        right=min(len(text),left+max_chars)
+        if right==len(text):left=max(0,right-max_chars)
+        if end>right and end-start<max_chars:
+            left=min(max(0,end-max_chars),left+(end-right))
+            right=min(len(text),left+max_chars)
+        chunk=text[left:right]
+        return ("…" if left else "")+chunk+("…" if right<len(text) else "")
+    return excerpt(before,a,b),excerpt(after,c,d)
+
+
 def _numeric_changes(before: str, after: str) -> list[tuple[str, str]]:
     """Align complete numeric tokens, never character fragments such as 2→7."""
     pattern = re.compile(r"(?<!\d)(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:만원|원|명|일|개월|년|세|%)?")

@@ -61,7 +61,7 @@ jobs:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
           PD_PUBLIC_SERVICE_KEY: ${{ secrets.PD_PUBLIC_SERVICE_KEY }}
           PD_PUBLIC_SERVICE_PAGES: ${{ vars.PD_PUBLIC_SERVICE_PAGES || '40' }}
-          PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '250' }}
+          PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '4000' }}
           PD_V4_DETAILS: '60'
           PD_V4_DELEGATIONS: '5'
           PD_V4_SEARCH_PARENTS: '4'

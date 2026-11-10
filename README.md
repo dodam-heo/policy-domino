@@ -15,7 +15,8 @@ policy_domino/
   __main__.py             단일 운영 진입점
   official_api.py          국가법령정보 공식 API 통신·원문 추출
   semantic_diff.py         원문 신구 문장 비교
-  ai_impact.py             실 LLM 호출·근거 검증·AI 초안 생성
+  ai_impact.py             전체 사건 분석 대기열·실 LLM 호출·증빙별 재개
+  analysis_evidence.py     변경 근거의 안정적인 SHA-256 식별자
   audit.py                 중복 파이프라인·오래된 코드 재유입 방지
   engine/
     pipeline.py            공식 변경 사건 수집·증빙 데이터 생성
@@ -68,27 +69,24 @@ LAW_OC="<공식 API 인증값>" python -m policy_domino --source official
 
 GitHub Actions는 **`.github/workflows/policy-domino.yml`** 하나만 정기 실행합니다. 6시간마다 공식 수집→검증→기관별 분석→배포를 수행합니다. `main` 코드가 바뀌면 기존 공식 증빙으로 재생성·배포하며, 수동 실행 때는 두 모드 중 선택할 수 있습니다. `LAW_OC`는 GitHub Actions Secret 또는 Variable로 설정하며, 인증값을 소스에 넣지 않습니다. 검증 실패·API 실패 시 배포는 중단됩니다.
 
-## 실제 LLM 기반 기관별 업무 영향 분석 (선택 실행)
+## 실제 LLM 기반 전체 변경 사건 분석 · 증빙별 누적·갱신
 
-기존 공식 법령 수집·신구 조문 검증과 별개로 **실제 모델을 호출**하여 증빙된 기관 업무의 변화와 검토사항을 분석하는 `policy_domino/ai_impact.py`를 제공합니다. 모델의 결과는 `site/ai-impact/data.json`에 별도 저장하고 `/impact/` 화면의 해당 정책 사건에만 **'AI 검토 초안'**으로 표시합니다. **모델 자격증명이 없으면 실행되지 않으며, AI 결과를 생성했다고 표시하지 않습니다.**
+**수집된 모든 변경 사건을 AI 분석 관리 대상으로 기록**합니다. 공식 조문과 공공기관 업무 연결이 확인된 항목은 LLM이 순차 분석하고, 아직 근거가 없는 사건은 ‘근거 확인 대기’로 구분합니다. 임의로 고른 정책 1건이나 ‘영향도 큼’만 분석하는 시연용 구조가 아닙니다.
+
+AI 결과는 각 변경 사건·기관 업무 근거에 연결해 누적합니다. 원문이 동일하면 재사용하고 변경된 조문·검토근거만 다시 분석합니다. API 사용 한도나 서버 오류가 발생해도 완료된 분석은 보존하고 다음 정기 실행에서 **미완료 항목부터 재개**합니다. LLM이 생성한 내용은 ‘AI 검토 초안’으로 분리 표시하며 공식 원천이나 실제 기관 조치 완료 상태를 덮어쓰지 않습니다.
+
+실제 모델 호출은 기존 단일 GitHub Actions 수집·배포 워크플로에서 처리합니다. API 키·모델이 설정된 경우 정기 수집 실행에서 남은 검토 대기열을 자동으로 처리하고, 필요하면 수동 실행에서 `analyze_ai=true`를 선택할 수 있습니다. 호출 한도·간격·자동 실행 여부는 Variables로 조정할 수 있습니다.
 
 ```bash
-# 기존 공식 출처로 재현 가능한 데이터 만들기
 python -m policy_domino --source stored
-
-# 아래 값은 실제 모델 제공업체에서 발급받아 환경변수로만 설정
+# 실제 모델의 비공개 환경변수 설정
 export PD_LLM_API_KEY="YOUR_PRIVATE_API_KEY"
 export PD_LLM_MODEL="YOUR_PROVIDER_MODEL_ID"
-python -m policy_domino.ai_impact --limit 3
-
-# 생성된 화면 확인
-python -m http.server 8000 --directory site
-# http://localhost:8000/impact/
+export PD_LLM_BASE_URL="YOUR_PROVIDER_OPENAI_COMPATIBLE_BASE_URL"
+python -m policy_domino.ai_impact --max-requests 36 --batch-size 3 --interval 12
 ```
 
-OpenAI 호환 Chat Completions API를 사용하며 `PD_LLM_BASE_URL`로 제공업체를 교체할 수 있습니다. 모델이 추가 기관이나 근거를 만들어 내더라도 공식 출처와 맞지 않으면 거부합니다. **정기 배포에서는 임의의 유료 모델 호출이 발생하지 않습니다.** 모델 Secret을 설정하고 GitHub Actions에서 `analyze_ai=true`로 수동 실행할 수 있습니다.
-
-자세한 설정·실행 순서·한계: **[실제 LLM 분석 실행 안내](docs/ai-impact.md)**.
+현재 실행 상태와 개별 결과는 `site/ai-impact/data.json`(v2)과 `/impact/` 화면에서 확인합니다. **[설계·실행·안전장치](docs/ai-impact.md)**에서 자세한 계약을 설명합니다.
 
 ## 결과 해석
 

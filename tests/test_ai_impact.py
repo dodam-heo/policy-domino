@@ -222,6 +222,54 @@ class RealLLMImpactTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError,"LLM API HTTP 429"):
                     call_model(self.config,context,open_request=error_opener)
 
+    def test_temporary_gemini_503_is_retried_then_real_model_answer_used(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        attempts=[]
+        pauses=[]
+        def opener(request,timeout):
+            attempts.append(request.full_url)
+            if len(attempts)<3:
+                error=b'[{"error":{"code":503,"status":"UNAVAILABLE"}}]'
+                raise HTTPError(request.full_url,503,"Service Unavailable",{},
+                                io.BytesIO(error))
+            content=json.dumps(answer(),ensure_ascii=False)
+            return FakeResponse(json.dumps({"choices":[{"message":{"content":content}}]}).encode())
+        output=call_model(self.config,context,open_request=opener,pause=pauses.append)
+        self.assertEqual(output,answer())
+        self.assertEqual(len(attempts),3)
+        self.assertEqual(pauses,[3,9])
+
+    def test_persistent_503_fails_after_at_most_three_requests(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        attempts=[]
+        pauses=[]
+        def opener(request,timeout):
+            attempts.append(1)
+            raise HTTPError(request.full_url,503,"Service Unavailable",{},
+                            io.BytesIO(b'[{"error":{"status":"UNAVAILABLE"}}]'))
+        with self.assertRaisesRegex(RuntimeError,"HTTP 503, provider=UNAVAILABLE"):
+            call_model(self.config,context,open_request=opener,pause=pauses.append)
+        self.assertEqual(len(attempts),3)
+        self.assertEqual(pauses,[3,9])
+
+    def test_nontransient_404_and_quota_429_never_retry(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        for code, payload in [
+            (404,{"error":{"status":"NOT_FOUND"}}),
+            (429,{"error":{"code":"insufficient_quota"}}),
+        ]:
+            with self.subTest(status=code):
+                attempts=[]
+                pauses=[]
+                def opener(request,timeout):
+                    attempts.append(1)
+                    raise HTTPError(request.full_url,code,"Error",{},
+                                    io.BytesIO(json.dumps(payload).encode()))
+                with self.assertRaises(RuntimeError):
+                    call_model(self.config,context,open_request=opener,pause=pauses.append)
+                self.assertEqual(len(attempts),1)
+                self.assertEqual(pauses,[])
+
     def test_model_must_return_structured_json(self):
         context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
         def fake_opener(request,timeout):

@@ -192,6 +192,11 @@ def inspect(record,records=None,load=None,history=None,annual=None):
         event["notes"].append("공식 현재 본문 조회 실패: "+str(exc)[:130])
         event["verification"]="detail_failed"
         return event,{}
+    missing=getattr(current,"unresolved_attachments",[])
+    if missing:
+        event["needs_attachment_check"]=True
+        event["unresolved_attachments"]=[{**item,"version":"current"} for item in missing]
+        event["notes"].append("공식 별표·첨부 원문을 아직 읽지 못함")
     if not complete_text(current):
         event["notes"].append("별표 또는 장문 조문이 잘렸거나 읽히지 않아 완전 비교가 불가능함")
         event["needs_attachment_check"]=True
@@ -218,6 +223,12 @@ def inspect(record,records=None,load=None,history=None,annual=None):
     except Exception as exc:
         event["notes"].append("이전 버전 본문 확인 실패: "+str(exc)[:140])
         return event,current
+    missing=getattr(previous,"unresolved_attachments",[])
+    if missing:
+        event["needs_attachment_check"]=True
+        event.setdefault("unresolved_attachments",[]).extend(
+            {**item,"version":"previous"} for item in missing)
+        event["notes"].append("종전 기준의 별표·첨부 원문을 아직 읽지 못함")
     if not complete_text(previous):
         event["notes"].append("이전 버전 조문 또는 수치표가 불완전함")
         event["needs_attachment_check"]=True

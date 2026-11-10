@@ -6,6 +6,8 @@ A real run uses PD_LLM_API_KEY and PD_LLM_MODEL.
 from __future__ import annotations
 
 import json
+import io
+from urllib.error import HTTPError
 import os
 import unittest
 from unittest.mock import patch
@@ -159,6 +161,32 @@ class RealLLMImpactTests(unittest.TestCase):
         self.assertTrue(all(a["source_verified"] for a in received))
         self.assertEqual(output["event_id"],"v4:verified-example")
         self.assertEqual(len(output["findings"]),1)
+
+    def test_quota_429_reports_billing_not_generic_rate_limit(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        for code in ("insufficient_quota", "credit_balance_exhausted",
+                     "project_spend_limit_exceeded"):
+            def error_opener(request,timeout):
+                body=json.dumps({"error":{"code":code,"type":"insufficient_quota","message":"Never print this value"}}).encode()
+                raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(body))
+            with self.subTest(code=code):
+                with self.assertRaisesRegex(RuntimeError,"quota/billing limit.*HTTP 429"):
+                    call_model(self.config,context,open_request=error_opener)
+
+    def test_rate_limit_429_is_distinguished_from_account_quota(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        def error_opener(request,timeout):
+            body=json.dumps({"error":{"type":"rate_limit_exceeded","message":"Too many requests"}}).encode()
+            raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(body))
+        with self.assertRaisesRegex(RuntimeError,"temporary rate limit"):
+            call_model(self.config,context,open_request=error_opener)
+
+    def test_unknown_429_never_falsely_diagnoses_empty_balance(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        def error_opener(request,timeout):
+            raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(b""))
+        with self.assertRaisesRegex(RuntimeError,"Cause not disclosed"):
+            call_model(self.config,context,open_request=error_opener)
 
     def test_model_must_return_structured_json(self):
         context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])

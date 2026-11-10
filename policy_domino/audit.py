@@ -21,6 +21,9 @@ def audit() -> list[str]:
                  if "\n  schedule:" in p.read_text("utf-8")]
     if scheduled != [EXPECTED]:
         errors.append(f"Expected one scheduled production pipeline; found {scheduled}")
+    for retired in ("v2", "v3", "v4", "next"):
+        if (ROOT / retired).exists():
+            errors.append(f"Retired version directory still in production root: {retired}")
     for stale in ("watch.py", "impact_scanner.py", "law_changes.py"):
         if (ROOT / stale).exists():
             errors.append(f"Obsolete root watcher not archived: {stale}")
@@ -28,7 +31,7 @@ def audit() -> list[str]:
         if module.name.startswith("test_"):
             continue
         src = module.read_text("utf-8")
-        if "from v2 import" in src or "from v3 import" in src:
+        if any(x in src for x in ("from v2 import", "from v3 import", "from v4", "import v4")):
             errors.append(f"Production has legacy runtime import: {module.name}")
     return errors
 

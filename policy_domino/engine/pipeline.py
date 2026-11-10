@@ -8,7 +8,7 @@ from __future__ import annotations
 import datetime as dt,json,os,re
 from pathlib import Path
 from policy_domino import official_api as api
-from policy_domino.engine import collect_index,events,relationships,official_links,dependents
+from policy_domino.engine import collect_index,events,relationships,official_links,dependents,source_change
 
 ROOT=Path(__file__).resolve().parents[2]
 STATE=ROOT/"data"/"v4_state.json"
@@ -238,6 +238,9 @@ def output_groups(state):
             "effective":m["effective_date"],
             "changed_articles":m.get("changed_articles",[])[:18],
             "excerpts":m.get("excerpts",[])[:12],
+            # The public comparison must not be limited by how many
+            # agency-action excerpts can be generated from this law.
+            "source_pairs":source_change.source_pairs(m.get("changes",[])),
             "actor_duties":m.get("actors",[])[:20],
             "needs_attachment_check":m.get("needs_attachment_check",False),
             "notes":m.get("notes",[]),

@@ -8,6 +8,7 @@ import collections
 import difflib
 import hashlib
 import re
+from policy_domino.engine import source_change
 
 
 ORG_TITLE=re.compile(
@@ -266,28 +267,39 @@ def group_event(g):
     }
     actions=[]
     for doc in valid_docs:
-        for p in choose_excerpts(doc)[:3]:
-            a=new_action(doc,p,v4id)
-            if a:actions.append(a)
+        # Evidence used to identify a directly affected public agency is a
+        # separate decision from evidence shown for the source amendment.
+        # Display all available source changes, not only 3 chosen actions.
+        for excerpt in choose_excerpts(doc)[:3]:
+            action=new_action(doc,excerpt,v4id)
+            if action:actions.append(action)
+        pairs=(doc.get("source_pairs") or
+               source_change.source_pairs(doc.get("changes",[])))
+        if not pairs:
+            pairs=[{
+                "article":excerpt.get("article",""),
+                "type":source_change.category(excerpt.get("before",""),excerpt.get("after","")),
+                "before":excerpt.get("before",""),
+                "after":excerpt.get("after",""),
+                "source_url":excerpt.get("source_url",""),
+                "preview":source_change.highlight(excerpt.get("before",""),excerpt.get("after","")),
+                "comparison_basis":"공식 조문의 종전·변경 문장",
+            } for excerpt in doc.get("excerpts",[])]
+        for pair in pairs:
             e["article_differences"].append({
-                "article":(doc.get("title","")+" · " if count>1 else "")+p.get("article",""),
-                "type":p.get("kind","개정"),
-                "before":p.get("before","")[:750],
-                "after":p.get("after","")[:750],
-                "source_url":source_url(p.get("source_url")),
-                "directive":"",
+                "article":(doc.get("title","")+" · " if count>1 else "")+
+                          pair.get("article",""),
+                "type":pair.get("type","내용 개정"),
+                "before":pair.get("before",""),
+                "after":pair.get("after",""),
+                "source_url":source_url(pair.get("source_url") or doc.get("url")),
+                "comparison_basis":pair.get("comparison_basis",""),
+                "preview":pair.get("preview") or source_change.highlight(
+                    pair.get("before",""),pair.get("after","")),
             })
-    pairs=[x for x in e["article_differences"] if x.get("before")!=x.get("after")]
-    labels=[]
-    for item in pairs[:3]:
-        article=clean(item.get("article")) or "변경 조항"
-        edits=textual_edits(item.get("before"),item.get("after"),limit=1)
-        if edits:
-            labels.append(article+" "+edits[0]["before"]+" → "+edits[0]["after"])
-        else:
-            labels.append(article+" "+("신설" if not item.get("before") else
-                "폐지" if not item.get("after") else "개정"))
-    e["change_summary"]=" · ".join(labels) if labels else "공식 신구 조문 대조 중"
+    # Structured facts, NOT cut-and-paste word fragments posing as summaries.
+    e["change_summary"]=source_change.concise_summary(
+        e["article_differences"],e["change_count"])
     actions=unique_actions(actions)
     # Source-backed direct actors for general non-organization law events are
     # also permitted, but no names are taken from incidental fulltext mentions.

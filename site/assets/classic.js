@@ -30,12 +30,24 @@ $("listCount").textContent="전체 "+(DATA.events||[]).length+"건 · 표시 "+e
 $("lawList").innerHTML=events.length?events.map(eventRow).join(""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
 $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.dataset.event));
 }
-function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";return '<span class="status '+cls+'">'+esc(s||"반영 확인 필요")+'</span>'}
-function agencyNavigator(items){
- const counts=new Map();
- for(const item of items){const name=item.agency||"기관 확인 필요";counts.set(name,(counts.get(name)||0)+1)}
- if(!counts.size)return "";
- return '<nav class="agencyNav" aria-label="기관별 바로가기">'+[...counts].sort((a,b)=>a[0].localeCompare(b[0],"ko")).map(([name,n])=>'<button class="agencyJump" type="button" data-jump="'+esc(name)+'">'+esc(name)+' · '+n+'</button>').join("")+'</nav>';
+function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";const label=s==="최신 근거 재확인 필요"?"확인 중":(s||"반영 확인 필요");return '<span class="status '+cls+'">'+esc(label)+'</span>'}
+// Institution grouping comes from the official source name. Region labels
+// are parsed dynamically; no ministry, region, school or service is enrolled
+// through a hardcoded name mapping.
+const INSTITUTION_CATEGORIES=["중앙행정기관","지방자치단체","교육청","공공기관·기타"];
+const REGION_PREFIX=/^([가-힣]+?(?:특별자치시|특별자치도|특별시|광역시|도))(?=\s|교육청|교육지원청|$)/;
+function institutionRegion(name){
+ const matched=String(name||"").match(REGION_PREFIX);
+ return matched?matched[1]:"지역 구분 없음";
+}
+function institutionType(name){
+ const label=String(name||"").trim();
+ if(/교육청|교육지원청/.test(label))return "교육청";
+ if(institutionRegion(label)!=="지역 구분 없음"||
+    /^(?:시·군·구|지방자치단체)$/.test(label)||
+    /^[가-힣]{2,12}(?:시|군|구|시청|군청|구청)$/.test(label))return "지방자치단체";
+ if(/(?:부|처|청|위원회)$/.test(label))return "중앙행정기관";
+ return "공공기관·기타";
 }
 function overviewText(e,all){
  const reason=String(e.amendment_reason||"").replace(/\s+/g," ").trim();
@@ -44,11 +56,61 @@ function overviewText(e,all){
  return example?String(example).slice(0,165):"변경 내용 확인 중";
 }
 function groupedActions(items, aiFindings){
-if(!items.length)return "";
-const ordered=items.slice().sort((a,b)=>(a.agency||"").localeCompare(b.agency||"","ko")||(a.work||"").localeCompare(b.work||"","ko")||(a.article||"").localeCompare(b.article||"","ko"));
-const byAgency=new Map();
-for(const item of ordered){let agency=item.agency||"기관 확인 필요";if(!byAgency.has(agency))byAgency.set(agency,[]);byAgency.get(agency).push(item)}
-return [...byAgency].map(([agency,list])=>'<details class="impactAgencyGroup" data-agency="'+esc(agency)+'"><summary class="groupHeading"><strong>'+esc(agency)+'</strong><span>'+list.length+'건</span></summary><div class="agencyTaskList">'+list.map(a=>actionCard(a,aiFindings)).join("")+'</div></details>').join("");
+ if(!items.length)return "";
+ const byAgency=new Map();
+ for(const action of items){
+   const name=action.agency||"기관 확인 필요";
+   if(!byAgency.has(name))byAgency.set(name,[]);
+   byAgency.get(name).push(action);
+ }
+ const byType=new Map();
+ for(const [agency,actions] of byAgency){
+   const type=institutionType(agency);
+   if(!byType.has(type))byType.set(type,[]);
+   byType.get(type).push({agency,actions});
+ }
+ function agencyDetail(entry){
+   const items=entry.actions.slice().sort((a,b)=>
+     (a.work||"").localeCompare(b.work||"","ko")||
+     (a.article||"").localeCompare(b.article||"","ko"));
+   return '<details class="impactAgencyGroup" data-agency="'+esc(entry.agency)+'">'+
+     '<summary class="groupHeading"><strong>'+esc(entry.agency)+'</strong>'+
+     '<span>'+items.length+'건</span></summary>'+
+     '<div class="agencyTaskList">'+items.map(a=>actionCard(a,aiFindings)).join("")+
+     '</div></details>';
+ }
+ function areaDetail(region, entries){
+   const total=entries.reduce((n,x)=>n+x.actions.length,0);
+   return '<details class="institutionRegionGroup" data-region="'+esc(region)+'">'+
+     '<summary class="institutionRegionHeading"><strong>'+esc(region)+'</strong>'+
+     '<span>'+entries.length+'개 기관 · '+total+'건</span></summary>'+
+     '<div class="institutionRegionChildren">'+
+     entries.sort((a,b)=>a.agency.localeCompare(b.agency,"ko")).map(agencyDetail).join("")+
+     '</div></details>';
+ }
+ return '<div class="institutionTree" aria-label="기관 유형별 검토사항">'+
+   INSTITUTION_CATEGORIES.filter(type=>byType.has(type)).map(type=>{
+     const entries=byType.get(type);
+     const total=entries.reduce((n,x)=>n+x.actions.length,0);
+     let children;
+     if(type==="지방자치단체"||type==="교육청"){
+       const byRegion=new Map();
+       for(const entry of entries){
+         const region=institutionRegion(entry.agency);
+         if(!byRegion.has(region))byRegion.set(region,[]);
+         byRegion.get(region).push(entry);
+       }
+       children=[...byRegion].sort((a,b)=>a[0].localeCompare(b[0],"ko"))
+         .map(([region,group])=>areaDetail(region,group)).join("");
+     }else{
+       children=entries.sort((a,b)=>a.agency.localeCompare(b.agency,"ko"))
+         .map(agencyDetail).join("");
+     }
+     return '<details class="institutionTypeGroup" data-institution-type="'+esc(type)+'">'+
+       '<summary class="institutionTypeHeading"><strong>'+esc(type)+'</strong>'+
+       '<span>'+entries.length+'개 기관 · '+total+'건</span></summary>'+
+       '<div class="institutionTypeChildren">'+children+'</div></details>';
+   }).join("")+'</div>';
 }
 function actionCard(a, aiFindings){
 const changes=a.changes||[];
@@ -101,11 +163,11 @@ function detailHTML(e){
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+
  '" data-status="all">전체 '+all.length+'</button>'+
- ["조치 확인","미조치 확인","반영 확인 필요","최신 근거 재확인 필요"].map(s=>
+ ["조치 확인","미조치 확인","반영 확인 필요"].map(s=>
  '<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+
  esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
  const impact='<section class="agencyImpactSection"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+
- filters+agencyNavigator(current)+
+ filters+
  (current.length?groupedActions(current,aiFindings):
  showEmpty(all.length?"선택한 상태의 항목이 없습니다.":"기관별 검토사항 확인 중",
  all.length?"다른 상태를 선택하세요.":"공식 근거가 확인되면 표시됩니다."))+'</section>';
@@ -121,7 +183,7 @@ const e=getEvent();
 $("detail").innerHTML=e?detailHTML(e):showEmpty("변경 사건을 선택해 주세요.","법령·정책 변경을 선택하면 기관별로 무엇을 바꿔야 하는지 한 번에 보여줍니다.");
 const back=$("back");if(back)back.onclick=()=>{$("layout").classList.remove("detailOpen");history.replaceState(null,"",location.pathname+location.search)};
 $("detail").querySelectorAll("[data-status]").forEach(b=>b.onclick=()=>{actionFilter=b.dataset.status;renderDetail()});
-$("detail").querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const target=[...$("detail").querySelectorAll("[data-agency]")].find(x=>x.dataset.agency===b.dataset.jump);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start"})}});
+
 }
 function choose(id){
 selectedId=id;actionFilter="all";$("layout").classList.add("detailOpen");displayList();renderDetail();

@@ -93,7 +93,11 @@ new vm.Script(app,{filename:"classic.js"});
 assert.ok(!app.includes("window.PolicyDominoAiView.render(e,DATA,AI_DATA)"));
 assert.ok(app.includes("window.PolicyDominoAiView.renderForAction(a,aiFindings.get(a.id))"));
 assert.ok(app.includes('<details class="impactAgencyGroup"'));
-assert.ok(app.includes("target.open=true"));
+assert.ok(app.includes('data-institution-type='));
+assert.ok(app.includes('data-region='));
+assert.ok(!app.includes('data-jump='));
+assert.ok(!app.includes('agencyNavigator('));
+assert.ok(!app.includes('data-status="최신 근거 재확인 필요"'));
 assert.ok(app.includes("기관별 변경 검토사항"));
 assert.ok(app.includes("window.PolicyDominoAiView.latestAnalyzedAt(DATA,AI_DATA)"));
 assert.ok(app.includes('candidate?.schema==="policy-domino-llm-impact-v2"'));
@@ -170,9 +174,14 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
   const groupIndex=html.indexOf('class="impactAgencyGroup"');
   const agencyTitleIndex=html.indexOf("기관별 변경 검토사항");
   assert.ok(groupIndex>agencyTitleIndex,"Agency sections follow the central change and review overview");
-  assert.ok(html.includes('data-jump="고용노동부"'));
-  assert.ok(html.includes('data-jump="공정거래위원회"'));
-  assert.ok(html.includes('data-jump="국가데이터처"'));
+  assert.match(html,/data-institution-type="중앙행정기관"/);
+  assert.ok(html.includes('data-agency="고용노동부"'));
+  assert.ok(html.includes('data-agency="공정거래위원회"'));
+  assert.ok(html.includes('data-agency="국가데이터처"'));
+  assert.ok(!html.includes('data-jump='));
+  assert.ok(!html.includes('data-status="최신 근거 재확인 필요"'));
+  assert.equal((html.match(/class="institutionTypeGroup"/g)||[]).length,1);
+  assert.equal((html.match(/class="institutionRegionGroup"/g)||[]).length,0);
   assert.ok(!html.includes('<article class="aiImpactCard"'));
   const firstGroup=html.slice(groupIndex,html.indexOf("</details>",groupIndex));
   assert.ok(firstGroup.includes("AI 검토 의견"),
@@ -180,6 +189,72 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
   assert.match(element("sourceTitle").textContent,/정책 변경 1건 · 기관별 검토사항 31건/);
   assert.match(element("sourceDesc").textContent,/AI 검토 반영 · 마지막 분석/);
   assert.match(element("lastChecked").textContent,/6시간 간격 자동 점검 설정/);
+  // A realistic large source catalog must NOT display hundreds of agency
+  // chips. The second level is region for both local governments and offices
+  // of education; public foundations with a regional name are not local govt.
+  const sourceAgencies=[
+    "고용노동부",
+    "서울특별시 강서구","서울특별시 양천구",
+    "전남광주통합특별시 강진군","전북특별자치도 전주시",
+    "서울특별시교육청","서울특별시 동부교육지원청",
+    "전라남도교육청","세종특별자치시교육청",
+    "서울특별시50플러스재단","재단법인신용보증재단",
+    "시·군·구",
+    ...Array.from({length:90},(_,i)=>"서울특별시 가상"+i+"구")
+  ];
+  const many=sourceAgencies.map((agency,i)=>({
+    ...official.actions[0],id:"mass-"+i,event_id:event.event_id,
+    agency, article:"제"+(i+1)+"조",
+    status:i%2===0?"최신 근거 재확인 필요":"반영 확인 필요",
+    work:"공식 대상자 심사",required_change:"공식 지원 기준 비교",
+    changes:[{before:"기존",after:"신규"}]
+  }));
+  const secondNodes=new Map();
+  function elementSecond(id){
+    if(!secondNodes.has(id))secondNodes.set(id,{
+      innerHTML:"",textContent:"",value:"",hidden:false,dataset:{},
+      classList:{add(){},remove(){},toggle(){}},
+      querySelectorAll(){return []}
+    });
+    return secondNodes.get(id);
+  }
+  const testData={...data,actions:many};
+  const secondContext={
+    ...context,
+    document:{...document,getElementById:elementSecond},
+    fetch:async url=>({
+      ok:true,json:async()=>String(url).includes("ai-impact")?
+        {schema:ai.SCHEMA,events:[]} :testData
+    })
+  };
+  vm.runInNewContext(app,secondContext,{filename:"classic.js"});
+  await new Promise(resolve=>setImmediate(resolve));
+  const tree=elementSecond("detail").innerHTML;
+  assert.equal((tree.match(/class="institutionTypeGroup"/g)||[]).length,4);
+  assert.equal((tree.match(/class="impactAgencyGroup"/g)||[]).length,sourceAgencies.length);
+  assert.ok(!tree.includes('data-jump="'),'Do not show hundreds of chips');
+  assert.ok(!tree.includes('data-status="최신 근거 재확인 필요"'));
+  assert.match(tree,/data-institution-type="지방자치단체"/);
+  assert.match(tree,/data-institution-type="교육청"/);
+  assert.match(tree,/data-institution-type="공공기관·기타"/);
+  assert.equal((tree.match(/data-region="서울특별시"/g)||[]).length,2);
+  assert.match(tree,/data-region="전남광주통합특별시"/);
+  assert.match(tree,/data-region="전북특별자치도"/);
+  assert.match(tree,/data-region="전라남도"/);
+  const eduType=tree.indexOf('data-institution-type="교육청"');
+  const publicType=tree.indexOf('data-institution-type="공공기관·기타"');
+  const localType=tree.indexOf('data-institution-type="지방자치단체"');
+  assert.ok(localType<eduType&&eduType<publicType);
+  assert.ok(tree.slice(eduType,publicType).includes('data-agency="서울특별시교육청"'));
+  assert.ok(!tree.slice(localType,eduType).includes('data-agency="서울특별시교육청"'));
+  assert.ok(tree.slice(publicType).includes('data-agency="서울특별시50플러스재단"'));
+  assert.ok(tree.includes('data-agency="시·군·구"'));
+  assert.match(tree,/확인 중/);
+  // Native <details> elements default closed; users open only desired type,
+  // then region, then institution without re-rendering or new data requests.
+  assert.ok(!tree.includes('<details open class="institutionTypeGroup"'));
+  console.log("HIERARCHICAL_INSTITUTION_PASS: 102 dynamic agencies in 4 root types; local govt and education branch by region; verification filter hidden");
+
   console.log("AGENCY_FIRST_DETAIL_PASS: 31 tasks nested by agency, one core summary, concise update timestamps and status filters");
 })().catch(err=>{console.error(err);process.exitCode=1});
 

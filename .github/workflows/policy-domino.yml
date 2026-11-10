@@ -58,6 +58,15 @@ jobs:
           node site/v4/test_ui.cjs
           node site/classic/test_ui.cjs
           node site/ai-impact/test_ui.cjs
+      - name: Confirm official API authorization before live collection
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
+        env:
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+        run: |
+          if [ -z "$LAW_OC" ]; then
+            echo "::error::LAW_OC not configured in Actions Secret or Variable. No official documents were fetched."
+            exit 1
+          fi
       - name: Live official crawl and agency impact publication
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
         env:

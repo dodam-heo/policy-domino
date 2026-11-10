@@ -54,6 +54,9 @@ class AgencyActionTests(unittest.TestCase):
         self.assertEqual(actions[0]["evidence_scope"], "v4_verified_source")
         self.assertIn("정원", actions[0]["work"])
         self.assertEqual(e["presentation_source"], "v4_official_source")
+        self.assertIn("192",e["change_summary"])
+        self.assertIn("197",e["change_summary"])
+        self.assertEqual(len(e["source_documents"]),1)
 
     def test_same_promulgation_laws_and_verified_citations_are_preserved(self):
         second={**self.doc, "title":"가상공공위원회 직제",

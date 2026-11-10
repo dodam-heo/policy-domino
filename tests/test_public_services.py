@@ -210,21 +210,18 @@ class PublicServicesTests(unittest.TestCase):
         self.assertEqual(service_edges([event],{"schema":SCHEMA,
             "services":{"A":missing_operative}}),[])
 
-    def test_legacy_income_event_can_link_its_service_without_faking_ai_verification(self):
-        from policy_domino.engine import classic_bridge
-        root=Path(__file__).resolve().parents[1]
-        v4=json.loads((root/"site/v4/data.json").read_text("utf-8"))
-        legacy=json.loads((root/"site/classic/legacy_source.json").read_text("utf-8"))
-        svc=normalize_service(record("DYN", "가상공공주거운영기관",
-                                     "가상주거지원", "기준 중위소득 150% 이하"))
-        catalog={"schema":SCHEMA,"services":{svc["id"]:svc}}
-        published=classic_bridge.build(v4,legacy,service_catalog=catalog)
-        links=[a for a in published["actions"] if a.get("service_id")=="DYN"]
-        self.assertGreater(len(links),0)
-        self.assertTrue(all(a["agency"]=="가상공공주거운영기관" for a in links))
-        self.assertTrue(all(a["evidence_scope"]==
-            "legacy_service_dependency_pending_recheck" for a in links))
-        self.assertTrue(all(not has_verified_action(a) for a in links))
+    def test_programme_amount_must_not_copy_the_parent_standard(self):
+        e=legal_event()
+        service=normalize_service(record("DYN","가상공공주거운영기관",
+                                          "가상주거지원","기준 중위소득 150% 이하"))
+        edges=service_edges([e],{"schema":SCHEMA,
+                                    "services":{service["id"]:service}})
+        self.assertEqual(len(edges),1)
+        action=agency_service_action(e,edges[0])
+        self.assertEqual(action["comparison_scope"],"source_policy_only")
+        self.assertNotIn("6,929,885원",action["required_change"])
+        self.assertIn("사업",action["required_change"])
+        self.assertTrue(has_verified_action(action))
 
     def test_source_verified_program_enters_ai_queue_and_fingerprint(self):
         e=legal_event()

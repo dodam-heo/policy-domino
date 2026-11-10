@@ -1,102 +1,46 @@
-# 정책도미노 · Policy Domino
+# 정책도미노 | Policy Domino
 
-**법령·행정규칙의 확정된 변경을 공공기관의 구체적 검토 업무까지 추적하는 근거 기반 소프트웨어**
+공식 정책 변경이 어떤 공공기관의 제도·사업·업무에 파급되는지 **공식 근거와 함께** 보여주는 AI 활용 서비스.
 
 서비스: https://dodam-heo.github.io/policy-domino/impact/
 
-정책도미노는 변경된 법령을 다시 고치라고 지시하는 서비스가 아닙니다. **공식 변경 내용 → 실제 관련 규정 → 담당 공공기관 → 검토해야 할 업무**를 공개 근거와 함께 제공하는 것이 목적입니다.
+## 단일 운영 구조
 
-수집 대상은 특정 산업이나 기관을 미리 선정하지 않은 법령·행정규칙 전체 범위입니다. LH, SH, 한국장학재단 같은 공공기관의 파급 영향은 기관명만 언급되었다는 이유로 확정하지 않고, 해당 변경 조항과 집행 업무의 관계가 확인될 때만 표시합니다. 미확인 관계는 검토 후보로 분리합니다.
-
-## 프로젝트 구조
-
-```text
-policy_domino/
-  __main__.py             단일 운영 진입점
-  official_api.py          국가법령정보 공식 API 통신·원문 추출
-  semantic_diff.py         원문 신구 문장 비교
-  ai_impact.py             전체 사건 분석 대기열·실 LLM 호출·증빙별 재개
-  analysis_evidence.py     변경 근거의 안정적인 SHA-256 식별자
-  audit.py                 중복 파이프라인·오래된 코드 재유입 방지
-  engine/
-    pipeline.py            공식 변경 사건 수집·증빙 데이터 생성
-    collect_index.py       공식 변경목록/연혁 인덱스
-    events.py              개정 사건과 이전 버전 비교
-    relationships.py       변경된 조문과 연계 규정 검증
-    official_links.py      법제처 위임 규정 연결
-    dependents.py          후속 규정 확인
-    agency_actions.py      공공기관 업무 검토사항 구성
-    impact_scope.py        '영향도 큼' 판정
-    legacy_recheck.py      이전 근거를 재검증 대기 상태로 격리
-    classic_bridge.py      화면 데이터의 단일 생성기
-    classic_pages.py       두 화면 경로의 정적 파일 생성
-    stage_refresh.py       저장된 공식 근거로 재생성
-tests/                    수집·분석·증빙·UI 계약 자동 테스트
-site/
-  templates/agency.html   하나의 공통 화면 템플릿
-  assets/                 공통 CSS·JavaScript·AI 결과 렌더러
-  ai-impact/              실제 모델 출력(존재할 때만 표시)
-  impact/                 기본 '영향도 큼' 화면
-  classic/                동일 데이터의 호환 접근 경로
-  v4/                     원문 검증 현황 조회용 공개 경로
-data/                     진행 상태와 출처 증빙 스냅샷
-.github/workflows/
-  policy-domino.yml       유일한 정기 수집 및 GitHub Pages 배포
-  refactor-quality.yml    테스트만 실행 (배포 권한 없음)
-docs/architecture.md     데이터 모델·판정 원칙·운영 경계
+```
+공식 법령·행정규칙·자치법규 변경 탐색 (국가법령정보 API)
+  → 동일 법령의 구·신 조문 검증 / 연도별 고시 후속 기준 비교
+  → 변경 조항을 직접 적용하는 공공규정 확인
+  → 정부24 등 공식 서비스 운영기준과 교차 대조
+  → 실제 연결된 공공기관·사업·업무 검토사항 생성
+  → 실 LLM 검토 의견 (공식 사실을 덮어쓰지 않음)
+  → 하나의 데이터 계약·하나의 화면 템플릿
 ```
 
-**운영 경로는 하나뿐입니다.** `policy_domino/__main__.py`가 증빙 수집·갱신을 호출한 후 기관 영향 데이터와 화면을 생성합니다. 과거 `v2/`, `v3/`, `v4/`, `next/`, `watch.py`, `impact_scanner.py` 기반의 중복 실행 코드는 생산 브랜치에서 제외했고, 삭제 전 상태는 [기록 보관 브랜치](https://github.com/dodam-heo/policy-domino/tree/archive/pre-canonical-pipeline-20261110)에 보존했습니다. **데이터 형식 이름의 V2/V4는 검증 출처·스키마의 버전이며 별도 실행 파이프라인이 아닙니다.**
+운영 진입점은 `python -m policy_domino` 하나입니다. `--source official`은 공식 API에서 신규 변경을 수집하고, `--source stored`는 **저장된 공식 원문 증거**로 동일 파이프라인을 재실행합니다. 이전 개발 버전의 분석 카드나 가공된 영향 데이터는 현재 산출물의 입력으로 사용하지 않습니다.
 
-## 실행·검증
+- `policy_domino/engine/pipeline.py`: 공식 변경 자료 수집·비교·근거 저장
+- `policy_domino/engine/publication.py`: 검증된 정책 사건·기관별 조치의 단일 생성기
+- `policy_domino/public_services.py`: 실제 공공서비스 선정기준과 정책의 적용 관계
+- `policy_domino/ai_impact.py`: 모델별 접속을 분리한 근거 제약 LLM 분석
+- `site/templates/agency.html` + `site/assets/`: 한 화면의 상세 UI
 
-Python 3.12+ 및 Node.js 22+.
+**숫자 해석 원칙:** 상위 정책 기준액의 변경과 실제 기관 사업의 선정·지급금액 변경은 다릅니다. 사업별 대상, 적용비율, 산식, 반올림 기준의 독립 검증 없이는 상위 변경값을 사업 금액으로 표시하지 않습니다.
+
+정책 상세의 순서는 **발령기관·정책명 → 실제 변경내용 및 신구 비교 → 관련 법령 → 영향을 받는 기관·사업 → 검토할 조치**입니다. 민간조직은 영향 분석 범위에 포함하지 않습니다.
+
+## 검증·실행
+
+Python 3.12+ / Node.js 22+.
 
 ```bash
-# 테스트와 아키텍처 검사 (인터넷·API 인증 불필요)
 python -m policy_domino.audit
+python -m policy_domino --source stored
 python -m unittest discover -s tests -p 'test_*.py' -v
-node site/v4/test_ui.cjs
 node site/classic/test_ui.cjs
-node site/test_adapter.cjs
-
-# 수집된 공식 근거를 다시 분석하여 화면 생성
-python -m policy_domino --source stored
-
-# 법제처 API에서 새 변경사항을 수집하고 화면 생성
-LAW_OC="<공식 API 인증값>" python -m policy_domino --source official
+node site/v4/test_ui.cjs
+node site/ai-impact/test_ui.cjs
 ```
 
-GitHub Actions는 **`.github/workflows/policy-domino.yml`** 하나만 정기 실행합니다. 6시간마다 공식 수집→검증→기관별 분석→배포를 수행합니다. `main` 코드가 바뀌면 기존 공식 증빙으로 재생성·배포하며, 수동 실행 때는 두 모드 중 선택할 수 있습니다. `LAW_OC`는 GitHub Actions Secret 또는 Variable로 설정하며, 인증값을 소스에 넣지 않습니다. 검증 실패·API 실패 시 배포는 중단됩니다.
+GitHub Actions 단일 정기 파이프라인이 공식 수집·검증·결과 저장·GitHub Pages 배포를 담당합니다. `LAW_OC`, `PD_PUBLIC_SERVICE_KEY` 및 LLM 설정은 Secrets/Variables로 제공하며 코드에 포함하지 않습니다.
 
-## 실제 LLM 기반 전체 변경 사건 분석 · 증빙별 누적·갱신
-
-**수집된 모든 변경 사건을 AI 분석 관리 대상으로 기록**합니다. 공식 조문과 공공기관 업무 연결이 확인된 항목은 LLM이 순차 분석하고, 아직 근거가 없는 사건은 ‘근거 확인 대기’로 구분합니다. 임의로 고른 정책 1건이나 ‘영향도 큼’만 분석하는 시연용 구조가 아닙니다.
-
-AI 결과는 각 변경 사건·기관 업무 근거에 연결해 누적합니다. 원문이 동일하면 재사용하고 변경된 조문·검토근거만 다시 분석합니다. API 사용 한도나 서버 오류가 발생해도 완료된 분석은 보존하고 다음 정기 실행에서 **미완료 항목부터 재개**합니다. LLM이 생성한 내용은 ‘AI 검토 초안’으로 분리 표시하며 공식 원천이나 실제 기관 조치 완료 상태를 덮어쓰지 않습니다.
-
-실제 모델 호출은 기존 단일 GitHub Actions 수집·배포 워크플로에서 처리합니다. API 키·모델이 설정된 경우 정기 수집 실행에서 남은 검토 대기열을 자동으로 처리하고, 필요하면 수동 실행에서 `analyze_ai=true`를 선택할 수 있습니다. 호출 한도·간격·자동 실행 여부는 Variables로 조정할 수 있습니다.
-
-```bash
-python -m policy_domino --source stored
-# 실제 모델의 비공개 환경변수 설정
-export PD_LLM_API_KEY="YOUR_PRIVATE_API_KEY"
-export PD_LLM_MODEL="YOUR_PROVIDER_MODEL_ID"
-export PD_LLM_BASE_URL="YOUR_PROVIDER_API_BASE_URL"
-python -m policy_domino.ai_impact --max-requests 36 --batch-size 3 --interval 12
-```
-
-현재 실행 상태와 개별 결과는 `site/ai-impact/data.json`(v2)과 `/impact/` 화면에서 확인합니다. **[설계·실행·안전장치](docs/ai-impact.md)**에서 자세한 계약을 설명합니다.
-
-## 결과 해석
-
-- **'영향도 큼' 기본 선택**: 공식 근거가 있는 직접 검토 기관 2곳 이상 **또는** 변경된 조항을 실제 적용하는 규정 2건 이상인 사건. 정책의 사회적 중요도 등급이 아닙니다.
-- **현재 공식 신구 본문**: 확인한 조문과 이전·변경 내용을 보여줍니다.
-- **이전 자료 · 재검증 대기**: 이전 V2 공식 개정 지시문으로 확인했던 항목입니다. 최신 검증 결과로 둔갑시키지 않습니다.
-- **업무 검토 필요**: 실제 기관 시스템의 변경 완료·미조치를 확정했다는 뜻이 아닙니다.
-
-프로젝트의 설계 결정, 데이터 계약, 증빙 검증 기준 및 남은 기능 범위는 [기술 설계](docs/architecture.md)에 기록했습니다.
-
-## 알려진 한계
-
-전국 모든 공공기관의 내부 업무 시스템에는 접근하지 않습니다. 따라서 LH·SH·한국장학재단 등의 업무 영향도 법령·관련 규정과 집행 근거가 확보된 범위에서만 도출됩니다. 모든 기관·규정의 전수 연결이 완성된 상태라고 주장하지 않습니다.
+상세 데이터 계약, 제출 범위와 한계: [아키텍처](docs/architecture.md). AI 설정: [AI 분석](docs/ai-impact.md).

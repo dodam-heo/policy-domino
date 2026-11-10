@@ -51,11 +51,11 @@ function institutionType(name){
  if(/(?:부|처|청|위원회)$/.test(label))return "중앙행정기관";
  return "공공기관·기타";
 }
-function overviewText(e,all){
- const reason=String(e.amendment_reason||"").replace(/\s+/g," ").trim();
- if(reason)return reason.slice(0,165)+(reason.length>165?"…":"");
- const example=all.map(a=>a.source_change||a.what_to_change).find(Boolean);
- return example?String(example).slice(0,165):"변경 내용 확인 중";
+function overviewText(e){
+ const summary=String(e.change_summary||"").trim();
+ if(summary)return summary;
+ const d=(e.article_differences||[]).find(x=>x.before!==x.after);
+ return d?String(d.article||"변경 조문")+"의 규정 변경":"공식 신구 조문 대조 중";
 }
 function agencyEntries(items){
  const counts=new Map();
@@ -140,6 +140,7 @@ function selectedAgencyResults(name,all,aiFindings){
 }
 function actionCard(a, aiFindings){
 const changes=a.changes||[];
+const upstream=a.comparison_scope==="source_policy_only";
 const comparison=changes.length?'<div class="valueRows">'+changes.map(p=>
  '<div class="valueRow"><div class="oldValue"><small>변경 전</small>'+esc(p.before||"미확인")+
  '</div><div class="valueArrow">→</div><div class="newValue"><small>변경 후</small>'+
@@ -150,13 +151,13 @@ const added=(a.new_items||[]).length?'<p class="taskDesc"><b>추가 항목</b> '
 const task=esc(a.target_location||a.service||"업무 위치 확인 중");
 const role=esc(a.work||a.category||"업무");
 const provenance=a.evidence_scope==="v4_verified_source"?"공식 근거 확인":
- a.evidence_scope==="legacy_official_directive_awaiting_recheck"?"최신 근거 재확인 필요":"근거 확인 중";
+ a.service_id?"공공서비스 적용관계 확인":"근거 확인 중";
 return '<article class="action">'+
  '<div class="actionTop"><div class="actionLawTitle">'+
  (a.service_id?esc(a.service||"공공서비스"):esc(a.law_title||a.agency||"변경 항목")+
  ' · '+esc(a.article||"조문 확인 중"))+'</div>'+badgeStatus(a.status)+'</div>'+
  '<div class="locationBox">'+role+' <span class="taskArrow">›</span> '+task+'</div>'+
- '<div class="locationTitle">변경 전후</div>'+comparison+added+
+ '<div class="locationTitle">'+(upstream?"상위 정책 기준의 변경값 · 이 사업 자체 금액 아님":"변경 전후")+'</div>'+comparison+added+
  '<div class="instruction"><b>검토할 조치</b>'+
  esc(a.required_change||"반영 필요 여부 확인")+'</div>'+
  window.PolicyDominoAiView.renderForAction(a,aiFindings.get(a.id))+
@@ -171,8 +172,8 @@ return '<article class="action">'+
  (a.status_evidence?'<div>조치 상태 근거: '+esc(a.status_evidence)+'</div>':'')+
  '</div></details></article>';
 }
-function differences(e){
-const ds=e.article_differences||[];
+function differences(e,limit){
+const ds=(e.article_differences||[]).slice(0,limit||undefined);
 if(!ds.length)return '<p class="smallNote">공식 공포 정보는 확인됐지만 종전·변경 조문의 실제 비교가 아직 완료되지 않았습니다. 변경 전후 내용을 추측해 채우지 않습니다.</p>';
 return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+' '+esc(d.title||"")+'</span><span>'+esc(d.type||"변경")+'</span></div><div class="changePair"><div class="changeCol before"><small>종전 내용</small><p>'+esc(d.before||(d.type==="신설"?"신설 이전 규정 없음":"종전 조문 전문 별도 대조 필요"))+'</p></div><div class="changeCol after"><small>'+(d.directive?"공식 개정 지시문":"변경 후 조문")+'</small><p>'+esc(d.directive||d.after||"변경 내용 확인 필요")+'</p></div></div></div>').join("")
 }
@@ -229,11 +230,11 @@ function detailHTML(e){
    .map(f=>[f.action_id,f]));
  const provenance=e.presentation_source==="v4_official_source"?"":" · 최신 근거 재확인 필요";
  const header='<div class="detailHeader"><button type="button" class="back" id="back">← 목록으로</button>'+
- '<div class="detailKicker">'+typeLabel(e)+' · '+esc(e.law_type||"정책 변경")+'</div>'+
+ '<div class="detailKicker">'+esc(e.ministry||"발령기관 확인 중")+' · '+esc(e.law_type||"정책 변경")+' · '+typeLabel(e)+'</div>'+
  '<h2 class="detailTitle">'+esc(e.title||"변경사항")+'</h2>'+
  '<div class="detailMeta">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+esc(provenance)+'</div></div>';
  const overview='<section class="changeOverview"><div class="overviewLabel">변경 핵심</div>'+
- '<div class="overviewText">'+esc(overviewText(e,all))+'</div>'+
+ '<div class="overviewText">'+esc(overviewText(e))+'</div>'+
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
  const impact='<section class="agencyImpactSection">'+
  '<div class="agencySectionHead"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+
@@ -244,13 +245,14 @@ function detailHTML(e){
     allAgencyResults(entries,all,aiFindings)):
     showEmpty("기관별 검토사항 확인 중","공식 근거가 확인되면 표시됩니다."))+
  '</div></div></section>';
- const legal='<details class="legalDetails"><summary>개정 이유·상세 조문</summary>'+
+ const sourceChanges='<section class="sourceChanges"><h3 class="sectionHeading">실제 변경사항 · 신구 비교</h3>'+differences(e,3)+'</section>';
+ const legal='<details class="legalDetails"><summary>전체 개정 이유·상세 조문 보기</summary>'+
  (e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유</b><p style="margin-top:8px">'+
  esc(e.amendment_reason)+'</p></div>':'')+differences(e)+
  '<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+
  '" target="_blank" rel="noopener">공식 원문 보기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+legalRelationships(e)+
- impact+legal+'</div>';
+ return header+'<div class="detailBody">'+overview+sourceChanges+legal+
+ legalRelationships(e)+impact+'</div>';
 }
 function bindSidebarGroups(){
  $("detail").querySelectorAll("[data-agency-pick]").forEach(b=>b.onclick=()=>{

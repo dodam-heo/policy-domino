@@ -138,3 +138,10 @@ aside .empty{padding:38px 22px}
 .aiActionLabel{font-size:11px;font-weight:800;color:#285f7d;margin:9px 0 4px}
 .aiActionLabel:first-child{margin-top:0}
 .aiActionBody p{font-size:12px;color:#37566c;line-height:1.7}
+
+/* Changes to the originating policy are shown before dependent institutions. */
+.sourceChanges{margin:15px 0 10px}
+.sourceChanges .change{margin:8px 0}
+.sourceChanges .changeCol p{max-height:150px}
+.detailKicker{line-height:1.7;word-break:keep-all}
+.legalDetails{margin:10px 0 22px}

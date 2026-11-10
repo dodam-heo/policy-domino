@@ -27,6 +27,14 @@ def audit() -> list[str]:
     for stale in ("watch.py", "impact_scanner.py", "law_changes.py"):
         if (ROOT / stale).exists():
             errors.append(f"Obsolete root watcher not archived: {stale}")
+    for forbidden in (
+        "policy_domino/engine/classic_bridge.py",
+        "policy_domino/engine/legacy_recheck.py",
+        "site/classic/legacy_source.json",
+        "data/v2_state.json",
+    ):
+        if (ROOT / forbidden).exists():
+            errors.append(f"Retired source artifact still present: {forbidden}")
     for module in (ROOT / "policy_domino" / "engine").glob("*.py"):
         if module.name.startswith("test_"):
             continue

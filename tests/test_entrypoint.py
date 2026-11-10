@@ -18,7 +18,7 @@ class PipelineEntryTests(unittest.TestCase):
         with patch("policy_domino.engine.pipeline.run", source), patch(
             "policy_domino.public_services.refresh_from_env",
             side_effect=lambda: calls.append("public_service")), patch(
-            "policy_domino.engine.classic_bridge.run", view):
+            "policy_domino.engine.publication.run", view):
             out = run("official")
         self.assertEqual(calls, ["official", "public_service", "view"])
         self.assertEqual(out["events"], 1)
@@ -26,14 +26,14 @@ class PipelineEntryTests(unittest.TestCase):
     def test_stored_mode_does_not_call_official_api(self):
         with patch("policy_domino.engine.stage_refresh.run",
                    return_value={"schema": "policy-domino-v4"}), patch(
-                    "policy_domino.engine.classic_bridge.run",
+                    "policy_domino.engine.publication.run",
                     return_value={"schema": "policy-domino-next-v1", "events":[{}]}):
             out = run("stored")
         self.assertEqual(out["source"], "stored")
 
     def test_contract_mismatch_blocks_publication(self):
         with patch("policy_domino.engine.stage_refresh.run", return_value={"schema": "broken"}), patch(
-                "policy_domino.engine.classic_bridge.run") as publish:
+                "policy_domino.engine.publication.run") as publish:
             with self.assertRaises(ValueError):
                 run("stored")
             publish.assert_not_called()
@@ -41,7 +41,7 @@ class PipelineEntryTests(unittest.TestCase):
     def test_empty_feed_blocks_deploy(self):
         with patch("policy_domino.engine.stage_refresh.run",
                    return_value={"schema": "policy-domino-v4"}), patch(
-                    "policy_domino.engine.classic_bridge.run",
+                    "policy_domino.engine.publication.run",
                     return_value={"schema":"policy-domino-next-v1","events":[]}):
             with self.assertRaisesRegex(ValueError,"empty"):
                 run("stored")

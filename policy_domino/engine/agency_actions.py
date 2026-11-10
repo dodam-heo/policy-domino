@@ -192,14 +192,20 @@ def group_event(g):
     valid_docs=[d for d in docs if d.get("verification") in (
         "verified_changed_clauses","verified_annual_replacement",
         "verified_enactment","verified_repeal_notice")]
+    authorities=sorted({clean(d.get("ministry")) for d in docs if clean(d.get("ministry"))})
+    issuer=(" · ".join(authorities) if len(authorities)<=2 else
+            authorities[0]+f" 외 {len(authorities)-1}개 기관") if authorities else ""
     e={
         "event_id":v4id,"title":title,
+        "issuing_authorities":authorities,
+        "source_documents":[{"title":d.get("title",""),"kind":d.get("kind",""),
+                             "url":source_url(d.get("url",""))}
+                            for d in docs if d.get("title")],
         "promulgated_at":g.get("date",""),
         "effective_date":g.get("effective_at",""),
         "revision":docs[0].get("revision","개정"),
         "law_type":("동일 공포번호 법령 "+str(count)+"건" if count>1 else docs[0].get("kind","법령")),
-        "ministry":(f"직접 변경 대상 기관 {num_actual}곳" if num_actual>1
-                    else docs[0].get("ministry","")),
+        "ministry":issuer,
         "url":source_url(docs[0].get("url")),
         "amendment_url":source_url(docs[0].get("url")),
         "amendment_reason":(
@@ -208,6 +214,7 @@ def group_event(g):
              "관련 법령들의 실제 신구 조문을 아래에서 확인할 수 있습니다.")
             if count>1 else ""),
         "article_differences":[],
+        "change_summary":"",
         "change_count":sum(len(d.get("changed_articles",[])) for d in valid_docs),
         "comparison_status":"공식 신구 본문 대조 (기관별 반영 여부 미확인)",
         "policy_profile":bool(g.get("dependencies")),
@@ -260,6 +267,17 @@ def group_event(g):
                 "source_url":source_url(p.get("source_url")),
                 "directive":"",
             })
+    pairs=[x for x in e["article_differences"] if x.get("before")!=x.get("after")]
+    labels=[]
+    for item in pairs[:3]:
+        article=clean(item.get("article")) or "변경 조항"
+        edits=textual_edits(item.get("before"),item.get("after"),limit=1)
+        if edits:
+            labels.append(article+" "+edits[0]["before"]+" → "+edits[0]["after"])
+        else:
+            labels.append(article+" "+("신설" if not item.get("before") else
+                "폐지" if not item.get("after") else "개정"))
+    e["change_summary"]=" · ".join(labels) if labels else "공식 신구 조문 대조 중"
     actions=unique_actions(actions)
     # Source-backed direct actors for general non-organization law events are
     # also permitted, but no names are taken from incidental fulltext mentions.

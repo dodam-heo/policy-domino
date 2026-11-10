@@ -59,15 +59,11 @@ class ImpactScopeTests(unittest.TestCase):
         self.assertEqual(scope["impact_level"], "not_assessed")
         self.assertEqual(scope["impact_scope"]["proven_dependent_rules"], 1)
 
-    def test_legacy_sources_have_explicit_recheck_label(self):
-        event = {**self.event, "presentation_source":
-                 "legacy_official_directive_awaiting_recheck"}
-        scope = assess_impact_scope(event, [self.action("가상공사 A",
-                      scope="legacy_official_directive_awaiting_recheck"),
-                      self.action("가상공사 B",
-                      scope="legacy_official_directive_awaiting_recheck")])
-        self.assertTrue(scope["impact_scope"]["provisional"])
-        self.assertIn("재검증", scope["impact_scope"]["note"])
+    def test_unverified_candidate_is_not_an_affected_institution(self):
+        scope=assess_impact_scope(self.event,[self.action("가상공사 A"),
+             self.action("가상공사 B","unverified_candidate")])
+        self.assertEqual(scope["impact_level"],"not_assessed")
+        self.assertFalse(scope["impact_scope"]["provisional"])
 
 
 if __name__ == "__main__":

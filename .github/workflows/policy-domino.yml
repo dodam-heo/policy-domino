@@ -54,7 +54,6 @@ jobs:
           node site/v4/test_ui.cjs
           node site/classic/test_ui.cjs
           node site/ai-impact/test_ui.cjs
-          node site/test_adapter.cjs
       - name: Live official crawl and agency impact publication
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[full-refresh-once]'))
         env:
@@ -90,7 +89,6 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_*.py' -v
           node site/classic/test_ui.cjs
-          node site/test_adapter.cjs
           python - <<'PY'
           import json
           from pathlib import Path

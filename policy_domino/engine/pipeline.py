@@ -141,20 +141,11 @@ def pick_work(state,today,limit):
     return selected
 
 def read_document(record):
-    if record["source"] in ("law","admrul"):
-        return api.read_clauses(record)
-    # Official local rules use MST=serial; parse only real provision elements.
-    root=api.request("ordin",endpoint="lawService.do",MST=record["serial"])
-    clauses={}
-    for unit in root.iter():
-        if unit.tag.split("}")[-1] not in ("조문단위","조문"):continue
-        number=api.field(unit,"조문번호")
-        if not number:continue
-        contents=api.field(unit,"조내용") or api.field(unit,"조문내용")
-        if contents:clauses["제"+number+"조"]=contents[:12000]
-    if not clauses:
-        raise RuntimeError("자치법규 공식 조문 구분을 추출하지 못함")
-    return clauses
+    """One source-body adapter for laws, administrative rules and ordinances."""
+    if record.get("source") not in SUPPORTED:
+        raise ValueError("Unsupported official document type")
+    return api.read_clauses(record)
+
 
 def prepare_document_record(record,state):
     """Fetch a source record; do not replace existing verified evidence with

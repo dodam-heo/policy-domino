@@ -7,7 +7,7 @@ four DIFFERENT states. This pipeline never silently treats one as another.
 from __future__ import annotations
 import datetime as dt,json,os,re
 from pathlib import Path
-from v2 import collector as api
+from policy_domino import official_api as api
 from v4 import collect_index,events,relationships,official_links,dependents
 
 ROOT=Path(__file__).resolve().parents[1]

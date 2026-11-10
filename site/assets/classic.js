@@ -10,7 +10,7 @@ function typeLabel(e){let k=typeOf(e);return k==="new"?"신규":k==="abolished"?
 function typeClass(e){return typeOf(e)==="new"?"add":typeOf(e)==="abolished"?"remove":""}
 function matchingActions(event){return (DATA.actions||[]).filter(a=>a.event_id===event.event_id)}
 let DATA={events:[],actions:[],health:{}},AI_DATA=null,selectedId=null,filter=DEFAULT_FILTER;
-let selectedAgency=null,agencySearch="",resultLimit=20;
+let selectedAgency=null,agencySearch="",resultLimit=20,lawVisibleLimit=80;
 const openAgencyTypes=new Set(),openAgencyRegions=new Set();
 function filteredEvents(){return filterPolicyEvents(DATA.events,filter,$("q").value)}
 function getEvent(){return (DATA.events||[]).find(e=>e.event_id===selectedId)||null}
@@ -29,8 +29,11 @@ function displayList(){
 
 const events=filteredEvents();
 $("listCount").textContent="전체 "+(DATA.events||[]).length+"건 · 표시 "+events.length+"건";
-$("lawList").innerHTML=events.length?events.map(eventRow).join(""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
+$("lawList").innerHTML=events.length?events.slice(0,lawVisibleLimit).map(eventRow).join("")+
+ (events.length>lawVisibleLimit?'<button type="button" class="listMore" id="lawMore">더 보기 · 남은 '+(events.length-lawVisibleLimit)+'건</button>':""):showEmpty(DATA.health?.source_status==="수집 실패"?"공식 변경내역을 가져오지 못했습니다.":"표시할 확정 변경내역이 없습니다.",DATA.health?.source_status==="수집 실패"?"원천 연결 상태를 확인해 주세요. 변경이 없다는 뜻은 아닙니다.":"검색 조건을 변경하거나 공식 수집 상태를 확인하세요.");
 $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.dataset.event));
+const more=$("lawMore");
+if(more)more.onclick=()=>{lawVisibleLimit+=80;displayList()};
 }
 function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";const label=s==="최신 근거 재확인 필요"?"확인 중":(s||"반영 확인 필요");return '<span class="status '+cls+'">'+esc(label)+'</span>'}
 // Institution grouping comes from the official source name. Region labels
@@ -334,7 +337,7 @@ document.querySelectorAll("[data-law]").forEach(b=>b.onclick=()=>{
   selectedId=resolveSelection(filteredEvents(),selectedId);
   render();
 });
-$("q").oninput=()=>{selectedId=resolveSelection(filteredEvents(),selectedId);render()};$("reload").onclick=load;
+$("q").oninput=()=>{lawVisibleLimit=80;selectedId=resolveSelection(filteredEvents(),selectedId);render()};$("reload").onclick=load;
 window.addEventListener("popstate",()=>{if(!location.hash){$("layout").classList.remove("detailOpen")}});
 load();
 })();

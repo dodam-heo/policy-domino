@@ -145,3 +145,6 @@ aside .empty{padding:38px 22px}
 .sourceChanges .changeCol p{max-height:150px}
 .detailKicker{line-height:1.7;word-break:keep-all}
 .legalDetails{margin:10px 0 22px}
+
+/* A broad official discovery list is paged, not mounted as thousands of DOM nodes. */
+.listMore{display:block;width:100%;border:0;border-top:1px solid var(--border);background:var(--pale);padding:16px;cursor:pointer;color:var(--blue);font-weight:750}

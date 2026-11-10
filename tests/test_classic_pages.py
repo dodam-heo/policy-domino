@@ -16,7 +16,7 @@ class AgencyPageTests(unittest.TestCase):
     def test_template_has_single_configuration_point(self):
         template = TEMPLATE.read_text("utf-8")
         self.assertEqual(template.count(TOKEN), 1)
-        self.assertIn('class="chip active" data-law="high-impact"', template)
+        self.assertIn('class="chip active" data-law="all"', template)
         self.assertNotIn("<style>", template)
         self.assertNotIn("<script>", template)
         self.assertIn("../assets/impact-model.js", template)

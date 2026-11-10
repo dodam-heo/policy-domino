@@ -180,11 +180,43 @@ return '<article class="action">'+
  (a.status_evidence?'<div>조치 상태 근거: '+esc(a.status_evidence)+'</div>':'')+
  '</div></details></article>';
 }
-function differences(e,limit){
-const ds=(e.article_differences||[]).slice(0,limit||undefined);
-if(!ds.length)return '<p class="smallNote">공식 공포 정보는 확인됐지만 종전·변경 조문의 실제 비교가 아직 완료되지 않았습니다. 변경 전후 내용을 추측해 채우지 않습니다.</p>';
-return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+' '+esc(d.title||"")+'</span><span>'+esc(d.type||"변경")+'</span></div><div class="changePair"><div class="changeCol before"><small>종전 내용</small><p>'+esc(d.before||(d.type==="신설"?"신설 이전 규정 없음":"종전 조문 전문 별도 대조 필요"))+'</p></div><div class="changeCol after"><small>'+(d.directive?"공식 개정 지시문":"변경 후 조문")+'</small><p>'+esc(d.directive||d.after||"변경 내용 확인 필요")+'</p></div></div></div>').join("")
+function sourcePreview(parts,raw,empty){
+ if(Array.isArray(parts)&&parts.length){
+   return parts.map(piece=>piece.changed?
+     '<mark class="sourceDiffMark">'+esc(piece.text)+'</mark>':
+     esc(piece.text)).join("");
+ }
+ const value=String(raw||empty);
+ return esc(value.length>220?value.slice(0,220)+"…":value);
 }
+function differences(e,start=0,limit){
+ const ds=[...(e.article_differences||[])].sort((a,b)=>{
+   const rank={"내용 개정":0,"조문 신설":1,"조문 삭제":2,"표기 정비":3};
+   return (rank[a.type]??4)-(rank[b.type]??4);
+ }).slice(start,limit===undefined?undefined:start+limit);
+ if(!ds.length&&start===0)return '<p class="smallNote">공식 변경 조문의 종전·개정 원문 대조가 아직 완료되지 않았습니다.</p>';
+ return ds.map(d=>{
+   const old=String(d.before||"");
+   const after=String(d.after||"");
+   const oldEmpty=d.type==="조문 신설"?"기존 규정 없음":"종전 조문 확인 중";
+   const newEmpty=d.type==="조문 삭제"?"규정 삭제":"개정 조문 확인 중";
+   const before=sourcePreview(d.preview?.before,old,oldEmpty);
+   const newer=sourcePreview(d.preview?.after,after,newEmpty);
+   const full=(old.length+after.length>0?
+     '<details class="sourceFull"><summary>해당 조문의 비교 원문 펼쳐보기</summary>'+
+     '<div class="sourceFullColumns"><div><b>종전 조문</b><p>'+esc(old||oldEmpty)+'</p></div>'+
+     '<div><b>개정 조문</b><p>'+esc(after||newEmpty)+'</p></div></div></details>':"");
+   return '<article class="change"><div class="changeHead"><span>'+esc(d.article||"변경 조문")+
+     '</span><span class="changeType">'+esc(d.type||"변경")+'</span></div>'+
+     '<div class="changePair"><div class="changeCol before"><small>변경 전 · 달라진 부분</small><p>'+
+     before+'</p></div><div class="changeCol after"><small>변경 후 · 달라진 부분</small><p>'+
+     newer+'</p></div></div>'+full+
+     '<div class="sourceEvidence">'+esc(d.comparison_basis||"공식 변경 조문 대조")+
+     (validUrl(d.source_url)!=="#"? ' · <a href="'+validUrl(d.source_url)+
+       '" target="_blank" rel="noopener">공식 근거 ↗</a>':"")+'</div></article>';
+ }).join("");
+}
+
 function legalRelationships(event){
  // The counts are the actual official source records carried by the
  // evidence pipeline, NOT numbers guessed from the title of the event.
@@ -241,7 +273,7 @@ function detailHTML(e){
  '<div class="detailKicker">'+esc(e.ministry||"발령기관 확인 중")+' · '+esc(e.law_type||"정책 변경")+' · '+typeLabel(e)+'</div>'+
  '<h2 class="detailTitle">'+esc(e.title||"변경사항")+'</h2>'+
  '<div class="detailMeta">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+esc(provenance)+'</div></div>';
- const overview='<section class="changeOverview"><div class="overviewLabel">변경 핵심</div>'+
+ const overview='<section class="changeOverview"><div class="overviewLabel">핵심 변경 개요</div>'+
  '<div class="overviewText">'+esc(overviewText(e))+'</div>'+
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
  const impact='<section class="agencyImpactSection">'+
@@ -253,7 +285,18 @@ function detailHTML(e){
     allAgencyResults(entries,all,aiFindings)):
     showEmpty("기관별 검토사항 확인 중","공식 근거가 확인되면 표시됩니다."))+
  '</div></div></section>';
- const sourceChanges='<section class="sourceChanges"><h3 class="sectionHeading">실제 변경사항 · 신구 비교</h3>'+differences(e,3)+'</section>';
+ const allChanges=e.article_differences||[];
+ const visibleChanges=allChanges.length;
+ const totalChanges=Math.max(visibleChanges,Number(e.change_count||0));
+ const extra=totalChanges>visibleChanges?' · '+(totalChanges-visibleChanges)+'개 조문은 공식 원문 확인':'';
+ const sourceChanges='<section class="sourceChanges">'+
+ '<h3 class="sectionHeading">실제 변경사항 · 신구 비교</h3>'+
+ '<p class="sourceChangeCount">전체 '+totalChanges+'개 변경 조문 · 원문 비교 확보 '+
+ visibleChanges+'건'+extra+'</p>'+
+ differences(e,0,3)+
+ (visibleChanges>3?'<details class="otherChanges"><summary>다른 '+(visibleChanges-3)+
+ '건의 조문별 신구 비교 펼쳐보기</summary>'+differences(e,3)+'</details>':"")+
+ '</section>';
  const missingAttachments=(e.source_documents||[]).flatMap(d=>d.unresolved_attachments||[]);
  const annexes=missingAttachments.length?
  '<details class="legalDetails"><summary>미확인 공식 별표·첨부 '+missingAttachments.length+'건</summary>'+
@@ -261,8 +304,8 @@ function detailHTML(e){
  '" target="_blank" rel="noopener">'+esc(d.title||d.label||"공식 첨부")+' ↗</a> · 원문 수치 검증 대기</div>').join("")+
  '</details>':"";
  const legal='<details class="legalDetails"><summary>전체 개정 이유·상세 조문 보기</summary>'+
- (e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유</b><p style="margin-top:8px">'+
- esc(e.amendment_reason)+'</p></div>':'')+differences(e)+
+ (e.amendment_reason?'<div class="legalReasonFull"><b>변경 사건 정보</b><p style="margin-top:8px">'+
+ esc(e.amendment_reason)+'</p></div>':'')+
  '<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+
  '" target="_blank" rel="noopener">공식 원문 보기 ↗</a></details>';
  return header+'<div class="detailBody">'+overview+sourceChanges+annexes+legal+

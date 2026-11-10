@@ -148,3 +148,24 @@ aside .empty{padding:38px 22px}
 
 /* A broad official discovery list is paged, not mounted as thousands of DOM nodes. */
 .listMore{display:block;width:100%;border:0;border-top:1px solid var(--border);background:var(--pale);padding:16px;cursor:pointer;color:var(--blue);font-weight:750}
+
+/* Readable source-first clause comparisons: only substantive differences
+   are emphasized. Complete official excerpts are available on demand. */
+.sourceChangeCount{font-size:12px;color:#5b7385;line-height:1.6;margin:0 0 12px}
+.sourceDiffMark{font-weight:800;background:#ffe7ab;color:#513c16;border-radius:3px;padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.before .sourceDiffMark{background:#ffdedb;color:#853e39}
+.after .sourceDiffMark{background:#d6f5e6;color:#185a45}
+.sourceChanges .changeCol p{max-height:none;overflow:visible}
+.sourceChanges .changeHead{align-items:center}
+.changeType{white-space:nowrap;font-size:11px;color:#53778a}
+.sourceFull,.otherChanges{margin:0;border-top:1px solid #e5ebf0;padding:10px 12px}
+.sourceFull summary,.otherChanges summary{font-size:12px;cursor:pointer;color:#205d7f;font-weight:800}
+.sourceFullColumns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.sourceFullColumns>div{background:#f8fafc;border:1px solid #e0e9f0;padding:11px;border-radius:8px;min-width:0}
+.sourceFullColumns b{display:block;font-size:11px;color:#516e81;margin-bottom:6px}
+.sourceFullColumns p{font-size:12px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.sourceEvidence{padding:7px 12px 10px;color:#718595;font-size:11px}
+.sourceEvidence a{font-weight:750}
+.otherChanges{border:1px solid #dde7ed;border-radius:9px;background:#fafcfd;margin-top:10px;padding:12px}
+.otherChanges .change{background:#fff}
+@media(max-width:850px){.sourceFullColumns{grid-template-columns:1fr}}

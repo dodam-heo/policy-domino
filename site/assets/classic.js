@@ -40,7 +40,6 @@ $("lawList").querySelectorAll("[data-event]").forEach(b=>b.onclick=()=>choose(b.
 const more=$("lawMore");
 if(more)more.onclick=()=>{lawVisibleLimit+=80;displayList()};
 }
-function badgeStatus(s){let cls=s==="조치 확인"?"done":s==="미조치 확인"?"pending":s==="시행 예정"?"upcoming":"";const label=s==="최신 근거 재확인 필요"?"확인 중":(s||"반영 확인 필요");return '<span class="status '+cls+'">'+esc(label)+'</span>'}
 // Institution grouping comes from the official source name. Region labels
 // are parsed dynamically; no ministry, region, school or service is enrolled
 // through a hardcoded name mapping.
@@ -173,11 +172,11 @@ const provenance=a.evidence_scope==="v4_verified_source"?"공식 근거 확인":
 return '<article class="action">'+
  '<div class="actionTop"><div class="actionLawTitle">'+
  (a.service_id?esc(a.service||"공공서비스"):esc(a.law_title||a.agency||"변경 항목")+
- ' · '+esc(a.article||"조문 확인 중"))+'</div>'+badgeStatus(a.status)+'</div>'+
+ ' · '+esc(a.article||"조문 확인 중"))+'</div></div>'+
  '<div class="locationBox">'+role+' <span class="taskArrow">›</span> '+task+'</div>'+
  '<div class="locationTitle">'+(upstream?"상위 정책 기준의 변경값 · 이 사업 자체 금액 아님":"변경 전후")+'</div>'+comparison+added+
  '<div class="instruction"><b>검토할 조치</b>'+
- esc(a.required_change||"반영 필요 여부 확인")+'</div>'+
+ esc(a.required_change||"확인된 변경 조문에 따른 업무·기준 수정 항목 정리")+'</div>'+
  window.PolicyDominoAiView.renderForAction(a,aiFindings.get(a.id))+
  '<details class="evidenceDrawer"><summary>시행일·공식 근거</summary>'+
  '<div class="evidence"><b>'+esc(a.law_title||"근거 확인 중")+' · '+esc(a.article||"")+'</b>'+
@@ -187,7 +186,7 @@ return '<article class="action">'+
  ' · <a target="_blank" rel="noopener" href="'+validUrl(a.service_url)+'">공공서비스 기준 확인 ↗</a>':'')+
  (a.service_id&&a.reported_receiving_institution?
  '<div>정부24 등록 접수기관: '+esc(a.reported_receiving_institution)+'</div>':'')+
- (a.status_evidence?'<div>조치 상태 근거: '+esc(a.status_evidence)+'</div>':'')+
+
  '</div></details></article>';
 }
 function sourcePreview(parts,raw,empty){

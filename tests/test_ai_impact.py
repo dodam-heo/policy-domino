@@ -217,7 +217,7 @@ class AllEventAITests(unittest.TestCase):
         finding=validate_answer(raw,ctx,"gemini-test",{action["id"]:action})[0]
         self.assertEqual(finding["agency"],action["agency"])
         self.assertEqual(finding["basis_url"],action["basis"])
-        self.assertIn("미확인",finding["status"])
+        self.assertNotIn("status",finding)
         self.assertEqual(finding["model"],"gemini-test")
 
     def test_provider_fallback_after_503_and_actual_model_provenance(self):

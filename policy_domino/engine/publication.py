@@ -72,12 +72,11 @@ def build(v4,service_catalog=None):
             "retained_complete_clause_versions":checked.get("retained_complete_clause_versions",0),
             "public_service_catalogue":len(service_catalog.get("services", {})),
             "public_service_dependencies":len(service_links),
-            "error":"기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
         },
         "events":events,
         "actions":actions,
         "status_counts":{},
-        "disclaimer":"공식 변경 조문과 공공서비스 운영기준의 연결 근거만 표시합니다. 기관의 실제 조치 반영은 별도 확인 대상입니다."
+        "disclaimer":"공식 변경 조문과 공공서비스 운영기준의 연결 근거를 바탕으로 기관별 후속조치 검토사항을 표시합니다."
     }
 
 def run():

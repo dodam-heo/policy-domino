@@ -463,7 +463,6 @@ def validate_answer(answer: dict, context: dict, model: str,
             "operational_impact": bounded_text(row.get("operational_impact"), "operational_impact"),
             "review_task": bounded_text(row.get("review_task"), "review_task"),
             "model": model, "analyzed_at": now_utc(),
-            "status": "AI 검토 제안 · 실제 반영 미확인",
         })
     return result
 
@@ -546,7 +545,9 @@ def build_catalog(data: dict, previous: dict | None = None) -> dict:
             if isinstance(finding, dict) and finding.get("action_id")
         }
         kept = [
-            previous_findings[aid] for aid, action in actions_by_id.items()
+            {key:value for key,value in previous_findings[aid].items()
+             if key not in ("status","status_evidence","implementation_status")}
+            for aid, action in actions_by_id.items()
             if aid in previous_findings and
                _valid_cached_finding(previous_findings[aid], action)
         ]

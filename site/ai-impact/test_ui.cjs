@@ -156,7 +156,7 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
  const actions=Array.from({length:684},(_,i)=>({
    ...official.actions[0],id:"check-"+i,event_id:event.event_id,
    agency:agencies[i%agencies.length],article:"제"+(i+1)+"조",
-   work:"운영 기준",status:i%2?"최신 근거 재확인 필요":"반영 확인 필요",
+   work:"운영 기준",
    required_change:"변경된 운영 기준을 확인",
    changes:[{before:"종전",after:"개정"}]
  }));

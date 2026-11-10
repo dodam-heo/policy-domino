@@ -359,7 +359,6 @@ def build(state,today):
             "confirmed_provision_or_formula_use":graph["statistics"]["actual_dependencies"],
             "title_or_wrong_article_only":graph["statistics"]["noncausal_citations"],
             "official_delegation_review_candidates":sum(len(x.get("official_review_candidates",[])) for x in groups+other),
-            "unverified_implementation":True
         },
         "featured_events":groups,
         "other_events":other,

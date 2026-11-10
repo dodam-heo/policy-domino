@@ -145,7 +145,7 @@ def evaluate(parent,child,child_clauses):
                 "reference":cite["title"],"excerpt":cite["excerpt"][:250],
                 "proof":"공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용"
                         if actual else "문서 또는 다른 조항 인용만 확인",
-                "affected_verified":bool(actual),"implementation_verified":False,
+                "affected_verified":bool(actual),
                 "needs_review":bool(actual),
             })
         formula=formula_ref(parent,body)
@@ -154,7 +154,7 @@ def evaluate(parent,child,child_clauses):
                 **formula,"source_event":parent["id"],"target_document":child.get("id",""),
                 "source_article":", ".join(formula["changed_articles"]),
                 "target_article":article,"affected_verified":True,
-                "implementation_verified":False,"needs_review":True,
+                "needs_review":True,
             })
     if not candidates:return None
     priority={"cited_changed_provision":3,"formula_dependency":2,"citation_only":1}

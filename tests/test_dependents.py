@@ -45,7 +45,7 @@ class EvidenceSearchQueue(unittest.TestCase):
         self.assertEqual(result["confirmed_total"],1)
         link=next(iter(state["confirmed_dependencies"].values()))
         self.assertTrue(link["affected_verified"])
-        self.assertFalse(link["implementation_verified"])
+        self.assertNotIn("implementation_verified",link)
         self.assertEqual(link["source_article"],"제35조")
 
     def test_mismatched_clause_never_passes(self):

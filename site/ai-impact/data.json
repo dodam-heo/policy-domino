@@ -1,7 +1,7 @@
 {
   "schema": "policy-domino-llm-impact-v2",
-  "generated_at": "2026-11-10T06:53:55+00:00",
-  "source_generated_at": "2026-11-10T06:53:53+00:00",
+  "generated_at": "2026-11-10T07:02:37+00:00",
+  "source_generated_at": "2026-11-10T06:59:40+00:00",
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
@@ -441,7 +441,7 @@
     "awaiting_verified_evidence": 27
   },
   "last_success_model": "",
-  "last_error": "Provider did not return valid JSON",
+  "last_error": "LLM provider unreachable; saved findings remain available",
   "total_events": 48,
   "eligible_events": 21,
   "total_verified_actions": 81,

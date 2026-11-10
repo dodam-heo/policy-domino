@@ -323,10 +323,10 @@ def cited_changed_provision(provisions: list[dict], service: dict) -> dict | Non
         service.get("eligible"), detail.get("eligible")))
     if not citations.strip() or not criteria.strip():
         return None
-    compact = re.sub(r"\\s+", "", citations)
+    compact = re.sub(r"\s+", "", citations)
     for item in provisions:
-        title = re.sub(r"\\s+", "", item["law"])
-        article = re.sub(r"\\s+", "", item["article"])
+        title = re.sub(r"\s+", "", item["law"])
+        article = re.sub(r"\s+", "", item["article"])
         if len(title) < 5 or not article:
             continue
         # Close adjacency prohibits importing a cited article from a second

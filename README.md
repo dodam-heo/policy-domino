@@ -22,7 +22,9 @@
 | --- | --- |
 | 공식 자료 수집·비교 | `v2/collector.py` |
 | 공식 원문 근거/연계 탐색 | `v4/pipeline.py` |
-| 기관별 검토 화면용 데이터 | `v4/classic_bridge.py` |
+| 기관별 검토 화면용 데이터 조립 | `v4/classic_bridge.py` |
+| 공식 변경과 기관 업무 연결 | `v4/agency_actions.py` |
+| V2 이전 근거 격리·재검증 표시 | `v4/legacy_recheck.py` |
 | 증빙에 따른 영향 범위 | `v4/impact_scope.py` |
 | 단일 화면 템플릿 생성 | `v4/classic_pages.py`, `site/templates/agency.html` |
 | 공유 프론트엔드 | `site/assets/classic.css`, `site/assets/classic.js`, `site/assets/impact-model.js` |
@@ -31,7 +33,7 @@
 ## 개발 검증
 
 ```bash
-python -m unittest v4.test_impact_scope v4.test_classic_pages -v
+python -m unittest discover -s v4 -p 'test_*.py' -v
 node site/classic/test_ui.cjs
 node site/test_adapter.cjs
 ```

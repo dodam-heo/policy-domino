@@ -1,7 +1,7 @@
 {
   "schema": "policy-domino-llm-impact-v2",
-  "generated_at": "2026-11-10T12:59:51+00:00",
-  "source_generated_at": "2026-11-10T12:58:50+00:00",
+  "generated_at": "2026-11-10T13:04:12+00:00",
+  "source_generated_at": "2026-11-10T13:04:09+00:00",
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
@@ -479,63 +479,9 @@
       ]
     },
     {
-      "event_id": "legacy:8efcae799dd5fe26de",
-      "title": "2027년도 기준 중위소득·생계급여·의료급여 선정기준 변경",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:af9a365c2024a814ca",
-      "title": "산업통상부와 그 소속기관 직제 시행규칙",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:a7549a940de0ea7324",
-      "title": "2027년도 교육급여 선정기준 및 최저보장수준 개정",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:5499deb5fa4caff958",
-      "title": "2027년도 주거급여 선정기준 및 최저보장수준 제정",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
       "event_id": "v4:law|대통령령|2026-08-28|36631",
       "title": "6개 법령 동시 개정 · 질병관리청과 그 소속기관 직제",
       "presentation_source": "v4_official_source",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:aed5ecbbe6ca584f50",
-      "title": "농림축산식품부와 그 소속기관 직제 시행규...",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:756f912b70bde26615",
-      "title": "질병관리청과 그 소속기관 직제 시행규칙",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
       "eligible_actions": 0,
       "analyzed_actions": 0,
       "status": "awaiting_verified_evidence",
@@ -554,24 +500,6 @@
       "event_id": "v4:law|대통령령|2026-06-23|36423",
       "title": "3개 법령 동시 개정 · 중소벤처기업부와 그 소속기관 직제",
       "presentation_source": "v4_official_source",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:34ee0a23306680f302",
-      "title": "중소벤처기업부와 그 소속기관 직제 시행규...",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
-      "eligible_actions": 0,
-      "analyzed_actions": 0,
-      "status": "awaiting_verified_evidence",
-      "findings": []
-    },
-    {
-      "event_id": "legacy:5d5ca69008e0a7ae83",
-      "title": "문화체육관광부와 그 소속기관 직제 시행규...",
-      "presentation_source": "legacy_official_directive_awaiting_recheck",
       "eligible_actions": 0,
       "analyzed_actions": 0,
       "status": "awaiting_verified_evidence",
@@ -3150,13 +3078,12 @@
   ],
   "status_counts": {
     "complete": 21,
-    "awaiting_verified_evidence": 191
+    "awaiting_verified_evidence": 183
   },
   "last_success_model": "gemini-3.5-flash-lite",
   "last_error": null,
-  "total_events": 212,
+  "total_events": 204,
   "eligible_events": 21,
   "total_verified_actions": 81,
-  "total_analyzed_actions": 81,
-  "requests_this_run": 0
+  "total_analyzed_actions": 81
 }

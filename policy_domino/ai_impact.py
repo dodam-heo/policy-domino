@@ -136,7 +136,6 @@ def call_model(config: ModelConfig, context: dict,
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": json.dumps(context, ensure_ascii=False, separators=(",", ":"))},
         ],
-        "temperature": 0,
     }
     request = Request(
         config.base_url + "/chat/completions",

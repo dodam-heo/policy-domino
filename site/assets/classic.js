@@ -22,7 +22,10 @@ return '<button type="button" class="lawItem'+(chosen?' active':'')+'" data-even
  '<div class="lawName">'+esc(e.title||"법령명 확인 중")+'</div>'+
  '<div class="lawMeta">'+esc(e.ministry||"소관기관 확인 중")+'</div>'+
  '<div class="lawFoot">'+(num?'<span class="mini">검토사항 '+num+'건</span>':'<span class="mini">영향 검토 중</span>')+
- (e.presentation_source!=="v4_official_source"?'<span class="mini">근거 재확인 필요</span>':'')+
+ (e.source_verification==="official_index_only"?
+ '<span class="mini">본문 대조 대기</span>':
+ e.source_verification==="detail_pending"?
+ '<span class="mini">원문 재확인 대기</span>':'')+
  '<span>기관별 보기 ›</span></div></button>';
 }
 function displayList(){

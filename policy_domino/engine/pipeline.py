@@ -23,35 +23,60 @@ def load_json(path,default):
     return json.loads(path.read_text("utf8"))
 
 def save_json(path,item):
+    """Atomically persist source snapshots; a crash cannot empty the cache."""
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.write_text(json.dumps(item,ensure_ascii=False,indent=2),"utf8")
+    temporary=path.with_suffix(path.suffix+".tmp")
+    temporary.write_text(json.dumps(item,ensure_ascii=False,indent=2),"utf8")
+    temporary.replace(path)
 
-def scan_new(state,today):
-    # The change-history index is the primary legal event entry point.
-    # Yesterday and recent days are rescanned to tolerate delayed indexing.
-    days=[str(today-dt.timedelta(days=i)) for i in range(0,8)]
-    collect_index.ingest_changes(state,days,max_pages=10)
-    # Revisit incomplete windows rather than silently declaring missing data done.
-    retry=[]
+def scan_new(state,today,checkpoint=None):
+    """Authenticated, sector-neutral discovery across a rolling three years."""
+    if not os.getenv("LAW_OC","").strip():
+        raise RuntimeError("LAW_OC is missing; refusing to claim an official refresh")
+    if state.get("coverage_plan")!="official_rolling_three_years_v1":
+        state["coverage_plan"]="official_rolling_three_years_v1"
+        state["backfill_cursor_days"]=0
+    # An old append-only ledger may contain many duplicate failed attempts.
+    history=list(state.get("coverage",[]))
+    state["coverage"]=[]
+    for audit in history:
+        collect_index.record_coverage(state,audit)
+    budget=max(1,min(12,int(os.getenv("PD_BACKFILL_WINDOWS_PER_RUN","6"))))
+    span=max(7,min(31,int(os.getenv("PD_BACKFILL_WINDOW_DAYS","28"))))
+    horizon=max(365,min(3650,int(os.getenv("PD_HISTORY_DAYS","1095"))))
+    recent=[str(today-dt.timedelta(days=i)) for i in range(8)]
+    collect_index.ingest_changes(state,recent,max_pages=10)
+    # Revisit previous incomplete source windows without enrolling any title.
+    attempted=set()
     for row in reversed(state.get("coverage",[])):
-        if row.get("source") not in SUPPORTED or row.get("complete"):
+        source=row.get("source")
+        key=(source,row.get("first"),row.get("last"))
+        if source not in SUPPORTED or row.get("complete") or not all(key) or key in attempted:
             continue
-        k=(row.get("source"),row.get("first"),row.get("last"))
-        if all(k) and k not in retry:
-            retry.append(k)
-        if len(retry)>=2:
+        attempted.add(key)
+        collect_index.ingest_index(state,source,[(key[1],key[2])],max_pages=20)
+        if len(attempted)>=2:
             break
-    for source,first,last in retry:
-        collect_index.ingest_index(state,source,[(first,last)],max_pages=12)
-    backfill=state.get("backfill_cursor_days",0)
-    # A moving 7-day sweep discovers administrative acts that became public
-    # before this monitor was installed. It never searches hardcoded sectors.
-    first=str(today-dt.timedelta(days=backfill+10))
-    last=str(today-dt.timedelta(days=backfill+4))
-    for source in SUPPORTED:
-        collect_index.ingest_index(state,source,[(first,last)],max_pages=12)
-    state["backfill_cursor_days"]=0 if backfill>=365 else backfill+7
+    cursor=int(state.get("backfill_cursor_days",0))%horizon
+    for n in range(budget):
+        offset=(cursor+n*span)%horizon
+        first=str(today-dt.timedelta(days=min(horizon,offset+span)))
+        last=str(today-dt.timedelta(days=offset+1))
+        for source in SUPPORTED:
+            editions=("current","history") if source in ("admrul","ordin") else ("current",)
+            if all(collect_index.window_covered(state,source,first,last,edition)
+                   for edition in editions):
+                continue
+            collect_index.ingest_index(state,source,[(first,last)],max_pages=35)
+        state["backfill_cursor_days"]=(offset+span)%horizon
+        if checkpoint:
+            checkpoint(state)
+    # Without a confirmed response in this run, failure is not "no change".
+    successful=state.pop("_source_pages_confirmed",0)
+    if not successful:
+        raise RuntimeError("Official APIs returned no confirmed complete collection window")
     state["latest_official_scan"]=today.isoformat()
+
 
 def candidate_rank(record,today):
     """Document-wide generic signals only: source proof, dates, lifecycle.
@@ -77,7 +102,17 @@ def pick_work(state,today,limit):
     catalog=state.get("catalog",{})
     processed=state.get("inspected",{})
     attempts=state.get("attempts",{})
-    waiting=[x for k,x in catalog.items() if k not in processed]
+    def eligible(k,record):
+        if record.get("discovery_kind")=="legacy_index_only_not_verified":
+            return False
+        old=processed.get(k)
+        if old is None:
+            return True
+        if old.get("verification") not in (
+            "detail_failed","partial_official_text","official_record_only"):
+            return False
+        return state.get("retry_after",{}).get(k,"")<=today.isoformat()
+    waiting=[x for k,x in catalog.items() if eligible(k,x)]
     ranked=sorted(waiting,key=lambda x:(
         candidate_rank(x,today)[0]-(attempts.get(events.key(x),0)*16),
         candidate_rank(x,today)[1],
@@ -118,7 +153,13 @@ def prepare_document_record(record,state):
                           load=read_document,history=prior,annual=annual)
 
 def output_groups(state):
-    all_events=list(state.get("inspected",{}).values())
+    inspected=state.get("inspected",{})
+    # Officially discovered but not yet analyzed is a valid *pending* item.
+    # Historical unverified index metadata is not promoted into source truth.
+    pending=[events.index_only(record) for key,record in state.get("catalog",{}).items()
+             if key not in inspected and
+             record.get("discovery_kind")!="legacy_index_only_not_verified"]
+    all_events=list(inspected.values())+pending
     verified=[e for e in all_events if e["verification"].startswith("verified_")]
     # Only v4-retrieved official source bodies support graph edges.
     snapshots={}
@@ -195,18 +236,23 @@ def build(state,today):
     # Every page declares how much of the official catalogue has not yet had
     # a checked before/after version. Do not claim complete collection.
     incomplete=[s for s in coverage if not s["complete"]]
+    official={key for key,row in state["catalog"].items()
+              if row.get("discovery_kind")!="legacy_index_only_not_verified"}
+    checked=set(state["inspected"]) & official
     report={
         "schema":"policy-domino-v4",
         "generated_at":api.stamp(),
-        "status":"PARTIAL" if incomplete or len(state["catalog"])>len(state["inspected"]) else "COMPLETE",
+        "status":"PARTIAL" if incomplete or len(official)>len(checked) else "COMPLETE",
         "collection":{
-            "official_catalogue":len(state["catalog"]),
-            "fresh_official_index":sum(x.get("discovery_kind") != "legacy_index_only_not_verified"
-                for x in state["catalog"].values()),
+            "official_catalogue":len(official),
+            "fresh_official_index":len(official),
             "legacy_index_pending_recheck":sum(x.get("discovery_kind") == "legacy_index_only_not_verified"
                 for x in state["catalog"].values()),
-            "detailed_checked":len(state["inspected"]),
-            "pending_details":max(0,len(state["catalog"])-len(state["inspected"])),
+            "detailed_checked":len(checked),
+            "pending_details":len(official-checked),
+            "retry_pending":sum(x.get("verification") in
+                 ("detail_failed","partial_official_text","official_record_only")
+                 for x in state["inspected"].values()),
             "pending_downstream_verification":len(state.get("dependent_queue",{})),
             "downstream_documents_checked":len(state.get("dependent_checked",{})),
             "windows_checked":len(coverage),
@@ -233,16 +279,23 @@ def run():
     scanning=True
     if os.getenv("PD_V4_OFFLINE")=="1":scanning=False
     if scanning:
-        scan_new(state,today)
+        scan_new(state,today,checkpoint=lambda current:save_json(STATE,current))
     workload=pick_work(state,today,int(os.getenv("PD_V4_DETAILS","14")))
     for record in workload:
         k=events.key(record)
         try:
             item,contents=prepare_document_record(record,state)
-            state["inspected"][k]=item
-            if contents and item["verification"] in (
-                "verified_changed_clauses","verified_annual_replacement",
-                "verified_enactment"):
+            previous=state["inspected"].get(k,{})
+            if not (previous.get("verification","").startswith("verified_") and
+                    not item["verification"].startswith("verified_")):
+                state["inspected"][k]=item
+            if item["verification"] in ("detail_failed","partial_official_text"):
+                state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=2))
+            elif item["verification"]=="official_record_only":
+                state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=21))
+            else:
+                state.setdefault("retry_after",{}).pop(k,None)
+            if contents and events.complete_text(contents):
                 state["verified_snapshots"][k]={
                     "source":record["source"],"stable_id":record["stable_id"],
                     "serial":record["serial"],"clauses":contents}
@@ -250,8 +303,11 @@ def run():
             # Failure is explicitly recorded and retried; never converted to
             # a fabricated "changed policy" or deleted from the queue.
             state["attempts"][k]=state["attempts"].get(k,0)+1
+            state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=2))
             state.setdefault("errors",[]).append({"id":k,
                 "error":type(exc).__name__+": "+str(exc)[:140]})
+        if (len(state.get("inspected",{}))+len(state.get("attempts",{})))%12==0:
+            save_json(STATE,state)
     # Official delegation endpoint is an independent source of clause-scoped
     # review candidates; it is not an automatic impact or compliance order.
     todo=[x for x in state["inspected"].values() if

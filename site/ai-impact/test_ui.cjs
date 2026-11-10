@@ -92,70 +92,101 @@ const app=fs.readFileSync("site/assets/classic.js","utf8");
 new vm.Script(app,{filename:"classic.js"});
 assert.ok(!app.includes("window.PolicyDominoAiView.render(e,DATA,AI_DATA)"));
 assert.ok(app.includes("window.PolicyDominoAiView.renderForAction(a,aiFindings.get(a.id))"));
-assert.ok(app.includes('data-agency-type='));
-assert.ok(app.includes('data-agency-region='));
+assert.ok(app.includes('class="agencyWorkbench"'));
+assert.ok(app.includes('data-side-type='));
+assert.ok(app.includes('data-side-region='));
 assert.ok(app.includes('data-agency-pick='));
+assert.ok(app.includes('data-agency-more'));
+assert.ok(app.includes("동시 개정된 법령"));
+assert.ok(app.includes("변경 조문을 인용하는 관련 규정"));
 assert.ok(!app.includes('class="statusFilters"'));
 assert.ok(!app.includes('data-status='));
-assert.ok(!app.includes('groupedActions('));
 assert.ok(!app.includes('data-jump='));
 assert.ok(app.includes("기관별 변경 검토사항"));
 assert.ok(app.includes("window.PolicyDominoAiView.latestAnalyzedAt(DATA,AI_DATA)"));
 assert.ok(app.includes('candidate?.schema==="policy-domino-llm-impact-v2"'));
 assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
 
-/* Functional test: no status filter, and 684 real actions must stay hidden
- * until the user picks type → region → institution in the institution filter. */
-(async function testInstitutionFilter(){
+/* Real interaction regression: 684 reviews should be navigable through
+   a sidebar; source-backed legal links must be counted independently. */
+(async function testAgencySidebarAndLegalConnections() {
  const model=require("../assets/impact-model.js");
  const event={
-   event_id:"v4:many",title:"전문직공무원 정원 특례 · 관련 법령 동시 개정",
-   revision:"타법개정",law_type:"동일 공포번호 법령 17건",
-   amendment_reason:"공식 정원 기준 개정",
-   presentation_source:"v4_official_source",impact_level:"high",
-   promulgated_at:"2026-11-06",effective_date:"2026-11-06"
+   event_id:"v4:large",title:"전문직공무원 정원 특례 · 관련 법령 3건 동시 개정",
+   impact_level:"high",revision:"타법개정",law_type:"동일 공포번호 법령 3건",
+   amendment_reason:"전문직공무원 정원의 배정 및 운영에 관한 규정 개정",
+   promulgated_at:"2026-11-06",effective_date:"2026-11-06",
+   presentation_source:"v4_official_source",
+   simultaneous_laws:[
+     {title:"가상청 직제",kind:"대통령령",url:"https://www.law.go.kr/법령/가상청직제",
+      changed_articles:["제7조","제8조"]},
+     {title:"가상위원회 직제",kind:"대통령령",url:"https://www.law.go.kr/법령/가상위원회직제",
+      changed_articles:["제9조"]},
+     {title:"가상연구청 직제",kind:"대통령령",url:"https://www.law.go.kr/법령/가상연구청직제",
+      changed_articles:["제10조"]}
+   ],
+   citing_regulations:[
+     {title:"가상청 직제 시행규칙",source_title:"가상청 직제",
+      source_article:"제7조",target_article:"제12조",
+      proof:"변경 조항 직접 인용",
+      url:"https://www.law.go.kr/법령/가상청직제시행규칙"},
+     {title:"가상청 직제 시행규칙",source_title:"가상청 직제",
+      source_article:"제8조",target_article:"제13조",
+      proof:"변경 조항 직접 인용",
+      url:"https://www.law.go.kr/법령/가상청직제시행규칙"},
+     {title:"가상연구청 직제 시행규칙",source_title:"가상연구청 직제",
+      source_article:"제10조",target_article:"제3조",
+      proof:"변경 조항 직접 인용",
+      url:"https://www.law.go.kr/법령/가상연구청직제시행규칙"}
+   ]
  };
- const agencies=["고용노동부","공정거래위원회","국가데이터처",
+ const agencies=[
+   "고용노동부","공정거래위원회","국가데이터처",
    "서울특별시 강서구","서울특별시 양천구",
    "전북특별자치도 전주시","전남광주통합특별시 강진군",
    "서울특별시교육청","서울특별시 동부교육지원청",
    "전라남도교육청","세종특별자치시교육청",
    "서울특별시50플러스재단","재단법인신용보증재단",
    "시·군·구",
-   ...Array.from({length:90},(_,i)=>"서울특별시 가상"+i+"구")];
+   ...Array.from({length:90},(_,i)=>"서울특별시 가상"+i+"구")
+ ];
  const actions=Array.from({length:684},(_,i)=>({
-   ...official.actions[0],id:"review-"+i,event_id:event.event_id,
+   ...official.actions[0],id:"check-"+i,event_id:event.event_id,
    agency:agencies[i%agencies.length],article:"제"+(i+1)+"조",
-   status:i%2===0?"최신 근거 재확인 필요":"반영 확인 필요",
-   work:"공식 기준 검토",required_change:"기관 기준 점검",
-   changes:[{before:"종전",after:"변경"}]
+   work:"운영 기준",status:i%2?"최신 근거 재확인 필요":"반영 확인 필요",
+   required_change:"변경된 운영 기준을 확인",
+   changes:[{before:"종전",after:"개정"}]
  }));
- const data={schema:"policy-domino-next-v1",events:[event],actions,
-   generated_at:"2026-11-10T07:00:00Z",health:{}};
+ const source={schema:"policy-domino-next-v1",events:[event],actions,
+   generated_at:"2026-11-10T09:00:00Z",health:{}};
  const aiData={schema:ai.SCHEMA,events:[]};
  const nodes=new Map();
  function element(id){
    if(!nodes.has(id)){
-     let html="", cached=new Map();
-     const item={textContent:"",value:"",hidden:false,dataset:{},oninput:null,
+     let html="",stored=new Map();
+     const node={
+       textContent:"",value:"",hidden:false,dataset:{},oninput:null,
        classList:{add(){},remove(){},toggle(){}},
-       set innerHTML(v){html=String(v);cached=new Map()},
+       set innerHTML(value){html=String(value);stored=new Map()},
        get innerHTML(){return html},
        querySelectorAll(selector){
-         if(cached.has(selector))return cached.get(selector);
+         if(stored.has(selector))return stored.get(selector);
          const parsed=/^\[data-([a-z-]+)\]$/.exec(selector);
          if(!parsed)return [];
-         const attr=parsed[1];
-         const key=attr.replace(/-([a-z])/g,(_,letter)=>letter.toUpperCase());
-         const re=new RegExp('<button\\b[^>]*data-'+attr+'="([^"]*)"[^>]*>','g');
-         const buttons=[...html.matchAll(re)].map(hit=>({
-           dataset:{[key]:hit[1]},onclick:null
+         const attr=parsed[1],key=attr.replace(/-([a-z])/g,
+           (_,letter)=>letter.toUpperCase());
+         const exp=new RegExp('<(?:button|details)\\b[^>]*data-'+attr+
+           '(?:="([^"]*)")?[^>]*>','g');
+         const items=[...html.matchAll(exp)].map(hit=>({
+           dataset:{[key]:hit[1]||""},onclick:null,ontoggle:null,
+           open:hit[0].includes(" open")
          }));
-         cached.set(selector,buttons);
-         return buttons;
-       }
+         stored.set(selector,items);
+         return items;
+       },
+       querySelector(selector){return this.querySelectorAll(selector)[0]||null}
      };
-     nodes.set(id,item);
+     nodes.set(id,node);
    }
    return nodes.get(id);
  }
@@ -166,66 +197,63 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
      innerWidth:1200,addEventListener(){}},
    location:{hash:"",pathname:"/impact/",search:""},
    history:{replaceState(){}},
-   fetch:async url=>({ok:true,json:async()=>String(url).includes("ai-impact")?aiData:data})};
+   fetch:async url=>({ok:true,json:async()=>String(url).includes("ai-impact")?
+      aiData:source})};
  vm.runInNewContext(app,context,{filename:"classic.js"});
  await new Promise(resolve=>setImmediate(resolve));
  function click(selector,value){
-   const prop=selector.slice(6,-1).replace(/-([a-z])/g,(_,letter)=>letter.toUpperCase());
-   const btn=element("detail").querySelectorAll(selector)
-     .find(item=>item.dataset[prop]===value);
-   assert.ok(btn,"Filter choice missing: "+selector+" "+value);
-   assert.equal(typeof btn.onclick,"function","Filter choice must be clickable");
-   btn.onclick();
+   const parsed=/^\[data-([a-z-]+)\]$/.exec(selector);
+   const prop=parsed[1].replace(/-([a-z])/g,(_,l)=>l.toUpperCase());
+   const item=element("detail").querySelectorAll(selector)
+     .find(x=>value===undefined || x.dataset[prop]===value);
+   assert.ok(item,"Missing click target "+selector+" "+value);
+   assert.equal(typeof item.onclick,"function","Not wired: "+selector);
+   item.onclick();
  }
  let html=element("detail").innerHTML;
- assert.match(html,/기관별 변경 검토사항/);
- assert.ok(html.includes("관련 기관 104곳"));
+ assert.match(html,/동시 개정된 법령 3건 확인/);
+ assert.match(html,/변경 조문을 인용하는 관련 규정 2건 확인/);
+ assert.equal((html.match(/법령 원문 ↗/g)||[]).length,3);
+ assert.equal((html.match(/관련 규정 ↗/g)||[]).length,2);
+ assert.ok(html.indexOf("동시 개정된 법령")<
+           html.indexOf("기관별 변경 검토사항"),
+           "Legal relations must precede the institution workbench");
+ assert.match(html,/104개 기관 · 684건/);
+ assert.match(html,/class="agencyWorkbench"/);
+ assert.match(html,/class="agencySidebar"/);
+ assert.match(html,/class="agencyResults"/);
+ assert.ok(html.includes("data-agency-all"));
  assert.ok(!html.includes("data-status="));
- assert.ok(!html.includes("조치 확인 0"));
- assert.equal((html.match(/class="action"/g)||[]).length,0);
- assert.equal((html.match(/class="agencyTypeChoice(?: active)?"/g)||[]).length,4);
- assert.equal((html.match(/class="agencyPick/g)||[]).length,0);
- click("[data-agency-type]","지방자치단체");
- html=element("detail").innerHTML;
- assert.ok(html.includes('data-agency-region="서울특별시"'));
- assert.ok(html.includes('data-agency-region="전북특별자치도"'));
- assert.ok(html.includes('data-agency-region="전남광주통합특별시"'));
- assert.equal((html.match(/class="action"/g)||[]).length,0);
- click("[data-agency-region]","서울특별시");
- html=element("detail").innerHTML;
+ assert.equal((html.match(/class="agencyResultGroup"/g)||[]).length,20);
+ assert.ok(html.includes("data-agency-more"));
+ assert.match(html,/data-side-type="지방자치단체"/);
+ assert.match(html,/data-side-region="지방자치단체\|서울특별시"/);
+ assert.match(html,/data-side-type="교육청"/);
+ assert.match(html,/data-side-region="교육청\|서울특별시"/);
  assert.ok(html.includes('data-agency-pick="서울특별시 강서구"'));
- assert.ok(html.includes('id="agencySearch"'));
- assert.equal((html.match(/class="action"/g)||[]).length,0);
+ click("[data-agency-pick]","서울특별시 강서구");
+ html=element("detail").innerHTML;
+ const n=actions.filter(x=>x.agency==="서울특별시 강서구").length;
+ assert.match(html,/검토사항 /);
+ assert.equal((html.match(/class="action"/g)||[]).length,n);
+ assert.ok(!html.includes("data-agency-more"));
+ assert.match(html,/동시 개정된 법령 3건 확인/);
+ click("[data-agency-all]");
+ html=element("detail").innerHTML;
+ assert.equal((html.match(/class="agencyResultGroup"/g)||[]).length,20);
+ click("[data-agency-more]");
+ html=element("detail").innerHTML;
+ assert.equal((html.match(/class="agencyResultGroup"/g)||[]).length,40);
  const search=element("agencySearch");
  search.value="강서구";
  assert.equal(typeof search.oninput,"function");
  search.oninput();
- assert.match(element("agencyChoiceList").innerHTML,/서울특별시 강서구/);
- assert.ok(!element("agencyChoiceList").innerHTML.includes("서울특별시 양천구"));
- click("[data-agency-pick]","서울특별시 강서구");
- html=element("detail").innerHTML;
- const n=actions.filter(x=>x.agency==="서울특별시 강서구").length;
- assert.equal((html.match(/class="action"/g)||[]).length,n);
- assert.match(html,new RegExp("검토사항 "+n+"건"));
- assert.ok(!html.includes('data-status='));
- click("[data-agency-type]","교육청");
- html=element("detail").innerHTML;
- assert.ok(html.includes('data-agency-region="전라남도"'));
- assert.ok(html.includes('data-agency-region="세종특별자치시"'));
- assert.equal((html.match(/class="action"/g)||[]).length,0);
- click("[data-agency-region]","서울특별시");
- html=element("detail").innerHTML;
- assert.ok(html.includes('data-agency-pick="서울특별시교육청"'));
- assert.ok(html.includes('data-agency-pick="서울특별시 동부교육지원청"'));
- click("[data-agency-pick]","서울특별시교육청");
- html=element("detail").innerHTML;
- assert.equal((html.match(/class="action"/g)||[]).length,
-   actions.filter(x=>x.agency==="서울특별시교육청").length);
- click("[data-agency-type]","공공기관·기타");
- html=element("detail").innerHTML;
- assert.ok(html.includes('data-agency-pick="서울특별시50플러스재단"'));
- assert.ok(!html.includes('data-agency-region="서울특별시"'));
- console.log("INSTITUTION_FILTER_PASS: 684 reviews, 104 source agencies, type/region/agency clicks, no status buttons");
+ const nav=element("agencySidebarGroups").innerHTML;
+ assert.match(nav,/서울특별시 강서구/);
+ assert.ok(!nav.includes('data-agency-pick="서울특별시 양천구"'));
+ assert.match(nav,/data-side-type="지방자치단체" open/);
+ assert.match(nav,/data-side-region="지방자치단체\|서울특별시" open/);
+ console.log("AGENCY_LEGAL_WORKBENCH_PASS: official 3 co-amendments, 2 citation documents, 684 reviews in paged sidebar/agency cards");
 })().catch(err=>{console.error(err);process.exitCode=1});
 
 console.log("AI_CATALOG_VIEW_PASS: every event, partial results, unchanged cache reuse and source-level invalidation");

@@ -50,28 +50,66 @@ aside .empty{padding:38px 22px}
 .legalDetails .change{margin:10px 0}
 @media(max-width:850px){.valueRow{grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr)}}
 
-/* Institution finder is an actual filter: choices first, one matching
-   agency's task list second. No hundreds of expanded task cards. */
-.agencyFilterPanel{border:1px solid #dfebf1;border-radius:12px;background:#f9fbfd;padding:13px 14px;margin-bottom:14px}
-.agencyFilterTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:830;color:#244c64;margin-bottom:12px}
-.agencyFilterTitle span{font-size:11px;font-weight:600;color:#7c90a0}
-.agencyTypeChoices,.agencyRegionChoices{display:flex;gap:7px;flex-wrap:wrap}
-.agencyTypeChoice,.agencyRegionChoice,.agencyPick{border:1px solid #d8e6ec;border-radius:8px;background:#fff;color:#295671;font-size:12px;padding:9px 11px;font-weight:730;text-align:left;line-height:1.4}
-.agencyTypeChoice span,.agencyRegionChoice span,.agencyPick span{color:#7c91a1;font-size:10px;font-weight:650;margin-left:4px}
-.agencyTypeChoice:hover,.agencyRegionChoice:hover,.agencyPick:hover{background:#eff7fa}
-.agencyTypeChoice.active,.agencyRegionChoice.active,.agencyPick.active{background:#175d7b;color:#fff;border-color:#175d7b}
-.agencyTypeChoice.active span,.agencyRegionChoice.active span,.agencyPick.active span{color:#cde6f2}
-.agencyTypeChoice:focus-visible,.agencyRegionChoice:focus-visible,.agencyPick:focus-visible{outline:2px solid #167ba6;outline-offset:2px}
-.agencyFilterLevel{border-top:1px solid #e4edf2;padding-top:11px;margin-top:11px}
-.agencyFilterLabel{font-size:11px;font-weight:780;color:#516f83;display:block;margin:0 0 8px}
-.agencyChoiceList{display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px;max-height:255px;overflow-y:auto;padding:2px 4px 3px 1px;scrollbar-width:thin}
-.agencySearch{width:100%;border:1px solid #d5e5ed;border-radius:9px;background:#fff;padding:10px 11px;font-size:12px;margin:0 0 9px}
-.agencyPick{font-size:11px;padding:8px 10px;overflow-wrap:anywhere;max-width:100%}
-.agencyNoMatch,.agencySelectionHint{color:#718a9b;font-size:12px;line-height:1.7;padding:14px 2px}
-.agencyResultHeader{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:17px 0 10px;padding-bottom:10px;border-bottom:1px solid #e3edf2}
-.agencyResultHeader strong{color:#234b62;font-size:14px}
-.agencyResultHeader span{font-size:12px;color:#6b8597}
-@media(max-width:850px){.agencyFilterPanel{padding:12px 10px}.agencyTypeChoice{flex:1 1 44%}.agencyChoiceList{max-height:250px}.agencyPick{font-size:11px}}
+/* Evidence-first detail, then two-column institution browsing. */
+.lawConnections{display:grid;gap:8px;margin:0 0 23px}
+.lawConnection{border:1px solid #dce9f0;border-radius:10px;overflow:hidden;background:#fbfdfe}
+.lawConnection>summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:790;font-size:12px;color:#2b637f;display:flex;align-items:center;gap:8px}
+.lawConnection>summary::-webkit-details-marker{display:none}
+.lawConnection>summary::before{content:"▸";font-size:12px;color:#2b7898;transition:transform .15s}
+.lawConnection[open]>summary::before{transform:rotate(90deg)}
+.lawConnection[open]>summary{border-bottom:1px solid #e3eef3;background:#f4f9fc}
+.lawConnectionBody{padding:8px 14px 13px;max-height:370px;overflow-y:auto}
+.lawConnectionNote{font-size:11px;color:#788f9e;margin:6px 0 8px}
+.lawConnectionItem{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px solid #ebf0f3}
+.lawConnectionItem:last-child{border-bottom:0}
+.lawConnectionMain{display:grid;gap:5px;min-width:0}
+.lawConnectionMain strong{font-size:12px;color:#2a4458;line-height:1.6;word-break:keep-all}
+.lawConnectionMain small{font-size:11px;color:#738b9c;line-height:1.65;overflow-wrap:anywhere}
+.lawConnectionItem>a{flex:none;font-size:11px;white-space:nowrap;font-weight:780;margin-top:2px}
+.agencySectionHead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
+.agencySectionHead .sectionHeading{margin:0}
+.agencySectionHead>span{font-size:11px;color:#758d9d}
+.agencyWorkbench{display:grid;grid-template-columns:minmax(170px,215px) minmax(0,1fr);gap:13px;align-items:start}
+.agencySidebar{border:1px solid #e0e8ef;background:#f7fafc;border-radius:11px;padding:12px 10px;min-width:0}
+.agencySideHeading{font-size:12px;font-weight:800;color:#365b72;margin:2px 1px 8px}
+.agencySearch{width:100%;border:1px solid #d5e3ed;border-radius:8px;background:#fff;padding:10px;font-size:12px;line-height:1.4;margin-bottom:11px;min-width:0}
+.sideAll,.sideAgency{width:100%;display:flex;justify-content:space-between;align-items:center;gap:7px;border:0;border-radius:7px;text-align:left;background:transparent;font-size:11px;color:#496b80;padding:9px 8px;min-width:0}
+.sideAll{font-weight:800;margin-bottom:6px}
+.sideAll.active,.sideAgency.active{background:#deeff7;color:#195c7a;border:1px solid #b9d9e9}
+.sideAll:hover,.sideAgency:hover{background:#eaf4f9}
+.sideAll span:last-child,.sideCount{font-size:10px;color:#6e8a9a;flex:none}
+.sideAgencyName{min-width:0;overflow-wrap:anywhere;line-height:1.55}
+.agencySidebarGroups{max-height:460px;overflow:auto;padding-right:1px;scrollbar-width:thin}
+.sideType,.sideRegion{margin-top:4px;border-radius:7px}
+.sideType>summary,.sideRegion>summary{list-style:none;cursor:pointer;padding:10px 7px;font-size:11px;line-height:1.5;display:flex;justify-content:space-between;gap:5px;font-weight:740;color:#2d5b76}
+.sideType>summary::-webkit-details-marker,.sideRegion>summary::-webkit-details-marker{display:none}
+.sideType>summary::before,.sideRegion>summary::before{content:"▸";color:#7692a4;margin-right:4px}
+.sideType[open]>summary::before,.sideRegion[open]>summary::before{content:"▾"}
+.sideType>summary>span,.sideRegion>summary>span{color:#7f93a0;font-weight:650;margin-left:auto}
+.sideType[open]>summary{background:#eaf2f6}
+.sideTypeBody{padding:2px 3px 7px 8px}
+.sideRegion>summary{font-size:11px;padding:9px 5px;color:#54738a}
+.sideAgencyList{display:grid;gap:2px;padding-left:2px}
+.agencyNoMatch{padding:12px 7px;color:#8494a3;font-size:11px}
+.agencyResults{min-width:0}
+.agencyResultHeader{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin:4px 0 13px}
+.agencyResultHeader strong{font-size:15px;color:#244e67}
+.agencyResultHeader span{font-size:11px;color:#768e9f}
+.agencyResultList{display:grid;gap:8px}
+.agencyResultGroup{border:1px solid #dfe9ee;border-radius:10px;background:#fff;overflow:hidden}
+.agencyResultGroup>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f5f9fc;cursor:pointer;padding:13px 14px;color:#2a5771;font-size:12px;font-weight:800}
+.agencyResultGroup>summary::-webkit-details-marker{display:none}
+.agencyResultGroup>summary::before{content:"▸";color:#4182a1}
+.agencyResultGroup[open]>summary::before{content:"▾"}
+.agencyResultGroup>summary>span{margin-left:auto;color:#7f92a0;font-size:11px;font-weight:600}
+.agencyResultGroup[open]>summary{background:#eaf3f8;border-bottom:1px solid #deecf2}
+.agencyResultCards{padding:4px 10px 12px}
+.agencyResultCards .action:last-child{margin-bottom:0}
+.agencyMore{border:1px solid #d2e5ef;color:#246888;background:#f5fafc;border-radius:9px;padding:11px;width:100%;font-size:12px;font-weight:750;margin-top:12px}
+.agencyMore:hover{background:#e9f4f9}
+.agencySidebar button:focus-visible,.agencyResultGroup>summary:focus-visible,.lawConnection>summary:focus-visible{outline:2px solid #1584b0;outline-offset:2px}
+@media(max-width:1050px){.agencyWorkbench{grid-template-columns:minmax(145px,175px) minmax(0,1fr)}.agencySidebar{padding:10px 8px}}
+@media(max-width:850px){.agencyWorkbench{grid-template-columns:1fr}.agencySidebarGroups{max-height:280px}.agencySidebar{padding:12px}.agencyResultHeader{margin-top:13px}}
 .actionStatusNote{display:block;font-size:11px;color:#63839a;line-height:1.5;margin-top:6px}
 
 /* Detail: a brief change overview, visible institution actions, optional law source */

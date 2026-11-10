@@ -55,6 +55,47 @@ class AgencyActionTests(unittest.TestCase):
         self.assertIn("정원", actions[0]["work"])
         self.assertEqual(e["presentation_source"], "v4_official_source")
 
+    def test_same_promulgation_laws_and_verified_citations_are_preserved(self):
+        second={**self.doc, "title":"가상공공위원회 직제",
+                "url":"https://www.law.go.kr/가상공공위원회",
+                "changed_articles":["제9조"],
+                "excerpts":[]}
+        verified={
+            "target_title":"가상청 직제 시행규칙",
+            "target_url":"https://www.law.go.kr/가상청시행규칙",
+            "source_title":"가상청 직제",
+            "source_article":"제2조",
+            "target_article":"제7조",
+            "proof":"공식 대상 조문에서 실제 변경된 조항을 직접 인용·적용",
+            "excerpt":"가상청 직제 제2조에 따른 정원을 적용한다.",
+            "affected_verified":True,
+        }
+        e, _=group_event({
+            "id":"same-promulgation","date":"2026-11-09",
+            "number":"5678","source_count":2,
+            "official_common_promulgation":True,
+            "source_docs":[self.doc,second],
+            "agency_count":2,
+            "dependencies":[verified,{**verified,
+                "target_title":"가상청 직제 인용만 한 문서",
+                "affected_verified":False}],
+        })
+        self.assertEqual(len(e["simultaneous_laws"]),2)
+        self.assertEqual([x["title"] for x in e["simultaneous_laws"]],
+                         ["가상청 직제","가상공공위원회 직제"])
+        self.assertEqual(len(e["citing_regulations"]),1)
+        self.assertEqual(e["citing_regulations"][0]["target_article"],"제7조")
+        self.assertEqual(e["citing_regulations"][0]["source_article"],"제2조")
+        self.assertEqual(e["citing_regulations"][0]["url"],
+                         "https://www.law.go.kr/가상청시행규칙")
+        only, _=group_event({**{
+            "id":"same-promulgation","date":"2026-11-09",
+            "number":"5678","source_count":2,
+            "official_common_promulgation":False,
+            "source_docs":[self.doc,second],
+            "agency_count":2,"dependencies":[]}})
+        self.assertEqual(only["simultaneous_laws"],[])
+
     def test_duplicate_article_work_is_combined(self):
         action = new_action(self.doc, self.doc["excerpts"][0], "v4:1")
         self.assertEqual(len(unique_actions([action, dict(action)])), 1)

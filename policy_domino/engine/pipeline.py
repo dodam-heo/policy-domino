@@ -115,10 +115,13 @@ def candidate_rank(record,today):
     kind=record.get("discovery_kind","")
     future=record.get("effective_date","")>today.isoformat()
     age=record.get("published_at","")
-    recent=age>=str(today-dt.timedelta(days=45))
+    recent=age>=str(today-dt.timedelta(days=180))
     verified_history=kind=="official_law_change_history"
     priority=(85 if verified_history else 0)+(30 if future else 0)+(
-       25 if recent else 0)
+       40 if recent else 0)
+    first_seen=record.get("first_seen_at","")
+    if first_seen and first_seen>=str(today-dt.timedelta(days=14)):
+        priority+=35
     if events.label_revision(record.get("revision")) in ("enactment","repeal"):
         priority+=12
     # Older official historical documents are still discoverable in the
@@ -178,12 +181,35 @@ def prepare_document_record(record,state):
     """Fetch a source record; do not replace existing verified evidence with
     a lexical hit or a lower-trust V2 snapshot.
     """
+    snapshots=state.setdefault("verified_snapshots",{})
+    def load(r):
+        """One persistent source cache for current AND prior official versions.
+
+        Store complete extracted original articles once; a later run does not
+        request them again. Partial annexes never become verified cache hits.
+        """
+        key=events.key(r)
+        existing=snapshots.get(key,{})
+        clauses=existing.get("clauses",{})
+        if (existing.get("complete_source") is True
+                and isinstance(clauses,dict) and events.complete_text(clauses)):
+            return api.ExtractedClauses(clauses)
+        obtained=read_document(r)
+        if (events.complete_text(obtained)
+                and not getattr(obtained,"unresolved_attachments",[])):
+            snapshots[key]={
+                "source":r["source"],"stable_id":r["stable_id"],
+                "serial":r["serial"],"source_url":r.get("url",""),
+                "clauses":dict(obtained),"complete_source":True,
+                "observed_at":dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+            }
+        return obtained
     def prior(r,records=None):
         return events.predecessor(r,state.get("catalog",{}).values())
     def annual(r):
         return events.annual_baseline(r,records=state.get("catalog",{}).values())
     return events.inspect(record,state.get("catalog",{}).values(),
-                          load=read_document,history=prior,annual=annual)
+                          load=load,history=prior,annual=annual)
 
 def output_groups(state):
     inspected=state.get("inspected",{})
@@ -296,6 +322,10 @@ def build(state,today):
             "incomplete_windows":len(incomplete),
             "recent_incomplete":incomplete[-8:],
             "backfill_cursor_days":state.get("backfill_cursor_days",0),
+            "latest_official_scan":state.get("latest_official_scan",""),
+            "last_official_scan_error":state.get("last_official_scan_error",""),
+            "retained_complete_clause_versions":sum(
+                bool(x.get("complete_source")) for x in state.get("verified_snapshots",{}).values()),
             "scope":"공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
             "whole_corpus_complete":False},
         "links":{
@@ -339,10 +369,8 @@ def run():
                 state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=21))
             else:
                 state.setdefault("retry_after",{}).pop(k,None)
-            if contents and events.complete_text(contents):
-                state["verified_snapshots"][k]={
-                    "source":record["source"],"stable_id":record["stable_id"],
-                    "serial":record["serial"],"clauses":contents}
+            # prepare_document_record already captured only complete,
+            # annex-checked source text for both document versions.
         except Exception as exc:
             # Failure is explicitly recorded and retried; never converted to
             # a fabricated "changed policy" or deleted from the queue.

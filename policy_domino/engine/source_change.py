@@ -112,34 +112,107 @@ def source_pairs(changes: list[dict], limit: int = 70) -> list[dict]:
     return result
 
 
-def concise_summary(comparisons: list[dict], count: int) -> str:
-    """Fact-only fallback; never paste cut-out grammatical fragments."""
+def _numeric_changes(before: str, after: str) -> list[tuple[str, str]]:
+    """Align complete numeric tokens, never character fragments such as 2→7."""
+    pattern = re.compile(r"(?<!\d)(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:만원|원|명|일|개월|년|세|%)?")
+    left = [x.strip() for x in pattern.findall(before)]
+    right = [x.strip() for x in pattern.findall(after)]
+    matcher = difflib.SequenceMatcher(None, left, right, autojunk=False)
+    changes = []
+    for mode, a, b, c, d in matcher.get_opcodes():
+        if mode == "replace" and b - a == d - c == 1:
+            if left[a] != right[c]:
+                changes.append((left[a], right[c]))
+    return changes
+
+
+def _source_heading(row: dict) -> str:
+    old, after = norm(row.get("before")), norm(row.get("after"))
+    match = TITLE.search(after or old)
+    article = norm(row.get("article")) or "변경 조항"
+    if match:
+        heading = norm(match.group(1))
+        if heading and heading not in article:
+            return heading + " (" + article + ")"
+    return article
+
+
+def concise_summary(comparisons: list[dict], count: int, *,
+                    title: str = "", revision: str = "") -> str:
+    """Deterministic Korean narrative for every event, without LLM availability.
+
+    Express documented changes when full old/new official text exists.
+    Otherwise state the *known issuance* and explicitly distinguish the still
+    missing detail. Never turn a discovery row into a fabricated clause change.
+    """
+    title = norm(title)
+    revision = norm(revision)
+    label = f"「{title}」" if title else "해당 정책"
     if not comparisons:
-        return "공식 변경 조문의 내용 비교가 진행 중입니다."
-    phrases = []
-    for row in comparisons[:3]:
-        before = norm(row.get("before"))
-        after = norm(row.get("after"))
-        heading_match = TITLE.search(after or before)
-        subject = norm(heading_match.group(1)) if heading_match else ""
-        article = norm(row.get("article")) or "변경 조문"
-        label = (f"{subject}({article})" if subject and " · " not in article
-                 else article)
-        kind = row.get("type") or category(before, after)
-        old_nums = NUMERIC.findall(before)
-        new_nums = NUMERIC.findall(after)
-        if kind == "내용 개정" and len(old_nums) == len(new_nums) == 1 and old_nums != new_nums:
-            phrases.append(f"{label} 기준 {old_nums[0].strip()} → {new_nums[0].strip()}")
-        elif kind == "조문 신설":
-            phrases.append(f"{label} 규정 신설")
-        elif kind == "조문 삭제":
-            phrases.append(f"{label} 규정 삭제")
-        elif kind == "표기 정비":
-            phrases.append(f"{label} 표기 정비")
-        else:
-            phrases.append(f"{label} 규정 내용 개정")
-    extra = max(0, int(count or 0) - len(comparisons[:3]))
-    return " · ".join(phrases) + (f" · 그 밖의 {extra}개 조문 변경" if extra else "")
+        if "폐지" in revision:
+            return f"{label}의 폐지 사실이 공표됐습니다. 폐지에 따른 후속 업무 영향은 확인된 공식 근거를 바탕으로 구분합니다."
+        if "제정" in revision or "신규" in revision:
+            return f"{label}이 새로 제정됐습니다. 원문 확보 전에는 구체적인 요건이나 변경 금액을 추정하지 않습니다."
+        return (f"{label}의 변경이 공식 목록에 등록됐습니다. "
+                "변경 조문 원문이 아직 확인되지 않아 세부 사항은 비교하지 않았습니다.")
+
+    changes = [x for x in comparisons if x.get("before") != x.get("after")]
+    if not changes:
+        return f"{label}에서 공식 변경 문구를 확인했습니다. 실질적인 변경 범위는 조문별 원문에서 확인할 수 있습니다."
+    num = max(int(count or 0), len(changes))
+    first = changes[0]
+    heading = _source_heading(first)
+    kind = first.get("type") or category(str(first.get("before","")),str(first.get("after","")))
+    old, new = norm(first.get("before")), norm(first.get("after"))
+    numeric = _numeric_changes(old,new) if kind == "내용 개정" else []
+    # Describe a uniquely aligned numeric standard without guessing what an
+    # individual programme should implement or what a bare year refers to.
+    values = [(a,b) for a,b in numeric if
+              re.search(r"\d",a) and re.search(r"\d",b) and a != b]
+    if len(values) == 1 and re.search(r"정원|총계|기준|금액|급여|기간|인원|수수료|지원|선정", old+" "+new):
+        a,b=values[0]
+        subject = "정원·인원" if re.search(r"정원|인원|총계",old+" "+new) else "해당 기준값"
+        detail = f"{heading}에서 {subject}을 종전 {a}에서 {b}로 변경했습니다."
+    elif kind == "조문 신설":
+        detail = f"{heading}에 관한 규정을 새로 마련했습니다."
+    elif kind == "조문 삭제":
+        detail = f"{heading}에 관한 기존 규정을 삭제했습니다."
+    elif kind == "표기 정비":
+        detail = f"{heading}의 문구와 표기 방식을 정비했습니다."
+    else:
+        detail = f"{heading}에 관한 규정을 개정했습니다."
+        # When there is no numeric formula to describe, preserve the exact
+        # old/new wording rather than claiming an invented policy effect.
+        # A concise side-by-side citation is more useful than 'content amended'.
+        if old and new:
+            def excerpt(text: str) -> str:
+                return text[:105].rstrip() + ("…" if len(text) > 105 else "")
+            old_quote, new_quote = excerpt(old), excerpt(new)
+            if old_quote == new_quote:
+                matcher=difflib.SequenceMatcher(None,old,new,autojunk=False)
+                first=next(((a,c) for op,a,b,c,d in matcher.get_opcodes()
+                            if op!="equal"),None)
+                if first:
+                    a,c=first
+                    old_quote=("…" if a>35 else "")+old[max(0,a-35):a+70]+("…" if a+70<len(old) else "")
+                    new_quote=("…" if c>35 else "")+new[max(0,c-35):c+70]+("…" if c+70<len(new) else "")
+            if old_quote != new_quote:
+                detail += f" 종전 ‘{old_quote}’에서 개정 후 ‘{new_quote}’로 문구가 바뀌었습니다."
+    remaining = num - 1
+    if remaining > 0:
+        headings = []
+        for row in changes[1:]:
+            name = _source_heading(row)
+            if name != heading and name not in headings:
+                headings.append(name)
+            if len(headings) == 2:
+                break
+        follow = " · ".join(headings)
+        detail += (f" 함께 변경된 조문은 {remaining}개이며, "
+                   + (f"{follow} 등의 변경이 포함됩니다." if follow else
+                      "전체 신구 비교에서 확인할 수 있습니다."))
+    return (label + "의 " + detail) if title else detail
+
 
 def fingerprint(event: dict) -> str:
     """Stable binding between a published policy change and its AI explanation."""

@@ -167,11 +167,13 @@ def ingest_index(state,source,date_windows,fetch=None,max_pages=30):
         rows,windows=bisect_window(source,first,last,fetch,max_pages,edition=edition)
         for r in rows:
             key=api.uid(r["source"],r["stable_id"],r["serial"])
-            if key not in ledger:found+=1
+            previous=ledger.get(key,{})
+            if not previous:found+=1
+            r["first_seen_at"]=previous.get("first_seen_at") or dt.date.today().isoformat()
             r["discovery_kind"] = ("official_law_change_history"
-                if ledger.get(key, {}).get("discovery_kind") ==
-                   "official_law_change_history" else "official_date_index")
-            ledger[key]=r
+                if previous.get("discovery_kind") == "official_law_change_history"
+                else "official_date_index")
+            ledger[key]={**previous,**r}
         for window in windows:
             record_coverage(state, {**window.as_dict(),
                 "edition":"history" if edition=="2" else "current"})
@@ -226,6 +228,9 @@ def ingest_changes(state,days,fetch=None,max_pages=50):
         rows,audit=scan_official_change_day(day,fetch,max_pages)
         for record in rows:
             key=api.uid(record["source"],record["stable_id"],record["serial"])
-            state.setdefault("catalog",{})[key]=record
+            catalog=state.setdefault("catalog",{})
+            previous=catalog.get(key,{})
+            record["first_seen_at"]=previous.get("first_seen_at") or dt.date.today().isoformat()
+            catalog[key]={**previous,**record}
         record_coverage(state, {**audit.as_dict(), "edition":"history"})
     return state

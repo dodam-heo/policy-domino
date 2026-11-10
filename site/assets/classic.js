@@ -286,7 +286,8 @@ function detailHTML(e){
  const overview='<section class="changeOverview"><div class="overviewLabel">변경 핵심</div>'+
  '<div class="overviewText">'+esc(overviewText(e))+'</div>'+
  '<div class="overviewProof">'+(hasAiSummary?'AI 보조 설명 · 공식 변경 조문에 연결됨':
- '공식 변경 조문의 구조적 개요 · 설명 확인 중')+'</div>'+
+ (e.source_verification==="official_index_only"?
+ '공식 변경목록 기반 개요 · 상세 조문 미확인':'공식 조문 대조 기반 개요'))+'</div>'+
  '<div class="overviewEffective">시행일 '+fmtDate(e.effective_date)+'</div></section>';
  const impact='<section class="agencyImpactSection">'+
  '<div class="agencySectionHead"><h3 class="sectionHeading">기관별 변경 검토사항</h3>'+
@@ -385,12 +386,17 @@ try{
 }catch(_){/* No model output: never imply that an AI analysis was performed. */}
 const h=d.health||{},bad=h.source_status==="수집 실패";
 $("system").classList.toggle("error",bad);
-$("sourceTitle").textContent=bad?"자료 갱신 실패":"정책 변경 "+d.events.length+"건 · 기관별 검토사항 "+d.actions.length+"건";
+$("sourceTitle").textContent=bad?"자료 갱신 실패":
+ "공식 정책목록 "+d.events.length+"건 · 상세 검증 "+Number(h.amendments_verified_total||0)+
+ "건 · 기관별 검토사항 "+d.actions.length+"건";
 const lastAI=window.PolicyDominoAiView.latestAnalyzedAt(DATA,AI_DATA);
 $("sourceDesc").textContent=bad?(h.error||"최근 자료를 불러오지 못했습니다."):
  lastAI?"AI 검토 반영 · 마지막 분석 "+fmtMoment(lastAI):
  AI_DATA?"AI 검토 결과 확인 중":"AI 검토 결과 대기";
-$("lastChecked").textContent="자료 갱신 "+fmtMoment(d.generated_at)+" · 6시간 간격 자동 점검 설정";
+$("lastChecked").textContent=
+ "공식 API 수집 "+(h.latest_official_scan?fmtDate(h.latest_official_scan):"최근 성공일 확인 중")+
+ " · 화면 갱신 "+fmtMoment(d.generated_at)+
+ " · 상세 확인 대기 "+Number(h.pending_details||0)+"건";
 const fragment=decodeURIComponent((location.hash||"").replace(/^#change=/,""));
 if(fragment&&(d.events||[]).some(e=>e.event_id===fragment)){
   selectedId=fragment;

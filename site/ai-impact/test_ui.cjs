@@ -183,7 +183,7 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
  assert.ok(!html.includes("data-status="));
  assert.ok(!html.includes("조치 확인 0"));
  assert.equal((html.match(/class="action"/g)||[]).length,0);
- assert.equal((html.match(/class="agencyTypeChoice/g)||[]).length,4);
+ assert.equal((html.match(/class="agencyTypeChoice(?: active)?"/g)||[]).length,4);
  assert.equal((html.match(/class="agencyPick/g)||[]).length,0);
  click("[data-agency-type]","지방자치단체");
  html=element("detail").innerHTML;

@@ -45,6 +45,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install pinned source annex reader
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
       - name: Guard single supported production pipeline
         run: python -m policy_domino.audit
       - name: Rebuild canonical output before checking presentation contracts
@@ -63,7 +65,11 @@ jobs:
           PD_PUBLIC_SERVICE_KEY: ${{ secrets.PD_PUBLIC_SERVICE_KEY }}
           PD_PUBLIC_SERVICE_PAGES: ${{ vars.PD_PUBLIC_SERVICE_PAGES || '40' }}
           PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '4000' }}
-          PD_V4_DETAILS: '60'
+          PD_V4_DETAILS: ${{ vars.PD_V4_DETAILS || '90' }}
+          PD_HISTORY_DAYS: ${{ vars.PD_HISTORY_DAYS || '1095' }}
+          PD_BACKFILL_WINDOWS_PER_RUN: ${{ vars.PD_BACKFILL_WINDOWS_PER_RUN || '6' }}
+          PD_BACKFILL_WINDOW_DAYS: ${{ vars.PD_BACKFILL_WINDOW_DAYS || '28' }}
+          PD_FETCH_OFFICIAL_ATTACHMENTS: ${{ vars.PD_FETCH_OFFICIAL_ATTACHMENTS || 'true' }}
           PD_V4_DELEGATIONS: '5'
           PD_V4_SEARCH_PARENTS: '4'
           PD_V4_VERIFY_DEPENDENTS: '24'
@@ -100,7 +106,12 @@ jobs:
           assert evidence['status']=='PARTIAL'
           assert view['schema']=='policy-domino-next-v1'
           assert view['events']
+          assert all(e.get('source_verification') in (
+              'verified_changed_clauses','verified_other','official_index_only',
+              'detail_pending') for e in view['events'])
           assert all(e.get('impact_scope') for e in view['events'])
+          assert all(not any(a['event_id']==e['event_id'] for a in view['actions'])
+                     for e in view['events'] if e['source_verification']=='official_index_only')
           ai_file=Path('site/ai-impact/data.json')
           if ai_file.exists():
               ai=json.loads(ai_file.read_text('utf-8'))

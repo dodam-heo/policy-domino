@@ -1,0 +1,124 @@
+name: Policy Domino — Official Policy Impact Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'data/**'
+      - 'site/classic/data.json'
+      - 'site/v4/data.json'
+  schedule:
+    - cron: '5 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'official = new official API records; stored = rebuild saved evidence'
+        required: true
+        default: official
+        type: choice
+        options: [official, stored]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: policy-domino-publication
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Collect, validate and publish policy evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Guard single supported production pipeline
+        run: python -m policy_domino.audit
+      - name: Validate production package, official adapters and V4 impact contracts
+        run: |
+          python -m compileall -q policy_domino v4
+          python -m unittest discover -s policy_domino -p 'test_*.py' -v
+          python -m unittest discover -s v4 -p 'test_*.py' -v
+          node site/v4/test_ui.cjs
+          node site/classic/test_ui.cjs
+          node site/test_adapter.cjs
+      - name: Live official crawl and agency impact publication
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official')
+        env:
+          LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
+          PD_V4_DETAILS: '20'
+          PD_V4_DELEGATIONS: '5'
+          PD_V4_SEARCH_PARENTS: '2'
+          PD_V4_VERIFY_DEPENDENTS: '12'
+        run: python -m policy_domino --source official
+      - name: Rebuild agency impact from persisted official evidence
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
+        run: python -m policy_domino --source stored
+      - name: Validate generated public data and both user routes
+        run: |
+          python -m unittest discover -s v4 -p 'test_*.py' -v
+          node site/classic/test_ui.cjs
+          node site/test_adapter.cjs
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          evidence=json.loads(Path('site/v4/data.json').read_text('utf-8'))
+          view=json.loads(Path('site/classic/data.json').read_text('utf-8'))
+          assert evidence['schema']=='policy-domino-v4'
+          assert evidence['status']=='PARTIAL'
+          assert view['schema']=='policy-domino-next-v1'
+          assert view['events']
+          assert all(e.get('impact_scope') for e in view['events'])
+          print('PUBLICATION_GATE',len(view['events']),len(view['actions']))
+          PY
+      - name: Commit only source-backed generated outputs
+        run: |
+          git config user.name policy-domino-bot
+          git config user.email policy-domino-bot@users.noreply.github.com
+          git add data/v4_state.json site/v4/data.json site/classic/data.json site/classic/index.html site/impact/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: refresh official evidence and agency impacts [skip ci]'
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase FETCH_HEAD
+              if git push origin HEAD:main; then break; fi
+              if [ "$attempt" = "3" ]; then exit 1; fi
+              sleep 3
+            done
+          fi
+
+  deploy:
+    name: Deploy the single verified GitHub Pages artifact
+    needs: build
+    if: success()
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy_pages.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check live assets and high-impact entry route
+        run: |
+          test -s site/impact/index.html
+          test -s site/classic/data.json
+          test -s site/assets/impact-model.js
+          node site/classic/test_ui.cjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy_pages
+        uses: actions/deploy-pages@v4

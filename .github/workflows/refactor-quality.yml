@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '22'
       - name: Python import and syntax validation
-        run: python -m compileall -q v2 v3 v4
+        run: python -m compileall -q policy_domino tests
       - name: Policy impact and route unit tests
         run: |
           python -m unittest v4.test_impact_scope v4.test_classic_pages -v

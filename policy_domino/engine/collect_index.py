@@ -121,10 +121,44 @@ def bisect_window(source,first,last,fetch=None,max_pages=50,max_splits=10,editio
     out={(r["source"],r["stable_id"],r["serial"]):r for r in left+right}
     return list(out.values()),lstats+rstats
 
+def record_coverage(state, audit: dict) -> None:
+    """Retain the latest evidence for each source, date range and edition."""
+    rows = state.setdefault("coverage", [])
+    fields = ("source", "first", "last", "edition")
+    identity = tuple(audit.get(field, "") for field in fields)
+    for i, old in enumerate(rows):
+        if tuple(old.get(field, "") for field in fields) == identity:
+            if old.get("complete") and not audit.get("complete"):
+                old["last_retry_error"] = audit.get("error", "")
+            else:
+                rows[i] = audit
+            return
+    rows.append(audit)
+
+
+def window_covered(state, source, first, last, edition) -> bool:
+    """True if complete official-query intervals cover every requested day."""
+    cursor = dt.date.fromisoformat(first)
+    end = dt.date.fromisoformat(last)
+    intervals = sorted(
+        (dt.date.fromisoformat(row["first"]),
+         dt.date.fromisoformat(row["last"]))
+        for row in state.get("coverage", [])
+        if row.get("source") == source
+        and row.get("edition", "current") == edition
+        and row.get("complete") and row.get("first") and row.get("last")
+    )
+    for a, b in intervals:
+        if a <= cursor <= b:
+            cursor = b + dt.timedelta(days=1)
+            if cursor > end:
+                return True
+    return cursor > end
+
+
 def ingest_index(state,source,date_windows,fetch=None,max_pages=30):
     """Store every official version by stable ID + serial, never first 500 only."""
     ledger=state.setdefault("catalog",{})
-    audits=state.setdefault("coverage",[])
     found=0
     for first,last in date_windows:
       for edition in (("1","2") if source in ("admrul","ordin") else ("1",)):
@@ -132,8 +166,14 @@ def ingest_index(state,source,date_windows,fetch=None,max_pages=30):
         for r in rows:
             key=api.uid(r["source"],r["stable_id"],r["serial"])
             if key not in ledger:found+=1
+            r["discovery_kind"] = ("official_law_change_history"
+                if ledger.get(key, {}).get("discovery_kind") ==
+                   "official_law_change_history" else "official_date_index")
             ledger[key]=r
-        audits.extend({**x.as_dict(),"edition":"history" if edition=="2" else "current"} for x in windows)
+        for window in windows:
+            record_coverage(state, {**window.as_dict(),
+                "edition":"history" if edition=="2" else "current"})
+    audits=state["coverage"]
     return {"new_versions":found,"total_versions":len(ledger),
             "complete_windows":sum(x["complete"] for x in audits),
             "incomplete_windows":[x for x in audits if not x["complete"]]}
@@ -185,5 +225,5 @@ def ingest_changes(state,days,fetch=None,max_pages=50):
         for record in rows:
             key=api.uid(record["source"],record["stable_id"],record["serial"])
             state.setdefault("catalog",{})[key]=record
-        state.setdefault("coverage",[]).append(audit.as_dict())
+        record_coverage(state, {**audit.as_dict(), "edition":"history"})
     return state

@@ -64,17 +64,30 @@ class PublicationContract(unittest.TestCase):
         queried = []
         def changes(state_arg, days, max_pages):
             requested_changes.extend(days)
+            state_arg["coverage"].append({
+                "source":"law_history","first":days[0],"last":days[0],
+                "complete":True,"edition":"history",
+            })
         def index(state_arg, source, windows, max_pages):
             queried.append((source, list(windows)))
-        with patch.object(pipeline.collect_index, "ingest_changes", changes), patch.object(
-            pipeline.collect_index, "ingest_index", index
-        ):
+        with patch.dict("os.environ", {"LAW_OC":"test-only"}, clear=False), patch.object(
+            pipeline.collect_index, "ingest_changes", changes
+        ), patch.object(pipeline.collect_index, "ingest_index", index):
             pipeline.scan_new(state, date)
         self.assertEqual(len(requested_changes), 8)
         self.assertEqual(requested_changes[0], "2026-11-10")
         self.assertIn(("admrul", [("2026-08-01", "2026-08-07")]), queried)
-        self.assertEqual(state["backfill_cursor_days"], 21)
+        self.assertEqual(state["backfill_cursor_days"], 168)
+        self.assertEqual(state["coverage_plan"], "official_rolling_three_years_v1")
         self.assertEqual(state["latest_official_scan"], "2026-11-10")
+
+    def test_missing_credentials_fail_before_data_mutation(self):
+        state={"catalog":{"key":{"title":"previous official record"}}}
+        with patch.dict("os.environ", {"LAW_OC":""}, clear=False):
+            with self.assertRaisesRegex(RuntimeError,"LAW_OC"):
+                pipeline.scan_new(state,dt.date(2026,11,10))
+        self.assertEqual(len(state["catalog"]),1)
+        self.assertNotIn("coverage_plan",state)
 
 
 if __name__ == "__main__":

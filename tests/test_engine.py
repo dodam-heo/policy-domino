@@ -51,6 +51,24 @@ class OfficialCollection(unittest.TestCase):
         self.assertFalse(stat.complete)
         self.assertIn("Page limit",stat.error)
 
+    def test_repeated_collection_does_not_duplicate_or_erase_successful_window(self):
+        day="2026-11-07"
+        result=ET.fromstring("<root><totalCnt>1</totalCnt>"+
+            row(5,day="20261107",source="admrul")+"</root>")
+        state={}
+        index.ingest_index(state,"admrul",[(day,day)],
+                           fetch=lambda *_args,**_kw:result)
+        self.assertEqual(len(state["coverage"]),2)
+        self.assertEqual(len(state["catalog"]),1)
+        def failed(*_args,**_kw):
+            raise RuntimeError("temporary API outage")
+        index.ingest_index(state,"admrul",[(day,day)],fetch=failed)
+        self.assertEqual(len(state["coverage"]),2)
+        self.assertTrue(all(x["complete"] for x in state["coverage"]))
+        self.assertEqual(len(state["catalog"]),1)
+        self.assertTrue(all(x.get("last_retry_error")
+                            for x in state["coverage"]))
+
     def test_source_index_not_filtered_by_sector_or_year(self):
         def fetch(target,**kw):
             self.assertEqual(kw["prmlYd"],"20261001~20261001")
@@ -104,6 +122,28 @@ class OfficialCollection(unittest.TestCase):
         found,health=index.scan_official_change_day("2026-11-07",fetch)
         self.assertEqual(len(found),1)
         self.assertFalse(health.complete)
+
+class AnnualSuccessor(unittest.TestCase):
+    def test_new_annual_notice_compares_to_official_previous_year(self):
+        current=rec(2,title="2027년도 가상 운영기준",
+                    day="2026-08-01",source="admrul")
+        current["revision"]="제정"
+        old=rec(3,title="2026년도 가상 운영기준",
+                day="2025-08-01",source="admrul")
+        found=event.annual_baseline(current,records=[old],
+                                    fetch=lambda *_a,**_k:self.fail("No API needed"))
+        self.assertEqual(found["serial"],old["serial"])
+        def load(record):
+            return {"별표 1": "월별 운영금액 2,000,000원" if record["serial"]==current["serial"]
+                    else "월별 운영금액 1,800,000원"}
+        e,contents=event.inspect(current,[old],load=load,
+            history=lambda *_a:None,
+            annual=lambda item:event.annual_baseline(item,records=[old],
+                            fetch=lambda *_a,**_k:self.fail("No API needed")))
+        self.assertEqual(e["verification"],"verified_annual_replacement")
+        self.assertEqual(e["comparison"]["kind"],"annual_successor")
+        self.assertNotEqual(e["changes"][0]["before"],e["changes"][0]["after"])
+
 
 class CausalRelationship(unittest.TestCase):
     def test_law_name_alone_is_not_a_domino(self):

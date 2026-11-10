@@ -112,8 +112,10 @@ def prepare_document_record(record,state):
     """
     def prior(r,records=None):
         return events.predecessor(r,state.get("catalog",{}).values())
+    def annual(r):
+        return events.annual_baseline(r,records=state.get("catalog",{}).values())
     return events.inspect(record,state.get("catalog",{}).values(),
-                          load=read_document,history=prior)
+                          load=read_document,history=prior,annual=annual)
 
 def output_groups(state):
     all_events=list(state.get("inspected",{}).values())

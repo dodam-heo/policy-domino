@@ -24,7 +24,7 @@ def audit() -> list[str]:
     for stale in ("watch.py", "impact_scanner.py", "law_changes.py"):
         if (ROOT / stale).exists():
             errors.append(f"Obsolete root watcher not archived: {stale}")
-    for module in (ROOT / "v4").glob("*.py"):
+    for module in (ROOT / "policy_domino" / "engine").glob("*.py"):
         if module.name.startswith("test_"):
             continue
         src = module.read_text("utf-8")

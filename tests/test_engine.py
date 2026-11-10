@@ -189,7 +189,7 @@ class CausalRelationship(unittest.TestCase):
         self.assertEqual(x["type"],"cited_changed_provision")
         self.assertTrue(x["affected_verified"])
         self.assertEqual(x["source_article"],"제35조")
-        self.assertFalse(x["implementation_verified"])
+        self.assertNotIn("implementation_verified",x)
 
     def test_unamended_subsection_is_not_an_affected_policy(self):
         old=("제35조(업무) ① 운영기관은 서류를 30일 이내 처리한다. "

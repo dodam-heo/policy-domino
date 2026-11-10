@@ -7,6 +7,7 @@ const hash="a".repeat(64), changedHash="b".repeat(64);
 const one={event_id:"v4:one"},two={event_id:"v4:two"},legacy={event_id:"legacy:one"};
 const official={
   generated_at:"2026-11-10T01:00:00Z",
+  events:[one,two,legacy],
   actions:[
     {id:"1",event_id:"v4:one",agency:"가상공공기관 가",law_title:"가상 직제",
       article:"제5조",basis:"https://www.law.go.kr/법령/가상",

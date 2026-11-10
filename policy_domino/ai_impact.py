@@ -237,7 +237,7 @@ def make_model_request(config: ModelConfig, context: dict) -> tuple[Request, boo
             "contents": [{"role": "user", "parts": [{"text": prompt}]}],
             "generationConfig": {
                 "responseFormat": {"text": {
-                    "mimeType": "application/json",
+                    "mimeType": "APPLICATION_JSON",
                     "schema": GEMINI_RESPONSE_SCHEMA,
                 }},
                 "maxOutputTokens": 4096,

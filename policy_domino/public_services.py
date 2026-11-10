@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import re
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -38,7 +39,9 @@ TRUSTED_DETAIL_HOSTS = ("gov.kr", "www.gov.kr", "m.gov.kr")
 
 def blank_catalog() -> dict:
     return {"schema": SCHEMA, "services": {}, "next_page": 1,
-            "total_reported": 0, "complete": False, "last_error": None}
+            "list_page_size": 1000, "detail_next_page": 1,
+            "detail_complete": False, "total_reported": 0,
+            "complete": False, "last_error": None}
 
 
 def normalize_text(value: object) -> str:
@@ -80,133 +83,169 @@ def normalize_service(row: dict) -> dict | None:
 
 
 def fetch_page(endpoint: str, key: str, params: dict, timeout: int = 22) -> dict:
+    """Swagger: query serviceKey or Authorization: Infuser <key>.
+
+    The fallback is used only for HTTP 401/403; no private credential or URL
+    appears in exceptions or GitHub Actions output.
+    """
     if endpoint not in ("serviceList", "serviceDetail"):
-        raise ValueError("Unsupported official service endpoint")
-    arguments = {**params, "serviceKey": key}
-    url = API + endpoint + "?" + urllib.parse.urlencode(arguments)
-    req = urllib.request.Request(url, headers={
-        "Accept": "application/json",
-        "User-Agent": "PolicyDomino/official-service-client",
-    })
+        raise ValueError("Unknown Gov24 endpoint")
+    headers = {"Accept": "application/json",
+               "User-Agent": "PolicyDomino/official-service-client"}
+    query = urllib.parse.urlencode({**params, "serviceKey": key})
+    request = urllib.request.Request(API + endpoint + "?" + query,
+                                     headers=headers)
+
+    def perform(req):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return response.read(3_000_001)
+        except urllib.error.HTTPError as exc:
+            raise RuntimeError(f"Gov24 API HTTP {exc.code}") from None
+        except (OSError, TimeoutError) as exc:
+            raise RuntimeError("Gov24 API network error (" +
+                               type(exc).__name__ + ")") from None
+
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            raw = resp.read(3_000_001)
-        if len(raw) > 3_000_000:
-            raise ValueError("Official service response too large")
+        raw = perform(request)
+    except RuntimeError as exc:
+        if str(exc) not in ("Gov24 API HTTP 401", "Gov24 API HTTP 403"):
+            raise
+        fallback = urllib.request.Request(
+            API + endpoint + "?" + urllib.parse.urlencode(params),
+            headers={**headers, "Authorization": "Infuser " + key})
+        try:
+            raw = perform(fallback)
+        except RuntimeError as other:
+            if str(other) in ("Gov24 API HTTP 401", "Gov24 API HTTP 403"):
+                raise RuntimeError(
+                    "Gov24 API HTTP 401/403: key not authorized or not yet "
+                    "activated for this service (both Swagger schemes tried)"
+                ) from None
+            raise
+    if len(raw) > 3_000_000:
+        raise RuntimeError("Gov24 API response exceeds safe size limit")
+    try:
         result = json.loads(raw)
-        if not isinstance(result, dict) or not isinstance(result.get("data"), list):
-            raise ValueError("Malformed official service API response")
-        return result
-    except (OSError, ValueError) as exc:
-        # Exception messages can include full URLs with a secret query key.
-        raise RuntimeError("Gov24 public-service API unavailable: " +
-                           type(exc).__name__) from None
+    except (ValueError, UnicodeDecodeError):
+        raise RuntimeError("Gov24 API returned non-JSON response") from None
+    if not isinstance(result, dict) or not isinstance(result.get("data"), list):
+        raise RuntimeError("Gov24 API returned unexpected JSON schema") from None
+    return result
 
 
 def write_catalog(catalog: dict) -> None:
     CATALOG.parent.mkdir(parents=True, exist_ok=True)
-    tmp = CATALOG.with_suffix(".tmp")
-    tmp.write_text(json.dumps(catalog, ensure_ascii=False, indent=2), "utf-8")
-    tmp.replace(CATALOG)
+    temp = CATALOG.with_suffix(".tmp")
+    temp.write_text(json.dumps(catalog, ensure_ascii=False, indent=2),
+                    encoding="utf-8")
+    temp.replace(CATALOG)
 
 
 def collect_services(previous: dict | None, key: str, max_pages: int = 40,
-                     max_details: int = 250,
+                     max_details: int = 4000,
                      fetch: Callable = fetch_page,
-                     checkpoint: Callable[[dict], None] | None = None,
-                     preferred_concepts: tuple[str, ...] = ()) -> dict:
-    """Resume full catalogue pagination; preserve prior official facts on errors.
+                     checkpoint: Callable[[dict], None] | None = None) -> dict:
+    """Two independent paginated source snapshots in one resumable catalogue.
 
-    Detail endpoint is queried for services whose latest catalogue rows lack
-    a serviceDetail snapshot. Paging never silently calls a sample a full list.
+    Always fetch the actual serviceDetail pages, not one conditional query
+    per service ID: this dataset may ignore condition filters.
     """
-    if not (1 <= max_pages <= 160 and 0 <= max_details <= 600):
-        raise ValueError("Invalid public-service collection bounds")
+    if not (1 <= max_pages <= 160 and 0 <= max_details <= 20000):
+        raise ValueError("Invalid Gov24 request budgets")
     if not key:
-        raise ValueError("Gov24 API key is required; do not publish mock services")
-    catalog = (dict(previous) if isinstance(previous, dict) and
-               previous.get("schema") == SCHEMA else blank_catalog())
+        raise ValueError("Gov24 key required; no fabricated services")
+    catalog = (dict(previous) if isinstance(previous, dict)
+               and previous.get("schema") == SCHEMA else blank_catalog())
     services = dict(catalog.get("services") or {})
-    page = max(1, int(catalog.get("next_page") or 1))
+    list_size, detail_size = 1000, 200
+    if int(catalog.get("list_page_size") or list_size) != list_size:
+        catalog["next_page"] = 1
+    catalog["list_page_size"] = list_size
+    catalog.setdefault("detail_next_page", 1)
+    catalog.setdefault("detail_complete", False)
     catalog["last_error"] = None
-    def checkpoint_now():
+    catalog["complete"] = False
+    page = max(1, int(catalog.get("next_page") or 1))
+
+    def persist():
         catalog["services"] = services
-        if checkpoint is not None:
+        if checkpoint:
             checkpoint(catalog)
+
     for _ in range(max_pages):
         try:
-            payload = fetch("serviceList", key, {"page": page, "perPage": 100})
+            payload = fetch("serviceList", key,
+                            {"page": page, "perPage": list_size})
         except (RuntimeError, ValueError) as exc:
             catalog["last_error"] = str(exc)
             break
-        rows = payload.get("data")
-        if not isinstance(rows, list):
-            catalog["last_error"] = "Malformed public-service page"
+        rows, total = payload["data"], int(payload.get("totalCount") or 0)
+        if (not rows and total > (page-1)*list_size) or (
+                len(rows) < list_size and total > page*list_size):
+            catalog["last_error"] = "Gov24 serviceList truncated requested page"
             break
-        for raw in rows:
-            row = normalize_service(raw)
+        for source_row in rows:
+            row = normalize_service(source_row)
             if row is None:
                 continue
             prior = services.get(row["id"], {})
-            # Unchanged detail remains valid; modified list row invalidates it.
             if prior.get("updated") == row["updated"]:
                 row["detail"] = prior.get("detail", {})
             services[row["id"]] = row
-        catalog["total_reported"] = max(
-            int(payload.get("totalCount") or 0),
-            int(catalog.get("total_reported") or 0)
-        )
-        if len(rows) < 100 or page * 100 >= int(payload.get("totalCount") or 0):
-            catalog["complete"] = True
-            page = 1
-            catalog["next_page"] = 1
-            checkpoint_now()
+        catalog["total_reported"] = max(total,
+                                        int(catalog.get("total_reported") or 0))
+        if page * list_size >= total or len(rows) < list_size:
+            catalog["complete"], catalog["next_page"] = True, 1
+            persist()
             break
         page += 1
         catalog["next_page"] = page
-        catalog["complete"] = False
-        checkpoint_now()
+        persist()
 
-    # A bounded round-robin detail queue gradually covers all legal references.
-    # Only source-provided title/owner and body can later create a policy edge.
-    detail_queue = [s for s in services.values() if not s.get("detail")]
-    # The queue order is evidence-dependent, not institution-name-dependent.
-    # Prioritize services containing a currently changed numerical standard.
-    detail_queue.sort(key=lambda s: not any(
-        matched_operating_rule(concept, s.get("criteria", "") + " " +
-                               s.get("eligible", ""))
-        for concept in preferred_concepts))
-    fetched_details = 0
-    for item in detail_queue:
-        if max_details <= 0:
-            break
+    if catalog["last_error"] or not services:
+        persist()
+        return catalog
+    detail_page = max(1, int(catalog.get("detail_next_page") or 1))
+    for _ in range(max_details // detail_size):
         try:
-            payload = fetch("serviceDetail", key, {"page": 1, "perPage": 1,
-                                                   "cond[서비스ID::EQ]": item["id"]})
+            payload = fetch("serviceDetail", key,
+                            {"page": detail_page, "perPage": detail_size})
         except (RuntimeError, ValueError) as exc:
             catalog["last_error"] = str(exc)
             break
-        max_details -= 1
-        fetched_details += 1
-        row = next((x for x in payload.get("data", [])
-                    if isinstance(x, dict) and
-                    normalize_text(x.get("서비스ID")) == item["id"]), None)
-        if row:
+        rows, total = payload["data"], int(payload.get("totalCount") or 0)
+        if (not rows and total > (detail_page-1)*detail_size) or (
+                len(rows) < detail_size and total > detail_page*detail_size):
+            catalog["last_error"] = "Gov24 serviceDetail truncated requested page"
+            break
+        for source_row in rows:
+            if not isinstance(source_row, dict):
+                continue
+            item = services.get(normalize_text(source_row.get("서비스ID")))
+            if item is None:
+                continue
             item["detail"] = {
-                "criteria": normalize_text(row.get("선정기준"))[:4000],
-                "eligible": normalize_text(row.get("지원대상"))[:3000],
-                "laws": normalize_text(row.get("법령"))[:3000],
-                "rules": normalize_text(row.get("행정규칙"))[:3000],
-                "ordinances": normalize_text(row.get("자치법규"))[:3000],
-                "agency": normalize_text(row.get("소관기관명")),
-                "reported_receiving_institution": normalize_text(row.get("접수기관명"))[:300],
-                "online_url": _public_link(row.get("온라인신청사이트URL")),
+                "criteria": normalize_text(source_row.get("선정기준"))[:4000],
+                "eligible": normalize_text(source_row.get("지원대상"))[:3000],
+                "laws": normalize_text(source_row.get("법령"))[:3000],
+                "rules": normalize_text(source_row.get("행정규칙"))[:3000],
+                "ordinances": normalize_text(source_row.get("자치법규"))[:3000],
+                "agency": normalize_text(source_row.get("소관기관명")),
+                "reported_receiving_institution": normalize_text(
+                    source_row.get("접수기관명"))[:300],
+                "online_url": _public_link(
+                    source_row.get("온라인신청사이트URL")),
             }
-        else:
-            item["detail"] = {"unavailable": True}
-        if fetched_details % 20 == 0:
-            checkpoint_now()
-    checkpoint_now()
+        if detail_page * detail_size >= total or len(rows) < detail_size:
+            catalog["detail_complete"], catalog["detail_next_page"] = True, 1
+            persist()
+            break
+        detail_page += 1
+        catalog["detail_next_page"] = detail_page
+        catalog["detail_complete"] = False
+        persist()
+    persist()
     return catalog
 
 
@@ -227,23 +266,14 @@ def refresh_from_env() -> dict:
         print("PUBLIC_SERVICE_CATALOG: no Gov24 API key; cached services retained")
         return current
     pages = int(os.getenv("PD_PUBLIC_SERVICE_PAGES", "40"))
-    details = int(os.getenv("PD_PUBLIC_SERVICE_DETAILS", "250"))
-    # Read last published official events only to rank fetching the open
-    # Gov24 detail records; this NEVER decides a service-policy link.
-    preferred = set()
-    published = ROOT / "site" / "classic" / "data.json"
-    try:
-        previous_events = json.loads(published.read_text("utf-8")).get("events", [])
-        for event in previous_events:
-            preferred.update(item["concept"] for item in changed_concepts(event))
-    except (ValueError, OSError, TypeError):
-        pass
+    details = int(os.getenv("PD_PUBLIC_SERVICE_DETAILS", "4000"))
     result = collect_services(current, key, max_pages=pages,
-                              max_details=details, checkpoint=write_catalog,
-                              preferred_concepts=tuple(sorted(preferred)))
+                              max_details=details, checkpoint=write_catalog)
     print("PUBLIC_SERVICE_CATALOG", json.dumps({
         "listed": len(result["services"]),
         "complete": result.get("complete", False),
+        "detail_complete": result.get("detail_complete", False),
+        "detail_next_page": result.get("detail_next_page", 1),
         "next_page": result.get("next_page", 1),
         "with_details": sum(bool(x.get("detail")) for x in result["services"].values()),
         "error": result.get("last_error"),
@@ -254,7 +284,7 @@ def refresh_from_env() -> dict:
 def named_standard(text: str) -> set[str]:
     # Service linkage uses terms from actual policy metadata, not a sector
     # whitelist. Isolated broad nouns cannot establish a variable identity.
-    parts = re.split(r"[\\s:·,/()\\[\\]{}]+", normalize_text(text))
+    parts = re.split(r"[\s:·,/()\[\]{}]+", normalize_text(text))
     result = set()
     for part in parts:
         for suffix in STANDARD_SUFFIXES:

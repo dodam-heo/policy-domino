@@ -36,14 +36,14 @@ function overviewText(e,all){
  const example=all.map(a=>a.source_change||a.what_to_change).find(Boolean);
  return example?String(example).slice(0,165):"공식 변경의 상세 내용은 확인 중입니다. 근거가 없는 내용을 생성하지 않습니다.";
 }
-function groupedActions(items){
+function groupedActions(items, aiFindings){
 if(!items.length)return "";
 const ordered=items.slice().sort((a,b)=>(a.agency||"").localeCompare(b.agency||"","ko")||(a.work||"").localeCompare(b.work||"","ko")||(a.article||"").localeCompare(b.article||"","ko"));
 const byAgency=new Map();
 for(const item of ordered){let agency=item.agency||"기관 확인 필요";if(!byAgency.has(agency))byAgency.set(agency,[]);byAgency.get(agency).push(item)}
-return [...byAgency].map(([agency,list])=>'<section class="impactAgencyGroup" data-agency="'+esc(agency)+'"><div class="groupHeading"><strong>'+esc(agency)+'</strong><span>변경 대상 '+list.length+'건</span></div>'+list.map(actionCard).join("")+'</section>').join("");
+return [...byAgency].map(([agency,list])=>'<details class="impactAgencyGroup" data-agency="'+esc(agency)+'"><summary class="groupHeading"><strong>'+esc(agency)+'</strong><span>변경 대상 '+list.length+'건 · 펼쳐보기</span></summary><div class="agencyTaskList">'+list.map(a=>actionCard(a,aiFindings)).join("")+'</div></details>').join("");
 }
-function actionCard(a){
+function actionCard(a, aiFindings){
 const changes=(a.changes||[]);
 const comparison=changes.length?'<div class="valueRows">'+changes.map(p=>'<div class="valueRow"><div class="oldValue"><small>기존</small>'+esc(p.before||"미확인")+'</div><div class="valueArrow">→</div><div class="newValue"><small>변경</small>'+esc(p.after||"미확인")+'</div></div>').join('')+'</div>':'<div class="actionSummaryText">'+esc(a.what_to_change||a.source_change||"공식 개정문에서 변경된 항목")+'</div>';
 const added=(a.new_items||[]).length?'<p class="taskDesc"><b>새로 추가할 항목:</b> '+esc(a.new_items.slice(0,6).join(" · "))+'</p>':'';
@@ -54,7 +54,7 @@ const func=esc(a.work||a.category||"업무 조치");
 return '<article class="action"><div class="actionTop"><div><div class="agency">'+name+'</div><div class="role">'+esc(a.agency_role||"이 변경을 적용하는 기관")+'</div></div>'+badgeStatus(a.status)+'</div>'+
 '<div class="locationTitle" style="color:#377387">검증 상태 · '+esc(sourceTag)+'</div><div class="locationTitle">어떤 업무를 검토하나?</div><div class="locationBox">'+func+' <span style="color:#90a7b6">›</span> '+task+'</div>'+
 '<div class="locationTitle">공식 변경 전후 내용</div>'+comparison+added+
-'<div class="instruction"><b>검토할 조치</b>'+esc(a.required_change||"실제 업무에 반영해야 할 변경사항 확인 필요")+'</div>'+
+'<div class="instruction"><b>검토할 조치</b>'+esc(a.required_change||"실제 업무에 반영해야 할 변경사항 확인 필요")+'</div>'+window.PolicyDominoAiView.renderForAction(a, aiFindings.get(a.id))+
 '<details class="evidenceDrawer"><summary>적용일 · 개정 근거 · 검증 정보 보기</summary>'+
 '<div class="evidence"><b>해당 기관의 개정 근거:</b> '+esc(a.law_title||"")+' · '+esc(a.article||"")+
 '<br><b>적용 시점:</b> '+esc(a.effective_date||"시행일 추가 확인")+
@@ -70,6 +70,7 @@ return ds.map(d=>'<div class="change"><div class="changeHead"><span>'+esc(d.arti
 }
 function detailHTML(e){
  const all=matchingActions(e),current=all.filter(a=>actionFilter==="all"||a.status===actionFilter);
+ const aiFindings=new Map(window.PolicyDominoAiView.verifiedCards(e,DATA,AI_DATA).map(f=>[f.action_id,f]));
  const countDone=all.filter(a=>a.status==="조치 확인").length;
  const countNot=all.filter(a=>a.status==="미조치 확인").length;
  const institutions=new Set(all.map(a=>a.agency).filter(Boolean)).size;
@@ -80,16 +81,17 @@ function detailHTML(e){
  const overview='<section class="changeOverview"><div class="overviewLabel">이번 변경에서 무엇을 확인했나</div><div class="overviewText">'+esc(overviewText(e,all))+'</div><div class="overviewFoot"><span>검토 대상 기관 '+institutions+'곳</span><span>근거 있는 검토 항목 '+all.length+'건</span>'+(dependent?'<span>연결된 하위규정 '+dependent+'건</span>':'')+'</div></section>';
  const facts='<div class="dateGroup"><div class="fact"><small>시행일</small><strong>'+fmtDate(e.effective_date)+'</strong></div><div class="fact"><small>제·개정 구분</small><strong>'+esc(e.revision||e.change_type||"변경")+'</strong></div></div>';
  const filters='<div class="statusFilters"><button class="statusFilter '+(actionFilter==="all"?"active":"")+'" data-status="all">전체 '+all.length+'</button>'+["조치 확인","미조치 확인","반영 확인 필요","최신 근거 재확인 필요"].map(s=>'<button class="statusFilter '+(actionFilter===s?"active":"")+'" data-status="'+esc(s)+'">'+esc(s)+' '+all.filter(a=>a.status===s).length+'</button>').join("")+'</div>';
- const impact='<section><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+agencyNavigator(current)+(current.length?groupedActions(current):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
+ const aiStatus=window.PolicyDominoAiView.statusLabel(e,DATA,AI_DATA);
+ const impact='<section class="agencyImpactSection"><div class="actionSummary"><h3 class="sectionHeading" style="margin:0">기관별 변경 검토사항</h3><div class="actionTotal">전체 '+all.length+'건 · 조치 확인 '+countDone+' · 미조치 확인 '+countNot+'</div></div><p class="smallNote" style="margin:0 0 12px">기관의 업무 운영에서 무엇을 변경해야 하는지 확인합니다. 법령 자체를 다시 개정하라는 뜻은 아닙니다.</p>'+filters+(aiStatus?'<p class="agencyAiProgress">'+esc(aiStatus)+' · 기관별 검토사항을 펼치면 AI의 추가 분석을 확인할 수 있습니다.</p>':'')+agencyNavigator(current)+(current.length?groupedActions(current,aiFindings):showEmpty(all.length?"해당 상태의 항목은 없습니다.":"기관별 영향 분석 결과가 아직 없습니다.",all.length?"다른 상태를 선택하세요.":"공식적으로 연결된 기관과 업무가 확인될 때 표시됩니다."))+'</section>';
  const legal='<details class="legalDetails"><summary>개정 이유·상세 조문·공식 근거 펼쳐 보기</summary>'+(e.amendment_reason?'<div class="legalReasonFull"><b>공식 개정 이유 및 주요내용</b><p style="margin-top:8px">'+esc(e.amendment_reason)+'</p></div>':'')+differences(e)+'<a class="refLink" href="'+validUrl(e.amendment_url||e.url)+'" target="_blank" rel="noopener">공식 원문 열기 ↗</a></details>';
- return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+window.PolicyDominoAiView.render(e,DATA,AI_DATA)+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
+ return header+'<div class="detailBody">'+overview+impactSummary+facts+'<div class="sectionGap"></div>'+impact+legal+'<div class="copyMeta">실제 적용 여부와 구체적 업무시스템명은 확인 근거가 있을 때만 확정합니다. 내부자료에 접근하지 않습니다.</div></div>';
 }
 function renderDetail(){
 const e=getEvent();
 $("detail").innerHTML=e?detailHTML(e):showEmpty("변경 사건을 선택해 주세요.","법령·정책 변경을 선택하면 기관별로 무엇을 바꿔야 하는지 한 번에 보여줍니다.");
 const back=$("back");if(back)back.onclick=()=>{$("layout").classList.remove("detailOpen");history.replaceState(null,"",location.pathname+location.search)};
 $("detail").querySelectorAll("[data-status]").forEach(b=>b.onclick=()=>{actionFilter=b.dataset.status;renderDetail()});
-$("detail").querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const target=[...$("detail").querySelectorAll("[data-agency]")].find(x=>x.dataset.agency===b.dataset.jump);if(target)target.scrollIntoView({behavior:"smooth",block:"start"})});
+$("detail").querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const target=[...$("detail").querySelectorAll("[data-agency]")].find(x=>x.dataset.agency===b.dataset.jump);if(target){target.open=true;target.scrollIntoView({behavior:"smooth",block:"start"})}});
 }
 function choose(id){
 selectedId=id;actionFilter="all";$("layout").classList.add("detailOpen");displayList();renderDetail();

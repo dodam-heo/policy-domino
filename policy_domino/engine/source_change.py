@@ -195,19 +195,23 @@ def concise_summary(comparisons: list[dict], count: int, *,
         # old/new wording rather than claiming an invented policy effect.
         # A concise side-by-side citation is more useful than 'content amended'.
         if old and new:
-            def excerpt(text: str) -> str:
-                return text[:105].rstrip() + ("…" if len(text) > 105 else "")
-            old_quote, new_quote = excerpt(old), excerpt(new)
-            if old_quote == new_quote:
-                matcher=difflib.SequenceMatcher(None,old,new,autojunk=False)
-                first=next(((a,c) for op,a,b,c,d in matcher.get_opcodes()
-                            if op!="equal"),None)
-                if first:
-                    a,c=first
-                    old_quote=("…" if a>35 else "")+old[max(0,a-35):a+70]+("…" if a+70<len(old) else "")
-                    new_quote=("…" if c>35 else "")+new[max(0,c-35):c+70]+("…" if c+70<len(new) else "")
-            if old_quote != new_quote:
-                detail += f" 종전 ‘{old_quote}’에서 개정 후 ‘{new_quote}’로 문구가 바뀌었습니다."
+            # Only quote comparable context around the actual changed clause,
+            # not the first 105 characters of identical legal boilerplate.
+            opcodes=[(a,b,c,d) for tag,a,b,c,d in
+                     difflib.SequenceMatcher(None,old,new,autojunk=False).get_opcodes()
+                     if tag!="equal"]
+            if opcodes:
+                a,b,c,d=max(opcodes,key=lambda op:(
+                    bool(re.search(r"\\d",old[op[0]:op[1]]+new[op[2]:op[3]])),
+                    min(30,(op[1]-op[0])+(op[3]-op[2]))))
+                def excerpt(text: str, beginning: int, ending: int) -> str:
+                    start=max(0,beginning-38)
+                    stop=min(len(text),max(ending,beginning+1)+45)
+                    return ("…" if start else "")+text[start:stop]+(
+                        "…" if stop<len(text) else "")
+                old_quote,new_quote=excerpt(old,a,b),excerpt(new,c,d)
+                if old_quote != new_quote:
+                    detail += f" 종전 ‘{old_quote}’에서 개정 후 ‘{new_quote}’로 문구가 바뀌었습니다."
     remaining = num - 1
     if remaining > 0:
         headings = []

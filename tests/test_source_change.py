@@ -51,6 +51,14 @@ class OfficialChangePresentationTests(unittest.TestCase):
         self.assertIn("197명",summary)
         self.assertNotIn("2 → 7",summary)
 
+    def test_long_legal_preamble_does_not_hide_the_changed_phrase(self):
+        before="제8조(구비서류) "+"구비서류는 담당기관에 제출하도록 한다. "*7+"신청기한은 30일이다."
+        after="제8조(구비서류) "+"구비서류는 담당기관에 제출하도록 한다. "*7+"신청기한은 20일이다."
+        clauses=source_change.source_pairs([make_change("제8조",before,after)])
+        text=source_change.concise_summary(clauses,1)
+        self.assertIn("30일",text)
+        self.assertIn("20일",text)
+
     def test_formal_punctuation_does_not_appear_as_substantive_rule(self):
         self.assertEqual(source_change.category(
             "일간신문, 방송으로 공고한다.", "일간신문·방송으로 공고한다."

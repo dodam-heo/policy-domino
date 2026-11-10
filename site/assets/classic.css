@@ -115,7 +115,7 @@ aside .empty{padding:38px 22px}
 /* Detail: a brief change overview, visible institution actions, optional law source */
 .changeOverview{margin:17px 0 14px;background:#f0f7fb;border:1px solid #d7e8f1;border-radius:12px;padding:15px}
 .overviewLabel{color:#17688a;font-weight:850;font-size:11px;margin-bottom:7px}
-.overviewText{color:#2d5063;font-size:13px;font-weight:600;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.overviewText{color:#2d5063;font-size:13px;font-weight:600;line-height:1.7;white-space:normal;overflow-wrap:anywhere}
 .overviewEffective{font-size:11px;color:#57778a;margin-top:9px;font-weight:700}
 .actionLawTitle{font-size:12px;font-weight:800;color:#29485e;line-height:1.55;min-width:0}
 .taskArrow{color:#90a7b6}

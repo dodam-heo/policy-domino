@@ -19,6 +19,7 @@ class PublicationSafeguards(unittest.TestCase):
         self.assertFalse(d["featured_events"])
         self.assertEqual(d["collection"]["pending_details"],1)
         self.assertFalse(d["collection"]["whole_corpus_complete"])
+        self.assertEqual(d["collection"]["latest_official_scan"],"")
 
     def test_wrong_article_citations_not_counted_as_dependents(self):
         a=r(1);b=r(2)

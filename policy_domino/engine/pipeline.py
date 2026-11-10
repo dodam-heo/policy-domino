@@ -322,6 +322,10 @@ def build(state,today):
             "incomplete_windows":len(incomplete),
             "recent_incomplete":incomplete[-8:],
             "backfill_cursor_days":state.get("backfill_cursor_days",0),
+            "latest_official_scan":state.get("latest_official_scan",""),
+            "last_official_scan_error":state.get("last_official_scan_error",""),
+            "retained_complete_clause_versions":sum(
+                bool(x.get("complete_source")) for x in state.get("verified_snapshots",{}).values()),
             "scope":"공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
             "whole_corpus_complete":False},
         "links":{

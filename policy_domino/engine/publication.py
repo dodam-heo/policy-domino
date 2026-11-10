@@ -66,6 +66,10 @@ def build(v4,service_catalog=None):
             "catalogue_candidates":checked.get("official_catalogue",0),
             "v4_official_index":checked.get("fresh_official_index",0),
             "pending_details":checked.get("pending_details",0),
+            "latest_official_scan":checked.get("latest_official_scan",""),
+            "last_official_scan_error":checked.get("last_official_scan_error",""),
+            "incomplete_windows":checked.get("incomplete_windows",0),
+            "retained_complete_clause_versions":checked.get("retained_complete_clause_versions",0),
             "public_service_catalogue":len(service_catalog.get("services", {})),
             "public_service_dependencies":len(service_links),
             "error":"기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."

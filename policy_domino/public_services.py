@@ -256,10 +256,14 @@ def changed_concepts(event: dict) -> list[dict]:
         if not (before and after and before != after and
                 (NUMBER.search(before) or NUMBER.search(after))):
             continue
+        # Each changed row must carry its own named variable. Do not borrow
+        # '중위소득' from an event title when this row changes an unrelated
+        # benefit amount within the same multi-standard announcement.
         candidates = named_standard(
             normalize_text(change.get("article")) + " " +
-            normalize_text(change.get("title")) + " " +
-            normalize_text(event.get("title")))
+            normalize_text(change.get("title")))
+        if not candidates and len(event.get("article_differences") or []) == 1:
+            candidates = named_standard(event.get("title", ""))
         for concept in candidates:
             result.append({"concept": concept, "before": before[:300],
                            "after": after[:300], "article": change.get("article", ""),

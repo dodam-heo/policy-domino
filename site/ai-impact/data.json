@@ -1,7 +1,7 @@
 {
   "schema": "policy-domino-llm-impact-v2",
-  "generated_at": "2026-11-10T14:57:01+00:00",
-  "source_generated_at": "2026-11-10T14:55:12+00:00",
+  "generated_at": "2026-11-10T15:10:28+00:00",
+  "source_generated_at": "2026-11-10T15:07:52+00:00",
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
@@ -696,7 +696,14 @@
           "analyzed_at": "2026-11-10T14:56:27+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "지방자치단체장 등의 범위에 '통합특별시장'을 추가하고, 한옥 건축물의 일조 확보를 위한 인접 대지경계선 이격거리 산정의 근거 조문을 정비했습니다.",
+        "source_fingerprint": "fd0d6fa8fdb4f781cae87b71",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:08:18+00:00",
+        "source_changes_used": 4
+      }
     },
     {
       "event_id": "v4:law|기후에너지환경부령|2026-08-27|00054",
@@ -784,7 +791,14 @@
           "analyzed_at": "2026-11-10T14:56:42+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "약사법 시행령 개정을 통해 유해사례 용어가 이상사례로 변경되었고, 약사회 및 한약사회 지부 설치 대상 지역에 통합특별시와 특별자치시가 추가되었다. 또한 국가필수의약품 안정공급 협의회의 명칭 정비 및 구성·운영 방식과 간사 지명 절차가 보완되었다.",
+        "source_fingerprint": "8340e575e28fc3cefa50fc91",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:08:41+00:00",
+        "source_changes_used": 8
+      }
     },
     {
       "event_id": "v4:law|재정경제부령|2026-11-06|00053",
@@ -1547,7 +1561,14 @@
           "analyzed_at": "2026-11-10T14:57:01+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "소비자생활협동조합법 시행령 개정을 통해 소비자생활협동조합 및 연합회 관련 소관 행정기관이 공정거래위원회 및 총리령에서 중소벤처기업부장관 및 중소벤처기업부령으로 변경되었으며, 사업구역의 생활권 범위에 통합특별시와 특별자치시가 추가되었습니다.",
+        "source_fingerprint": "e959841cfeacc2e8153b3a5d",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:09:10+00:00",
+        "source_changes_used": 8
+      }
     },
     {
       "event_id": "v4:law|교육부령|2026-11-06|00396",
@@ -3151,7 +3172,14 @@
       "eligible_actions": 0,
       "analyzed_actions": 0,
       "status": "awaiting_verified_evidence",
-      "findings": []
+      "findings": [],
+      "source_summary": {
+        "text": "대기환경보전법 시행령 개정으로 저공해자동차 등 충전시설에 대한 조치명령 제도가 마련되고 전담기구가 신설되었으며, 수소연료공급시설 설치계획의 승인 등 관련 조문 위치가 정비되고 위반행위 과태료 부과 근거 조항이 변경되었습니다.",
+        "source_fingerprint": "23c2021c379383577075096f",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:09:31+00:00",
+        "source_changes_used": 6
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-11-10|36809",
@@ -3160,7 +3188,14 @@
       "eligible_actions": 0,
       "analyzed_actions": 0,
       "status": "awaiting_verified_evidence",
-      "findings": []
+      "findings": [],
+      "source_summary": {
+        "text": "호스피스 대상 환자 및 의료기관이 제공·연계해야 하는 자료의 범위를 신설하고, 호스피스전문기관 평가 업무의 위탁 규정을 정비하며, 고유식별정보 및 건강정보를 처리할 수 있는 주체와 사무의 범위를 확대했습니다.",
+        "source_fingerprint": "2f7820139c339abbf380127d",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:09:44+00:00",
+        "source_changes_used": 4
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-11-10|36818",
@@ -276021,10 +276056,10 @@
     "awaiting_verified_evidence": 30498
   },
   "last_success_model": "gemini-3.5-flash-lite",
-  "last_error": null,
+  "last_error": "LLM API HTTP 503, provider=UNAVAILABLE. Provider temporary server problem.",
   "total_events": 30522,
   "eligible_events": 24,
   "total_verified_actions": 86,
   "total_analyzed_actions": 86,
-  "requests_this_run": 3
+  "requests_this_run": 6
 }

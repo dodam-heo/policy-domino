@@ -88,6 +88,37 @@ class OfficialChangePresentationTests(unittest.TestCase):
                 "article_differences":[{"before":"옛 문장","after":"새 문장"}]}
         self.assertGreater(source_summary_priority(high),source_summary_priority(recent))
 
+    def test_title_list_must_not_pass_ai_evidence_gate(self):
+        old="제7조(정원) 해당 부처의 정원 총계는 122명이다."
+        new="제7조(정원) 해당 부처의 정원 총계는 128명이다."
+        pair=source_change.source_pairs([make_change("가상부 직제 · 제7조",old,new)])
+        event={"event_id":"multi:1","title":"여러 기관 직제 동시 개정",
+               "source_verification":"verified_changed_clauses",
+               "article_differences":pair}
+        event["source_fingerprint"]=source_change.fingerprint(event)
+        title_only={"summary":"가상부 직제 및 여러 기관 직제 등 관련 법령을 개정하고 해당 규정들을 정비하였습니다.",
+                    "evidence_ids":["C1"]}
+        self.assertEqual(validate_source_summary(title_only,event),"")
+        meaningful={"summary":"제7조에서 정원 총계를 기존 122명에서 128명으로 변경하였습니다.",
+                    "evidence_ids":["C1"]}
+        self.assertTrue(validate_source_summary(meaningful,event))
+        self.assertEqual(validate_source_summary(
+            {"summary":meaningful["summary"],"evidence_ids":["C99"]},event),"")
+
+    def test_older_model_summaries_are_invalidated_by_quality_version(self):
+        before="제5조(공고) 기존 관보와 일간신문에서 모집 공고를 한다."
+        after="제5조(공고) 관보와 인터넷신문 및 방송으로 모집 공고를 한다."
+        evt={"event_id":"v4:old","title":"가상 모집 공고 규정",
+             "source_verification":"verified_changed_clauses",
+             "article_differences":source_change.source_pairs([make_change("제5조",before,after)])}
+        evt["source_fingerprint"]=source_change.fingerprint(evt)
+        data={"schema":"policy-domino-next-v1","events":[evt],"actions":[]}
+        old=build_catalog(data)
+        old["events"][0]["source_summary"]={"text":"직제 관련 여러 법령을 통합 정비했습니다.",
+                                             "source_fingerprint":evt["source_fingerprint"],
+                                             "model":"old"}
+        self.assertNotIn("source_summary",build_catalog(data,old)["events"][0])
+
     def test_ai_summary_must_bind_to_actual_source_evidence(self):
         before="제5조(공고) 조성계획안 공모는 관보와 일간신문에 공고하여야 한다."
         after="제5조(공고) 조성계획안 공모는 관보, 신문, 인터넷신문 및 방송에 공고하여야 한다."
@@ -99,7 +130,7 @@ class OfficialChangePresentationTests(unittest.TestCase):
         }
         event["source_fingerprint"]=source_change.fingerprint(event)
         self.assertEqual(len(source_summary_payload(event)["source_changes"]),1)
-        answer={"summary":"조성계획안 공모를 기존 관보와 일간신문에서 인터넷신문 및 방송까지 포함하도록 공고 매체를 확대합니다.","findings":[]}
+        answer={"summary":"조성계획안 공모를 기존 관보와 일간신문에서 인터넷신문 및 방송까지 포함하도록 공고 매체를 확대합니다.","evidence_ids":["C1"],"findings":[]}
         self.assertTrue(validate_source_summary(answer,event))
         invented={"summary":"조성계획안 공모 매체가 바뀌면서 2028년부터 공공기관 지급액이 999만원으로 인상됩니다.","findings":[]}
         self.assertEqual(validate_source_summary(invented,event),"")
@@ -107,7 +138,8 @@ class OfficialChangePresentationTests(unittest.TestCase):
         data={"schema":"policy-domino-next-v1","events":[event],"actions":[]}
         first=build_catalog(data)
         first["events"][0]["source_summary"]={
-            "text":answer["summary"],"model":"test","source_fingerprint":event["source_fingerprint"]}
+            "text":answer["summary"],"model":"test","quality_version":2,
+            "evidence_ids":["C1"],"source_fingerprint":event["source_fingerprint"]}
         reused=build_catalog(data,first)
         self.assertEqual(reused["events"][0]["source_summary"]["text"],answer["summary"])
         changed=copy.deepcopy(data)

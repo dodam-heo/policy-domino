@@ -138,7 +138,8 @@ def _source_heading(row: dict) -> str:
 
 
 def concise_summary(comparisons: list[dict], count: int, *,
-                    title: str = "", revision: str = "") -> str:
+                    title: str = "", revision: str = "",
+                    source_count: int = 1) -> str:
     """Deterministic Korean narrative for every event, without LLM availability.
 
     Express documented changes when full old/new official text exists.
@@ -147,7 +148,9 @@ def concise_summary(comparisons: list[dict], count: int, *,
     """
     title = norm(title)
     revision = norm(revision)
-    label = f"「{title}」" if title else "해당 정책"
+    multi = int(source_count or 1) > 1
+    label = (f"{int(source_count)}개 법령" if multi else
+             f"「{title}」" if title else "해당 정책")
     if not comparisons:
         if "폐지" in revision:
             return f"{label}의 폐지 사실이 공표됐습니다. 폐지에 따른 후속 업무 영향은 확인된 공식 근거를 바탕으로 구분합니다."
@@ -160,7 +163,14 @@ def concise_summary(comparisons: list[dict], count: int, *,
     if not changes:
         return f"{label}에서 공식 변경 문구를 확인했습니다. 실질적인 변경 범위는 조문별 원문에서 확인할 수 있습니다."
     num = max(int(count or 0), len(changes))
-    first = changes[0]
+    # Prefer a representative substantive change, not a punctuation edit
+    # or the first arbitrary administrative-rule annex.
+    ranked=sorted(changes,key=lambda row:(
+        row.get("type")!="표기 정비",
+        bool(_numeric_changes(norm(row.get("before")),norm(row.get("after")))),
+        len(norm(row.get("before")))+len(norm(row.get("after"))),
+    ),reverse=True)
+    first = ranked[0]
     heading = _source_heading(first)
     kind = first.get("type") or category(str(first.get("before","")),str(first.get("after","")))
     old, new = norm(first.get("before")), norm(first.get("after"))
@@ -211,7 +221,9 @@ def concise_summary(comparisons: list[dict], count: int, *,
         detail += (f" 함께 변경된 조문은 {remaining}개이며, "
                    + (f"{follow} 등의 변경이 포함됩니다." if follow else
                       "전체 신구 비교에서 확인할 수 있습니다."))
-    return (label + "의 " + detail) if title else detail
+    prefix=(f"{label}의 {num}개 변경 조문 중 " if multi else
+            f"{label}의 " if title else "")
+    return prefix + detail
 
 
 def fingerprint(event: dict) -> str:

@@ -34,8 +34,7 @@ def build(v4,service_catalog=None):
         actions.append(agency_service_action(event_by_id[edge["event_id"]], edge))
     event_ids={e["event_id"] for e in events}
     actions=[a for a in actions if a.get("event_id") in event_ids]
-    # Rank policy events first by VERIFIED operational work and cross-institution
-    # dependencies. Old V2 items remain clearly marked historic recheck.
+    # Rank by verified operational work and cross-institution dependencies.
     action_counts=collections.Counter(a["event_id"] for a in actions)
     for e in events:
         e.update(assess_impact_scope(e,actions))
@@ -82,9 +81,14 @@ def run():
     assert all(a["event_id"] in {e["event_id"] for e in result["events"]}
                for a in result["actions"])
     DEST.write_text(json.dumps(result,ensure_ascii=False,indent=2),"utf8")
+    # Reconcile model evidence with the exact current published event set.
+    # This is cache validation, not a new LLM invocation or a second publisher.
+    from policy_domino.ai_impact import DEST as AI_DEST, build_catalog, save_catalog
+    previous=json.loads(AI_DEST.read_text("utf8")) if AI_DEST.exists() else {}
+    save_catalog(build_catalog(result,previous))
     publish_pages()
     by_source=collections.Counter(a["evidence_scope"] for a in result["actions"])
-    print("CLASSIC_V2_UX_V4_SOURCE",
+    print("POLICY_DOMINO_PUBLISHED",
           json.dumps({"events":len(result["events"]),"actions":len(result["actions"]),
             "by_source":dict(by_source),
             "first_titles":[e["title"] for e in result["events"][:8]],

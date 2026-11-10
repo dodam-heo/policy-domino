@@ -52,11 +52,16 @@ aside .empty{padding:38px 22px}
 .legalDetails .change{margin:10px 0}
 @media(max-width:850px){.valueRow{grid-template-columns:minmax(0,1fr) 17px minmax(0,1fr)}}
 
-.impactAgencyGroup{border-top:1px solid #e0e7ed;margin-top:19px;padding-top:14px}
-.groupHeading{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:3px 2px 9px}
-.groupHeading strong{font-size:15px;color:#193d56}
+.impactAgencyGroup{border:1px solid #e0e7ed;border-radius:10px;margin-top:9px;scroll-margin-top:15px;background:#fff;overflow:hidden}
+.groupHeading{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:14px 15px;cursor:pointer;list-style:none;background:#f8fbfd}
+.groupHeading::-webkit-details-marker{display:none}
+.groupHeading::after{content:"⌄";color:#46758a;font-size:18px;font-weight:800;transition:transform .18s}
+.impactAgencyGroup[open] .groupHeading::after{transform:rotate(180deg)}
+.groupHeading strong{font-size:14px;color:#193d56;flex:1}
 .groupHeading span{color:#728998;font-size:11px}
-.groupHeading:first-child{margin-top:0}
+.impactAgencyGroup[open] .groupHeading{border-bottom:1px solid #e0e7ed}
+.agencyTaskList{padding:3px 13px 13px}
+.agencyTaskList .action:last-child{margin-bottom:0}
 .actionStatusNote{display:block;font-size:11px;color:#63839a;line-height:1.5;margin-top:6px}
 
 /* Detail: a brief change overview, visible institution actions, optional law source */
@@ -65,31 +70,27 @@ aside .empty{padding:38px 22px}
 .overviewText{color:#2d5063;font-size:13px;font-weight:600;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .overviewFoot{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
 .overviewFoot span{background:#fff;border:1px solid #deeaef;border-radius:7px;color:#526e81;padding:5px 8px;font-size:11px}
-.agencyNav{display:flex;overflow-x:auto;gap:7px;padding:1px 1px 11px;margin-bottom:10px;scrollbar-width:thin}
+.agencyNav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px;padding:2px 0}
 .agencyJump{border:1px solid #dae8ee;background:#f6fafc;color:#265976;font-size:11px;font-weight:770;border-radius:8px;padding:8px 10px;flex-shrink:0}
 .agencyJump:hover{background:#e4f1f6}
-.impactAgencyGroup{scroll-margin-top:15px}
+
 .legalDetails{background:#fbfcfd;border:1px solid #dfe8ee;border-radius:11px;padding:11px 13px;margin-top:20px}
 .legalDetails summary{font-size:13px;font-weight:800}
 .legalReasonFull{font-size:12px;line-height:1.8;background:#fff;color:#4f687d;border-radius:8px;padding:13px;margin:11px 0;white-space:pre-wrap}
-@media(max-width:850px){.changeOverview{padding:13px}.detailBody{padding-top:13px}.agencyNav{margin:0 -2px 12px;padding-bottom:10px}}
+@media(max-width:850px){.changeOverview{padding:13px}.detailBody{padding-top:13px}.agencyNav{margin:0 0 12px}.groupHeading{padding:12px}.agencyTaskList{padding:2px 8px 10px}}
 
 .evidenceDrawer{margin-top:12px;border:1px solid #e4ebf0;border-radius:9px;padding:9px 12px;background:#fafcfd}
 .evidenceDrawer summary{cursor:pointer;color:#426d84;font-weight:750;font-size:11px}
 .evidenceDrawer .evidence{margin-top:10px}
 .evidenceDrawer .verification{margin:9px 0 0}
 
-/* Model-generated hypotheses are visually distinct from verified legal evidence. */
-.aiAnalysis{margin:0 0 24px;padding:18px;border:1px solid #8eb3d0;border-radius:12px;background:#f4f9fd;color:#183a56}
-.aiAnalysisHead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.aiAnalysisHead strong{font-size:17px}
-.aiAnalysisHead span{padding:4px 9px;border-radius:999px;background:#dcebf7;font-size:11px;font-weight:700}
-.aiAnalysisMeta{margin-top:8px;color:#57718a;font-size:11px}
-.aiAnalysisSummary{line-height:1.7;margin:12px 0;font-size:14px}
-.aiImpactCard{padding:14px 0;border-top:1px solid #d2e3ef}
-.aiImpactCard>b{display:block;font-size:14px}
-.aiImpactLocation{font-size:11px;margin:5px 0 10px;color:#5c7587}
-.aiImpactLabel{font-size:11px;font-weight:800;color:#31658b;margin:8px 0 3px}
-.aiImpactCard p{font-size:13px;line-height:1.65;margin:0}
-.aiImpactCard a{display:inline-block;margin-top:8px;font-size:12px;color:#206596;text-decoration:underline}
-.aiAnalysisCaution{font-size:11px;line-height:1.6;color:#526c81;margin:12px 0 0}
+/* AI findings belong to their verified agency action, not a duplicate card feed. */
+.agencyAiProgress{margin:0 0 11px;color:#517388;font-size:11px;line-height:1.6}
+.aiActionNote{margin-top:12px;background:#f5f9fc;border:1px solid #d6e5ef;border-radius:9px}
+.aiActionNote summary{cursor:pointer;font-size:12px;font-weight:780;color:#285f7d;padding:11px 12px}
+.aiActionNote[open] summary{border-bottom:1px solid #d6e5ef}
+.aiActionBody{padding:11px 13px 13px}
+.aiActionLabel{font-size:11px;font-weight:800;color:#285f7d;margin:9px 0 4px}
+.aiActionLabel:first-child{margin-top:0}
+.aiActionBody p{font-size:12px;color:#37566c;line-height:1.7}
+.aiActionBody .aiActionProvenance{font-size:10px;color:#70899a;margin-top:10px;border-top:1px solid #e1ebf1;padding-top:8px}

@@ -13,6 +13,7 @@ from policy_domino.engine.classic_pages import publish_pages
 from policy_domino.engine.impact_scope import assess_impact_scope
 from policy_domino.engine.agency_actions import TRUSTED, group_event, unique_actions
 from policy_domino.engine.legacy_recheck import legacy_fallback
+from policy_domino.analysis_evidence import has_verified_action, evidence_identity
 
 ROOT=Path(__file__).resolve().parents[2]
 V4=ROOT/"site"/"v4"/"data.json"
@@ -40,6 +41,14 @@ def build(v4,legacy):
         e.update(assess_impact_scope(e,actions))
         e["impact_priority"]=e.get("impact_priority",0)+min(40,action_counts[e["event_id"]]*3)
     events.sort(key=lambda e:(e["impact_priority"],e.get("promulgated_at","")),reverse=True)
+    # Exactly one canonical evidence hash, shared by both the LLM cache and
+    # browser presentation. AI never writes into or overrides official facts.
+    event_index = {e["event_id"]: e for e in events}
+    for action in actions:
+        if has_verified_action(action) and action.get("event_id") in event_index:
+            action["evidence_fingerprint"] = evidence_identity(
+                event_index[action["event_id"]], action
+            )
     checked=v4.get("collection",{})
     return {
         "schema":"policy-domino-next-v1",

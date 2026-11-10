@@ -36,7 +36,7 @@ jobs:
   build:
     name: Collect, validate and publish policy evidence
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -59,10 +59,13 @@ jobs:
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.source == 'official')
         env:
           LAW_OC: ${{ secrets.LAW_OC || vars.LAW_OC }}
-          PD_V4_DETAILS: '20'
+          PD_PUBLIC_SERVICE_KEY: ${{ secrets.PD_PUBLIC_SERVICE_KEY }}
+          PD_PUBLIC_SERVICE_PAGES: ${{ vars.PD_PUBLIC_SERVICE_PAGES || '40' }}
+          PD_PUBLIC_SERVICE_DETAILS: ${{ vars.PD_PUBLIC_SERVICE_DETAILS || '120' }}
+          PD_V4_DETAILS: '60'
           PD_V4_DELEGATIONS: '5'
-          PD_V4_SEARCH_PARENTS: '2'
-          PD_V4_VERIFY_DEPENDENTS: '12'
+          PD_V4_SEARCH_PARENTS: '4'
+          PD_V4_VERIFY_DEPENDENTS: '24'
         run: python -m policy_domino --source official
       - name: Rebuild agency impact from persisted official evidence
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.source == 'stored')
@@ -120,6 +123,7 @@ jobs:
           git config user.name policy-domino-bot
           git config user.email policy-domino-bot@users.noreply.github.com
           git add data/v4_state.json site/v4/data.json site/classic/data.json site/classic/index.html site/impact/index.html
+          if [ -f data/public_services.json ]; then git add data/public_services.json; fi
           if [ -f site/ai-impact/data.json ]; then git add site/ai-impact/data.json; fi
           if ! git diff --cached --quiet; then
             git commit -m 'data: refresh official evidence and agency impacts [skip ci]'

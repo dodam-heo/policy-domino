@@ -141,13 +141,10 @@ assert.equal(old.actions[0].changes[0].after,'10일');
 assert.equal(old.events[0].event_id,'x');
 assert.throws(()=>normalizePolicyData({schema:'unknown'}),/지원되지 않는/);
 
-const html=fs.readFileSync('site/index.html','utf8');
-assert.match(html,/impact_adapter\.js/);
-const inline=html.match(/<script>\s*([\s\S]*?)<\/script>/);
-assert.ok(inline,'main agency-first script must be present');
-new vm.Script(inline[1],{filename:'site/index.html'});
-for(const section of ['agencyNavigator','groupedActions','어디를 바꾸나?','무엇이 달라지나?',
-  '필요한 조치','data-law="standards"','normalizePolicyData(d)','<details class="legalDetails"']){
-  assert.ok(html.includes(section),'Missing important original feature: '+section);
-}
-console.log('PASS: original agency-first controls, v2/v3 data models, before/after, verified/candidate agencies');
+// The landing page intentionally redirects to the canonical /impact/ route.
+// The full agency view is tested through site/classic/test_ui.cjs.
+const landing=fs.readFileSync('site/index.html','utf8');
+assert.match(landing,/\.\/impact\/\?ui=/);
+assert.match(landing,/location\.replace/);
+assert.ok(fs.existsSync('site/impact/index.html'));
+console.log('PASS: original v2/v3 policy data normalization and current impact landing route');

@@ -69,6 +69,29 @@ class OfficialCollection(unittest.TestCase):
         self.assertTrue(all(x.get("last_retry_error")
                             for x in state["coverage"]))
 
+    def test_official_versions_keep_original_first_seen_and_new_serials(self):
+        day="2026-11-07"
+        first=ET.fromstring("<root><totalCnt>1</totalCnt>"+
+            row(5,day="20261107",source="admrul")+"</root>")
+        state={}
+        index.ingest_index(state,"admrul",[(day,day)],
+                           fetch=lambda *_args,**_kw:first)
+        old=next(iter(state["catalog"].values()))
+        seen=old["first_seen_at"]
+        old["source_check_note"]="verified source provenance"
+        index.ingest_index(state,"admrul",[(day,day)],
+                           fetch=lambda *_args,**_kw:first)
+        self.assertEqual(len(state["catalog"]),1)
+        self.assertEqual(next(iter(state["catalog"].values()))["first_seen_at"],seen)
+        self.assertEqual(next(iter(state["catalog"].values()))["source_check_note"],
+                         "verified source provenance")
+        newer=ET.fromstring("<root><totalCnt>1</totalCnt>"+
+            row(6,day="20261107",source="admrul")+"</root>")
+        index.ingest_index(state,"admrul",[(day,day)],
+                           fetch=lambda *_args,**_kw:newer)
+        self.assertEqual(len(state["catalog"]),2)
+        self.assertTrue(all(row.get("first_seen_at") for row in state["catalog"].values()))
+
     def test_source_index_not_filtered_by_sector_or_year(self):
         def fetch(target,**kw):
             self.assertEqual(kw["prmlYd"],"20261001~20261001")

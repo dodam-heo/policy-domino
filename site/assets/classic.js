@@ -283,7 +283,7 @@ function detailHTML(e){
  '<h2 class="detailTitle">'+esc(e.title||"변경사항")+'</h2>'+
  '<div class="detailMeta">공포·확정 '+fmtDate(e.promulgated_at||e.change_date)+esc(provenance)+'</div></div>';
  const hasAiSummary=Boolean(verifiedSourceSummary(e));
- const overview='<section class="changeOverview"><div class="overviewLabel">핵심 변경 개요</div>'+
+ const overview='<section class="changeOverview"><div class="overviewLabel">변경 핵심</div>'+
  '<div class="overviewText">'+esc(overviewText(e))+'</div>'+
  '<div class="overviewProof">'+(hasAiSummary?'AI 보조 설명 · 공식 변경 조문에 연결됨':
  '공식 변경 조문의 구조적 개요 · 설명 확인 중')+'</div>'+

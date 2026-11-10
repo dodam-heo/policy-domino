@@ -44,9 +44,9 @@ jobs:
         run: python -m policy_domino.audit
       - name: Validate production package, official adapters and V4 impact contracts
         run: |
-          python -m compileall -q policy_domino v4
+          python -m compileall -q policy_domino tests
           python -m unittest discover -s policy_domino -p 'test_*.py' -v
-          python -m unittest discover -s v4 -p 'test_*.py' -v
+          python -m unittest discover -s tests -p 'test_*.py' -v
           node site/v4/test_ui.cjs
           node site/classic/test_ui.cjs
           node site/test_adapter.cjs
@@ -64,7 +64,7 @@ jobs:
         run: python -m policy_domino --source stored
       - name: Validate generated public data and both user routes
         run: |
-          python -m unittest discover -s v4 -p 'test_*.py' -v
+          python -m unittest discover -s tests -p 'test_*.py' -v
           node site/classic/test_ui.cjs
           node site/test_adapter.cjs
           python - <<'PY'

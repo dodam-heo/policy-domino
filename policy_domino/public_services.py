@@ -24,15 +24,15 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "public_services.json"
 API = "https://api.odcloud.kr/api/gov24/v3/"
 SCHEMA = "policy-domino-public-services-v1"
-NUMBER = re.compile(r"(?<![\\d])\\d[\\d,]*(?:\\.\\d+)?\\s*(?:원|만원|%)")
-RATIO = re.compile(r"(?:\\d{1,3}(?:\\.\\d+)?\\s*(?:%|퍼센트)|\\d(?:\\.\\d+)?\\s*배)")
+NUMBER = re.compile(r"(?<![\d])\d[\d,]*(?:\.\d+)?\s*(?:원|만원|%)")
+RATIO = re.compile(r"(?:\d{1,3}(?:\.\d+)?\s*(?:%|퍼센트)|\d(?:\.\d+)?\s*배)")
 # Generic *concept types*, never institution/program names. Require an actual
 # named standard; standalone vague words such as '지원', '급여' cannot link.
-STANDARD = re.compile(
-    r"[가-힣]{2,22}?(?:중위소득|최저보장수준|산정기준|선정기준|기준소득|"
-    r"소득인정액|지급기준|소득기준)")
+STANDARD_SUFFIXES = ("중위소득", "소득인정액", "최저보장수준",
+                     "산정기준", "선정기준", "기준소득", "지급기준", "소득기준")
+GENERIC_STANDARDS = {"산정기준", "선정기준", "지급기준", "소득기준", "기준소득"}
 LAW_TITLE = re.compile(r"「([^」]{3,110})」")
-ARTICLE = re.compile(r"제\\s*\\d+\\s*조(?:의\\s*\\d+)?")
+ARTICLE = re.compile(r"제\s*\d+\s*조(?:의\s*\d+)?")
 TRUSTED_DETAIL_HOSTS = ("gov.kr", "www.gov.kr", "m.gov.kr")
 
 
@@ -228,11 +228,24 @@ def refresh_from_env() -> dict:
 
 
 def named_standard(text: str) -> set[str]:
-    text = normalize_text(text)
-    terms = {m.group() for m in STANDARD.finditer(text)}
-    # Avoid matching a long arbitrary title prefix instead of the named
-    # variable. Suffix-similarity alone is not enough for a proof.
-    return {v for v in terms if len(v) >= 4}
+    # Service linkage uses terms from actual policy metadata, not a sector
+    # whitelist. Isolated broad nouns cannot establish a variable identity.
+    parts = re.split(r"[\\s:·,/()\\[\\]{}]+", normalize_text(text))
+    result = set()
+    for part in parts:
+        for suffix in STANDARD_SUFFIXES:
+            if suffix in part:
+                if suffix in GENERIC_STANDARDS:
+                    # e.g. 급여선정기준, not the standalone '선정기준'
+                    lead = part.split(suffix)[0].rstrip("0123456789")
+                    if len(lead) < 2 or lead.endswith("년도"):
+                        continue
+                    concept = lead[-12:] + suffix
+                else:
+                    concept = suffix
+                if len(concept) >= 4:
+                    result.add(concept)
+    return result
 
 
 def changed_concepts(event: dict) -> list[dict]:
@@ -257,8 +270,8 @@ def changed_concepts(event: dict) -> list[dict]:
 def matched_operating_rule(concept: str, text: str) -> str:
     """A named standard must participate in an actual threshold formula."""
     normalized = normalize_text(text)
-    needle = re.sub(r"\\s+", "", concept)
-    compact = re.sub(r"\\s+", "", normalized)
+    needle = re.sub(r"\s+", "", concept)
+    compact = re.sub(r"\s+", "", normalized)
     if len(needle) < 4:
         return ""
     pos = compact.find(needle)

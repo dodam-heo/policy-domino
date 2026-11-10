@@ -25,6 +25,7 @@ const official={
 const card=(id,agency,article,law,hashValue,basis)=>({
   action_id:id,agency,article,law_title:law,basis_url:basis,
   evidence_fingerprint:hashValue,model:"gemini-3.5-flash-lite",
+  analyzed_at:"2026-11-10T07:21:39Z",
   operational_impact:"변경된 기준에 의해 인사 업무에 영향이 있습니다.",
   review_task:"관련 업무 설정과 정원 대장을 확인합니다."
 });
@@ -40,10 +41,11 @@ const catalog={schema:ai.SCHEMA,source_generated_at:official.generated_at,events
 assert.equal(ai.verifiedCards(one,official,catalog).length,1);
 assert.equal(ai.verifiedCards(two,official,catalog).length,1);
 assert.equal(ai.verifiedCards(legacy,official,catalog).length,0);
-assert.equal(ai.statusLabel(one,official,catalog),"AI 분석 1/2");
-assert.equal(ai.statusLabel(two,official,catalog),"AI 분석 1/1");
-assert.equal(ai.statusLabel(legacy,official,catalog),"AI 근거 확인 대기");
-assert.match(ai.renderForAction(official.actions[0],c1),/AI 업무 영향·추가 검토사항 보기/);
+assert.equal(ai.latestAnalyzedAt(official,catalog),"2026-11-10T07:21:39Z");
+assert.equal(ai.latestAnalyzedAt(official,null),null);
+assert.equal(ai.latestAnalyzedAt(official,{...catalog,schema:"old-v1"}),null);
+assert.match(ai.renderForAction(official.actions[0],c1),/AI 검토 의견/);
+assert.ok(!ai.renderForAction(official.actions[0],c1).includes("Gemini 등 실제 분석 모델"));
 assert.match(ai.renderForAction(official.actions[0],c1),/관련 업무 설정/);
 assert.equal(ai.renderForAction(official.actions[1],c1),"");
 assert.equal(ai.renderForAction(official.actions[0],null),"");
@@ -61,6 +63,7 @@ const updated={...official,actions:official.actions.map(x=>
   x.id==="1"?{...x,evidence_fingerprint:changedHash}:x
 )};
 assert.equal(ai.verifiedCards(one,updated,catalog).length,0);
+assert.equal(ai.latestAnalyzedAt(updated,catalog),"2026-11-10T07:21:39Z");
 assert.equal(ai.verifiedCards(two,updated,catalog).length,1);
 assert.equal(ai.progress(one,updated,catalog).state,"pending");
 assert.equal(ai.verifiedCards(one,official,{
@@ -91,7 +94,7 @@ assert.ok(app.includes("window.PolicyDominoAiView.renderForAction(a, aiFindings.
 assert.ok(app.includes('<details class="impactAgencyGroup"'));
 assert.ok(app.includes("target.open=true"));
 assert.ok(app.includes("기관별 변경 검토사항"));
-assert.ok(app.includes("window.PolicyDominoAiView.statusLabel(e,DATA,AI_DATA)"));
+assert.ok(app.includes("window.PolicyDominoAiView.latestAnalyzedAt(DATA,AI_DATA)"));
 assert.ok(app.includes('candidate?.schema==="policy-domino-llm-impact-v2"'));
 assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
 
@@ -149,12 +152,16 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
   vm.runInNewContext(app,context,{filename:"classic.js"});
   await new Promise(resolve=>setImmediate(resolve));
   const html=element("detail").innerHTML;
-  assert.match(html,/이번 변경에서 무엇을 확인했나/);
+  assert.match(html,/변경 핵심/);
   assert.match(html,/전문직공무원 정원의 배정 및 운영 특례/);
   assert.match(html,/기관별 변경 검토사항/);
-  assert.match(html,/전체 31건 · 조치 확인 0 · 미조치 확인 0/);
+  assert.match(html,/전체 31/);
+  assert.match(html,/조치 확인 0/);
+  assert.match(html,/미조치 확인 0/);
   assert.match(html,/반영 확인 필요 31/);
-  assert.match(html,/AI 분석 31\/31/);
+  assert.ok(!html.includes("AI 분석 31/31"),"Model-call counters should not appear");
+  assert.ok(!html.includes("검증 상태 · "));
+  assert.ok(!html.includes("법령 자체를 다시 개정하라는 뜻"));
   assert.ok(!html.includes('class="aiAnalysis"'));
   assert.ok(!html.includes("AI 기관별 영향 분석"));
   assert.equal((html.match(/class="impactAgencyGroup"/g)||[]).length,3);
@@ -167,9 +174,12 @@ assert.ok(!app.includes("candidate.source_generated_at===d.generated_at"));
   assert.ok(html.includes('data-jump="국가데이터처"'));
   assert.ok(!html.includes('<article class="aiImpactCard"'));
   const firstGroup=html.slice(groupIndex,html.indexOf("</details>",groupIndex));
-  assert.ok(firstGroup.includes("AI 업무 영향·추가 검토사항 보기"),
+  assert.ok(firstGroup.includes("AI 검토 의견"),
     "LLM details must be nested in a review task within the agency group");
-  console.log("AGENCY_FIRST_DETAIL_PASS: one core summary, 31 tasks nested inside 3 collapsed agency groups, status filters retained");
+  assert.match(element("sourceTitle").textContent,/정책 변경 1건 · 기관별 검토사항 31건/);
+  assert.match(element("sourceDesc").textContent,/AI 검토 반영 · 마지막 분석/);
+  assert.match(element("lastChecked").textContent,/6시간 간격 자동 점검 설정/);
+  console.log("AGENCY_FIRST_DETAIL_PASS: 31 tasks nested by agency, one core summary, concise update timestamps and status filters");
 })().catch(err=>{console.error(err);process.exitCode=1});
 
 console.log("AI_CATALOG_VIEW_PASS: every event, partial results, unchanged cache reuse and source-level invalidation");

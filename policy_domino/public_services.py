@@ -334,3 +334,60 @@ def service_edges(events: list[dict], catalog: dict,
                 if len(edges) >= max_edges:
                     return edges
     return edges
+
+
+def agency_service_action(event: dict, edge: dict) -> dict:
+    """Create one program-specific action from two independent official facts.
+
+    Parent change is law.go.kr; operation of the program is Gov24's named
+    owner and live published eligibility criterion. No hardcoded agency,
+    program, obligation or implementation status is inserted.
+    """
+    raw_id = "|".join((event["event_id"], edge["service_id"],
+                       edge["policy_concept"]))
+    uid = hashlib.sha256(raw_id.encode("utf-8")).hexdigest()[:20]
+    parent_current = event.get("presentation_source") == "v4_official_source"
+    parent_evidence = source_url(edge.get("policy_source_url"))
+    if parent_evidence == "https://www.law.go.kr":
+        raise ValueError("Public-service relation has no verified policy citation")
+    source_kind = ("service_formula_dependency_verified" if parent_current
+                   else "legacy_service_dependency_pending_recheck")
+    # These values are the PARENT base standard, not a claimed pre/post
+    # threshold in the agency's own published programme.
+    before, after = edge["policy_before"], edge["policy_after"]
+    return {
+        "id": "svc:" + uid,
+        "event_id": event["event_id"],
+        "agency": edge["agency"],
+        "agency_code": edge["agency_code"],
+        "agency_role": "공공서비스 소관기관(정부24 공식 등록)",
+        "service_id": edge["service_id"],
+        "service": edge["service"],
+        "service_url": edge["service_url"],
+        "service_evidence_source": "gov24_api",
+        "service_evidence_rule": edge["source_rule"],
+        "service_criteria": edge["operating_rule"],
+        "service_record_updated": edge["source_updated"],
+        "work": "공공서비스 선정·지원기준",
+        "target_location": edge["service"] + " · " + edge["policy_concept"],
+        "what_to_change": edge["policy_concept"] + ": " + before + " → " + after,
+        "changes": [{"before": before, "after": after}],
+        "required_change": (edge["service"] + " · " + edge["policy_concept"] +
+                            " 기준 변경: " + before + " → " + after),
+        "article": edge["policy_article"],
+        "law_title": event.get("title", ""),
+        "effective_date": event.get("effective_date", ""),
+        "basis": parent_evidence,
+        "impact_link_basis": "행정안전부 공공서비스 선정기준의 " +
+                             edge["policy_concept"] + " 비율·산식 인용",
+        "status": ("반영 확인 필요" if parent_current
+                   else "최신 근거 재확인 필요"),
+        "confidence": ("공식 정책 기준값·정부24 사업 선정기준 교차 확인"
+                       if parent_current else
+                       "이전 공식 기준액·정부24 사업 선정기준 교차 확인"),
+        "evidence_scope": source_kind,
+        "verification_note": (
+            "공식 서비스 선정기준이 변경된 기준변수를 이용하는 관계를 확인. "
+            "실제 기관의 공고·업무시스템 반영 여부는 미확인."
+        ),
+    }

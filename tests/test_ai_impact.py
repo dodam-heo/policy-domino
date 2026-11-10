@@ -134,6 +134,9 @@ class AllEventAITests(unittest.TestCase):
                               model_request=lambda conf,context:actual_shaped_answer(context),
                               interval=0,pause=lambda _:None)
         self.data["actions"][1]["changes"][0]["after"]="정원 999명으로 변경"
+        # The canonical source publisher recomputes fingerprints after a legal change.
+        self.data["actions"][1]["evidence_fingerprint"]=evidence_identity(
+            self.data["events"][0],self.data["actions"][1])
         catalog=build_catalog(self.data,first)
         self.assertEqual(catalog["total_analyzed_actions"],8)
         self.assertEqual(catalog["status_counts"]["partial"],1)

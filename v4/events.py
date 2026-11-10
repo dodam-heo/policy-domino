@@ -7,8 +7,8 @@ explicitly qualified comparison. Never use one act's numbers for another.
 """
 from __future__ import annotations
 import re,datetime as dt,hashlib
-from v2 import collector as api
-from v3 import semantic_diff
+from policy_domino import official_api as api
+from policy_domino import semantic_diff
 
 ACTORS=re.compile(
  r"(?<![가-힣])([가-힣]{2,35}(?:부장관|청장|처장|위원장|공단|공사|"

@@ -299,7 +299,8 @@ def group_event(g):
             })
     # Structured facts, NOT cut-and-paste word fragments posing as summaries.
     e["change_summary"]=source_change.concise_summary(
-        e["article_differences"],e["change_count"])
+        e["article_differences"],e["change_count"],
+        title=e["title"],revision=e["revision"])
     e["source_fingerprint"]=source_change.fingerprint(e)
     actions=unique_actions(actions)
     # Source-backed direct actors for general non-organization law events are

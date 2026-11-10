@@ -19,12 +19,27 @@ class OfficialChangePresentationTests(unittest.TestCase):
         self.assertEqual(len(changes),1)
         summary=source_change.concise_summary(changes,1)
         self.assertIn("전산정보처리조직",summary)
-        self.assertIn("내용 개정",summary)
+        self.assertIn("규정을 개정",summary)
         self.assertNotIn("따라 국토교통부장관이 → 따른",summary)
         rendered="".join(p["text"] for p in changes[0]["preview"]["after"])
         self.assertTrue(rendered)
         self.assertTrue(any(p["changed"] for p in changes[0]["preview"]["after"]))
 
+
+    def test_factual_fallback_exists_without_ai_and_does_not_invent_results(self):
+        no_ai=source_change.concise_summary([],0,title="가상 급여 지원 기준",revision="일부개정")
+        self.assertIn("가상 급여 지원 기준",no_ai)
+        self.assertIn("원문",no_ai)
+        self.assertNotIn("100만원",no_ai)
+        made=source_change.concise_summary([],0,title="가상 규정",revision="제정")
+        self.assertIn("새로 제정",made)
+        old="제2조(정원) 정원 총계는 192명이다."
+        new="제2조(정원) 정원 총계는 197명이다."
+        changes=source_change.source_pairs([make_change("제2조",old,new)])
+        output=source_change.concise_summary(changes,1,title="가상 직제",revision="일부개정")
+        self.assertIn("192명",output)
+        self.assertIn("197명",output)
+        self.assertIn("가상 직제",output)
     def test_operational_amount_compares_whole_values_with_source_heading(self):
         old="제2조(정원) 가상청 공무원 정원 총계는 192명이다."
         new="제2조(정원) 가상청 공무원 정원 총계는 197명이다."

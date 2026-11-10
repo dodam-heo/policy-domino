@@ -77,6 +77,42 @@ class PublicationSafeguards(unittest.TestCase):
         state["retry_after"][events.key(record)]="2026-11-15"
         self.assertEqual(pipeline.pick_work(state,dt.date(2026,11,10),10),[])
 
+
+    def test_verified_source_cache_reuses_current_and_prior_versions(self):
+        import tempfile
+        from unittest.mock import patch
+        previous=r(1,date="2026-09-01")
+        current=dict(previous,serial="101",published_at="2026-11-10")
+        calls=[]
+        def fetch(item):
+            calls.append(item["serial"])
+            n="197명" if item["serial"]=="101" else "192명"
+            return {"제2조":"제2조(정원) 총계는 "+n+"이다."}
+        state={"catalog":{events.key(previous):previous,events.key(current):current},
+               "verified_snapshots":{}}
+        with patch.object(pipeline,"read_document",fetch),patch.object(
+                events,"predecessor",side_effect=lambda *_args,**_kwargs:previous):
+            result,clauses=pipeline.prepare_document_record(current,state)
+            self.assertEqual(result["verification"],"verified_changed_clauses")
+            self.assertEqual(len(calls),2)
+            self.assertEqual(len(state["verified_snapshots"]),2)
+            self.assertTrue(all(x.get("complete_source") for x in state["verified_snapshots"].values()))
+            second,_=pipeline.prepare_document_record(current,state)
+            self.assertEqual(second["verification"],"verified_changed_clauses")
+            self.assertEqual(len(calls),2)
+
+    def test_failed_or_partial_source_never_overwrites_saved_complete_text(self):
+        from unittest.mock import patch
+        original=r(1)
+        state={"catalog":{events.key(original):original},"verified_snapshots":{}}
+        with patch.object(pipeline,"read_document",return_value={"제1조":"정원 15명"}),patch.object(
+            events,"predecessor",return_value=None):
+            pipeline.prepare_document_record(original,state)
+        self.assertIn(events.key(original),state["verified_snapshots"])
+        with patch.object(pipeline,"read_document",side_effect=RuntimeError("API unavailable")),patch.object(
+            events,"predecessor",return_value=None):
+            _,again=pipeline.prepare_document_record(original,state)
+        self.assertIn("제1조",again)
     def test_one_promulgation_does_not_join_different_law_types(self):
         a=events.inspect(r(1),load=lambda r:{"제1조":"a"},
             history=lambda r,x:None,annual=lambda r:None)[0]

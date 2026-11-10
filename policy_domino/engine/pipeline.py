@@ -30,80 +30,106 @@ def save_json(path,item):
     temporary.replace(path)
 
 def scan_new(state,today,checkpoint=None):
-    """Authenticated, sector-neutral discovery across a rolling three years."""
-    # The official DRF identifier is resolved centrally by official_api.
-    # Never erase an existing cursor or catalogue when upgrading the collector.
+    """Bounded overlapping discovery and resumable sector-neutral backfill.
+
+    Each six-hour run prioritizes newly promulgated law/rule/ordinance records,
+    retries unconfirmed pages, fills past-year gaps, and advances an independent
+    long-term cursor. The official version catalogue is never reset.
+    """
     api.official_oc()
-    state["coverage_plan"]="official_rolling_all_sources_v2"
-    state.setdefault("backfill_cursor_days",0)
-    # An old append-only ledger may contain many duplicate failed attempts.
+    state["coverage_plan"]="official_incremental_rolling_sources_v3"
+    state.setdefault("backfill_cursor_days",365)
+    state.setdefault("recent_backfill_cursor_days",8)
     history=list(state.get("coverage",[]))
     state["coverage"]=[]
     for audit in history:
         collect_index.record_coverage(state,audit)
     state["_source_pages_confirmed"]=0
-    budget=max(1,min(12,int(os.getenv("PD_BACKFILL_WINDOWS_PER_RUN","6"))))
-    span=max(7,min(31,int(os.getenv("PD_BACKFILL_WINDOW_DAYS","28"))))
+
     horizon=max(365,min(10950,int(os.getenv("PD_HISTORY_DAYS","3650"))))
+    span=max(7,min(31,int(os.getenv("PD_BACKFILL_WINDOW_DAYS","28"))))
+    budget=max(1,min(4,int(os.getenv("PD_BACKFILL_WINDOWS_PER_RUN","2"))))
+    retry_budget=max(1,min(8,int(os.getenv("PD_RETRY_WINDOWS_PER_RUN","2"))))
+    def checkpoint_if_possible():
+        if checkpoint:checkpoint(state)
+
+    # Recheck the last two dates at every run. Older dates inside an eight-day
+    # overlap are queried only if official coverage has never been confirmed.
     recent=[str(today-dt.timedelta(days=i)) for i in range(8)]
-    # The law-history feed is supplemental; legal rules and local ordinances
-    # are indexed independently, including enacted/repealed rules.
-    collect_index.ingest_changes(state,recent,max_pages=20)
-    if checkpoint:
-        checkpoint(state)
-    recent_window=[(recent[-1],recent[0])]
+    recent_days=[day for i,day in enumerate(recent)
+                 if i<2 or not collect_index.window_covered(
+                     state,"law_history",day,day,"history")]
+    if recent_days:
+        collect_index.ingest_changes(state,recent_days,max_pages=12)
+        checkpoint_if_possible()
+    last_two=(recent[1],recent[0])
     for source in SUPPORTED:
-        collect_index.ingest_index(state,source,recent_window,max_pages=35)
-        if checkpoint:
-            checkpoint(state)
-    # Retry incomplete law-change days as well as all editions of incomplete
-    # official law/rule/ordinance date windows. No keyword or ministry filters.
-    attempted=set()
-    retry_budget=max(1,min(24,int(os.getenv("PD_RETRY_WINDOWS_PER_RUN","8"))))
-    for row in reversed(state.get("coverage",[])):
-        source=row.get("source")
-        first,last=row.get("first"),row.get("last")
+        collect_index.ingest_index(state,source,[last_two],max_pages=20)
+        checkpoint_if_possible()
+
+    # Do not retry every historical gap in the same run: one bad endpoint
+    # must not starve recent announcements and prevent publishing altogether.
+    failures=[row for row in state.get("coverage",[])
+              if not row.get("complete") and row.get("source") in (*SUPPORTED,"law_history")
+              and row.get("first") and row.get("last")]
+    failures.sort(key=lambda row:(row.get("last",""),row.get("source","")),reverse=True)
+    seen=set()
+    for row in failures:
+        source,first,last=row["source"],row["first"],row["last"]
         edition=row.get("edition","current")
-        key=(source,first,last,edition)
-        if source not in (*SUPPORTED,"law_history") or row.get("complete") or not first or not last or key in attempted:
-            continue
-        attempted.add(key)
+        identity=(source,first,last,edition)
+        if identity in seen:continue
+        seen.add(identity)
         if source=="law_history":
-            for day in (first,last) if first!=last else (first,):
-                collect_index.ingest_changes(state,[day],max_pages=30)
+            days=[str(dt.date.fromisoformat(first)+dt.timedelta(days=i))
+                  for i in range((dt.date.fromisoformat(last)-
+                                  dt.date.fromisoformat(first)).days+1)]
+            collect_index.ingest_changes(state,days,max_pages=20)
         else:
-            # ingest_index checks both current and historical editions;
-            # successful old windows stay marked complete during transient failures.
-            collect_index.ingest_index(state,source,[(first,last)],max_pages=35)
-        if checkpoint:
-            checkpoint(state)
-        if len(attempted)>=retry_budget:
-            break
-    cursor=int(state.get("backfill_cursor_days",0))%horizon
-    for n in range(budget):
-        offset=(cursor+n*span)%horizon
-        first=str(today-dt.timedelta(days=min(horizon,offset+span)))
-        last=str(today-dt.timedelta(days=offset+1))
+            collect_index.ingest_index(state,source,[(first,last)],max_pages=20)
+        checkpoint_if_possible()
+        if len(seen)>=retry_budget:break
+
+    # Independently walk the past 365 days first. A very old cursor from a
+    # previous software version must not postpone recent notice discovery.
+    recent_budget=1
+    for _ in range(recent_budget):
+        offset=max(8,min(364,int(state.get("recent_backfill_cursor_days",8))))
+        first=str(today-dt.timedelta(days=min(364,offset+span-1)))
+        last=str(today-dt.timedelta(days=offset))
         for source in SUPPORTED:
-            editions=("current","history") if source in ("admrul","ordin") else ("current",)
             if all(collect_index.window_covered(state,source,first,last,edition)
-                   for edition in editions):
+                   for edition in (("current","history") if source in ("admrul","ordin")
+                                   else ("current",))):
                 continue
-            collect_index.ingest_index(state,source,[(first,last)],max_pages=35)
-        state["backfill_cursor_days"]=(offset+span)%horizon
-        if checkpoint:
-            checkpoint(state)
-    # Without a confirmed response in this run, failure is not "no change".
+            collect_index.ingest_index(state,source,[(first,last)],max_pages=20)
+        state["recent_backfill_cursor_days"]=8+(offset-8+span)%(365-8)
+        checkpoint_if_possible()
+
+    # Long history advances separately and never displaces past-year coverage.
+    for _ in range(max(0,budget-recent_budget)):
+        if horizon<=365:break
+        start=max(365,int(state.get("backfill_cursor_days",365)))
+        offset=365+(start-365)%(horizon-365)
+        first=str(today-dt.timedelta(days=min(horizon-1,offset+span-1)))
+        last=str(today-dt.timedelta(days=offset))
+        for source in SUPPORTED:
+            if all(collect_index.window_covered(state,source,first,last,edition)
+                   for edition in (("current","history") if source in ("admrul","ordin")
+                                   else ("current",))):
+                continue
+            collect_index.ingest_index(state,source,[(first,last)],max_pages=20)
+        state["backfill_cursor_days"]=365+(offset-365+span)%(horizon-365)
+        checkpoint_if_possible()
+
     successful=state.pop("_source_pages_confirmed",0)
     if not successful:
         state["last_official_scan_error"]="No fully confirmed official collection window"
-        if checkpoint:
-            checkpoint(state)
+        checkpoint_if_possible()
         raise RuntimeError("Official APIs returned no confirmed complete collection window")
     state.pop("last_official_scan_error",None)
     state["latest_official_scan"]=today.isoformat()
-    if checkpoint:
-        checkpoint(state)
+    checkpoint_if_possible()
 
 
 def candidate_rank(record,today):

@@ -1,58 +1,67 @@
-# 정책도미노 기술 설계와 제출 품질 기준
+# 정책도미노 기술 설계
 
-## 1. 제품 경계
+## 목적·범위
 
-**목표:** 공식 법령·행정규칙 변경이 확정되었을 때, 변경된 조항과 관련 공공기관의 실제 검토 업무를 출처에 연결해 탐색한다. 법령 자체를 다시 개정하라는 지시나 기관의 업무조치 완료 판정은 제품의 결과가 아니다.
+공식 법령·시행령·시행규칙·고시·훈령·예규 등의 변경 사건을 탐지하고, 변경 사실로부터 관련 공공기관의 담당 업무와 연계되는 지점을 **검증된 공개 근거**로 추적한다. 특정 기관이나 정책명을 하드코딩하여 결과를 꾸미지 않는다. 민간조직은 기관별 영향 분석 범위에 포함하지 않는다.
 
-**범위:** 중앙행정기관, 지방자치단체 및 관련 공공기관. 특정 기관명·법령명·금액을 수집 엔진에 하드코딩해서 결과를 만드는 방식은 허용하지 않는다. 특정 제도의 표본 사례는 테스트 픽스처에서만 사용한다.
-
-## 2. 데이터 흐름과 책임
+## 단일 운영 파이프라인
 
 ```text
-국가법령정보 공식 API
-   └─ v2/collector.py              공식 목록·이력·본문 수집, 비교
-       └─ v4/pipeline.py           공식 변경 사건과 증빙·연계규정 탐색
-           └─ site/v4/data.json    출처 검증 데이터 (미확인과 분리)
-               └─ v4/classic_bridge.py     화면 데이터 조립 오케스트레이터
-                   ├─ v4/agency_actions.py 공식 변경 조문→기관 검토 증거
-                   ├─ v4/legacy_recheck.py V2 개정 지시문 격리·재검증 라벨
-                   ├─ v4/impact_scope.py   증빙된 영향 범위 평가
-                   └─ site/classic/data.json
-                       └─ site/assets/impact-model.js    순수 필터/선택 로직
-                       └─ site/assets/classic.js         화면 렌더링·데이터 로딩
-                           ├─ /impact/
-                           └─ /classic/
-
-site/templates/agency.html ── v4/classic_pages.py ──> 두 경로의 정적 HTML
-site/assets/classic.css ────────────────────────────> 공통 스타일
+GitHub Actions: policy-domino.yml
+       ↓
+python -m policy_domino --source official
+       ↓
+official_api / engine.collect_index
+       ↓
+engine.pipeline / engine.events
+       ↓
+engine.relationships / engine.official_links / engine.dependents
+       ↓
+site/v4/data.json             (공식 원천 근거 · 부분 수집 상태)
+       ↓
+engine.classic_bridge
+  ├─ engine.agency_actions    (변경된 공식 조문 → 업무)
+  ├─ engine.impact_scope      (기관·연계규정 파급 범위)
+  └─ engine.legacy_recheck    (별도 역사자료: 재검증 대기)
+       ↓
+site/classic/data.json        (공통 화면 데이터 계약)
+       ↓
+engine.classic_pages          (단일 템플릿에서 두 경로 생성)
+       ↓
+site/impact/index.html / site/classic/index.html
+       ↓
+단일 GitHub Pages 배포
 ```
 
-**데이터 원칙:** 정책 변경 사건(event), 이전·이후 변경 증거(article difference), 연결 근거(dependency), 기관 검토 항목(action)은 서로 다른 객체다. 기관명 언급이나 소관부처 일치만으로 업무 적용 관계를 만들지 않는다.
+`--source stored`는 새로운 API 호출 없이 저장된 공식 출처와 증빙으로부터 같은 하위 단계를 재생성한다. 이는 UI 변경 시 근거를 다시 수집하지 않고도 테스트할 수 있는 경로다. 정기 수집·사이트 배포는 별도 워크플로가 없다. CI 검사 전용 워크플로에는 배포 권한이 없다.
 
-## 3. 영향도 큼 분류
+## 데이터 계약과 검증 상태
 
-변경 사건의 **공식 근거로 확인된 직접 검토 기관이 2곳 이상**이거나 **변경된 특정 조항을 실제 적용하는 다른 규정의 독립적 연결이 2건 이상**이면 `high`다. 문서 검색 결과·개정 조항 수·동일 근거 반복·일반적인 기관명 언급은 이 수치에 합산하지 않는다. 이전 V2 자료에서 나온 판단은 '최신 재검증 대기'를 유지한다. 사회적 중요도나 정책 수혜 인원에 대한 등급은 아니다.
+**공식 인덱스 기록**과 **본문 확보**, **변경된 조문 검증**, **다른 규정의 적용 관계**, **기관별 검토 업무**는 서로 다른 상태다. 전 단계의 존재만으로 다음 단계의 확인을 가정하지 않는다.
 
-첫 화면에서는 이 필터를 기본으로 활성화하되, 사용자가 '전체'를 선택하면 검증된 모든 사건을 볼 수 있다. 날짜 정렬은 공식 공포·확정일 우선이다.
+- `site/v4/data.json` : 공식 인덱스·개정 사건·실제 비교 조문·증명된 연계·수집 미완료 수량
+- `site/classic/data.json` : `policy-domino-next-v1` 계약. `events` 변경 사건과 `actions` 기관별 업무 검토 항목을 독립적으로 담는다.
+- `evidence_scope=v4_verified_source` : 공식 신구 조문을 직접 확인한 근거.
+- `evidence_scope=legacy_official_directive_awaiting_recheck` : 과거 V2 공식 개정 지시문의 이전·이후 값으로 확인했지만 최신 재검증이 필요한 항목.
+- `status`는 실제 기관별 처리 완료 여부의 객관적 기록 없이 `조치 확인` 또는 `미조치 확인`으로 채우지 않는다.
 
-## 4. 공공기관으로 이어지는 파급 분석: 남은 핵심 과제
+'영향도 큼'은 같은 사건에서 근거가 확인된 서로 다른 직접 검토 기관 2곳 이상 또는 변경 조항을 적용하는 독립 규정 관계 2건 이상이다. 동일 조문·기관을 반복 세지 않는다. 기관명 등장·상위법 존재만으로 자동 확장하지 않는다.
 
-LH·SH·한국장학재단을 포함한 여러 공공기관으로 정책의 영향이 전파되려면, **기관명 사전**만이 아니라 다음과 같은 검증 가능한 관계가 필요하다.
+## 보존·이력
 
-1. 바뀐 상위 제도·조문·고시의 안정적 식별자와 적용 시점
-2. 하위 규정·집행지침·사업 운영 기준이 **어떤 변경 조항을 참조 또는 적용**하는지
-3. 집행기관과 실제 업무 위치(선정·산정·접수·지급·관리)의 공식 근거
-4. 변경 전후 업무 기준과 근거 URL, 검증 상태, 확인 실패 및 대기 상태
+과거 단독 수집 `watch.py`, `impact_scanner.py`, 이전 `v2/v3/next` 구현과 복수의 GitHub Pages 워크플로는 모두 [변경 전 보관 브랜치](https://github.com/dodam-heo/policy-domino/tree/archive/pre-canonical-pipeline-20261110)에 남겨 두었다. 새 `main`의 운영 코드는 `policy_domino`에 집중한다.
 
-근거가 없으면 '영향 가능성 검토 후보'로 남겨야 하며, 확인된 기관별 필수 조치로 승격하지 않는다. 정책의 분야가 복지·주택·교육이라는 이유만으로 해당 공공기관에 일괄 전파하면 안 된다.
+기존 `data/v2_state.json` 및 `site/classic/legacy_source.json`은 **이전 근거·수집 인덱스** 호환을 위해 남길 수 있으나 실행 엔진은 아니다. `engine.pipeline.bootstrap_old_index`는 새 공식 V4 증빙이 초기화될 때 이력 메타데이터만 후보로 사용하며, 과거 V2 기관별 조치 추론은 현재 공식 검증으로 승격시키지 않는다.
 
-## 5. 코드·배포 품질 기준
+## 테스트·배포 안전장치
 
-- **단일 화면 소스:** 템플릿 1개, CSS 1개, 순수 JS 모델 1개, 화면 제어 JS 1개. 라우트별 데이터 경로만 다르다.
-- **결정적 산출물:** `python -m v4.classic_pages` 반복 실행 시 결과가 동일해야 한다.
-- **단방향 의존성:** Python 증빙 모델은 화면 HTML을 조작하지 않고, UI는 정책 효과를 임의 계산하지 않는다.
-- **검증:** `python -m unittest discover -s v4 -p 'test_*.py' -v` / `node site/classic/test_ui.cjs` / `node site/test_adapter.cjs`.
-- **CI:** 공개 사이트 배포 전 데이터·증빙·라우트·스크립트 구문 검사 필수. 변경 전 원본은 별도 브랜치로 보존한다.
-- **추가 개발:** v2/v3/v4에 분산된 수집 책임과 대규모 상태 JSON을 통합·분리하고, 안정적인 데이터 계약 및 재수집 멱등성 테스트를 강화해야 최종 공모전 제출 수준이다.
+- `python -m policy_domino.audit`: 단일 정기 워크플로, 단일 Pages 배포자, 루트 구식 감시 스크립트/레거시 import 부재
+- `python -m unittest discover -s tests -p 'test_*.py' -v`: API 응답 파싱, 조문 비교, 연계 관계, 기관 업무 추출, 영향 범위 및 완료 상태 오판 방지
+- `node site/classic/test_ui.cjs`: 기본 영향도 필터, 동일 UI 템플릿/데이터 원천, 화면 호환성
+- `node site/v4/test_ui.cjs`, `node site/test_adapter.cjs`: 공식 데이터와 브라우저 표시 계약
+- GitHub Actions: 수집→테스트→검증된 생성물만 `main`에 저장→하나의 Pages 아티팩트로 배포
+- 실패 시 이전 공개 사이트를 유지하고, 새 오류를 성공이나 '영향 없음'으로 표시하지 않는다.
 
-**현재 단계:** 중복된 화면/생성 로직 및 영향도 분류를 분리한 첫 구조 개선이다. 기관별 파급관계 확장과 전체 백엔드 재설계는 아직 완료됐다고 주장하지 않는다.
+## 후속 분석 범위
+
+LH·SH·한국장학재단 같은 집행기관의 파급 범위 확장은 조문 단위 종속 관계, 기관별 공식 업무 규정 및 변경 전·후 운영 기준 확인을 필요로 한다. 기관명 사전을 늘리는 것만으로 해결하지 않는다. 지금은 **코드 구조와 단일 운영 경로 정비**에 초점을 맞춘 단계다.

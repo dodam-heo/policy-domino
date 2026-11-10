@@ -40,11 +40,18 @@ assert.equal(view.resolveSelection([],"old-high"),null);
 assert.equal(view.filterEvents(fixtures,"all").length,3);
 assert.equal(view.filterEvents(fixtures,"new").length,1);
 assert.equal(view.sorted(fixtures)[0].event_id,"new-low");
-for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용",
-    "검토할 조치","이전 V2 개정 지시문 · 최신 재검증 대기",
-    "어떤 업무를 검토하나?"]){
+for(const label of ["변경 핵심","기관별 변경 검토사항","변경 전후",
+    "검토할 조치","시행일·공식 근거","근거 재확인 필요"]){
   assert.ok(script.includes(label),"Missing operational detail: "+label);
 }
+for(const internalText of ["AI 분석 \\","이전 V2","검증 상태 · ","이번 변경에서 무엇을 확인했나",
+  "AI 검토 초안 / 조치 완료 여부 미확인"]){
+  assert.ok(!script.includes(internalText),"Remove internal copy: "+internalText);
+}
+assert.ok(!template.includes('class="workflow"'));
+assert.ok(!template.includes('id="impactFilterHint"'));
+assert.ok(!template.includes("사회적 중요도 등급"));
+assert.ok(!template.includes("확인되지 않은 조치 여부는 임의로 표시"));
 
 const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));
 assert.equal(d.schema,"policy-domino-next-v1");

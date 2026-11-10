@@ -83,6 +83,16 @@ const official=d.actions.filter(a=>["v4_verified_source",
 assert.ok(official.length>0);
 assert.ok(d.events.every(e=>e.presentation_source==="v4_official_source"));
 assert.ok(script.includes("실제 변경사항 · 신구 비교"));
+assert.ok(script.includes('<details class="sourceChanges"'),
+  "Actual changed clauses must be collapsed by default");
+assert.ok(!script.includes('<details class="sourceChanges" open'),
+  "Source comparisons must not begin expanded");
+assert.ok(script.includes('sourceChangesToggle'),
+  "Change summary must expose an accessible disclosure control");
+assert.ok(styles.includes(".sourceChanges .changePair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}"),
+  "Source before/after must remain horizontally paired");
+assert.ok(styles.includes(".sourceChanges .changeCol+.changeCol{border-left:1px solid #e5ebef;border-top:0}"),
+  "Mobile comparison must not be stacked");
 assert.ok(script.includes("상위 정책 기준의 변경값"));
 console.log("CLASSIC_PASS",{events:d.events.length,agencyTasks:d.actions.length,
   official:official.length});

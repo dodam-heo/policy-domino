@@ -7,7 +7,7 @@ Neither an API search hit nor a shared title may become a domino.
 """
 from __future__ import annotations
 import re,hashlib
-from v2 import collector as api
+from policy_domino import official_api as api
 from v4 import collect_index,relationships
 
 SOURCES=("admrul","law","ordin")

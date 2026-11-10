@@ -15,9 +15,12 @@ class PipelineEntryTests(unittest.TestCase):
             calls.append("view")
             return {"schema": "policy-domino-next-v1",
                     "events": [{"event_id":"example"}], "actions": []}
-        with patch("policy_domino.engine.pipeline.run", source), patch("policy_domino.engine.classic_bridge.run", view):
+        with patch("policy_domino.engine.pipeline.run", source), patch(
+            "policy_domino.public_services.refresh_from_env",
+            side_effect=lambda: calls.append("public_service")), patch(
+            "policy_domino.engine.classic_bridge.run", view):
             out = run("official")
-        self.assertEqual(calls, ["official", "view"])
+        self.assertEqual(calls, ["official", "public_service", "view"])
         self.assertEqual(out["events"], 1)
 
     def test_stored_mode_does_not_call_official_api(self):

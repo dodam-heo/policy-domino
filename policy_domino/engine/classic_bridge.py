@@ -14,13 +14,14 @@ from policy_domino.engine.impact_scope import assess_impact_scope
 from policy_domino.engine.agency_actions import TRUSTED, group_event, unique_actions
 from policy_domino.engine.legacy_recheck import legacy_fallback
 from policy_domino.analysis_evidence import has_verified_action, evidence_identity
+from policy_domino.public_services import load_catalog, service_edges, agency_service_action
 
 ROOT=Path(__file__).resolve().parents[2]
 V4=ROOT/"site"/"v4"/"data.json"
 LEGACY=ROOT/"site"/"classic"/"legacy_source.json"
 DEST=ROOT/"site"/"classic"/"data.json"
 
-def build(v4,legacy):
+def build(v4,legacy,service_catalog=None):
     events=[];actions=[]
     source_titles=set()
     for g in v4.get("featured_events",[])+v4.get("other_events",[]):
@@ -32,6 +33,14 @@ def build(v4,legacy):
     old_events,old_actions=legacy_fallback(legacy,source_titles)
     events+=old_events;actions+=old_actions
     actions=unique_actions(actions)
+    # One source-verified public-service dependency path, not example-specific
+    # agency mappings. The independent Gov24 catalogue is used read-only.
+    if service_catalog is None:
+        service_catalog = load_catalog()
+    event_by_id = {e["event_id"]: e for e in events}
+    service_links = service_edges(events, service_catalog)
+    for edge in service_links:
+        actions.append(agency_service_action(event_by_id[edge["event_id"]], edge))
     event_ids={e["event_id"] for e in events}
     actions=[a for a in actions if a.get("event_id") in event_ids]
     # Rank policy events first by VERIFIED operational work and cross-institution
@@ -64,6 +73,8 @@ def build(v4,legacy):
             "v4_official_index":checked.get("fresh_official_index",0),
             "pending_details":checked.get("pending_details",0),
             "legacy_recheck":len(old_events),
+            "public_service_catalogue":len(service_catalog.get("services", {})),
+            "public_service_dependencies":len(service_links),
             "error":"기관별 조치 카드에 표시된 내용은 검토 대상이며, 실제 반영 상태는 미확인입니다."
         },
         "events":events,
@@ -89,7 +100,9 @@ def run():
           json.dumps({"events":len(result["events"]),"actions":len(result["actions"]),
             "by_source":dict(by_source),
             "original_v2_recheck":result["health"]["legacy_recheck"],
-            "first_titles":[e["title"] for e in result["events"][:8]]},ensure_ascii=False))
+            "first_titles":[e["title"] for e in result["events"][:8]],
+            "public_service_dependencies":result["health"]["public_service_dependencies"],
+            "public_service_catalogue":result["health"]["public_service_catalogue"]},ensure_ascii=False))
     return result
 
 if __name__=="__main__":run()

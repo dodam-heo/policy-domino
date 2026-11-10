@@ -64,8 +64,9 @@ const role=esc(a.work||a.category||"업무");
 const provenance=a.evidence_scope==="v4_verified_source"?"공식 근거 확인":
  a.evidence_scope==="legacy_official_directive_awaiting_recheck"?"최신 근거 재확인 필요":"근거 확인 중";
 return '<article class="action">'+
- '<div class="actionTop"><div class="actionLawTitle">'+esc(a.law_title||a.agency||"변경 항목")+
- ' · '+esc(a.article||"조문 확인 중")+'</div>'+badgeStatus(a.status)+'</div>'+
+ '<div class="actionTop"><div class="actionLawTitle">'+
+ (a.service_id?esc(a.service||"공공서비스"):esc(a.law_title||a.agency||"변경 항목")+
+ ' · '+esc(a.article||"조문 확인 중"))+'</div>'+badgeStatus(a.status)+'</div>'+
  '<div class="locationBox">'+role+' <span class="taskArrow">›</span> '+task+'</div>'+
  '<div class="locationTitle">변경 전후</div>'+comparison+added+
  '<div class="instruction"><b>검토할 조치</b>'+
@@ -74,7 +75,11 @@ return '<article class="action">'+
  '<details class="evidenceDrawer"><summary>시행일·공식 근거</summary>'+
  '<div class="evidence"><b>'+esc(a.law_title||"근거 확인 중")+' · '+esc(a.article||"")+'</b>'+
  '<div>시행일 '+esc(a.effective_date||"확인 중")+' · '+esc(provenance)+'</div>'+
- '<a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">공식 원문 보기 ↗</a>'+
+ '<a target="_blank" rel="noopener" href="'+validUrl(a.basis)+'">법령 변경 근거 ↗</a>'+
+ (a.service_id&&a.service_url?
+ ' · <a target="_blank" rel="noopener" href="'+validUrl(a.service_url)+'">공공서비스 기준 확인 ↗</a>':'')+
+ (a.service_id&&a.reported_receiving_institution?
+ '<div>정부24 등록 접수기관: '+esc(a.reported_receiving_institution)+'</div>':'')+
  (a.status_evidence?'<div>조치 상태 근거: '+esc(a.status_evidence)+'</div>':'')+
  '</div></details></article>';
 }

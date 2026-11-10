@@ -25,6 +25,11 @@ def run(source: Literal["official", "stored"] = "official") -> dict:
     evidence = refresh_evidence()
     if evidence.get("schema") != "policy-domino-v4":
         raise ValueError("Official evidence contract mismatch")
+    if source == "official":
+        # The public-service directory is an independent, source-backed
+        # catalogue. It does not replace the official legal collector.
+        from policy_domino.public_services import refresh_from_env
+        refresh_from_env()
     published = publish_agency_impact()
     if published.get("schema") != "policy-domino-next-v1":
         raise ValueError("Public agency-impact contract mismatch")

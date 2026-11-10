@@ -11,7 +11,16 @@ import json
 
 def has_verified_action(action: dict) -> bool:
     return (
-        action.get("evidence_scope") == "v4_verified_source"
+        action.get("evidence_scope") in (
+            "v4_verified_source", "service_formula_dependency_verified",
+            "service_cited_changed_article_verified")
+        and (action.get("evidence_scope") not in (
+             "service_formula_dependency_verified",
+             "service_cited_changed_article_verified")
+             or (action.get("service_evidence_source") == "gov24_api"
+                 and all(action.get(k) for k in (
+                     "service_id", "service", "service_evidence_rule",
+                     "service_criteria"))))
         and all(action.get(key) for key in ("id", "event_id", "agency", "article",
                                             "law_title", "work", "changes"))
         and str(action.get("basis", "")).startswith(
@@ -41,6 +50,13 @@ def evidence_identity(event: dict, action: dict) -> str:
             for c in action["changes"] if isinstance(c, dict)
         ],
     }
+    # Preserve existing law-only cache identities: an unrelated schema change
+    # must NOT re-run 81 previously verified LLM analyses.
+    if action.get("service_id"):
+        facts["service_evidence"] = {key: action.get(key, "") for key in (
+            "service_id", "service", "service_url", "service_criteria",
+            "service_evidence_source", "service_evidence_rule",
+            "service_record_updated")}
     payload = json.dumps(facts, ensure_ascii=False, sort_keys=True,
                          separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()

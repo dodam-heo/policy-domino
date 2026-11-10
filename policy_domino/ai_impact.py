@@ -85,6 +85,13 @@ def evidence_payload(event: dict, actions: list[dict], generated_at: str) -> dic
             "article": action["article"],
             "work": action["work"],
             "target_location": action.get("target_location", ""),
+            "public_service": {
+                "service_id": action.get("service_id", ""),
+                "service_name": action.get("service", ""),
+                "service_url": action.get("service_url", ""),
+                "published_eligibility_criterion": action.get("service_evidence_rule", ""),
+                "formula_excerpt": action.get("service_criteria", ""),
+            },
             "source_url": action["basis"],
             "before_after": [
                 {"before": str(c.get("before", ""))[:900],

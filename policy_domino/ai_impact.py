@@ -95,8 +95,8 @@ def source_summary_payload(event: dict) -> dict:
     }
 
 
-SUMMARY_UNITS = re.compile(r"(?<!\\d)\\d[\\d,]*(?:\\.\\d+)?\\s*(?:만원|원|명|일|개월|년|%)")
-SUMMARY_WORDS = re.compile(r"[가-힣]{2,}|(?:\\d{1,3}(?:,\\d{3})+|\\d+)(?:\\.\\d+)?")
+SUMMARY_UNITS = re.compile(r"(?<!\d)\d[\d,]*(?:\.\d+)?\s*(?:만원|원|명|일|개월|년|%)")
+SUMMARY_WORDS = re.compile(r"[가-힣]{2,}|(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?")
 SUMMARY_REVIEW = re.compile(r"(?:규정|법령|고시|훈령|지침|부처|관련|직제|개정|변경|기관|조문|신설|정비)")
 
 

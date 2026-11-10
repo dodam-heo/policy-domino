@@ -110,9 +110,10 @@ def write_catalog(catalog: dict) -> None:
 
 
 def collect_services(previous: dict | None, key: str, max_pages: int = 40,
-                     max_details: int = 120,
+                     max_details: int = 250,
                      fetch: Callable = fetch_page,
-                     checkpoint: Callable[[dict], None] | None = None) -> dict:
+                     checkpoint: Callable[[dict], None] | None = None,
+                     preferred_concepts: tuple[str, ...] = ()) -> dict:
     """Resume full catalogue pagination; preserve prior official facts on errors.
 
     Detail endpoint is queried for services whose latest catalogue rows lack
@@ -167,7 +168,15 @@ def collect_services(previous: dict | None, key: str, max_pages: int = 40,
 
     # A bounded round-robin detail queue gradually covers all legal references.
     # Only source-provided title/owner and body can later create a policy edge.
-    for item in (s for s in services.values() if not s.get("detail")):
+    detail_queue = [s for s in services.values() if not s.get("detail")]
+    # The queue order is evidence-dependent, not institution-name-dependent.
+    # Prioritize services containing a currently changed numerical standard.
+    detail_queue.sort(key=lambda s: not any(
+        matched_operating_rule(concept, s.get("criteria", "") + " " +
+                               s.get("eligible", ""))
+        for concept in preferred_concepts))
+    fetched_details = 0
+    for item in detail_queue:
         if max_details <= 0:
             break
         try:
@@ -177,6 +186,7 @@ def collect_services(previous: dict | None, key: str, max_pages: int = 40,
             catalog["last_error"] = str(exc)
             break
         max_details -= 1
+        fetched_details += 1
         row = next((x for x in payload.get("data", [])
                     if isinstance(x, dict) and
                     normalize_text(x.get("서비스ID")) == item["id"]), None)
@@ -192,7 +202,8 @@ def collect_services(previous: dict | None, key: str, max_pages: int = 40,
             }
         else:
             item["detail"] = {"unavailable": True}
-        checkpoint_now()
+        if fetched_details % 20 == 0:
+            checkpoint_now()
     checkpoint_now()
     return catalog
 
@@ -214,9 +225,20 @@ def refresh_from_env() -> dict:
         print("PUBLIC_SERVICE_CATALOG: no Gov24 API key; cached services retained")
         return current
     pages = int(os.getenv("PD_PUBLIC_SERVICE_PAGES", "40"))
-    details = int(os.getenv("PD_PUBLIC_SERVICE_DETAILS", "120"))
+    details = int(os.getenv("PD_PUBLIC_SERVICE_DETAILS", "250"))
+    # Read last published official events only to rank fetching the open
+    # Gov24 detail records; this NEVER decides a service-policy link.
+    preferred = set()
+    published = ROOT / "site" / "classic" / "data.json"
+    try:
+        previous_events = json.loads(published.read_text("utf-8")).get("events", [])
+        for event in previous_events:
+            preferred.update(item["concept"] for item in changed_concepts(event))
+    except (ValueError, OSError, TypeError):
+        pass
     result = collect_services(current, key, max_pages=pages,
-                              max_details=details, checkpoint=write_catalog)
+                              max_details=details, checkpoint=write_catalog,
+                              preferred_concepts=tuple(sorted(preferred)))
     print("PUBLIC_SERVICE_CATALOG", json.dumps({
         "listed": len(result["services"]),
         "complete": result.get("complete", False),

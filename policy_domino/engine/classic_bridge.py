@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from policy_domino.engine.classic_pages import publish_pages
 from policy_domino.engine.impact_scope import assess_impact_scope
-from policy_domino.engine.agency_actions import group_event, unique_actions
+from policy_domino.engine.agency_actions import TRUSTED, group_event, unique_actions
 from policy_domino.engine.legacy_recheck import legacy_fallback
 
 ROOT=Path(__file__).resolve().parents[2]

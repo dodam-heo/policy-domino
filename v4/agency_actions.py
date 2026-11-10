@@ -62,28 +62,46 @@ def most_common_heading(docs):
     best,n=headings.most_common(1)[0]
     return best if n>=2 or len(docs)==1 else ""
 
-def textual_edits(old,new,limit=3):
-    # Extract only changed NUMERIC tokens in their original source positions;
-    # a bare 192->197 without a field label will NOT be a confirmed change.
-    a,b=clean(old),clean(new)
-    if not (a and b):return []
-    matcher=difflib.SequenceMatcher(None,a,b,autojunk=True)
-    out=[]
-    for tag,i,j,k,l in matcher.get_opcodes():
-        if tag=="equal":continue
-        before=a[i:j].strip()
-        after=b[k:l].strip()
-        if not before or not after or len(before)>80 or len(after)>80:continue
-        if before.isdigit() and after.isdigit():
-            context=a[max(0,i-75):i].strip()
-            label=re.split(r"[.;:\n]|[①②③④⑤]\s*",context)[-1][-50:]
-            if not re.search(r"정원|총계|급여|기준|금액|직급|인력|기간|소득",label):
+def textual_edits(old, new, limit=3):
+    """Return whole changed numeric values, never a single changed digit.
+
+    SequenceMatcher on characters may report 192 -> 197 as 2 -> 7.
+    We align whole numeric tokens first and keep the nearby official field
+    label, or fall back to a compact changed phrase.
+    """
+    a, b = clean(old), clean(new)
+    if not (a and b):
+        return []
+    token_pattern = re.compile(r"\d[\d,]*(?:\.\d+)?%?|[^\d\s]+|\s+")
+    before_tokens = list(token_pattern.finditer(a))
+    after_tokens = list(token_pattern.finditer(b))
+    matcher = difflib.SequenceMatcher(
+        None, [m.group() for m in before_tokens],
+        [m.group() for m in after_tokens], autojunk=False
+    )
+    out = []
+    for tag, i, j, k, l in matcher.get_opcodes():
+        if tag == "equal":
+            continue
+        before = "".join(x.group() for x in before_tokens[i:j]).strip()
+        after = "".join(x.group() for x in after_tokens[k:l]).strip()
+        if not before or not after or len(before) > 80 or len(after) > 80:
+            continue
+        whole_number = r"\d[\d,]*(?:\.\d+)?%?"
+        if re.fullmatch(whole_number, before) and re.fullmatch(whole_number, after):
+            context = a[max(0, before_tokens[i].start()-75):before_tokens[i].start()].strip()
+            label = re.split(r"[.;:\n]|[①②③④⑤]\s*", context)[-1][-50:]
+            if not re.search(r"정원|총계|급여|기준|금액|직급|인력|기간|소득", label):
                 continue
-            out.append({"field":label or "변경 수치","before":before,"after":after})
-        elif len(before)>=3 or len(after)>=3:
-            out.append({"field":"변경 문구","before":before,"after":after})
-        if len(out)>=limit:break
+            out.append({"field": label or "변경 수치",
+                        "before": before, "after": after})
+        elif len(before) >= 3 or len(after) >= 3:
+            out.append({"field": "변경 문구", "before": before,
+                        "after": after})
+        if len(out) >= limit:
+            break
     return out
+
 
 def choose_excerpts(doc):
     items=doc.get("excerpts",[])

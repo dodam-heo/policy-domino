@@ -13,7 +13,9 @@ import re
 import time
 import urllib.parse
 import urllib.request
+import zipfile
 import xml.etree.ElementTree as ET
+from policy_domino import attachments
 
 API = "https://www.law.go.kr/DRF/"
 HEADERS = {"User-Agent": "PolicyDomino/official-source-client"}
@@ -93,6 +95,13 @@ def row_of(node, target):
                 else "https://www.law.go.kr/행정규칙/") + urllib.parse.quote(title),
     }
 
+class ExtractedClauses(dict):
+    """Official clauses plus attachment links that still need verification."""
+    def __init__(self, values, unresolved=None):
+        super().__init__(values)
+        self.unresolved_attachments=unresolved or []
+
+
 def read_clauses(record):
     opts = {"MST": record["serial"]} if record["source"] == "law" else {"ID": record["serial"]}
     root = request(record["source"], endpoint="lawService.do", **opts)
@@ -129,8 +138,37 @@ def read_clauses(record):
             text = field(node, "별표내용")
             if text:
                 items["별표 " + number] = text[:12000]
+    # National Law Information's official XML exposes annex PDF/HWP links.
+    # Unreadable files stay pending instead of masquerading as compared text.
+    unresolved=[]
+    seen_links=set()
+    for node in root.iter():
+        tag=node.tag.split("}")[-1]
+        if tag not in ("별표단위","첨부파일"):
+            continue
+        number=field(node,"별표번호") or str(len(seen_links)+1)
+        title=field(node,"별표제목") or field(node,"첨부파일명")
+        label=("별표 "+number if tag=="별표단위" else "첨부 "+number)
+        link=(field(node,"별표서식PDF파일링크") or
+              field(node,"별표서식파일링크") or field(node,"첨부파일링크"))
+        url=attachments.official_url(link)
+        if not url or url in seen_links:
+            continue
+        seen_links.add(url)
+        if label in items and len(items[label])>=100:
+            continue
+        extracted=""
+        if attachments.enabled() and len(seen_links)<=4:
+            try:
+                extracted=attachments.extract(url)
+            except (OSError,ValueError,RuntimeError,ET.ParseError,zipfile.BadZipFile):
+                extracted=""
+        if extracted:
+            items[label]=normalize(extracted)
+        else:
+            unresolved.append({"title":title or label,"url":url,"label":label})
     if items:
-        return items
+        return ExtractedClauses(items,unresolved)
     # Several administrative-rule responses expose a flat 조문내용 instead.
     full = " ".join(normalize("".join(x.itertext())) for x in root.iter()
                     if x.tag.split("}")[-1] == "조문내용")
@@ -150,7 +188,7 @@ def read_clauses(record):
             items[label] = full[match.start():end][:12000]
     else:
         items["본문"] = full[:16000]
-    return items
+    return ExtractedClauses(items,unresolved)
 
 def compare(old, new, record):
     changes = []

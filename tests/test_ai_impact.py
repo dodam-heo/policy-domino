@@ -170,7 +170,7 @@ class RealLLMImpactTests(unittest.TestCase):
                 body=json.dumps({"error":{"code":code,"type":"insufficient_quota","message":"Never print this value"}}).encode()
                 raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(body))
             with self.subTest(code=code):
-                with self.assertRaisesRegex(RuntimeError,"quota/billing limit.*HTTP 429"):
+                with self.assertRaisesRegex(RuntimeError,"HTTP 429, provider=.*Credit or spend limit"):
                     call_model(self.config,context,open_request=error_opener)
 
     def test_rate_limit_429_is_distinguished_from_account_quota(self):
@@ -178,15 +178,49 @@ class RealLLMImpactTests(unittest.TestCase):
         def error_opener(request,timeout):
             body=json.dumps({"error":{"type":"rate_limit_exceeded","message":"Too many requests"}}).encode()
             raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(body))
-        with self.assertRaisesRegex(RuntimeError,"temporary rate limit"):
+        with self.assertRaisesRegex(RuntimeError,"quota/rate limit reached"):
             call_model(self.config,context,open_request=error_opener)
 
     def test_unknown_429_never_falsely_diagnoses_empty_balance(self):
         context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
         def error_opener(request,timeout):
             raise HTTPError(request.full_url,429,"Too Many Requests",{},io.BytesIO(b""))
-        with self.assertRaisesRegex(RuntimeError,"Cause not disclosed"):
+        with self.assertRaisesRegex(RuntimeError,"HTTP 429.*Provider rejected request"):
             call_model(self.config,context,open_request=error_opener)
+
+    def test_gemini_array_error_is_reported_without_crashing_or_leaking_message(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        for code, expected_status, expected_help in [
+            ("RESOURCE_EXHAUSTED",429,"quota/rate limit"),
+            ("INVALID_ARGUMENT",400,"request format"),
+            ("PERMISSION_DENIED",403,"API key"),
+            ("NOT_FOUND",404,"model ID"),
+        ]:
+            def error_opener(request,timeout):
+                # Regression: actual failure run 42760269254 returned a JSON list.
+                response=[{"error":{"code":expected_status,
+                                    "status":code,
+                                    "message":"DO NOT ECHO provider payload or secrets"}}]
+                raise HTTPError(request.full_url,expected_status,"Bad Request",{},
+                                io.BytesIO(json.dumps(response).encode()))
+            with self.subTest(code=code):
+                with self.assertRaises(RuntimeError) as failure:
+                    call_model(self.config,context,open_request=error_opener)
+                message=str(failure.exception)
+                self.assertIn("HTTP "+str(expected_status),message)
+                self.assertIn(code,message)
+                self.assertIn(expected_help,message)
+                self.assertNotIn("DO NOT ECHO",message)
+
+    def test_empty_and_unexpected_provider_error_json_is_safe(self):
+        context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])
+        for response in (b"[]", b"[null]", b"[123]", b'"string"', b'{"error":42}',b'{'):
+            def error_opener(request,timeout):
+                raise HTTPError(request.full_url,429,"Too Many Requests",{},
+                                io.BytesIO(response))
+            with self.subTest(response=response):
+                with self.assertRaisesRegex(RuntimeError,"LLM API HTTP 429"):
+                    call_model(self.config,context,open_request=error_opener)
 
     def test_model_must_return_structured_json(self):
         context=evidence_payload(self.data["events"][0],self.data["actions"][:1],self.data["generated_at"])

@@ -12,6 +12,8 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from v4.classic_pages import publish_pages
+from v4.impact_scope import assess_impact_scope
 
 ROOT=Path(__file__).resolve().parents[1]
 V4=ROOT/"site"/"v4"/"data.json"
@@ -327,48 +329,6 @@ def legacy_fallback(source,verified_titles):
             extra_actions.append(a)
     return extra_events,unique_actions(extra_actions)
 
-def assess_impact_scope(event, actions):
-    """Scope of documented institutional/regulatory consequences, not a
-    judgement of severity, population affected or actual implementation.
-
-    Titles, article mentions, total change count and the number of clauses
-    never independently qualify a policy as high impact.
-    """
-    actors={clean(a.get("agency")) for a in actions if
-            a.get("event_id")==event["event_id"] and a.get("agency") and
-            a.get("evidence_scope") in (
-                "v4_verified_source",
-                "legacy_official_directive_awaiting_recheck")}
-    legal_links={
-        (clean(x.get("title")),clean(x.get("article")))
-        for x in event.get("downstream_changes",[])
-        if x.get("status")=="변경 조항 적용 관계 확인"
-        and x.get("title") and x.get("article") and x.get("evidence")
-    }
-    wide=len(actors)>=2 or len(legal_links)>=2
-    if len(actors)>=2 and len(legal_links)>=2:
-        reason=f"기관별 검토 {len(actors)}곳 · 실제 변경 조항 적용 규정 {len(legal_links)}건"
-    elif len(actors)>=2:
-        reason=f"변경된 업무의 직접 검토 기관 {len(actors)}곳"
-    elif len(legal_links)>=2:
-        reason=f"실제 변경 조항을 적용하는 다른 규정 {len(legal_links)}건"
-    else:
-        reason="확인된 기관·제도 영향 범위가 분류 기준에 미달"
-    provisional=event.get("presentation_source")!="v4_official_source"
-    return {
-        "impact_level":"high" if wide else "not_assessed",
-        "impact_reason":reason,
-        "impact_scope":{
-            "institutions":len(actors),
-            "proven_dependent_rules":len(legal_links),
-            "criteria":"직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
-            "provisional":provisional,
-            "note":("이전 V2의 공식 개정문에 근거한 잠정 영향 범위이며 최신 재검증 대기"
-                    if provisional else
-                    "공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인")
-        }
-    }
-
 def build(v4,legacy):
     events=[];actions=[]
     source_titles=set()
@@ -424,17 +384,7 @@ def run():
     assert all(a["event_id"] in {e["event_id"] for e in result["events"]}
                for a in result["actions"])
     DEST.write_text(json.dumps(result,ensure_ascii=False,indent=2),"utf8")
-    # A standalone URL avoids mobile WebView serving an old cached page.
-    # Keep the new impact view identical to Classic while reading Classic's
-    # single updated source-of-truth data file.
-    ui=(ROOT/"site"/"classic"/"index.html").read_text("utf8")
-    old_fetch='fetch("./data.json?v="+Date.now(),{cache:"no-store"})'
-    new_fetch='fetch("../classic/data.json?v="+Date.now(),{cache:"no-store"})'
-    if old_fetch not in ui:
-        raise RuntimeError("Classic source UI changed; refresh impact mirror only after review")
-    impact=ROOT/"site"/"impact"
-    impact.mkdir(parents=True,exist_ok=True)
-    (impact/"index.html").write_text(ui.replace(old_fetch,new_fetch),"utf8")
+    publish_pages()
     by_source=collections.Counter(a["evidence_scope"] for a in result["actions"])
     print("CLASSIC_V2_UX_V4_SOURCE",
           json.dumps({"events":len(result["events"]),"actions":len(result["actions"]),

@@ -103,6 +103,57 @@ class PublicServicesTests(unittest.TestCase):
         self.assertEqual(service_edges([{**e,"article_differences":[]}],catalog),[])
         self.assertEqual(service_edges([e],{"schema":"wrong","services":catalog["services"]}),[])
 
+    def test_exact_changed_clause_citation_not_just_law_title(self):
+        event={
+            "event_id":"v4:changed-clause",
+            "title":"가상급부법 시행령",
+            "presentation_source":"v4_official_source",
+            "promulgated_at":"2026-11-05","effective_date":"2027-01-01",
+            "revision":"일부개정","amendment_reason":"",
+            "article_differences":[{
+                "article":"제5조",
+                "before":"제5조 지원 기준 금액은 100만원이다.",
+                "after":"제5조 지원 기준 금액은 120만원이다.",
+                "source_url":"https://www.law.go.kr/법령/가상급부법시행령"
+            }],
+        }
+        s=normalize_service(record("A","가상공공운영단","가상정책급여",
+                                   "법령상 급부 조건을 충족한 신청인"))
+        s["detail"]={"laws":"「가상급부법 시행령」 제5조에 따른 지원 기준을 적용",
+                      "criteria":"제5조에 따른 지원 기준"}
+        catalog={"schema":SCHEMA,"services":{s["id"]:s}}
+        edges=service_edges([event],catalog)
+        self.assertEqual(len(edges),1)
+        self.assertEqual(edges[0]["evidence_status"],"service_clause_citation_matched")
+        action=agency_service_action(event,edges[0])
+        self.assertTrue(has_verified_action(action))
+        self.assertEqual(action["evidence_scope"],
+                         "service_cited_changed_article_verified")
+        changed=copy.deepcopy(s)
+        changed["detail"]["laws"]="가상급부법 시행령 제6조에 따른 지원 기준을 적용"
+        self.assertEqual(service_edges([event],{"schema":SCHEMA,
+            "services":{"A":changed}}),[])
+        missing_operative=copy.deepcopy(s)
+        missing_operative["detail"]["laws"]="「가상급부법 시행령」 제5조"
+        self.assertEqual(service_edges([event],{"schema":SCHEMA,
+            "services":{"A":missing_operative}}),[])
+
+    def test_legacy_income_event_can_link_its_service_without_faking_ai_verification(self):
+        from policy_domino.engine import classic_bridge
+        root=Path(__file__).resolve().parents[1]
+        v4=json.loads((root/"site/v4/data.json").read_text("utf-8"))
+        legacy=json.loads((root/"site/classic/legacy_source.json").read_text("utf-8"))
+        svc=normalize_service(record("DYN", "가상공공주거운영기관",
+                                     "가상주거지원", "기준 중위소득 150% 이하"))
+        catalog={"schema":SCHEMA,"services":{svc["id"]:svc}}
+        published=classic_bridge.build(v4,legacy,service_catalog=catalog)
+        links=[a for a in published["actions"] if a.get("service_id")=="DYN"]
+        self.assertGreater(len(links),0)
+        self.assertTrue(all(a["agency"]=="가상공공주거운영기관" for a in links))
+        self.assertTrue(all(a["evidence_scope"]==
+            "legacy_service_dependency_pending_recheck" for a in links))
+        self.assertTrue(all(not has_verified_action(a) for a in links))
+
     def test_source_verified_program_enters_ai_queue_and_fingerprint(self):
         e=legal_event()
         s=normalize_service(record())

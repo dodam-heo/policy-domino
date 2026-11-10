@@ -51,6 +51,14 @@ python -m http.server 8000 --directory site
 
 GitHub Actions에서는 저장소 **Settings → Secrets and variables → Actions**에 Secret `PD_LLM_API_KEY`, Variable `PD_LLM_MODEL` (선택: `PD_LLM_BASE_URL`)를 설정하세요. **Policy Domino — Official Policy Impact Pipeline → Run workflow**에서 `source=stored`, `analyze_ai=true`를 선택하면 같은 배포 워크플로 안에서 실제 추론과 사이트 배포가 실행됩니다. 정기 실행은 추가 LLM 비용이 발생하지 않도록 AI를 자동 호출하지 않습니다.
 
+## 무료 Gemini 백업 모델과 요청 시 실행
+
+Gemini `gemini-3.8-flash`가 503 일시적 과부하로 세 차례 모두 실패하면, **같은 Gemini API 키·주소를 사용해** `gemini-3.5-flash-lite`를 한 번 백업 모델로 시도합니다. 모델이 바뀌어도 법령 근거와 검증 기준은 동일하게 적용하며, 결과에는 **실제 응답한 모델 ID**를 기록합니다. 다른 제공업체·유료 모델로 몰래 전환하지 않습니다. 백업 모델이 실패하거나 429/401/403/404가 발생하면 실제 AI 분석 결과가 없는 상태로 중단합니다.
+
+이 기능은 GitHub Variable `PD_LLM_FALLBACK_MODEL`로 변경할 수 있습니다. Google 제공자가 아니면 백업 모델 자동 전환을 사용하지 않습니다. 공식 지원 모델 및 무료 사용량은 Google AI Studio에서 확인해야 합니다.
+
+프로젝트 유지보수 작업에서 명시적으로 한 차례 실행하고 싶을 때는 `main` 브랜치 push 커밋 메시지에 `[ai-run-once]`를 포함할 수 있습니다. **이 표시가 없는 일반 코드 변경이나 정기 수집에서 유료·무료 모델 호출은 자동으로 발생하지 않습니다.** 기존 사용자 수동 실행 방식(`source=stored`, `analyze_ai=true`)은 그대로 유지됩니다.
+
 ## 오류와 제한
 
 - 인증값이나 모델 ID가 없으면 **실제 분석을 실행하지 않고 오류로 중단**합니다. 미리 작성한 가짜 AI 결과를 표시하지 않습니다.

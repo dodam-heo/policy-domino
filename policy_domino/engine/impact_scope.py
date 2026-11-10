@@ -21,6 +21,7 @@ def assess_impact_scope(event, actions):
             a.get("event_id")==event["event_id"] and a.get("agency") and
             a.get("evidence_scope") in (
                 "v4_verified_source",
+                "service_formula_dependency_verified",
                 "legacy_official_directive_awaiting_recheck")}
     legal_links={
         (_normalize(x.get("title")),_normalize(x.get("article")))

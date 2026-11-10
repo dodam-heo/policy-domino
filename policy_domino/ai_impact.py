@@ -13,6 +13,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
@@ -190,7 +191,8 @@ def explain_provider_http_error(http_status: int, raw: bytes) -> str:
 
 
 def call_model(config: ModelConfig, context: dict,
-               open_request: Callable[..., Any] = urlopen) -> dict:
+               open_request: Callable[..., Any] = urlopen,
+               pause: Callable[[float], Any] = time.sleep) -> dict:
     """OpenAI-compatible chat-completions protocol; model is configurable."""
     body = {
         "model": config.model,
@@ -205,19 +207,35 @@ def call_model(config: ModelConfig, context: dict,
         headers={"Authorization": "Bearer " + config.api_key, "Content-Type": "application/json"},
         method="POST",
     )
-    try:
-        with open_request(request, timeout=90) as response:
-            raw = response.read(150_001)
-    except HTTPError as exc:
-        # Do not print raw provider responses: they can include submitted text.
-        # Invalid or list-shaped provider JSON must never raise AttributeError.
+    # Gemini's documented HTTP 503 means temporary provider overload, not
+    # exhausted free-tier quota. Retry only transient server-side errors with
+    # bounded exponential backoff; never retry auth, invalid model or billing.
+    # Three requests maximum, with 3s and 9s delay (12 seconds total).
+    for attempt in range(3):
         try:
-            safe_body = exc.read(8192)
-        except (OSError, ValueError):
-            safe_body = b""
-        raise RuntimeError(explain_provider_http_error(exc.code, safe_body)) from None
-    except (URLError, TimeoutError, OSError):
-        raise RuntimeError("LLM provider is unreachable; no AI output will be published") from None
+            with open_request(request, timeout=90) as response:
+                raw = response.read(150_001)
+            break
+        except HTTPError as exc:
+            # Never expose raw provider response or private request data.
+            try:
+                safe_body = exc.read(8192)
+            except (OSError, ValueError):
+                safe_body = b""
+            if exc.code in (500, 502, 503, 504) and attempt < 2:
+                delay = (3, 9)[attempt]
+                print(
+                    f"LLM_PROVIDER_RETRY HTTP {exc.code}; retry "
+                    f"{attempt + 1}/2 after {delay}s",
+                    flush=True,
+                )
+                pause(delay)
+                continue
+            raise RuntimeError(explain_provider_http_error(exc.code, safe_body)) from None
+        except (URLError, TimeoutError, OSError):
+            raise RuntimeError(
+                "LLM provider is unreachable; no AI output will be published"
+            ) from None
     if len(raw) > 150_000:
         raise ValueError("LLM response exceeds size limit")
     try:

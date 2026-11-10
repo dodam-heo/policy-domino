@@ -5,7 +5,7 @@ textual change, downstream legal dependency and actual implementation are
 four DIFFERENT states. This pipeline never silently treats one as another.
 """
 from __future__ import annotations
-import datetime as dt,json,os,re
+import datetime as dt,json,os,re,time
 from pathlib import Path
 from policy_domino import official_api as api
 from policy_domino.engine import collect_index,events,relationships,official_links,dependents,source_change
@@ -352,6 +352,7 @@ def build(state,today):
             "last_official_scan_error":state.get("last_official_scan_error",""),
             "retained_complete_clause_versions":sum(
                 bool(x.get("complete_source")) for x in state.get("verified_snapshots",{}).values()),
+            "detail_work_budget_exceeded":bool(state.get("detail_work_budget_exceeded")),
             "scope":"공식 변경이력·법령·행정규칙·자치법규 변경일 기준",
             "whole_corpus_complete":False},
         "links":{
@@ -366,6 +367,11 @@ def build(state,today):
     return report
 
 def run():
+    started=time.monotonic()
+    # Leave room for canonical publication and GitHub commit in the 50-minute
+    # Actions job. Incomplete verification remains queued for the next run.
+    deadline=started+max(180,min(2400,int(os.getenv(
+        "PD_V4_RUN_BUDGET_SECONDS","1200"))))
     state=load_json(STATE,{"catalog":{},"inspected":{},"coverage":[],
                            "verified_snapshots":{},"attempts":{}})
     today=dt.date.today()
@@ -379,7 +385,11 @@ def run():
             # A later run resumes from this same append-only official catalogue.
             save_json(STATE,state)
     workload=pick_work(state,today,int(os.getenv("PD_V4_DETAILS","14")))
+    state["detail_work_budget_exceeded"]=False
     for record in workload:
+        if time.monotonic()>=deadline:
+            state["detail_work_budget_exceeded"]=True
+            break
         k=events.key(record)
         try:
             item,contents=prepare_document_record(record,state)
@@ -413,6 +423,9 @@ def run():
           x["id"] not in state.setdefault("delegation_links",{})]
     todo.sort(key=lambda x:x.get("promulgated_at",""),reverse=True)
     for event in todo[:int(os.getenv("PD_V4_DELEGATIONS","4"))]:
+        if time.monotonic()>=deadline:
+            state["detail_work_budget_exceeded"]=True
+            break
         try:
             record=state["catalog"][event["id"]]
             state["delegation_links"][event["id"]]=official_links.delegated_changed_articles(
@@ -420,7 +433,7 @@ def run():
         except Exception as exc:
             state.setdefault("errors",[]).append({"source":"lsDelegated",
                 "title":event["title"],"error":type(exc).__name__+": "+str(exc)[:140]})
-    if os.getenv("PD_V4_SKIP_DEPENDENTS")!="1":
+    if os.getenv("PD_V4_SKIP_DEPENDENTS")!="1" and time.monotonic()<deadline:
         try:
             dstatus=dependents.search_and_process(state,read_document,
                 max_parents=int(os.getenv("PD_V4_SEARCH_PARENTS","2")),
@@ -429,6 +442,8 @@ def run():
         except Exception as exc:
             state.setdefault("errors",[]).append({"source":"downstream",
                 "error":type(exc).__name__+": "+str(exc)[:150]})
+    if time.monotonic()>=deadline:
+        state["detail_work_budget_exceeded"]=True
     data=build(state,today)
     save_json(STATE,state)
     save_json(OUTPUT,data)

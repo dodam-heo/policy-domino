@@ -91,7 +91,7 @@ assert.ok(page.includes('src="../assets/ai-view.js"'));
 const app=fs.readFileSync("site/assets/classic.js","utf8");
 new vm.Script(app,{filename:"classic.js"});
 assert.ok(!app.includes("window.PolicyDominoAiView.render(e,DATA,AI_DATA)"));
-assert.ok(app.includes("window.PolicyDominoAiView.renderForAction(a, aiFindings.get(a.id))"));
+assert.ok(app.includes("window.PolicyDominoAiView.renderForAction(a,aiFindings.get(a.id))"));
 assert.ok(app.includes('<details class="impactAgencyGroup"'));
 assert.ok(app.includes("target.open=true"));
 assert.ok(app.includes("기관별 변경 검토사항"));

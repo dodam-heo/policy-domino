@@ -7,14 +7,47 @@ const classic=fs.readFileSync("site/classic/index.html","utf8");
 const impact=fs.readFileSync("site/impact/index.html","utf8");
 const script=fs.readFileSync("site/assets/classic.js","utf8");
 const styles=fs.readFileSync("site/assets/classic.css","utf8");
-const {DEFAULT_FILTER,sorted,filterEvents,resolveSelection}=require("../assets/impact-model.js");
+const view=require("../assets/impact-model.js");
 
 assert.equal(classic,template.replace("__POLICY_DATA_URL__","./data.json"),
-  "Classic shell must be generated from one shared template");
+  "Classic route must be generated from the same template");
 assert.equal(impact,template.replace("__POLICY_DATA_URL__","../classic/data.json"),
-  "Impact route must use the same markup and Classic dataset");
-for(const html of [classic,impact]){
-  assert.equal(d.schema,"policy-domino-next-v1");
+  "Impact route must read the same official source-backed dataset");
+for(const page of [classic,impact]){
+  assert.ok(page.includes('data-law="high-impact"'));
+  assert.ok(page.includes('class="chip active" data-law="high-impact"'),
+    "High impact must be selected in initial HTML");
+  assert.ok(page.includes('>영향도 큼</button>'));
+  assert.ok(!page.includes('data-law="standards"'));
+  assert.ok(page.includes('../assets/classic.css'));
+  assert.ok(page.includes('../assets/impact-model.js'));
+  assert.ok(page.includes('../assets/classic.js'));
+  assert.ok(!page.includes("<script>"),"Do not duplicate inline view logic");
+}
+new vm.Script(script,{filename:"site/assets/classic.js"});
+assert.ok(styles.includes(".chip.active"));
+assert.equal(view.DEFAULT_FILTER,"high-impact");
+assert.ok(script.includes("document.body.dataset.policyDataUrl"));
+assert.ok(script.includes("filter=DEFAULT_FILTER"));
+const fixtures=[
+  {event_id:"old-high",impact_level:"high",promulgated_at:"2026-01-01",title:"가상 과거 변경",revision:"개정"},
+  {event_id:"new-low",impact_level:"not_assessed",promulgated_at:"2026-12-01",title:"가상 신규",revision:"제정"},
+  {event_id:"new-high",impact_level:"high",promulgated_at:"2026-11-01",title:"가상 최근 변경",revision:"개정"}
+];
+assert.deepEqual(view.filterEvents(fixtures).map(e=>e.event_id),["new-high","old-high"]);
+assert.equal(view.resolveSelection(view.filterEvents(fixtures),"new-low"),"new-high");
+assert.equal(view.resolveSelection([],"old-high"),null);
+assert.equal(view.filterEvents(fixtures,"all").length,3);
+assert.equal(view.filterEvents(fixtures,"new").length,1);
+assert.equal(view.sorted(fixtures)[0].event_id,"new-low");
+for(const label of ["기관별 변경 검토사항","공식 변경 전후 내용",
+    "검토할 조치","이전 V2 개정 지시문 · 최신 재검증 대기",
+    "어떤 업무를 검토하나?"]){
+  assert.ok(script.includes(label),"Missing operational detail: "+label);
+}
+
+const d=JSON.parse(fs.readFileSync("site/classic/data.json","utf8"));
+assert.equal(d.schema,"policy-domino-next-v1");
 assert.ok(d.events.length>0&&d.actions.length>0,"Must display actual sourced work");
 const high=d.events.filter(e=>e.impact_level==="high");
 assert.ok(high.length>0,"Expected at least one multiple-institution official case");

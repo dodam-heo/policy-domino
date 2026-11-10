@@ -110,7 +110,8 @@ def pick_work(state,today,limit):
         if old is None:
             return True
         if old.get("verification") not in (
-            "detail_failed","partial_official_text","official_record_only"):
+            "detail_failed","partial_official_text","official_record_only") and
+                not old.get("needs_attachment_check"):
             return False
         return state.get("retry_after",{}).get(k,"")<=today.isoformat()
     waiting=[x for k,x in catalog.items() if eligible(k,x)]
@@ -222,6 +223,7 @@ def output_groups(state):
             "actor_duties":m.get("actors",[])[:20],
             "needs_attachment_check":m.get("needs_attachment_check",False),
             "notes":m.get("notes",[]),
+            "unresolved_attachments":m.get("unresolved_attachments",[]),
             "comparison":m.get("comparison")} for m in members]
         del g["members"]
         g["importance"]=(min(8,len(links))*12+
@@ -305,6 +307,8 @@ def run():
                 state["inspected"][k]=item
             if item["verification"] in ("detail_failed","partial_official_text"):
                 state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=2))
+            elif item.get("needs_attachment_check"):
+                state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=7))
             elif item["verification"]=="official_record_only":
                 state.setdefault("retry_after",{})[k]=str(today+dt.timedelta(days=21))
             else:

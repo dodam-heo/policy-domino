@@ -41,6 +41,7 @@ def scan_new(state,today,checkpoint=None):
     state["coverage"]=[]
     for audit in history:
         collect_index.record_coverage(state,audit)
+    state["_source_pages_confirmed"]=0
     budget=max(1,min(12,int(os.getenv("PD_BACKFILL_WINDOWS_PER_RUN","6"))))
     span=max(7,min(31,int(os.getenv("PD_BACKFILL_WINDOW_DAYS","28"))))
     horizon=max(365,min(3650,int(os.getenv("PD_HISTORY_DAYS","1095"))))

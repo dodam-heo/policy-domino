@@ -15,7 +15,8 @@ from urllib.error import HTTPError
 from policy_domino.analysis_evidence import evidence_identity, has_verified_action
 from policy_domino.ai_impact import (
     SCHEMA, ModelConfig, ProviderHTTPFailure, build_catalog,
-    eligible_actions, evidence_payload, call_model, parse_model_response, validate_answer,
+    eligible_actions, evidence_payload, call_model, parse_model_response,
+    parse_native_gemini_response, make_model_request, validate_answer,
     remaining_chunks, run_incremental,
 )
 
@@ -324,6 +325,55 @@ class AllEventAITests(unittest.TestCase):
             with self.subTest(example=str(example)[:50]):
                 with self.assertRaisesRegex(ValueError,"structured JSON"):
                     parse_model_response(json.dumps(example).encode())
+
+    def test_google_native_structured_transport_and_model_response(self):
+        build_catalog(self.data)
+        cfg=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
+                        "gemini-3.5-flash-lite","my-private-gemini-key")
+        ctx=evidence_payload(self.data["events"][0],self.data["actions"][:2],
+                             self.data["generated_at"])
+        request,native=make_model_request(cfg,ctx)
+        self.assertTrue(native)
+        self.assertEqual(request.full_url,
+                         "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent")
+        self.assertEqual(request.get_header("X-goog-api-key"),"my-private-gemini-key")
+        self.assertIsNone(request.get_header("Authorization"))
+        body=json.loads(request.data)
+        self.assertEqual(body["contents"][0]["role"],"user")
+        self.assertEqual(body["generationConfig"]["responseFormat"]["text"]["mimeType"],
+                         "application/json")
+        self.assertEqual(body["generationConfig"]["responseFormat"]["text"]["schema"]["type"],
+                         "object")
+        self.assertEqual(body["generationConfig"]["maxOutputTokens"],4096)
+        contexts=json.loads(body["contents"][0]["parts"][0]["text"])
+        self.assertEqual(len(contexts["evidence"]),2)
+        answer=actual_shaped_answer(ctx)
+        def opener(req,timeout):
+            self.assertEqual(timeout,45)
+            response={"candidates":[{"content":{"parts":[{"text":json.dumps(answer,ensure_ascii=False)}]},
+                                     "finishReason":"STOP"}]}
+            return Response(json.dumps(response,ensure_ascii=False).encode())
+        self.assertEqual(call_model(cfg,ctx,open_request=opener),answer)
+
+    def test_native_gemini_response_rejects_truncated_output_without_fake_findings(self):
+        payload={"candidates":[{"finishReason":"MAX_TOKENS",
+                                "content":{"parts":[{"text":"{incomplete"}]}}]}
+        with self.assertRaisesRegex(ValueError,"valid structured JSON"):
+            parse_native_gemini_response(json.dumps(payload).encode())
+
+    def test_prefer_proven_gemini_lite_without_first_hitting_overloaded_primary(self):
+        cfg=ModelConfig("https://generativelanguage.googleapis.com/v1beta/openai",
+                        "gemini-3.8-flash","test-key")
+        calls=[]
+        def provider(config,ctx):
+            calls.append(config.model)
+            return actual_shaped_answer(ctx)
+        with patch.dict(os.environ, {"PD_LLM_FALLBACK_MODEL":"gemini-3.5-flash-lite",
+                                     "PD_AI_PREFER_FALLBACK":"true"}):
+            result=run_incremental(self.data,{},cfg,max_requests=2,
+                                   interval=0,model_request=provider,pause=lambda _:None)
+        self.assertEqual(calls,["gemini-3.5-flash-lite","gemini-3.5-flash-lite"])
+        self.assertEqual(result["last_success_model"],"gemini-3.5-flash-lite")
 
     def test_fingerprint_mismatch_does_not_publish_stale_cached_facts(self):
         catalog=build_catalog(self.data)

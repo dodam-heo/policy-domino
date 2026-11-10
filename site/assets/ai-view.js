@@ -11,7 +11,8 @@
   }
   function verifiedActions(event, data) {
     return (data.actions || []).filter(a => a.event_id === event.event_id &&
-      a.evidence_scope === "v4_verified_source" &&
+      ["v4_verified_source", "service_formula_dependency_verified",
+       "service_cited_changed_article_verified"].includes(a.evidence_scope) &&
       typeof a.evidence_fingerprint === "string" &&
       a.evidence_fingerprint.length === 64);
   }

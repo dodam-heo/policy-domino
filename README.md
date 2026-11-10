@@ -15,6 +15,7 @@ policy_domino/
   __main__.py             단일 운영 진입점
   official_api.py          국가법령정보 공식 API 통신·원문 추출
   semantic_diff.py         원문 신구 문장 비교
+  ai_impact.py             실 LLM 호출·근거 검증·AI 초안 생성
   audit.py                 중복 파이프라인·오래된 코드 재유입 방지
   engine/
     pipeline.py            공식 변경 사건 수집·증빙 데이터 생성
@@ -32,7 +33,8 @@ policy_domino/
 tests/                    수집·분석·증빙·UI 계약 자동 테스트
 site/
   templates/agency.html   하나의 공통 화면 템플릿
-  assets/                 공통 CSS·JavaScript
+  assets/                 공통 CSS·JavaScript·AI 결과 렌더러
+  ai-impact/              실제 모델 출력(존재할 때만 표시)
   impact/                 기본 '영향도 큼' 화면
   classic/                동일 데이터의 호환 접근 경로
   v4/                     원문 검증 현황 조회용 공개 경로
@@ -65,6 +67,28 @@ LAW_OC="<공식 API 인증값>" python -m policy_domino --source official
 ```
 
 GitHub Actions는 **`.github/workflows/policy-domino.yml`** 하나만 정기 실행합니다. 6시간마다 공식 수집→검증→기관별 분석→배포를 수행합니다. `main` 코드가 바뀌면 기존 공식 증빙으로 재생성·배포하며, 수동 실행 때는 두 모드 중 선택할 수 있습니다. `LAW_OC`는 GitHub Actions Secret 또는 Variable로 설정하며, 인증값을 소스에 넣지 않습니다. 검증 실패·API 실패 시 배포는 중단됩니다.
+
+## 실제 LLM 기반 기관별 업무 영향 분석 (선택 실행)
+
+기존 공식 법령 수집·신구 조문 검증과 별개로 **실제 모델을 호출**하여 증빙된 기관 업무의 변화와 검토사항을 분석하는 `policy_domino/ai_impact.py`를 제공합니다. 모델의 결과는 `site/ai-impact/data.json`에 별도 저장하고 `/impact/` 화면의 해당 정책 사건에만 **'AI 검토 초안'**으로 표시합니다. **모델 자격증명이 없으면 실행되지 않으며, AI 결과를 생성했다고 표시하지 않습니다.**
+
+```bash
+# 기존 공식 출처로 재현 가능한 데이터 만들기
+python -m policy_domino --source stored
+
+# 아래 값은 실제 모델 제공업체에서 발급받아 환경변수로만 설정
+export PD_LLM_API_KEY="YOUR_PRIVATE_API_KEY"
+export PD_LLM_MODEL="YOUR_PROVIDER_MODEL_ID"
+python -m policy_domino.ai_impact --limit 3
+
+# 생성된 화면 확인
+python -m http.server 8000 --directory site
+# http://localhost:8000/impact/
+```
+
+OpenAI 호환 Chat Completions API를 사용하며 `PD_LLM_BASE_URL`로 제공업체를 교체할 수 있습니다. 모델이 추가 기관이나 근거를 만들어 내더라도 공식 출처와 맞지 않으면 거부합니다. **정기 배포에서는 임의의 유료 모델 호출이 발생하지 않습니다.** 모델 Secret을 설정하고 GitHub Actions에서 `analyze_ai=true`로 수동 실행할 수 있습니다.
+
+자세한 설정·실행 순서·한계: **[실제 LLM 분석 실행 안내](docs/ai-impact.md)**.
 
 ## 결과 해석
 

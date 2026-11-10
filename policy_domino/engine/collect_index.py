@@ -124,6 +124,8 @@ def bisect_window(source,first,last,fetch=None,max_pages=50,max_splits=10,editio
 def record_coverage(state, audit: dict) -> None:
     """Retain the latest evidence for each source, date range and edition."""
     rows = state.setdefault("coverage", [])
+    if audit.get("complete"):
+        state["_source_pages_confirmed"]=state.get("_source_pages_confirmed",0)+1
     fields = ("source", "first", "last", "edition")
     identity = tuple(audit.get(field, "") for field in fields)
     for i, old in enumerate(rows):

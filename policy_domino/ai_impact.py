@@ -127,6 +127,68 @@ def evidence_payload(event: dict, actions: list[dict], generated_at: str) -> dic
     }
 
 
+def safe_provider_error_details(raw: bytes) -> tuple[str, str]:
+    """Extract only public error identifiers from object OR list-shaped responses.
+
+    Some OpenAI-compatible providers return an array of error objects rather
+    than {"error": {...}}. Never log arbitrary provider messages or request data.
+    """
+    try:
+        value = json.loads(raw)
+    except (ValueError, TypeError, UnicodeDecodeError):
+        return "", ""
+    # Some providers use [{"error": {...}}], others {"error": {...}}.
+    for _ in range(3):
+        if isinstance(value, list):
+            value = value[0] if value else None
+        elif isinstance(value, dict) and isinstance(value.get("error"), (dict, list)):
+            value = value["error"]
+        else:
+            break
+    if not isinstance(value, dict):
+        return "", ""
+    allowed = {
+        "insufficient_quota", "credit_balance_exhausted",
+        "organization_usage_limit_exceeded", "organization_spend_limit_exceeded",
+        "project_spend_limit_exceeded", "billing_hard_limit_reached",
+        "rate_limit_exceeded", "RESOURCE_EXHAUSTED", "RATE_LIMIT_EXCEEDED",
+        "INVALID_ARGUMENT", "UNAUTHENTICATED", "PERMISSION_DENIED",
+        "NOT_FOUND", "FAILED_PRECONDITION", "UNAVAILABLE",
+    }
+    raw_code = value.get("code")
+    raw_type = value.get("type")
+    raw_status = value.get("status")
+    # Provider numeric codes (e.g. 429) are not descriptive; caller has HTTP status.
+    code = str(raw_code) if isinstance(raw_code, str) and raw_code in allowed else ""
+    kind = str(raw_type) if isinstance(raw_type, str) and raw_type in allowed else ""
+    status = str(raw_status) if isinstance(raw_status, str) and raw_status in allowed else ""
+    return code or status, kind
+
+
+def explain_provider_http_error(http_status: int, raw: bytes) -> str:
+    """Model-neutral, non-secret diagnostic that never confuses quota with billing."""
+    code, kind = safe_provider_error_details(raw)
+    label = code or kind
+    suffix = f", provider={label}" if label else ""
+    prefix = f"LLM API HTTP {http_status}{suffix}. "
+    if http_status == 429:
+        if label in {"insufficient_quota", "credit_balance_exhausted",
+                     "organization_usage_limit_exceeded",
+                     "organization_spend_limit_exceeded",
+                     "project_spend_limit_exceeded", "billing_hard_limit_reached"}:
+            return prefix + "Credit or spend limit reached; check provider billing and project usage cap. No AI report published."
+        if label in {"RESOURCE_EXHAUSTED", "RATE_LIMIT_EXCEEDED", "rate_limit_exceeded"}:
+            return prefix + "Provider quota/rate limit reached. For Gemini free tier, check AI Studio rate limits and quota; for other providers check RPM/TPM. No AI report published."
+        return prefix + "Provider rejected request; check quota, billing and RPM/TPM. No AI report published."
+    if http_status in (401, 403):
+        return prefix + "Check that this provider's API key is enabled for the selected model/project; do not expose the key. No AI report published."
+    if http_status == 404:
+        return prefix + "Check model ID and provider API base URL; the selected model or route was not found. No AI report published."
+    if http_status == 400:
+        return prefix + "Provider rejected model request format or parameters. Check API compatibility and model ID. No AI report published."
+    return prefix + "Provider did not accept the request. No AI report published."
+
+
 def call_model(config: ModelConfig, context: dict,
                open_request: Callable[..., Any] = urlopen) -> dict:
     """OpenAI-compatible chat-completions protocol; model is configurable."""
@@ -147,49 +209,13 @@ def call_model(config: ModelConfig, context: dict,
         with open_request(request, timeout=90) as response:
             raw = response.read(150_001)
     except HTTPError as exc:
-        # Do not print the raw provider response: it may contain request data.
-        # Only surface known non-sensitive error codes to guide account setup.
-        provider_code = ""
-        provider_type = ""
+        # Do not print raw provider responses: they can include submitted text.
+        # Invalid or list-shaped provider JSON must never raise AttributeError.
         try:
-            error_response = json.loads(exc.read(8192))
-            detail = error_response.get("error", {})
-            if isinstance(detail, dict):
-                provider_code = str(detail.get("code") or "")
-                provider_type = str(detail.get("type") or "")
-        except (OSError, TypeError, ValueError):
-            pass
-        quota_codes = {
-            "insufficient_quota", "credit_balance_exhausted",
-            "organization_usage_limit_exceeded",
-            "organization_spend_limit_exceeded",
-            "project_spend_limit_exceeded",
-            "billing_hard_limit_reached",
-        }
-        if exc.code == 429:
-            if provider_code in quota_codes or provider_type in quota_codes:
-                label = provider_code if provider_code in quota_codes else provider_type
-                raise RuntimeError(
-                    "LLM API quota/billing limit (HTTP 429, code="
-                    + label + "). Check platform.openai.com billing balance "
-                    "and project/organization spend limits. Retrying will not fix "
-                    "a depleted balance. No AI report was published."
-                ) from None
-            if provider_code == "rate_limit_exceeded" or provider_type == "rate_limit_exceeded":
-                raise RuntimeError(
-                    "LLM API temporary rate limit (HTTP 429, code=rate_limit_exceeded). "
-                    "Check model RPM/TPM limits and retry after the provider's "
-                    "cooldown. No AI report was published."
-                ) from None
-            raise RuntimeError(
-                "LLM API rejected request (HTTP 429). Cause not disclosed; "
-                "check billing balance, project spend caps and RPM/TPM limits. "
-                "No AI report was published."
-            ) from None
-        raise RuntimeError(
-            f"LLM provider rejected request (HTTP {exc.code}). "
-            "No AI report was published."
-        ) from None
+            safe_body = exc.read(8192)
+        except (OSError, ValueError):
+            safe_body = b""
+        raise RuntimeError(explain_provider_http_error(exc.code, safe_body)) from None
     except (URLError, TimeoutError, OSError):
         raise RuntimeError("LLM provider is unreachable; no AI output will be published") from None
     if len(raw) > 150_000:

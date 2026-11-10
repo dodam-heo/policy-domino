@@ -23,14 +23,14 @@ class PipelineEntryTests(unittest.TestCase):
     def test_stored_mode_does_not_call_official_api(self):
         with patch("policy_domino.engine.stage_refresh.run",
                    return_value={"schema": "policy-domino-v4"}), patch(
-                    "v4.classic_bridge.run",
+                    "policy_domino.engine.classic_bridge.run",
                     return_value={"schema": "policy-domino-next-v1", "events":[{}]}):
             out = run("stored")
         self.assertEqual(out["source"], "stored")
 
     def test_contract_mismatch_blocks_publication(self):
         with patch("policy_domino.engine.stage_refresh.run", return_value={"schema": "broken"}), patch(
-                "v4.classic_bridge.run") as publish:
+                "policy_domino.engine.classic_bridge.run") as publish:
             with self.assertRaises(ValueError):
                 run("stored")
             publish.assert_not_called()
@@ -38,7 +38,7 @@ class PipelineEntryTests(unittest.TestCase):
     def test_empty_feed_blocks_deploy(self):
         with patch("policy_domino.engine.stage_refresh.run",
                    return_value={"schema": "policy-domino-v4"}), patch(
-                    "v4.classic_bridge.run",
+                    "policy_domino.engine.classic_bridge.run",
                     return_value={"schema":"policy-domino-next-v1","events":[]}):
             with self.assertRaisesRegex(ValueError,"empty"):
                 run("stored")

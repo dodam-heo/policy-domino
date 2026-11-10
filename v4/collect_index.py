@@ -8,7 +8,7 @@ from __future__ import annotations
 import datetime as dt
 from dataclasses import dataclass,asdict
 from typing import Callable
-from v2 import collector as api
+from policy_domino import official_api as api
 
 @dataclass
 class WindowResult:

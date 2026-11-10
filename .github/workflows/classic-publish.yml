@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/classic-publish.yml'
       - 'v4/classic_bridge.py'
+      - 'v4/agency_actions.py'
+      - 'v4/legacy_recheck.py'
+      - 'v4/test_agency_actions.py'
+      - 'v4/test_legacy_recheck.py'
       - 'v4/impact_scope.py'
       - 'v4/classic_pages.py'
       - 'v4/test_impact_scope.py'
@@ -38,7 +42,7 @@ jobs:
         run: python -m v4.classic_bridge
       - name: Verify scope rules, deterministic pages and official-data display
         run: |
-          python -m unittest v4.test_impact_scope v4.test_classic_pages -v
+          python -m unittest v4.test_impact_scope v4.test_classic_pages v4.test_agency_actions v4.test_legacy_recheck -v
           node site/classic/test_ui.cjs
           node site/test_adapter.cjs
       - name: Commit latest Classic source-backed output

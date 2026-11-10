@@ -127,6 +127,34 @@ class OfficialChangePresentationTests(unittest.TestCase):
                                              "model":"old"}
         self.assertNotIn("source_summary",build_catalog(data,old)["events"][0])
 
+    def test_model_evidence_preserves_change_at_end_of_long_official_clause(self):
+        from policy_domino.ai_impact import source_summary_payload
+        old="제5조(공고) "+"공고 방식에 관한 일반 원칙은 같다. "*45+"일간신문에 공고하여야 한다."
+        new="제5조(공고) "+"공고 방식에 관한 일반 원칙은 같다. "*45+"공식 홈페이지에 공고하여야 한다."
+        event={"title":"가상 공고규칙",
+               "source_fingerprint":"test-fingerprint",
+               "article_differences":[{"article":"제5조","before":old,"after":new}]}
+        evidence=source_summary_payload(event)["source_changes"][0]
+        self.assertIn("일간신문",evidence["before"])
+        self.assertIn("공식 홈페이지",evidence["after"])
+        self.assertLessEqual(len(evidence["before"]),702)
+        self.assertLessEqual(len(evidence["after"]),702)
+
+    def test_reject_generic_title_list_even_when_one_changed_word_is_repeated(self):
+        old="제5조(공고) 신청 내용은 일간신문에 공고한다."
+        new="제5조(공고) 신청 내용은 공식 홈페이지에 공고한다."
+        pair=source_change.source_pairs([make_change("제5조",old,new)])
+        event={"event_id":"notice:5","title":"가상 공고 규칙",
+               "source_verification":"verified_changed_clauses",
+               "article_differences":pair}
+        event["source_fingerprint"]=source_change.fingerprint(event)
+        generic={"summary":"공식 홈페이지 공고와 관련한 규정을 개정하고 관계 법령을 정비하였습니다.",
+                 "evidence_ids":["C1"]}
+        self.assertEqual(validate_source_summary(generic,event),"")
+        specific={"summary":"신청 내용의 공고 매체를 종전 일간신문에서 공식 홈페이지로 변경했습니다.",
+                  "evidence_ids":["C1"]}
+        self.assertTrue(validate_source_summary(specific,event))
+
     def test_ai_summary_must_bind_to_actual_source_evidence(self):
         before="제5조(공고) 조성계획안 공모는 관보와 일간신문에 공고하여야 한다."
         after="제5조(공고) 조성계획안 공모는 관보, 신문, 인터넷신문 및 방송에 공고하여야 한다."
@@ -146,7 +174,7 @@ class OfficialChangePresentationTests(unittest.TestCase):
         data={"schema":"policy-domino-next-v1","events":[event],"actions":[]}
         first=build_catalog(data)
         first["events"][0]["source_summary"]={
-            "text":answer["summary"],"model":"test","quality_version":2,
+            "text":answer["summary"],"model":"test","quality_version":3,
             "evidence_ids":["C1"],"source_fingerprint":event["source_fingerprint"]}
         reused=build_catalog(data,first)
         self.assertEqual(reused["events"][0]["source_summary"]["text"],answer["summary"])

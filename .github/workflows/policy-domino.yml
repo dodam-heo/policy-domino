@@ -105,7 +105,7 @@ jobs:
           PD_LLM_FALLBACK_MODEL: ${{ vars.PD_LLM_FALLBACK_MODEL || 'gemini-3.5-flash-lite' }}
           PD_AI_PREFER_FALLBACK: ${{ vars.PD_AI_PREFER_FALLBACK || 'true' }}
           PD_AI_MAX_REQUESTS: ${{ vars.PD_AI_MAX_REQUESTS || '36' }}
-          PD_AI_SUMMARY_REQUESTS: ${{ vars.PD_AI_SUMMARY_REQUESTS || '6' }}
+          PD_AI_SUMMARY_REQUESTS: ${{ vars.PD_AI_SUMMARY_REQUESTS || '18' }}
           PD_AI_REQUEST_INTERVAL: ${{ vars.PD_AI_REQUEST_INTERVAL || '12' }}
         run: |
           if [ -z "$PD_LLM_API_KEY" ] || [ -z "$PD_LLM_MODEL" ]; then

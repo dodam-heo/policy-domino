@@ -61,7 +61,7 @@ function institutionType(name){
 function verifiedSourceSummary(e){
  const record=(AI_DATA?.events||[]).find(row=>row.event_id===e.event_id);
  const summary=record?.source_summary;
- if(!summary||summary.quality_version!==2||!e.source_fingerprint||
+ if(!summary||summary.quality_version!==3||!e.source_fingerprint||
     summary.source_fingerprint!==e.source_fingerprint ||
     !summary.text||!summary.model)return null;
  return summary.text;

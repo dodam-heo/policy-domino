@@ -1,7 +1,7 @@
 {
   "schema": "policy-domino-llm-impact-v2",
-  "generated_at": "2026-11-10T15:10:28+00:00",
-  "source_generated_at": "2026-11-10T15:07:52+00:00",
+  "generated_at": "2026-11-10T15:36:40+00:00",
+  "source_generated_at": "2026-11-10T15:34:57+00:00",
   "events": [
     {
       "event_id": "v4:law|대통령령|2026-11-06|36801",
@@ -476,7 +476,14 @@
           "analyzed_at": "2026-11-10T08:36:51+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "우정사업본부 직제, 공정거래위원회와 그 소속기관 직제, 질병관리청과 그 소속기관 직제, 방위사업청과 그 소속기관 직제, 국방부와 그 소속기관 직제 등 관련 법령을 개정하여 전문직공무원 정원 배정 및 운영에 대한 특례 조문을 신설 또는 정비하고 직급별 정원을 조정했습니다.",
+        "source_fingerprint": "b6a000fc3de34a56db6244dc",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:35:10+00:00",
+        "source_changes_used": 8
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-09-29|36728",
@@ -908,7 +915,14 @@
           "analyzed_at": "2026-11-10T07:13:08+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "기후에너지환경부와 그 소속기관 직제 시행규칙 개정을 통해 기후에너지정책실, 에너지전환정책실, 온실가스 종합정보센터 등의 일부 과 및 팀장 보직에 수석전문관 직급을 추가하였으며, 일부 공무원 정원표 별표를 삭제하고 전문직공무원을 두는 하부조직의 범위를 구체화하였습니다.",
+        "source_fingerprint": "26e58c2f56f15f844d8c2015",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:35:24+00:00",
+        "source_changes_used": 7
+      }
     },
     {
       "event_id": "v4:law|국가보훈부령|2026-11-06|00078",
@@ -1128,7 +1142,14 @@
           "analyzed_at": "2026-11-10T07:14:24+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "지식재산처와 그 소속기관 직제 시행규칙 개정을 통해 컴퓨터심사과장의 분장 사무에 양자 컴퓨팅 분야를 추가하고, 전자적 증거 수집 및 분석 업무를 담당하는 임기제공무원 정원을 확대하였으며, 전문직공무원 정원 배정 및 운영에 관한 특례 조문을 신설했습니다.",
+        "source_fingerprint": "2d917512cc11f0ea89f98531",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:35:37+00:00",
+        "source_changes_used": 6
+      }
     },
     {
       "event_id": "v4:law|총리령|2026-11-06|02168",
@@ -1183,7 +1204,14 @@
           "analyzed_at": "2026-11-10T07:14:40+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "인사혁신처와 그 소속기관 직제 시행규칙 개정을 통해 윤리복무국 및 소청심사위원회 각 과장의 보임 자격에 '수석전문관'을 추가하고, 이에 따라 인사혁신처 공무원 정원표의 직급별 정원 배치를 조정하였습니다.",
+        "source_fingerprint": "e6ab3cd277c0402479e0c52f",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:36:40+00:00",
+        "source_changes_used": 4
+      }
     },
     {
       "event_id": "v4:law|통일부령|2026-11-06|00144",
@@ -1403,7 +1431,14 @@
           "analyzed_at": "2026-11-10T07:15:37+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "인사혁신처의 한시조직인 정부인사디지털추진담당관을 폐지하면서 관련 조문과 정원표를 삭제하고, 디지털 인사관리 및 채용시스템 관련 사무를 정비하는 한편 인사혁신처 공무원 정원을 일부 조정했습니다.",
+        "source_fingerprint": "d2766e92d7aaa7042d47ab7c",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:36:02+00:00",
+        "source_changes_used": 6
+      }
     },
     {
       "event_id": "v4:law|대통령령|2026-09-29|36713",
@@ -1458,7 +1493,14 @@
           "analyzed_at": "2026-11-10T07:15:55+00:00",
           "status": "AI 검토 제안 · 실제 반영 미확인"
         }
-      ]
+      ],
+      "source_summary": {
+        "text": "인사혁신처의 공무원 채용 관련 전산시스템 개발 및 운영 사무를 신설하고, 정부인사디지털추진담당관 한시조직을 폐지함에 따라 관련 규정과 정원표를 정비하였습니다.",
+        "source_fingerprint": "721331b8d1bf4836596daa87",
+        "model": "gemini-3.5-flash-lite",
+        "analyzed_at": "2026-11-10T15:36:18+00:00",
+        "source_changes_used": 5
+      }
     },
     {
       "event_id": "v4:law|대통령령|2021-01-05|31380",
@@ -276056,7 +276098,7 @@
     "awaiting_verified_evidence": 30498
   },
   "last_success_model": "gemini-3.5-flash-lite",
-  "last_error": "LLM API HTTP 503, provider=UNAVAILABLE. Provider temporary server problem.",
+  "last_error": null,
   "total_events": 30522,
   "eligible_events": 24,
   "total_verified_actions": 86,

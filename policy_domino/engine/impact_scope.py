@@ -46,6 +46,6 @@ def assess_impact_scope(event, actions):
             "proven_dependent_rules":len(legal_links),
             "criteria":"직접 검토 기관 2곳 이상 또는 변경 조항 적용 규정 2건 이상",
             "provisional":False,
-            "note":"공식 신구 조문에 따른 파급 범위. 기관별 내부 반영·사회적 중요도는 미확인"
+            "note":"공식 신구 조문으로 확인된 기관·규정의 적용 관계 범위"
         }
     }

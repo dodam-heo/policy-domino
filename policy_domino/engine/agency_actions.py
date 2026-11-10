@@ -166,15 +166,14 @@ def new_action(doc,p,event_id):
         "what_to_change":brief[:200],"changes":pair,
         "required_change":(
             f"{agency}의 {where}에서 {article}의 변경 내용을 확인하고 "
-            "해당 운영 기준·업무분장표 반영 필요 여부를 검토"
+            "해당 업무분장·운영 기준에서 변경해야 할 항목을 확인"
         ),
         "article":article,"law_title":doc.get("title",""),
         "effective_date":doc.get("effective",""),
         "basis":source_url(p.get("source_url") or doc.get("url")),
         "impact_link_basis":"동일 법령의 공식 이전·현재 조문 직접 비교",
-        "status":"반영 확인 필요",
         "confidence":"공식 신구 조문 확인",
-        "verification_note":"업무 기준 변경 사실은 확인했지만 해당 기관의 내부 시스템·반영 상태는 확인되지 않음",
+        "verification_note":"공식 변경 조문에 따라 기관의 해당 업무·기준 수정 항목을 검토",
         "evidence_scope":"v4_verified_source"
     }
 
@@ -227,7 +226,7 @@ def group_event(g):
         "article_differences":[],
         "change_summary":"",
         "change_count":sum(len(d.get("changed_articles",[])) for d in valid_docs),
-        "comparison_status":"공식 신구 본문 대조 (기관별 반영 여부 미확인)",
+        "comparison_status":"공식 신구 본문 대조",
         "policy_profile":bool(g.get("dependencies")),
         # These sections describe sourced legal relationships, not agency
         # implementation. The actual documents/citations are preserved and

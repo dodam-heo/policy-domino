@@ -231,7 +231,7 @@ class PublicServicesTests(unittest.TestCase):
         self.assertTrue(has_verified_action(action))
         self.assertEqual(action["agency"],s["agency"])
         self.assertEqual(action["service"],s["title"])
-        self.assertEqual(action["status"],"반영 확인 필요")
+        self.assertNotIn("status",action)
         old=evidence_identity(e,action)
         changed=copy.deepcopy(action)
         changed["service_evidence_rule"]="different published criterion"
@@ -244,7 +244,7 @@ class PublicServicesTests(unittest.TestCase):
         action=agency_service_action(e,edge)
         self.assertEqual(action["evidence_scope"],"legacy_service_dependency_pending_recheck")
         self.assertFalse(has_verified_action(action))
-        self.assertEqual(action["status"],"최신 근거 재확인 필요")
+        self.assertNotIn("status",action)
 
     def test_existing_official_legal_action_fingerprints_remain_unchanged(self):
         root=Path(__file__).resolve().parents[1]

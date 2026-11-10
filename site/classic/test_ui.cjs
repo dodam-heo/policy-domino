@@ -75,8 +75,7 @@ for(const a of d.actions){
   assert.ok(["v4_verified_source","service_formula_dependency_verified",
     "service_cited_changed_article_verified"].includes(a.evidence_scope));
   if(a.service_id) assert.equal(a.comparison_scope,"source_policy_only");
-  assert.notEqual(a.status,"조치 확인");
-  assert.notEqual(a.status,"미조치 확인");
+  assert.ok(!("status" in a),"No agency implementation status may be published");
 }
 const official=d.actions.filter(a=>["v4_verified_source",
   "service_formula_dependency_verified"].includes(a.evidence_scope));
@@ -96,5 +95,8 @@ assert.ok(styles.includes(".sourceChanges .changePair{display:grid;grid-template
 assert.ok(styles.includes(".sourceChanges .changeCol+.changeCol{border-left:1px solid #e5ebef;border-top:0}"),
   "Mobile comparison must not be stacked");
 assert.ok(script.includes("상위 정책 기준의 변경값"));
+assert.ok(!script.includes("badgeStatus"),"No implementation-status badge");
+assert.ok(!script.includes("status_evidence"),"No implementation-status evidence drawer");
+assert.ok(!script.includes("반영 확인 필요"),"No implementation-state label");
 console.log("CLASSIC_PASS",{events:d.events.length,agencyTasks:d.actions.length,
   official:official.length});

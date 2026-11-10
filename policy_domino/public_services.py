@@ -523,7 +523,7 @@ def agency_service_action(event: dict, edge: dict) -> dict:
         "comparison_scope": "source_policy_only",
         "required_change": (
             edge["service"] + "의 실제 적용비율·산식·가구 유형·금액과 공식 운영기준을 "
-            "대조하여 반영 여부 확인. 위 신구 금액은 상위 정책 기준이며 "
+            "대조하여 사업의 선정·지원기준과 안내·전산 산식에서 수정할 항목을 특정. 위 신구 금액은 상위 정책 기준이며 "
             "해당 사업의 최종 선정금액이 아님"
         ),
         "article": edge["policy_article"],
@@ -535,14 +535,12 @@ def agency_service_action(event: dict, edge: dict) -> dict:
             if edge.get("evidence_status") == "service_clause_citation_matched"
             else "행정안전부 공공서비스 선정기준의 " +
                  edge["policy_concept"] + " 비율·산식 인용"),
-        "status": ("반영 확인 필요" if parent_current
-                   else "최신 근거 재확인 필요"),
         "confidence": ("공식 정책 기준값·정부24 사업 선정기준 교차 확인"
                        if parent_current else
                        "이전 공식 기준액·정부24 사업 선정기준 교차 확인"),
         "evidence_scope": source_kind,
         "verification_note": (
             "공식 서비스 선정기준이 변경된 기준변수를 이용하는 관계를 확인. "
-            "실제 기관의 공고·업무시스템 반영 여부는 미확인."
+            "기관별 자격·지원기준·업무 변경항목에 대한 추가 분석 대상으로 연결."
         ),
     }

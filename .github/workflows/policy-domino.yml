@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
   pages: write
   id-token: write
 
@@ -39,6 +40,10 @@ jobs:
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
+        with:
+          # A queued run must not checkout the stale triggering commit after
+          # an earlier serialized run has already published newer source data.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -154,21 +159,31 @@ jobs:
           print('PUBLICATION_GATE',len(view['events']),len(view['actions']))
           PY
       - name: Commit only source-backed generated outputs
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
           git config user.name policy-domino-bot
           git config user.email policy-domino-bot@users.noreply.github.com
+          base_sha=$(git rev-parse HEAD)
+          git fetch origin main
+          latest_sha=$(git rev-parse FETCH_HEAD)
+          if [ "$base_sha" != "$latest_sha" ]; then
+            echo "::error::main advanced during this run. Never rebase competing generated JSON files."
+            echo "::notice::Queueing a fresh official scan on current main; old source files remain untouched."
+            gh workflow run policy-domino.yml --ref main -f source=official -f analyze_ai=true
+            exit 1
+          fi
           git add data/v4_state.json site/v4/data.json site/classic/data.json site/classic/index.html site/impact/index.html
           if [ -f data/public_services.json ]; then git add data/public_services.json; fi
           if [ -f site/ai-impact/data.json ]; then git add site/ai-impact/data.json; fi
           if ! git diff --cached --quiet; then
             git commit -m 'data: refresh official evidence and agency impacts [skip ci]'
-            for attempt in 1 2 3; do
-              git fetch origin main
-              git rebase FETCH_HEAD
-              if git push origin HEAD:main; then break; fi
-              if [ "$attempt" = "3" ]; then exit 1; fi
-              sleep 3
-            done
+            if ! git push origin HEAD:main; then
+              echo "::error::main changed during publishing. Refusing to overwrite newer official evidence."
+              gh workflow run policy-domino.yml --ref main -f source=official -f analyze_ai=true
+              exit 1
+            fi
           fi
 
   deploy:

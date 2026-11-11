@@ -180,8 +180,13 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m 'data: refresh official evidence and agency impacts [skip ci]'
             if ! git push origin HEAD:main; then
-              echo "::error::main changed during publishing. Refusing to overwrite newer official evidence."
-              gh workflow run policy-domino.yml --ref main -f source=official -f analyze_ai=true
+              git fetch origin main
+              if [ "$(git rev-parse FETCH_HEAD)" != "$base_sha" ]; then
+                echo "::warning::main advanced during publication; schedule a fresh run without discarding official source data."
+                gh workflow run policy-domino.yml --ref main -f source=official -f analyze_ai=true
+              else
+                echo "::error::Push rejected although main did not advance. Check repository size and permissions; do not retry endlessly."
+              fi
               exit 1
             fi
           fi

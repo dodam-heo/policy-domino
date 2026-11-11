@@ -9,6 +9,7 @@ from __future__ import annotations
 import re,datetime as dt,hashlib
 from policy_domino import official_api as api
 from policy_domino import semantic_diff
+from policy_domino.engine.institution_identity import institution_name
 
 ACTORS=re.compile(
  r"(?<![가-힣])([가-힣]{2,35}(?:부장관|청장|처장|위원장|공단|공사|"
@@ -158,8 +159,7 @@ def duties(pairs):
                    "status":"official_duty_changed",
                    "basis":"동일 변경 조문에서 기관명과 변경 의무 문장 확인",
                    "before":before,"after":after,
-                   "action":"해당 조문에 명시된 업무 의무의 변경 내용 확인",
-                   "implementation_verified":False}
+                   "action":"해당 조문에 명시된 업무 의무의 변경 내용 확인"}
     return list(unique.values())
 
 def inspect(record,records=None,load=None,history=None,annual=None):
@@ -309,7 +309,11 @@ def cluster_promulgations(events):
     for g in clusters.values():
         members=g["members"]
         proven=sum(m["verification"].startswith("verified_") for m in members)
-        agency_count=len({a["agency"] for m in members for a in m.get("actors",[])})
+        agency_count=len({
+            institution_name(a.get("agency"))
+            for m in members for a in m.get("actors",[])
+            if institution_name(a.get("agency"))
+        })
         g["summary"]=(
             f"공식 동일 공포번호 변경 법령 {len(members)}개" if len(members)>1 and
             g["official_common_promulgation"] else members[0]["title"])

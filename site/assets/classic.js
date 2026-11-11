@@ -88,7 +88,7 @@ function sidebarAgencyButton(entry){
  return '<button type="button" class="sideAgency'+(selectedAgency===entry.name?' active':'')+
  '" data-agency-pick="'+esc(entry.name)+'" aria-pressed="'+(selectedAgency===entry.name)+'">'+
  '<span class="sideAgencyName">'+esc(entry.name)+'</span>'+
- '<span class="sideCount">'+entry.count+'</span></button>';
+ '<span class="sideCount" aria-label="검토사항 '+entry.count+'건">'+entry.count+'건</span></button>';
 }
 function sidebarGroups(entries){
  const q=agencySearch.toLocaleLowerCase("ko");
@@ -109,7 +109,7 @@ function sidebarGroups(entries){
          const key=type+"|"+region, show=q||openAgencyRegions.has(key)||
            part.some(x=>x.name===selectedAgency);
          return '<details class="sideRegion" data-side-region="'+esc(key)+'"'+(show?' open':'')+'>'+
-           '<summary>'+esc(region)+' <span>'+part.length+'</span></summary>'+
+           '<summary>'+esc(region)+' <span>'+part.length+'개 기관</span></summary>'+
            '<div class="sideAgencyList">'+part.map(sidebarAgencyButton).join("")+'</div></details>';
        }).join("");
    }else{
@@ -118,7 +118,7 @@ function sidebarGroups(entries){
    const opened=q||openAgencyTypes.has(type)||
      list.some(x=>x.name===selectedAgency);
    return '<details class="sideType" data-side-type="'+esc(type)+'"'+(opened?' open':'')+'>'+
-     '<summary>'+esc(type)+' <span>'+list.length+'</span></summary>'+
+     '<summary>'+esc(type)+' <span>'+list.length+'개 기관 · '+list.reduce((n,x)=>n+x.count,0)+'건</span></summary>'+
      '<div class="sideTypeBody">'+children+'</div></details>';
  }).filter(Boolean);
  return rows.length?rows.join(""):'<p class="agencyNoMatch">검색 결과가 없습니다.</p>';
@@ -130,7 +130,7 @@ function institutionSidebar(entries){
  '" placeholder="기관명 검색" aria-label="기관명 검색" autocomplete="off">'+
  '<button type="button" class="sideAll'+(!selectedAgency?' active':'')+
  '" data-agency-all aria-pressed="'+(!selectedAgency)+'">'+
- '<span>전체 기관</span><span>'+entries.length+'</span></button>'+
+ '<span>전체 기관</span><span>'+entries.length+'개 기관 · '+entries.reduce((n,x)=>n+x.count,0)+'건</span></button>'+
  '<div id="agencySidebarGroups" class="agencySidebarGroups">'+sidebarGroups(entries)+'</div></aside>';
 }
 function allAgencyResults(entries,all,aiFindings){

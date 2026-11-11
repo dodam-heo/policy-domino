@@ -9,6 +9,7 @@ import difflib
 import hashlib
 import re
 from policy_domino.engine import source_change
+from policy_domino.engine.institution_identity import institution_name
 
 
 ORG_TITLE=re.compile(
@@ -126,13 +127,21 @@ def choose_excerpts(doc):
     return [p for _,p in sorted(scored,key=lambda x:x[0],reverse=True)]
 
 def new_action(doc,p,event_id):
-    agency=owner(doc.get("title",""))
-    # Additional authorities only qualify when explicitly present in a
-    # verified actor_duties element for that exact article.
+    title_owner=owner(doc.get("title",""))
+    agency=institution_name(title_owner)
+    legal_actor=title_owner
+    # Legal office-holder mentions are not always identified institutions.
+    # Only a concrete public body named in the verified provision can become
+    # a downstream agency action.
     matching=[a for a in doc.get("actor_duties",[])
               if article_key(a.get("article"))==article_key(p.get("article"))]
-    if not agency and matching:
-        agency=matching[0].get("agency","")
+    if not agency:
+        for actor in matching:
+            named=institution_name(actor.get("agency"))
+            if named:
+                agency=named
+                legal_actor=clean(actor.get("agency"))
+                break
     if not agency:return None
     article=clean(p.get("article",""))
     before=clean(p.get("before",""))
@@ -159,7 +168,7 @@ def new_action(doc,p,event_id):
         brief="신설 · "+(lead[:115] if lead else article)
     return {
         "id":idof(event_id+"|"+agency+"|"+article+"|"+work+"|"+brief),
-        "event_id":event_id,"agency":agency,
+        "event_id":event_id,"agency":agency,"legal_actor":legal_actor,
         "agency_role":"개정 직제의 직접 규율 대상 기관" if owner(doc.get("title","")) else
                       "변경된 조문에 명시된 집행기관",
         "work":work,"target_location":article+" · "+where,

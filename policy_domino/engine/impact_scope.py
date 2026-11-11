@@ -4,6 +4,7 @@ The result is determined by confirmed target institutions and confirmed
 changed-provision links. Unverified mentions do not add impact.
 """
 from __future__ import annotations
+from policy_domino.engine.institution_identity import institution_name
 
 
 def _normalize(value: object) -> str:
@@ -17,8 +18,9 @@ def assess_impact_scope(event, actions):
     Titles, article mentions, total change count and the number of clauses
     never independently qualify a policy as high impact.
     """
-    actors={_normalize(a.get("agency")) for a in actions if
-            a.get("event_id")==event["event_id"] and a.get("agency") and
+    actors={institution_name(a.get("agency")) for a in actions if
+            a.get("event_id")==event["event_id"] and
+            institution_name(a.get("agency")) and
             a.get("evidence_scope") in (
                 "v4_verified_source",
                 "service_formula_dependency_verified",

@@ -59,6 +59,13 @@ class ImpactScopeTests(unittest.TestCase):
         self.assertEqual(scope["impact_level"], "not_assessed")
         self.assertEqual(scope["impact_scope"]["proven_dependent_rules"], 1)
 
+    def test_unidentified_roles_do_not_inflate_impact_scope(self):
+        actions=[self.action("시장"),self.action("군수"),
+                 self.action("구청장"),self.action("국토교통부장관")]
+        scope=assess_impact_scope(self.event,actions)
+        self.assertEqual(scope["impact_scope"]["institutions"],1)
+        self.assertEqual(scope["impact_level"],"not_assessed")
+
     def test_unverified_candidate_is_not_an_affected_institution(self):
         scope=assess_impact_scope(self.event,[self.action("가상공사 A"),
              self.action("가상공사 B","unverified_candidate")])

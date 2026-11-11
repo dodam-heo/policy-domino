@@ -42,6 +42,42 @@ class AgencyActionTests(unittest.TestCase):
         doc = {**self.doc, "title": "일반 개정 법령"}
         self.assertIsNone(new_action(doc, self.doc["excerpts"][0], "v4:1"))
 
+    def test_named_authority_is_institution_and_bare_role_is_not(self):
+        from policy_domino.engine.institution_identity import institution_name
+        examples={
+            "국토교통부장관":"국토교통부",
+            "해양수산부장관":"해양수산부",
+            "가상청장":"가상청",
+            "한국가상공단 이사장":"한국가상공단",
+            "서울특별시장":"서울특별시",
+            "수원시장":"수원시",
+            "홍천군수":"홍천군",
+            "강남구청장":"강남구",
+            "구청장":"",
+            "군수":"",
+            "시장":"",
+            "교육감":"",
+            "시·도지사":"",
+            "장관":"",
+            "가상공공재단":"가상공공재단",
+        }
+        for actor,agency in examples.items():
+            with self.subTest(actor=actor):
+                self.assertEqual(institution_name(actor),agency)
+
+    def test_unlocated_office_holder_does_not_create_agency_review(self):
+        original=self.doc["excerpts"][0]
+        doc={**self.doc,"title":"일반 법령 개정","actor_duties":[
+            {"article":"제2조","agency":role}
+            for role in ("구청장","시장","군수")]}
+        self.assertIsNone(new_action(doc,original,"v4:1"))
+        named={**doc,"actor_duties":[
+            {"article":"제2조","agency":"국토교통부장관"}]}
+        card=new_action(named,original,"v4:1")
+        self.assertEqual(card["agency"],"국토교통부")
+        self.assertEqual(card["legal_actor"],"국토교통부장관")
+        self.assertNotIn("implementation_verified",card)
+
     def test_one_verified_organization_produces_one_review_card(self):
         e, actions = group_event({
             "id": "case", "date": "2026-11-09", "number": "123",

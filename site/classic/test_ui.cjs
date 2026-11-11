@@ -98,5 +98,9 @@ assert.ok(script.includes("상위 정책 기준의 변경값"));
 assert.ok(!script.includes("badgeStatus"),"No implementation-status badge");
 assert.ok(!script.includes("status_evidence"),"No implementation-status evidence drawer");
 assert.ok(!script.includes("반영 확인 필요"),"No implementation-state label");
+assert.ok(script.includes("entry.count+'건"),"Show review-item units beside institution names");
+assert.ok(script.includes("list.length+'개 기관"),"Show institution units beside category totals");
+assert.ok(script.includes("entries.reduce((n,x)=>n+x.count,0)"),
+  "Show both institution totals and review-item totals");
 console.log("CLASSIC_PASS",{events:d.events.length,agencyTasks:d.actions.length,
   official:official.length});

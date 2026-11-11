@@ -8,6 +8,7 @@ from __future__ import annotations
 import datetime as dt,json,os,re,time
 from pathlib import Path
 from policy_domino import official_api as api
+from policy_domino.engine.json_storage import atomic_json
 from policy_domino.engine import collect_index,events,relationships,official_links,dependents,source_change
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -23,11 +24,8 @@ def load_json(path,default):
     return json.loads(path.read_text("utf8"))
 
 def save_json(path,item):
-    """Atomically persist source snapshots; a crash cannot empty the cache."""
-    path.parent.mkdir(parents=True,exist_ok=True)
-    temporary=path.with_suffix(path.suffix+".tmp")
-    temporary.write_text(json.dumps(item,ensure_ascii=False,indent=2),"utf8")
-    temporary.replace(path)
+    """Persist official state and compact public data without losing fields."""
+    return atomic_json(path,item,public=Path(path)==OUTPUT)
 
 def scan_new(state,today,checkpoint=None):
     """Bounded overlapping discovery and resumable sector-neutral backfill.

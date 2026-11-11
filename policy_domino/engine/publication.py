@@ -8,6 +8,7 @@ import collections
 import json
 from pathlib import Path
 from policy_domino.engine.classic_pages import publish_pages
+from policy_domino.engine.json_storage import atomic_json
 from policy_domino.engine.impact_scope import assess_impact_scope
 from policy_domino.engine.agency_actions import TRUSTED, group_event, unique_actions
 from policy_domino.analysis_evidence import has_verified_action, evidence_identity
@@ -87,7 +88,7 @@ def run():
     assert all(x.get("basis","").startswith(TRUSTED) for x in result["actions"])
     assert all(a["event_id"] in {e["event_id"] for e in result["events"]}
                for a in result["actions"])
-    DEST.write_text(json.dumps(result,ensure_ascii=False,indent=2),"utf8")
+    atomic_json(DEST,result,public=True)
     # Reconcile model evidence with the exact current published event set.
     # This is cache validation, not a new LLM invocation or a second publisher.
     from policy_domino.ai_impact import DEST as AI_DEST, build_catalog, save_catalog

@@ -16,6 +16,7 @@ import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
+from policy_domino.engine.json_storage import atomic_json
 from typing import Any, Callable
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
@@ -783,10 +784,7 @@ def run_incremental(data: dict, previous: dict, config: ModelConfig,
 
 def save_catalog(catalog: dict) -> None:
     """Atomic local checkpoint; GitHub CI commits it even when provider rate-limited."""
-    DEST.parent.mkdir(parents=True, exist_ok=True)
-    temp = DEST.with_suffix(".tmp")
-    temp.write_text(json.dumps(catalog, ensure_ascii=False, indent=2), encoding="utf-8")
-    temp.replace(DEST)
+    atomic_json(DEST,catalog,public=True)
 
 
 def main() -> None:

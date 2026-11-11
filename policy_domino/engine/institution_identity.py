@@ -23,13 +23,13 @@ def institution_name(value: object) -> str:
     # A named public office-holder can identify its parent government body.
     for pattern in (
         r"^(.+?부)\s*장관$",
+        r"^(.+?구)\s*청장$",
         r"^(.+?청)\s*장$",
         r"^(.+?처)\s*장$",
         r"^(.+?위원회)\s*위원장$",
         r"^(.+?공단)\s*이사장$",
         r"^(.+?시)\s*장$",
         r"^(.+?군)\s*수$",
-        r"^(.+?구)\s*청장$",
         r"^(.+?(?:도|시))\s*지사$",
     ):
         match=re.fullmatch(pattern,name)

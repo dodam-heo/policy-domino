@@ -1,14 +1,6 @@
 name: Policy Domino — Official Policy Impact Pipeline
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'data/**'
-      - 'site/classic/data.json'
-      - 'site/v4/data.json'
-  schedule:
-    - cron: '5 */6 * * *'
   workflow_dispatch:
     inputs:
       source:
